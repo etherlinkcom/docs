@@ -1,8 +1,19 @@
 ---
 description: 1-page to get you up to speed
+layout:
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: false
+  pagination:
+    visible: true
 ---
 
-# Etherlink
+# What is Etherlink?
 
 Etherlink is an EVM-compatible smart rollup which prioritises _fair ordering of transactions_, _low latency_ and _security:_
 

@@ -1,9 +1,9 @@
 # Table of contents
 
-## Welcome to Etherlink
+## Motivation
 
-* [Etherlink](README.md)
-* [Why use Etherlink?](welcome-to-etherlink/why-use-etherlink.md)
+* [What is Etherlink?](README.md)
+* [Why use Etherlink?](motivation/why-use-etherlink.md)
 
 ## 🚀 Get Started
 
