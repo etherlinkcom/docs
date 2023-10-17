@@ -26,4 +26,4 @@ description: Getting up to speed on consensus state-of-the-art
 * [Narwhal and Bullshark, Sui's Mempool and Consensus Engines](https://docs.sui.io/learn/architecture/consensus)&#x20;
 * [Cosmos without Tendermint: Exploring Narwhal and Bullshark](https://www.paradigm.xyz/2022/07/experiment-narwhal-bullshark-cosmos-stack)&#x20;
 * [MEV Resistance on a DAG | Chainlink Blog](https://blog.chain.link/mev-resistance-on-a-dag/)&#x20;
-* [\[2205.09174\] Cordial Miners: Fast and Efficient Consensus for Every Eventuality](https://arxiv.org/abs/2205.09174)&#x20;
+* [Cordial Miners: Fast and Efficient Consensus for Every Eventuality](https://arxiv.org/abs/2205.09174)&#x20;
