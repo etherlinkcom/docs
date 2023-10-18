@@ -17,6 +17,4 @@ layout:
 
 ## Using Remix
 
-## Using Hardhat
-
-## Using Foundry
+Coming Soon™
