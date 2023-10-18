@@ -1,5 +1,16 @@
 ---
 description: Getting up to speed on consensus state-of-the-art
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Distributed Sequencer
@@ -12,7 +23,7 @@ description: Getting up to speed on consensus state-of-the-art
 * [Narwhal & Tusk](https://arxiv.org/abs/2105.11827)&#x20;
   * Proposes separating the task of reliable transaction dissemination from transaction ordering for performance increase
   * Originally implemented by Facebook Research, see [GitHub](https://github.com/facebookresearch/narwhal)
-* [Bullshark](https://arxiv.org/abs/2201.05677) \[In Production on Sui]
+* [Bullshark](https://arxiv.org/abs/2201.05677) _**\[In Production on Sui]**_
   * Vanilla Bullshark = Bullshark + support for “weak links” (see section 5.1 [here](https://arxiv.org/abs/2306.03058))
 * [Shoal](https://arxiv.org/abs/2306.03058)
   * A framework for higher performance for DAG consensus (Bullshark) using pipelining and leader reputation
