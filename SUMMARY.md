@@ -23,5 +23,6 @@
 
 ## 📚 Resources
 
+* [Etherlink Further Reading](resources/etherlink-further-reading.md)
 * [Distributed Sequencer](resources/distributed-sequencer.md)
 * [Scaling on Tezos](resources/scaling-on-tezos.md)
