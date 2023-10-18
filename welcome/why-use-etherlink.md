@@ -13,3 +13,5 @@ All smart rollups on Tezos, Etherlink included, are optimistic and enshrined.  T
 * Rollup related L1 activity can be made much more gas efficient
 * Standardisation of communication between L1 and rollups allows for cross rollup communication, even those with different execution environments (e.g. EVM/Michelson/SVM etc)
 * Smart Rollups can retrieve information from a “reveal-data channel” enabling access to data sources external to the Tezos blockchain.
+
+If you're interested in reading more about Smart Rollups, please head over to [Tezos Scaling](../resources/tezos-scaling.md).
