@@ -47,4 +47,4 @@ Furthermore, being a smart rollup on Tezos gives Etherlink some unique advantage
 
 ### How do I start building on Etherlink?
 
-Great question. Start [here](broken-reference).\
+Great question. Start [here](broken-reference) and also join our [Discord](https://discord.gg/etherlink).\

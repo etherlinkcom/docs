@@ -4,6 +4,7 @@
 
 * [What is Etherlink?](README.md)
 * [Why use Etherlink?](welcome/why-use-etherlink.md)
+* [Join our Discord](https://discord.gg/etherlink)
 
 ## 🚀 Get Started
 
