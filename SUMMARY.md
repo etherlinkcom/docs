@@ -14,6 +14,7 @@
 ## ⛓ Developer Tools
 
 * [Networks & Public RPC Endpoints](developer-tools/networks-and-public-rpc-endpoints.md)
+* [Etherlink Node Specifications](developer-tools/etherlink-node-specifications.md)
 * [Etherlink Explorer](https://explorer.ghostnet-evm.tzalpha.net/)
 
 ## 🏁 Track Etherlink's Progress
