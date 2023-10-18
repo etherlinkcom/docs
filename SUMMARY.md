@@ -14,7 +14,13 @@
 ## ⛓ Developer Tools
 
 * [Networks & Public RPC Endpoints](developer-tools/networks-and-public-rpc-endpoints.md)
+* [Etherlink Code](developer-tools/etherlink-code.md)
 * [Etherlink Explorer](https://explorer.ghostnet-evm.tzalpha.net/)
+
+## 🏁 Track Etherlink's Progress
+
+* [Etherlink Source Code](https://gitlab.com/tezos/tezos/-/tree/master/src/kernel\_evm)
+* [Etherlink Pull Requests](https://gitlab.com/groups/tezos/-/issues/?sort=created\_date\&state=opened\&search=EVM%20\&first\_page\_size=20)
 
 ## 📚 Resources
 
