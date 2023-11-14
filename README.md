@@ -41,7 +41,7 @@ Etherlink is an [_enshrined_](https://research-development.nomadic-labs.com/smar
 
 Furthermore, being a smart rollup on Tezos gives Etherlink some unique advantages, for example quick time-to-L1 finality thanks to Tezos’ 2 block finality guarantee.
 
-<table><thead><tr><th width="170">Chain</th><th width="141.33333333333331">Sequencer</th><th>L2 finality time</th><th>Data Posted on L1</th></tr></thead><tbody><tr><td>Etherlink</td><td>Distributed</td><td>~ 500ms</td><td>~ 2 minutes</td></tr><tr><td>Optimism Bedrock</td><td>Centralised</td><td>~ <a href="https://community.optimism.io/docs/developers/build/differences/#blocks">2 seconds</a></td><td>~ <a href="https://optimistic.etherscan.io/batches">2 minutes</a></td></tr><tr><td>Arbitrum One</td><td>Centralised</td><td>~ <a href="https://arbiscan.io/">300ms</a></td><td>~ <a href="https://arbiscan.io/batches">7 minutes</a></td></tr></tbody></table>
+<table><thead><tr><th width="170">Chain</th><th width="141.33333333333331">Sequencer</th><th>L2 finality time</th><th>Data Posted on L1</th></tr></thead><tbody><tr><td>Etherlink</td><td>Distributed</td><td>~ 500ms</td><td>~ 15 seconds</td></tr><tr><td>Optimism Bedrock</td><td>Centralised</td><td>~ <a href="https://community.optimism.io/docs/developers/build/differences/#blocks">2 seconds</a></td><td>~ <a href="https://optimistic.etherscan.io/batches">2 minutes</a></td></tr><tr><td>Arbitrum One</td><td>Centralised</td><td>~ <a href="https://arbiscan.io/">300ms</a></td><td>~ <a href="https://arbiscan.io/batches">7 minutes</a></td></tr></tbody></table>
 
 ***
 
