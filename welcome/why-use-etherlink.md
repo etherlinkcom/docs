@@ -13,9 +13,9 @@ layout:
     visible: true
 ---
 
-# Why use Etherlink?
+# 🤔 Why use Etherlink?
 
-Etherlink builds on the decentralisation of L1 Tezos to provide an EVM-compatible solution with distributed sequencing from day 1.  Leveraging the latest research with a modified implementation of [Bullshark](https://arxiv.org/abs/2201.05677) with [Shoal](https://medium.com/aptoslabs/shoal-how-we-reduce-bullshark-latency-on-the-aptos-blockchain-44a600d977a1), Etherlink is low latency (\~500ms confirmation time) with a fair ordering of transactions for all. If the sequencing fails, users have an option to submit to the L1 directly after a delay.&#x20;
+Etherlink builds on the decentralisation of L1 Tezos to provide an EVM-compatible solution with distributed sequencing from day 1.  Leveraging the latest research with a modified implementation of [Bullshark](https://arxiv.org/abs/2201.05677) with [Shoal](https://medium.com/aptoslabs/shoal-how-we-reduce-bullshark-latency-on-the-aptos-blockchain-44a600d977a1), Etherlink is low latency (with sub-second confirmation times) with a fair ordering of transactions for all. If the sequencing fails, users have an option to submit to the L1 directly after a delay.&#x20;
 
 ### Smart Rollup Advantages
 

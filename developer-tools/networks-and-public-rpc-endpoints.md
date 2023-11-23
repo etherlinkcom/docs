@@ -12,7 +12,7 @@ layout:
     visible: true
 ---
 
-# Networks & Public RPC Endpoints
+# 🌐 Networks & Public RPC Endpoints
 
 ## Etherlink Testnet
 

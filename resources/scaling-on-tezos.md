@@ -13,7 +13,7 @@ layout:
     visible: true
 ---
 
-# Scaling on Tezos
+# ⚖ Scaling on Tezos
 
 ## Smart Rollups
 

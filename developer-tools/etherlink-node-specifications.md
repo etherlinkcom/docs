@@ -12,7 +12,7 @@ layout:
     visible: true
 ---
 
-# Etherlink Node Specifications
+# 📜 Etherlink Node Specifications
 
 ## Node Client Support
 

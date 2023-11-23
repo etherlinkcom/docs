@@ -13,7 +13,7 @@ layout:
     visible: true
 ---
 
-# Distributed Sequencer
+# 🕸 Decentralized Sequencer
 
 ## General Overview
 
