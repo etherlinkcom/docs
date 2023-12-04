@@ -17,6 +17,12 @@ layout:
 
 Make sure you have [Metamask](https://metamask.io/) installed in your browser.<img src="../.gitbook/assets/CleanShot 2023-11-23 at 16.56.22@2x.png" alt="" data-size="line">
 
+{% hint style="info" %}
+**Bridging from Tezos L1**
+
+You can also use the native bridge from Tezos Ghostnet [here](https://bridge.ghostnet-evm.tzalpha.net/). You will need to get Ghostnet funds from the [Ghostnet Faucet](https://faucet.ghostnet.teztnets.xyz/).
+{% endhint %}
+
 ## 1. Head over to [Etherlink.com](https://etherlink.com) and click "Faucet"
 
 <figure><img src="../.gitbook/assets/CleanShot 2023-11-23 at 16.54.25@2x.png" alt=""><figcaption></figcaption></figure>
