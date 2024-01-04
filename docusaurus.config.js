@@ -116,10 +116,10 @@ const config = {
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
         style: 'primary',
-        title: 'Etherlink docs',
+        title: 'Etherlink documentation',
         logo: {
           alt: 'Etherlink developer documentation',
-          src: 'img/logo-tezos.svg',
+          src: '/img/logo-tezos.svg',
         },
       },
       prism: {

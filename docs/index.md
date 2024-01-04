@@ -1,19 +1,6 @@
 ---
-description: 1-page to get you up to speed
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: false
-  pagination:
-    visible: true
+title: '❓ What is Etherlink?'
 ---
-
-# ❓ What is Etherlink?
 
 Etherlink is an EVM-compatible rollup which has a _decentralised sequencer, low gas fees,_ and _fair ordering._&#x20;
 
@@ -47,4 +34,4 @@ Furthermore, being a smart rollup on Tezos gives Etherlink some unique advantage
 
 ### How do I start building on Etherlink?
 
-Great question. Start [here](broken-reference) and also join our [Discord](https://discord.gg/etherlink).\
+Great question. Start with this documentation and also join our [Discord](https://discord.gg/etherlink).
