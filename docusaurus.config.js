@@ -41,13 +41,13 @@ const scriptSrc = process.env.NODE_ENV === 'development' ?
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Tezos Developer Documentation',
-  tagline: 'Get started developing on Tezos by learning about its features, going through application development tutorials, and exploring the tools that are available to Tezos developers.',
+  title: 'Etherlink documentation',
+  tagline: 'Etherlink builds on the decentralisation of L1 Tezos to provide an EVM-compatible solution with distributed sequencing.',
   favicon: 'img/favicon.ico',
-  url: 'https://docs.tezos.com',
+  url: 'https://docs.etherlink.com',
   baseUrl: '/',
-  organizationName: 'trilitech',
-  projectName: 'tezos-developer-docs',
+  organizationName: 'etherlinkcom',
+  projectName: 'docs',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   i18n: {
@@ -116,30 +116,11 @@ const config = {
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
         style: 'primary',
-        title: 'Tezos Docs',
+        title: 'Etherlink docs',
         logo: {
-          alt: 'Developer Docs for Tezos',
+          alt: 'Etherlink developer documentation',
           src: 'img/logo-tezos.svg',
         },
-        items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'documentationSidebar',
-            position: 'left',
-            label: 'Documentation'
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialsSidebar',
-            position: 'left',
-            label: 'Tutorials',
-          },
-          {
-            href: 'https://github.com/trilitech/tezos-developer-docs',
-            label: 'GitHub',
-            position: 'right',
-          },
-        ],
       },
       prism: {
         theme: require('prism-react-renderer/themes/github'),
