@@ -69,6 +69,13 @@ const config = {
           alt: 'Etherlink developer documentation',
           src: '/img/logo-tezos.svg',
         },
+        items: [
+          {
+            href: 'https://github.com/etherlinkcom/docs',
+            label: 'GitHub',
+            position: 'right',
+          },
+        ],
       },
       prism: {
         theme: require('prism-react-renderer/themes/github'),
