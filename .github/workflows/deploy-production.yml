@@ -2,7 +2,7 @@ name: CD - production
 
 on:
   push:
-    branches: [ docusaurus, main ]
+    branches: [ main ]
 
 jobs:
 
