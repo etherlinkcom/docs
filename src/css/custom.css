@@ -157,7 +157,11 @@ nav.navbar {
   color: #0D61FF;
 }
 
-/* breadcrumbs menu */
+/* hide next and previous */
+.pagination-nav {
+  display: none;
+}
+
 .pagination-nav__label {
   font-family: 'GT Eesti Display', sans-serif;
   font-weight: 400;
