@@ -1,18 +1,6 @@
 ---
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
+title: '📜 Etherlink Node Specifications'
 ---
-
-# 📜 Etherlink Node Specifications
 
 ## Node Client Support
 

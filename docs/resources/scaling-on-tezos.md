@@ -1,19 +1,6 @@
 ---
-description: Read more about scaling on Tezos
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
+title: '⚖ Scaling on Tezos'
 ---
-
-# ⚖ Scaling on Tezos
 
 ## Smart Rollups
 
