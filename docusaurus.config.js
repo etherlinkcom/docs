@@ -45,7 +45,7 @@ const config = {
   tagline: 'Etherlink builds on the decentralisation of L1 Tezos to provide an EVM-compatible solution with distributed sequencing.',
   favicon: 'img/favicon.ico',
   url: 'https://docs.etherlink.com',
-  baseUrl: '/',
+  baseUrl: '/docs/',
   organizationName: 'etherlinkcom',
   projectName: 'docs',
   onBrokenLinks: 'warn',
