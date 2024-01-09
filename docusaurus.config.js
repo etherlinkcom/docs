@@ -8,7 +8,7 @@ const katex = require('rehype-katex');
 const config = {
   title: 'Etherlink documentation',
   tagline: 'Etherlink builds on the decentralisation of L1 Tezos to provide an EVM-compatible solution with distributed sequencing.',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/etherlink-logo.png',
   url: 'https://docs.etherlink.com',
   baseUrl: '/',
   organizationName: 'etherlinkcom',
@@ -67,7 +67,7 @@ const config = {
         title: 'Etherlink documentation',
         logo: {
           alt: 'Etherlink developer documentation',
-          src: '/img/logo-tezos.svg',
+          src: '/img/etherlink-logo.png',
         },
         items: [
           {
