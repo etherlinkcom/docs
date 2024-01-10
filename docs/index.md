@@ -6,7 +6,7 @@ Etherlink is an EVM-compatible chain that has a decentralised sequencer, low gas
 
 * **Decentralised sequencer 🌐:** Using a state-of-the-art consensus mechanism, Etherlink's decentralised sequencer provides high availability and built-in censorship resistance.
 * **Very low fees 💰 :** At a load of 200TPS, expect an ERC-20 transaction to cost $0.001 on Etherlink.
-* **Fair ordering ⚖️ :** Etherlink's distributed sequencer provides maximal extractable value (MEV) protection by running transactions in a fair, first-come-first-serve order for all users.
+* **Fair ordering ⚖️ :** Etherlink's distributed sequencer provides maximal extractable value (MEV, also known as "sandwich attack") protection by running transactions in a fair, first-come-first-serve order for all users.
 
 Etherlink uses Smart Rollups on the decentralised [Tezos](https://tezos.com) protocol for data availability and will expand to use the Tezos [Data Availability Layer](https://spotlight.tezos.com/data-availability-layer-dal-what-is-it-all-about/).
 
