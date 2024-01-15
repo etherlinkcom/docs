@@ -25,6 +25,7 @@ const sidebars = {
       items: [
         'get-started/connect-your-wallet-to-etherlink',
         'get-started/get-testnet-xtz-on-etherlink',
+        'get-started/deploy-with-hardhat',
       ],
     },
     {
