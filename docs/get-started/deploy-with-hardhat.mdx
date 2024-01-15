@@ -10,13 +10,14 @@ You can use Hardhat to deploy contracts to Etherlink just like you use it on oth
 
    ```javascript
    import "@nomicfoundation/hardhat-toolbox";
+   import 'dotenv/config';
 
    const config = {
      solidity: "0.8.19",
      networks: {
        etherlinkTest: {
          url: "https://node.ghostnet.etherlink.com",
-         accounts: [MY_PRIVATE_KEY],
+         accounts: [process.env.MY_PRIVATE_KEY],
        }
      }
    };
