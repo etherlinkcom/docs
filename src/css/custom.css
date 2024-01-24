@@ -82,7 +82,7 @@ a:hover {
 }
 
 nav.navbar {
-  background-color: #030405;
+  background-color: #040404;
   font-family: 'GT Eesti Display Light', sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -121,7 +121,7 @@ nav.navbar {
 }
 
 .dropdown__menu a:hover {
-  background-color: #4A4E52;
+  background-color: #040404;
   color: #fff;
 }
 
@@ -135,7 +135,7 @@ nav.navbar {
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
-  color: #4A4E52;
+  color: #030405;
   transition: color 0.3s;
 }
 
