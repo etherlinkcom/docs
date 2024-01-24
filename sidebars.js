@@ -37,7 +37,7 @@ const sidebars = {
         'developer-tools/etherlink-node-specifications',
         {
           type: 'link',
-          href: 'https://explorer.ghostnet-evm.tzalpha.net/',
+          href: 'https://testnet-explorer.etherlink.com/',
           label: '🔍 Etherlink Explorer',
         },
       ],
@@ -50,7 +50,7 @@ const sidebars = {
       items: [
         {
           type: 'link',
-          href: 'https://gitlab.com/tezos/tezos/-/tree/master/src/kernel\_evm',
+          href: 'https://gitlab.com/tezos/tezos/-/tree/master/etherlink',
           label: '🧙 Etherlink Source Code',
         },
         {
