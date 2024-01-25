@@ -55,6 +55,8 @@
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
+  --ifm-font-color-base: #FFFFFF;
+  --ifm-navbar-link-color: #FFFFFF;
   --ifm-color-primary: #7b9efc;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
@@ -63,6 +65,7 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -139,6 +142,10 @@ nav.navbar {
   transition: color 0.3s;
 }
 
+[data-theme='dark'] .menu__link {
+  color: #FFFFFF; /* Or any color you prefer for dark mode */
+}
+
 .menu__link:hover,
 .menu__link:focus {
   color: #0D61FF !important;
@@ -202,6 +209,10 @@ ol li ol li ol {
 article a[target="_blank"]:after {
   content: url("/img/external_link.svg");
   padding-left: 5px;
+}
+
+[data-theme='dark'] article a[target="_blank"]:after {
+  content: url("/img/external_link_white.svg");
 }
 
 /* more space between sidebar categories */
