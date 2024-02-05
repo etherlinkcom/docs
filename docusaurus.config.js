@@ -42,7 +42,7 @@ const config = {
           customCss: require.resolve('./src/css/custom.css'),
         },
         googleTagManager: {
-          containerId: 'GTM-MQ8V746L',
+          containerId: 'G-Z575XCDLCX',
         },
       }),
     ],
