@@ -2,13 +2,13 @@
 title: '❓ What is Etherlink?'
 ---
 
-Etherlink is an EVM-compatible chain that has a decentralised sequencer, low gas fees, and fair ordering.
+Etherlink is an EVM-compatible layer 2 blockchain with a decentralized sequencer, low gas fees, and fair ordering.
 
-* **Decentralised sequencer 🌐:** Using a state-of-the-art consensus mechanism, Etherlink's decentralised sequencer provides high availability and built-in censorship resistance.
-* **Very low fees 💰 :** Etherlink has super low fees. How low? Think &#36;0.01 per transaction, not &#36;20.
-* **Fair ordering ⚖️ :** Etherlink's distributed sequencer provides maximal extractable value (MEV, also known as "sandwich attack") protection by running transactions in a fair, first-come-first-serve order for all users.
+* **Decentralized 🌐:** The decentralized sequencer reduces the risk of centralized control and manipulation.
+* **Secure 🔒:** Built-in MEV protection protects users against exploitation.
+* **Low fees 💰 :** Think &#36;0.01 per transaction, not &#36;20.
 
-Etherlink uses Smart Rollups on the decentralised [Tezos](https://tezos.com) protocol for data availability and will expand to use the Tezos [Data Availability Layer](https://spotlight.tezos.com/data-availability-layer-dal-what-is-it-all-about/).
+Etherlink uses Smart Rollups on the decentralized [Tezos](https://tezos.com) protocol for data availability and will expand to use the Tezos [Data Availability Layer](https://spotlight.tezos.com/data-availability-layer-dal-what-is-it-all-about/).
 
 ***
 

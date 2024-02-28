@@ -11,7 +11,7 @@ Leveraging the latest research with a modified implementation of [Bullshark](htt
 
 ### It's decentralized
 
-Etherlink's decentralized sequencer has no single point of failure, providing high availability, resistance to attacks, and fair transaction ordering.
+Etherlink's decentralized sequencer provides high availability and resistance to attacks.
 If the sequencing fails, users have an option to submit to the L1 directly after a delay.
 
 ### It's cheap
