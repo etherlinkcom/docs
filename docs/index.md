@@ -2,7 +2,7 @@
 title: '❓ What is Etherlink?'
 ---
 
-Etherlink is an EVM-compatible layer 2 blockchain with a decentralized sequencer, low gas fees, and fair ordering.
+Etherlink is an EVM-compatible layer-2 blockchain with a decentralized sequencer, offering very low fees and MEV protection, powered by Tezos Smart Rollup technology.
 
 * **Decentralized 🌐:** The decentralized sequencer reduces the risk of centralized control and manipulation.
 * **Secure 🔒:** Built-in MEV protection protects users against exploitation.
