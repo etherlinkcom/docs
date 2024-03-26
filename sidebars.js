@@ -10,6 +10,7 @@ const sidebars = {
       items: [
         'index',
         'welcome/why-use-etherlink',
+        'welcome/how-is-etherlink-governed',
         {
           type: 'link',
           href: 'https://discord.gg/etherlink',
