@@ -41,11 +41,12 @@ This period can overlap with another Proposal period.
 
 ### Alignment with Tezos layer 1 governance
 
-Etherlink kernel governance cycles are synchronized with layer 1 governance periods:
+Etherlink kernel governance periods are synchronized with layer 1 governance periods:
 
-- Each kernel governance cycle (including the Proposal and Promotion periods) must happen within a single Tezos layer 1 governance period; it cannot overlap with two different layer 1 governance periods.
+- Each Proposal and Promotion period must happen within a single Tezos layer 1 governance period; a single period cannot overlap with two different layer 1 governance periods.
 This ensures that each delegate's voting power is the same throughout the period.
-- Etherlink governance periods always start at the same time that a layer 1 governance period starts.
+- The start of a layer 1 governance period always coincides with the start of an Etherlink Proposal or Promotion period.
+However, because Etherlink periods are shorter than layer 1 periods, Etherlink periods can also start in the middle of a layer 1 governance period.
 
 ## Security governance
 
