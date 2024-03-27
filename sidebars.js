@@ -11,6 +11,7 @@ const sidebars = {
         'index',
         'welcome/why-use-etherlink',
         'welcome/how-is-etherlink-governed',
+        'welcome/how-do-i-participate-in-governance',
         {
           type: 'link',
           href: 'https://discord.gg/etherlink',
