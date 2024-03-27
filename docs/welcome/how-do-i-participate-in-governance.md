@@ -1,0 +1,123 @@
+# 🧑‍⚖️ How do I participate in governance?
+
+Etherlink bakers can participate in the [Etherlink governance process](./how-is-etherlink-governed) by submitting proposals and voting for them.
+
+The voting power of a baker is the amount of tez that it has staked plus the tez that delegators have delegated to it, also called its _staking balance_.
+
+Separate contracts manage the kernel updates, security updates, and the Sequencer Committee, so to interact with them, bakers send transactions to those contracts, such as with the Octez client.
+The addresses of the governance contracts are specified in Etherlink's kernel.
+For information about the Octez client, see [Command Line Interface](https://tezos.gitlab.io/active/cli-commands.html) in the Octez documentation.
+
+## Participating in kernel governance
+
+Bakers can propose, vote on, and trigger kernel updates with these commands:
+
+### Getting information about the current period
+
+To get information about the current state of the kernel governance contract, call its `get_voting_state` view.
+For example, this Octez client command calls this view for the kernel governance contract on Ghostnet:
+
+```bash
+octez-client run view get_voting_state on contract KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk
+```
+
+The view returns information about the current governance period in this order:
+
+- The index of the current period
+- Whether the current period is Proposal (`Left Unit`) or Promotion (`Right Unit`)
+- The number of blocks remaining in the period
+- Whether voting is complete for the period
+
+For example, this response shows that the contract is currently in the Proposal period:
+
+```
+(Pair 1619 (Left Unit) 64 None)
+```
+
+Block explorers show this information in a more human-readable format.
+
+You can also subscribe to the `voting_finished` event to be notified when the Proposal period completes.
+For past events, look up the contract on a block explorer, as in this example:
+https://better-call.dev/ghostnet/KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk/events
+
+### Proposing and upvoting kernel updates
+
+During a kernel Proposal period, bakers can propose kernel updates by calling the `new_proposal` entrypoint of the kernel governance contract:
+
+```bash
+octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
+--entrypoint "new_proposal" --arg "$KERNEL_ROOT_HASH"
+```
+
+The command takes these parameters:
+
+- `YOUR_ADDRESS`: The address or Octez client alias of your baker account
+- `CONTRACT_ADDRESS`: The address of the Etherlink kernel governance contract
+- `KERNEL_ROOT_HASH`: The hash of the kernel upgrade
+
+For example:
+
+```bash
+octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1HfJb718fGszcgYguA4bfTjAqe1BEmFHkv \
+--entrypoint "new_proposal" --arg "0x009279df4982e47cf101e2525b605fa06cd3ccc0f67d1c792a6a3ea56af9606abc"
+```
+
+To upvote a proposed kernel update during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
+
+```bash
+octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
+--entrypoint "upvote_proposal" --arg "$KERNEL_ROOT_HASH"
+```
+
+For example:
+
+```bash
+octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1HfJb718fGszcgYguA4bfTjAqe1BEmFHkv \
+--entrypoint "upvote_proposal" --arg "0x009279df4982e47cf101e2525b605fa06cd3ccc0f67d1c792a6a3ea56af9606abc"
+```
+
+It's not necessary to upvote a proposal that you submitted; submitting a proposal implies that your account upvotes it.
+
+### Voting for or against kernel upgrades
+
+When a proposal is in the Promotion period, you can vote for or against it or pass on voting by calling the `vote` entrypoint of the kernel governance contract:
+
+```bash
+octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
+--entrypoint "vote" --arg "\"$YOUR_VOTE\""
+```
+
+The command takes these parameters:
+
+- `YOUR_ADDRESS`: The address or Octez client alias of your baker account
+- `CONTRACT_ADDRESS`: The address of the Etherlink kernel governance contract
+- `YOUR_VOTE`: `"yea"`, `"nay"`, or `"pass"`, including the double quotes
+
+For example:
+
+```bash
+octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1HfJb718fGszcgYguA4bfTjAqe1BEmFHkv \
+--entrypoint "vote" --arg "\"yea\""
+```
+
+### Triggering kernel upgrades
+
+After a proposal wins a vote, any user can trigger the kernel upgrade by calling the governance contract's `trigger_kernel_upgrade` entrypoint:
+
+```bash
+octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
+--entrypoint "trigger_kernel_upgrade" --arg "\"$SMART_ROLLUP_ADDRESS\""
+```
+
+The command takes these parameters:
+
+- `YOUR_ADDRESS`: The address or Octez client alias of your baker account
+- `CONTRACT_ADDRESS`: The address of the Etherlink kernel governance contract
+- `SMART_ROLLUP_ADDRESS`: The address of the Etherlink Smart Rollup, which you can get from block explorers or from etherlink.com; the command must include the double quotes
+
+For example:
+
+```bash
+octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1HfJb718fGszcgYguA4bfTjAqe1BEmFHkv \
+--entrypoint "trigger_kernel_upgrade" --arg "\"sr1EStimadnRRA3vnjpWV1RwNAsDbM3JaDt6\""
+```
