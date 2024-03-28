@@ -46,7 +46,7 @@ During a kernel Proposal period, bakers can propose kernel updates by calling th
 
 ```bash
 octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
---entrypoint "new_proposal" --arg "$KERNEL_ROOT_HASH"
+  --entrypoint "new_proposal" --arg "$KERNEL_ROOT_HASH"
 ```
 
 The command takes these parameters:
@@ -59,21 +59,24 @@ For example:
 
 ```bash
 octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1HfJb718fGszcgYguA4bfTjAqe1BEmFHkv \
---entrypoint "new_proposal" --arg "0x009279df4982e47cf101e2525b605fa06cd3ccc0f67d1c792a6a3ea56af9606abc"
+  --entrypoint "new_proposal" \
+  --arg "0x009279df4982e47cf101e2525b605fa06cd3ccc0f67d1c792a6a3ea56af9606abc"
 ```
 
 To upvote a proposed kernel update during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
 
 ```bash
 octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
---entrypoint "upvote_proposal" --arg "$KERNEL_ROOT_HASH"
+  --entrypoint "upvote_proposal" \
+  --arg "$KERNEL_ROOT_HASH"
 ```
 
 For example:
 
 ```bash
 octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1HfJb718fGszcgYguA4bfTjAqe1BEmFHkv \
---entrypoint "upvote_proposal" --arg "0x009279df4982e47cf101e2525b605fa06cd3ccc0f67d1c792a6a3ea56af9606abc"
+  --entrypoint "upvote_proposal" \
+  --arg "0x009279df4982e47cf101e2525b605fa06cd3ccc0f67d1c792a6a3ea56af9606abc"
 ```
 
 It's not necessary to upvote a proposal that you submitted; submitting a proposal implies that your account upvotes it.
@@ -84,7 +87,7 @@ When a proposal is in the Promotion period, you can vote for or against it or pa
 
 ```bash
 octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
---entrypoint "vote" --arg "\"$YOUR_VOTE\""
+  --entrypoint "vote" --arg "\"$YOUR_VOTE\""
 ```
 
 The command takes these parameters:
@@ -97,7 +100,7 @@ For example:
 
 ```bash
 octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1HfJb718fGszcgYguA4bfTjAqe1BEmFHkv \
---entrypoint "vote" --arg "\"yea\""
+  --entrypoint "vote" --arg "\"yea\""
 ```
 
 ### Triggering kernel upgrades
@@ -106,7 +109,8 @@ After a proposal wins a vote, any user can trigger the kernel upgrade by calling
 
 ```bash
 octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
---entrypoint "trigger_kernel_upgrade" --arg "\"$SMART_ROLLUP_ADDRESS\""
+  --entrypoint "trigger_kernel_upgrade" \
+  --arg "\"$SMART_ROLLUP_ADDRESS\""
 ```
 
 The command takes these parameters:
@@ -119,7 +123,8 @@ For example:
 
 ```bash
 octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1HfJb718fGszcgYguA4bfTjAqe1BEmFHkv \
---entrypoint "trigger_kernel_upgrade" --arg "\"sr1EStimadnRRA3vnjpWV1RwNAsDbM3JaDt6\""
+  --entrypoint "trigger_kernel_upgrade" \
+  --arg "\"sr1EStimadnRRA3vnjpWV1RwNAsDbM3JaDt6\""
 ```
 
 ## Participating in Sequencer Committee governance
@@ -148,8 +153,8 @@ To propose a member for the Sequencer Committee, bakers can call the `new_propos
 
 ```bash
 octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
---entrypoint "new_proposal" \
---arg "Pair \"$PUBLIC_KEY\" $L2_ADDRESS"
+  --entrypoint "new_proposal" \
+  --arg "Pair \"$PUBLIC_KEY\" $L2_ADDRESS"
 ```
 
 The command takes these parameters:
@@ -163,23 +168,24 @@ For example:
 
 ```bash
 octez-client transfer 0 from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq to KT1FRzozuzFMWLimpFeSdADHTMxzU8KtgCr9 \
---entrypoint "new_proposal" \
---arg "Pair \"edpkurcgafZ2URyB6zsm5d1YqmLt9r1Lk89J81N6KpyMaUzXWEsv1X\" 0xb7a97043983f24991398e5a82f63f4c58a417185"
+  --entrypoint "new_proposal" \
+  --arg "Pair \"edpkurcgafZ2URyB6zsm5d1YqmLt9r1Lk89J81N6KpyMaUzXWEsv1X\" 0xb7a97043983f24991398e5a82f63f4c58a417185"
 ```
 
 To upvote a proposed committee member during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
 
 ```bash
 octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
---entrypoint "upvote_proposal" \
---arg "Pair \"$PUBLIC_KEY\" $L2_ADDRESS"
+  --entrypoint "upvote_proposal" \
+  --arg "Pair \"$PUBLIC_KEY\" $L2_ADDRESS"
 ```
 
 For example:
 
 ```bash
 octez-client transfer 0 from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq to KT1FRzozuzFMWLimpFeSdADHTMxzU8KtgCr9 \
---entrypoint "upvote_proposal" --arg "0x009279df4982e47cf101e2525b605fa06cd3ccc0f67d1c792a6a3ea56af9606abc"
+  --entrypoint "upvote_proposal" \
+  --arg "0x009279df4982e47cf101e2525b605fa06cd3ccc0f67d1c792a6a3ea56af9606abc"
 ```
 
 It's not necessary to upvote a proposal that you submitted; submitting a proposal implies that your account upvotes it.
@@ -190,7 +196,7 @@ When a proposal is in the Promotion period, you can vote for or against it or pa
 
 ```bash
 octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
---entrypoint "vote" --arg "\"$YOUR_VOTE\""
+  --entrypoint "vote" --arg "\"$YOUR_VOTE\""
 ```
 
 The command takes these parameters:
@@ -203,7 +209,7 @@ For example:
 
 ```bash
 octez-client transfer 0 from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq to KT1FRzozuzFMWLimpFeSdADHTMxzU8KtgCr9 \
---entrypoint "vote" --arg "\"yea\""
+  --entrypoint "vote" --arg "\"yea\""
 ```
 
 ### Triggering committee upgrades
@@ -212,7 +218,8 @@ After a proposed member wins a vote, any user can trigger the change to the comm
 
 ```bash
 octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
---entrypoint "trigger_committee_upgrade" --arg "\"$SMART_ROLLUP_ADDRESS\""
+  --entrypoint "trigger_committee_upgrade" \
+  --arg "\"$SMART_ROLLUP_ADDRESS\""
 ```
 
 The command takes these parameters:
@@ -225,5 +232,11 @@ For example:
 
 ```bash
 octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1Bda2EHR3pwjPgQc6mBHwtfCP8Cuf5ud5j \
---entrypoint "trigger_committee_upgrade" --arg "\"sr1EStimadnRRA3vnjpWV1RwNAsDbM3JaDt6\""
+  --entrypoint "trigger_committee_upgrade" \
+  --arg "\"sr1EStimadnRRA3vnjpWV1RwNAsDbM3JaDt6\""
 ```
+
+
+Questions about the commands:
+- Where do I get the address of the Smart Rollup?
+- Where do I upload my kernel update and get the hash?
