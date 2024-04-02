@@ -8,13 +8,14 @@ Separate contracts manage the kernel updates, security updates, and the Sequence
 The addresses of the governance contracts are specified in Etherlink's kernel.
 For information about the Octez client, see [Command Line Interface](https://tezos.gitlab.io/active/cli-commands.html) in the Octez documentation.
 
-## Participating in kernel governance
+## Participating in kernel and security governance
 
-Bakers can propose, vote on, and trigger kernel updates with these commands:
+Bakers can propose, vote on, and trigger kernel updates and security updates with these commands.
+The commands are the same for kernel upgrades and security upgrades but they target different governance contracts.
 
 ### Getting information about the current period
 
-To get information about the current state of the kernel governance contract, call its `get_voting_state` view.
+To get information about the current state of the kernel or security governance contract, call its `get_voting_state` view.
 For example, this Octez client command calls this view for the kernel governance contract on Ghostnet:
 
 ```bash
@@ -40,9 +41,9 @@ You can also subscribe to the `voting_finished` event to be notified when the Pr
 For past events, look up the contract on a block explorer, as in this example:
 https://better-call.dev/ghostnet/KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk/events
 
-### Proposing and upvoting kernel updates
+### Proposing and upvoting upgrades
 
-During a kernel Proposal period, bakers can propose kernel updates by calling the `new_proposal` entrypoint of the kernel governance contract:
+During a Proposal period, bakers can propose kernel or security updates by calling the `new_proposal` entrypoint of the appropriate governance contract:
 
 ```bash
 octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
@@ -52,7 +53,7 @@ octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
 The command takes these parameters:
 
 - `YOUR_ADDRESS`: The address or Octez client alias of your baker account
-- `CONTRACT_ADDRESS`: The address of the Etherlink kernel governance contract
+- `CONTRACT_ADDRESS`: The address of the Etherlink kernel or security governance contract
 - `KERNEL_ROOT_HASH`: The hash of the kernel upgrade
 
 For example:
@@ -63,7 +64,7 @@ octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1HfJb718f
   --arg "0x009279df4982e47cf101e2525b605fa06cd3ccc0f67d1c792a6a3ea56af9606abc"
 ```
 
-To upvote a proposed kernel update during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
+To upvote a proposed kernel or security update during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
 
 ```bash
 octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
@@ -81,9 +82,9 @@ octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1HfJb718f
 
 It's not necessary to upvote a proposal that you submitted; submitting a proposal implies that your account upvotes it.
 
-### Voting for or against kernel upgrades
+### Voting for or against upgrades
 
-When a proposal is in the Promotion period, you can vote for or against it or pass on voting by calling the `vote` entrypoint of the kernel governance contract:
+When a proposal is in the Promotion period, you can vote for or against it or pass on voting by calling the `vote` entrypoint of the appropriate governance contract:
 
 ```bash
 octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
@@ -93,7 +94,7 @@ octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
 The command takes these parameters:
 
 - `YOUR_ADDRESS`: The address or Octez client alias of your baker account
-- `CONTRACT_ADDRESS`: The address of the Etherlink kernel governance contract
+- `CONTRACT_ADDRESS`: The address of the Etherlink kernel or security governance contract
 - `YOUR_VOTE`: `"yea"`, `"nay"`, or `"pass"`, including the double quotes
 
 For example:
@@ -103,9 +104,9 @@ octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1HfJb718f
   --entrypoint "vote" --arg "\"yea\""
 ```
 
-### Triggering kernel upgrades
+### Triggering upgrades
 
-After a proposal wins a vote, any user can trigger the kernel upgrade by calling the governance contract's `trigger_kernel_upgrade` entrypoint:
+After a proposal wins a vote, any user can trigger the kernel or security upgrade by calling the governance contract's `trigger_kernel_upgrade` entrypoint:
 
 ```bash
 octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
@@ -116,7 +117,7 @@ octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
 The command takes these parameters:
 
 - `YOUR_ADDRESS`: The address or Octez client alias of your baker account
-- `CONTRACT_ADDRESS`: The address of the Etherlink kernel governance contract
+- `CONTRACT_ADDRESS`: The address of the Etherlink kernel or security governance contract
 - `SMART_ROLLUP_ADDRESS`: The address of the Etherlink Smart Rollup, which you can get from block explorers or from etherlink.com; the command must include the double quotes
 
 For example:
