@@ -14,8 +14,8 @@ It consists of three periods: a Proposal period and a Promotion period, which ar
 
 ### 1. Proposal period
 
-During this period, Etherlink users have about 3.5 days to submit and upvote proposals for new kernels.
-Any user can submit kernel upgrade proposals and any baker can upvote proposals, with the weight of their vote determined by the voting power of their baker account.
+During this period, Etherlink bakers have about 3.5 days to submit and upvote proposals for new kernels.
+Any baker can submit kernel upgrade proposals and any baker can upvote proposals, with the weight of their vote determined by the voting power of their baker account.
 
 At the end of the period, if a proposal has enough voting power to meet a certain percentage of the total voting power, it moves to the next phase.
 If no proposal gathers adequate support, a new Proposal period begins.
