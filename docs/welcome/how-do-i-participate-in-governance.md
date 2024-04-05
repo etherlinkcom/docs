@@ -236,8 +236,3 @@ octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1Bda2EHR3
   --entrypoint "trigger_committee_upgrade" \
   --arg "\"sr1EStimadnRRA3vnjpWV1RwNAsDbM3JaDt6\""
 ```
-
-
-Questions about the commands:
-- Where do I get the address of the Smart Rollup?
-- Where do I upload my kernel update and get the hash?
