@@ -25,11 +25,13 @@ If no proposal gathers adequate support, a new Proposal period begins.
 
 When a proposal moves to the Promotion period, bakers vote on whether to adopt the proposed kernel update.
 The Promotion period is the same length as the Proposal period.
-To pass, the proposal must meet both of these standards:
+To pass, the proposal must meet both of these requirements:
 
 - Quorum: A quorum of all of the voting power in the system must vote either "Yea", "Nay", or "Pass."
 
 - Supermajority: The total voting power of the Yea votes must reach a supermajority.
+
+The thresholds for these requirements are stored in the governance contract.
 
 If the proposal reaches both the quorum and supermajority requirements, it moves to the next period.
 In either case, a new Proposal period begins.
