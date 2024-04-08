@@ -39,7 +39,7 @@ In either case, a new Proposal period begins.
 ### 3. Cooldown period
 
 The Cooldown period is a delay in the process that gives developers and bakers time to adapt their code and infrastructure to the new Etherlink kernel.
-This period lasts 24 hours, and at the end, Etherlink automatically enables the new kernel.
+This period lasts 24 hours, and at the end, Etherlink users can trigger the kernel to upgrade itself to the new kernel.
 
 This period can overlap with another Proposal period.
 
