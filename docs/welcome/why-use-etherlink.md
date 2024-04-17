@@ -18,7 +18,7 @@ If the sequencing fails, users have an option to submit to the L1 directly after
 
 Etherlink is built on Tezos Smart Rollups, which are enshrined on the platform, meaning that they are implemented directly on layer 1 of the protocol.
 However, because Smart Rollups run in their own separate environments, they are not subject to the per-transaction gas fees of layer 1, only small fees when they publish their state to layer 1.
-At a load of 50TPS, you can expect an ERC-20 transaction to cost $0.01 on Etherlink.
+At a load of 50TPS, you can expect an ERC-20 transaction to cost $0.01 or less on Etherlink.
 
 Smart Rollups also provide standardized communication between layer 1 and other rollups, even those with different execution environments, such as EVM, Michelson, and SVM.
 They can retrieve data from outside the Tezos blockchain via the reveal data channel.
