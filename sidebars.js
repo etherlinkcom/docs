@@ -9,7 +9,6 @@ const sidebars = {
       collapsible: false,
       items: [
         'index',
-        'welcome/why-use-etherlink',
         'welcome/how-is-etherlink-governed',
         'welcome/how-do-i-participate-in-governance',
         {
