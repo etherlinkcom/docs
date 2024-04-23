@@ -45,6 +45,16 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: '🧑‍⚖️ Governance',
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'governance/how-is-etherlink-governed',
+        'governance/how-do-i-participate-in-governance',
+      ],
+    },
+    {
+      type: 'category',
       label: '🏁 Track Etherlink\'s Progress',
       collapsed: false,
       collapsible: false,
@@ -59,16 +69,6 @@ const sidebars = {
           href: 'https://gitlab.com/groups/tezos/-/issues/?sort=created\_date\&state=opened\&search=EVM%20\&first\_page\_size=20',
           label: '🔨 Etherlink Pull Requests',
         },
-      ],
-    },
-    {
-      type: 'category',
-      label: '🧑‍⚖️ Governance',
-      collapsed: false,
-      collapsible: false,
-      items: [
-        'governance/how-is-etherlink-governed',
-        'governance/how-do-i-participate-in-governance',
       ],
     },
     {
