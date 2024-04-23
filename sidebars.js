@@ -10,8 +10,6 @@ const sidebars = {
       items: [
         'index',
         'welcome/why-use-etherlink',
-        'welcome/how-is-etherlink-governed',
-        'welcome/how-do-i-participate-in-governance',
         {
           type: 'link',
           href: 'https://discord.gg/etherlink',
@@ -61,6 +59,16 @@ const sidebars = {
           href: 'https://gitlab.com/groups/tezos/-/issues/?sort=created\_date\&state=opened\&search=EVM%20\&first\_page\_size=20',
           label: '🔨 Etherlink Pull Requests',
         },
+      ],
+    },
+    {
+      type: 'category',
+      label: '🧑‍⚖️ Governance',
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'governance/how-is-etherlink-governed',
+        'governance/how-do-i-participate-in-governance',
       ],
     },
     {

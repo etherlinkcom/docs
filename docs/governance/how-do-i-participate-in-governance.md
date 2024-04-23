@@ -1,4 +1,4 @@
-# 🧑‍⚖️ How do I participate in governance?
+# 🗳️ How do I participate in governance?
 
 Etherlink bakers can participate in the [Etherlink governance process](./how-is-etherlink-governed) by submitting proposals and voting for them.
 
