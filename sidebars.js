@@ -10,8 +10,6 @@ const sidebars = {
       items: [
         'index',
         'welcome/why-use-etherlink',
-        'welcome/how-is-etherlink-governed',
-        'welcome/how-do-i-participate-in-governance',
         {
           type: 'link',
           href: 'https://discord.gg/etherlink',
@@ -43,6 +41,16 @@ const sidebars = {
           href: 'https://testnet-explorer.etherlink.com/',
           label: '🔍 Etherlink Explorer',
         },
+      ],
+    },
+    {
+      type: 'category',
+      label: '🧑‍⚖️ Governance',
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'governance/how-is-etherlink-governed',
+        'governance/how-do-i-participate-in-governance',
       ],
     },
     {
