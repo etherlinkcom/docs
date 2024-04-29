@@ -2,26 +2,32 @@
 title: '❓ What is Etherlink?'
 ---
 
-Etherlink is an EVM-compatible layer-2 blockchain with a decentralized sequencer, offering very low fees and MEV protection, powered by Tezos Smart Rollup technology.
+import Figure from '@site/src/components/Figure';
 
-* **Decentralized 🌐:** The decentralized sequencer reduces the risk of centralized control and manipulation.
-* **Secure 🔒:** Built-in MEV protection protects users against exploitation.
-* **Low fees 💰 :** Think &#36;0.01 per transaction, not &#36;20.
+Etherlink is an EVM-compatible layer-2 blockchain powered by [Tezos Smart Rollup](https://tezos.com/developers/smart-rollups/) technology. We are a group of DeFi OGs frustrated with the current on-chain UX. We built Etherlink to fix the problems we encounter everyday.
 
-Etherlink uses Smart Rollups on the decentralized [Tezos](https://tezos.com) protocol for data availability and will expand to use the Tezos [Data Availability Layer](https://spotlight.tezos.com/data-availability-layer-dal-what-is-it-all-about/).
+<Figure src="/img/michaelangelo.jpg" alt="" />
+
+## Why use Etherlink?
+
+### It's fast
+
+**Etherlink has sub-second block confiration times for a snappy experience**. Tezos' 2-block finality guarantee and the speed of its Smart Rollups ensure that transactions are finalized quickly.
+
+<table><thead><tr><th width="170">Chain</th><th width="141.33333333333331">Sequencer</th><th>L2 finality time</th><th>Data posted on L1</th></tr></thead><tbody><tr><td>Etherlink</td><td>Decentralized</td><td>~ 750ms</td><td>~ 15 seconds</td></tr><tr><td>Optimism Bedrock</td><td>Centralized</td><td>~ <a href="https://community.optimism.io/docs/developers/build/differences/#blocks">2 seconds</a></td><td>~ <a href="https://optimistic.etherscan.io/batches">2 minutes</a></td></tr><tr><td>Arbitrum One</td><td>Centralized</td><td>~ <a href="https://arbiscan.io/">300ms</a></td><td>~ <a href="https://arbiscan.io/batches">7 minutes</a></td></tr></tbody></table>
+
+### It's cheap
+
+**An ERC-20 transaction costs \$0.01 or less on Etherlink**. Etherlink is built on Tezos Smart Rollups, which are enshrined on the platform, meaning that they are implemented directly on layer 1 of the protocol. However, because Smart Rollups run in their own separate environments, they are not subject to the per-transaction gas fees of layer 1, only small fees when they publish their state to layer 1.
+
+### It's fair
+
+**Etherlink has built-in MEV protection for cheaper transactions.** The encrypted mempool stops MEV searchers from exploiting your transactions for profit at your cost. 
+\
+**Etherlink also implements a decentralized sequencer, providing high availability and resistance to attacks.** If the sequencing fails, users have an option to submit to the L1 directly after a delay.
 
 ***
 
-### What does that mean?
+## How do I start building on Etherlink?
 
-* **EVM compatible**: Etherlink runs all Solidity/Vyper smart contracts just like any other EVM chain. All your developer tooling (including [Hardhat](https://hardhat.org/), [Foundry](https://book.getfoundry.sh/), and [Viem](https://viem.sh)) should work out-of-the-box with Etherlink.
-* **Smart Rollup**: Smart Rollups are Tezos's permissionless L2 scaling solution. They are WASM applications, providing versatility in what language you write them in. They are optimistic and enshrined:
-  * **Optimistic** means that when rollup operators publish a claim about the state of the rollup, the claim is trusted by default. Other operators can easily verify and challenge the claim, and a single honest operator is enough to ensure that the rollup is running honestly.
-  * **Enshrined** means that they are implemented as a first-class operation at the protocol level within L1 Tezos, as opposed to using a smart contract on L1 like current Ethereum solutions.
-* **Data availability on Tezos**: Smart Rollups store data on Tezos layer 1, making it available to everyone.
-
-***
-
-### How do I start building on Etherlink?
-
-Great question. Start with this documentation and also join our [Discord](https://discord.gg/etherlink).
+Great question! Start with this documentation and also join our [Discord](https://discord.gg/etherlink).
