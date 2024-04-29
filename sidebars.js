@@ -9,7 +9,6 @@ const sidebars = {
       collapsible: false,
       items: [
         'index',
-        'welcome/why-use-etherlink',
         {
           type: 'link',
           href: 'https://discord.gg/etherlink',
