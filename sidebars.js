@@ -25,17 +25,17 @@ const sidebars = {
       items: [
         'get-started/connect-your-wallet-to-etherlink',
         'get-started/get-testnet-xtz-on-etherlink',
-        'get-started/deploy-with-hardhat',
       ],
     },
     {
       type: 'category',
-      label: '⛓ Developer Tools',
+      label: '⛓ Building on Etherlink',
       collapsed: false,
       collapsible: false,
       items: [
         'developer-tools/networks-and-public-rpc-endpoints',
         'developer-tools/etherlink-node-specifications',
+        'developer-tools/development-toolkits',
         {
           type: 'link',
           href: 'https://testnet-explorer.etherlink.com/',
