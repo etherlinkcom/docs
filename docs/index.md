@@ -8,8 +8,6 @@ Etherlink is an EVM-compatible layer-2 blockchain powered by [Tezos Smart Rollup
 
 <Figure src="/img/michaelangelo.jpg" alt="" />
 
-## Why use Etherlink?
-
 ### It's fast
 
 **Etherlink has sub-second block confiration times for a snappy experience**. Tezos' 2-block finality guarantee and the speed of its Smart Rollups ensure that transactions are finalized quickly.
