@@ -14,6 +14,11 @@ const sidebars = {
           href: 'https://discord.gg/etherlink',
           label: '👉 Join our Discord',
         },
+        {
+          type: 'link',
+          href: 'https://twitter.com/etherlink',
+          label: '👉 Follow us on Twitter',
+        },
       ],
     },
     {
