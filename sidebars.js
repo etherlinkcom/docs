@@ -23,8 +23,8 @@ const sidebars = {
       collapsed: false,
       collapsible: false,
       items: [
-        'get-started/connect-your-wallet-to-etherlink',
-        'get-started/get-testnet-xtz-on-etherlink',
+        'get-started/using-your-wallet',
+        'get-started/on-ramping',
       ],
     },
     {
