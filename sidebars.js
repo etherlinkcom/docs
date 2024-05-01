@@ -42,9 +42,10 @@ const sidebars = {
       collapsed: false,
       collapsible: false,
       items: [
-        'developer-tools/networks-and-public-rpc-endpoints',
-        'developer-tools/etherlink-node-specifications',
-        'developer-tools/development-toolkits',
+        'building-on-etherlink/networks-and-public-rpc-endpoints',
+        'building-on-etherlink/etherlink-node-specifications',
+        'building-on-etherlink/token-addresses',
+        'building-on-etherlink/development-toolkits',
       ],
     },
     {
