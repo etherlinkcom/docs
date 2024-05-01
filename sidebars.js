@@ -9,11 +9,15 @@ const sidebars = {
       collapsible: false,
       items: [
         'index',
-        'welcome/why-use-etherlink',
         {
           type: 'link',
           href: 'https://discord.gg/etherlink',
           label: '👉 Join our Discord',
+        },
+        {
+          type: 'link',
+          href: 'https://twitter.com/etherlink',
+          label: '👉 Follow us on Twitter',
         },
       ],
     },
