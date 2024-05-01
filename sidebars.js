@@ -27,8 +27,13 @@ const sidebars = {
       collapsed: false,
       collapsible: false,
       items: [
-        'get-started/connect-your-wallet-to-etherlink',
-        'get-started/get-testnet-xtz-on-etherlink',
+        'get-started/using-your-wallet',
+        'get-started/on-ramping',
+        {
+          type: 'link',
+          href: 'https://testnet-explorer.etherlink.com/',
+          label: '🔍 Block Explorer',
+        },
       ],
     },
     {
@@ -40,11 +45,6 @@ const sidebars = {
         'developer-tools/networks-and-public-rpc-endpoints',
         'developer-tools/etherlink-node-specifications',
         'developer-tools/development-toolkits',
-        {
-          type: 'link',
-          href: 'https://testnet-explorer.etherlink.com/',
-          label: '🔍 Etherlink Explorer',
-        },
       ],
     },
     {
