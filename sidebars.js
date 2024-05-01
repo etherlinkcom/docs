@@ -25,6 +25,11 @@ const sidebars = {
       items: [
         'get-started/using-your-wallet',
         'get-started/on-ramping',
+        {
+          type: 'link',
+          href: 'https://testnet-explorer.etherlink.com/',
+          label: '🔍 Block Explorer',
+        },
       ],
     },
     {
@@ -36,11 +41,6 @@ const sidebars = {
         'developer-tools/networks-and-public-rpc-endpoints',
         'developer-tools/etherlink-node-specifications',
         'developer-tools/development-toolkits',
-        {
-          type: 'link',
-          href: 'https://testnet-explorer.etherlink.com/',
-          label: '🔍 Etherlink Explorer',
-        },
       ],
     },
     {
