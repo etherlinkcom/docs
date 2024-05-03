@@ -55,7 +55,8 @@ const sidebars = {
       collapsible: false,
       items: [
         'tools/node-providers',
-        'tools/oracles',
+        'tools/price-feeds',
+        'tools/vrf',
         'tools/data-indexers',
         'tools/cross-chain-comms',
         'tools/developer-experience',
