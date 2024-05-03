@@ -1,10 +1,10 @@
 ---
-title: '🔮 Oracles'
+title: '📈 Price Feeds'
 ---
 
 ## Pyth
 
-[Pyth](https://pyth.network/) offers 400+ pull-based price feeds for Etherlink. They also allow you to easily and quickly generate secure random numbers on-chain with [Entropy](https://docs.pyth.network/entropy). 
+[Pyth](https://pyth.network/) offers 400+ pull-based price feeds for Etherlink.
 
 Learn more about integrating Pyth with their [docs](https://docs.pyth.network/price-feeds/use-real-time-data/evm).
 
