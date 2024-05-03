@@ -50,6 +50,20 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: '🔨 Tools',
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'tools/node-providers',
+        'tools/oracles',
+        'tools/data-indexers',
+        'tools/cross-chain-comms',
+        'tools/developer-experience',
+        'tools/institutions'
+      ],
+    },
+    {
+      type: 'category',
       label: '🧑‍⚖️ Governance',
       collapsed: false,
       collapsible: false,
