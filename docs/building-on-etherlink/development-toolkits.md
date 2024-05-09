@@ -8,16 +8,38 @@ title: '🔨 Development Toolkits'
 
 ### Using Hardhat with Etherlink
 
-You'll need to add etherlink to the `networks` section in your `hardhat.config.js`:
+It is recommended to use the following config in your `hardhat.config.js` file:
 
 ```
-networks: {
-    etherlinkTest: {
-        url: "https://node.ghostnet.etherlink.com",
-        accounts: [process.env.PRIVATE_KEY as string],
+module.exports = {
+  solidity: "0.8.24",
+  networks: {
+    etherlinkTestnet: {
+      url: "https://node.ghostnet.etherlink.com",
+      accounts: ["<YOUR_PRIVATE_KEY>"],
     }
-}
+  },
+  etherscan: {
+    apiKey: {
+      etherlinkTestnet: "YOU_CAN_COPY_ME",
+    },
+    customChains: [
+      {
+        network: "etherlinkTestnet",
+        chainId: 128123,
+        urls: {
+          apiURL: "https://testnet-explorer.etherlink.com/api",
+          browserURL: "https://testnet-explorer.etherlink.com"
+        }
+      },
+    ]
+  },
+};
 ```
+
+### Deploying and Verifying Contracts with Hardhat
+
+Hardhat offers great guides for [deploying](https://hardhat.org/hardhat-runner/docs/guides/deploying) and [verifying](https://hardhat.org/hardhat-runner/docs/guides/verifying) your contracts. Just make sure to set the network flag appropriately: `--network etherlinkTestnet`
 
 ## 🔥 Foundry
 
@@ -28,10 +50,16 @@ networks: {
 **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.\
 **Chisel**: Fast, utilitarian, and verbose solidity REPL.
 
-### Using Foundry with Etherlink
+### Deploying and Verifying Contracts with Foundry
 
-For the most up to date information on how to deploy and verify a smart contract, check out the [guide](https://book.getfoundry.sh/forge/deploying) provided by the Foundry team.
+For the most up to date information on how to deploy and verify a smart contract, check out the [guide](https://book.getfoundry.sh/forge/deploying) provided by the Foundry team!
 
+As a summary, you can run the following command:
 
-
-
+```bash
+forge create --rpc-url "https://node.ghostnet.etherlink.com" \
+    --private-key "<YOUR_PRIVATE_KEY>" \
+    --etherscan-api-key "YOU_CAN_COPY_ME" \
+    --verify \
+    src/YOUR_CONTRACT.sol:YOUR_CONTRACT --legacy
+```
