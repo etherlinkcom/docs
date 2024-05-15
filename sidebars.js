@@ -34,6 +34,7 @@ const sidebars = {
           href: 'https://testnet-explorer.etherlink.com/',
           label: '🔍 Block Explorer',
         },
+        'get-started/running-nodes',
       ],
     },
     {
