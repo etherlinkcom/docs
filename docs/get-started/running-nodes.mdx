@@ -4,27 +4,18 @@ title: 'Running Etherlink Nodes'
 
 import Figure from '@site/src/components/Figure';
 
-Operating an Etherlink node requires some familiarity with the
-Tezos ecosystem, Smart Rollups, and the Octez suite.
+Anyone can run an Etherlink node to join the network, but operating an Etherlink node requires some familiarity with the Tezos ecosystem, Smart Rollups, and the Octez suite.
 
-## Big Picture
+## Transaction life cycle
 
-In its life cycle, an Etherlink transaction will go through three distinct
-nodes, responsible for specific aspects of Etherlink’s features set. These three
-nodes are being developed as part of the [Octez software
-suite](https://tezos.gitlab.io/introduction/tezos.html).
+To run an Etherlink node, you must understand how transactions flow through Etherlink.
 
-Users are likely to interact with the `octez-evm-node`. The
-`octez-evm-node` is responsible for maintaining a local copy of Etherlink
-context, applying new blocks as they are being minted, and exposing a [JSON RPC
-API](https://ethereum.org/en/developers/docs/apis/json-rpc/) compliant
-endpoint.
+In its life cycle, an Etherlink transaction goes through three distinct types of nodes, each responsible for different aspects of Etherlink's features.
+These three nodes are being developed as part of the [Octez software suite](https://tezos.gitlab.io/introduction/tezos.html):
 
-Etherlink being a Layer 2 blockchain and a Smart Rollup, it is integrated with
-the Tezos network. This integration and the interactions that come with it are
-delegated to a general-purpose node called the Smart Rollup node, which listens
-and reacts to what is happening on the Tezos network by being connected to an
-`octez-node`.
+- Etherlink nodes (`octez-evm-node`): The Etherlink nodes themselves maintain a local copy of the Etherlink context, apply new blocks as they are created, and expose a [JSON RPC API](https://ethereum.org/en/developers/docs/apis/json-rpc/) compliant endpoint to clients.
+- Smart Rollup nodes (`octez-smart-rollup-node`): Etherlink nodes delegate interactions with Tezos layer 1 nodes through these Smart Rollup nodes.
+- Tezos layer 1 nodes, also referred to as Octez nodes (`octez-node`): The Smart Rollup nodes listen to Tezos layer 1 nodes and react to what happens on the Tezos network.
 
 The overall lifecycle of a typical operation is as follows:
 
