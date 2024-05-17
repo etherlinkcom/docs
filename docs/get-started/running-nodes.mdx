@@ -19,23 +19,15 @@ These three nodes are being developed as part of the [Octez software suite](http
 
 The overall lifecycle of a typical operation is as follows:
 
-1. One user submits their transaction to an `octez-evm-node` using the
-   `eth_sendRawTransaction`.
-2. This transaction is eventually forwarded to Etherlink’s sequencer, which
-   includes it in a new block as soon as possible (less than 500ms after
-   receiving it in a nominal scenario).
-3. The sequencer forwards this new block to the Smart Rollup node it is
-   connected to, which is tasked to post this data on the Tezos network.
-   Besides, the sequencer also makes the new block available to other
-   `octez-evm-node` it is connected to, which can do the same recursively.
-4. The Smart Rollup nodes tracking the state of Etherlink fetch this new
-   Etherlink block and validate it.
-5. This allows the `octez-evm-node`s to assert the block they received
-   previously has indeed be faithfully posted by the sequencer.
-6. Eventually, the Smart Rollup nodes assuming the role of “operators”
-   commit the state of Etherlink to the Tezos network.
+1. A user submits a transaction to an Etherlink node.
+2. The Etherlink node forwards the transaction to Etherlink's sequencer, which includes it in a new block as soon as possible (less than 500ms after receiving it in a nominal scenario).
+3. The sequencer forwards the new block to the Smart Rollup node it is connected to.
+4. The sequencer also shares the new block available with other Etherlink nodes, which continue to share it in a peer-to-peer manner.
+4. The Smart Rollup nodes tracking the state of Etherlink fetch this new Etherlink block and validate it.
+5. Validation from the Smart Rollup nodes allow the Etherlink nodes to assert that block has been faithfully posted by the sequencer.
+6. Eventually, the Smart Rollup nodes assuming the role of "operators" commit the state of Etherlink to the Tezos network via the layer 1 nodes.
 
-We can summarize the connections between each component with this diagram.
+This diagram summarizes the interaction between the nodes:
 
 <Figure src="/img/big-picture-nodes.png" alt="" />
 
