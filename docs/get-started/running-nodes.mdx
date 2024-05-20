@@ -31,128 +31,96 @@ This diagram summarizes the interaction between the nodes:
 
 <Figure src="/img/big-picture-nodes.png" alt="" />
 
-## Running Etherlink Nodes
+## Running Etherlink nodes
 
-### Getting the Binaries
+Etherlink nodes require access to the RPCs of a running Smart Rollup node.
+Therefore, to run an Etherlink node, you must also run a Smart Rollup node.
+You can set up your own layer 1 node or use a public node.
 
-As mentioned, the three different nodes involved in Etherlink are being
-developed as part of the Octez software suite. More precisely,
+The code for the three nodes is part of the [Octez suite](https://tezos.gitlab.io/).
 
-- Any `octez-node` compatible with Tezos Mainnet can be used.
-- The Smart Rollup node (`octez-smart-rollup-node`) requires [Octez
-  V20](https://gitlab.com/tezos/tezos/-/releases/octez-v20.0-rc1). To start a
-  Smart Rollup node from Etherlink genesis, a more recent build is necessary.
-- The `octez-evm-node` is still experimental, and not released as part of the
-  Octez software suite yet.
+- You can use a public layer 1 node or set up your own as described in [Installing Octez](https://tezos.gitlab.io/introduction/howtoget.html) in the Octez documentation.
+- You can set up a Smart Rollup node (`octez-smart-rollup-node`) with a snapshot of the Etherlink state or from Etherlink genesis.
+Setting up the Smart Rollup node from Etherlink genesis requires a recent build of the Octez suite.
+- Octez does not yet provide a binary build of the Etherlink node, so you must build it from the source code.
 
-For the Smart Rollup node required to start Etherlink from genesis and the
-`octez-evm-node`, it is recommended to use the commit
-[`c5ed8f9`](https://gitlab.com/tezos/tezos/-/commit/c5ed8f9d5737cec03b29e5a7c3bf2169cc239ea8)
-from the `master` branch of the [upstream Octez
+### Running a Smart Rollup node for Etherlink
+
+To set up a Smart Rollup node from Etherlink genesis, it's best to use recent Octez source code.
+One commit that is known to work well is [`c5ed8f9`](https://gitlab.com/tezos/tezos/-/commit/c5ed8f9d5737cec03b29e5a7c3bf2169cc239ea8)
+from the `master` branch of the [Octez
 repository](https://gitlab.com/tezos/tezos).
 
-If you are concerned by the need to use unreleased version of our nodes, we
-recommend using the static binaries built by our CI if possible. Builds for
+You can also use Octez binary builds.
+Builds for
 Linux systems are available for the
 [x86_64](https://gitlab.com/tezos/tezos/-/jobs/6849203975/artifacts/browse/octez-binaries/x86_64/)
 architecture.
 
-More generally, the procedures described in the [Octez
-manual](http://tezos.gitlab.io/introduction/howtoget.html) to get started with
-Octez apply.
+For more information, see the Octez documentation: https://tezos.gitlab.io/index.html
 
-### Running a Smart Rollup Node
+For simplicity, these steps show how to run the node in observer mode.
 
-The scope of this section is to provide the most straightforward instructions
-to get started with running a Smart Rollup node. As a consequence, only the
-observer mode is covered (not the operator mode).
+1. Build the source code for the Smart Rollup node or get a binary build of `octez-smart-rollup-node`.
+1. Initialize the local context of the node, which is where it stores local data:
 
-Note that, as of today, the `octez-evm-node` needs to have access to the RPCs
-of a running Smart Rollup node. As a consequence, you most probably need to go
-through this section even if you are only interested by running an Etherlink
-node.
+   1. Set the environment variable `sr_observer_data_dir` to the directory where the node should store its local data.
+   1. Initialize the local context by running this command:
 
-#### From Genesis
+      ```bash
+      octez-smart-rollup-node init observer config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf  \
+        with operators --data-dir $sr_observer_data_dir
+      ```
 
-Etherlink remains a blockchain (albeit a Layer 2 one), and it is possible to
-recompute its most recent state from genesis.
+      This command generates a minimal configuration file (`config.json`) in the local data folder:
 
-That being said, running a Smart Rollup node for Etherlink Mainnet from genesis
-requires some manual, specific configuration.
+      ```json
+      { "smart-rollup-address": "sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf",
+        "smart-rollup-node-operator": {}, "fee-parameters": {},
+        "mode": "observer" }
+      ```
 
-The first step is to initialize the local context of the node (its `data-dir`).
-To that end, the `init` command can be used. We assume the shell variable
-`$sr_observer_data_dir` has been set to the path of the expected directory.
+1. Activate the `unsafe-pvm-patches` setting, which is required for Etherlink, by adding it to the `config.json` file, as in this example:
 
-```bash
-octez-smart-rollup-node init observer config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf  \
-   with operators --data-dir $sr_observer_data_dir
-```
+   ```json
+   { "smart-rollup-address": "sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf",
+     "smart-rollup-node-operator": {}, "fee-parameters": {},
+     "unsafe-pvm-patches": [
+       { "increase_max_nb_tick": "50_000_000_000_000" }
+     ],
+     "pre-images-endpoint": "https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0",
+     "mode": "observer" }
+   ```
 
-This commands generates a minimal configuration file (`config.json`) in
-`$sr_observer_data_dir`.
+   Similar to the Rust keyword, `unsafe` here means to be used with a good understanding of the feature.
+   Etherlink uses this setting with care and using it is safe in this context.
 
-```json
-{ "smart-rollup-address": "sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf",
-  "smart-rollup-node-operator": {}, "fee-parameters": {},
-  "mode": "observer" }
-```
+   This example also sets the preimages endpoint, which allows the Smart Rollup node to retrieve the initial kernel of Etherlink from an arbitrary source without any safety risks.
+   The Smart Rollup node verifies the integrity of the kernel based on a hash posted onchain during the origination of Etherlink.
 
-Etherlink requires the activation of an advanced feature of the Smart Rollup
-node in order to work properly from genesis. More precisely, it is required to
-overwrite a constant of the Smart Rollup technology normally defined by the
-Tezos protocol.
+1. Start the Smart Rollup node in observer mode by running this command and using the RPC endpoint of a layer 1 node that is running in archive mode:
 
-:::info
-This is an advance manipulation, and the naming of the corresponding features
-in the Smart Rollup node has been choosen accordingly, by prefixing them with
-`unsafe`. Similarly to the Rust keyword, `unsafe` here means to be used with a
-good understanding of the feature. This is definitely the case for Etherlink
-and the setup provided in this document is totally safe.
-:::
+   ```bash
+   octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet run \
+     --data-dir $sr_observer_data_dir \
+     --apply-unsafe-patches
+   ```
 
-Besides, it can be convenient to set a “preimages endpoint” which allows the
-Smart Rollup node to retreive the initial kernel of Etherlink from an arbitrary
-source without any safety risks (since the integrity of said kernel is verified
-by the Smart Rollup node based on a hash posted onchain during the origination
-of Etherlink).
+   As in this example, you can use a public layer 1 RPC node for testing purposes.
+   For development use, you must use a layer 1 node that is running in archive mode and provides access to its RPC endpoints.
 
-```json
-{ "smart-rollup-address": "sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf",
-  "smart-rollup-node-operator": {}, "fee-parameters": {},
-  "unsafe-pvm-patches": [
-    { "increase_max_nb_tick": "50_000_000_000_000" }
-  ],
-  "pre-images-endpoint": "https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0",
-  "mode": "observer" }
-```
+   The `--apply-unsafe-patches` setting is required only the first time that you start the node.
+   After that you can omit it.
+   After the first run, you can also remove the `unsafe-pvm-patches` field from the configuration file.
 
-With this configuration file, it is now possible to start the Smart Rollup node
-in observer mode. Note that you will need to be able to access to the RPCs of
-an Octez node, running in archive mode. For testing purposes, you can rely
-on public endpoints like the one provided by TzKT for instance.
+   After the Smart Rollup node has caught up with the current state via the archive node, you can safely connect it to a rolling layer 1 node.
 
-```bash
-# for testing purposes
-octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet run \
-    --data-dir $sr_observer_data_dir \
-    --apply-unsafe-patches
-```
+1. Verify that the Smart Rollup node is running by querying it.
+For example, this query gets the latest block:
 
-A few remarks.
-
-- `--apply-unsafe-patches` is only required the first time you start your node,
-  and can be removed from the command-line afterwards. Similarly, the
-  `unsafe-pvm-patches` field can be removed from the configuration field.
-- Once the Smart Rollup node has caught up, you can safely connect it to a
-  rolling `octez-node`.
-
-Once you have the rollup node running, you can confirm that you are able query
-it; for instance by requesting the latest read tezos block:
-
-```bash
-curl -s http://localhost:8932/global/block/head
-```
+   ```bash
+   curl -s http://localhost:8932/global/block/head
+   ```
 
 ### Running `octez-evm-node` in Observer Mode
 
