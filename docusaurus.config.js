@@ -67,7 +67,7 @@ const config = {
         title: 'Etherlink documentation',
         logo: {
           alt: 'Etherlink developer documentation',
-          src: '/img/etherlink-logo.png',
+          src: '/img/etherlink-logo.svg',
         },
         items: [
           {
