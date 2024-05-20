@@ -122,46 +122,42 @@ For example, this query gets the latest block:
    curl -s http://localhost:8932/global/block/head
    ```
 
-### Running `octez-evm-node` in Observer Mode
+### Running an Etherlink node
 
-### From Genesis
+To run an Etherlink node in observer mode from the Etherlink genesis block, you need:
 
-In order to run an `octez-evm-node` in observer mode from Genesis, you need:
+- Access to a Smart Rollup node tracking the state of Etherlink, which you created in the previous section
+- The `installer.hex` file that you can get by following the instructions in [Building Etherlink's installer kernel](#building-etherlinks-installer-kernel)
 
-- An access to a Smart Rollup node tracking the state of Etherlink (see the
-  previous section to setup one yourself, which is probably necessary until
-  public nodes become available).
-- The `installer.hex` file that you can get by following the “Building
-  Etherlink’s Initial Kernel” appendix.
+Follow these steps to run the Etherlink node:
 
-```bash
-octez-evm-node init config --devmode \
-    --data-dir $evm_observer_dir --rollup-node-endpoint $sr_node_observer_rpc \
-    --preimages-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
-    --evm-node-endpoint https://node.mainnet.etherlink.com \
-    --initial-kernel observer/installer.hex \
-    --force
-```
+1. Set the `sr_node_observer_rpc` environment variable to the URL to the Smart Rollup node you set up in the previous section.
+1. Set the `evm_observer_dir` environment variable to the directory where the node should store its local data.
+1. Initialize the node by running this command:
 
-If you do not want to relies on a public preimages endpoint (though it is worth
-mentioning again it is safe), you can move the `wasm_2_0_0/` directory built
-along the `installer.hex` file in the directory `$evm_observer_dir`. Note that
-this means you will have to provision this directory with the preimages of
-every kernel voted by the community and deployed on Etherlink after that.
+   ```bash
+   octez-evm-node init config --devmode \
+     --data-dir $evm_observer_dir --rollup-node-endpoint $sr_node_observer_rpc \
+     --preimages-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
+     --evm-node-endpoint https://node.mainnet.etherlink.com \
+     --initial-kernel observer/installer.hex \
+     --force
+   ```
 
-Starting the node is as simple as running this command.
+   This command uses premade preimages to set up the kernel based on the installer kernel that you built.
+   It's safe to use these preimages, but if you don't trust them, you can move the contents of the `wasm_2_0_0/` directory that was created when you built the installer kernel to the local data directory.
+   However, in this case, the kernel is not updated automatically, so you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink after that.
 
-```bash
-octez-evm-node run observer --data-dir $evm_observer_node
-```
+1. Run this command to start the node:
 
-By default, the `octez-evm-node` exposes its JSON RPC API endpoint to `localhost:8545`.
-You can test that everything works as expected by running some RPC requests manually or by
-setting your wallet to use your local node.
+   ```bash
+   octez-evm-node run observer --data-dir $evm_observer_dir
+   ```
 
-## Appendix
+By default, the Etherlink node exposes its JSON RPC API endpoint to `localhost:8545`.
+You can test that everything works as expected by running RPC requests manually or by setting your wallet to use your local node.
 
-### Building Etherlink’s Initial Kernel
+### Building Etherlink's installer kernel
 
 The kernel of Etherlink is a Rust program compiled in WASM implementing the
 semantics of Etherlink blocks and transactions. It is used by the
