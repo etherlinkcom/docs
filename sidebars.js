@@ -31,7 +31,7 @@ const sidebars = {
         'get-started/on-ramping',
         {
           type: 'link',
-          href: 'https://testnet-explorer.etherlink.com/',
+          href: 'https://explorer.etherlink.com',
           label: '🔍 Block Explorer',
         },
         'get-started/running-nodes',
