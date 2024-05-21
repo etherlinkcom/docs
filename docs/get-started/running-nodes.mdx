@@ -128,10 +128,7 @@ For example, this query gets the latest block:
 
 ### Running an Etherlink node
 
-To run an Etherlink node in observer mode from the Etherlink genesis block, you need:
-
-- Access to a Smart Rollup node tracking the state of Etherlink, which you created in the previous section
-- The `installer.hex` file that you can get by following the instructions in [Building Etherlink's installer kernel](#building-etherlinks-installer-kernel)
+To run an Etherlink node in observer mode from the Etherlink genesis block, you need access to a Smart Rollup node tracking the state of Etherlink, which you created in the previous section.
 
 Follow these steps to run the Etherlink node:
 
@@ -144,13 +141,14 @@ Follow these steps to run the Etherlink node:
      --data-dir $evm_observer_dir --rollup-node-endpoint $sr_node_observer_rpc \
      --preimages-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
      --evm-node-endpoint https://node.mainnet.etherlink.com \
-     --initial-kernel observer/installer.hex \
      --force
    ```
 
    This command uses premade preimages to set up the kernel based on the installer kernel that you built.
    It's safe to use these preimages, but if you don't trust them, you can move the contents of the `wasm_2_0_0/` directory that was created when you built the installer kernel to the local data directory.
    However, in this case, the kernel is not updated automatically, so you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink after that.
+
+   If you want to use your own build of the Etherlink kernel, add the parameter `--initial-kernel observer/installer.hex` to this command.
 
 1. Run this command to start the node:
 
