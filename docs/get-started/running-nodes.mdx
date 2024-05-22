@@ -121,10 +121,10 @@ For simplicity, these steps show how to run the octez smart rollup node in obser
    After the Smart Rollup node has caught up with the current state via the archive node, you can safely connect it to a rolling layer 1 node.
 
 1. Verify that the Smart Rollup node is running by querying it.
-For example, this query gets the latest block:
+For example, this query gets the health of the node:
 
    ```bash
-   curl -s http://localhost:8932/global/block/head
+   curl -s http://localhost:8932/health
    ```
 
 ### Running an Etherlink node
