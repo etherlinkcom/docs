@@ -111,8 +111,8 @@ For simplicity, these steps show how to run the octez smart rollup node in obser
      --apply-unsafe-patches
    ```
 
-   As in this example, you can use a public layer 1 RPC node for testing purposes.
-   For production use, you must use a layer 1 node that is running in archive mode and provides access to its RPC endpoints.
+   As in this example, you can use a public layer 1 RPC node for initial setup, or you can connect it to a layer 1 node that you are running for a more stable connection.
+   The Smart Rollup node needs a connection to an archive node while it catches up to the current state of layer 1; after that you can connect it to a rolling node.
 
    The `--apply-unsafe-patches` setting is required only the first time that you start the node.
    After that you can omit it.
