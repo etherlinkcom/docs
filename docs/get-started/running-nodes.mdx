@@ -20,12 +20,12 @@ These three nodes are being developed as part of the [Octez software suite](http
 The overall lifecycle of a typical operation is as follows:
 
 1. A user submits a transaction to an Etherlink node.
-2. The Etherlink node forwards the transaction to Etherlink's sequencer, which includes it in a new block as soon as possible (less than 500ms after receiving it in a nominal scenario).
-3. The sequencer forwards the new block to the Smart Rollup node it is connected to.
-4. The sequencer also shares the new block available with other Etherlink nodes, which continue to share it in a peer-to-peer manner.
-4. The Smart Rollup nodes tracking the state of Etherlink fetch this new Etherlink block and validate it.
-5. Validation from the Smart Rollup nodes allow the Etherlink nodes to assert that block has been faithfully posted by the sequencer.
-6. Eventually, the Smart Rollup nodes assuming the role of "operators" commit the state of Etherlink to the Tezos network via the layer 1 nodes.
+1. The Etherlink node forwards the transaction to Etherlink's sequencer, which includes it in a new block as soon as possible (less than 500ms after receiving it in a nominal scenario).
+1. The sequencer forwards the new block to the Smart Rollup node it is connected to.
+1. The sequencer also shares the new block available with other Etherlink nodes, which continue to share it in a peer-to-peer manner.
+1. The Smart Rollup nodes tracking the state of Etherlink fetch this new Etherlink block and validate it.
+1. Validation from the Smart Rollup nodes allow the Etherlink nodes to assert that block has been faithfully posted by the sequencer.
+1. Eventually, the Smart Rollup nodes assuming the role of "operators" commit the state of Etherlink to the Tezos network via the layer 1 nodes.
 
 This diagram summarizes the interaction between the nodes:
 
