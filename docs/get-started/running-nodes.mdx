@@ -42,7 +42,8 @@ The code for the three nodes is part of the [Octez suite](https://tezos.gitlab.i
 - You can use a public layer 1 node or set up your own as described in [Installing Octez](https://tezos.gitlab.io/introduction/howtoget.html) in the Octez documentation.
 - You can set up a Smart Rollup node (`octez-smart-rollup-node`) with a snapshot of the Etherlink state or from Etherlink genesis.
 Setting up the Smart Rollup node from Etherlink genesis requires a recent build of the Octez suite.
-- Octez does not yet provide a binary build of the Etherlink node as part of its binary distribution or in the `tezos/tezos` docker image, but you can get it from the `tezos/tezos-bare` image if you use a specific tag.
+- Octez does not yet provide a binary build of the Etherlink node as part of its binary distribution or in the `tezos/tezos` docker image, so you must build it yourself.
+However, you can get the binary from the `tezos/tezos-bare` image if you use a specific tag.
 The tag `master_b9f6c913_20240424112144` includes the Etherlink node and matches other examples on this page.
 
 ### Running a Smart Rollup node for Etherlink
