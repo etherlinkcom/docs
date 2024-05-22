@@ -76,28 +76,30 @@ For simplicity, these steps show how to run the octez smart rollup node in obser
    1. Initialize the local context by running this command:
 
       ```bash
-      octez-smart-rollup-node init observer config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf  \
-        with operators --data-dir $sr_observer_data_dir
+      octez-smart-rollup-node init observer config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
+        with operators --data-dir $sr_observer_data_dir \
+        --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
       ```
 
       This command generates a minimal configuration file (`config.json`) in the local data folder:
 
       ```json
       { "smart-rollup-address": "sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf",
-        "smart-rollup-node-operator": {}, "fee-parameters": {},
-        "mode": "observer" }
+        "smart-rollup-node-operator": {}, "fee-parameters": {}, "mode": "observer",
+        "pre-images-endpoint":
+          "https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0" }
       ```
 
-1. Activate the `unsafe-pvm-patches` setting, which is required for Etherlink, and add the location of the preimages by adding these settings to the `config.json` file, as in this example:
+1. Activate the `unsafe-pvm-patches` setting, which is required for Etherlink, to the `config.json` file, as in this example:
 
    ```json
    { "smart-rollup-address": "sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf",
-     "smart-rollup-node-operator": {}, "fee-parameters": {},
+     "smart-rollup-node-operator": {}, "fee-parameters": {}, "mode": "observer",
      "unsafe-pvm-patches": [
        { "increase_max_nb_tick": "50_000_000_000_000" }
      ],
-     "pre-images-endpoint": "https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0",
-     "mode": "observer" }
+     "pre-images-endpoint":
+       "https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0" }
    ```
 
    Similar to the Rust keyword, `unsafe` here means to be used with a good understanding of the feature.
