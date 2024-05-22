@@ -33,16 +33,14 @@ This diagram summarizes the interaction between the nodes:
 
 ## Running Etherlink nodes
 
-Etherlink nodes require access to the RPCs of a running Smart Rollup node.
-Because public Smart Rollup nodes for Etherlink are not yet available, to run an Etherlink node, you must also run a Smart Rollup node.
-You can set up your own layer 1 node or use a public node.
-
+To run an Etherlink node, you need access to a Smart Rollup node set up for Etherlink and to an ordinary Tezos layer 1 node.
 The code for the three nodes is part of the [Octez suite](https://tezos.gitlab.io/).
 
 - You can use a public layer 1 node or set up your own as described in [Installing Octez](https://tezos.gitlab.io/introduction/howtoget.html) in the Octez documentation.
-- You can set up a Smart Rollup node (`octez-smart-rollup-node`) with a snapshot of the Etherlink state or from Etherlink genesis.
+- Public Smart Rollup nodes for Etherlink are not yet available, so you must run your own as described in [Running a Smart Rollup node for Etherlink](#running-a-smart-rollup-node-for-etherlink).
+You can start this node with a snapshot of the Etherlink state or from Etherlink genesis.
 Setting up the Smart Rollup node from Etherlink genesis requires a recent build of the Octez suite.
-- Octez does not yet provide a binary build of the Etherlink node as part of its binary distribution or in the `tezos/tezos` docker image, so you must build it yourself.
+- For the Etherlink node itself, Octez does not yet provide a binary build of the Etherlink node as part of its binary distribution or in the `tezos/tezos` docker image, so you must build it yourself.
 However, you can get the binary from the `tezos/tezos-bare` image if you use a specific tag.
 The tag `master_b9f6c913_20240424112144` includes the Etherlink node and matches other examples on this page.
 
