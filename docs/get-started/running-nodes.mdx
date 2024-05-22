@@ -128,7 +128,10 @@ For example, this query gets the latest block:
 
 ### Running an Etherlink node
 
-To run an Etherlink node in observer mode from the Etherlink genesis block, you need access to a Smart Rollup node tracking the state of Etherlink, which you created in the previous section.
+To run an Etherlink node in observer mode from the Etherlink genesis block, you need:
+
+- Access to a Smart Rollup node tracking the state of Etherlink, which you created in the previous section
+- The Etherlink installer kernel (`installer.hex` file), which you can build yourself or download as described in [Building the Etherlink kernel](#building-the-etherlink-kernel)
 
 Follow these steps to run the Etherlink node:
 
@@ -150,10 +153,10 @@ Follow these steps to run the Etherlink node:
 
    <!-- TODO show how to use a kernel that you built -->
 
-1. Run this command to start the node:
+1. Run this command to start the node with the Etherlink installer kernel:
 
    ```bash
-   octez-evm-node run observer --data-dir $evm_observer_dir
+   octez-evm-node run observer --data-dir $evm_observer_dir --initial-kernel installer.hex
    ```
 
 By default, the Etherlink node exposes its JSON RPC API endpoint to `localhost:8545`.
