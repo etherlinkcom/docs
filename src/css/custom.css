@@ -39,6 +39,12 @@
   src: url('/fonts/GT-Eesti-Display-Light-a728f2a4f92e840beb1cc388caaea938.woff') format('woff');
   font-style: normal;
 }
+@font-face {
+  font-family: 'Inter SemiBold';
+  src: url('/fonts/Inter-SemiBold.woff2') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
 
 /* You can override the default Infima variables here. */
 :root {
@@ -65,7 +71,7 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-  
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -218,4 +224,9 @@ article a[target="_blank"]:after {
 /* more space between sidebar categories */
 .theme-doc-sidebar-item-category:not(:first-child) {
   margin-top: 30px;
+}
+
+/* Use Inter font for wordmark */
+.navbar__title {
+  font-family: 'Inter SemiBold', 'Roboto', sans-serif;
 }
