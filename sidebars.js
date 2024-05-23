@@ -34,7 +34,6 @@ const sidebars = {
           href: 'https://explorer.etherlink.com',
           label: '🔍 Block Explorer',
         },
-        'get-started/running-nodes',
       ],
     },
     {
@@ -47,6 +46,17 @@ const sidebars = {
         'building-on-etherlink/etherlink-node-specifications',
         'building-on-etherlink/token-addresses',
         'building-on-etherlink/development-toolkits',
+      ],
+    },
+    {
+      type: 'category',
+      label: '🛜 The Etherlink network',
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'network/transaction-life-cycle',
+        'network/smart-rollup-nodes',
+        'network/evm-nodes',
       ],
     },
     {
