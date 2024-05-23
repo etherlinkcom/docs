@@ -15,7 +15,7 @@ The Etherlink EVM nodes are responsible for maintaining a copy of the Etherlink 
 Follow these steps to run the Etherlink node:
 
 1. Get a built version of the Etherlink node binary, named `octez-evm-node`.
-Octez does not yet provide a binary build of the Etherlink node as part of its binary distribution or in the `tezos/tezos` docker image, so you must build it yourself from commit `c5ed8f9d5737cec03b29e5a7c3bf2169cc239ea8`.
+Octez does not yet provide a binary build of the Etherlink node as part of its binary distribution or in the `tezos/tezos` docker image, so you must build it yourself from the latest commit from the Octez source code.
 See [Installing Octez](https://tezos.gitlab.io/introduction/howtoget.html).
 1. Set the `sr_node_observer_rpc` environment variable to the URL to the Smart Rollup node you set up in the previous section, such as `http://localhost:8932`.
 1. Set the `evm_observer_dir` environment variable to the directory where the node should store its local data.
