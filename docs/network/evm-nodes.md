@@ -6,16 +6,16 @@ The Etherlink EVM nodes are responsible for maintaining a copy of the Etherlink 
 
 ## Prerequisites
 
-- Make sure you understand the interaction between different nodes as described in [The transaction life cycle](./transaction-life-cycle).
+- Make sure you understand the interaction between different nodes as described in [Etherlink architecture](./architecture).
 - Run an Etherlink Smart Rollup node as described in [Running an Etherlink Smart Rollup node](./smart-rollup-nodes).
 - Get the Etherlink installer kernel (`installer.hex` file), which you can build yourself as described in [Building the Etherlink kernel](./smart-rollup-nodes#building-the-etherlink-kernel) or download here: [installer.hex](/files/installer.hex).
 
 ## Running an Etherlink EVM node
 
-Follow these steps to run the Etherlink node:
+Follow these steps to run the EVM node:
 
-1. Get a built version of the Etherlink node binary, named `octez-evm-node`.
-Octez does not yet provide a binary build of the Etherlink node as part of its binary distribution or in the `tezos/tezos` docker image, so you must build it yourself from the latest commit from the Octez source code.
+1. Get a built version of the EVM node binary, named `octez-evm-node`.
+Octez does not yet provide a binary build of the EVM node as part of its binary distribution or in the `tezos/tezos` docker image, so you must build it yourself from the latest commit from the Octez source code.
 See [Installing Octez](https://tezos.gitlab.io/introduction/howtoget.html).
 1. Set the `sr_node_observer_rpc` environment variable to the URL to the Smart Rollup node you set up in the previous section, such as `http://localhost:8932`.
 1. Set the `evm_observer_dir` environment variable to the directory where the node should store its local data.
@@ -38,5 +38,5 @@ See [Installing Octez](https://tezos.gitlab.io/introduction/howtoget.html).
    octez-evm-node run observer --data-dir $evm_observer_dir --initial-kernel installer.hex
    ```
 
-By default, the Etherlink node exposes its JSON RPC API endpoint to `localhost:8545`.
+By default, the EVM node exposes its JSON RPC API endpoint to `localhost:8545`.
 You can test that everything works as expected by running RPC requests manually or by setting your wallet to use your local node.

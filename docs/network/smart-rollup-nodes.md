@@ -6,7 +6,7 @@ Etherlink uses Smart Rollup nodes as a bridge between the EVM transactions on th
 Public Smart Rollup nodes for Etherlink are not yet available, so you must run your own if you want to participate in the Etherlink network.
 
 The Smart Rollup node runs the  _kernel_, which is a Rust program compiled in WASM implementing the semantics of Etherlink blocks and transactions.
-It is used by Etherlink nodes and Smart Rollup nodes to validate the blocks created by Etherlink's sequencer.
+It is used by EVM nodes and Smart Rollup nodes to validate the blocks created by Etherlink's sequencer.
 The Smart Rollup node verifies the integrity of the kernel based on a hash posted onchain during the origination of Etherlink.
 
 To start, the node uses the _installer kernel_, which is a compressed version of the kernel that provides only enough information to install the original kernel.
@@ -15,7 +15,7 @@ For more information about installer kernels and preimages, see the tutorial [De
 
 ## Prerequisites
 
-- Make sure you understand the interaction between different nodes as described in [The transaction life cycle](./transaction-life-cycle).
+- Make sure you understand the interaction between different nodes as described in [Etherlink architecture](./architecture).
 - Get access to a Tezos layer 1 archive node.
 You can use a public layer 1 node or set up your own as described in [Installing Octez](https://tezos.gitlab.io/introduction/howtoget.html) in the Octez documentation.
 
