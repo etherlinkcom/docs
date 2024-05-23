@@ -54,7 +54,7 @@ const sidebars = {
       collapsed: false,
       collapsible: false,
       items: [
-        'network/transaction-life-cycle',
+        'network/architecture',
         'network/smart-rollup-nodes',
         'network/evm-nodes',
       ],
