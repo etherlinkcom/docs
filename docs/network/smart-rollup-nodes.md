@@ -23,6 +23,7 @@ You can use a public layer 1 node or set up your own as described in [Installing
 
 You can start the Smart Rollup node with a snapshot of the Etherlink state or from Etherlink genesis.
 These instructions cover starting from Etherlink genesis, which requires a recent build of the Octez suite.
+They result in an archive node, which contains a copy of the state at each level since Etherlink genesis.
 
 For simplicity, these steps show how to run the octez smart rollup node in observer mode:
 
