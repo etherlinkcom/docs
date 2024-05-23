@@ -9,13 +9,15 @@ These three nodes are being developed as part of the [Octez software suite](http
 
 - EVM nodes (`octez-evm-node`): The EVM nodes maintain a local copy of the Etherlink context, apply new blocks as they are created, and expose a [JSON RPC API](https://ethereum.org/en/developers/docs/apis/json-rpc/) compliant endpoint for clients to submit transactions to.
 When they receive a transaction, they forward it to their parent EVM node, which forwards it to its parent, and so on until it reaches the sequencer.
-- Smart Rollup nodes (`octez-smart-rollup-node`): Smart Rollup nodes run the  Etherlink kernel and monitor Tezos layer 1 for updates to the Etherlink state.
+- Smart Rollup nodes (`octez-smart-rollup-node`): Smart Rollup nodes run the Etherlink kernel.
+The sequencer sends new Etherlink blocks to one of them and that Smart Rollup node publishes the Etherlink block on Tezos layer 1.
+The other Smart Rollup nodes monitor Tezos layer 1 for updates to the Etherlink state.
 The EVM nodes use internal technical information from these nodes but do not interact with them directly.
 For more information about Smart Rollup nodes in general, see [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com.
 - Tezos layer 1 nodes (`octez-node`): The layer 1 nodes publish the Etherlink state as part of the Smart Rollup inbox.
 The Smart Rollup nodes get information from layer 1 nodes and react to what happens on the Tezos network and on Etherlink.
 
-The Etherlink ecosystem also includes the sequencer, which is solely responsible for creating Etherlink blocks, publishing them to layer 1, and sending them to EVM nodes.
+The Etherlink ecosystem also includes the sequencer, which is solely responsible for creating Etherlink blocks and sending them to EVM nodes and Smart Rollup nodes.
 
 This diagram summarizes the interaction between the nodes:
 
