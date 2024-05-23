@@ -62,8 +62,7 @@ For simplicity, these steps show how to run the octez smart rollup node in obser
 
 1. Get a built version of the Smart Rollup node binary, named `octez-smart-rollup-node`, in one of these ways:
 
-   - To set up a Smart Rollup node from Etherlink genesis, it's best to use recent Octez source code.
-   One commit that is known to work well is [`b9f6c91`](https://gitlab.com/tezos/tezos/-/commit/b9f6c9138719220db83086f0548e49c5c4c8421f) from the `master` branch of the [Octez repository](https://gitlab.com/tezos/tezos).
+   - To set up a Smart Rollup node from Etherlink genesis, it's best to use recent Octez source code or the latest release of Octez.
    For more information about building Octez binaries, see the Octez documentation: https://tezos.gitlab.io/index.html
 
    - Octez binary builds for Linux systems are available for the [x86_64](https://gitlab.com/tezos/tezos/-/jobs/6849203975/artifacts/browse/octez-binaries/x86_64/) architecture.
@@ -138,6 +137,9 @@ To run an Etherlink node in observer mode from the Etherlink genesis block, you 
 
 Follow these steps to run the Etherlink node:
 
+1. Get a built version of the Etherlink node binary, named `octez-evm-node`.
+Octez does not yet provide a binary build of the Etherlink node as part of its binary distribution or in the `tezos/tezos` docker image, so you must build it yourself from commit `c5ed8f9d5737cec03b29e5a7c3bf2169cc239ea8`.
+See [Installing Octez](https://tezos.gitlab.io/introduction/howtoget.html).
 1. Set the `sr_node_observer_rpc` environment variable to the URL to the Smart Rollup node you set up in the previous section, such as `http://localhost:8932`.
 1. Set the `evm_observer_dir` environment variable to the directory where the node should store its local data.
 1. Initialize the node by running this command:
@@ -181,6 +183,7 @@ The Etherlink build process relies on a Docker image to ensure reproducible buil
 Follow these steps to build the installer kernel:
 
 1. Clone the repository at https://gitlab.com/tezos/tezos.
+1. Check out the commit with the hash `b9f6c9138719220db83086f0548e49c5c4c8421f`.
 1. Build the kernel by running this command from the root directory:
 
    ```bash
