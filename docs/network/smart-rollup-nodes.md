@@ -26,15 +26,7 @@ You can start the Smart Rollup node with a snapshot of the Etherlink state to pr
 For simplicity, these steps show how to run the smart rollup node in observer mode:
 
 1. Get a built version of the Smart Rollup node binary, named `octez-smart-rollup-node`.
-
-   If you are starting from genesis, build the binary from the most recent Octez source code.
-   For more information about building Octez binaries, see the Octez documentation: https://tezos.gitlab.io/index.html
-
-   If you are starting from a snapshot, you can use a prebuilt binary:
-
-      - Octez binary builds for Linux systems are available for the [x86_64](https://gitlab.com/tezos/tezos/-/jobs/6849203975/artifacts/browse/octez-binaries/x86_64/) architecture.
-
-      - Docker images that contain the Octez binaries are available at https://hub.docker.com/r/tezos/tezos.
+Until Octez version 20 is released, the best place to get binary files to use with Etherlink is https://gitlab.com/nomadic-labs/tezos/-/releases.
 
 1. Initialize the local context of the node, which is where it stores local data:
 
