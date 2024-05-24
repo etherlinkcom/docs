@@ -22,19 +22,22 @@ You can use a public layer 1 node or set up your own as described in [Installing
 ## Running the Smart Rollup node
 
 You can start the Smart Rollup node with a snapshot of the Etherlink state or from Etherlink genesis.
-These instructions cover starting from Etherlink genesis, which requires a recent build of the Octez suite.
-They result in an archive node, which contains a copy of the state at each level since Etherlink genesis.
 
-For simplicity, these steps show how to run the octez smart rollup node in observer mode:
+- If you start from genesis, the result is an archive node, which contains a copy of the state at each level since Etherlink genesis.
+- If you start from a snapshot, the result is a rolling node, which contains only a copy of the state at the current level.
 
-1. Get a built version of the Smart Rollup node binary, named `octez-smart-rollup-node`, in one of these ways:
+For simplicity, these steps show how to run the smart rollup node in observer mode:
 
-   - To set up a Smart Rollup node from Etherlink genesis, it's best to use recent Octez source code or the latest release of Octez.
+1. Get a built version of the Smart Rollup node binary, named `octez-smart-rollup-node`.
+
+   If you are starting from genesis, build the binary from the most recent Octez source code.
    For more information about building Octez binaries, see the Octez documentation: https://tezos.gitlab.io/index.html
 
-   - Octez binary builds for Linux systems are available for the [x86_64](https://gitlab.com/tezos/tezos/-/jobs/6849203975/artifacts/browse/octez-binaries/x86_64/) architecture.
+   If you are starting from a snapshot, you can use a prebuilt binary:
 
-   - Docker images are available at https://hub.docker.com/r/tezos/tezos.
+      - Octez binary builds for Linux systems are available for the [x86_64](https://gitlab.com/tezos/tezos/-/jobs/6849203975/artifacts/browse/octez-binaries/x86_64/) architecture.
+
+      - Docker images that contain the Octez binaries are available at https://hub.docker.com/r/tezos/tezos.
 
 1. Initialize the local context of the node, which is where it stores local data:
 
@@ -58,6 +61,14 @@ For simplicity, these steps show how to run the octez smart rollup node in obser
 
       This configuration uses the preimages that TriliTech hosts on a file server on a so-called "preimages endpoint".
       To build the preimages yourself, see [Building the Etherlink kernel](#building-the-etherlink-kernel).
+
+1. To start the node from a snapshot, download the latest snapshot from https://snapshots.eu.tzinit.org/etherlink-mainnet, which is named `eth-mainnet.snapshot`, and run this command:
+
+   ```bash
+   octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet \
+     snapshot import eth-mainnet.snapshot \
+     --data-dir $sr_observer_data_dir
+   ```
 
 1. Start the Smart Rollup node in observer mode by running this command and using the RPC endpoint of a layer 1 node that is running in archive mode:
 
