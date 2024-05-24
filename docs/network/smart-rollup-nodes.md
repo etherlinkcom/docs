@@ -21,10 +21,7 @@ You can use a public layer 1 node or set up your own as described in [Installing
 
 ## Running the Smart Rollup node
 
-You can start the Smart Rollup node with a snapshot of the Etherlink state or from Etherlink genesis.
-
-- If you start from genesis, the result is an archive node, which contains a copy of the state at each level since Etherlink genesis.
-- If you start from a snapshot, the result is a rolling node, which contains only a copy of the state at the current level.
+You can start the Smart Rollup node with a snapshot of the Etherlink state to prevent it from having to compute the state from Etherlink genesis.
 
 For simplicity, these steps show how to run the smart rollup node in observer mode:
 
@@ -62,13 +59,21 @@ For simplicity, these steps show how to run the smart rollup node in observer mo
       This configuration uses the preimages that TriliTech hosts on a file server on a so-called "preimages endpoint".
       To build the preimages yourself, see [Building the Etherlink kernel](#building-the-etherlink-kernel).
 
-1. To start the node from a snapshot, download the latest snapshot from https://snapshots.eu.tzinit.org/etherlink-mainnet, which is named `eth-mainnet.snapshot`, and run this command:
+1. Download the latest snapshot from https://snapshots.eu.tzinit.org/etherlink-mainnet/, which is named `eth-mainnet.snapshot`:
+
+   ```bash
+   wget https://snapshots.eu.tzinit.org/etherlink-mainnet/eth-mainnet.snapshot
+   ```
+
+1. Load the snapshot:
 
    ```bash
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet \
      snapshot import eth-mainnet.snapshot \
      --data-dir $sr_observer_data_dir
    ```
+
+   If you skip this step, the Smart Rollup node computes the current state from Etherlink genesis, which can take a long time.
 
 1. Start the Smart Rollup node in observer mode by running this command and using the RPC endpoint of a layer 1 node that is running in archive mode:
 
