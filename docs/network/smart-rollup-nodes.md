@@ -5,7 +5,7 @@ title: Running an Etherlink Smart Rollup node
 Etherlink uses Smart Rollup nodes as a bridge between the EVM transactions on the EVM nodes and Tezos layer 1.
 Public Smart Rollup nodes for Etherlink are not yet available, so you must run your own if you want to participate in the Etherlink network.
 
-The Smart Rollup node runs the  _kernel_, which is a Rust program compiled in WASM implementing the semantics of Etherlink blocks and transactions.
+The Smart Rollup node runs the _kernel_, which is a Rust program compiled in WASM implementing the semantics of Etherlink blocks and transactions.
 It is used by EVM nodes and Smart Rollup nodes to validate the blocks created by Etherlink's sequencer.
 The Smart Rollup node verifies the integrity of the kernel based on a hash posted onchain during the origination of Etherlink.
 
