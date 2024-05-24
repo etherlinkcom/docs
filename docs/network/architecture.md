@@ -2,8 +2,6 @@
 title: Etherlink architecture
 ---
 
-import Figure from '@site/src/components/Figure';
-
 In its life cycle, an Etherlink transaction goes through three distinct types of nodes, each responsible for different aspects of Etherlink's features.
 These three nodes are being developed as part of the [Octez software suite](https://tezos.gitlab.io/introduction/tezos.html):
 
@@ -21,7 +19,7 @@ The Etherlink ecosystem also includes the sequencer, which is solely responsible
 
 This diagram summarizes the interaction between the nodes:
 
-<Figure src="/img/architecture.png" alt="" />
+[A high-level diagram of Etherlink architecture, showing the interaction between the nodes and the sequencer](/img/architecture.png)
 
 ## Transaction lifecycle
 
