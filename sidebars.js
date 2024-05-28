@@ -99,7 +99,6 @@ const sidebars = {
       collapsible: false,
       items: [
         'resources/etherlink-further-reading',
-        'resources/decentralized-sequencer',
         'resources/scaling-on-tezos',
       ],
     },
