@@ -28,7 +28,7 @@ The best place to get the most recent binary files to use with Etherlink is http
 
 1. Initialize the local context of the node, which is where it stores local data:
 
-   1. Set the environment variable `sr_observer_data_dir` to the directory where the node should store its local data.
+   1. Set the environment variable `sr_observer_data_dir` to the directory where the node should store its local data. Default value is `$HOME/.tezos-smart-rollup-node`.
    1. Initialize the local context by running this command:
 
       ```bash
