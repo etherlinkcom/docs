@@ -76,8 +76,6 @@ The best place to get the most recent binary files to use with Etherlink is http
    As in this example, you can use a public layer 1 RPC node for initial setup, or you can connect it to a layer 1 node that you are running for a more stable connection.
    The Smart Rollup node needs a connection to an archive node while it catches up to the current state of layer 1; after that you can connect it to a rolling node.
 
-   After the Smart Rollup node has caught up with the current state via the archive node, you can safely connect it to a rolling layer 1 node.
-
 1. Verify that the Smart Rollup node is running by querying it.
 For example, this query gets the health of the node:
 
