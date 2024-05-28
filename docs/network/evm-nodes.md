@@ -30,7 +30,7 @@ See [Installing Octez](https://tezos.gitlab.io/introduction/howtoget.html).
 
    This command uses preimages hosted online to set up the kernel based on the installer kernel that you built.
    It's safe to use these preimages, but if you don't trust them, you can move the contents of the `wasm_2_0_0/` directory that was created when you built the installer kernel to the local data directory.
-   However, in this case, the kernel is not updated automatically, so you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink after that.
+   However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink after that.
 
 1. Run this command to start the node with the Etherlink installer kernel that you built or downloaded; change the name of the `installer.hex` file in the command accordingly:
 
