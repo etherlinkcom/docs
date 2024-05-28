@@ -29,7 +29,9 @@ They also check Smart Rollup nodes to verify that these blueprints make it to Te
   The Smart Rollup nodes store the state of Etherlink based on the information that they get from layer 1, not on information from EVM nodes or the sequencer.
 
   For more information about Smart Rollup nodes in general, see [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com.
-- Tezos layer 1 nodes (`octez-node`): the Smart Rollup Nodes submit  layer 1 operations with the blueprints to a layer 1 node. Theses operations are included in layer 1 blocks. Others Smart Rollup Nodes follows Etherlink by monitoring the layer 1 and theses operations.
+- Tezos layer 1 nodes (`octez-node`): the Smart Rollup Nodes submit layer 1 operations with the blueprints to a layer 1 node.
+Layer 1 nodes include these operations in layer 1 blocks.
+Other Smart Rollup nodes follow Etherlink by monitoring layer 1 and these operations.
 
 For more information about Tezos layer 1 and its nodes, see [Architecture](https://docs.tezos.com/architecture) on docs.tezos.com.
 
