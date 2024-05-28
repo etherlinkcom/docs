@@ -8,7 +8,7 @@ Etherlink's main components are its nodes and the sequencer.
 
 Etherlink relies on a sequencer to process transactions in a fair order.
 It receives transactions from nodes and packages them into _blueprints_.
-Blueprints are like unvalidated, unfinalized blocks; they do not have a hash of a previous block and the transactions in them are not final until they are published on Tezos layer 1.
+Blueprints are like unvalidated, unfinalized blocks; the transactions in them are not final until they are published on Tezos layer 1.
 
 ## Nodes
 
