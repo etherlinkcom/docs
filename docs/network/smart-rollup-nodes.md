@@ -56,7 +56,7 @@ For simplicity, these steps show how to run the octez smart rollup node in obser
           "https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0" }
       ```
 
-      This configuration uses the preimages that the Etherlink team hosts on a file server on a so-called "preimages endpoint".
+      This configuration uses the preimages that TriliTech hosts on a file server on a so-called "preimages endpoint".
       To build the preimages yourself, see [Building the Etherlink kernel](#building-the-etherlink-kernel).
 
 1. Start the Smart Rollup node in observer mode by running this command and using the RPC endpoint of a layer 1 node that is running in archive mode:
