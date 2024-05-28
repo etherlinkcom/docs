@@ -18,7 +18,7 @@ These three nodes are being developed as part of the [Octez software suite](http
 - EVM nodes (`octez-evm-node`): The EVM nodes maintain a local copy of the Etherlink context and expose a [JSON RPC API](https://ethereum.org/en/developers/docs/apis/json-rpc/)-compliant endpoint for clients to submit transactions to.
 They forward these transactions to the sequencer and receive blueprints that contain transactions, which they use to update their state.
 They also check Smart Rollup nodes to verify that these transactions make it to Tezos layer 1.
-- Smart Rollup nodes (`octez-smart-rollup-node`): Smart Rollup nodes run the Etherlink kernel.
+- Smart Rollup nodes (`octez-smart-rollup-node`): Smart Rollup nodes store the true state of the Etherlink blockchain.
 
   The sequencer sends new Etherlink blueprints to one dedicated Smart Rollup node and that node publishes the information in those blueprints on Tezos layer 1.
 
