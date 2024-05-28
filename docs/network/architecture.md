@@ -6,7 +6,7 @@ Etherlink's main components are its nodes and the sequencer.
 
 ## Sequencer
 
-Etherlink relies on a sequencer to process transactions in a fair order.
+Etherlink relies on a sequencer to process transactions.
 It receives transactions from nodes and packages them into _blueprints_, which are like blocks.
 In the context of Etherlink, the transactions in a blueprint are final, but they are not final for layer 1 until they are published on layer 1.
 
