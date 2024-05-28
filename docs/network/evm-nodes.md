@@ -2,7 +2,7 @@
 title: Running an Etherlink EVM node
 ---
 
-The Etherlink EVM nodes are responsible for maintaining a copy of the Etherlink context and creating and applying new blocks that process EVM transactions.
+The Etherlink EVM nodes are responsible for maintaining a copy of the Etherlink context and applying new blueprints that process EVM transactions.
 
 ## Prerequisites
 
