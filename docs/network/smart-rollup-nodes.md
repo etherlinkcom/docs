@@ -109,7 +109,7 @@ Follow these steps to build the installer kernel:
    ./etherlink/scripts/build-wasm.sh
    ```
 
-  This command creates the file `etherlink/kernels-b9f6c9138719220db83086f0548e49c5c4c8421f/evm_kernel.wasm`.
+   This command creates the file `etherlink/kernels-b9f6c9138719220db83086f0548e49c5c4c8421f/evm_kernel.wasm`.
 
 1. Run this command to install the installer kernel build dependencies:
 
