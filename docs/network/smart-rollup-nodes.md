@@ -117,7 +117,7 @@ Follow these steps to build the installer kernel:
    make -f kernels.mk build-deps kernel_sdk
    ```
 
-1. Set the parameters for the installer kernel by running this command, which sets the chain ID, governance and bridge contracts, and other values:
+1. Set the parameters for the etherlink kernel by running this command, which sets the chain ID, governance and bridge contracts, and other values:
 
    ```bash
    octez-evm-node make kernel installer config setup_file.yml --chain-id 42793 \
