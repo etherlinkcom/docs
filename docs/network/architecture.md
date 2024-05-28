@@ -51,5 +51,5 @@ The overall lifecycle of a typical operation is as follows:
 1. The sequencer sends the blueprint to a Smart Rollup node running Etherlink's kernel.
 1. The sequencer also shares the new blueprint with the EVM nodes for them to update their states.
 1. The Smart Rollup node publishes the blueprint to layer 1.
-1. The Smart Rollup nodes tracking the state of Etherlink fetch this new Etherlink information from layer 1,  validate it, and update their states.
+1. The Smart Rollup nodes tracking the state of Etherlink fetch the new Etherlink blueprints from layer 1,  and update their states.
 1. The EVM nodes check the state of the Smart Rollup nodes to verify that transactions have successfully and faithfully been finalized on layer 1.
