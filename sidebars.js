@@ -57,6 +57,7 @@ const sidebars = {
         'network/architecture',
         'network/smart-rollup-nodes',
         'network/evm-nodes',
+        'network/building-kernel',
       ],
     },
     {

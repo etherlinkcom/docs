@@ -9,7 +9,7 @@ The Etherlink EVM nodes are responsible for maintaining a copy of the Etherlink 
 - Make sure you understand the interaction between different nodes as described in [Etherlink architecture](./architecture).
 - Run an Etherlink Smart Rollup node as described in [Running an Etherlink Smart Rollup node](./smart-rollup-nodes).
 Public Smart Rollup nodes for Etherlink are not yet available, so you must run your own if you want to participate in the Etherlink network.
-- Get the Etherlink installer kernel (`installer.hex` file), which you can build yourself as described in [Building the Etherlink kernel](./smart-rollup-nodes#building-the-etherlink-kernel) or download here: [installer.hex](/files/installer.hex).
+- Get the Etherlink installer kernel (`installer.hex` file), which you can build yourself as described in [Building the Etherlink kernel](./building-kernel) or download here: [installer.hex](/files/installer.hex).
 
 ## Running an Etherlink EVM node
 
