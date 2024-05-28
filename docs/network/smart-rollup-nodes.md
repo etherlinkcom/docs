@@ -59,35 +59,15 @@ For simplicity, these steps show how to run the octez smart rollup node in obser
       This configuration uses the preimages that the Etherlink team hosts on a file server on a so-called "preimages endpoint".
       To build the preimages yourself, see [Building the Etherlink kernel](#building-the-etherlink-kernel).
 
-1. Activate the `unsafe-pvm-patches` setting, which is required for Etherlink, to the `config.json` file, as in this example:
-
-   ```json
-   { "smart-rollup-address": "sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf",
-     "smart-rollup-node-operator": {}, "fee-parameters": {}, "mode": "observer",
-     "unsafe-pvm-patches": [
-       { "increase_max_nb_tick": "50_000_000_000_000" }
-     ],
-     "pre-images-endpoint":
-       "https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0" }
-   ```
-
-   Similar to the Rust keyword, `unsafe` here means to be used with a good understanding of the feature.
-   Etherlink uses this setting with care and using it is safe in this context.
-
 1. Start the Smart Rollup node in observer mode by running this command and using the RPC endpoint of a layer 1 node that is running in archive mode:
 
    ```bash
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet run \
-     --data-dir $sr_observer_data_dir \
-     --apply-unsafe-patches
+     --data-dir $sr_observer_data_dir
    ```
 
    As in this example, you can use a public layer 1 RPC node for initial setup, or you can connect it to a layer 1 node that you are running for a more stable connection.
    The Smart Rollup node needs a connection to an archive node while it catches up to the current state of layer 1; after that you can connect it to a rolling node.
-
-   The `--apply-unsafe-patches` setting is required only the first time that you start the node.
-   After that you can omit it.
-   After the first run, you can also remove the `unsafe-pvm-patches` field from the configuration file.
 
    After the Smart Rollup node has caught up with the current state via the archive node, you can safely connect it to a rolling layer 1 node.
 
