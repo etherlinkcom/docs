@@ -18,7 +18,7 @@ Follow these steps to run the EVM node:
 Octez does not yet provide a binary build of the EVM node as part of its binary distribution or in the `tezos/tezos` docker image, so you must build it yourself from the latest commit from the Octez source code.
 See [Installing Octez](https://tezos.gitlab.io/introduction/howtoget.html).
 1. Set the `sr_node_observer_rpc` environment variable to the URL to the Smart Rollup node you set up in the previous section, such as `http://localhost:8932`.
-1. Set the `evm_observer_dir` environment variable to the directory where the node should store its local data.
+1. Set the `evm_observer_dir` environment variable to the directory where the node should store its local data. Default is `$HOME/.octez-evm-node`.
 1. Initialize the node by running this command:
 
    ```bash
