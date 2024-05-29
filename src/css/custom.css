@@ -169,11 +169,11 @@ nav.navbar {
 
 /* breadcrumbs menu */
 .breadcrumbs__item--active .breadcrumbs__link {
-  color: #0D61FF;
+  color: #38FF9C;
 }
 
 .table-of-contents__link:hover, .table-of-contents__link:hover code, .table-of-contents__link--active {
-  color: #0D61FF;
+  color: #38FF9C;
 }
 
 /* hide next and previous */
