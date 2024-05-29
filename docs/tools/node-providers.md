@@ -1,5 +1,5 @@
 ---
-title: '🛜 Node Providers'
+title: 'Node Providers 🛜'
 ---
 
 ## Zeeve
@@ -8,4 +8,4 @@ title: '🛜 Node Providers'
 
 ### Supported Networks
 
-Etherlink Testnet - public RPC: https://etherlink-ghostnet-6lcp5r.zeeve.net/rpc	
+Etherlink Testnet - public RPC: https://etherlink-ghostnet-6lcp5r.zeeve.net/rpc

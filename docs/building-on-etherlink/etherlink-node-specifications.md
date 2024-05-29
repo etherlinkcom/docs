@@ -1,5 +1,5 @@
 ---
-title: '📜 Etherlink Node Specifications'
+title: 'Etherlink Node Specifications 📜'
 ---
 
 ## Node Client Support

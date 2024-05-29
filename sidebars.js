@@ -4,7 +4,7 @@ const sidebars = {
   documentationSidebar: [
     {
       type: 'category',
-      label: '👋 Welcome',
+      label: 'Welcome 👋',
       collapsed: false,
       collapsible: false,
       items: [
@@ -12,18 +12,18 @@ const sidebars = {
         {
           type: 'link',
           href: 'https://discord.gg/etherlink',
-          label: '👉 Join our Discord',
+          label: 'Join our Discord 👈',
         },
         {
           type: 'link',
           href: 'https://twitter.com/etherlink',
-          label: '👉 Follow us on Twitter',
+          label: 'Follow us on Twitter 👈',
         },
       ],
     },
     {
       type: 'category',
-      label: '🚀 Get Started',
+      label: 'Get Started 🚀',
       collapsed: false,
       collapsible: false,
       items: [
@@ -32,14 +32,14 @@ const sidebars = {
         {
           type: 'link',
           href: 'https://explorer.etherlink.com',
-          label: '🔍 Block Explorer',
+          label: 'Block Explorer 🔍',
         },
         'get-started/running-nodes',
       ],
     },
     {
       type: 'category',
-      label: '⛓ Building on Etherlink',
+      label: 'Building on Etherlink ⛓',
       collapsed: false,
       collapsible: false,
       items: [
@@ -51,7 +51,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '🔨 Tools',
+      label: 'Tools 🔨',
       collapsed: false,
       collapsible: false,
       items: [
@@ -66,7 +66,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '🧑‍⚖️ Governance',
+      label: 'Governance 🧑‍⚖️',
       collapsed: false,
       collapsible: false,
       items: [
@@ -76,25 +76,25 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '🏁 Track Etherlink\'s Progress',
+      label: 'Track Etherlink\'s Progress 🏁',
       collapsed: false,
       collapsible: false,
       items: [
         {
           type: 'link',
           href: 'https://gitlab.com/tezos/tezos/-/tree/master/etherlink',
-          label: '🧙 Etherlink Source Code',
+          label: 'Etherlink Source Code 🧙',
         },
         {
           type: 'link',
           href: 'https://gitlab.com/groups/tezos/-/issues/?sort=created\_date\&state=opened\&search=EVM%20\&first\_page\_size=20',
-          label: '🔨 Etherlink Pull Requests',
+          label: 'Etherlink Pull Requests 🔨',
         },
       ],
     },
     {
       type: 'category',
-      label: '📚 Resources',
+      label: 'Resources 📚',
       collapsed: false,
       collapsible: false,
       items: [
