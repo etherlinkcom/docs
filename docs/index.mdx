@@ -4,17 +4,37 @@ title: '❓ What is Etherlink?'
 
 import Figure from '@site/src/components/Figure';
 
-Etherlink is an EVM-compatible layer-2 blockchain powered by [Tezos Smart Rollup](https://tezos.com/developers/smart-rollups/) technology.
+Etherlink is an EVM-compatible, non-custodial Layer 2 blockchain powered by [Tezos Smart Rollup](https://tezos.com/developers/smart-rollups/) technology.
+It supports Ethereum's ecosystem tools, including wallets and indexers, facilitating seamless integration and the capability to transfer assets to and from other EVM-compatible chains.
+
+Built upon the secure foundation of Tezos layer 1, Etherlink delivers a fast, fair, and (nearly) free experience.
+This permissionless and censorship-resistant environment empowers developers to build and participate in the next generation of decentralized applications.
 
 ### It's fast
 
-**Etherlink has sub-second block confiration times for a snappy experience**. Tezos' 2-block finality guarantee and the speed of its Smart Rollups ensure that transactions are finalized quickly.
+Etherlink is low latency, with sub-second (< 500ms) confirmation times, delivered by the sequencer.
+The Tezos 2-block finality guarantee and the speed of its Smart Rollups ensure that transactions are finalized quickly.
 
-<table><thead><tr><th width="170">Chain</th><th width="141.33333333333331">Sequencer</th><th>L2 finality time</th><th>Data posted on L1</th></tr></thead><tbody><tr><td>Etherlink</td><td>Decentralized</td><td>~ 750ms</td><td>~ 15 seconds</td></tr><tr><td>Optimism Bedrock</td><td>Centralized</td><td>~ <a href="https://community.optimism.io/docs/developers/build/differences/#blocks">2 seconds</a></td><td>~ <a href="https://optimistic.etherscan.io/batches">2 minutes</a></td></tr><tr><td>Arbitrum One</td><td>Centralized</td><td>~ <a href="https://arbiscan.io/">300ms</a></td><td>~ <a href="https://arbiscan.io/batches">7 minutes</a></td></tr></tbody></table>
+Chain | L2 finality time | Data posted on L1
+--- | --- | ---
+Etherlink | ~ 500ms | ~ 15 seconds
+Optimism Bedrock | ~ [2 seconds](https://community.optimism.io/docs/developers/build/differences/#blocks) | ~ [2 minutes](https://optimistic.etherscan.io/batches)
+Arbitrum One | ~ [300 ms](https://arbiscan.io/) | ~ [7 minutes](https://arbiscan.io/batches)
 
-### It's cheap
+### It's fair
 
-**An ERC-20 transaction costs \$0.001 or less on Etherlink**. Etherlink is built on Tezos Smart Rollups, which are enshrined on the platform, meaning that they are implemented directly on layer 1 of the protocol. However, because Smart Rollups run in their own separate environments, they are not subject to the per-transaction gas fees of layer 1, only small fees when they publish their state to layer 1.
+Etherlink's governance process promotes transparency and fairness in decision-making.
+Token holders can participate in proposing and voting on changes to the protocol with no administrative keys; users retain complete control, keeping their assets free from custodial control and abuse.
+
+A permissionless and robust fraud-proof system fully integrated into the Tezos protocol ensures network integrity.
+Out-of-the-box, anyone can participate and run an operator, challenge, post commitments, and contribute to securing the network's state.
+
+### It's (nearly) free
+
+An ERC-20 transaction costs $0.001 or less on Etherlink.
+At only a fraction of a cent, Etherlink fees are as low as it gets, enabling cost-effective transactions and opening the doors to innovation.
+Etherlink is built on Tezos Smart Rollups, which are enshrined on the platform, meaning they are implemented directly on layer 1 of the protocol.
+However, because Smart Rollups run in separate environments, they are not subject to the per-transaction gas fees of layer 1, only small fees when they publish their state to layer 1.
 
 ***
 
