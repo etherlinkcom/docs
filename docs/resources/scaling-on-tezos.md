@@ -1,5 +1,5 @@
 ---
-title: 'Scaling on Tezos ⚖'
+title: 'Scaling on Tezos'
 ---
 
 ## Smart Rollups

@@ -1,5 +1,5 @@
 ---
-title: 'Development Toolkits 🔨'
+title: 'Development Toolkits'
 ---
 
 ## 👷 Hardhat

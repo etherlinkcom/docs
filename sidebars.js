@@ -12,12 +12,12 @@ const sidebars = {
         {
           type: 'link',
           href: 'https://discord.gg/etherlink',
-          label: 'Join our Discord 👈',
+          label: 'Join our Discord',
         },
         {
           type: 'link',
           href: 'https://twitter.com/etherlink',
-          label: 'Follow us on Twitter 👈',
+          label: 'Follow us on Twitter',
         },
       ],
     },
@@ -32,7 +32,7 @@ const sidebars = {
         {
           type: 'link',
           href: 'https://explorer.etherlink.com',
-          label: 'Block Explorer 🔍',
+          label: 'Block Explorer',
         },
         'get-started/running-nodes',
       ],
@@ -83,12 +83,12 @@ const sidebars = {
         {
           type: 'link',
           href: 'https://gitlab.com/tezos/tezos/-/tree/master/etherlink',
-          label: 'Etherlink Source Code 🧙',
+          label: 'Etherlink Source Code',
         },
         {
           type: 'link',
           href: 'https://gitlab.com/groups/tezos/-/issues/?sort=created\_date\&state=opened\&search=EVM%20\&first\_page\_size=20',
-          label: 'Etherlink Pull Requests 🔨',
+          label: 'Etherlink Pull Requests',
         },
       ],
     },
