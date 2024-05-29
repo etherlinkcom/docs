@@ -1,5 +1,5 @@
 ---
-title: '🌐 Networks & Public RPC Endpoints'
+title: 'Networks & Public RPC Endpoints 🌐'
 ---
 
 ## Etherlink mainnet

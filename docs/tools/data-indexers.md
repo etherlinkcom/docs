@@ -1,5 +1,5 @@
 ---
-title: '💽 Data Indexers'
+title: 'Data Indexers 💽'
 ---
 
 ## The Graph

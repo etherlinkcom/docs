@@ -1,5 +1,5 @@
 ---
-title: '📈 Price Feeds'
+title: 'Price Feeds 📈'
 ---
 
 ## Pyth
@@ -10,6 +10,6 @@ Learn more about integrating Pyth with their [docs](https://docs.pyth.network/pr
 
 ## Redstone
 
-[Redstone](https://redstone.finance/) offers push-based price feeds for Etherlink. 
+[Redstone](https://redstone.finance/) offers push-based price feeds for Etherlink.
 
 Get started with their [docs](https://docs.redstone.finance/docs/introduction) to learn more.
