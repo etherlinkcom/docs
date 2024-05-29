@@ -89,11 +89,11 @@ body {
 }
 
 a {
-  color: #0D61FF;
+  color: #38FF9C;
 }
 
 a:hover {
-  color: #0D61FF;
+  color: #38FF9C;
 }
 
 nav.navbar {
@@ -160,20 +160,20 @@ nav.navbar {
 
 .menu__link:hover,
 .menu__link:focus {
-  color: #0D61FF !important;
+  color: #38FF9C !important;
 }
 
 .menu__link.active {
-  color: #0D61FF;
+  color: #38FF9C;
 }
 
 /* breadcrumbs menu */
 .breadcrumbs__item--active .breadcrumbs__link {
-  color: #0D61FF;
+  color: #38FF9C;
 }
 
 .table-of-contents__link:hover, .table-of-contents__link:hover code, .table-of-contents__link--active {
-  color: #0D61FF;
+  color: #38FF9C;
 }
 
 /* hide next and previous */
@@ -190,8 +190,8 @@ nav.navbar {
 
 /* button nav next/prev */
 .pagination-nav__link:hover {
-  color: #0D61FF;
-  border: 1px solid #0D61FF
+  color: #38FF9C;
+  border: 1px solid #38FF9C
 }
 
 /* Get code blocks closer to site theme */
