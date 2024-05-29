@@ -160,11 +160,11 @@ nav.navbar {
 
 .menu__link:hover,
 .menu__link:focus {
-  color: #0D61FF !important;
+  color: #38FF9C !important;
 }
 
 .menu__link.active {
-  color: #0D61FF;
+  color: #38FF9C;
 }
 
 /* breadcrumbs menu */
