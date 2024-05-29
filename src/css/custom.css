@@ -68,8 +68,10 @@
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
   --ifm-font-color-base: #FFFFFF;
-  --ifm-navbar-link-color: #FFFFFF;
-  --ifm-color-primary: #3835d9;
+  --ifm-link-color: #38FF9C;
+  --ifm-navbar-link-color: #38FF9C;
+  --ifm-toc-link-color: #38FF9C;
+  --ifm-color-primary: #38FF9C;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
   --ifm-color-primary-darkest: #1a8870;
@@ -86,14 +88,6 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
   font-family: 'Roboto', sans-serif;
-}
-
-a {
-  color: #38FF9C;
-}
-
-a:hover {
-  color: #38FF9C;
 }
 
 nav.navbar {
@@ -155,24 +149,18 @@ nav.navbar {
 }
 
 [data-theme='dark'] .menu__link {
-  color: #FFFFFF; /* Or any color you prefer for dark mode */
+  color: #FFFFFF;
 }
-
-.menu__link:hover,
-.menu__link:focus {
-  color: #38FF9C !important;
-}
-
-.menu__link.active {
+[data-theme='dark'] .menu__link:hover, .menu__link:focus, .menu__link:active {
   color: #38FF9C;
 }
 
 /* breadcrumbs menu */
-.breadcrumbs__item--active .breadcrumbs__link {
+[data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link {
   color: #38FF9C;
 }
 
-.table-of-contents__link:hover, .table-of-contents__link:hover code, .table-of-contents__link--active {
+[data-theme='dark'] .table-of-contents__link:hover, .table-of-contents__link:hover code, .table-of-contents__link--active {
   color: #38FF9C;
 }
 
@@ -189,7 +177,7 @@ nav.navbar {
 }
 
 /* button nav next/prev */
-.pagination-nav__link:hover {
+[data-theme='dark'] .pagination-nav__link:hover {
   color: #38FF9C;
   border: 1px solid #38FF9C
 }
