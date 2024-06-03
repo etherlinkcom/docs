@@ -50,7 +50,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '🛜 The Etherlink network',
+      label: 'The Etherlink network 🛜',
       collapsed: false,
       collapsible: false,
       items: [
