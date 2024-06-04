@@ -25,7 +25,7 @@ They also check Smart Rollup nodes to verify that these transactions make it to 
 
   Importantly, the Smart Rollup nodes store the state of Etherlink based on the information that they get from layer 1, not on information from EVM nodes or the sequencer.
 
-  For more information about Smart Rollup nodes in general, see [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com.
+  For more information about Smart Rollup nodes in general, see [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com and [Smart Rollup Node](https://tezos.gitlab.io/shell/smart_rollup_node.html) in the Octez documentation.
 - Tezos layer 1 nodes (`octez-node`): Layer 1 nodes are responsible for the state of layer 1.
 In addition to ordinary layer 1 transactions, they receive Etherlink transactions from the sequencer.
 Then the baking nodes publish the Etherlink transactions in the Smart Rollup inbox in layer 1 blocks.

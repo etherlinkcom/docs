@@ -9,22 +9,21 @@ The Smart Rollup node runs the _kernel_, which is a Rust program compiled in WAS
 
 To start, the node uses the _installer kernel_, which is a compressed version of the kernel that provides only enough information to install the original kernel.
 The data for the original kernel is stored in separate files called _preimages_.
-For more information about installer kernels and preimages, see the tutorial [Deploy a Smart Rollup](https://docs.tezos.com/tutorials/smart-rollup) on docs.tezos.com.
 
-## Prerequisites
+## References
 
-- Make sure you understand the interaction between different nodes as described in [Etherlink architecture](./architecture).
-- Get access to a Tezos layer 1 archive node.
-You can use a public layer 1 node or set up your own as described in [Installing Octez](https://tezos.gitlab.io/introduction/howtoget.html) in the Octez documentation.
+Make sure that you understand the interaction between different nodes as described in [Etherlink architecture](./architecture).
 
-## Running the Smart Rollup node
+For more information about Smart Rollup nodes in general, see [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com and [Smart Rollup Node](https://tezos.gitlab.io/shell/smart_rollup_node.html) in the Octez documentation.
+
+## Running the Smart Rollup node from a snapshot
 
 You can start the Smart Rollup node with a snapshot of the Etherlink state to prevent it from having to compute the state from Etherlink genesis.
 
 For simplicity, these steps show how to run the smart rollup node in observer mode:
 
 1. Get a built version of the Smart Rollup node binary, named `octez-smart-rollup-node`.
-The best place to get the most recent binary files to use with Etherlink is https://gitlab.com/nomadic-labs/tezos/-/releases.
+The best place to get the most recent binary files to use with Etherlink is https://gitlab.com/tezos/tezos/-/releases.
 
 1. Initialize the local context of the node, which is where it stores local data:
 
@@ -64,8 +63,6 @@ The best place to get the most recent binary files to use with Etherlink is http
      --data-dir $sr_observer_data_dir
    ```
 
-   If you skip this step, the Smart Rollup node computes the current state from Etherlink genesis, which can take a long time.
-
 1. Start the Smart Rollup node in observer mode by running this command and using the RPC endpoint of a layer 1 node that is running in archive mode:
 
    ```bash
@@ -74,7 +71,8 @@ The best place to get the most recent binary files to use with Etherlink is http
    ```
 
    As in this example, you can use a public layer 1 RPC node for initial setup, or you can connect it to a layer 1 node that you are running for a more stable connection.
-   The Smart Rollup node needs a connection to an archive node while it catches up to the current state of layer 1; after that you can connect it to a rolling node.
+   A rolling node is sufficient if you are using a recent snapshot; if the snapshot is old, the Smart Rollup node needs a connection to an archive node.
+   After that you can connect it to a rolling node.
 
 1. Verify that the Smart Rollup node is running by querying it.
 For example, this query gets the health of the node:

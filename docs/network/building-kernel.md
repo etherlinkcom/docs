@@ -4,7 +4,7 @@ title: Building the Etherlink kernel
 
 It's not necessary to build Etherlink's kernel.
 You can set the `pre-images-endpoint` field in the Smart Rollup node's configuration file as described in [Running an Etherlink Smart Rollup node](./smart-rollup-nodes).
-Then you can download the installer kernel here: [installer.hex](/files/installer.hex).
+You can also download the installer kernel here: [installer.hex](/files/installer.hex).
 
 However, if you want to build the kernel yourself, you can use these instructions.
 
