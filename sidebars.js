@@ -34,7 +34,6 @@ const sidebars = {
           href: 'https://explorer.etherlink.com',
           label: 'Block Explorer',
         },
-        'get-started/running-nodes',
       ],
     },
     {
@@ -51,7 +50,19 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Tools 🔨',
+      label: 'The Etherlink network 🛜',
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'network/architecture',
+        'network/smart-rollup-nodes',
+        'network/evm-nodes',
+        'network/building-kernel',
+      ],
+    },
+    {
+      type: 'category',
+      label: '🔨 Tools',
       collapsed: false,
       collapsible: false,
       items: [
