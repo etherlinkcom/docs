@@ -46,7 +46,7 @@ The best place to get the most recent binary files to use with Etherlink is http
           "https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0" }
       ```
 
-      This configuration uses the preimages that TriliTech hosts on a file server on a so-called "preimages endpoint".
+      This configuration uses the preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
       To build the preimages yourself, see [Building the Etherlink kernel](./building-kernel).
 
 1. Download the latest snapshot from https://snapshots.eu.tzinit.org/etherlink-mainnet/, which is named `eth-mainnet.snapshot`:
