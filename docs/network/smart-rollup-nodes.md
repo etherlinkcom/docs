@@ -65,7 +65,7 @@ The best place to get the most recent binary files to use with Etherlink is http
      --data-dir $sr_observer_data_dir
    ```
 
-1. Start the Smart Rollup node in observer mode by running this command and using the RPC endpoint of a layer 1 node that is running in archive mode:
+1. Start the Smart Rollup node in observer mode by running this command and using the RPC endpoint of a layer 1 node:
 
    ```bash
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet run \
