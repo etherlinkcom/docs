@@ -20,7 +20,7 @@ For more information about Smart Rollup nodes in general, see [Smart Rollups](ht
 
 You can start the Smart Rollup node with a snapshot of the Etherlink state to prevent it from having to compute the state from Etherlink genesis.
 
-For simplicity, these steps show how to run the smart rollup node in observer mode:
+For simplicity, these steps show how to run the Smart Rollup node in observer mode:
 
 1. Get a built version of the Smart Rollup node binary, named `octez-smart-rollup-node`.
 The best place to get the most recent binary files to use with Etherlink is https://gitlab.com/tezos/tezos/-/releases.
