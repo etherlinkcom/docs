@@ -30,7 +30,7 @@ The default is `$HOME/.octez-evm-node`.
      --evm-node-endpoint https://node.mainnet.etherlink.com
    ```
 
-   This command uses preimages hosted online.
+   This configuration uses the preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
    It's safe to use these preimages because the node verifies them.
    If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink kernel](./building-kernel).
    However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink after that.
