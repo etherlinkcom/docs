@@ -48,8 +48,10 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #3835d9;
-  --ifm-color-primary-dark: #7a7eeb;
+  --ifm-color-primary: #2A9660;
+  --ifm-link-color: #2A9660;
+  --ifm-navbar-link-color: #2A9660;
+  --ifm-color-primary-dark: #2A9660;
   --ifm-color-primary-darker: #277148;
   --ifm-color-primary-darkest: #205d3b;
   --ifm-color-primary-light: #33925d;
@@ -68,8 +70,10 @@
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
   --ifm-font-color-base: #FFFFFF;
-  --ifm-navbar-link-color: #FFFFFF;
-  --ifm-color-primary: #3835d9;
+  --ifm-link-color: #38FF9C;
+  --ifm-navbar-link-color: #38FF9C;
+  --ifm-toc-link-color: #38FF9C;
+  --ifm-color-primary: #38FF9C;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
   --ifm-color-primary-darkest: #1a8870;
@@ -86,14 +90,6 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
   font-family: 'Roboto', sans-serif;
-}
-
-a {
-  color: #38FF9C;
-}
-
-a:hover {
-  color: #38FF9C;
 }
 
 nav.navbar {
@@ -115,7 +111,6 @@ nav.navbar {
 .navbar a:hover {
   color: #CFD1D9;
 }
-
 .navbar__title {
   font-size: 20px;
   font-family: 'Roboto', sans-serif;
@@ -125,6 +120,21 @@ nav.navbar {
   letter-spacing: 0em;
   text-align: left;
 }
+
+[data-theme='dark'] .navbar-sidebar {
+  background-color: #171717;
+  color: #FFFFFF;
+}
+
+[data-theme='light'] .navbar-sidebar {
+  background-color: #FFFFFF;
+  color: #171717;
+}
+
+[data-theme='light'] .navbar-sidebar__brand {
+  background-color: #171717;
+}
+
 
 .dropdown__menu {
   background-color: #030405;
@@ -150,30 +160,36 @@ nav.navbar {
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
-  color: #030405;
   transition: color 0.3s;
 }
 
 [data-theme='dark'] .menu__link {
-  color: #FFFFFF; /* Or any color you prefer for dark mode */
+  color: #FFFFFF;
 }
-
-.menu__link:hover,
-.menu__link:focus {
-  color: #38FF9C !important;
-}
-
-.menu__link.active {
+[data-theme='dark'] .menu__link:hover, .menu__link:focus, .menu__link:active {
   color: #38FF9C;
+}
+
+[data-theme='light'] .menu__link {
+  color: #171717;
+}
+[data-theme='light'] .menu__link:hover, .menu__link:focus, .menu__link:active {
+  color: #171717;
 }
 
 /* breadcrumbs menu */
-.breadcrumbs__item--active .breadcrumbs__link {
+[data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link {
+  color: #38FF9C;
+}
+[data-theme='dark'] .table-of-contents__link:hover, .table-of-contents__link:hover code, .table-of-contents__link--active {
   color: #38FF9C;
 }
 
-.table-of-contents__link:hover, .table-of-contents__link:hover code, .table-of-contents__link--active {
-  color: #38FF9C;
+[data-theme='light'] .breadcrumbs__item--active .breadcrumbs__link {
+  color: #2A9660;
+}
+[data-theme='light'] .table-of-contents__link:hover, .table-of-contents__link:hover code, .table-of-contents__link--active {
+  color: #2A9660;
 }
 
 /* hide next and previous */
@@ -189,9 +205,13 @@ nav.navbar {
 }
 
 /* button nav next/prev */
-.pagination-nav__link:hover {
+[data-theme='dark'] .pagination-nav__link:hover {
   color: #38FF9C;
   border: 1px solid #38FF9C
+}
+[data-theme='light'] .pagination-nav__link:hover {
+  color: #2A9660;
+  border: 1px solid #2A9660
 }
 
 /* Get code blocks closer to site theme */
