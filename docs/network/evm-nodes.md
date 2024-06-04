@@ -31,7 +31,8 @@ The default is `$HOME/.octez-evm-node`.
    ```
 
    This command uses preimages hosted online.
-   It's safe to use these preimages, but if you don't trust them, you can move the contents of the `wasm_2_0_0/` directory that was created when you built the installer kernel to the local data directory.
+   It's safe to use these preimages because the node verifies them.
+   If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink kernel](./building-kernel).
    However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink after that.
 
 1. Run this command to start the node with the Etherlink installer kernel that you built or downloaded; change the name of the `installer.hex` file in the command accordingly:
