@@ -1,6 +1,6 @@
 # How do I participate in governance?
 
-Etherlink bakers can participate in the [Etherlink governance process](./how-is-etherlink-governed) by submitting proposals and voting for them.
+Etherlink bakers can participate in the [Etherlink governance process](/governance/how-is-etherlink-governed) by submitting proposals and voting for them.
 
 The voting power of a baker is the amount of tez that it has staked plus the tez that delegators have delegated to it, also called its _staking balance_.
 

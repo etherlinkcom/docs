@@ -6,10 +6,10 @@ The Etherlink EVM nodes are responsible for maintaining a copy of the Etherlink 
 
 ## Prerequisites
 
-- Make sure you understand the interaction between different nodes as described in [Etherlink architecture](./architecture).
-- Run an Etherlink Smart Rollup node as described in [Running an Etherlink Smart Rollup node](./smart-rollup-nodes).
+- Make sure you understand the interaction between different nodes as described in [Etherlink architecture](/network/architecture).
+- Run an Etherlink Smart Rollup node as described in [Running an Etherlink Smart Rollup node](/network/smart-rollup-nodes).
 Public Smart Rollup nodes for Etherlink are not yet available, so you must run your own if you want to participate in the Etherlink network.
-- Get the Etherlink installer kernel (`installer.hex` file), which you can build yourself as described in [Building the Etherlink kernel](./building-kernel) or download here: [installer.hex](/files/installer.hex).
+- Get the Etherlink installer kernel (`installer.hex` file), which you can build yourself as described in [Building the Etherlink kernel](/network/building-kernel) or download here: [installer.hex](/files/installer.hex).
 
 ## Running an Etherlink EVM node
 
@@ -32,7 +32,7 @@ The default is `$HOME/.octez-evm-node`.
 
    This configuration uses the preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
    It's safe to use these preimages because the node verifies them.
-   If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink kernel](./building-kernel).
+   If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink kernel](/network/building-kernel).
    However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink after that.
 
 1. Run this command to start the node with the Etherlink installer kernel that you built or downloaded; change the name of the `installer.hex` file in the command accordingly:
