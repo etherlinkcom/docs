@@ -12,7 +12,7 @@ The data for the original kernel is stored in separate files called _preimages_.
 
 ## References
 
-Make sure that you understand the interaction between different nodes as described in [Etherlink architecture](./architecture).
+Make sure that you understand the interaction between different nodes as described in [Etherlink architecture](/network/architecture).
 
 For more information about Smart Rollup nodes in general, see [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com and [Smart Rollup Node](https://tezos.gitlab.io/shell/smart_rollup_node.html) in the Octez documentation.
 
@@ -48,7 +48,7 @@ The best place to get the most recent binary files to use with Etherlink is http
 
       This configuration uses the preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
       It's safe to use these preimages because the node verifies them.
-      If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink kernel](./building-kernel).
+      If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink kernel](/network/building-kernel).
       However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink after that.
 
 1. Download the latest snapshot from https://snapshots.eu.tzinit.org/etherlink-mainnet/, which is named `eth-mainnet.snapshot`:
@@ -83,4 +83,4 @@ For example, this query gets the health of the node:
    curl -s http://localhost:8932/health
    ```
 
-Now that you have a Smart Rollup node configured for Etherlink, you can run an Etherlink EVM node, as described in [Running an Etherlink EVM node](./evm-nodes).
+Now that you have a Smart Rollup node configured for Etherlink, you can run an Etherlink EVM node, as described in [Running an Etherlink EVM node](/network/evm-nodes).
