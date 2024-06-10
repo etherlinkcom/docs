@@ -28,7 +28,7 @@ const sidebars = {
       collapsible: false,
       items: [
         'get-started/using-your-wallet',
-        'get-started/on-ramping',
+        'get-started/bridging',
         {
           type: 'link',
           href: 'https://explorer.etherlink.com',
