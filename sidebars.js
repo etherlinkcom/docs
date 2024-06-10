@@ -28,6 +28,7 @@ const sidebars = {
       collapsible: false,
       items: [
         'get-started/using-your-wallet',
+        'get-started/getting-testnet-tokens',
         'get-started/bridging',
         {
           type: 'link',
