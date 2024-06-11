@@ -37,7 +37,7 @@ The gas fee depends on these parameters:
 
 If the backlog is less than the tolerance, the gas fee for a transaction is `minimum_base_fee_per_gas`.
 
-If the backlog is greater than the tolerance, Etherlink calculates the gas fee according to this equation:
+If the backlog is greater than the tolerance, Etherlink calculates the gas fee with this equation:
 
 $$
 \texttt{gas fee} = \texttt{minimum\_base\_fee\_per\_gas} * e ^{a * (\texttt{backlog} - \texttt{tolerance})}
@@ -47,6 +47,12 @@ In other words, the gas fee is the base fee times Euler's number to the power of
 
 ## Storage fee
 
-TODO
+The storage fee, also called the _data availability fee_, helps Etherlink cover the cost of posting data to layer 1.
 
-Is this like the storage fee portion of a Tezos L1 transaction?
+The amount of the fee depends on the size of the data in the transaction (as provided by `tx.data.size()`) and the size of the access list, a list of addresses and storage keys that a transaction intends to access (as provided by `tx.access_list.size()`).
+
+Etherlink calculates the storage fee with this equation:
+
+$$
+\texttt{0.000004 XTZ} * (150 + \texttt{tx.data.size()} + \texttt{tx.access\_list.size()})
+$$
