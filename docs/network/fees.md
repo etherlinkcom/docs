@@ -39,7 +39,9 @@ If the backlog is less than the tolerance, the gas fee for a transaction is `min
 
 If the backlog is greater than the tolerance, Etherlink calculates the gas fee according to this equation:
 
-`minimum_base_fee_per_gas * exp(alpha * (backlog - tolerance)`
+$$
+\texttt{gas fee} = \texttt{minimum\_base\_fee\_per\_gas} * e ^{a * (\texttt{backlog} - \texttt{tolerance})}
+$$
 
 In other words, the gas fee is the base fee times Euler's number to the power of the alpha scaling factor times the backlog in excess of the tolerance.
 
