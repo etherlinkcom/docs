@@ -1,0 +1,49 @@
+---
+title: Bridging tokens
+---
+
+import Figure from '@site/src/components/Figure';
+
+You can move tokens from Etherlink to Tezos layer 1 and back through a process called _bridging_.
+Currently you can bridge the native token on Etherlink and Tezos, which is called tez and shown on price tickers with the symbol [XTZ](https://coinmarketcap.com/currencies/tezos/).
+When you bridge tokens in this way, the tokens on the source network are burned and the target network creates an equivalent number of tokens.
+For more information about tez, see [Tokens](https://docs.tezos.com/architecture/tokens) on docs.tezos.com.
+
+Etherlink and Tezos each have main networks called Mainnet and test networks called Ghostnet.
+Ghostnet is a synonym for Testnet in the Ethereum world; it allows developers to test their software in a risk-free sandbox environment.
+You can bridge tez from Tezos Mainnet to Etherlink Mainnet and back, and you can bridge tez from Tezos Ghostnet to Etherlink Ghostnet and back.
+
+:::note Bridging time
+Tokens that you bridge from Tezos to Etherlink are available for use on Etherlink immediately.
+
+Tokens that you bridge from Etherlink to Tezos are available for use on Tezos in two weeks.
+
+This delay is caused by the [Smart Rollup refutation period](https://docs.tezos.com/architecture/smart-rollups#refutation-periods).
+As with all Smart Rollups, Etherlink nodes post commitments about their state to Tezos layer 1, including incoming bridging transactions, on a regular schedule.
+Other nodes have the length of the refutation period (14 days) to challenge those commitments.
+At the end of the refutation period, the correct commitment is _cemented_, or made final and unchangeable.
+The Etherlink indexer run by Nomadic Labs automatically executes these bridging transactions when they are cemented, which makes the bridged tokens available on Tezos.
+:::
+
+## Mainnet
+
+To bridge tez from Tezos Mainnet to Etherlink Mainnet and back, use the [Mainnet canonical bridge](https://bridge.etherlink.com/).
+The bridge uses these general steps:
+
+1. Connect your Tezos and Etherlink-compatible wallets.
+1. Select the type of transfer:
+
+  - **Deposit** transfers tez from Tezos layer 1 to Etherlink
+  - **Withdraw** transfers tez from Etherlink to Tezos layer 1
+
+1. Enter the amount of tez to transfer.
+
+1. Click **Move funds to Etherlink** or **Move funds to Tezos**.
+
+You can monitor the status of your bridge operations on the **Transaction History** tab.
+
+## Ghostnet
+
+You can get Ghostnet tez from the [Ghostnet Faucet](https://faucet.ghostnet.teztnets.com/).
+
+Then you can use the [Testnet canonical bridge](https://bridge-xi.vercel.app/) to bridge those tokens to Etherlink or bridge tokens from Etherlink to Tezos.
