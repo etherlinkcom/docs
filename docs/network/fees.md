@@ -25,8 +25,8 @@ Etherlink has a target number of ticks to run per second, referred to as the _sp
 To calculate the throughput, Etherlink stores the number of ticks used by transactions and subtracts the speed limit every second.
 The remaining number of ticks is known as the _backlog_.
 
-In this way, if the number of ticks Etherlink runs per second exceeds the speed limit, the backlog increases and the execution fee goes up.
-If the number of ticks it runs per second is below the speed limit, the backlog decreases or reaches zero and the execution fee decreases or reaches a base amount.
+In this way, if the number of ticks that transactions use per second exceeds the speed limit, the backlog increases and the execution fee goes up.
+If the number of ticks they use per second is below the speed limit, the backlog decreases or reaches zero and the execution fee decreases or reaches a base amount.
 The backlog never goes below zero and the execution fee never goes below the base amount.
 
 The execution fee depends on these parameters:
