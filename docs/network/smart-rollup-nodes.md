@@ -127,7 +127,7 @@ The best place to get the most recent binary files to use with Etherlink is http
      --data-dir $sr_observer_data_dir
    ```
 
-   The node must be running in archive mode to provide your Smart Rollup node complete information about the Etherlink state from genesis.
+   The layer 1 node must be running in archive mode to provide your Smart Rollup node  information about the Etherlink state since its genesis.
    As in this example, you can use a public layer 1 RPC node for initial setup, or you can connect it to a layer 1 node that you are running for a more stable connection.
 
    The process of starting the node from genesis can take a long time because it must process every block.
