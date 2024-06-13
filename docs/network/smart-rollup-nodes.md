@@ -118,7 +118,9 @@ The best place to get the most recent binary files to use with Etherlink is http
       ```
 
       This configuration uses the preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
-      To build the preimages yourself, see [Building the Etherlink kernel](./building-kernel).
+      It's safe to use these preimages because the node verifies them.
+      If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink kernel](/network/building-kernel).
+      However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink after that.
 
 1. Start the Smart Rollup node in observer mode by running this command and using the RPC endpoint of a layer 1 node that is running in archive mode:
 
