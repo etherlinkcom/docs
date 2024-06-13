@@ -6,7 +6,8 @@ Etherlink transactions include two fees:
 
 - The _execution fee_, sometimes known as the _gas fee_, is a fee for running the transaction.
 It changes depending on Etherlink throughput over time; at times of high demand for Etherlink transactions, the gas fee rises.
-- The _inclusion fee_ helps defray the cost of the data that Etherlink stores on Tezos layer 1.
+This fee is burned.
+- The _inclusion fee_ goes to the sequencer to defray the cost of the data that Etherlink stores on Tezos layer 1.
 Transactions that use more data pay a higher fee.
 
 Unlike some other chains, Etherlink does not use a voluntary gas fee, also known as a tip, to encourage block producers to include transactions more quickly.
