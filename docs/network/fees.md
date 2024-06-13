@@ -45,7 +45,7 @@ $$
 \texttt{gas fee} = \texttt{minimum\_base\_fee\_per\_gas} * e ^{a * (\texttt{backlog} - \texttt{tolerance})}
 $$
 
-In other words, the gas price is the base fee times Euler's number to the power of the alpha scaling factor times the backlog in excess of the tolerance.
+In other words, the gas price is the base fee times the exponential function of the alpha scaling factor times the backlog in excess of the tolerance.
 
 ## Inclusion fee
 
