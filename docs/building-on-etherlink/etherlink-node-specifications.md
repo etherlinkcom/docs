@@ -20,7 +20,7 @@ Endpoint | Supported | Notes
 `eth_getBlockReceipts` | Yes |
 `eth_sendRawTransaction` | Yes |
 `debug_traceBlockByNumber` | No | On roadmap but not guaranteed
-`debug_traceTransaction` | No | On roadmap but not guaranteed
+`debug_traceTransaction` | Partially | Supported on Ghostnet but not Mainnet
 
 ## [ethers.js](https://docs.ethers.org/v6/) SDK methods tested
 
