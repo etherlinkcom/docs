@@ -11,6 +11,7 @@ Transactions that use more data pay a higher fee.
 
 Unlike some other chains, Etherlink does not use a voluntary gas fee, also known as a tip, to encourage block producers to include transactions more quickly.
 Because the Etherlink sequencer orders transactions in first-come-first-serve order, there is no need to offer higher fees for faster inclusion.
+Etherlink ignores any fees included in the transaction beyond the execution fee and the inclusion fee.
 
 ## Gas fee
 
