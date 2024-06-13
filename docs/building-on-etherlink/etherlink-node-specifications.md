@@ -16,7 +16,8 @@ Endpoint | Supported | Notes
 `eth_getBlockByNumber` | Yes |
 `eth_getTransactionReceipt` | Yes |
 `eth_blockNumber` | Yes |
-`eth_getLogs` or `eth_getBlockReceipts` | No | In Progress
+`eth_getLogs` | Yes |
+`eth_getBlockReceipts` | Yes |
 `debug_traceBlockByNumber` | No | On roadmap but not guaranteed
 `debug_traceTransaction` | No | On roadmap but not guaranteed
 
