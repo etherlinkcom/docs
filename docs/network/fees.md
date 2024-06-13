@@ -32,7 +32,7 @@ The gas fee depends on these parameters:
 
 - `minimum_base_fee_per_gas`: The base fee for Etherlink transactions, which is 1 gwei
 - `speed_limit`: The target number of ticks per second
-- `tolerance`: The number of ticks that the actual number of ticks per second can exceed the speed limit without increasing the gas fee
+- `tolerance`: The size the backlog is allowed to grow to, before the gas price increases
 - `backlog`: A measure of the number of ticks per second in excess of the speed limit; Etherlink deducts the speed limit from the backlog every second
 - `alpha`: A scaling factor
 
