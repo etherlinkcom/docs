@@ -21,7 +21,7 @@ As demand increases, Etherlink increases the number of ticks per second to proce
 
 Etherlink has a target number of ticks per second, referred to as the _speed limit_.
 To calculate the actual throughput, Etherlink stores the number of actual ticks and subtracts the speed limit every second.
-This number of ticks that exceed the speed limit is called the _backlog_.
+The remaining number of ticks that are left over are known as the _backlog_.
 
 In this way, if the number of ticks per second exceeds the speed limit, the backlog increases and the gas fee goes up.
 If the number of ticks per second is below the speed limit, the backlog decreases or reaches zero and the gas fee decreases or reaches a base amount.
