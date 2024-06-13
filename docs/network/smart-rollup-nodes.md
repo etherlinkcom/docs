@@ -10,6 +10,8 @@ The Smart Rollup node runs the _kernel_, which is a Rust program compiled in WAS
 To start, the node uses the _installer kernel_, which is a compressed version of the kernel that provides only enough information to install the original kernel.
 The data for the original kernel is stored in separate files called _preimages_.
 
+You can run the Smart Rollup node starting from Etherlink genesis or from a snapshot of a recent Etherlink state.
+
 ## References
 
 Make sure that you understand the interaction between different nodes as described in [Etherlink architecture](/network/architecture).
@@ -83,4 +85,60 @@ For example, this query gets the health of the node:
    curl -s http://localhost:8932/health
    ```
 
-Now that you have a Smart Rollup node configured for Etherlink, you can run an Etherlink EVM node, as described in [Running an Etherlink EVM node](/network/evm-nodes).
+Now that you have a Smart Rollup node configured for Etherlink, you can run an Etherlink EVM node, as described in [Running an Etherlink EVM node](./evm-nodes).
+
+## Running the Smart Rollup node from Etherlink genesis
+
+Running the Smart Rollup node from Etherlink genesis takes time but does not rely on snapshots created by third parties.
+
+For simplicity, these steps show how to run the Smart Rollup node in observer mode:
+
+1. Get a built version of the Smart Rollup node binary, named `octez-smart-rollup-node`.
+The best place to get the most recent binary files to use with Etherlink is https://gitlab.com/tezos/tezos/-/releases.
+
+1. Initialize the local context of the node, which is where it stores local data:
+
+   1. Set the environment variable `sr_observer_data_dir` to the directory where the node should store its local data.
+   The default value is `$HOME/.tezos-smart-rollup-node`.
+   1. Initialize the local context by running this command:
+
+      ```bash
+      octez-smart-rollup-node init observer config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
+        with operators --data-dir $sr_observer_data_dir \
+        --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
+      ```
+
+      This command generates a minimal configuration file (`config.json`) in the local data folder:
+
+      ```json
+      { "smart-rollup-address": "sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf",
+        "smart-rollup-node-operator": {}, "fee-parameters": {}, "mode": "observer",
+        "pre-images-endpoint":
+          "https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0" }
+      ```
+
+      This configuration uses the preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
+      It's safe to use these preimages because the node verifies them.
+      If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink kernel](/network/building-kernel).
+      However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink after that.
+
+1. Start the Smart Rollup node in observer mode by running this command and using the RPC endpoint of a layer 1 node that is running in archive mode:
+
+   ```bash
+   octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet run \
+     --data-dir $sr_observer_data_dir
+   ```
+
+   The layer 1 node must be running in archive mode to provide your Smart Rollup node  information about the Etherlink state since its genesis.
+   As in this example, you can use a public layer 1 RPC node for initial setup, or you can connect it to a layer 1 node that you are running for a more stable connection.
+
+   The process of starting the node from genesis can take a long time because it must process every block.
+
+1. Verify that the Smart Rollup node is running by querying it.
+For example, this query gets the health of the node:
+
+   ```bash
+   curl -s http://localhost:8932/health
+   ```
+
+Now that you have a Smart Rollup node configured for Etherlink, you can run an Etherlink EVM node, as described in [Running an Etherlink EVM node](./evm-nodes).
