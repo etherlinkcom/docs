@@ -10,7 +10,15 @@ title: 'Etherlink Node Specifications'
 
 ## Geth Endpoint Support
 
-<table><thead><tr><th width="333.3333333333333">Endpoint</th><th data-type="checkbox">Supported</th><th>Comments</th></tr></thead><tbody><tr><td><code>xpool_content</code> or <code>eth_getBlockByNumber</code> with pending transactions</td><td>true</td><td>The RPC is accessible but always returns an empty pool.</td></tr><tr><td><code>eth_getBlockByNumber</code></td><td>true</td><td></td></tr><tr><td><code>eth_getTransactionReceipt</code></td><td>true</td><td></td></tr><tr><td><code>eth_blockNumber</code></td><td>true</td><td></td></tr><tr><td><code>eth_getLogs</code> or <code>eth_getBlockReceipts</code></td><td>false</td><td>In Progress</td></tr><tr><td><code>debug_traceBlockByNumber</code></td><td>false</td><td>On roadmap but not guaranteed </td></tr><tr><td><code>debug_traceTransaction</code></td><td>false</td><td>On roadmap but not guaranteed </td></tr></tbody></table>
+Endpoint | Supported | Notes
+--- | --- | ---
+`xpool_content` or `eth_getBlockByNumber` with pending transactions | Yes | The RPC is accessible but always returns an empty pool.
+`eth_getBlockByNumber` | Yes |
+`eth_getTransactionReceipt` | Yes |
+`eth_blockNumber` | Yes |
+`eth_getLogs` or `eth_getBlockReceipts` | No | In Progress
+`debug_traceBlockByNumber` | No | On roadmap but not guaranteed
+`debug_traceTransaction` | No | On roadmap but not guaranteed
 
 ## [ethers.js](https://docs.ethers.org/v6/) SDK methods tested
 
