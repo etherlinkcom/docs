@@ -12,7 +12,7 @@ title: 'Etherlink Node Specifications'
 
 Endpoint | Supported | Notes
 --- | --- | ---
-`xpool_content` or `eth_getBlockByNumber` with pending transactions | Yes | The RPC is accessible but always returns an empty pool.
+`txpool_content` or `eth_getBlockByNumber` with pending transactions | Yes | The RPC is accessible but always returns an empty pool.
 `eth_getBlockByNumber` | Yes |
 `eth_getTransactionReceipt` | Yes |
 `eth_blockNumber` | Yes |
