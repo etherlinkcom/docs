@@ -56,6 +56,7 @@ const sidebars = {
       collapsible: false,
       items: [
         'network/architecture',
+        'network/fees',
         'network/smart-rollup-nodes',
         'network/evm-nodes',
         'network/building-kernel',
