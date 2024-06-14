@@ -13,7 +13,7 @@ Transactions that use more data pay a higher fee.
 Unlike some other chains, Etherlink does not use a voluntary gas fee, also known as a tip, to encourage block producers to include transactions more quickly.
 Because the Etherlink sequencer orders transactions in first-come-first-served order, there is no need to offer higher fees for faster inclusion.
 
-The base fee of the transaction (in the Ethereum `max_fee_per_gas` field) must be enough to cover these Etherlink fees.
+The base fee of the transaction (in the Ethereum `max_fee_per_gas` [EIP-1559](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1559.md) field) must be enough to cover these Etherlink fees.
 Etherlink ignores the priority fee in the `max_priority_fee_per_gas` field.
 If the transaction's base fee is not enough to cover Etherlink's fees, the transaction fails, even if the amount of the priority fee would be enough to cover the fee.
 
