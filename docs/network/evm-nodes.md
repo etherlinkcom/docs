@@ -28,8 +28,14 @@ The default is `$HOME/.octez-evm-node`.
    ```bash
    octez-evm-node init config --devmode \
      --data-dir $evm_observer_dir --rollup-node-endpoint $sr_node_observer_rpc \
+     --preimages-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
      --evm-node-endpoint https://node.mainnet.etherlink.com
    ```
+
+   This configuration uses the preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
+   It's safe to use these preimages because the node verifies them.
+   If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink kernel](/network/building-kernel).
+   However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink after that.
 
 1. Run this command to import the kernel from the Smart Rollup node:
 
