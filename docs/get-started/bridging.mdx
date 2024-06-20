@@ -24,21 +24,6 @@ At the end of the refutation period, the correct commitment is _cemented_, or ma
 The Etherlink indexer run by Nomadic Labs automatically executes these bridging transactions when they are cemented, which makes the bridged tokens available on Tezos.
 :::
 
-## How bridging works
-
-The bridging process uses two contracts, an EVM bridging contract that stores information about how many tokens different accounts have bridged and an exchanger contract that stores the tokens and issues tickets that represent those tokens.
-
-1. A user sends a request to the Etherlink's EVM bridge contract's "deposit" entrypoint.
-The request includes the tez to bridge, the address of the Etherlink Smart Rollup, and the user's Etherlink wallet address.
-1. The EVM bridge contract sends the tez in a transaction to the exchanger contract's "mint" entrypoint.
-1. The exchanger contract stores the tez and creates a [ticket](https://docs.tezos.com/smart-contracts/data-types/complex-data-types#tickets) that represents the receipt of the tokens.
-1. The exchanger contract sends the ticket to the EVM bridge contract.
-1. The bridge contract forwards the ticket to the Etherlink Smart Rollup, which mints the appropriate Etherlink tokens and sends them to the address based on the ticket.
-
-This diagram is an overview of the process:
-
-![Overview of the token bridging process](/img/bridging.png)
-
 ## Bridging tokens on Mainnet
 
 To bridge tez from Tezos Mainnet to Etherlink Mainnet and back, use the [Mainnet canonical bridge](https://bridge.etherlink.com/).
@@ -61,3 +46,18 @@ You can monitor the status of your bridge operations on the **Transaction Histor
 You can get Ghostnet tez from the [Ghostnet Faucet](https://faucet.ghostnet.teztnets.com/).
 
 Then you can use the [Testnet canonical bridge](https://bridge-xi.vercel.app/) to bridge those tokens to Etherlink or bridge tokens from Etherlink to Tezos.
+
+## How bridging works
+
+The bridging process uses two contracts, an EVM bridging contract that stores information about how many tokens different accounts have bridged and an exchanger contract that stores the tokens and issues tickets that represent those tokens.
+
+1. A user sends a request to the Etherlink's EVM bridge contract's "deposit" entrypoint.
+The request includes the tez to bridge, the address of the Etherlink Smart Rollup, and the user's Etherlink wallet address.
+1. The EVM bridge contract sends the tez in a transaction to the exchanger contract's "mint" entrypoint.
+1. The exchanger contract stores the tez and creates a [ticket](https://docs.tezos.com/smart-contracts/data-types/complex-data-types#tickets) that represents the receipt of the tokens.
+1. The exchanger contract sends the ticket to the EVM bridge contract.
+1. The bridge contract forwards the ticket to the Etherlink Smart Rollup, which mints the appropriate Etherlink tokens and sends them to the address based on the ticket.
+
+This diagram is an overview of the process:
+
+![Overview of the token bridging process](/img/bridging.png)
