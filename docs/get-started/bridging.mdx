@@ -56,7 +56,7 @@ The request includes the tez to bridge, the address of the Etherlink Smart Rollu
 1. The EVM bridge contract sends the tez in a transaction to the exchanger contract's "mint" entrypoint.
 1. The exchanger contract stores the tez and creates a [ticket](https://docs.tezos.com/smart-contracts/data-types/complex-data-types#tickets) that represents the receipt of the tokens.
 1. The exchanger contract sends the ticket to the EVM bridge contract.
-1. The bridge contract forwards the ticket to the Etherlink Smart Rollup, which mints the appropriate Etherlink tokens and sends them to the address based on the ticket.
+1. The bridge contract forwards the ticket to the Etherlink Smart Rollup, which uses the information in the ticket to mint tokens on Etherlink and send them to the user's Etherlink address.
 
 This diagram is an overview of the process:
 
