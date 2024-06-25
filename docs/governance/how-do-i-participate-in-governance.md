@@ -79,6 +79,9 @@ The command takes these parameters:
 - The address of the Etherlink kernel or security governance contract
 - The hash of the kernel upgrade
 
+The proposer must make the code of the new kernel available for people to evaluate.
+Proposers can make it easier for bakers to upgrade to the new kernel by providing the preimages for the kernel online so nodes can update from them directly.
+
 To upvote a proposed kernel or security update during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
 
 ```bash
