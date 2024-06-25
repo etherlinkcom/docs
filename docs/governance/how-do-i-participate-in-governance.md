@@ -64,6 +64,9 @@ octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1HfJb718f
   --arg "0x009279df4982e47cf101e2525b605fa06cd3ccc0f67d1c792a6a3ea56af9606abc"
 ```
 
+The proposer must make the code of the new kernel available for people to evaluate.
+Proposers can make it easier for bakers to upgrade to the new kernel by providing the preimages for the kernel online so nodes can update from them directly.
+
 To upvote a proposed kernel or security update during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
 
 ```bash
