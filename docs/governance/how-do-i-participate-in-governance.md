@@ -191,6 +191,13 @@ The command takes these parameters:
 - The address of the Sequencer Committee governance contract
 - `"yea"`, `"nay"`, or `"pass"`, including the double quotes
 
+For example:
+
+```bash
+octez-client transfer 0 from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq to KT1FRzozuzFMWLimpFeSdADHTMxzU8KtgCr9 \
+  --entrypoint "vote" --arg "\"yea\""
+```
+
 ### Triggering committee upgrades
 
 After a proposed member wins a vote, any user can trigger the change to the committee by calling the governance contract's `trigger_committee_upgrade` entrypoint:
