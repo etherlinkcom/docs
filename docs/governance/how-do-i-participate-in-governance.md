@@ -206,7 +206,7 @@ octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
 The command takes these parameters:
 
 - `YOUR_ADDRESS`: The address or Octez client alias of your baker account
-- `CONTRACT_ADDRESS`: The address of the Sequencer C0mmittee governance contract
+- `CONTRACT_ADDRESS`: The address of the Sequencer Committee governance contract
 - `YOUR_VOTE`: `"yea"`, `"nay"`, or `"pass"`, including the double quotes
 
 For example:
