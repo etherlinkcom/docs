@@ -131,6 +131,9 @@ octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1HfJb718f
   --arg "\"sr1EStimadnRRA3vnjpWV1RwNAsDbM3JaDt6\""
 ```
 
+After the new kernel becomes active, bakers must upgrade their nodes to it to continue to participate in Etherlink.
+If a node uses a preimages endpoint as described in [Running an Etherlink EVM node](../network/evm-nodes) and [Running an Etherlink Smart Rollup node](../network/smart-rollup-nodes), the node updates automatically.
+
 ## Participating in Sequencer Committee governance
 
 Bakers can propose a member for Etherlink's Sequencer Committee, vote for or against proposed members, and trigger the change to committee members.
