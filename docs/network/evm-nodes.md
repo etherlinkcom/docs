@@ -13,7 +13,7 @@ Public Smart Rollup nodes for Etherlink are not yet available, so you must run y
 The EVM node runs Etherlink's kernel.
 You can get the kernel by importing it from a running Etherlink Smart Rollup node or by providing the installer kernel.
 
-## Running an Etherlink EVM node from an existing Smart Rollup node
+## Running an Etherlink EVM node from an existing Etherlink Smart Rollup node
 
 Follow these steps to run the EVM node from an existing Etherlink Smart Rollup node:
 
