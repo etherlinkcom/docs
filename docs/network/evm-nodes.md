@@ -51,10 +51,10 @@ The default is `$HOME/.octez-evm-node`.
 
 By default, the EVM node exposes its JSON RPC API endpoint to `localhost:8545`.
 You can test that everything works as expected by running RPC requests manually or by setting your wallet to use your local node.
-For example, you can call the node's RPC API with this command, putting the URL to your EVM node at the end:
+For example, this command gets the number of the most recent block in hexadecimal:
 
 ```bash
-curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"tez_kernelVersion"}' http://localhost:8545
+curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_blockNumber"}' http://localhost:8545
 ```
 
 ## Running an Etherlink EVM node from the installer kernel
