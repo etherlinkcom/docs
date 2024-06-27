@@ -88,6 +88,8 @@ The default is `$HOME/.octez-evm-node`.
    octez-evm-node run observer --data-dir $evm_observer_dir --initial-kernel installer.hex
    ```
 
+   The `--initial-kernel` argument is needed only the first time that you start the node.
+
 By default, the EVM node exposes its JSON RPC API endpoint to `localhost:8545`.
 You can test that everything works as expected by running RPC requests manually or by setting your wallet to use your local node.
 For example, you can call the node's RPC API with this command, putting the URL to your EVM node at the end:
