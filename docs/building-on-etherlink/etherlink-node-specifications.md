@@ -45,7 +45,7 @@ Endpoint | Supported | Notes
 `eth_signTransaction` | No |
 `eth_sendTransaction` | No |
 `eth_sendRawTransaction` | Yes |
-`eth_call` | Yes |
+`eth_call` | No | Etherlink nodes use the Geth version of the `eth_call` endpoint instead of the standard Ethereum `eth_call` endpoint
 `eth_estimateGas` | Yes |
 `eth_getBlockByHash` | Yes |
 `eth_getBlockByNumber` | Yes |
