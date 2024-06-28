@@ -96,9 +96,17 @@ Endpoint | Supported | Notes
 `eth_call` | No | Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version
 `txpool_content` | Partially | Returns the transaction pool on Ghostnet but always returns an empty pool on Mainnet
 
-## [ethers.js](https://docs.ethers.org/v6/) SDK methods tested
+## ethers.js SDK methods
 
-<table><thead><tr><th width="366.3333333333333">Method</th><th data-type="checkbox">Supported</th><th>Comments</th></tr></thead><tbody><tr><td><code>provider.getBlock</code>(<a href="https://docs.ethers.org/v6/api/providers/#Provider-getBlock">link</a>)</td><td>true</td><td></td></tr><tr><td><code>provider.getTransactionReceipt</code> (<a href="https://docs.ethers.org/v6/api/providers/#Provider-getTransactionReceipt">link</a>)</td><td>true</td><td></td></tr><tr><td><code>provider.getBlockNumber</code>(<a href="https://docs.ethers.org/v6/api/providers/#Provider-getBlockNumber">link</a>)</td><td>true</td><td></td></tr><tr><td><code>provider.getBalance</code>(<a href="https://docs.ethers.org/v6/api/providers/#Provider-getBalance">link</a>)</td><td>true</td><td></td></tr><tr><td><code>singer.sendTransaction</code>(<a href="https://docs.ethers.org/v6/api/providers/#Signer-sendTransaction">link</a>)</td><td>true</td><td></td></tr></tbody></table>
+The Etherlink EVM node supports these [ethers.js](https://docs.ethers.org/v6/) methods:
+
+Method | Supported | Notes
+--- | --- | ---
+[`provider.getBlock`](https://docs.ethers.org/v6/api/providers/#Provider-getBlock) | Yes |
+[`provider.getTransactionReceipt`](https://docs.ethers.org/v6/api/providers/#Provider-getTransactionReceipt) | Yes |
+[`provider.getBlockNumber`](https://docs.ethers.org/v6/api/providers/#Provider-getBlockNumber) | Yes |
+[`provider.getBalance`](https://docs.ethers.org/v6/api/providers/#Provider-getBalance) | Yes |
+[`singer.sendTransaction`](https://docs.ethers.org/v6/api/providers/#Signer-sendTransaction) | Yes |
 
 ## Additional Information
 
