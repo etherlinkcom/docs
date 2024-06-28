@@ -19,49 +19,49 @@ For information about these endpoints, see [JSON-RPC API](https://ethereum.org/e
 
 Endpoint | Supported | Notes
 --- | --- | ---
-`web3_clientVersion` | Yes |
-`web3_sha3` | Yes |
-`net_version` | Yes |
-`net_listening` | No |
-`net_peerCount` | No |
-`eth_protocolVersion` | No |
-`eth_syncing` | No |
-`eth_coinbase` | No |
-`eth_chainId` | Yes |
-`eth_mining` | No |
-`eth_hashrate` | No |
-`eth_gasPrice` | Yes |
 `eth_accounts` | Yes |
 `eth_blockNumber` | Yes |
-`eth_getBalance` | Yes |
-`eth_getStorageAt` | Yes |
-`eth_getTransactionCount` | Yes |
-`eth_getBlockTransactionCountByHash` | Yes |
-`eth_getBlockTransactionCountByNumber` | Yes |
-`eth_getUncleCountByBlockHash` | Yes |
-`eth_getUncleCountByBlockNumber` | Yes |
-`eth_getCode` | Yes |
-`eth_sign` | No |
-`eth_signTransaction` | No |
-`eth_sendTransaction` | No |
-`eth_sendRawTransaction` | Yes |
 `eth_call` | Yes | Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version
+`eth_chainId` | Yes |
+`eth_coinbase` | No |
 `eth_estimateGas` | Yes |
+`eth_gasPrice` | Yes |
+`eth_getBalance` | Yes |
 `eth_getBlockByHash` | Yes |
 `eth_getBlockByNumber` | Yes |
-`eth_getTransactionByHash` | Yes |
-`eth_getTransactionByBlockHashAndIndex` | Yes |
-`eth_getTransactionByBlockNumberAndIndex` | Yes |
-`eth_getTransactionReceipt` | Yes |
-`eth_getUncleByBlockHashAndIndex` | Yes |
-`eth_getUncleByBlockNumberAndIndex` | Yes |
-`eth_newFilter` | No |
-`eth_newBlockFilter` | No |
-`eth_newPendingTransactionFilter` | No |
-`eth_uninstallFilter` | No |
+`eth_getBlockTransactionCountByHash` | Yes |
+`eth_getBlockTransactionCountByNumber` | Yes |
+`eth_getCode` | Yes |
 `eth_getFilterChanges` | No |
 `eth_getFilterLogs` | No |
 `eth_getLogs` | Yes |
+`eth_getStorageAt` | Yes |
+`eth_getTransactionByBlockHashAndIndex` | Yes |
+`eth_getTransactionByBlockNumberAndIndex` | Yes |
+`eth_getTransactionByHash` | Yes |
+`eth_getTransactionCount` | Yes |
+`eth_getTransactionReceipt` | Yes |
+`eth_getUncleByBlockHashAndIndex` | Yes |
+`eth_getUncleByBlockNumberAndIndex` | Yes |
+`eth_getUncleCountByBlockHash` | Yes |
+`eth_getUncleCountByBlockNumber` | Yes |
+`eth_hashrate` | No |
+`eth_mining` | No |
+`eth_newBlockFilter` | No |
+`eth_newFilter` | No |
+`eth_newPendingTransactionFilter` | No |
+`eth_protocolVersion` | No |
+`eth_sendRawTransaction` | Yes |
+`eth_sendTransaction` | No |
+`eth_sign` | No |
+`eth_signTransaction` | No |
+`eth_syncing` | No |
+`eth_uninstallFilter` | No |
+`net_listening` | No |
+`net_peerCount` | No |
+`net_version` | Yes |
+`web3_clientVersion` | Yes |
+`web3_sha3` | Yes |
 
 ### Geth-specific endpoints
 
