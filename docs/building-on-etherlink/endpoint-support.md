@@ -1,19 +1,11 @@
 ---
-title: 'Etherlink Node Specifications'
+title: 'Ethereum endpoint support'
 ---
-
-## Node Client Support
-
-| Specification | Type   | Comments                                                   |
-| ------------- | ------ | ---------------------------------------------------------- |
-| Node Client   | `geth` | Currently, the EVM RPC endpoint only implements geth RPCs. |
-
-## Ethereum endpoint support
 
 Etherlink nodes use [Geth](https://geth.ethereum.org/) to provide access to both standard Ethereum RPC endpoints and Geth-specific RPC endpoints.
 These tables list these endpoints and whether Etherlink supports them:
 
-### Standard Ethereum endpoints
+## Standard Ethereum endpoints
 
 For information about these endpoints, see [JSON-RPC API](https://ethereum.org/en/developers/docs/apis/json-rpc) and the [Ethereum JSON-RPC Specification](https://ethereum.github.io/execution-apis/api-documentation/) in the Ethereum documentation.
 
@@ -92,7 +84,7 @@ Endpoint | Supported | Notes
 `web3_clientVersion` | Yes |
 `web3_sha3` | Yes |
 
-### Geth-specific endpoints
+## Geth-specific endpoints
 
 This table shows the Geth endpoints that Etherlink nodes support.
 All other Geth endpoints are not supported.

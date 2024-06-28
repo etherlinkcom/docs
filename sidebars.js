@@ -44,7 +44,7 @@ const sidebars = {
       collapsible: false,
       items: [
         'building-on-etherlink/networks-and-public-rpc-endpoints',
-        'building-on-etherlink/etherlink-node-specifications',
+        'building-on-etherlink/endpoint-support',
         'building-on-etherlink/token-addresses',
         'building-on-etherlink/development-toolkits',
       ],
