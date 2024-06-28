@@ -45,7 +45,7 @@ Endpoint | Supported | Notes
 `eth_signTransaction` | No |
 `eth_sendTransaction` | No |
 `eth_sendRawTransaction` | Yes |
-`eth_call` | No | Etherlink nodes use the Geth version of the `eth_call` endpoint instead of the standard Ethereum `eth_call` endpoint
+`eth_call` | Yes | Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version
 `eth_estimateGas` | Yes |
 `eth_getBlockByHash` | Yes |
 `eth_getBlockByNumber` | Yes |
@@ -72,7 +72,7 @@ For information about these endpoints, see the Geth documentation at https://get
 Endpoint | Supported | Notes
 --- | --- | ---
 `debug_traceTransaction` | Partially | Supported on Ghostnet but not Mainnet
-`eth_call` | Yes | Etherlink nodes use the Geth version of the `eth_call` endpoint instead of the standard Ethereum `eth_call` endpoint
+`eth_call` | No | Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version
 `txpool_content` | Partially | Returns the transaction pool on Ghostnet but always returns an empty pool on Mainnet
 
 ## [ethers.js](https://docs.ethers.org/v6/) SDK methods tested
