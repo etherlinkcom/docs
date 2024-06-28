@@ -44,7 +44,7 @@ Endpoint | Supported | Notes
 `eth_accounts` | Yes |
 `eth_blobBaseFee` | No |
 `eth_blockNumber` | Yes |
-`eth_call` | Yes | Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version
+`eth_call` | Yes | Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version; Ethereum does not support the state override set parameter
 `eth_chainId` | Yes |
 `eth_coinbase` | No |
 `eth_createAccessList` | No |
