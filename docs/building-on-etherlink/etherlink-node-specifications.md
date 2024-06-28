@@ -41,7 +41,7 @@ Endpoint | Supported | Notes
 `engine_newPayloadV2` | No |
 `engine_newPayloadV3` | No |
 `engine_newPayloadV4` | No |
-`eth_accounts` | Yes |
+`eth_accounts` | Yes | This endpoint always returns an empty list because the Etherlink EVM node does not manage any addresses
 `eth_blobBaseFee` | No |
 `eth_blockNumber` | Yes |
 `eth_call` | Yes | Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version; Ethereum does not support the state override set parameter
