@@ -43,7 +43,7 @@ Endpoint | Supported | Notes
 `eth_getCode` | Yes |
 `eth_sign` | No |
 `eth_signTransaction` | No |
-`eth_sendTransaction` | ??? | I get this response: `[{"kind":"temporary","id":"failure","msg":"The pattern matching of methods is not exhaustive"}]`
+`eth_sendTransaction` | No |
 `eth_sendRawTransaction` | Yes |
 `eth_call` | Yes |
 `eth_estimateGas` | Yes |
