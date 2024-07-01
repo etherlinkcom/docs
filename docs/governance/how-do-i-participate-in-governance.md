@@ -8,6 +8,26 @@ Separate contracts manage the kernel updates, security updates, and the Sequence
 The addresses of the governance contracts are specified in Etherlink's kernel.
 For information about the Octez client, see [Command Line Interface](https://tezos.gitlab.io/active/cli-commands.html) in the Octez documentation.
 
+## Governance contract addresses
+
+You need the address of the correct governance contract to propose changes and vote on changes.
+
+### Mainnet governance contracts
+
+Governance contract | Address
+--- | ---
+Kernel governance | [KT1H5pCmFuhAwRExzNNrPQFKpunJx1yEVa6J](https://better-call.dev/mainnet/KT1H5pCmFuhAwRExzNNrPQFKpunJx1yEVa6J)
+Kernel security governance | [KT1N5MHQW5fkqXkW9GPjRYfn5KwbuYrvsY1g](https://better-call.dev/mainnet/KT1N5MHQW5fkqXkW9GPjRYfn5KwbuYrvsY1g)
+Sequencer committee | [KT1NcZQ3y9Wv32BGiUfD2ZciSUz9cY1DBDGF](https://better-call.dev/mainnet/KT1NcZQ3y9Wv32BGiUfD2ZciSUz9cY1DBDGF)
+
+### Ghostnet governance contracts
+
+Governance contract | Address
+--- | ---
+Kernel governance | [KT1HfJb718fGszcgYguA4bfTjAqe1BEmFHkv](https://better-call.dev/ghostnet/KT1HfJb718fGszcgYguA4bfTjAqe1BEmFHkv)
+Kernel security governance | [KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk](https://better-call.dev/ghostnet/KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk)
+Sequencer committee | [KT1FRzozuzFMWLimpFeSdADHTMxzU8KtgCr9](https://better-call.dev/ghostnet/KT1FRzozuzFMWLimpFeSdADHTMxzU8KtgCr9)
+
 ## Participating in kernel and security governance
 
 Bakers can propose, vote on, and trigger kernel updates and security updates with these commands.
