@@ -38,7 +38,7 @@ Endpoint | Supported | Notes
 `eth_blockNumber` | Yes |
 `eth_call` | Yes | Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version; Etherlink does not support the state override set parameter
 `eth_chainId` | Yes |
-`eth_coinbase` | No |
+`eth_coinbase` | Yes |
 `eth_createAccessList` | No |
 `eth_estimateGas` | Yes |
 `eth_estimateGas` | Yes |
