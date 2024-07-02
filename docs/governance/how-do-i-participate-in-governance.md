@@ -64,6 +64,9 @@ octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1HfJb718f
   --arg "0x009279df4982e47cf101e2525b605fa06cd3ccc0f67d1c792a6a3ea56af9606abc"
 ```
 
+The proposer must make the code of the new kernel available for people to evaluate.
+Proposers can make it easier for bakers to upgrade to the new kernel by providing the preimages for the kernel online so nodes can update from them directly.
+
 To upvote a proposed kernel or security update during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
 
 ```bash
@@ -127,6 +130,9 @@ octez-client transfer 0 from tz1RfbwbXjE8UaRLLjZjUyxbj4KCxibTp9xN to KT1HfJb718f
   --entrypoint "trigger_kernel_upgrade" \
   --arg "\"sr1EStimadnRRA3vnjpWV1RwNAsDbM3JaDt6\""
 ```
+
+After the new kernel becomes active, bakers must provide their nodes with the preimages for the new kernel to continue to participate in Etherlink.
+If a node uses a preimages endpoint as described in [Running an Etherlink EVM node](../network/evm-nodes) and [Running an Etherlink Smart Rollup node](../network/smart-rollup-nodes), the node updates automatically.
 
 ## Participating in Sequencer Committee governance
 
@@ -203,7 +209,7 @@ octez-client transfer 0 from $YOUR_ADDRESS to $CONTRACT_ADDRESS \
 The command takes these parameters:
 
 - `YOUR_ADDRESS`: The address or Octez client alias of your baker account
-- `CONTRACT_ADDRESS`: The address of the Sequencer C0mmittee governance contract
+- `CONTRACT_ADDRESS`: The address of the Sequencer Committee governance contract
 - `YOUR_VOTE`: `"yea"`, `"nay"`, or `"pass"`, including the double quotes
 
 For example:
