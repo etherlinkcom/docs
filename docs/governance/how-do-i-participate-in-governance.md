@@ -123,7 +123,7 @@ The command takes these parameters:
 - The address of the Etherlink kernel or security governance contract
 - The address of the Etherlink Smart Rollup; the parameter must include the double quotes
 
-After the new kernel becomes active, bakers must upgrade their nodes to it to continue to participate in Etherlink.
+After the new kernel becomes active, bakers must provide their nodes with the preimages for the new kernel to continue to participate in Etherlink.
 If a node uses a preimages endpoint as described in [Running an Etherlink EVM node](../network/evm-nodes) and [Running an Etherlink Smart Rollup node](../network/smart-rollup-nodes), the node updates automatically.
 
 ## Participating in Sequencer Committee governance
