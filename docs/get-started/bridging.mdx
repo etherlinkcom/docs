@@ -51,15 +51,25 @@ Then you can use the [Testnet canonical bridge](https://bridge-xi.vercel.app/) t
 
 The bridging process uses two contracts on Tezos layer 1:
 
-- A bridge contract that stores information about how many tokens different accounts have bridged to Etherlink
-- An exchanger contract that stores the tokens and issues tickets that represent those tokens
+- A bridge contract that accepts deposits and sends them to be exchanged.
 
-1. A user sends a request to the bridge contract's "deposit" entrypoint.
+  - The source code of this contract is in [`evm_bridge.mligo`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/tezos_contracts/evm_bridge.mligo).
+  - This contract is deployed to Ghostnet at [`KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3`](https://ghostnet.tzkt.io/KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3/).
+  - This contract is deployed to Mainnet at [`KT1Wj8SUGmnEPFqyahHAcjcNQwe6YGhEXJb5`](https://tzkt.io/KT1Wj8SUGmnEPFqyahHAcjcNQwe6YGhEXJb5/).
+- An exchanger contract that stores the tokens and issues tickets that represent those tokens.
+
+  - The source code of this contract is in [`evm_bridge.mligo`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/tezos_contracts/exchanger.mligo).
+  - This contract is deployed to Ghostnet at [`KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3`](https://ghostnet.tzkt.io/KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3/).
+  - This contract is deployed to Mainnet at [`KT1CeFqjJRJPNVvhvznQrWfHad2jCiDZ6Lyj`](https://tzkt.io/KT1CeFqjJRJPNVvhvznQrWfHad2jCiDZ6Lyj/).
+
+1. A user sends a request to the bridge contract's `deposit` entrypoint.
 The request includes the tez to bridge, the address of the Etherlink Smart Rollup, and the user's Etherlink wallet address.
-1. The EVM bridge contract sends the tez in a transaction to the exchanger contract's "mint" entrypoint.
+1. The bridge contract stores the address of the Etherlink Smart Rollup temporarily.
+1. It sends the tez in a transaction to the exchanger contract's `mint` entrypoint.
 1. The exchanger contract stores the tez and creates a [ticket](https://docs.tezos.com/smart-contracts/data-types/complex-data-types#tickets) that represents the receipt of the tokens.
-1. The exchanger contract sends the ticket to the bridge contract.
-1. The bridge contract forwards the ticket to the Etherlink Smart Rollup, which uses the information in the ticket to mint tokens on Etherlink and send them to the user's Etherlink address.
+1. The exchanger contract sends the ticket to the bridge contract's `callback` entrypoint.
+1. The bridge contract forwards the ticket to the stored Etherlink Smart Rollup address and clears its storage for the next transfer.
+1. The Etherlink Smart Rollup uses the information in the ticket to mint tokens on Etherlink and send them to the user's Etherlink address.
 
 This diagram is an overview of the process:
 
