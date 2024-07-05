@@ -166,14 +166,14 @@ nav.navbar {
 [data-theme='dark'] .menu__link {
   color: #FFFFFF;
 }
-[data-theme='dark'] .menu__link:hover, .menu__link:focus, .menu__link:active {
+[data-theme='dark'] .menu__link:hover, [data-theme='dark'] .menu__link:active {
   color: #38FF9C;
 }
 
 [data-theme='light'] .menu__link {
   color: #171717;
 }
-[data-theme='light'] .menu__link:hover, .menu__link:focus, .menu__link:active {
+[data-theme='light'] .menu__link:hover, [data-theme='light'] .menu__link:active {
   color: #171717;
 }
 
