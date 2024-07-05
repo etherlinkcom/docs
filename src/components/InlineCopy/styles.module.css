@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  column-gap: 0.2rem;
+  position: unset;
+  /* position: relative;
+  right: calc(var(--ifm-pre-padding) / 2);
+  top: calc(var(--ifm-pre-padding) / 2); */
+  background-color: var(--ifm-code-background);
+}
+
+.copy_button {
+  cursor: pointer;
+}
