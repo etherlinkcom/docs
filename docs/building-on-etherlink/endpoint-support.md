@@ -106,7 +106,7 @@ Method | Supported | Notes
 [`provider.getTransactionReceipt`](https://docs.ethers.org/v6/api/providers/#Provider-getTransactionReceipt) | Yes |
 [`provider.getBlockNumber`](https://docs.ethers.org/v6/api/providers/#Provider-getBlockNumber) | Yes |
 [`provider.getBalance`](https://docs.ethers.org/v6/api/providers/#Provider-getBalance) | Yes |
-[`singer.sendTransaction`](https://docs.ethers.org/v6/api/providers/#Signer-sendTransaction) | Yes |
+[`signer.sendTransaction`](https://docs.ethers.org/v6/api/providers/#Signer-sendTransaction) | Yes |
 
 ## Additional Information
 
