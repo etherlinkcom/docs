@@ -31,7 +31,12 @@ const sidebars = {
         {
           type: 'link',
           href: 'https://explorer.etherlink.com',
-          label: 'Block Explorer',
+          label: 'Mainnet block explorer',
+        },
+        {
+          type: 'link',
+          href: 'https://testnet-explorer.etherlink.com/',
+          label: 'Testnet block explorer',
         },
       ],
     },
