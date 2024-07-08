@@ -250,3 +250,7 @@ article a[target="_blank"]:after {
 .navbar__title {
   font-family: 'Inter SemiBold', 'Roboto', sans-serif;
 }
+
+.token_address_table {
+  width: fit-content;
+}
