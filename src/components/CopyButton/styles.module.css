@@ -20,6 +20,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  margin-top: 5px;
   fill: currentColor;
   opacity: inherit;
   width: inherit;
@@ -29,7 +30,7 @@
 
 .copyButtonSuccessIcon {
   top: 50%;
-  left: 50%;
+  left: 10px;
   transform: translate(-50%, -50%) scale(0.33);
   opacity: 0;
   color: #00d600;

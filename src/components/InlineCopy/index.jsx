@@ -9,7 +9,7 @@ export default function InlineCopy({ code }) {
   return (
     <div className={clsx(styles.container)}>
       <code>{code}</code>
-      <CopyButton className={clsx(styles.codeButton)} code={code} />
+      <CopyButton code={code} />
     </div>
   );
 }
