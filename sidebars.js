@@ -6,7 +6,6 @@ const sidebars = {
       type: 'category',
       label: 'Welcome 👋',
       collapsed: false,
-      collapsible: false,
       items: [
         'index',
         {
@@ -25,7 +24,6 @@ const sidebars = {
       type: 'category',
       label: 'Get Started 🚀',
       collapsed: false,
-      collapsible: false,
       items: [
         'get-started/using-your-wallet',
         'get-started/getting-testnet-tokens',
@@ -41,7 +39,6 @@ const sidebars = {
       type: 'category',
       label: 'Building on Etherlink ⛓',
       collapsed: false,
-      collapsible: false,
       items: [
         'building-on-etherlink/networks-and-public-rpc-endpoints',
         'building-on-etherlink/endpoint-support',
@@ -53,7 +50,6 @@ const sidebars = {
       type: 'category',
       label: 'The Etherlink network 🛜',
       collapsed: false,
-      collapsible: false,
       items: [
         'network/architecture',
         'network/fees',
@@ -66,7 +62,6 @@ const sidebars = {
       type: 'category',
       label: '🔨 Tools',
       collapsed: false,
-      collapsible: false,
       items: [
         'tools/node-providers',
         'tools/price-feeds',
@@ -81,7 +76,6 @@ const sidebars = {
       type: 'category',
       label: 'Governance 🧑‍⚖️',
       collapsed: false,
-      collapsible: false,
       items: [
         'governance/how-is-etherlink-governed',
         'governance/how-do-i-participate-in-governance',
@@ -91,7 +85,6 @@ const sidebars = {
       type: 'category',
       label: 'Track Etherlink\'s Progress 🏁',
       collapsed: false,
-      collapsible: false,
       items: [
         {
           type: 'link',
@@ -109,7 +102,6 @@ const sidebars = {
       type: 'category',
       label: 'Resources 📚',
       collapsed: false,
-      collapsible: false,
       items: [
         'resources/etherlink-further-reading',
         'resources/scaling-on-tezos',
