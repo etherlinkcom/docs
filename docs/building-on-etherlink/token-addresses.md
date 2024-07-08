@@ -50,8 +50,8 @@ Click the address to go to the block explorer page for the token.
 </tr>
 <tr>
   <td>Tezos BTC</td>
-  <td>tzBT</td>
-  <td>Coming</td>
+  <td>tzBTC</td>
+  <td>Coming soon</td>
   <td><a href="https://testnet-explorer.etherlink.com/address/0x6bDE94725379334b469449f4CF49bCfc85ebFb27" target="_blank">0x6bDE94725379334b469449f4CF49bCfc85ebFb27</a></td>
 </tr>
 </tbody>
