@@ -79,6 +79,9 @@ The command takes these parameters:
 - The address of the Etherlink kernel or security governance contract
 - The hash of the kernel upgrade
 
+The proposer must make the code of the new kernel available for people to evaluate.
+Proposers can make it easier for bakers to upgrade to the new kernel by providing the preimages for the kernel online so nodes can update from them directly.
+
 To upvote a proposed kernel or security update during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
 
 ```bash
@@ -119,6 +122,10 @@ The command takes these parameters:
 - The address or Octez client alias of your baker account
 - The address of the Etherlink kernel or security governance contract
 - The address of the Etherlink Smart Rollup; the parameter must include the double quotes
+
+After the new kernel becomes active, bakers must provide their nodes with the preimages for the new kernel to continue to participate in Etherlink.
+They can copy the new preimages into the node data directory without stopping or restarting the node.
+If a node uses a preimages endpoint as described in [Running an Etherlink EVM node](../network/evm-nodes) and [Running an Etherlink Smart Rollup node](../network/smart-rollup-nodes), the node updates automatically.
 
 ## Participating in Sequencer Committee governance
 
@@ -187,6 +194,13 @@ The command takes these parameters:
 - The address or Octez client alias of your baker account
 - The address of the Sequencer Committee governance contract
 - `"yea"`, `"nay"`, or `"pass"`, including the double quotes
+
+For example:
+
+```bash
+octez-client transfer 0 from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq to KT1FRzozuzFMWLimpFeSdADHTMxzU8KtgCr9 \
+  --entrypoint "vote" --arg "\"yea\""
+```
 
 ### Triggering committee upgrades
 
