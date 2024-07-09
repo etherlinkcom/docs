@@ -80,6 +80,7 @@ const config = {
 
   plugins: [
     'plugin-image-zoom',
+    'docusaurus-node-polyfills',
     [
       'docusaurus-pushfeedback', {
         project: 'zh2wgyi1d7',
