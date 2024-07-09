@@ -8,8 +8,8 @@ const katex = require('rehype-katex');
 // But unsafe-eval should NOT be in production builds
 // Also, put GTM first because sometimes the ';' in the escaped single quotes causes the browser to think it's the end
 const scriptSrc = process.env.NODE_ENV === 'development' ?
-  `https://*.googletagmanager.com 'self' 'unsafe-inline' 'unsafe-eval'`
-  : `https://*.googletagmanager.com 'self' 'unsafe-inline'`;
+  `https://*.googletagmanager.com https://cdn.jsdelivr.net 'self' 'unsafe-inline' 'unsafe-eval'`
+  : `https://*.googletagmanager.com https://cdn.jsdelivr.net 'self' 'unsafe-inline'`;
 
 const contentSecurityPolicy = `
 default-src 'none';
@@ -80,6 +80,11 @@ const config = {
 
   plugins: [
     'plugin-image-zoom',
+    [
+      'docusaurus-pushfeedback', {
+        project: 'zh2wgyi1d7',
+      },
+    ],
   ],
 
   themeConfig:
