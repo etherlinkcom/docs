@@ -50,6 +50,7 @@ const config = {
 
   plugins: [
     'plugin-image-zoom',
+    'docusaurus-node-polyfills'
   ],
 
   themeConfig:
