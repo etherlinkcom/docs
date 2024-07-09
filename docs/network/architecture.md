@@ -6,6 +6,10 @@ Etherlink's main components are its nodes and the sequencer.
 
 These components are instances of binaries in the [Octez software suite](https://tezos.gitlab.io/introduction/tezos.html).
 
+## High-level diagram
+
+![A high-level diagram of Etherlink architecture, showing the interaction between the nodes and the sequencer](/img/architecture-high-level.png)
+
 ## Sequencer
 
 Etherlink relies on a sequencer to publish transactions.
@@ -52,19 +56,12 @@ The overall lifecycle of a typical operation is as follows:
 1. A user submits a transaction to an EVM node.
 1. The EVM node forwards the transaction to the sequencer.
 1. The sequencer puts the transaction in its queue as soon as possible (less than 500ms after receiving it in a nominal scenario).
-1. The sequencer publishes the transaction to the EVM nodes.
-1. The sequencer publishes the transaction to the Smart Rollup inbox on layer 1 via a Smart Rollup node running in operator or batch mode.
+1. The sequencer puts the transaction into a blueprint, which is a group of Etherlink transactions.
+1. The sequencer publishes the blueprint to the EVM nodes, which update their states based on the transactions in the blueprint.
+1. The sequencer publishes the blueprint to the Smart Rollup inbox on layer 1 via a Smart Rollup node running in operator or batcher mode.
 1. The Smart Rollup nodes tracking the state of Etherlink fetch the new Etherlink transactions from layer 1 and update their states.
 1. The EVM nodes check the state of the Smart Rollup nodes to verify that transactions have successfully and faithfully been finalized on layer 1.
 
-This diagram summarizes the transaction process at a high level:
+This diagram summarizes the transaction process:
 
-![A high-level diagram of Etherlink architecture, showing the interaction between the nodes and the sequencer](/img/architecture-high-level.png)
-
-
-TODO more detail about the flow of transactions including info about the delayed inbox
-
-
-## Sequencer operation
-
-The sequencer's job is to put incoming transactions in a fair order and ensure that they are published on layer 1
+![A more detailed diagram of Etherlink architecture, showing the flow of transactions and blueprints](/img/architecture-full.png)
