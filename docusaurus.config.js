@@ -3,6 +3,7 @@
 
 const math = require('remark-math');
 const katex = require('rehype-katex');
+require('dotenv').config();
 
 // script-src causes development builds to fail
 // But unsafe-eval should NOT be in production builds
@@ -41,6 +42,10 @@ const config = {
   },
   markdown: {
     mermaid: true,
+  },
+
+  customFields: {
+    THIRDWEB_CLIENT_ID: process.env.THIRDWEB_CLIENT_ID,
   },
 
   headTags: [

@@ -1,4 +1,5 @@
 import { ThirdwebProvider, metamaskWallet, localWallet, walletConnect, ConnectWallet, lightTheme } from "@thirdweb-dev/react";
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 const customTheme = lightTheme({
   colors: {
@@ -43,6 +44,10 @@ const mainnet = {
 
 export default function WalletConnectButton({ network, title }) {
 
+  const {
+    siteConfig: {customFields},
+  } = useDocusaurusContext();
+
   const activeChain = network === "mainnet" ? mainnet : ghostnet;
 
   const dAppMeta = {
@@ -54,7 +59,7 @@ export default function WalletConnectButton({ network, title }) {
   };
 
   return (
-    <ThirdwebProvider clientId="process.env.THIRDWEB_CLIENT_ID"
+    <ThirdwebProvider clientId={customFields.THIRDWEB_CLIENT_ID}
       activeChain={activeChain}
       supportedWallets={[
         metamaskWallet({ recommended: true }),
