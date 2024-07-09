@@ -32,7 +32,6 @@ export default function CopyButton({code, className}) {
       aria-label="Copied"
       title="Copy"
       className={clsx(
-        'clean-btn',
         className,
         styles.copyButton,
         isCopied && styles.copyButtonCopied,
