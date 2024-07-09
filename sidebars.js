@@ -26,18 +26,9 @@ const sidebars = {
       collapsed: false,
       items: [
         'get-started/using-your-wallet',
+        'get-started/network-information',
         'get-started/getting-testnet-tokens',
         'get-started/bridging',
-        {
-          type: 'link',
-          href: 'https://explorer.etherlink.com',
-          label: 'Mainnet block explorer',
-        },
-        {
-          type: 'link',
-          href: 'https://testnet-explorer.etherlink.com/',
-          label: 'Testnet block explorer',
-        },
       ],
     },
     {
@@ -45,7 +36,6 @@ const sidebars = {
       label: 'Building on Etherlink ⛓',
       collapsed: false,
       items: [
-        'building-on-etherlink/networks-and-public-rpc-endpoints',
         'building-on-etherlink/endpoint-support',
         'building-on-etherlink/token-addresses',
         'building-on-etherlink/development-toolkits',
