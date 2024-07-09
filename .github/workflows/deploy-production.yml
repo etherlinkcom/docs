@@ -15,6 +15,8 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: npm run build
+        env:
+          THIRDWEB_CLIENT_ID: ${{ secrets.THIRDWEB_CLIENT_ID }}
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3.0.0
         with:
