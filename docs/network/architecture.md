@@ -45,12 +45,6 @@ In addition to ordinary layer 1 transactions, they receive Etherlink transaction
 Then the baking nodes publish the Etherlink transactions in the Smart Rollup inbox in layer 1 blocks.
 For more information about Tezos layer 1 and its nodes, see [Architecture](https://docs.tezos.com/architecture) on docs.tezos.com.
 
-## Diagram
-
-This diagram summarizes the interaction between the nodes and the sequencer:
-
-![A high-level diagram of Etherlink architecture, showing the interaction between the nodes and the sequencer](/img/architecture.png)
-
 ## Transaction lifecycle
 
 The overall lifecycle of a typical operation is as follows:
@@ -62,3 +56,15 @@ The overall lifecycle of a typical operation is as follows:
 1. The sequencer publishes the transaction to the Smart Rollup inbox on layer 1 via a Smart Rollup node running in operator or batch mode.
 1. The Smart Rollup nodes tracking the state of Etherlink fetch the new Etherlink transactions from layer 1 and update their states.
 1. The EVM nodes check the state of the Smart Rollup nodes to verify that transactions have successfully and faithfully been finalized on layer 1.
+
+This diagram summarizes the transaction process at a high level:
+
+![A high-level diagram of Etherlink architecture, showing the interaction between the nodes and the sequencer](/img/architecture-high-level.png)
+
+
+TODO more detail about the flow of transactions including info about the delayed inbox
+
+
+## Sequencer operation
+
+The sequencer's job is to put incoming transactions in a fair order and ensure that they are published on layer 1
