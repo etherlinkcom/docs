@@ -1,5 +1,5 @@
 ---
-title: 'Data indexers'
+title: Data indexers
 ---
 
 ## The Graph

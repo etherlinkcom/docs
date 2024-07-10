@@ -1,5 +1,5 @@
 ---
-title: 'Price feeds'
+title: Price feeds
 ---
 
 ## Pyth

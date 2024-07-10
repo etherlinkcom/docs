@@ -1,5 +1,5 @@
 ---
-title: 'Developer experience'
+title: Developer experience
 ---
 
 ## Thirdweb

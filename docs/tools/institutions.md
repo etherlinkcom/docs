@@ -1,5 +1,5 @@
 ---
-title: 'Institutional tools'
+title: Institutional tools
 ---
 
 ## Fireblocks

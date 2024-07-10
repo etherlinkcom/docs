@@ -1,5 +1,5 @@
 ---
-title: 'Node providers'
+title: Node providers
 ---
 
 ## Zeeve

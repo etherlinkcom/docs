@@ -1,4 +1,6 @@
-# How is Etherlink governed?
+---
+title: How is Etherlink governed?
+---
 
 Like Tezos, Etherlink has a built-in on-chain mechanism for proposing, selecting, testing, and activating upgrades without the need to hard fork.
 This mechanism makes Etherlink self-amending and empowers Tezos bakers to govern Etherlink’s kernel upgrades, security updates, and sequencer operators.

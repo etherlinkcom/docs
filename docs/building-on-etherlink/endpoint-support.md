@@ -1,5 +1,5 @@
 ---
-title: 'Ethereum endpoint support'
+title: Ethereum endpoint support
 ---
 
 Etherlink nodes use [Geth](https://geth.ethereum.org/) to provide access to both standard Ethereum RPC endpoints and Geth-specific RPC endpoints.

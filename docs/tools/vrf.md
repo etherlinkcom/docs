@@ -1,5 +1,5 @@
 ---
-title: 'Verifiable random functions'
+title: Verifiable random functions
 ---
 
 :::info Verifiable Random Functions (VRF)
