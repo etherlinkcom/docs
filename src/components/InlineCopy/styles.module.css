@@ -1,0 +1,6 @@
+.container {
+  display: flex;
+  column-gap: 0.2rem;
+  position: unset;
+  background-color: var(--ifm-code-background);
+}
