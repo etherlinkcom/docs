@@ -1,5 +1,5 @@
 ---
-title: 'Cross Chain Communication'
+title: Cross chain communication
 ---
 
 ## LayerZero

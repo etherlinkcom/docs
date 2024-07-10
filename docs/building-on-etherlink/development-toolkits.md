@@ -1,5 +1,5 @@
 ---
-title: 'Development Toolkits'
+title: Development toolkits
 ---
 
 ## 👷 Hardhat
@@ -37,7 +37,7 @@ module.exports = {
 };
 ```
 
-### Deploying and Verifying Contracts with Hardhat
+### Deploying and verifying contracts with Hardhat
 
 Hardhat offers great guides for [deploying](https://hardhat.org/hardhat-runner/docs/guides/deploying) and [verifying](https://hardhat.org/hardhat-runner/docs/guides/verifying) your contracts. Just make sure to set the network flag appropriately: `--network etherlinkTestnet`
 
@@ -50,7 +50,7 @@ Hardhat offers great guides for [deploying](https://hardhat.org/hardhat-runner/d
 **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.\
 **Chisel**: Fast, utilitarian, and verbose solidity REPL.
 
-### Deploying and Verifying Contracts with Foundry
+### Deploying and verifying contracts with Foundry
 
 For the most up to date information on how to deploy and verify a smart contract, check out the [guide](https://book.getfoundry.sh/forge/deploying) provided by the Foundry team!
 
