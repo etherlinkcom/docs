@@ -22,7 +22,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Get Started 🚀',
+      label: 'Get started 🚀',
       collapsed: false,
       items: [
         'get-started/using-your-wallet',
@@ -78,18 +78,18 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Track Etherlink\'s Progress 🏁',
+      label: 'Track Etherlink\'s progress 🏁',
       collapsed: false,
       items: [
         {
           type: 'link',
           href: 'https://gitlab.com/tezos/tezos/-/tree/master/etherlink',
-          label: 'Etherlink Source Code',
+          label: 'Etherlink source code',
         },
         {
           type: 'link',
           href: 'https://gitlab.com/groups/tezos/-/issues/?sort=created\_date\&state=opened\&search=EVM%20\&first\_page\_size=20',
-          label: 'Etherlink Pull Requests',
+          label: 'Etherlink pull requests',
         },
       ],
     },

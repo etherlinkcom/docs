@@ -1,5 +1,5 @@
 ---
-title: 'Token Addresses'
+title: 'Token addresses'
 ---
 
 Click the address to go to the block explorer page for the token.
