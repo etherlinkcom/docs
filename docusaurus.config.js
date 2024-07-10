@@ -3,6 +3,7 @@
 
 const math = require('remark-math');
 const katex = require('rehype-katex');
+require('dotenv').config();
 
 // script-src causes development builds to fail
 // But unsafe-eval should NOT be in production builds
@@ -16,12 +17,12 @@ default-src 'none';
 base-uri 'self';
 manifest-src 'self';
 script-src ${scriptSrc};
-style-src 'self' 'unsafe-inline';
-font-src 'self';
+style-src https://cdn.jsdelivr.net https://fonts.googleapis.com 'self' 'unsafe-inline';
+font-src https://cdn.jsdelivr.net https://fonts.gstatic.com 'self';
 img-src 'self' https://*.googletagmanager.com https://*.google-analytics.com data:;
 media-src 'self';
 form-action 'self';
-connect-src 'self' https://*.algolia.net https://*.algolianet.com https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com;
+connect-src 'self' https://node.mainnet.etherlink.com https://node.ghostnet.etherlink.com https://ethereum.rpc.thirdweb.com https://*.algolia.net https://*.algolianet.com https://c.thirdweb.com https://app.pushfeedback.com https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com;
 frame-src https://tezosbot.vercel.app;`;
 
 /** @type {import('@docusaurus/types').Config} */
@@ -41,6 +42,10 @@ const config = {
   },
   markdown: {
     mermaid: true,
+  },
+
+  customFields: {
+    THIRDWEB_CLIENT_ID: process.env.THIRDWEB_CLIENT_ID,
   },
 
   headTags: [
@@ -80,6 +85,7 @@ const config = {
 
   plugins: [
     'plugin-image-zoom',
+    'docusaurus-node-polyfills',
     [
       'docusaurus-pushfeedback', {
         project: 'zh2wgyi1d7',
