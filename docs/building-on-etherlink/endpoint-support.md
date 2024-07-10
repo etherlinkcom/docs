@@ -108,7 +108,7 @@ Method | Supported | Notes
 [`provider.getBalance`](https://docs.ethers.org/v6/api/providers/#Provider-getBalance) | Yes |
 [`signer.sendTransaction`](https://docs.ethers.org/v6/api/providers/#Signer-sendTransaction) | Yes |
 
-## Additional Information
+## Additional information
 
 |                                      | Comments                                                                                                |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------- |

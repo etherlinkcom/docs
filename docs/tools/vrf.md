@@ -2,7 +2,7 @@
 title: Verifiable random functions
 ---
 
-:::info Verifiable Random Functions (VRF)
+:::info Verifiable random functions (VRF)
 A VRF is a cryptographic function that takes a series of inputs, computes them, and produces a pseudorandom output and proof of authenticity that can be verified by anyone.
 :::
 
