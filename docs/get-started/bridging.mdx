@@ -54,13 +54,14 @@ The bridging process uses two contracts on Tezos layer 1:
   - The source code of this contract is in [`evm_bridge.mligo`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/tezos_contracts/evm_bridge.mligo).
   - This contract is deployed to Ghostnet at [`KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3`](https://ghostnet.tzkt.io/KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3/).
   - This contract is deployed to Mainnet at [`KT1Wj8SUGmnEPFqyahHAcjcNQwe6YGhEXJb5`](https://tzkt.io/KT1Wj8SUGmnEPFqyahHAcjcNQwe6YGhEXJb5/).
+
 - An exchanger contract that stores the tokens and issues tickets that represent those tokens.
 
   - The source code of this contract is in [`evm_bridge.mligo`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/tezos_contracts/exchanger.mligo).
   - This contract is deployed to Ghostnet at [`KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3`](https://ghostnet.tzkt.io/KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3/).
   - This contract is deployed to Mainnet at [`KT1CeFqjJRJPNVvhvznQrWfHad2jCiDZ6Lyj`](https://tzkt.io/KT1CeFqjJRJPNVvhvznQrWfHad2jCiDZ6Lyj/).
 
-The process follows these general steps:
+The deposit process follows these general steps:
 
 1. A user sends a request to the bridge contract's `deposit` entrypoint.
 The request includes the tez to bridge, the address of the Etherlink Smart Rollup, and the user's Etherlink wallet address.
@@ -73,4 +74,19 @@ The request includes the tez to bridge, the address of the Etherlink Smart Rollu
 
 This diagram is an overview of the deposit process:
 
-![Overview of the token bridging deposit process](/img/bridging.png)
+![Overview of the token bridging deposit process](/img/bridging-deposit.png)
+
+The withdrawal process follows these general steps:
+
+1. A user sends tez to the Etherlink Smart Rollup.
+The request includes their layer 1 address.
+1. Etherlink nodes forward the transaction to the sequencer.
+1. The sequencer burns the tez and creates a ticket that represents the tez.
+1. The sequencer puts the ticket in a call to the exchanger contract's `burn` entrypoint and puts this transaction in the Smart Rollup outbox on layer 1.
+The transaction exists in the outbox as part of Etherlink's commitment to its state.
+1. When the commitment that contains the transaction is cemented, anyone can run the transaction by running the Octez client `execute outbox message` command.
+1. The exchanger contract receives the ticket, burns it, and sends the equivalent amount of tez to the user's layer 1 address.
+
+This diagram is an overview of the withdrawal process:
+
+![Overview of the token bridging withdrawal process](/img/bridging-withdrawal.png)
