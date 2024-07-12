@@ -3,9 +3,38 @@ title: Ethereum endpoint support
 ---
 
 Etherlink nodes use [Geth](https://geth.ethereum.org/) to provide access to both standard Ethereum RPC endpoints and Geth-specific RPC endpoints.
+
+## Calling Ethereum RPC endpoints
+
+You can call Etherlink endpoints just like you call standard Ethereum endpoints.
+For example, this code uses [ethers.js](https://ethers.org) to get the current Etherlink block number:
+
+```javascript
+const { ethers } = require("ethers");
+
+const main = async () => {
+  const provider = new ethers.JsonRpcProvider("https://node.mainnet.etherlink.com");
+  console.log(await provider.getBlockNumber());
+}
+
+main();
+```
+
+You can also call the RPC endpoints directly.
+For example, this command gets the current balance of an account in mutez, as a hexadecimal number:
+
+```bash
+curl https://node.ghostnet.etherlink.com -X POST -H "Content-Type: application/json" \
+  --data '{"method": "eth_getBalance", "params": ["0x45Ff91b4bF16aC9907CF4A11436f9Ce61BE0650d", "latest"], "id": 1, "jsonrpc": "2.0"}'
+```
+
+For a list of supported ethers.js methods, see [ethers.js SDK methods](#ethersjs-sdk-methods).
+
+## Supported endpoints
+
 These tables list these endpoints and whether Etherlink supports them:
 
-## Standard Ethereum endpoints
+### Standard Ethereum endpoints
 
 For information about these endpoints, see [JSON-RPC API](https://ethereum.org/en/developers/docs/apis/json-rpc) and the [Ethereum JSON-RPC Specification](https://ethereum.github.io/execution-apis/api-documentation/) in the Ethereum documentation.
 
@@ -84,7 +113,7 @@ Endpoint | Supported | Notes
 `web3_clientVersion` | Yes |
 `web3_sha3` | Yes |
 
-## Geth-specific endpoints
+### Geth-specific endpoints
 
 This table shows the Geth endpoints that Etherlink nodes support.
 All other Geth endpoints are not supported.
@@ -96,7 +125,7 @@ Endpoint | Supported | Notes
 `eth_call` | No | Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version
 `txpool_content` | Partially | Returns the transaction pool on Ghostnet but always returns an empty pool on Mainnet
 
-## ethers.js SDK methods
+### ethers.js SDK methods
 
 The Etherlink EVM node supports these [ethers.js](https://docs.ethers.org/v6/) methods:
 
