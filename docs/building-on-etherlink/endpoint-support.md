@@ -28,6 +28,13 @@ curl https://node.ghostnet.etherlink.com -X POST -H "Content-Type: application/j
   --data '{"method": "eth_getBalance", "params": ["0x45Ff91b4bF16aC9907CF4A11436f9Ce61BE0650d", "latest"], "id": 1, "jsonrpc": "2.0"}'
 ```
 
+:::note Limitation: timeouts
+
+You can set the timeout for calls to RPC endpoints, such as by changing the setting `_getConnection().timeout` on the ethers.js RPC provider object, but that timeout cannot be greater than the default timeout for the node.
+If you set a greater timeout, the node returns an error.
+
+:::
+
 For a list of supported ethers.js methods, see [ethers.js SDK methods](#ethersjs-sdk-methods).
 
 ## Supported endpoints
