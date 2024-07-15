@@ -2,6 +2,8 @@
 title: Tokens
 ---
 
+## Token addresses
+
 These are some of the tokens that are available on Etherlink.
 Click the address to go to the block explorer page for the token:
 
