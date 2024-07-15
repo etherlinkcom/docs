@@ -15,18 +15,12 @@ Click the address to go to the block explorer page for the token.
 <tr>
   <td>Wrapped XTZ</td>
   <td>WXTZ</td>
-  <td>Coming soon</td>
+  <td><a href="https://explorer.etherlink.com/token/0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" target="_blank">0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb</a></td>
   <td><a href="https://testnet-explorer.etherlink.com/address/0xB1Ea698633d57705e93b0E40c1077d46CD6A51d8" target="_blank">0xB1Ea698633d57705e93b0E40c1077d46CD6A51d8</a></td>
 </tr>
 <tr>
-  <td>Iguana Token</td>
-  <td>GN </td>
-  <td>Coming soon</td>
-  <td><a href="https://testnet-explorer.etherlink.com/address/0xBeEfb119631691a1e0D9378fA7864fC6E67A72Ad" target="_blank">0xBeEfb119631691a1e0D9378fA7864fC6E67A72Ad</a></td>
-</tr>
-<tr>
   <td>Etherlink USD</td>
-  <td>SD</td>
+  <td>eUSD</td>
   <td>Coming soon</td>
   <td><a href="https://testnet-explorer.etherlink.com/address/0x1A71f491fb0Ef77F13F8f6d2a927dd4C969ECe4f" target="_blank">0x1A71f491fb0Ef77F13F8f6d2a927dd4C969ECe4f</a></td>
 </tr>
