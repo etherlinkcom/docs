@@ -138,7 +138,7 @@ However, if the OFT bridge gets compromised, all the XTZ in the contract on Ethe
 1. Transfer the WXTZ to Etherlink
 1. Withdraw the XTZ locked in the WXTZ contract on Etherlink
 
-The Etherlink team has taken these measures to protect users native to Etherlink and bridged across EVM chains.
+The Etherlink team has taken measures to protect users native to Etherlink and bridged across EVM chains.
 
 These are the measures to protect Etherlink users:
 
