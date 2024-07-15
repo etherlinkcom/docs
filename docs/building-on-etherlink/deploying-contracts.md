@@ -17,7 +17,7 @@ You can use any of the toolkits in [Development toolkits](./development-toolkits
 
 The Remix online IDE lets you code, compile, and deploy Solidity contracts to EVM chains, including Etherlink
 
-1. Connect your wallet to Etherlink Ghostnet (the Etherlink testnet) as described in [Using your wallet](../get-started/using-your-wallet).
+1. Connect your wallet to Etherlink testnet as described in [Using your wallet](../get-started/using-your-wallet).
 
 1. Get some Etherlink tokens as described in [Getting testnet tokens](../get-started/getting-testnet-tokens).
 
@@ -62,4 +62,4 @@ If you used the example contract above, you can call the `greet` entrypoint and 
    ![The result of calling the `greet` entrypoint in the example contract](/img/remix-call-contract.png)
 
 Now the contract is deployed on Etherlink.
-You can look it up on the [Ghostnet block explorer](https://testnet-explorer.etherlink.com/).
+You can look it up on the [Testnet block explorer](https://testnet-explorer.etherlink.com/).
