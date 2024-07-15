@@ -26,7 +26,7 @@ Sequencer committee | [KT1NcZQ3y9Wv32BGiUfD2ZciSUz9cY1DBDGF](https://better-call
 
 ### Testnet governance contracts
 
-These are the governance contracts for the Etherlink Smart Rollup on the testnet (Ghostnet), which has the address [`sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg`](https://ghostnet.tzkt.io/sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg):
+These are the governance contracts for the Etherlink Smart Rollup on Etherlink Testnet (Ghostnet), which has the address [`sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg`](https://ghostnet.tzkt.io/sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg):
 
 Governance contract | Address
 --- | ---
