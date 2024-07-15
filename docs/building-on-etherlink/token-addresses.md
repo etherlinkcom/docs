@@ -9,7 +9,7 @@ Click the address to go to the block explorer page for the token.
   <th>Name</th>
   <th>Symbol</th>
   <th>Mainnet address</th>
-  <th>Ghostnet address</th>
+  <th>Testnet address</th>
 </thead>
 <tbody>
 <tr>

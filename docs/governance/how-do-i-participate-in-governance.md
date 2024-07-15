@@ -24,9 +24,9 @@ Kernel governance | [KT1H5pCmFuhAwRExzNNrPQFKpunJx1yEVa6J](https://better-call.d
 Kernel security governance | [KT1N5MHQW5fkqXkW9GPjRYfn5KwbuYrvsY1g](https://better-call.dev/mainnet/KT1N5MHQW5fkqXkW9GPjRYfn5KwbuYrvsY1g)
 Sequencer committee | [KT1NcZQ3y9Wv32BGiUfD2ZciSUz9cY1DBDGF](https://better-call.dev/mainnet/KT1NcZQ3y9Wv32BGiUfD2ZciSUz9cY1DBDGF)
 
-### Ghostnet governance contracts
+### Testnet governance contracts
 
-These are the governance contracts for the Etherlink Smart Rollup on Ghostnet, which has the address [`sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg`](https://ghostnet.tzkt.io/sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg):
+These are the governance contracts for the Etherlink Smart Rollup on the testnet (Ghostnet), which has the address [`sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg`](https://ghostnet.tzkt.io/sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg):
 
 Governance contract | Address
 --- | ---
