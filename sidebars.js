@@ -37,6 +37,7 @@ const sidebars = {
       collapsed: false,
       items: [
         'building-on-etherlink/endpoint-support',
+        'building-on-etherlink/deploying-contracts',
         'building-on-etherlink/token-addresses',
         'building-on-etherlink/development-toolkits',
       ],
