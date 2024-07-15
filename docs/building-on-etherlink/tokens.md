@@ -59,6 +59,8 @@ Click the address to go to the block explorer page for the token:
 WXTZ is a token created to replicate the functionality of Wrapped Ether (WETH), but specifically for the Tez (XTZ) native token on Etherlink.
 The goal of WXTZ is to facilitate the use of XTZ in various decentralized applications (dApps) and protocols that require ERC-20-like tokens.
 
+If you want to have more details, go check our [repo](https://github.com/etherlinkcom/token-deployments/tree/main).
+
 ### Wrapping & Unwrapping
 
 The token follows the `WETH9` interface for compatibility:
@@ -78,72 +80,49 @@ Supporting this hook would cause function signatures that do not match the contr
 WXTZ implements the [Omnichain Fungible Token (OFT)](https://docs.layerzero.network/v2/developers/evm/oft/quickstart) standard from LayerZero.
 This standard allows WXTZ to be bridged in a secure and capital-efficient way across different chains through direct minting and burning of the supply.
 
+Here are the chains the token is deployed on:
+
+<table class="token_address_table">
+<thead>
+  <th>Chain</th>
+  <th>Mainnet address</th>
+</thead>
+<tbody>
+<tr>
+  <td>Etherlink</td>
+  <td><a href="https://explorer.etherlink.com/address/0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" target="_blank">0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb</a></td>
+</tr>
+<tr>
+  <td>Ethereum</td>
+  <td><a href="https://etherscan.io/address/0xc9b53ab2679f573e480d01e0f49e2b5cfb7a3eab" target="_blank">0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb</a></td>
+</tr>
+<tr>
+  <td>Base</td>
+  <td><a href="https://basescan.org/address/0x91f9cc2649ac70a071602cade9b0c1a5868af51d" target="_blank">0x91F9cc2649ac70a071602cadE9b0C1A5868af51D</a></td>
+</tr>
+<tr>
+  <td>Binance Smart Chain</td>
+  <td><a href="https://bscscan.com/address/0x91F9cc2649ac70a071602cadE9b0C1A5868af51D" target="_blank">0x91F9cc2649ac70a071602cadE9b0C1A5868af51D</a></td>
+</tr>
+<tr>
+  <td>Arbitrum One</td>
+  <td><a href="https://arbiscan.io/address/0x7424f00845777a06e21f0bd8873f814a8a814b2d" target="_blank">0x7424f00845777A06E21F0bd8873f814A8A814B2D</a></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+The bridging system is not available yet. You can still use the WXTZ on Etherlink as a classic wrapper.
+
+:::
+
 ### Gasless approval with ERC20Permit
 
 The token also implements the [ERC20Permit](https://docs.openzeppelin.com/contracts/5.x/api/token/erc20#ERC20Permit) standard from Openzeppelin.
 This standard allows users to approve token transfers via gasless signatures instead of on-chain transactions.
 
 This feature leverages the [EIP-2612](https://eips.ethereum.org/EIPS/eip-2612) standard to facilitate off-chain authorization for token transfers.
-
-### Deployment and setup
-
-To add support for WXTZ to another chain, you must deploy its contract to that chain:
-
-1. Clone the token deployment contract at https://github.com/etherlinkcom/token-deployments.
-
-1. Deploy the contract to the chain by running the LayerZero deployment tool and using `WXTZ` as the deployment tag:
-
-   ```shell
-   npx hardhat lz:deploy
-   ```
-
-1. Create a link between the contracts by running `setPeer()`.
-You can use this script to make this easier:
-
-   ```shell
-   targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> scripts/setPeer.ts
-   ```
-
-   :::note
-
-   Each `setPeer()` call creates a **one-way** between the contract on chain A and the contract on chain B.
-   To create a link, you must run the script twice by swapping the source and target networks.
-
-   For security purposes, the first call to `setPeer()` initiates a 2-day timelock.
-   Therefore, for each one-way connection, you must run the script twice, with a 2 day delay between the calls.
-
-   :::
-
-1. Two days later, run `setPeer()` again with the source and target networks swapped.
-
-For example, this sequence of calls creates a link between WXTZ on Etherlink testnet and Sepolia.
-There must be 2 days between the calls:
-
-```shell
-targetNetworkName=sepolia npx hardhat run --network etherlinkTestnet scripts/setPeer.ts
-targetNetworkName=etherlinkTestnet npx hardhat run --network sepolia scripts/setPeer.ts
-```
-
-After the second call, the contracts on Etherlink testnet and Sepolia are connected.
-You can bridge tokens with the following script:
-
-```shell
-targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> scripts/sendToken.ts
-```
-
-You must have WXTZ on the source chain.
-If you use Etherlink testnet as the source network, the test automatically mints and sends you 1 WXTZ.
-This mint happens only on Etherlink testnet.
-
-### Tests
-
-To run tests for WXTZ, run this command:
-
-```shell
-npx hardhat test test/WXTZ.test.ts
-```
-
-This test does not test the OFT support except for some basic errors because it can't easily reproduce a multi-chain setup with in hardhat tests.
 
 ### Audit & Security
 
