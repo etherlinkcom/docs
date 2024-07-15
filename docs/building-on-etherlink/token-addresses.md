@@ -19,12 +19,6 @@ Click the address to go to the block explorer page for the token.
   <td><a href="https://testnet-explorer.etherlink.com/address/0xB1Ea698633d57705e93b0E40c1077d46CD6A51d8" target="_blank">0xB1Ea698633d57705e93b0E40c1077d46CD6A51d8</a></td>
 </tr>
 <tr>
-  <td>Iguana Token</td>
-  <td>GN </td>
-  <td>Coming soon</td>
-  <td><a href="https://testnet-explorer.etherlink.com/address/0xBeEfb119631691a1e0D9378fA7864fC6E67A72Ad" target="_blank">0xBeEfb119631691a1e0D9378fA7864fC6E67A72Ad</a></td>
-</tr>
-<tr>
   <td>Etherlink USD</td>
   <td>eUSD</td>
   <td>Coming soon</td>
