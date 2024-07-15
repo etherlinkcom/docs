@@ -26,7 +26,7 @@ Click the address to go to the block explorer page for the token.
 </tr>
 <tr>
   <td>Etherlink USD</td>
-  <td>SD</td>
+  <td>eUSD</td>
   <td>Coming soon</td>
   <td><a href="https://testnet-explorer.etherlink.com/address/0x1A71f491fb0Ef77F13F8f6d2a927dd4C969ECe4f" target="_blank">0x1A71f491fb0Ef77F13F8f6d2a927dd4C969ECe4f</a></td>
 </tr>
