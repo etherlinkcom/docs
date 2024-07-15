@@ -1,9 +1,9 @@
 ---
-title: Deploying Solidity contracts
+title: Deploying smart contracts
 ---
 
 As an EVM-compatible chain, Etherlink runs Solidity contracts.
-You can deploy Solidity contracts in any way that you would deploy them to an EVM-compatible chain.
+You can deploy Solidity smart contracts in any way that you would deploy them to an EVM-compatible chain.
 
 :::note
 
@@ -15,7 +15,7 @@ You can use any of the toolkits in [Development toolkits](./development-toolkits
 
 ## Deploying with Remix
 
-The Remix online IDE lets you code, compile, and deploy Solidity contracts to EVM chains, including Etherlink
+The Remix online IDE lets you code, compile, and deploy contracts to EVM chains, including Etherlink
 
 1. Connect your wallet to Etherlink testnet as described in [Using your wallet](../get-started/using-your-wallet).
 
