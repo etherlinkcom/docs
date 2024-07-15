@@ -10,7 +10,7 @@ For more information about tez, see [Tokens](https://docs.tezos.com/architecture
 
 Etherlink and Tezos each have main networks called Mainnet and test networks called Ghostnet.
 Ghostnet is a synonym for Testnet in the Ethereum world; it allows developers to test their software in a risk-free sandbox environment.
-You can bridge tez from Tezos Mainnet to Etherlink Mainnet and back, and you can bridge tez from Tezos Ghostnet to Etherlink Ghostnet and back.
+You can bridge tez from Tezos Mainnet to Etherlink Mainnet and back, and you can bridge tez from Tezos Ghostnet to Etherlink testnet and back.
 
 :::note Bridging time
 Tokens that you bridge from Tezos to Etherlink are available for use on Etherlink immediately.
@@ -42,7 +42,7 @@ The bridge uses these general steps:
 
 You can monitor the status of your bridge operations on the **Transaction History** tab.
 
-For bridging tokens on Ghostnet, you can use the [Testnet canonical bridge](https://bridge-xi.vercel.app/) to deposit tez.
+For bridging tokens on testnet, you can use the [Testnet canonical bridge](https://bridge-xi.vercel.app/) to deposit tez.
 
 ## How bridging works
 
@@ -51,13 +51,13 @@ The bridging process uses two contracts on Tezos layer 1:
 - A bridge contract that accepts deposits and sends them to be exchanged.
 
   - The source code of this contract is in [`evm_bridge.mligo`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/tezos_contracts/evm_bridge.mligo).
-  - This contract is deployed to Ghostnet at [`KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3`](https://ghostnet.tzkt.io/KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3/).
+  - This contract is deployed to testnet at [`KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3`](https://ghostnet.tzkt.io/KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3/).
   - This contract is deployed to Mainnet at [`KT1Wj8SUGmnEPFqyahHAcjcNQwe6YGhEXJb5`](https://tzkt.io/KT1Wj8SUGmnEPFqyahHAcjcNQwe6YGhEXJb5/).
 
 - An exchanger contract that stores the tokens and issues tickets that represent those tokens.
 
   - The source code of this contract is in [`evm_bridge.mligo`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/tezos_contracts/exchanger.mligo).
-  - This contract is deployed to Ghostnet at [`KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3`](https://ghostnet.tzkt.io/KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3/).
+  - This contract is deployed to testnet at [`KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3`](https://ghostnet.tzkt.io/KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3/).
   - This contract is deployed to Mainnet at [`KT1CeFqjJRJPNVvhvznQrWfHad2jCiDZ6Lyj`](https://tzkt.io/KT1CeFqjJRJPNVvhvznQrWfHad2jCiDZ6Lyj/).
 
 The deposit process follows these general steps:
