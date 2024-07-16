@@ -59,7 +59,7 @@ Click the address to go to the block explorer page for the token:
 WXTZ is a token created to replicate the functionality of Wrapped Ether (WETH), but specifically for the Tez (XTZ) native token on Etherlink.
 The goal of WXTZ is to facilitate the use of XTZ in various decentralized applications (dApps) and protocols that require ERC-20-like tokens.
 
-If you want to have more details, go check our [repo](https://github.com/etherlinkcom/token-deployments/tree/main).
+If you want to have more details or check the code, you can go to our [repo](https://github.com/etherlinkcom/token-deployments/tree/main).
 
 ### Wrapping & Unwrapping
 
@@ -142,12 +142,8 @@ The Etherlink team has taken measures to protect users native to Etherlink and b
 
 These are the measures to protect Etherlink users:
 
-- We overrode the `_credit` method used by LayerZero to bridge tokens between chains.
-- We added a condition checking that the receiving amount of WXTZ can't exceed the amount of XTZ stored in the contract.
-The result is that **only the WXTZ supply bridged** using the LayerZero protocol should be at risk, and not the local WXTZ on Etherlink.
-If an attacker succeeds in hacking the bridge, they will only be able to transfer the difference between the amount of XTZ stored in the contract and the local total supply of WXTZ on Etherlink.
-In this way, all Etherlink users who own their WXTZ locally will still have their WXTZ backed 1:1 by XTZ in the contract.
+- We overrode the `_credit` method used by LayerZero to bridge tokens between chains. We added a condition checking that the receiving amount of WXTZ can't exceed the amount of XTZ stored in the contract. The result is that **only the WXTZ supply bridged** using the LayerZero protocol should be at risk, and not the local WXTZ on Etherlink. If an attacker succeeds in hacking the bridge, they will only be able to transfer the difference between the amount of XTZ stored in the contract and the local total supply of WXTZ on Etherlink. In this way, all Etherlink users who own their WXTZ locally will still have their WXTZ backed 1:1 by XTZ in the contract.
 
-To protect bridged users, the Etherlink team overrode the `setPeer()` method that connects and disconnects WXTZ contracts on different chains.
+- To protect bridged users, the Etherlink team overrode the `setPeer()` method that connects and disconnects WXTZ contracts on different chains.
 By adding a 2 day timelock to the `setPeer()` method, there is a 2 day delay between initially creating a connection and the connection being executed.
-If a hacker takes ownership of the contracts and starts connecting or disconnecting, bridged users will have 2 days to bridge back all their funds on Etherlink and withdraw their XTZ.
+If a hacker takes ownership of the contracts and starts connecting or disconnecting, **bridged users will have 2 days to bridge back all their funds on Etherlink and withdraw their XTZ**.
