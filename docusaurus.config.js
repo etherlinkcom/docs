@@ -119,7 +119,8 @@ const config = {
         ],
       },
       prism: {
-        theme: require('prism-react-renderer/themes/dracula'),
+        theme: require('prism-react-renderer/themes/github'),
+        darkTheme: require('prism-react-renderer/themes/dracula'),
         additionalLanguages: ['solidity'],
       },
       // https://github.com/flexanalytics/plugin-image-zoom
