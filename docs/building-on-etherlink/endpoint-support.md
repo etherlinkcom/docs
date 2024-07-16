@@ -92,9 +92,9 @@ For information about these endpoints, see the Geth documentation at https://get
 
 Endpoint | Supported | Notes
 --- | --- | ---
-`debug_traceTransaction` | Partially | Supported on Ghostnet but not Mainnet
+`debug_traceTransaction` | Partially | Supported on testnet but not Mainnet
 `eth_call` | No | Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version
-`txpool_content` | Partially | Returns the transaction pool on Ghostnet but always returns an empty pool on Mainnet
+`txpool_content` | Partially | Returns the transaction pool on testnet but always returns an empty pool on Mainnet
 
 ## ethers.js SDK methods
 
