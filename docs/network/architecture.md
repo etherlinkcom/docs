@@ -60,7 +60,7 @@ The overall lifecycle of a typical operation is as follows:
 1. The sequencer publishes the blueprint to the EVM nodes, which update their states based on the transactions in the blueprint.
 1. The sequencer publishes the blueprint to the Smart Rollup inbox on layer 1 via a Smart Rollup node running in operator or batcher mode.
 1. The Smart Rollup nodes tracking the state of Etherlink fetch the blueprint from the Smart Rollup inbox, read its transactions, and update their states.
-1. The EVM nodes check the state of the Smart Rollup nodes to verify that transactions have successfully and faithfully been finalized on layer 1.
+1. The EVM nodes check the state of the Smart Rollup nodes to verify that blueprints have successfully and faithfully been finalized on layer 1.
 1. The Smart Rollup nodes running in observer mode post hashes of Etherlink's state to layer 1 as commitments.
 
 This diagram summarizes the transaction process:
