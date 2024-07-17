@@ -38,7 +38,7 @@ They also check Smart Rollup nodes to verify that these transactions make it to 
 
      - Nodes running in observer mode follow the state of the rollup by monitoring layer 1 and updating their states.
      - Nodes running in operator mode update their states like nodes running in observer mode.
-     They also help secure the Etherlink Smart Rollup by publishing commitments to layer 1 and playing refutation games.
+     They also have the critical role of securing the Etherlink Smart Rollup by publishing commitments to layer 1 and playing refutation games.
      - The sequencer can use a node running in batcher mode to publish transactions to layer 1.
      It can also use a node running in operator mode to publish transactions.
 
