@@ -29,7 +29,7 @@ Click the address to go to the block explorer page for the token:
 </tr>
 <tr>
   <td>Tether USD</td>
-  <td> USDT</td>
+  <td>USDT</td>
   <td>Coming soon</td>
   <td><a href="https://testnet-explorer.etherlink.com/address/0xD21B917D2f4a4a8E3D12892160BFFd8f4cd72d4F" target="_blank">0xD21...2d4F</a></td>
 </tr>
