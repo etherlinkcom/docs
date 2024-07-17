@@ -68,9 +68,9 @@ The request includes the tez to bridge, the address of the Etherlink Smart Rollu
 1. It sends the tez in a transaction to the exchanger contract's `mint` entrypoint.
 1. The exchanger contract stores the tez and creates a [ticket](https://docs.tezos.com/smart-contracts/data-types/complex-data-types#tickets) that represents the receipt of the tokens.
 1. The exchanger contract sends the ticket to the bridge contract's `callback` entrypoint.
-1. The bridge contract forwards the ticket to the stored Etherlink Smart Rollup address and clears its storage for the next transfer.
-1. The Etherlink Smart Rollup transfers the ticket to a [precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) on Etherlink.
-1. The precompiled contract creates the tez and sends them to the user's Etherlink address.
+1. The bridge contract forwards the ticket to the Smart Rollup inbox and clears its storage for the next transfer.
+1. The Etherlink Smart Rollup receives the deposit request from the Smart Rollup inbox.
+1. The Etherlink Smart rollup creates a corresponding transaction on Etherlink to transfer the tez from the [zero address](https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000000) to the user's address.
 
 This diagram is an overview of the deposit process:
 
