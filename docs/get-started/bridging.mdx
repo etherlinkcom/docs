@@ -78,12 +78,11 @@ This diagram is an overview of the deposit process:
 
 The withdrawal process follows these general steps:
 
-1. A user sends tez to a [precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) in the Etherlink Smart Rollup.
-The request includes their layer 1 address.
-1. The contract locks the tez and creates a [ticket](https://docs.tezos.com/smart-contracts/data-types/complex-data-types#tickets) that represents the receipt of the tokens.
-1. The contract puts the ticket in a call to the exchanger contract's `burn` entrypoint and puts this transaction in the Smart Rollup outbox on layer 1.
-The transaction exists in the outbox as part of Etherlink's commitment to its state.
-1. When the commitment that contains the transaction is cemented, anyone can run the transaction by running the Octez client `execute outbox message` command.
+1. A user sends tez and their layer 1 address to the [withdrawal precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) in the Etherlink Smart Rollup.
+1. The contract locks the tez.
+1. The contract creates a transaction to the exchanger contract's `burn` entrypoint and puts this transaction in the Smart Rollup outbox.
+This outbox message becomes part of Etherlink's commitment to its state.
+1. When the commitment that contains the transaction is cemented on L1, anyone can run the transaction by running the Octez client `execute outbox message` command.
 1. The exchanger contract receives the ticket, burns it, and sends the equivalent amount of tez to the user's layer 1 address.
 
 This diagram is an overview of the withdrawal process:
