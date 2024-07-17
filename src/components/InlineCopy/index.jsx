@@ -10,7 +10,7 @@ export default function InlineCopy({ code, href, children }) {
   return (
     <div className={clsx(styles.container)}>
       {href ?
-        <Link to={href}>
+        <Link to={href} className={clsx(styles.link)}>
           <code>{children || code}</code>
         </Link>
       :
