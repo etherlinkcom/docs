@@ -18,38 +18,38 @@ Click the address to go to the block explorer page for the token:
 <tr>
   <td>Wrapped XTZ (see <a href="#wxtz">WXTZ</a> below)</td>
   <td>WXTZ</td>
-  <td><a href="https://explorer.etherlink.com/token/0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" target="_blank">0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb</a></td>
-  <td><a href="https://testnet-explorer.etherlink.com/address/0xB1Ea698633d57705e93b0E40c1077d46CD6A51d8" target="_blank">0xB1Ea698633d57705e93b0E40c1077d46CD6A51d8</a></td>
+  <td><a href="https://explorer.etherlink.com/token/0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" target="_blank">0xc9B...3EAb</a></td>
+  <td><a href="https://testnet-explorer.etherlink.com/address/0xB1Ea698633d57705e93b0E40c1077d46CD6A51d8" target="_blank">0xB1E...51d8</a></td>
 </tr>
 <tr>
   <td>Etherlink USD</td>
   <td>eUSD</td>
   <td>Coming soon</td>
-  <td><a href="https://testnet-explorer.etherlink.com/address/0x1A71f491fb0Ef77F13F8f6d2a927dd4C969ECe4f" target="_blank">0x1A71f491fb0Ef77F13F8f6d2a927dd4C969ECe4f</a></td>
+  <td><a href="https://testnet-explorer.etherlink.com/address/0x1A71f491fb0Ef77F13F8f6d2a927dd4C969ECe4f" target="_blank">0x1A7...Ce4f</a></td>
 </tr>
 <tr>
   <td>Tether USD</td>
   <td> USDT</td>
   <td>Coming soon</td>
-  <td><a href="https://testnet-explorer.etherlink.com/address/0xD21B917D2f4a4a8E3D12892160BFFd8f4cd72d4F" target="_blank">0xD21B917D2f4a4a8E3D12892160BFFd8f4cd72d4F</a></td>
+  <td><a href="https://testnet-explorer.etherlink.com/address/0xD21B917D2f4a4a8E3D12892160BFFd8f4cd72d4F" target="_blank">0xD21...2d4F</a></td>
 </tr>
 <tr>
   <td>USD Coin</td>
   <td>USDC</td>
   <td>Coming soon</td>
-  <td><a href="https://testnet-explorer.etherlink.com/address/0xa7c9092A5D2C3663B7C5F714dbA806d02d62B58a" target="_blank">0xa7c9092A5D2C3663B7C5F714dbA806d02d62B58a</a></td>
+  <td><a href="https://testnet-explorer.etherlink.com/address/0xa7c9092A5D2C3663B7C5F714dbA806d02d62B58a" target="_blank">0xa7c...B58a</a></td>
 </tr>
 <tr>
   <td>Wrapped ETH</td>
   <td>WETH</td>
   <td>Coming soon</td>
-  <td><a href="https://testnet-explorer.etherlink.com/address/0x8DEF68408Bc96553003094180E5C90d9fe5b88C1" target="_blank">0x8DEF68408Bc96553003094180E5C90d9fe5b88C1</a></td>
+  <td><a href="https://testnet-explorer.etherlink.com/address/0x8DEF68408Bc96553003094180E5C90d9fe5b88C1" target="_blank">0x8DE...88C1</a></td>
 </tr>
 <tr>
   <td>Tezos BTC</td>
   <td>tzBTC</td>
   <td>Coming soon</td>
-  <td><a href="https://testnet-explorer.etherlink.com/address/0x6bDE94725379334b469449f4CF49bCfc85ebFb27" target="_blank">0x6bDE94725379334b469449f4CF49bCfc85ebFb27</a></td>
+  <td><a href="https://testnet-explorer.etherlink.com/address/0x6bDE94725379334b469449f4CF49bCfc85ebFb27" target="_blank">0x6bD...Fb27</a></td>
 </tr>
 </tbody>
 </table>
@@ -90,23 +90,23 @@ Here are the chains the token is deployed on:
 <tbody>
 <tr>
   <td>Etherlink</td>
-  <td><a href="https://explorer.etherlink.com/address/0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" target="_blank">0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb</a></td>
+  <td><a href="https://explorer.etherlink.com/address/0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" target="_blank">0xc9B...3EAb</a></td>
 </tr>
 <tr>
   <td>Ethereum</td>
-  <td><a href="https://etherscan.io/address/0xc9b53ab2679f573e480d01e0f49e2b5cfb7a3eab" target="_blank">0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb</a></td>
+  <td><a href="https://etherscan.io/address/0xc9b53ab2679f573e480d01e0f49e2b5cfb7a3eab" target="_blank">0xc9B...3EAb</a></td>
 </tr>
 <tr>
   <td>Base</td>
-  <td><a href="https://basescan.org/address/0x91f9cc2649ac70a071602cade9b0c1a5868af51d" target="_blank">0x91F9cc2649ac70a071602cadE9b0C1A5868af51D</a></td>
+  <td><a href="https://basescan.org/address/0x91f9cc2649ac70a071602cade9b0c1a5868af51d" target="_blank">0x91F...f51D</a></td>
 </tr>
 <tr>
   <td>Binance Smart Chain</td>
-  <td><a href="https://bscscan.com/address/0x91F9cc2649ac70a071602cadE9b0C1A5868af51D" target="_blank">0x91F9cc2649ac70a071602cadE9b0C1A5868af51D</a></td>
+  <td><a href="https://bscscan.com/address/0x91F9cc2649ac70a071602cadE9b0C1A5868af51D" target="_blank">0x91F...f51D</a></td>
 </tr>
 <tr>
   <td>Arbitrum One</td>
-  <td><a href="https://arbiscan.io/address/0x7424f00845777a06e21f0bd8873f814a8a814b2d" target="_blank">0x7424f00845777A06E21F0bd8873f814A8A814B2D</a></td>
+  <td><a href="https://arbiscan.io/address/0x7424f00845777a06e21f0bd8873f814a8a814b2d" target="_blank">0x742...4B2D</a></td>
 </tr>
 </tbody>
 </table>
