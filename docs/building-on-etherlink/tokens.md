@@ -113,7 +113,8 @@ Here are the chains the token is deployed on:
 
 :::note
 
-The bridging system is not available yet. You can still use the WXTZ on Etherlink as a classic wrapper.
+The bridging system is not available yet, which means that you cannot bridge WXTZ from one chain to another.
+You can still use the WXTZ on Etherlink as a classic wrapped token.
 
 :::
 
