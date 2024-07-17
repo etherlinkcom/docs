@@ -126,7 +126,7 @@ This feature leverages the [EIP-2612](https://eips.ethereum.org/EIPS/eip-2612) s
 
 ### Audit & Security
 
-The contract was audited by [Omniscia.io](https://omniscia.io/).
+The WXTZ contract was audited by [Omniscia.io](https://omniscia.io/).
 The final report is here: https://omniscia.io/reports/etherlink-cross-chain-token-665c8ac479e20900180f383b
 
 WXTZ supports OFT to simplify cross-chain compatibility.
