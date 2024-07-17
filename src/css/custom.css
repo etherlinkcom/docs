@@ -208,11 +208,6 @@ nav.navbar {
   border: 1px solid #2A9660
 }
 
-/* Get code blocks closer to site theme */
-.theme-code-block {
-  --prism-background-color: #EEF9FD!important;
-}
-
 /* Footer with last update time */
 .theme-doc-footer {
   background-color: inherit;
