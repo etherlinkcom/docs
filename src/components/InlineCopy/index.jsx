@@ -2,13 +2,20 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
+import Link from '@docusaurus/Link';
 
-import CopyButton from '@site/src/components/CopyButton'
+import CopyButton from '@site/src/components/CopyButton';
 
-export default function InlineCopy({ code }) {
+export default function InlineCopy({ code, href, children }) {
   return (
     <div className={clsx(styles.container)}>
-      <code>{code}</code>
+      {href ?
+        <Link to={href}>
+          <code>{children || code}</code>
+        </Link>
+      :
+        <code>{children || code}</code>
+      }
       <CopyButton code={code} />
     </div>
   );
