@@ -57,20 +57,20 @@ Click the address to go to the block explorer page for the token:
 ## WXTZ
 
 WXTZ is a token created to replicate the functionality of Wrapped Ether (WETH), but specifically for the Tez (XTZ) native token on Etherlink.
-The goal of WXTZ is to facilitate the use of XTZ in various decentralized applications (dApps) and protocols that require ERC-20-like tokens.
+The goal of WXTZ is to facilitate the use of XTZ in decentralized applications (dApps) and protocols that require ERC-20-like tokens.
 
-If you want to have more details or check the code, you can go to our [repo](https://github.com/etherlinkcom/token-deployments/tree/main).
+For more information and the code of the token, see the [etherlinkcom/token-deployments repository](https://github.com/etherlinkcom/token-deployments/tree/main).
 
 ### Wrapping & Unwrapping
 
 The token follows the `WETH9` interface for compatibility:
 
-- **Wrapping XTZ**: The `deposit()` method can be called with XTZ attached to the message to wrap XTZ for WXTZ
-- **Unwrapping XTZ**: The `withdraw(wad)` method can be called to unwrap `wad` WXTZ for XTZ
+- **Wrapping XTZ**: The `deposit()` method accepts XTZ and returns WXTZ
+- **Unwrapping XTZ**: The `withdraw(wad)` method accepts WXTZ and returns XTZ
 
 :::note
 
-The original `WETH9` contract developed with solc version `0.4.x` also supports `fallback()`, but WXTZ does not.
+The original `WETH9` contract developed with Solidity compiler version `0.4.x` also supports the `fallback()` method, but WXTZ does not.
 Supporting this hook would cause function signatures that do not match the contract's to act as if they are supported and successfully executed.
 
 :::
