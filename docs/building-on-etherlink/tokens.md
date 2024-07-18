@@ -40,7 +40,7 @@ Click the address to go to the block explorer page for the token:
   <td><a href="https://testnet-explorer.etherlink.com/address/0xa7c9092A5D2C3663B7C5F714dbA806d02d62B58a" target="_blank">0xa7c...B58a</a></td>
 </tr>
 <tr>
-  <td>Wrapped ETH</td>
+  <td>Wrapped Ether</td>
   <td>WETH</td>
   <td><a href="https://explorer.etherlink.com/address/0xfc24f770F94edBca6D6f885E12d4317320BcB401" target="_blank">0xfc2...B401</a></td>
   <td><a href="https://testnet-explorer.etherlink.com/address/0x8DEF68408Bc96553003094180E5C90d9fe5b88C1" target="_blank">0x8DE...88C1</a></td>
@@ -58,19 +58,19 @@ Click the address to go to the block explorer page for the token:
   <td></td>
 </tr>
 <tr>
-  <td>Bridged BNB</td>
-  <td>BNB</td>
+  <td>Wrapped BNB</td>
+  <td>WBNB</td>
   <td><a href="https://explorer.etherlink.com/address/0xaA40A1cc1561c584B675cbD12F1423A32E2a0d8C" target="_blank">0xaA4...0d8C</a></td>
   <td></td>
 </tr>
 <tr>
-  <td>Bridged AVAX</td>
-  <td>AVAX</td>
+  <td>Wrapped AVAX</td>
+  <td>WAVAX</td>
   <td><a href="https://explorer.etherlink.com/address/0xe820995cD39B6E09EAa7e4e16337184b4A61B644" target="_blank">0xe82...B644</a></td>
   <td></td>
 </tr>
 <tr>
-  <td>Bridged SHIB</td>
+  <td>SHIBA INU</td>
   <td>SHIB</td>
   <td><a href="https://explorer.etherlink.com/address/0xBBD1F50A212357067318a84179892684e1Ac5181" target="_blank">0xBBD...5181</a></td>
   <td></td>
