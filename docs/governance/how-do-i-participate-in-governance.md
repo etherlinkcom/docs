@@ -67,7 +67,7 @@ You can also subscribe to the `voting_finished` event to be notified when the Pr
 
 ### Proposing and upvoting upgrades
 
-During a Proposal period, bakers can propose kernel or security updates by calling the `new_proposal` entrypoint of the appropriate governance contract, as in this example:
+During a Proposal period, bakers can propose kernel or security updates by calling the `new_proposal` entrypoint of the appropriate governance contract and passing the hash of their proposed kernel, as in this example:
 
 ```bash
 octez-client transfer 0 from my_wallet to KT1H5pCmFuhAwRExzNNrPQFKpunJx1yEVa6J \
@@ -79,7 +79,7 @@ The command takes these parameters:
 
 - The address or Octez client alias of your baker account
 - The address of the Etherlink kernel or security governance contract
-- The hash of the kernel upgrade
+- The hash of the upgraded kernel, which the proposer must generate from the code of the new kernel
 
 The proposer must make the code of the new kernel available for people to evaluate.
 Proposers can make it easier for bakers to upgrade to the new kernel by providing the preimages for the kernel online so nodes can update from them directly.
@@ -108,6 +108,8 @@ The command takes these parameters:
 - The address or Octez client alias of your baker account
 - The address of the Etherlink kernel or security governance contract
 - `"yea"`, `"nay"`, or `"pass"`, including the double quotes
+
+The command does not need the hash of the kernel because only one kernel can be in the Promotion period at a time, so the options are to vote for or against that kernel or to abstain by voting "pass."
 
 ### Triggering upgrades
 
