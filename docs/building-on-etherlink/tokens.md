@@ -18,7 +18,7 @@ Click the address to go to the block explorer page for the token:
 <tr>
   <td>Wrapped XTZ (see <a href="#wxtz">WXTZ</a> below)</td>
   <td>WXTZ</td>
-  <td><a href="https://explorer.etherlink.com/token/0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" target="_blank">0xc9B...3EAb</a></td>
+  <td><a href="https://explorer.etherlink.com/address/0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" target="_blank">0xc9B...3EAb</a></td>
   <td><a href="https://testnet-explorer.etherlink.com/address/0xB1Ea698633d57705e93b0E40c1077d46CD6A51d8" target="_blank">0xB1E...51d8</a></td>
 </tr>
 <tr>
@@ -30,19 +30,19 @@ Click the address to go to the block explorer page for the token:
 <tr>
   <td>Tether USD</td>
   <td>USDT</td>
-  <td>Coming soon</td>
+  <td><a href="https://explorer.etherlink.com/address/0x2C03058C8AFC06713be23e58D2febC8337dbfE6A" target="_blank">0x2C0...fE6a</a></td>
   <td><a href="https://testnet-explorer.etherlink.com/address/0xD21B917D2f4a4a8E3D12892160BFFd8f4cd72d4F" target="_blank">0xD21...2d4F</a></td>
 </tr>
 <tr>
   <td>USD Coin</td>
   <td>USDC</td>
-  <td>Coming soon</td>
+  <td><a href="https://explorer.etherlink.com/address/0x796Ea11Fa2dD751eD01b53C372fFDB4AAa8f00F9" target="_blank">0x796...00F9</a></td>
   <td><a href="https://testnet-explorer.etherlink.com/address/0xa7c9092A5D2C3663B7C5F714dbA806d02d62B58a" target="_blank">0xa7c...B58a</a></td>
 </tr>
 <tr>
   <td>Wrapped ETH</td>
   <td>WETH</td>
-  <td>Coming soon</td>
+  <td><a href="https://explorer.etherlink.com/address/0xfc24f770F94edBca6D6f885E12d4317320BcB401" target="_blank">0xfc2...B401</a></td>
   <td><a href="https://testnet-explorer.etherlink.com/address/0x8DEF68408Bc96553003094180E5C90d9fe5b88C1" target="_blank">0x8DE...88C1</a></td>
 </tr>
 <tr>
@@ -50,6 +50,30 @@ Click the address to go to the block explorer page for the token:
   <td>tzBTC</td>
   <td>Coming soon</td>
   <td><a href="https://testnet-explorer.etherlink.com/address/0x6bDE94725379334b469449f4CF49bCfc85ebFb27" target="_blank">0x6bD...Fb27</a></td>
+</tr>
+<tr>
+  <td>Wrapped BTC</td>
+  <td>WBTC</td>
+  <td><a href="https://explorer.etherlink.com/address/0xbFc94CD2B1E55999Cfc7347a9313e88702B83d0F" target="_blank">0xbFc...sd0F</a></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Bridged BNB</td>
+  <td>BNB</td>
+  <td><a href="https://explorer.etherlink.com/address/0xaA40A1cc1561c584B675cbD12F1423A32E2a0d8C" target="_blank">0xaA4...0d8C</a></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Bridged AVAX</td>
+  <td>AVAX</td>
+  <td><a href="https://explorer.etherlink.com/address/0xe820995cD39B6E09EAa7e4e16337184b4A61B644" target="_blank">0xe82...B644</a></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Bridged SHIB</td>
+  <td>SHIB</td>
+  <td><a href="https://explorer.etherlink.com/address/0xBBD1F50A212357067318a84179892684e1Ac5181" target="_blank">0xBBD...5181</a></td>
+  <td></td>
 </tr>
 </tbody>
 </table>
