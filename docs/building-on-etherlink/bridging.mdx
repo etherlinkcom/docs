@@ -2,18 +2,26 @@
 title: Bridging tokens
 ---
 
-You can move tokens from Etherlink to Tezos layer 1 and back through a process called _bridging_.
-Currently you can bridge the native token on Etherlink and Tezos, which is called tez and shown on price tickers with the symbol [XTZ](https://coinmarketcap.com/currencies/tezos/).
-For more information about tez, see [Tokens](https://docs.tezos.com/architecture/tokens) on docs.tezos.com.
+You can move tokens in and out of Etherlink through a process called _bridging_.
 
-Etherlink and Tezos each have main networks called Mainnet and test networks called Ghostnet.
-Ghostnet is a synonym for Testnet in the Ethereum world; it allows developers to test their software in a risk-free sandbox environment.
-You can bridge tez from Tezos Mainnet to Etherlink Mainnet and back, and you can bridge tez from Tezos Ghostnet to Etherlink Testnet and back.
+## Available bridges
+
+Etherlink developers have created these bridges.
+These bridges are trustless and permissionless; anyone can use them without restrictions or the intervention of a third party.
+
+Bridge type | Description | Mainnet link | Testnet link
+--- | --- | --- | ---
+Canonical bridge | Bridges tez (XTZ) tokens from Tezos layer 1 to Etherlink and back | https://bridge.etherlink.com/ | https://testnet.bridge.etherlink.com/
+Wrapped asset bridge | Bridges assets from EVM chains to wrapped assets on Etherlink and back | TODO | TODO
+Financial asset bridge | Bridges FA1.2 and FA2 [standards-compliant tokens](https://docs.tezos.com/architecture/tokens) from Tezos layer 1 to Etherlink and back | TODO | TODO
+
+- Bridging tokens from Tezos layer 1 to Etherlink is referred to as _depositing_ tokens.
+- Bridging tokens from Etherlink to Tezos layer 1 is referred to as _withdrawing_ tokens.
 
 :::note Bridging time
-Tokens that you bridge from Tezos to Etherlink are available for use on Etherlink immediately.
+Tokens that you bridge from Tezos layer 1 to Etherlink, including tez and FA-compatible tokens, are available for use on Etherlink immediately.
 
-Tokens that you bridge from Etherlink to Tezos are available for use on Tezos in two weeks.
+Tokens that you bridge from Etherlink to Tezos layer 1, including tez and FA-compatible tokens, are available for use on Tezos in two weeks.
 
 This delay is caused by the [Smart Rollup refutation period](https://docs.tezos.com/architecture/smart-rollups#refutation-periods).
 As with all Smart Rollups, Etherlink nodes post commitments about their state to Tezos layer 1, including incoming bridging transactions, on a regular schedule.
@@ -24,15 +32,16 @@ Users can execute the bridging transactions in a commitment only after the commi
 The Etherlink indexer run by Nomadic Labs automatically executes these bridging transactions when they are cemented, which makes the bridged tokens available on Tezos.
 :::
 
-## Bridging your tokens
+## Bridging tez (XTZ) between Tezos layer 1 and Etherlink
 
-Etherlink provides canonical bridges for tez tokens.
-These bridges are trustless and permissionless; anyone can use them without restrictions or the intervention of a third party.
+You can bridge the native token on Etherlink and Tezos, which is called tez and shown on price tickers with the symbol [XTZ](https://coinmarketcap.com/currencies/tezos/).
+You can bridge tez from Tezos Mainnet to Etherlink Mainnet and back, and you can bridge tez from Tezos Testnet (Ghostnet) to Etherlink Testnet and back.
+For more information about tez, see [Tokens](https://docs.tezos.com/architecture/tokens) on docs.tezos.com.
 
 - [Mainnet canonical bridge](https://bridge.etherlink.com/)
 - [Testnet canonical bridge](https://testnet.bridge.etherlink.com/)
 
-The bridges use these general steps:
+To use these bridges, follow these general steps:
 
 1. Connect your Tezos and Etherlink-compatible wallets.
 1. Select the type of transfer:
@@ -46,9 +55,9 @@ The bridges use these general steps:
 
 You can monitor the status of your bridge operations on the **Transaction History** tab.
 
-## How bridging works
+### How bridging tez works
 
-The bridging process uses two contracts on Tezos layer 1:
+The process of bridging tez between Etherlink and Tezos layer 1 uses two contracts on Tezos layer 1:
 
 - A bridge contract that accepts deposits and sends them to be exchanged.
 This bridge contract is not a fundamental part of the bridge; it is a helper contract that avoids limitations around tickets by forwarding them to the Etherlink Smart Rollup on behalf of user accounts.
