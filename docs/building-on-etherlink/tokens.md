@@ -28,13 +28,13 @@ Click the address to go to the block explorer page for the token:
   <td><a href="https://testnet-explorer.etherlink.com/address/0x1A71f491fb0Ef77F13F8f6d2a927dd4C969ECe4f" target="_blank">0x1A7...Ce4f</a></td>
 </tr>
 <tr>
-  <td>Bridged Tether USD</td>
+  <td>Tether USD</td>
   <td>USDT</td>
   <td><a href="https://explorer.etherlink.com/address/0x2C03058C8AFC06713be23e58D2febC8337dbfE6A" target="_blank">0x2C0...fE6a</a></td>
   <td><a href="https://testnet-explorer.etherlink.com/address/0xD21B917D2f4a4a8E3D12892160BFFd8f4cd72d4F" target="_blank">0xD21...2d4F</a></td>
 </tr>
 <tr>
-  <td>Bridged USD Coin</td>
+  <td>USD Coin</td>
   <td>USDC</td>
   <td><a href="https://explorer.etherlink.com/address/0x796Ea11Fa2dD751eD01b53C372fFDB4AAa8f00F9" target="_blank">0x796...00F9</a></td>
   <td><a href="https://testnet-explorer.etherlink.com/address/0xa7c9092A5D2C3663B7C5F714dbA806d02d62B58a" target="_blank">0xa7c...B58a</a></td>
