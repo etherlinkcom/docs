@@ -18,7 +18,7 @@ Click the address to go to the block explorer page for the token:
 <tr>
   <td>Wrapped XTZ (see <a href="#wxtz">WXTZ</a> below)</td>
   <td>WXTZ</td>
-  <td><a href="https://explorer.etherlink.com/token/0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" target="_blank">0xc9B...3EAb</a></td>
+  <td><a href="https://explorer.etherlink.com/address/0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" target="_blank">0xc9B...3EAb</a></td>
   <td><a href="https://testnet-explorer.etherlink.com/address/0xB1Ea698633d57705e93b0E40c1077d46CD6A51d8" target="_blank">0xB1E...51d8</a></td>
 </tr>
 <tr>
