@@ -60,7 +60,9 @@ The bridging process uses two contracts on Tezos layer 1:
   - This contract is deployed to testnet at [`KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3`](https://ghostnet.tzkt.io/KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3/).
   - This contract is deployed to Mainnet at [`KT1CeFqjJRJPNVvhvznQrWfHad2jCiDZ6Lyj`](https://tzkt.io/KT1CeFqjJRJPNVvhvznQrWfHad2jCiDZ6Lyj/).
 
-The deposit process follows these general steps:
+### Deposit process
+
+The deposit process (moving tez from layer 1 to Etherlink) follows these general steps:
 
 1. A Tezos user sends a request to the layer 1 bridge contract's `deposit` entrypoint.
 The request includes the tez to bridge, the address of the Etherlink Smart Rollup, and the user's Etherlink wallet address.
@@ -79,7 +81,9 @@ This diagram is an overview of the deposit process:
 
 ![Overview of the token bridging deposit process](/img/bridging-deposit.png)
 
-The withdrawal process follows these general steps:
+### Withdrawal process
+
+The withdrawal process (moving tez from Etherlink to layer 1) follows these general steps:
 
 1. An Etherlink user sends tez and their layer 1 address to the [withdrawal precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) in the Etherlink Smart Rollup via an Etherlink EVM node.
 1. The contract locks the tez.
