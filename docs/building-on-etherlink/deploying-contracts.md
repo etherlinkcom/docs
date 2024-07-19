@@ -62,4 +62,4 @@ If you used the example contract above, you can call the `greet` entrypoint and 
    ![The result of calling the `greet` entrypoint in the example contract](/img/remix-call-contract.png)
 
 Now the contract is deployed on Etherlink.
-You can look it up on the [Testnet block explorer](https://testnet-explorer.etherlink.com/).
+You can look it up on the [Testnet block explorer](https://testnet.explorer.etherlink.com/).
