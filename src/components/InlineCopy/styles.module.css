@@ -1,6 +1,13 @@
 .container {
-  display: flex;
-  column-gap: 0.2rem;
+  display: inline;
   position: unset;
   background-color: var(--ifm-code-background);
+}
+
+.link:hover {
+  text-decoration: none;
+}
+
+.link::after {
+  content: none !important;
 }
