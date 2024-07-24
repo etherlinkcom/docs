@@ -305,3 +305,10 @@ article a[target="_blank"]:after {
 article table {
   overflow: visible;
 }
+
+/* Fix issue with color switcher button disappearing in mobile dark mode */
+@media (max-width: 996px) {
+  .navbar-sidebar__brand button.clean-btn {
+    color: #FFFFFF;
+  }
+}
