@@ -66,7 +66,6 @@
   --ifm-font-color-base: #FFFFFF;
   --ifm-link-color: #38FF9C;
   --ifm-navbar-link-color: #38FF9C;
-  --ifm-toc-link-color: #38FF9C;
   --ifm-color-primary: #38FF9C;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
@@ -175,12 +174,16 @@ nav.navbar {
 [data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link {
   color: #38FF9C;
 }
-[data-theme='dark'] .table-of-contents__link:hover, .table-of-contents__link:hover code, .table-of-contents__link--active {
-  color: #38FF9C;
-}
-
 [data-theme='light'] .breadcrumbs__item--active .breadcrumbs__link {
   color: #2A9660;
+}
+
+/* Table of contents */
+[data-theme='dark'] .table-of-contents .table-of-contents__link--active {
+  color: #38FF9C;
+}
+[data-theme='dark'] .table-of-contents .table-of-contents__link:not(.table-of-contents__link--active) {
+  color: var(--ifm-font-color-base);
 }
 [data-theme='light'] .table-of-contents__link:hover, .table-of-contents__link:hover code, .table-of-contents__link--active {
   color: #2A9660;
