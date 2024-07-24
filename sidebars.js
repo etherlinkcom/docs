@@ -4,27 +4,10 @@ const sidebars = {
   documentationSidebar: [
     {
       type: 'category',
-      label: 'Welcome 👋',
-      collapsed: false,
-      items: [
-        'index',
-        {
-          type: 'link',
-          href: 'https://discord.gg/etherlink',
-          label: 'Join our Discord',
-        },
-        {
-          type: 'link',
-          href: 'https://twitter.com/etherlink',
-          label: 'Follow us on Twitter',
-        },
-      ],
-    },
-    {
-      type: 'category',
       label: 'Get started 🚀',
       collapsed: false,
       items: [
+        'index',
         'get-started/using-your-wallet',
         'get-started/network-information',
         'get-started/getting-testnet-tokens',
