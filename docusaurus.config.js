@@ -112,9 +112,22 @@ const config = {
         },
         items: [
           {
-            href: 'https://github.com/etherlinkcom/docs',
-            label: 'GitHub',
+            to: 'https://discord.gg/etherlink',
             position: 'right',
+            target: '_blank',
+            className: 'discord-link',
+          },
+          {
+            to: 'https://x.com/etherlink',
+            position: 'right',
+            target: '_blank',
+            className: 'x-link',
+          },
+          {
+            to: 'https://github.com/etherlinkcom/docs',
+            position: 'right',
+            target: '_blank',
+            className: 'github-link',
           },
         ],
       },
