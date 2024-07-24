@@ -129,6 +129,62 @@ nav.navbar {
   background-color: #171717;
 }
 
+/* Header icons */
+
+/* Full-size screen */
+@media screen and (min-width: 996px) {
+  .discord-link {
+    align-items: center;
+    display: flex;
+  }
+
+  .discord-link::before {
+    background-image: url("/img/discord-logo-white.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    content: '';
+    display: inline-flex;
+    height: 24px;
+    width: 24px;
+    margin-right: 0.5rem;
+  }
+
+  .x-link {
+    align-items: center;
+    display: flex;
+  }
+
+  .x-link::before {
+    background-image: url("/img/x-logo-white.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    content: '';
+    display: inline-flex;
+    height: 24px;
+    width: 24px;
+    margin-right: 0.5rem;
+  }
+
+  .github-link {
+    align-items: center;
+    display: flex;
+  }
+
+  .github-link::before {
+    background-image: url("/img/github-mark-white.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    content: '';
+    display: inline-flex;
+    height: 24px;
+    width: 24px;
+    margin-right: 0.5rem;
+    color: var(--ifm-navbar-link-color);
+  }
+}
 
 .dropdown__menu {
   background-color: #030405;
