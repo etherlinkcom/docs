@@ -68,6 +68,7 @@ The deposit process (moving tez from layer 1 to Etherlink) follows these general
 
 1. A Tezos user sends a request to the layer 1 bridge contract's `deposit` entrypoint.
 The request includes the tez to bridge, the address of the Etherlink Smart Rollup, and the user's Etherlink wallet address.
+This bridge contract is not a fundamental part of the bridge; it is a helper contract that avoids limitations around tickets by forwarding them to the Etherlink Smart Rollup on behalf of user accounts.
 1. The bridge contract stores the address of the Etherlink Smart Rollup temporarily.
 1. It sends the tez in a transaction to the exchanger contract's `mint` entrypoint.
 1. The exchanger contract stores the tez and creates a [ticket](https://docs.tezos.com/smart-contracts/data-types/complex-data-types#tickets) that represents the receipt of the tokens.
