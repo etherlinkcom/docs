@@ -11,7 +11,6 @@ const sidebars = {
         'get-started/using-your-wallet',
         'get-started/network-information',
         'get-started/getting-testnet-tokens',
-        'get-started/bridging',
       ],
     },
     {
@@ -19,6 +18,7 @@ const sidebars = {
       label: 'Building on Etherlink ⛓',
       collapsed: false,
       items: [
+        'building-on-etherlink/bridging',
         'building-on-etherlink/endpoint-support',
         'building-on-etherlink/deploying-contracts',
         'building-on-etherlink/tokens',
