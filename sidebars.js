@@ -18,7 +18,21 @@ const sidebars = {
       label: 'Building on Etherlink ⛓',
       collapsed: false,
       items: [
-        'building-on-etherlink/bridging',
+        {
+          type: 'category',
+          label: 'Bridging tokens',
+          link: {
+            type: 'doc',
+            id: 'building-on-etherlink/bridging',
+          },
+          items: [
+            {
+              type: 'doc',
+              label: 'Bridging XTZ',
+              id: 'building-on-etherlink/bridging-xtz',
+            },
+          ],
+        },
         'building-on-etherlink/endpoint-support',
         'building-on-etherlink/deploying-contracts',
         'building-on-etherlink/tokens',
