@@ -118,7 +118,3 @@ The only way to remove a transaction from the delayed inbox is to process it.
    It becomes the responsibility of the sequencer to reorganize itself to build blueprints on top of the kernel-generated blueprint.
 
 The delayed bridge contract is deployed to Tezos layer 1 Mainnet at [KT1AZeXH8qUdLMfwN2g7iwiYYSZYG4RrwhCj](https://better-call.dev/mainnet/KT1AZeXH8qUdLMfwN2g7iwiYYSZYG4RrwhCj).
-
-This diagram summarizes the flow when the Smart Rollup nodes put transactions from the delayed inbox into a blueprint:
-
-![A diagram of the transaction process, showing that the sequencer is disabled and the Smart Rollup nodes are creating blueprints](/img/architecture-delayed-inbox.png)
