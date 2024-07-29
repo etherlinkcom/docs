@@ -15,7 +15,33 @@ Follow these steps to set up a subgraph in TheGraph to provide information about
    You can use any EVM client including the [Geth](https://geth.ethereum.org/) toolkit and the [Remix](https://remix.ethereum.org/) online IDE.
    For a walkthrough, see [How to take part in Etherlink](https://medium.com/etherlink/how-to-take-part-in-etherlink-8c8d00b0ca3e).
 
-1. If the source code of your contract is not deployed to etherscan.io, get the Application Binary Interface (ABI) for the contract and store it in a file.
+1. Optional: Verify the source code on the Etherlink block explorer:
+
+   1. Find the deployed contract on https://explorer.etherlink.com/ or https://testnet.explorer.etherlink.com/.
+
+   1. On the **Contract** tab, click **Verify & publish**.
+
+   1. In the **New smart contract verification** window, select the license and verification method.
+   In most cases, use the **Solidity (Flattened source code)** verification method.
+
+   1. Under "Contract verification via Solidity (flattened source code)", in the **Compiler** field, select the same compiler version that you used to compile the contract.
+
+   1. In the **EVM version** field, select the same EVM version that you used to compile the contract.
+
+   1. If your compiler optimized the contract source code, select the **Optimization enabled** check box.
+   This setting must match your compiler's setting.
+
+   1. Paste the source code of the contract in the **Contract code** field.
+
+      The page looks like this:
+
+      ![Verifying the source code](/img/verify-source.png)
+
+   1. Click **Verify & publish**.
+
+   Now the block explorer shows the source code and ABI of the contract on the **Contract** tab.
+
+1. If you did not verify the source code on the Etherlink block explorer, get the Application Binary Interface (ABI) for the contract and store it in a file.
 
    The ABI is a JSON object that describes the contract interface.
    Solidity compilers provide the ABI for contracts, so you can get the ABI from your compiler.
@@ -54,7 +80,7 @@ These instructions include:
          - **Ethereum network**: Etherlink Mainnet or Etherlink Testnet, depending on which network your contract is deployed to
          - **Contract address**: The address of the deployed contract
 
-      The command attempts to retrieve the ABI from Etherscan, but it will fail if the contract source is not published there.
+      The command attempts to retrieve the ABI from the Etherlink block explorer, but it will fail if the contract source is not verified there.
       In this case, you must provide the path to the file with the ABI.
       <!-- Index contract events and entities (Y/n)?-->
 
