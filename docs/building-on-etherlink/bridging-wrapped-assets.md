@@ -25,3 +25,12 @@ Follow these general steps to bridge tokens between Etherlink and other EVM netw
 1. To execute the transfer transaction, click **Transfer**.
 
 The transaction can take up to 5 minutes depending on the networks.
+
+## How bridging wrapped assets works
+
+The Etherlink wrapped asset bridge uses a [wrapped asset bridge](https://github.com/LayerZero-Labs/wrapped-asset-bridge) created by [LayerZero](https://layerzero.network/).
+It works by maintaining pools on each side of the bridge.
+
+When you bridge tokens, it locks the tokens on the source network, sends a message over LayerZero's software to the target network, and unlocks wrapped tokens on the target network.
+
+For more information, see the repository for the bridge: https://github.com/LayerZero-Labs/wrapped-asset-bridge.
