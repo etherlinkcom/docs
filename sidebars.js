@@ -41,6 +41,7 @@ const sidebars = {
         'building-on-etherlink/bridging',
         'building-on-etherlink/bridging-xtz',
         'building-on-etherlink/bridging-wrapped-assets',
+        'building-on-etherlink/bridging-fa',
       ],
     },
     {
