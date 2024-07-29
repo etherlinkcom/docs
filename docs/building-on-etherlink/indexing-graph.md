@@ -1,6 +1,6 @@
 ---
 title: Indexing Etherlink contracts with TheGraph
-sidebar_label: Indexing Etherlink contracts
+sidebar_label: Indexing contracts
 ---
 
 [TheGraph](https://thegraph.com/) indexes smart contracts and provides information about them in a GraphQL interface.
