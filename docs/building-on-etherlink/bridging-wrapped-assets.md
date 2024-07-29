@@ -20,7 +20,8 @@ Follow these general steps to bridge tokens between Etherlink and other EVM netw
 1. Select the source and target networks.
 1. Select the token to transfer.
 1. Specify the amount of tokens to transfer.
-1. (Optional) At the bottom of the page, specify the transaction fee and slippage tolerance.
+1. Optional: At the bottom of the page, specify the transaction fee and slippage tolerance.
+1. Optional: In the **Gas on destination** field, specify the amount of additional XTZ to buy on the destination network for use later.
 1. To execute the transfer transaction, click **Transfer**.
 
 The transaction can take up to 5 minutes depending on the networks.
