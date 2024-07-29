@@ -4,7 +4,7 @@ title: Bridging tokens between Etherlink and other EVM networks
 
 Etherlink allows you to bridge tokens to it from other EVM networks by creating wrapped versions of tokens.
 Bridging tokens from other EVM networks is supported only on Etherlink Mainnet, not on Etherlink Testnet.
-Some of the tokens you can bridge in this way include ETH, WETH, WAVAX, USDC, USDT, and WBTC.
+Some of the tokens you can bridge in this way include ETH, WETH, WAVAX, USDC, USDT, WBTC, and SHIB.
 
 For information about the major tokens that are available on Etherlink, see [Tokens](./tokens).
 For more information about wrapped tokens in general, see [Wrapped tokens](https://docs.tezos.com/architecture/tokens#wrapped-tokens) on docs.tezos.com.
