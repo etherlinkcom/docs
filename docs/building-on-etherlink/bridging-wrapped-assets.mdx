@@ -4,78 +4,103 @@ title: Bridging tokens between Etherlink and other EVM networks
 
 import InlineCopy from '@site/src/components/InlineCopy';
 
-[The Etherlink EVM bridge](https://www.etherlinkbridge.com/) is a web application that allows you to transfer wrapped tokens between [Etherlink](https://www.etherlink.com/) and several other EVM compatible blockchain networks by interacting with the decentralized smart contracts of [LayerZero](https://layerzero.network/) deployed on each of those networks. The EVM bridge supports connections from Etherlink to **Ethereum**, **Avalanche C-Chain**, **Arbitrum One**, **Optimism**, **Base**, and **Binance Smart Chain**. You can transfer several wrapped tokens, including **ETH**, **USDT**, **USDC**, **WBTC**, **AVAX**, **SHIB**, and **BNB**.
+[The Etherlink wrapped asset bridge](https://www.etherlinkbridge.com/) is a web application that allows you to transfer wrapped tokens between Etherlink and several other EVM-compatible blockchain networks.
+The bridge uses the decentralized smart contracts of [LayerZero](https://layerzero.network/) that are deployed on each of those networks without the intervention of a third party.
 
-This guide explains how to bridge tokens with the Etherlink EVM bridge, including selecting the source chain, choosing the token to transfer, entering the number of tokens and transferring the tokens. It also covers troubleshooting issues that may arise during the transfer process.
+The EVM bridge supports connections from Etherlink to these networks:
 
-The token addresses on each network are listed [at the end of this guide](#etherlink-evm-bridge-token-addresses) for your reference.
+- Ethereum
+- Avalanche C-Chain
+- Arbitrum One
+- Optimism
+- Base
+- Binance Smart Chain
+
+It allows users to transfer several wrapped tokens, including:
+
+- ETH
+- USDT
+- USDC
+- WBTC
+- AVAX
+- SHIB
+- BNB
+
+For the Etherlink addresses of these tokens, see [Token addresses](#token-addresses).
+
+![Overview of the wrapped asset bridge](/img/wab-details.png)
 
 ## Using the wrapped asset bridge
 
-### 1. Go to the Bridge and Connect your Wallet
-Go to the Etherlink wrapped asset bridge at https://www.etherlinkbridge.com/bridge. Once on the Etherlink EVM bridge interface, click the **Connect** button and connect your EVM wallet.
-![Overview of the wrapped asset bridge](/img/wab-details.png)
+1. Go to the Etherlink wrapped asset bridge at https://www.etherlinkbridge.com/bridge.
 
-### 2. Select the Source Chain
-You should select the source chain from which you want to bridge a token into Etherlink. To send tokens out of Etherlink, select Etherlink as the source chain.
+1. Click the **Connect** button and connect your EVM wallet.
 
-### 3. Select the Token to Transfer
-Click **"Select Token"** to choose a token to transfer from the source chain, or alternatively, leave to the default source token. The interface will display all bridgeable tokens across all available networks as well as your token balances.
+1. Select the source network from which to bridge tokens to Etherlink, or select Etherlink as the source network to bridge tokens out of Etherlink.
 
-### 4. Select the Amount of Tokens
-Enter the number of tokens you want to bridge from the source chain. The app will display:
-- The amount of bridged tokens you will receive on the destination chain
-- The necessary fees for the token transfer in the native gas token of the source chain. **Ensure you have enough gas tokens on the source chain to pay the fees**
+1. Next to the source network, click the source token and select the token to transfer from the source network.
+The interface shows all bridgeable tokens across all available networks and your token balances.
 
-:::note Gas on Destination
-Interacting with Etherlink requires **XTZ** ownership to pay for gas fees. When bridging to Etherlink, you can set an airdrop of up to **0.1 XTZ** to your Etherlink wallet address as part of the bridge transfer. This will be added to the total fees you pay for the transfer and enable you to have the necessary gas in Etherlink to start your journey and interact with the ecosystem. By default, the bridge will add 0.1 XTZ "Gas on Destination" if you don't have any XTZ in your wallet. You can also click the highlighted amount of XTZ or "add", in which case a popup will open that lets you define how much XTZ you want to receive. Either use the "Max" setting, which gives you 0.1 XTZ, or specify a custom amount of up to 0.1 XTZ.
-:::
+1. Enter the number of tokens to bridge out of the source network.
 
-### 5. Transfer the Tokens
-- Click **"Transfer"**. Your wallet will ask you to approve the token spending and confirm the transaction
-- After your confirmation, a popup will appear; if you click on the link provided, you will be forwarded to [LayerZero Scan](https://layerzeroscan.com/) to observe the detailed progress of your bridge interaction
-- The bridge will also display the progress of your transaction, including an estimated period till the bridging is completed in the "transactions" box that appears after confirmation
-- Once the status changes to "completed", your tokens have arrived in your wallet
-- Please make sure you have imported the correct token into your wallet on the destination chain to see it
+1. Select the target network and token.
+
+   The page shows the amount of tokens that you will receive on the target chain and the fees for the token transfer in the native gas token of the source chain.
+
+   **You must ensure that you have enough tokens on the source chain to pay the fees.**
+
+1. Set the other parameters for the transfer, including the **Gas on destination** and **Slippage tolerance** fields.
+
+   :::note Gas on destination
+   Interacting with Etherlink requires XTZ (its native token) to pay for gas fees.
+   As part of your bridging transaction, you can choose to send up to 0.1 XTZ to your Etherlink wallet address to pay for fees for later transactions and interact with the Etherlink ecosystem.
+   The cost of this XTZ is added to the fees that you pay for the transfer.
+   By default, the bridge adds 0.1 XTZ if the destination account has no XTZ.
+   :::
+
+1. To make the transfer, click **Transfer** and confirm the transfer in your wallet.
+
+The bridge shows a popup with a link to [LayerZero Scan](https://layerzeroscan.com/) where you can observe the progress of the bridge transaction and see an estimated time to completion.
+When the status changes to "completed," the tokens are in your EVM account.
+If you don't see the tokens, you may need to import the token into your wallet on the destination network.
 
 ## Troubleshooting
 
-Conditions that will hinder your transfer will be indicated in the "Action button" as follows:
+The transfer button can show these errors:
 
-### Insufficient Balance
-- You entered a higher amount of tokens than you hold in your account.
-    - Reduce the amount you want to transfer or add more tokens to your wallet.
+- **Insufficient Balance**
 
-### Not Enough Native for Gas
-- You must own more gas on the source chain to pay the required fees.
-    - You need to send more of the source chain's native gas token to your wallet to resolve this.
+   You entered a higher amount of tokens than you hold in your account.
+   Reduce the amount you want to transfer or add more tokens to your wallet.
 
-### Select Different Chain
-- You have selected an incompatible selection of source and destination chain. It is only possible to bridge in and out of Etherlink with the Etherlink EVM bridge; you cannot send from ETH to Avalanche, for example.
-    - Send either tokens into Etherlink or send them from Etherlink out to another chain.
+- **Not Enough Native for Gas**
 
-### Limit Exceeded
-- This can occur for bridgeable tokens that exist on several networks (ETH/WETH, USDT and USDC).
-- These tokens can enter Etherlink from different source chains but are represented as one token on Etherlink. If you aim to send these tokens out of Etherlink, the LayerZero contracts on each chain can only payout the amount of these tokens that are currently locked in the contract, so you cannot send more assets back than currently are available to release. This would otherwise exceed the limits of that contract.
+   You must own more gas on the source chain to pay the required fees.
+   Send more of the source chain's native gas token to your wallet.
 
-#### Example
-- On Ethereum, 100 USDT are locked in the Bridge contract (from users that did send this USDT from ETH to Etherlink)
-- On Avalanche, also 100 USDT are locked in the Bridge contract (from users that did send this USDT from Avalanche to Etherlink)
-- You hold 150 USDT in your Wallet on Etherlink
-- If you try to send this 150 USDT to Avalanche, it will exceed the amount currently locked in the Avalanche USDT Bridge contract; therefore, you can't execute such a transfer
-- **Reduce the amount you attempt to send until it is below the Limit**
+- **Select Different Chain**
 
-For any further support, please visit the [LayerZero Discord](https://discord-layerzero.netlify.app/discord).
+   The source and destination chains are not compatible.
+   This bridge is for moving tokens in and out of Etherlink, not for moving tokens between other networks.
+
+- **Limit Exceeded**
+
+   The bridge cannot transfer the amount of tokens that you have selected.
+   Select a smaller amount to transfer.
+
+   This error can occur for bridgeable tokens that exist on multiple networks (ETH/WETH, USDT and USDC).
+   For example, if the bridge contract on Avalanche has 100 USDT and you try to transfer 150 USDT from Etherlink to Avalanche, the bridge can't complete the transaction because it doesn't have enough USDT on the target network.
+
+For further support, visit the [LayerZero Discord](https://discord-layerzero.netlify.app/discord).
 
 If you have general questions about Etherlink, we welcome you to join the [Etherlink Discord Community](https://discord.com/invite/etherlink).
 
-## Tools:
+## Related tools
 
-- [LayerZero Scan](https://layerzeroscan.com/) - LayerZero Cross Chain Explorer
-- [Etherlink Explorer](https://explorer.etherlink.com/) - Etherlink Explorer by Blockscout
-- [Native Bridge](https://bridge.etherlink.com) - Application to bridge $XTZ Tokens between Tezos L1 and Etherlink, see the [documentation](./bridging-xtz.md)
+- [LayerZero Scan](https://layerzeroscan.com/): LayerZero Cross Chain Explorer
+- [Etherlink Explorer](https://explorer.etherlink.com/): Etherlink Explorer by Blockscout
 
-## Etherlink EVM Bridge Token Addresses
+## Token addresses
 
 For the addresses of wrapped tokens on Etherlink, see [Tokens](./tokens).
 
