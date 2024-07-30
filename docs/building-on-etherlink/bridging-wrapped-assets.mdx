@@ -86,14 +86,10 @@ The transfer button can show these errors:
 - **Limit Exceeded**
 
    The bridge cannot transfer the amount of tokens that you have selected.
-   **Select a smaller amount to transfer**.
+   Select a smaller amount to transfer.
 
-   This error can occur for bridgeable tokens that exist on multiple networks (ETH/WETH, USDT and USDC). Take the following scenario as an example:
-   - Suppose users have sent 100 USDT from Ethereum to Etherlink, such that 100 USDT is now locked in the bridge contract on Ethereum
-   - 100 USDT is also locked in the bridge contract on Avalanche from users that sent USDT from Avalanche to Etherlink
-   - You hold 150 USDT in your wallet on Etherlink
-   - If you try to send this 150 USDT to Avalanche, it will exceed the amount currently locked in the Avalanche USDT bridge contract; therefore, you can only send up to 100 USDT
-
+   This error can occur for bridgeable tokens that exist on multiple networks (ETH/WETH, USDT and USDC).
+   For example, if the bridge contract on Avalanche has 100 USDT and you try to transfer 150 USDT from Etherlink to Avalanche, the bridge can't complete the transaction because it doesn't have enough USDT on the target network.
 
 For further support, visit the [LayerZero Discord](https://discord-layerzero.netlify.app/discord).
 
