@@ -43,11 +43,11 @@ Click **"Select Token"** to choose a token to transfer from the source chain, or
 ### 4. Select the Amount of Tokens
 Enter the number of tokens you want to bridge from the source chain. The app will display:
 - The amount of bridged tokens you will receive on the destination chain
-- The necessary fees for the token transfer in the native gas token of the source chain. **Ensure you have enough gas tokens on the source chain to pay the fees**
+- The necessary fees for the token transfer in the native gas token of the source chain. **Ensure you have enough gas on the source chain to pay the fees**
 
  :::note Gas on destination
 Interacting with Etherlink requires XTZ (its native token) to pay for gas fees.
-As part of your bridging transaction, you can choose to send up to 0.1 XTZ to your Etherlink wallet address to pay for fees for later transactions and interact with the Etherlink ecosystem.
+As part of your bridging transaction, you can choose to send up to 0.1 XTZ to your Etherlink wallet address to pay the gas fees for later transactions with the Etherlink ecosystem.
 The cost of this XTZ is added to the fees that you pay for the transfer.
 By default, the bridge adds 0.1 XTZ if the destination account has no XTZ.
 :::
@@ -81,7 +81,7 @@ The transfer button can show these errors:
 - **Limit Exceeded**
 
    The bridge cannot transfer the amount of tokens that you have selected.
-   Select a smaller amount to transfer.
+   **Select a smaller amount to transfer**.
 
    This error can occur for bridgeable tokens that exist on multiple networks (ETH/WETH, USDT and USDC). Take the following scenario as an example:
    - Suppose users have sent 100 USDT from Ethereum to Etherlink, such that 100 USDT is now locked in the bridge contract on Ethereum
