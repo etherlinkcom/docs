@@ -8,12 +8,13 @@ import InlineCopy from '@site/src/components/InlineCopy';
 
 This guide explains how to bridge tokens with the Etherlink EVM bridge, including selecting the source chain, choosing the token to transfer, entering the number of tokens and transferring the tokens. It also covers troubleshooting issues that may arise during the transfer process.
 
-The token addresses on each network are listed [at the end of this guide](#etherlinkbridge-token-addresses) for your reference.
+The token addresses on each network are listed [at the end of this guide](#etherlink-evm-bridge-token-addresses) for your reference.
 
 ## Using the wrapped asset bridge
 
 ### 1. Go to the Bridge and Connect your Wallet
-Go to the Etherlink wrapped asset bridge at https://www.etherlinkbridge.com/bridge. Once on the EtherlinkBridge interface, click the **Connect** button and connect your EVM wallet.
+Go to the Etherlink wrapped asset bridge at https://www.etherlinkbridge.com/bridge. Once on the Etherlink EVM bridge interface, click the **Connect** button and connect your EVM wallet.
+![Overview of the wrapped asset bridge](/img/wab-details.png)
 
 ### 2. Select the Source Chain
 You should select the source chain from which you want to bridge a token into Etherlink. To send tokens out of Etherlink, select Etherlink as the source chain.
@@ -50,7 +51,7 @@ Conditions that will hinder your transfer will be indicated in the "Action butto
     - You need to send more of the source chain's native gas token to your wallet to resolve this.
 
 ### Select Different Chain
-- You have selected an incompatible selection of source and destination chain. It is only possible to bridge in and out of Etherlink with EtherlinkBridge; you cannot send from ETH to Avalanche, for example.
+- You have selected an incompatible selection of source and destination chain. It is only possible to bridge in and out of Etherlink with the Etherlink EVM bridge; you cannot send from ETH to Avalanche, for example.
     - Send either tokens into Etherlink or send them from Etherlink out to another chain.
 
 ### Limit Exceeded
@@ -61,8 +62,8 @@ Conditions that will hinder your transfer will be indicated in the "Action butto
 - On Ethereum, 100 USDT are locked in the Bridge contract (from users that did send this USDT from ETH to Etherlink)
 - On Avalanche, also 100 USDT are locked in the Bridge contract (from users that did send this USDT from Avalanche to Etherlink)
 - You hold 150 USDT in your Wallet on Etherlink
-- If you try to send this 150 USDT to Avalanche, it will exceed the amount currently locked in the Avalanche USDT Bridge contract; therefore, you can't execute such a transfer.
-- **Reduce the amount you attempt to send until it is below the Limit.**
+- If you try to send this 150 USDT to Avalanche, it will exceed the amount currently locked in the Avalanche USDT Bridge contract; therefore, you can't execute such a transfer
+- **Reduce the amount you attempt to send until it is below the Limit**
 
 For any further support, please visit the [LayerZero Discord](https://discord-layerzero.netlify.app/discord).
 
