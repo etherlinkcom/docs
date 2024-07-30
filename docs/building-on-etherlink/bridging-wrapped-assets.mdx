@@ -1,0 +1,300 @@
+---
+title: Bridging tokens between Etherlink and other EVM networks
+---
+
+import InlineCopy from '@site/src/components/InlineCopy';
+
+[The Etherlink wrapped asset bridge](https://www.etherlinkbridge.com/) is a web application that allows you to transfer wrapped tokens between Etherlink and several other EVM-compatible blockchain networks.
+The bridge uses the decentralized smart contracts of [LayerZero](https://layerzero.network/) that are deployed on each of those networks without the intervention of a third party.
+
+The EVM bridge supports connections from Etherlink to these networks:
+
+- Ethereum
+- Avalanche C-Chain
+- Arbitrum One
+- Optimism
+- Base
+- BNB Chain
+
+It allows users to transfer several wrapped tokens, including:
+
+- USDT
+- USDC
+- WBTC
+- WETH
+- WAVAX
+- WBNB
+- SHIB
+
+For the Etherlink addresses of these tokens, see [Token addresses](#etherlink-evm-bridge-token-addresses).
+
+## Using the wrapped asset bridge
+
+### 1. Go to the Bridge and Connect your Wallet
+Go to the Etherlink wrapped asset bridge at https://www.etherlinkbridge.com/bridge. Once on the Etherlink EVM bridge interface, click the **Connect** button and connect your EVM wallet.
+![Overview of the wrapped asset bridge](/img/wab-details.png)
+
+### 2. Select the Source Chain
+You should select the source chain from which you want to bridge a token into Etherlink. To send tokens out of Etherlink, select Etherlink as the source chain.
+
+### 3. Select the Token to Transfer
+Click **"Select Token"** to choose a token to transfer from the source chain, or alternatively, leave to the default source token. The interface will display all bridgeable tokens across all available networks as well as your token balances.
+
+### 4. Select the Amount of Tokens
+Enter the number of tokens you want to bridge from the source chain. The app will display:
+- The amount of bridged tokens you will receive on the destination chain
+- The necessary fees for the token transfer in the native gas token of the source chain. **Ensure you have enough gas on the source chain to pay the fees**
+
+ :::note Gas on destination
+Interacting with Etherlink requires XTZ (its native token) to pay for gas fees.
+As part of your bridging transaction, you can choose to send up to 0.1 XTZ to your Etherlink wallet address to pay the gas fees for later transactions with the Etherlink ecosystem.
+The cost of this XTZ is added to the fees that you pay for the transfer.
+By default, the bridge adds 0.1 XTZ if the destination account has no XTZ.
+:::
+
+### 5. Transfer the Tokens
+- Click **"Transfer"**. Your wallet will ask you to approve the token spending and confirm the transaction
+- After your confirmation, a popup will appear; if you click on the link provided, you will be forwarded to [LayerZero Scan](https://layerzeroscan.com/) to observe the detailed progress of your bridge interaction
+- The bridge will also display the progress of your transaction, including an estimated period till the bridging is completed in the "transactions" box that appears after confirmation
+- Once the status changes to "completed", your tokens have arrived in your wallet
+- Please make sure you have imported the correct token into your wallet on the destination chain to see it
+
+## Troubleshooting
+
+The transfer button can show these errors:
+
+- **Insufficient Balance**
+
+   You entered a higher amount of tokens than you hold in your account.
+   Reduce the amount you want to transfer or add more tokens to your wallet.
+
+- **Not Enough Native for Gas**
+
+   You must own more gas on the source chain to pay the required fees.
+   Send more of the source chain's native gas token to your wallet.
+
+- **Select Different Chain**
+
+   The source and destination chains are not compatible.
+   This bridge is for moving tokens in and out of Etherlink, not for moving tokens between other networks.
+
+- **Limit Exceeded**
+
+   The bridge cannot transfer the amount of tokens that you have selected.
+   **Select a smaller amount to transfer**.
+
+   This error can occur for bridgeable tokens that exist on multiple networks (ETH/WETH, USDT and USDC). Take the following scenario as an example:
+   - Suppose users have sent 100 USDT from Ethereum to Etherlink, such that 100 USDT is now locked in the bridge contract on Ethereum
+   - 100 USDT is also locked in the bridge contract on Avalanche from users that sent USDT from Avalanche to Etherlink
+   - You hold 150 USDT in your wallet on Etherlink
+   - If you try to send this 150 USDT to Avalanche, it will exceed the amount currently locked in the Avalanche USDT bridge contract; therefore, you can only send up to 100 USDT
+   
+
+For further support, visit the [LayerZero Discord](https://discord-layerzero.netlify.app/discord).
+
+If you have general questions about Etherlink, we welcome you to join the [Etherlink Discord Community](https://discord.com/invite/etherlink).
+
+## Tools:
+
+- [LayerZero Scan](https://layerzeroscan.com/) - LayerZero Cross Chain Explorer
+- [Etherlink Explorer](https://explorer.etherlink.com/) - Etherlink Explorer by Blockscout
+- [Native Bridge](https://bridge.etherlink.com) - Application to bridge $XTZ Tokens between Tezos L1 and Etherlink, see the [documentation](./bridging-xtz.md)
+
+## Etherlink EVM Bridge Token Addresses
+
+### LayerZero Wrapped Tokens on Etherlink
+
+:::note Token Addresses
+
+- [USDC](https://explorer.etherlink.com/address/0x796Ea11Fa2dD751eD01b53C372fFDB4AAa8f00F9) - USD Coin
+```
+0x796Ea11Fa2dD751eD01b53C372fFDB4AAa8f00F9
+```
+
+- [USDT](https://explorer.etherlink.com/address/0x2C03058C8AFC06713be23e58D2febC8337dbfE6A) - Tether USD
+```
+0x2C03058C8AFC06713be23e58D2febC8337dbfE6A
+```
+
+- [WETH](https://explorer.etherlink.com/address/0xfc24f770F94edBca6D6f885E12d4317320BcB401) - Wrapped Ether
+```
+0xfc24f770F94edBca6D6f885E12d4317320BcB401
+```
+
+- [WBTC](https://explorer.etherlink.com/address/0xbFc94CD2B1E55999Cfc7347a9313e88702B83d0F) - Wrapped BTC
+```
+0xbFc94CD2B1E55999Cfc7347a9313e88702B83d0F
+```
+
+- [WBNB](https://explorer.etherlink.com/address/0xaA40A1cc1561c584B675cbD12F1423A32E2a0d8C) - Wrapped BNB
+```
+0xaA40A1cc1561c584B675cbD12F1423A32E2a0d8C
+```
+
+- [WAVAX](https://explorer.etherlink.com/address/0xe820995cD39B6E09EAa7e4e16337184b4A61B644) - Wrapped AVAX
+```
+0xe820995cD39B6E09EAa7e4e16337184b4A61B644
+```
+
+- [SHIB](https://explorer.etherlink.com/address/0xBBD1F50A212357067318a84179892684e1Ac5181) - SHIBA INU
+```
+0xBBD1F50A212357067318a84179892684e1Ac5181
+```
+
+:::
+
+### Source Tokens on Connected Networks
+
+#### Ethereum
+
+:::note Token Addresses
+
+- [USDC](https://etherscan.io/address/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48) - USD Coin
+```
+0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48
+```
+
+- [USDT](https://etherscan.io/address/0xdAC17F958D2ee523a2206206994597C13D831ec7) - Tether USD
+```
+0xdAC17F958D2ee523a2206206994597C13D831ec7
+```
+
+- [WETH](https://etherscan.io/address/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2) - Wrapped Ether
+```
+0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
+```
+
+- [WBTC](https://etherscan.io/address/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599) - Wrapped BTC
+```
+0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599
+```
+
+- [SHIB](https://etherscan.io/address/0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE) - SHIBA INU
+```
+0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE
+```
+
+:::
+
+#### Arbitrum One
+
+:::note Token Addresses
+
+- [USDC](https://arbiscan.io/address/0xaf88d065e77c8cC2239327C5EDb3A432268e5831) - USD Coin
+```
+0xaf88d065e77c8cC2239327C5EDb3A432268e5831
+```
+
+- [USDT](https://arbiscan.io/address/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9) - Tether USD
+```
+0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9
+```
+
+- [WETH](https://arbiscan.io/address/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1) - Wrapped Ether
+```
+0x82aF49447D8a07e3bd95BD0d56f35241523fBab1
+```
+
+- [WBTC](https://arbiscan.io/address/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f) - Wrapped BTC
+```
+0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f
+```
+
+:::
+
+#### Base
+
+:::note Token Addresses
+
+- [USDC](https://basescan.org/address/0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913) - USD Coin
+```
+0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913
+```
+
+- [WETH](https://basescan.org/address/0x4200000000000000000000000000000000000006) - Wrapped Ether
+```
+0x4200000000000000000000000000000000000006
+```
+
+:::
+
+#### Optimism
+
+:::note Token Addresses
+
+- [USDC](https://optimistic.etherscan.io/address/0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85) - USD Coin
+```
+0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85
+```
+
+- [USDT](https://optimistic.etherscan.io/address/0x94b008aA00579c1307B0EF2c499aD98a8ce58e58) - Tether USD
+```
+0x94b008aA00579c1307B0EF2c499aD98a8ce58e58
+```
+
+- [WETH](https://optimistic.etherscan.io/address/0x4200000000000000000000000000000000000006) - Wrapped Ether
+```
+0x4200000000000000000000000000000000000006
+```
+
+:::
+
+#### BNB Chain
+
+:::note Token Addresses
+
+- [USDC](https://testnet.bscscan.com/address/0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d) - USD Coin
+```
+0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d
+```
+
+- [USDT](https://testnet.bscscan.com/address/0x55d398326f99059fF775485246999027B3197955) - Tether USD
+```
+0x55d398326f99059fF775485246999027B3197955
+```
+
+- [WBNB](https://testnet.bscscan.com/address/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c) - Wrapped BNB
+```
+0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c
+```
+
+:::
+
+#### Avalanche C-Chain
+
+:::note Token Addresses
+
+- [USDC](https://avascan.info/blockchain/c/address/0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E) - USD Coin
+```
+0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E
+```
+
+- [USDT](https://avascan.info/blockchain/c/address/0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7) - Tether USD
+```
+0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7
+```
+
+- [WAVAX](https://avascan.info/blockchain/c/address/0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7) - Wrapped AVAX
+```
+0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7
+```
+
+:::
+
+## Useful Links
+
+More Information about the LayerZero protocol is available in their [official documentation](https://docs.layerzero.network/).
+
+The Audit Reports of the LayerZero protocol are available in this [LayerZero GitHub Repository](https://github.com/LayerZero-Labs/LayerZero/tree/main/audit).
+
+To review the Open Source code of the Wrapped Asset Bridge, visit the [LayerZero Github Repository](https://github.com/LayerZero-Labs/wrapped-asset-bridge).
+
+
+<!-- ## How bridging wrapped assets works
+
+The Etherlink wrapped asset bridge uses a [wrapped asset bridge](https://github.com/LayerZero-Labs/wrapped-asset-bridge) created by [LayerZero](https://layerzero.network/).
+It works by maintaining pools on each side of the bridge.
+
+When you bridge tokens, it locks the tokens on the source network, sends a message over LayerZero's software to the target network, and unlocks wrapped tokens on the target network.
+
+For more information, see the repository for the bridge: https://github.com/LayerZero-Labs/wrapped-asset-bridge. -->
