@@ -1,12 +1,12 @@
 ---
-title: Bridging tez (XTZ) between Tezos layer 1 and Etherlink
+title: Bridging XTZ between Tezos layer 1 and Etherlink
 ---
 
 You can bridge the native token on Etherlink and Tezos, which is called tez and shown on price tickers with the symbol [XTZ](https://coinmarketcap.com/currencies/tezos/).
-You can bridge tez from Tezos Mainnet to Etherlink Mainnet and back, and you can bridge tez from Tezos Testnet (Ghostnet) to Etherlink Testnet and back.
+You can bridge tez from Tezos Mainnet to XTZ on Etherlink Mainnet and back, and you can bridge tez from Tezos Testnet (Ghostnet) to XTZ on Etherlink Testnet and back.
 For more information about tez, see [Tokens](https://docs.tezos.com/architecture/tokens) on docs.tezos.com.
 
-Etherlink provides canonical bridges for tez tokens.
+Etherlink provides canonical bridges for XTZ tokens.
 These bridges are trustless and permissionless; anyone can use them without restrictions or the intervention of a third party.
 
 - [Mainnet canonical bridge](https://bridge.etherlink.com/)
@@ -36,18 +36,18 @@ To use these bridges, follow these general steps:
 1. Connect your Tezos and Etherlink-compatible wallets.
 1. Select the type of transfer:
 
-   - **Deposit** transfers tez from Tezos layer 1 to Etherlink
-   - **Withdraw** transfers tez from Etherlink to Tezos layer 1
+   - **Deposit** transfers XTZ from Tezos layer 1 to Etherlink
+   - **Withdraw** transfers XTZ from Etherlink to Tezos layer 1
 
-1. Enter the amount of tez to transfer.
+1. Enter the amount of XTZ tokens to transfer.
 
 1. Click **Move funds to Etherlink** or **Move funds to Tezos**.
 
 You can monitor the status of your bridge operations on the **Transaction History** tab.
 
-### How bridging tez works
+### How bridging XTZ works
 
-The process of bridging tez between Etherlink and Tezos layer 1 uses two contracts on Tezos layer 1:
+The process of bridging XTZ between Etherlink and Tezos layer 1 uses two contracts on Tezos layer 1:
 
 - A bridge contract that accepts deposits and sends them to be exchanged.
 This bridge contract is not a fundamental part of the bridge; it is a helper contract that avoids limitations around tickets by forwarding them to the Etherlink Smart Rollup on behalf of user accounts.
@@ -77,7 +77,7 @@ The request includes the tez to bridge, the address of the Etherlink Smart Rollu
 1. Etherlink Smart Rollup nodes receive the deposit transaction from the Smart Rollup inbox.
 1. The Smart Rollup nodes put the deposit transaction in the delayed inbox.
 1. The sequencer requests the state of Etherlink from a Smart Rollup node and receives the delayed inbox.
-1. The sequencer creates a corresponding transaction on Etherlink to transfer tez from the [zero address](https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000000) to the user's address.
+1. The sequencer creates a corresponding transaction on Etherlink to transfer XTZ from the [zero address](https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000000) to the user's address.
 1. The sequencer adds this transaction to a blueprint as in the usual transaction lifecycle described in [Architecture](../network/architecture).
 
 This diagram is an overview of the deposit process:
@@ -87,10 +87,10 @@ This diagram is an overview of the deposit process:
 
 ### Withdrawal process
 
-The withdrawal process (moving tez from Etherlink to layer 1) follows these general steps:
+The withdrawal process (moving XTZ from Etherlink to tez on Tezos layer 1) follows these general steps:
 
-1. An Etherlink user sends tez and their layer 1 address to the [withdrawal precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) in the Etherlink Smart Rollup via an Etherlink EVM node.
-1. The contract locks the tez.
+1. An Etherlink user sends XTZ and their layer 1 address to the [withdrawal precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) in the Etherlink Smart Rollup via an Etherlink EVM node.
+1. The contract locks the XTZ.
 1. The contract creates a transaction to the exchanger contract's `burn` entrypoint and puts this transaction in the Smart Rollup outbox.
 This outbox message becomes part of Etherlink's commitment to its state.
 1. When the commitment that contains the transaction is cemented on layer 1, anyone can run the transaction by running the Octez client `execute outbox message` command.
