@@ -91,3 +91,62 @@ This diagram is an overview of the process of bridging tokens from Etherlink to 
 
 ![Overview of the FA token bridging withdrawal process](/img/bridging-withdrawal-fa.png)
 <!-- https://lucid.app/lucidchart/068d1822-29cb-4f8c-8aa1-2bd79f9b8490/edit -->
+
+## Enabling a token for bridging
+
+Before you can bridge an FA-compliant token to Etherlink, you must enable it for bridging by deploying a proxy contract for it on Etherlink and helper contracts on Tezos layer 1.
+
+This is a list of the contracts that are required to bridge tokens in this way:
+
+- **Ticketer contract**: Stores tokens and issues tickets that represent them
+- **Token bridge helper contract**: Accepts requests to bridge tokens on layer 1, uses the ticketer contract to get tickets for them, and sends the tickets to Etherlink
+- **ERC-20 proxy contract**: Stores tickets and mints ERC-20 tokens that are equivalent to the FA tokens in layer 1
+
+Examples of these contracts are available in the repository https://github.com/baking-bad/etherlink-bridge.
+This repository also provides tools to deploy these contracts:
+
+### Setting up your environment
+
+The repository includes commands to deploy these contracts and sample tokens to test them with.
+Follow these steps to set up your environment to use the repository:
+
+1. Clone the repository at https://github.com/baking-bad/etherlink-bridge.
+
+1. Install [Poetry](https://python-poetry.org/) if not already installed:
+
+   ```shell
+   curl -sSL https://install.python-poetry.org | python3 -
+   ```
+
+1. Install the repository dependencies by running this command:L
+
+   ```shell
+   poetry install
+   ```
+
+### Deploying a ticketer contract
+
+Like the process of [Bridging tez (XTZ) between Tezos layer 1 and Etherlink](./bridging-xtz), bridging FA tokens relies on tickets.
+FA2.1 tokens have built-in ticket functionality, but FA1.2 and FA2 tokens do not.
+Therefore, to bridge FA1.2 or FA2 tokens, you must deploy a "ticketer" contract that converts them into tickets.
+This contract is not necessary for FA2.1 tokens.
+
+:::note
+
+Test the ticketer contract thoroughly before using it to bridge real tokens.
+If you have to deploy a replacement contract later, the tokens will be spread across more than one ticketer contract, which makes it harder to calculate the supply of tokens.
+
+:::
+
+Follow these steps to deploy a ticketer contract:
+
+
+
+
+
+
+
+
+## Bridging FA tokens
+
+TODO
