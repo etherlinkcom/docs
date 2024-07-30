@@ -34,8 +34,8 @@ const config = {
   baseUrl: '/',
   organizationName: 'etherlinkcom',
   projectName: 'docs',
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'throw',
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
