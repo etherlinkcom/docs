@@ -215,16 +215,23 @@ nav.navbar {
 [data-theme='dark'] .menu__link {
   color: #FFFFFF;
 }
-[data-theme='dark'] .menu__link:hover, [data-theme='dark'] .menu__link:active {
+[data-theme='dark'] .menu__link:hover {
+  color: #38FF9C;
+}
+[data-theme='dark'] .menu__link--active[aria-current="page"] {
   color: #38FF9C;
 }
 
 [data-theme='light'] .menu__link {
   color: #171717;
 }
-[data-theme='light'] .menu__link:hover, [data-theme='light'] .menu__link:active {
+[data-theme='light'] .menu__link:hover {
   color: #171717;
 }
+[data-theme='light'] .menu__link--active[aria-current="page"] {
+  color: #2A9660;
+}
+
 
 /* breadcrumbs menu */
 [data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link {
