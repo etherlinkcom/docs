@@ -23,7 +23,7 @@ img-src 'self' https://*.googletagmanager.com https://*.google-analytics.com dat
 media-src 'self';
 form-action 'self';
 connect-src 'self' https://node.mainnet.etherlink.com https://node.ghostnet.etherlink.com https://ethereum.rpc.thirdweb.com https://*.algolia.net https://*.algolianet.com https://c.thirdweb.com https://app.pushfeedback.com https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com;
-frame-src https://tezosbot.vercel.app;`;
+frame-src https://tezosbot.vercel.app https://*.loom.com;`;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
