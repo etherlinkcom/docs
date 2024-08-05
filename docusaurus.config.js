@@ -29,7 +29,7 @@ frame-src https://tezosbot.vercel.app https://*.loom.com;`;
 const config = {
   title: 'Etherlink documentation',
   tagline: 'Etherlink builds on the decentralisation of L1 Tezos to provide an EVM-compatible solution with distributed sequencing.',
-  favicon: '/img/etherlink-logo.svg',
+  favicon: '/img/favicon.svg',
   url: 'https://docs.etherlink.com',
   baseUrl: '/',
   organizationName: 'etherlinkcom',
@@ -108,7 +108,7 @@ const config = {
         title: 'Etherlink documentation',
         logo: {
           alt: 'Etherlink developer documentation',
-          src: '/img/etherlink-logo.svg',
+          src: '/img/favicon.svg',
         },
         items: [
           {
