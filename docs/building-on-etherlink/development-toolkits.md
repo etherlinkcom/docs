@@ -8,19 +8,27 @@ title: Development toolkits
 
 ### Using Hardhat with Etherlink
 
-It is recommended to use the following config in your `hardhat.config.js` file:
+Hardhat works seamlessly with Etherlink.
+You can follow the documentation at https://hardhat.org/docs and insert values for Etherlink.
 
-```
+Here is an example `hardhat.config.js` file for Etherlink Mainnet and Testnet:
+
+```javascript
 module.exports = {
   solidity: "0.8.24",
   networks: {
+    etherlinkMainnet: {
+      url: "https://node.mainnet.etherlink.com",
+      accounts: ["<YOUR_PRIVATE_KEY>"],
+    },
     etherlinkTestnet: {
       url: "https://node.ghostnet.etherlink.com",
       accounts: ["<YOUR_PRIVATE_KEY>"],
-    }
+    },
   },
   etherscan: {
     apiKey: {
+      etherlinkMainnet: "YOU_CAN_COPY_ME",
       etherlinkTestnet: "YOU_CAN_COPY_ME",
     },
     customChains: [
@@ -28,18 +36,26 @@ module.exports = {
         network: "etherlinkTestnet",
         chainId: 128123,
         urls: {
-          apiURL: "https://testnet.explorer.etherlink.com/api",
-          browserURL: "https://testnet.explorer.etherlink.com"
-        }
+          apiURL: "https://node.mainnet.etherlink.com/api",
+          browserURL: "https://node.mainnet.etherlink.com",
+        },
       },
-    ]
+      {
+        network: "etherlinkTestnet",
+        chainId: 128123,
+        urls: {
+          apiURL: "https://testnet.explorer.etherlink.com/api",
+          browserURL: "https://testnet.explorer.etherlink.com",
+        },
+      },
+    ],
   },
 };
 ```
 
 ### Deploying and verifying contracts with Hardhat
 
-Hardhat offers great guides for [deploying](https://hardhat.org/hardhat-runner/docs/guides/deploying) and [verifying](https://hardhat.org/hardhat-runner/docs/guides/verifying) your contracts. Just make sure to set the network flag appropriately: `--network etherlinkTestnet`
+Hardhat offers great guides for [deploying](https://hardhat.org/hardhat-runner/docs/guides/deploying) and [verifying](https://hardhat.org/hardhat-runner/docs/guides/verifying) your contracts. Just make sure to set the network flag appropriately: `--network etherlinkMainnet` or `--network etherlinkTestnet`, as appropriate.
 
 ## 🔥 Foundry
 
@@ -54,12 +70,14 @@ Hardhat offers great guides for [deploying](https://hardhat.org/hardhat-runner/d
 
 For the most up to date information on how to deploy and verify a smart contract, check out the [guide](https://book.getfoundry.sh/forge/deploying) provided by the Foundry team!
 
-As a summary, you can run the following command:
+As a summary, you can run the following command for Etherlink:
 
 ```bash
-forge create --rpc-url "https://node.ghostnet.etherlink.com" \
+forge create --rpc-url "https://node.mainnet.etherlink.com" \
     --private-key "<YOUR_PRIVATE_KEY>" \
     --etherscan-api-key "YOU_CAN_COPY_ME" \
     --verify \
     src/YOUR_CONTRACT.sol:YOUR_CONTRACT --legacy
 ```
+
+To use Etherlink Testnet, substitute the RPC URL `https://node.ghostnet.etherlink.com` for the Mainnet URL.
