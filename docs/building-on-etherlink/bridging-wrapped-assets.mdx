@@ -356,10 +356,12 @@ These tables show the addresses of the equivalent tokens on other networks:
 ## How bridging wrapped assets works
 
 The Etherlink wrapped asset bridge uses a [wrapped asset bridge](https://github.com/LayerZero-Labs/wrapped-asset-bridge) created by [LayerZero](https://layerzero.network/).
-It works by maintaining pools on each side of the bridge.
+It works by maintaining liquidity pools on other networks and minting equivalent tokens on Etherlink.
 
-When you bridge tokens, it locks the tokens on the source network, sends a message over LayerZero's software to the target network, and unlocks wrapped tokens on the target network.
-LayerZero maintains Etherlink EVM and Smart Rollup nodes to verify that the transactions complete on Etherlink.
+When you bridge tokens from other networks to Etherlink, the bridge contracts lock the tokens in a liquidity pool on the source network, send a message over LayerZero's software to Etherlink, and mint tokens on Etherlink.
+When you bridge tokens out of Etherlink, the contracts burn the tokens on Etherlink and unlock them in the liquidity pool on the target network.
+Therefore, bridging tokens out of Etherlink is dependent on the liquidity pool on the target chain.
+LayerZero also maintains Etherlink EVM and Smart Rollup nodes to verify that the transactions complete on Etherlink.
 
 This diagram shows how the wrapped asset bridge works:
 
