@@ -20,7 +20,7 @@ The process of bridging FA-compatible tokens from layer 1 to Etherlink (also kno
 
 1. A Tezos user gives the token bridge helper contract access to their tokens.
 
-   - For FA1.2 tokens, the user gives the helper contract an allowance of tokens
+   - For FA1.2 tokens, the user gives the helper contract an allowance of tokens.
    - For FA2 tokens, the user makes the helper contract an operator of their tokens.
 
    For information about token access control, see [Token standards](https://docs.tezos.com/architecture/tokens#token-standards) on docs.tezos.com.
