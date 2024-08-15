@@ -104,15 +104,14 @@ If you have general questions about Etherlink, we welcome you to join the [Ether
 
 :::note
 
-Not all Etherlink tokens can be bridged in and out of Etherlink.
-See the tables below for the tokens that the bridge supports.
+Not all Etherlink tokens can be bridged to and from other chains.
+See the tables below for the tokens that the bridge supports for each chain.
 
 :::
 
 ### Etherlink
 
-This table shows the Etherlink address of tokens that you can bridge in and out of Etherlink:
-
+This table shows the Etherlink address of tokens that you can bridge between Etherlink and certain other chains:
 
 <table>
 <thead>
@@ -353,6 +352,23 @@ These tables show the addresses of the equivalent tokens on other networks:
 
 </tbody>
 </table>
+
+## How bridging wrapped assets works
+
+The Etherlink wrapped asset bridge uses a [wrapped asset bridge](https://github.com/LayerZero-Labs/wrapped-asset-bridge) created by [LayerZero](https://layerzero.network/).
+It works by maintaining liquidity pools on other networks and minting equivalent tokens on Etherlink.
+
+When you bridge tokens from other networks to Etherlink, the bridge contracts lock the tokens in a liquidity pool on the source network, send a message over LayerZero's software to Etherlink, and mint tokens on Etherlink.
+When you bridge tokens out of Etherlink, the contracts burn the tokens on Etherlink and unlock them in the liquidity pool on the target network.
+Therefore, bridging tokens out of Etherlink is dependent on the liquidity pool on the target chain.
+LayerZero also maintains Etherlink EVM and Smart Rollup nodes to verify that the transactions complete on Etherlink.
+
+This diagram shows how the wrapped asset bridge works:
+
+![Overview of the wrapped asset bridge, showing the interaction between contracts on other chains and Etherlink, moderated by LayerZero](/img/wrapped-asset-bridge.png)
+{/* https://lucid.app/lucidchart/cac80916-85c8-455d-b50b-f265057dcc1b/edit */}
+
+For more information, see the repository for the bridge: https://github.com/LayerZero-Labs/wrapped-asset-bridge.
 
 ## Related tools and information
 
