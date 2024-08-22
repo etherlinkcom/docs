@@ -9,6 +9,10 @@ Etherlink has separate governance processes for the kernel, for security inciden
 To ensure that decisions accurately reflect the consensus of the Etherlink community, all three governance processes are designed with the same robust safeguards.
 Like Tezos's governance process, Etherlink's governance process promotes transparency and fairness in decision-making.
 
+## Governance information
+
+For information about governance proposals and updates, see https://governance.etherlink.com.
+
 ## Kernel governance
 
 The Etherlink kernel governance process is a streamlined version of the [Tezos governance and self-amendment process](https://docs.tezos.com/architecture/governance).
