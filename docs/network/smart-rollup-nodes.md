@@ -53,17 +53,17 @@ The best place to get the most recent binary files to use with Etherlink is http
       If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink kernel](/network/building-kernel).
       However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink after that.
 
-1. Download the latest snapshot from https://snapshots.eu.tzinit.org/etherlink-mainnet/, which is named `eth-mainnet.snapshot`:
+1. Download the latest snapshot from https://snapshots.eu.tzinit.org/etherlink-mainnet/:
 
    ```bash
-   wget https://snapshots.eu.tzinit.org/etherlink-mainnet/eth-mainnet.snapshot
+   wget https://snapshots.eu.tzinit.org/etherlink-mainnet/eth-mainnet.full
    ```
 
 1. Load the snapshot:
 
    ```bash
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet \
-     snapshot import eth-mainnet.snapshot \
+     snapshot import eth-mainnet.full \
      --data-dir $sr_observer_data_dir
    ```
 
