@@ -14,7 +14,7 @@ For more information about the FA standards, see [Token standards](https://docs.
 The process of bridging FA tokens is similar to the process of bridging tez, as described in [Bridging tez (XTZ) between Tezos layer 1 and Etherlink](./bridging-xtz).
 In short, the bridge uses tickets to send tokens from the source network to the target network.
 
-### Bridging tokens from layer 1 to Etherlink
+### Depositing tokens from layer 1 to Etherlink
 
 The process of bridging FA-compatible tokens from layer 1 to Etherlink (also known as depositing tokens) follows these general steps:
 
@@ -49,7 +49,7 @@ This diagram is an overview of the process of bridging tokens from layer 1 to Et
 ![Overview of the FA token bridging deposit process](/img/bridging-deposit-fa.png)
 <!-- https://lucid.app/lucidchart/50249082-2195-40fa-8fa0-bd030ef6b12e/edit -->
 
-### Bridging tokens from Etherlink to layer 1
+### Withdrawing tokens from Etherlink to layer 1
 
 The process of bridging FA-compatible tokens from Etherlink to layer 1 (also known as withdrawing tokens) follows these general steps:
 
@@ -103,50 +103,4 @@ This is a list of the contracts that are required to bridge tokens in this way:
 - **ERC-20 proxy contract**: Stores tickets and mints ERC-20 tokens that are equivalent to the FA tokens in layer 1
 
 Examples of these contracts are available in the repository https://github.com/baking-bad/etherlink-bridge.
-This repository also provides tools to deploy these contracts:
-
-### Setting up your environment
-
-The repository includes commands to deploy these contracts and sample tokens to test them with.
-Follow these steps to set up your environment to use the repository:
-
-1. Clone the repository at https://github.com/baking-bad/etherlink-bridge.
-
-1. Install [Poetry](https://python-poetry.org/) if not already installed:
-
-   ```shell
-   curl -sSL https://install.python-poetry.org | python3 -
-   ```
-
-1. Install the repository dependencies by running this command:L
-
-   ```shell
-   poetry install
-   ```
-
-### Deploying a ticketer contract
-
-Like the process of [Bridging tez (XTZ) between Tezos layer 1 and Etherlink](./bridging-xtz), bridging FA tokens relies on tickets.
-FA2.1 tokens have built-in ticket functionality, but FA1.2 and FA2 tokens do not.
-Therefore, to bridge FA1.2 or FA2 tokens, you must deploy a "ticketer" contract that converts them into tickets.
-This contract is not necessary for FA2.1 tokens.
-
-:::note
-
-Test the ticketer contract thoroughly before using it to bridge real tokens.
-If you have to deploy a replacement contract later, the tokens will be spread across more than one ticketer contract, which makes it harder to calculate the supply of tokens.
-
-:::
-
-Follow these steps to deploy a ticketer contract:
-
-
-
-
-
-
-
-
-## Bridging FA tokens
-
-TODO
+This repository also provides tools to deploy these contracts.
