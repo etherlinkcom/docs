@@ -112,6 +112,12 @@ const config = {
         },
         items: [
           {
+            to: 'https://status.etherlink.com',
+            position: 'right',
+            target: '_blank',
+            label: 'Status',
+          },
+          {
             to: 'https://discord.gg/etherlink',
             position: 'right',
             target: '_blank',
