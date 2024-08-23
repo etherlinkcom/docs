@@ -14,6 +14,19 @@ For more information about the FA standards, see [Token standards](https://docs.
 The process of bridging FA tokens is similar to the process of bridging tez, as described in [Bridging tez (XTZ) between Tezos layer 1 and Etherlink](./bridging-xtz).
 In short, the bridge uses tickets to send tokens from the source network to the target network.
 
+### Contracts
+
+The bridging process relies on smart contracts that convert tokens to [tickets](https://docs.tezos.com/smart-contracts/data-types/complex-data-types#tickets) and transfer the tickets between Tezos and Etherlink.
+These contracts are an implementation of the [TZIP-029](https://gitlab.com/baking-bad/tzip/-/blob/wip/029-etherlink-token-bridge/drafts/current/draft-etherlink-token-bridge/etherlink-token-bridge.md) standard for bridging between Tezos and Etherlink.
+
+Each FA token needs its own copy of these contracts to be able to bridge the token:
+
+- **Ticketer contract**: Stores tokens and issues tickets that represent them
+- **Token bridge helper contract**: Accepts requests to bridge tokens on layer 1, uses the ticketer contract to get tickets for them, and sends the tickets to Etherlink
+- **ERC-20 proxy contract**: Stores tickets and mints ERC-20 tokens that are equivalent to the FA tokens in layer 1
+
+Examples of these contracts and tools to deploy them are available in the repository https://github.com/baking-bad/etherlink-bridge.
+
 ### Depositing tokens from layer 1 to Etherlink
 
 The process of bridging FA-compatible tokens from layer 1 to Etherlink (also known as depositing tokens) follows these general steps:
@@ -92,15 +105,3 @@ This diagram is an overview of the process of bridging tokens from Etherlink to 
 ![Overview of the FA token bridging withdrawal process](/img/bridging-withdrawal-fa.png)
 <!-- https://lucid.app/lucidchart/068d1822-29cb-4f8c-8aa1-2bd79f9b8490/edit -->
 
-## Enabling a token for bridging
-
-Before you can bridge an FA-compliant token to Etherlink, you must enable it for bridging by deploying a proxy contract for it on Etherlink and helper contracts on Tezos layer 1.
-
-This is a list of the contracts that are required to bridge tokens in this way:
-
-- **Ticketer contract**: Stores tokens and issues tickets that represent them
-- **Token bridge helper contract**: Accepts requests to bridge tokens on layer 1, uses the ticketer contract to get tickets for them, and sends the tickets to Etherlink
-- **ERC-20 proxy contract**: Stores tickets and mints ERC-20 tokens that are equivalent to the FA tokens in layer 1
-
-Examples of these contracts are available in the repository https://github.com/baking-bad/etherlink-bridge.
-This repository also provides tools to deploy these contracts.
