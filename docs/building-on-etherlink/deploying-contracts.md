@@ -11,15 +11,15 @@ Etherlink supports Solidity versions up to and including 0.8.24.
 
 :::
 
-You can use any of the toolkits in [Development toolkits](./development-toolkits) to deploy to Etherlink, as well as standard tools such as the [Remix Ethereum IDE](https://remix.ethereum.org/).
+You can use any of the toolkits in [Development toolkits](/building-on-etherlink/development-toolkits) to deploy to Etherlink, as well as standard tools such as the [Remix Ethereum IDE](https://remix.ethereum.org/).
 
 ## Deploying with Remix
 
 The Remix online IDE lets you code, compile, and deploy contracts to EVM chains, including Etherlink
 
-1. Connect your wallet to Etherlink testnet as described in [Using your wallet](../get-started/using-your-wallet).
+1. Connect your wallet to Etherlink testnet as described in [Using your wallet](/get-started/using-your-wallet).
 
-1. Get some Etherlink tokens as described in [Getting testnet tokens](../get-started/getting-testnet-tokens).
+1. Get some Etherlink tokens as described in [Getting testnet tokens](/get-started/getting-testnet-tokens).
 
 1. Open the Remix IDE at https://remix.ethereum.org.
 
