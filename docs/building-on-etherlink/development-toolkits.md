@@ -33,11 +33,11 @@ module.exports = {
     },
     customChains: [
       {
-        network: "etherlinkTestnet",
+        network: "etherlinkMainnet",
         chainId: 128123,
         urls: {
-          apiURL: "https://node.mainnet.etherlink.com/api",
-          browserURL: "https://node.mainnet.etherlink.com",
+          apiURL: "https://explorer.etherlink.com/api",
+          browserURL: "https://explorer.etherlink.com",
         },
       },
       {
