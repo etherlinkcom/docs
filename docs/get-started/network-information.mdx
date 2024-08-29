@@ -6,10 +6,96 @@ import InlineCopy from '@site/src/components/InlineCopy';
 
 For current and historical status information for Etherlink, see https://status.etherlink.com.
 
+For every network, we provide two public endpoints: a full RPC endpoint and a
+relay endpoint. The full RPC endpoint can be consumed by Etherlink users and
+decentralized applications to interact with the chain. The relay endpoint
+exposes a restricted RPC API with only `eth_sendRawTransaction` and
+`eth_blockNumber` available. Use the relay endpoint when setting up an
+[Etherlink node](/network/evm-nodes).
+
+:::warning Public RPC Endpoint Restrictions
+Our full RPC endpoint has a limit on the size of the JSON-RPC batches it
+processes currently set to 12.
+:::
+
 ## Etherlink Mainnet
 
-<table><thead><tr><th width="231">Parameter</th><th>Value</th></tr></thead><tbody><tr><td>Network Name</td><td><code>Etherlink Mainnet</code></td></tr><tr><td>RPC URL</td><td><InlineCopy code="https://node.mainnet.etherlink.com" /></td></tr><tr><td>Tezos Smart Rollup address</td><td><InlineCopy code="sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf" href="https://tzkt.io/sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf">sr1Ghq...vZEf</InlineCopy></td></tr><tr><td>Chain ID</td><td><code>42793</code></td></tr><tr><td>Currency Symbol</td><td><code>XTZ</code></td></tr><tr><td>Block Explorer URL</td><td><a href="https://explorer.etherlink.com">https://explorer.etherlink.com</a></td></tr></tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th width="231">Parameter</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Network Name</td>
+      <td><code>Etherlink Mainnet</code></td>
+    </tr>
+    <tr>
+      <td>RPC Endpoint</td>
+      <td><InlineCopy code="https://node.mainnet.etherlink.com" /></td>
+    </tr>
+    <tr>
+      <td>Relay Endpoint</td>
+      <td><InlineCopy code="https://relay.mainnet.etherlink.com" /></td>
+    </tr>
+    <tr>
+      <td>Tezos Smart Rollup address</td>
+      <td><InlineCopy code="sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf" href="https://tzkt.io/sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf">sr1Ghq...vZEf</InlineCopy></td>
+    </tr>
+    <tr>
+      <td>Chain ID</td>
+      <td><code>42793</code></td>
+    </tr>
+    <tr>
+      <td>Currency Symbol</td>
+      <td><code>XTZ</code></td>
+    </tr>
+    <tr>
+      <td>Block Explorer URL</td>
+      <td><a href="https://explorer.etherlink.com">https://explorer.etherlink.com</a></td>
+    </tr>
+  </tbody>
+</table>
 
 ## Etherlink Testnet (Ghostnet)
 
-<table><thead><tr><th width="231">Parameter</th><th>Value</th></tr></thead><tbody><tr><td>Network Name</td><td><code>Etherlink Testnet</code></td></tr><tr><td>RPC URL</td><td><InlineCopy code="https://node.ghostnet.etherlink.com" /></td></tr><tr><td>Tezos Smart Rollup address</td><td><InlineCopy code="sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg" href="https://ghostnet.tzkt.io/sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg">sr18wx...mlqg</InlineCopy></td></tr><tr><td>Chain ID</td><td><code>128123</code></td></tr><tr><td>Currency Symbol</td><td><code>XTZ</code></td></tr><tr><td>Block Explorer URL</td><td><a href="https://testnet.explorer.etherlink.com/">https://testnet.explorer.etherlink.com/</a></td></tr></tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th width="231">Parameter</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Network Name</td>
+      <td><code>Etherlink Testnet</code></td>
+    </tr>
+    <tr>
+      <td>RPC Endpoint</td>
+      <td><InlineCopy code="https://node.ghostnet.etherlink.com" /></td>
+    </tr>
+    <tr>
+      <td>Relay Endpoint</td>
+      <td><InlineCopy code="https://relay.ghostnet.etherlink.com" /></td>
+    </tr>
+    <tr>
+      <td>Tezos Smart Rollup address</td>
+      <td><InlineCopy code="sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg" href="https://ghostnet.tzkt.io/sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg">sr18wx...mlqg</InlineCopy></td>
+    </tr>
+    <tr>
+      <td>Chain ID</td>
+      <td><code>128123</code></td>
+    </tr>
+    <tr>
+      <td>Currency Symbol</td>
+      <td><code>XTZ</code></td>
+    </tr>
+    <tr>
+      <td>Block Explorer URL</td>
+      <td><a href="https://testnet.explorer.etherlink.com/">https://testnet.explorer.etherlink.com/</a></td>
+    </tr>
+  </tbody>
+</table>
