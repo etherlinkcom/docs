@@ -6,6 +6,13 @@ import InlineCopy from '@site/src/components/InlineCopy';
 
 For current and historical status information for Etherlink, see https://status.etherlink.com.
 
+For every network, we provide two public endpoints: a full RPC endpoint and a
+relay endpoint. The full RPC endpoint can be consumed by Etherlink users and
+decentralized applications to interact with the chain. The relay endpoint
+exposes a restricted RPC API with only `eth_sendRawTransaction` and
+`eth_blockNumber` available. Use the relay endpoint when setting up an
+[Etherlink node](/network/evm-nodes).
+
 ## Etherlink Mainnet
 
 <table>
@@ -21,8 +28,12 @@ For current and historical status information for Etherlink, see https://status.
       <td><code>Etherlink Mainnet</code></td>
     </tr>
     <tr>
-      <td>RPC URL</td>
+      <td>RPC Endpoint</td>
       <td><InlineCopy code="https://node.mainnet.etherlink.com" /></td>
+    </tr>
+    <tr>
+      <td>Relay Endpoint</td>
+      <td><InlineCopy code="https://relay.mainnet.etherlink.com" /></td>
     </tr>
     <tr>
       <td>Tezos Smart Rollup address</td>
@@ -58,8 +69,12 @@ For current and historical status information for Etherlink, see https://status.
       <td><code>Etherlink Testnet</code></td>
     </tr>
     <tr>
-      <td>RPC URL</td>
+      <td>RPC Endpoint</td>
       <td><InlineCopy code="https://node.ghostnet.etherlink.com" /></td>
+    </tr>
+    <tr>
+      <td>Relay Endpoint</td>
+      <td><InlineCopy code="https://relay.ghostnet.etherlink.com" /></td>
     </tr>
     <tr>
       <td>Tezos Smart Rollup address</td>
