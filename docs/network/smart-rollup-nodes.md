@@ -85,7 +85,7 @@ For example, this query gets the health of the node:
    curl -s http://localhost:8932/health
    ```
 
-Now that you have a Smart Rollup node configured for Etherlink, you can run an Etherlink EVM node, as described in [Running an Etherlink EVM node](./evm-nodes).
+Now that you have a Smart Rollup node configured for Etherlink, you can run an Etherlink EVM node, as described in [Running an Etherlink EVM node](/network/evm-nodes).
 
 ## Running the Smart Rollup node from Etherlink genesis
 
@@ -141,4 +141,4 @@ For example, this query gets the health of the node:
    curl -s http://localhost:8932/health
    ```
 
-Now that you have a Smart Rollup node configured for Etherlink, you can run an Etherlink EVM node, as described in [Running an Etherlink EVM node](./evm-nodes).
+Now that you have a Smart Rollup node configured for Etherlink, you can run an Etherlink EVM node, as described in [Running an Etherlink EVM node](/network/evm-nodes).
