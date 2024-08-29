@@ -18,26 +18,33 @@ Make sure that you understand the interaction between different nodes as describ
 
 For more information about Smart Rollup nodes in general, see [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com and [Smart Rollup Node](https://tezos.gitlab.io/shell/smart_rollup_node.html) in the Octez documentation.
 
-## Running the Smart Rollup node
+You can run the Etherlink Smart Rollup in many modes, but these instructions cover only the most common modes:
 
-You can start the Smart Rollup node with a snapshot of the Etherlink state to prevent it from having to compute the state from Etherlink genesis.
+- [Running the Smart Rollup node in observer mode](#running-the-smart-rollup-node-in-observer-mode)
+- [Running the Smart Rollup node in operator mode](#running-the-smart-rollup-node-in-operator-mode)
+
+In either case, you can start the Smart Rollup node with a snapshot of the Etherlink state to prevent it from having to compute the state from Etherlink genesis.
 You can also skip the snapshot and run the node from Etherlink genesis, but it can take a long time for the node to catch up.
 These instructions cover both ways of running the Smart Rollup node.
 
-For simplicity, these steps show how to run the Smart Rollup node in observer mode:
+## Running the Smart Rollup node in observer mode
+
+Running the Smart Rollup node in observer mode is the simplest way to run an Etherlink Smart Rollup node, but it does not strengthen the security of the system by posting commitments.
+In observer mode, the node only monitors the state of Etherlink.
 
 1. Get a built version of the Smart Rollup node binary, named `octez-smart-rollup-node`.
 The best place to get the most recent binary files to use with Etherlink is https://gitlab.com/tezos/tezos/-/releases.
 
 1. Initialize the local context of the node, which is where it stores local data:
 
-   1. Set the environment variable `sr_observer_data_dir` to the directory where the node should store its local data.
+   1. Set the environment variable `SR_DATA_DIR` to the directory where the node should store its local data.
    The default value is `$HOME/.tezos-smart-rollup-node`.
-   1. Initialize the local context by running this command:
+
+   1. Initialize the local context by running this command and using the address of the Etherlink Smart Rollup, which you can get from the [Network information](/get-started/network-information) page:
 
       ```bash
       octez-smart-rollup-node init observer config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
-        with operators --data-dir $sr_observer_data_dir \
+        with operators --data-dir $SR_DATA_DIR \
         --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
       ```
 
@@ -68,19 +75,17 @@ The best place to get the most recent binary files to use with Etherlink is http
       ```bash
       octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet \
         snapshot import eth-mainnet.full \
-        --data-dir $sr_observer_data_dir
+        --data-dir $SR_DATA_DIR
       ```
 
 1. Start the Smart Rollup node in observer mode by running this command and using the RPC endpoint of a layer 1 node:
 
    ```bash
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet run \
-     --data-dir $sr_observer_data_dir
+     --data-dir $SR_DATA_DIR
    ```
 
    As in this example, you can use a public layer 1 RPC node for initial setup, or you can connect it to a layer 1 node that you are running for a more stable connection.
-   A rolling node is sufficient if you are using a recent snapshot; if the snapshot is old, the Smart Rollup node needs a connection to an archive node.
-   After that you can connect it to a rolling node.
 
    If you did not load a snapshot, the process of starting the node from genesis can take a long time because it must process every block.
 
@@ -92,3 +97,93 @@ For example, this query gets the health of the node:
    ```
 
 Now that you have a Smart Rollup node configured for Etherlink, you can run an Etherlink EVM node, as described in [Running an Etherlink EVM node](/network/evm-nodes).
+
+## Running the Smart Rollup node in operator mode
+
+Running the Smart Rollup node in operator mode is the best way to secure Etherlink because in this mode the node posts commitments about Etherlink's state to layer 1.
+However, running the node in this mode requires an account with at least 10,000 staked tez and certain other prerequisites.
+
+To run an Etherlink Smart Rollup node in operator mode, you need:
+
+- A Tezos layer 1 node running in archive mode or full mode with expanded node history, such as with the argument `--history-mode full:50`
+- An account with at least 10,000 tez staked, referred to as the _operator account_
+- A separate account to sign batching operations, referred to as the _batcher account_; this account is necessary only if you also run an Etherlink EVM node
+- A clean data directory that has not been used for another Smart Rollup node or a node running in a different mode
+
+1. Get a built version of the Smart Rollup node binary, named `octez-smart-rollup-node`.
+The best place to get the most recent binary files to use with Etherlink is https://gitlab.com/tezos/tezos/-/releases.
+
+1. Initialize the local context of the node, which is where it stores local data:
+
+   1. Set the environment variable `SR_DATA_DIR` to the directory where the node should store its local data.
+   The default value is `$HOME/.tezos-smart-rollup-node`.
+
+   1. Initialize the local context by running this command and using the address of the Etherlink Smart Rollup, which you can get from the [Network information](/get-started/network-information) page, and the addresses or Octez client aliases for the operator account and the batcher account:
+
+      ```bash
+      octez-smart-rollup-node init operator config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
+        with operators \
+        operating:$OPERATOR_ACCOUNT \
+        cementing:$OPERATOR_ACCOUNT \
+        batching:$BATCHER_ACCOUNT \
+        executing_outbox:$OPERATOR_ACCOUNT \
+        --history-mode archive \
+        --rpc-addr 0.0.0.0 \
+        --data-dir $SR_DATA_DIR \
+        --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
+      ```
+
+      This command generates a configuration file (`config.json`) in the local data folder:
+
+      ```json
+      { "smart-rollup-address": "sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf",
+        "smart-rollup-node-operator":
+          { "operating": "tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx",
+            "batching": [ "tz1hQKqRPHmxET8du3fNACGyCG8kZRsXm2zD" ],
+            "cementing": "tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx",
+            "executing_outbox": "tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx" },
+        "fee-parameters": {}, "mode": "operator",
+        "pre-images-endpoint":
+          "https://snapshots.eu.tzinit.org/etherlink-ghostnet/wasm_2_0_0" }
+      ```
+
+      This configuration uses the preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
+      It's safe to use these preimages because the node verifies them.
+      If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink kernel](/network/building-kernel).
+      However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink after that.
+
+1. (Optional) To speed up the setup process by loading a snapshot, follow these steps:
+
+   1. Download the latest snapshot from https://snapshots.eu.tzinit.org/etherlink-mainnet/:
+
+      ```bash
+      wget https://snapshots.eu.tzinit.org/etherlink-mainnet/eth-mainnet.full
+      ```
+
+   1. Load the snapshot:
+
+      ```bash
+      octez-smart-rollup-node \
+        snapshot import eth-mainnet.full \
+        --data-dir $SR_DATA_DIR
+      ```
+
+1. Start the Smart Rollup node by running this command and using the RPC endpoint of your layer 1 node:
+
+   ```bash
+   octez-smart-rollup-node --endpoint $LAYER_1_NODE run --data-dir $SR_DATA_DIR
+   ```
+
+   If you did not load a snapshot, the process of starting the node from genesis can take a long time because it must process every block.
+
+1. Verify that the Smart Rollup node is running by querying it.
+For example, this query gets the health of the node:
+
+   ```bash
+   curl -s http://localhost:8932/health
+   ```
+
+1. Ensure that the node runs persistently.
+Look up how to run programs persistently in the documentation for your operating system.
+
+Now that you have a Smart Rollup node configured for Etherlink, you can run an Etherlink EVM node, as described in [Running an Etherlink EVM node](./evm-nodes).
