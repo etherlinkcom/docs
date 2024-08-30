@@ -78,7 +78,8 @@ The best place to get the most recent binary files to use with Etherlink is http
       If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink kernel](/network/building-kernel).
       However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink after that.
 
-1. (Optional) To speed up the setup process by loading a snapshot, follow these steps:
+1. To speed up the setup process by loading a snapshot, follow these steps.
+If you don't load a snapshot, the node must compute the current state from genesis and that can take a long time.
 
    1. Download the latest snapshot from https://snapshots.eu.tzinit.org/etherlink-mainnet/:
 
