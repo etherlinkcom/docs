@@ -36,7 +36,6 @@ To run an Etherlink Smart Rollup node in operator mode, you need:
 
 - A Tezos layer 1 node running in archive mode or full mode with expanded node history, such as with the argument `--history-mode full:50`
 - An account with at least 10,000 tez staked, referred to as the _operator account_
-- A separate account to sign batching operations, referred to as the _batcher account_; this account is necessary only if you also run an Etherlink EVM node
 - A clean data directory that has not been used for another Smart Rollup node or a node running in a different mode
 
 1. Get a built version of the Smart Rollup node binary, named `octez-smart-rollup-node`.
@@ -47,14 +46,13 @@ The best place to get the most recent binary files to use with Etherlink is http
    1. Set the environment variable `SR_DATA_DIR` to the directory where the node should store its local data.
    The default value is `$HOME/.tezos-smart-rollup-node`.
 
-   1. Initialize the local context by running this command and using the address of the Etherlink Smart Rollup, which you can get from the [Network information](/get-started/network-information) page, and the addresses or Octez client aliases for the operator account and the batcher account:
+   1. Initialize the local context by running this command and using the address of the Etherlink Smart Rollup, which you can get from the [Network information](/get-started/network-information) page, and the address or Octez client alias for the operator account:
 
       ```bash
       octez-smart-rollup-node init operator config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
         with operators \
         operating:$OPERATOR_ACCOUNT \
         cementing:$OPERATOR_ACCOUNT \
-        batching:$BATCHER_ACCOUNT \
         executing_outbox:$OPERATOR_ACCOUNT \
         --history-mode archive \
         --rpc-addr 0.0.0.0 \
@@ -68,7 +66,6 @@ The best place to get the most recent binary files to use with Etherlink is http
       { "smart-rollup-address": "sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf",
         "smart-rollup-node-operator":
           { "operating": "tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx",
-            "batching": [ "tz1hQKqRPHmxET8du3fNACGyCG8kZRsXm2zD" ],
             "cementing": "tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx",
             "executing_outbox": "tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx" },
         "fee-parameters": {}, "mode": "operator",
