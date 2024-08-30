@@ -30,7 +30,7 @@ These instructions cover both ways of running the Smart Rollup node.
 ## Running the Smart Rollup node in operator mode
 
 Running the Smart Rollup node in operator mode is the best way to participate in Etherlink because in this mode the node posts commitments about Etherlink's state to layer 1.
-However, running the node in this mode requires an account with at least 10,000 staked tez and certain other prerequisites.
+However, running the node in this mode requires an account with at least 10,000 liquid tez and certain other prerequisites.
 
 To run an Etherlink Smart Rollup node in operator mode, you need:
 
