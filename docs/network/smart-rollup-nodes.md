@@ -23,16 +23,13 @@ You can run the Etherlink Smart Rollup in many modes, but these instructions cov
 - [Running the Smart Rollup node in operator mode](#running-the-smart-rollup-node-in-operator-mode)
 - [Running the Smart Rollup node in observer mode](#running-the-smart-rollup-node-in-observer-mode)
 
-In either case, you can start the Smart Rollup node with a snapshot of the Etherlink state to prevent it from having to compute the state from Etherlink genesis.
-You can also skip the snapshot and run the node from Etherlink genesis, but it can take a long time for the node to catch up.
-These instructions cover both ways of running the Smart Rollup node.
-
 ## Running the Smart Rollup node in operator mode
 
 Running the Smart Rollup node in operator mode is the best way to participate in Etherlink because in this mode the node posts commitments about Etherlink's state to layer 1.
-However, running the node in this mode requires an account with at least 10,000 liquid tez and certain other prerequisites.
+These commitments validate Etherlink's state and ensure that Etherlink is processing blocks and transactions honestly according to its kernel.
+As described in [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com, one honest node is enough to ensure that Etherlink is running correctly, but adding more nodes strengthens its security and allows users to verify for themselves that Etherlink is running as intended.
 
-To run an Etherlink Smart Rollup node in operator mode, you need:
+Running the node in this mode requires an account with at least 10,000 liquid tez and certain other prerequisites:
 
 - A Tezos layer 1 node running in archive mode or full mode with expanded node history, such as with the argument `--history-mode full:50`
 - An account with at least 10,000 tez staked, referred to as the _operator account_
