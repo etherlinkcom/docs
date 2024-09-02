@@ -31,7 +31,7 @@ As described in [Smart Rollups](https://docs.tezos.com/architecture/smart-rollup
 
 Running the node in this mode requires an account with at least 10,000 liquid tez and certain other prerequisites:
 
-- A Tezos layer 1 node running in archive mode or full mode with expanded node history, such as with the argument `--history-mode full:50`
+- A Tezos layer 1 node running in archive mode; the Smart Rollup node needs the history from around the level that the Smart Rollup was originated to start, but after it has started you can switch to a rolling node
 - An account with at least 10,000 tez staked, referred to as the _operator account_
 - A clean data directory that has not been used for another Smart Rollup node or a node running in a different mode
 
