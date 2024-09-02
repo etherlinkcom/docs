@@ -319,3 +319,14 @@ article table {
     color: #FFFFFF;
   }
 }
+
+/* Some highlighting for the home page */
+.emphasize-advantage {
+  color: var(--ifm-color-primary);
+}
+[data-theme='dark'] .deemphasize-disadvantage {
+  color: var(--ifm-font-color-base);
+}
+[data-theme='light'] .deemphasize-disadvantage {
+  color: rgb(28, 30, 33);
+}
