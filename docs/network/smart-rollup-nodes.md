@@ -29,11 +29,13 @@ Running the Smart Rollup node in operator mode is the best way to participate in
 These commitments validate Etherlink's state and ensure that Etherlink is processing blocks and transactions honestly according to its kernel.
 As described in [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com, one honest node is enough to ensure that Etherlink is running correctly, but adding more nodes strengthens its security and allows users to verify for themselves that Etherlink is running as intended.
 
-Running the node in this mode requires an account with at least 10,000 liquid tez and certain other prerequisites:
+Running the node in this mode requires these prerequisites:
 
-- A Tezos layer 1 node running in archive mode; the Smart Rollup node needs the history from around the level that the Smart Rollup was originated to start, but after it has started you can switch to a rolling node
-- An account with at least 10,000 tez staked, referred to as the _operator account_
-- A clean data directory that has not been used for another Smart Rollup node or a node running in a different mode
+- A Tezos layer 1 node running in archive mode.
+The Smart Rollup node needs the full history from the time the snapshot was taken to the current level, which usually means connecting to an archive node, but sometimes it can work with a rolling node that keeps enough history.
+After the node has started, you can switch to a rolling node.
+- An account with at least 10,000 tez staked, referred to as the _operator account_.
+- A clean data directory that has not been used for another Smart Rollup node or a node running in a different mode.
 
 1. Get a built version of the Smart Rollup node binary, named `octez-smart-rollup-node`.
 The best place to get the most recent binary files to use with Etherlink is https://gitlab.com/tezos/tezos/-/releases.
