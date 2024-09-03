@@ -34,7 +34,7 @@ Running the node in this mode requires these prerequisites:
 - A Tezos layer 1 node running in archive mode.
 The Smart Rollup node needs the full history from the time the snapshot was taken to the current level, which usually means connecting to an archive node, but sometimes it can work with a rolling node that keeps enough history.
 After the node has started, you can switch to a rolling node.
-You can use a public archive node for this purpose, but for better performance, switch to your own node after the Smart Rollup node has started.
+You can use a public archive node to set up the Smart Rollup node, but for security reasons, you must switch to your own layer 1 node to run the Smart Rollup node in the long term.
 - An account with at least liquid (unstaked) 10,000 tez, referred to as the _operator account_.
 You can use the same account that you use for your layer 1 baker, but for better security, you can use a different account and delegate its tez to the layer 1 account.
 - A clean data directory that has not been used for another Smart Rollup node or a node running in a different mode.
