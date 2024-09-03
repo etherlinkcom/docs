@@ -41,7 +41,7 @@ Running the node in this mode requires these prerequisites:
 
    You can bootstrap the Smart Rollup node by connecting it to a public layer 1 node, but after the Smart Rollup node bootstraps, you must connect it to a layer 1 node that you control.
    Using a public layer 1 node as the basis for a Smart Rollup node in operator mode exposes the Smart Rollup node to security risks.
-   For example, a malicious layer 1 node can expose the Smart Rollup to an incorrect brach, which can cause the Smart Rollup node to post invalid commitments and lose tez when correct commitments refute them.
+   For example, a malicious layer 1 node can expose the Smart Rollup to an incorrect branch, which can cause the Smart Rollup node to post invalid commitments and lose tez when other operators computing from the correct branch refute them.
 
    :::
 
