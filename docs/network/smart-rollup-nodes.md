@@ -34,6 +34,7 @@ Running the node in this mode requires these prerequisites:
 - A Tezos layer 1 node running in archive mode.
 The Smart Rollup node needs the full history from the time the snapshot was taken to the current level, which usually means connecting to an archive node, but sometimes it can work with a rolling node that keeps enough history.
 After the node has started, you can switch to a rolling node.
+You can use a public archive node for this purpose, but for better performance, switch to your own node after the Smart Rollup node has started.
 - An account with at least 10,000 tez staked, referred to as the _operator account_.
 - A clean data directory that has not been used for another Smart Rollup node or a node running in a different mode.
 
@@ -94,7 +95,7 @@ If you don't load a snapshot, the node must compute the current state from genes
         --data-dir $SR_DATA_DIR
       ```
 
-1. Start the Smart Rollup node by running this command and using the RPC endpoint of your layer 1 node:
+1. Start the Smart Rollup node by running this command and using the RPC endpoint of the layer 1 node:
 
    ```bash
    octez-smart-rollup-node --endpoint $LAYER_1_NODE run --data-dir $SR_DATA_DIR
