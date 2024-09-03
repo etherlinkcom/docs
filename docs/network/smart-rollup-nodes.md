@@ -32,9 +32,19 @@ As described in [Smart Rollups](https://docs.tezos.com/architecture/smart-rollup
 Running the node in this mode requires these prerequisites:
 
 - A Tezos layer 1 node running in archive mode.
-The Smart Rollup node needs the full history from the time the snapshot was taken to the current level, which usually means connecting to an archive node, but sometimes it can work with a rolling node that keeps enough history.
-After the node has started, you can switch to a rolling node.
-You can use a public archive node to set up the Smart Rollup node, but for security reasons, you must switch to your own layer 1 node to run the Smart Rollup node in the long term.
+
+   To bootstrap a Smart Rollup node from a snapshot, you need a node that has the full history from the time the snapshot was taken to the current level.
+   Usually this means connecting to an archive node, but if the snapshot is recent, it can work with a rolling node that keeps enough history.
+   After the node has started, you can switch to a rolling node.
+
+   :::warning Using public nodes
+
+   You can bootstrap the Smart Rollup node by connecting it to a public layer 1 node, but after the Smart Rollup node bootstraps, you must connect it to a layer 1 node that you control.
+   Using a public layer 1 node as the basis for a Smart Rollup node in operator mode exposes the Smart Rollup node to problems.
+   For example, a malicious layer 1 node can expose the Smart Rollup to an incorrect brach, which can cause the Smart Rollup node to post invalid commitments and lose tez when correct commitments refute them.
+
+   :::
+
 - An account with at least liquid (unstaked) 10,000 tez, referred to as the _operator account_.
 You can use the same account that you use for your layer 1 baker, but for better security, you can use a different account and delegate its tez to the layer 1 account.
 - A clean data directory that has not been used for another Smart Rollup node or a node running in a different mode.
@@ -113,6 +123,8 @@ For example, this query gets the health of the node:
 
 1. Ensure that the node runs persistently.
 Look up how to run programs persistently in the documentation for your operating system.
+
+1. If you started the node with a public layer 1 node, stop it and restart it with a layer 1 node that you control.
 
 Now that you have a Smart Rollup node configured for Etherlink, you can run an Etherlink EVM node, as described in [Running an Etherlink EVM node](./evm-nodes).
 
