@@ -108,6 +108,7 @@ The best place to get the most recent binary files to use with Etherlink is http
 
    If you did not load a snapshot, the process of starting the node from genesis can take a long time because it must process every block.
 
+   If you loaded a snapshot, the node must process every block that has been created since the snapshot was taken, which takes time depending on the age of the snapshot.
 
 1. Verify that the Smart Rollup node is running by querying it.
 For example, this query gets the health of the node:
