@@ -146,6 +146,17 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 
 1. Stop the Smart Rollup node.
 
+1. Restart the node with the layer 1 node that you control, represented in this example by the variable `$MY_LAYER_1_NODE`:
+
+   ```bash
+   octez-smart-rollup-node --endpoint $MY_LAYER_1_NODE run \
+     --data-dir $SR_DATA_DIR
+   ```
+
+1. Verify that the node continues to run as expected in observer mode.
+
+1. Stop the node.
+
 1. Re-initialize the node for maintenance mode by running the `init maintenance config` command and passing the addresses or Octez aliases of the accounts.
 This example uses `$OPERATOR_ACCOUNT` for the account with 10,000 liquid tez and `$SECONDARY_ACCOUNT` for the other account:
 
@@ -163,7 +174,7 @@ This example uses `$OPERATOR_ACCOUNT` for the account with 10,000 liquid tez and
 
    This command generates updates the configuration file to contain the addresses of the accounts that post operations to layer 1, including the node's commitments.
 
-1. Restart the node with the layer 1 node that you control, represented in this example by the variable `$MY_LAYER_1_NODE`:
+1. Restart the node, again with the layer 1 node that you control:
 
    ```bash
    octez-smart-rollup-node --endpoint $MY_LAYER_1_NODE run \
