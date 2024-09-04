@@ -9,6 +9,18 @@ The process converts FA-compliant tokens on Tezos to ERC-20-compatible tokens on
 The Tezos FA standards are token standards like the Ethereum ERC-20, ERC-721, and ERC-1155 standards.
 For more information about the FA standards, see [Token standards](https://docs.tezos.com/architecture/tokens#token-standards) on docs.tezos.com.
 
+<!--
+## Using the FA bridge frontend
+
+TODO
+
+- https://ghostnet.tezos-etherlink-bridge-front.pages.dev/
+- Currently supports XTZ, SIRS, USDt, and YOU
+- Will it support others?
+- Can I add my token?
+
+-->
+
 ## How bridging FA tokens works
 
 The process of bridging FA tokens is similar to the process of bridging tez, as described in [Bridging tez (XTZ) between Tezos layer 1 and Etherlink](./bridging-xtz).
@@ -165,3 +177,9 @@ The token bridge helper contract sends that ticket to the ERC-20 proxy contract,
 
 To see the tokens in your Etherlink wallet, look up the ERC-20 proxy contract in a block explorer or use its address to manually add the tokens to your wallet.
 Because the Etherlink tokens are compatible with the ERC-20 standard, EVM-compatible wallets should be able to display them.
+
+<!--
+### Withdrawing tokens from Etherlink to layer 1
+
+TODO -- what's the best way to demonstrate sending an EVM transaction?
+-->
