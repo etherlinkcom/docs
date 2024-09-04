@@ -105,3 +105,10 @@ This diagram is an overview of the process of bridging tokens from Etherlink to 
 ![Overview of the FA token bridging withdrawal process](/img/bridging-withdrawal-fa.png)
 <!-- https://lucid.app/lucidchart/068d1822-29cb-4f8c-8aa1-2bd79f9b8490/edit -->
 
+## Configuring a token for bridging
+
+You can configure any FA1.2 or FA2 token for bridging by deploying the necessary contracts.
+You can use this tool to simplify the process by deploying the contracts for a single token: https://github.com/baking-bad/etherlink-bridge.
+
+<!-- Any other info appropriate here? -->
+
