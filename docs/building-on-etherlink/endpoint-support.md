@@ -92,9 +92,12 @@ For information about these endpoints, see the Geth documentation at https://get
 
 Endpoint | Supported | Notes
 --- | --- | ---
-`debug_traceTransaction` | Partially | Supported on testnet but not Mainnet
+`debug_traceTransaction`* | Partially | Supported on testnet but not Mainnet
 `eth_call` | No | Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version
 `txpool_content` | Partially | Returns the transaction pool on testnet but always returns an empty pool on Mainnet
+
+\* Users can set a timeout for calls to the `debug_traceTransaction*` endpoint.
+However, if they set a timeout that is longer than the default timeout for the Etherlink EVM node, the call fails.
 
 ## ethers.js SDK methods
 
