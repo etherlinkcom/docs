@@ -9,21 +9,47 @@ The process converts FA-compliant tokens on Tezos to ERC-20-compatible tokens on
 The Tezos FA standards are token standards like the Ethereum ERC-20, ERC-721, and ERC-1155 standards.
 For more information about the FA standards, see [Token standards](https://docs.tezos.com/architecture/tokens#token-standards) on docs.tezos.com.
 
-<!--
 ## Using the FA bridge frontend
 
-TODO
+The FA bridge has a web interface that can bridge certain tokens between Tezos and Etherlink:
 
-- https://ghostnet.tezos-etherlink-bridge-front.pages.dev/
-- Currently supports XTZ, SIRS, USDt, and YOU
-- Will it support others?
-- Can I add my token?
+- Etherlink Testnet: https://ghostnet.tezos-etherlink-bridge-front.pages.dev/
+- Etherlink Mainnet: https://tezos-etherlink-bridge-front.pages.dev/
 
--->
+:::note Bridging time
+Tokens that you bridge from Tezos layer 1 to Etherlink are available for use on Etherlink immediately.
+
+Tokens that you bridge from Etherlink to Tezos layer 1 are available for use on Tezos in two weeks.
+
+This delay is caused by the [Smart Rollup refutation period](https://docs.tezos.com/architecture/smart-rollups#refutation-periods).
+As with all Smart Rollups, Etherlink nodes post commitments about their state to Tezos layer 1, including incoming bridging transactions, on a regular schedule.
+Other nodes have the length of the refutation period (14 days) to challenge those commitments.
+At the end of the refutation period, the correct commitment is _cemented_, or made final and unchangeable.
+Users can execute the bridging transactions in a commitment only after the commitment is cemented.
+
+The Etherlink indexer run by Nomadic Labs automatically executes these bridging transactions when they are cemented, which makes the bridged tokens available on Tezos.
+:::
+
+To use these bridges, follow these general steps:
+
+1. Connect your Tezos and Etherlink-compatible wallets.
+
+1. Click the button with the arrows to switch between depositing and withdrawing tokens.
+
+   - **Deposit** transfers tokens from Tezos layer 1 to Etherlink
+   - **Withdraw** transfers tokens from Etherlink to Tezos layer 1
+
+1. Select the type of tokens to bridge.
+
+1. Set the amount of tokens to send.
+
+1. Click **Deposit** or **Withdraw**.
+
+You can monitor the status of your bridge operations on the **Transfers** tab.
 
 ## How bridging FA tokens works
 
-The process of bridging FA tokens is similar to the process of bridging tez, as described in [Bridging tez (XTZ) between Tezos layer 1 and Etherlink](./bridging-xtz).
+The process of bridging FA tokens is similar to the process of bridging tez, as described in [Bridging tez (XTZ) between Tezos layer 1 and Etherlink](/building-on-etherlink/bridging-xtz).
 In short, the bridge uses tickets to send tokens from the source network to the target network.
 
 ### Contracts
