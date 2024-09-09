@@ -204,8 +204,13 @@ The token bridge helper contract sends that ticket to the ERC-20 proxy contract,
 To see the tokens in your Etherlink wallet, look up the ERC-20 proxy contract in a block explorer or use its address to manually add the tokens to your wallet.
 Because the Etherlink tokens are compatible with the ERC-20 standard, EVM-compatible wallets should be able to display them.
 
-<!--
 ### Withdrawing tokens from Etherlink to layer 1
 
-TODO -- what's the best way to demonstrate sending an EVM transaction?
--->
+It takes two transactions to withdraw an FA token back to Etherlink: one to initiate the withdrawal and another to run the outbox transaction on Tezos layer 1.
+As described in [Bridging tez (XTZ) between Tezos layer 1 and Etherlink](/building-on-etherlink/bridging-xtz), you must wait two weeks to run the outbox transaction.
+
+Neither of these transactions are easy to do.
+Initiating the withdrawal requires sending complex information about the ticket and contracts to the FA2 withdrawal precompile on Etherlink.
+Running the outbox transaction requires you to know the level of the Etherlink commitment that contains it in order to get its proof and commitment, and there is no easy way to get that information without using an indexer to check each level for the transaction.
+
+The command-line tool at https://github.com/baking-bad/etherlink-bridge provides commands that can help with the withdrawal transactions.
