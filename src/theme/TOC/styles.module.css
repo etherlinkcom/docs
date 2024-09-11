@@ -1,0 +1,28 @@
+.tableOfContents {
+  max-height: calc(100vh - (var(--ifm-navbar-height) + 2rem));
+  overflow-y: auto;
+  position: sticky;
+  top: calc(var(--ifm-navbar-height) + 1rem);
+  max-width: 287px;
+}
+
+@media (max-width: 996px) {
+  .tableOfContents {
+    display: none;
+  }
+
+  .docItemContainer {
+    padding: 0 0.3rem;
+  }
+}
+
+.outlineContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  gap: 5px;
+  color: #28B56F;
+  font-size: 14px;
+  font-weight: 700;
+}

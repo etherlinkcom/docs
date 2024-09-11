@@ -3,8 +3,23 @@
 const sidebars = {
   documentationSidebar: [
     {
+      type: 'link',
+      label: 'Status',
+      href: 'https://status.etherlink.com',
+    },
+    {
+      type: 'link',
+      label: 'Developers',
+      href: 'https://discord.com/invite/etherlink',
+    },
+    {
+      type: 'link',
+      label: 'GitHub',
+      href: 'https://github.com/etherlinkcom/docs',
+    },
+    {
       type: 'category',
-      label: 'Get started 🚀',
+      label: 'Get Started',
       collapsed: false,
       items: [
         'index',
@@ -15,7 +30,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Building on Etherlink ⛓',
+      label: 'Developing',
       collapsed: false,
       items: [
         {
@@ -39,7 +54,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'The Etherlink network 🛜',
+      label: 'Network',
       collapsed: false,
       items: [
         'network/architecture',
@@ -51,7 +66,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '🔨 Tools',
+      label: 'Tools',
       collapsed: false,
       items: [
         'tools/node-providers',
@@ -65,7 +80,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Governance 🧑‍⚖️',
+      label: 'Governance',
       collapsed: false,
       items: [
         'governance/how-is-etherlink-governed',
@@ -74,7 +89,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Track Etherlink\'s progress 🏁',
+      label: 'Track Progress',
       collapsed: false,
       items: [
         {
@@ -91,7 +106,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Resources 📚',
+      label: 'Resources',
       collapsed: false,
       items: [
         'resources/etherlink-further-reading',

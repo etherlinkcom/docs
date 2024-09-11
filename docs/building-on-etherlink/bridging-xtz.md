@@ -15,16 +15,13 @@ These bridges are trustless and permissionless; anyone can use them without rest
 - Bridging tokens from Tezos layer 1 to Etherlink is referred to as _depositing_ tokens.
 - Bridging tokens from Etherlink to Tezos layer 1 is referred to as _withdrawing_ tokens.
 
-:::note Bridging time
+:::note
+<h3>Bridging time</h3>
 Tokens that you bridge from Tezos layer 1 to Etherlink are available for use on Etherlink immediately.
 
 Tokens that you bridge from Etherlink to Tezos layer 1 are available for use on Tezos in two weeks.
 
-This delay is caused by the [Smart Rollup refutation period](https://docs.tezos.com/architecture/smart-rollups#refutation-periods).
-As with all Smart Rollups, Etherlink nodes post commitments about their state to Tezos layer 1, including incoming bridging transactions, on a regular schedule.
-Other nodes have the length of the refutation period (14 days) to challenge those commitments.
-At the end of the refutation period, the correct commitment is _cemented_, or made final and unchangeable.
-Users can execute the bridging transactions in a commitment only after the commitment is cemented.
+This delay is caused by the Smart Rollup refutation period. As with all Smart Rollups, Etherlink nodes post commitments about their state to Tezos layer 1, including incoming bridging transactions, on a regular schedule. Other nodes have the length of the refutation period (14 days) to challenge those commitments. At the end of the refutation period, the correct commitment is cemented, or made final and unchangeable. Users can execute the bridging transactions in a commitment only after the commitment is cemented.
 
 The Etherlink indexer run by Nomadic Labs automatically executes these bridging transactions when they are cemented, which makes the bridged tokens available on Tezos.
 :::

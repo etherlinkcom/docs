@@ -45,6 +45,12 @@
   font-weight: 600;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Inter Normal';
+  src: url('/fonts/Inter-VariableFont_opsz,wght.ttf') format('ttf');
+  font-weight: 400;
+  font-style: normal;
+}
 
 /* You can override the default Infima variables here. */
 :root {
@@ -78,16 +84,41 @@
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'GT Eesti Display Light', sans-serif;
+  font-family: 'Inter Normal', 'GT Eesti Display Light', sans-serif;
 }
-
+h1 {
+  margin-bottom: 8px !important;
+}
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.48px;
+  margin-bottom: 10px !important;
+}
+html {
+  background-color: #101010;
+  font-family: 'Inter Normal','Roboto', sans-serif !important;
+}
 body {
-  font-family: 'Roboto', sans-serif;
+  background-color: #101010;
+  max-width: 1560px;
+  margin: auto;
+  padding: 0px 50px;
+}
+@media (max-width: 996px) {
+  body {
+    padding: 0px 8px;
+  }
 }
 
+nav {
+  padding: 24px 0px 24px 0px !important;
+}
 nav.navbar {
-  background-color: #040404;
-  font-family: 'GT Eesti Display Light', sans-serif;
+  background-color: #101010;
+  height: fit-content;
+  font-family: 'Inter Normal', sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
@@ -114,14 +145,142 @@ nav.navbar {
   text-align: left;
 }
 
+.DocSearch.DocSearch-Button:hover {
+  box-shadow: none;
+}
+@media screen and (min-width: 996px) {
+  .DocSearch-Button {
+    height: 48px !important;
+  }
+}
+.DocSearch-Button-Placeholder {
+  color: white;
+  font-size: 14px !important;
+  line-height: 24px !important;
+}
+.DocSearch-Search-Icon {
+  color:white !important;
+  height: 16px;
+  width: 16px;
+}
+
+.DocSearch-Button-Keys {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+}
+.DocSearch-Button-Key {
+  font-family: 'Inter Normal', sans-serif;
+  color:white !important;
+  font-size: 14px;
+  width: 0px !important;
+  padding: 0px 4px !important;
+  background: #151515 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.DocSearch.DocSearch-Container {
+  background: rgba(16, 16, 16, 0.10);
+  backdrop-filter: blur(12px);
+}
+.DocSearch-Modal {
+  position: fixed;
+  top: -30px !important;
+  border-radius: 40px !important;
+  background: #151515 !important;
+  box-shadow: 0px 0px 6px 0px rgba(56, 255, 156, 0.40) !important;
+}
+.DocSearch-Modal::after {
+  content: 'esc';
+  position: absolute;
+  top: 23px;
+  right: 35px;
+  font-family: 'Inter Normal';
+  font-size: 20px;
+}
+.DocSearch-Modal .DocSearch-Dropdown {
+  border-radius: 40px;
+  margin: 10px 15px;
+  /* min-height is to hide the dropdown initially */
+  min-height: 0px !important;
+}
+@media (max-width: 768px) {
+  .DocSearch-Modal {
+    margin: 20px !important;
+    width: auto !important;
+    top: 10px !important;
+    height: fit-content !important;
+  }
+  .DocSearch-Cancel {
+    display: none !important;
+  }
+}
+header.DocSearch-SearchBar {
+  margin-bottom: 10px;
+}
+header.DocSearch-SearchBar .DocSearch-Form {
+  border-radius: 40px;
+  background: #151515 !important;
+  box-shadow: 0px 0px 6px 0px rgba(51, 232, 142, 0.40) !important; 
+}
+.DocSearch-Dropdown .DocSearch-Dropdown-Container {
+  background: #151515 !important;
+}
+.DocSearch-Dropdown .DocSearch-StartScreen {
+  display: none !important;
+}
+.DocSearch-Dropdown .DocSearch-Hits .DocSearch-Hit-source {
+  display: none !important;
+}
+.DocSearch-Hit-Container .DocSearch-Hit-icon {
+  display: none;
+}
+.DocSearch-Hit a {
+background-color: #1B1B1B !important;
+}
+.DocSearch-Hit-title {
+  background-color: #1B1B1B !important;
+  color: #A3FFD1;
+}
+.DocSearch-Footer {
+  display: none !important;
+}
+.DocSearch-Reset {
+  display: none !important;
+}
+
+.navbar__toggle {
+  display: none;
+}
+@media screen and (max-width: 996px) {
+  .navbar__toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#A3FFD1 !important;
+    height: 24px;
+    width: 24px;
+  }
+}
+
 [data-theme='dark'] .navbar-sidebar {
   background-color: #171717;
   color: #FFFFFF;
+  width: 100%;
+}
+
+.navbar-sidebar__item {
+  padding: 10px 20px;
 }
 
 [data-theme='light'] .navbar-sidebar {
   background-color: #FFFFFF;
   color: #171717;
+}
+
+.navbar-sidebar__brand {
+  margin-top: 15px;
+  margin-right: 10px;
 }
 
 [data-theme='light'] .navbar-sidebar__brand {
@@ -138,7 +297,7 @@ nav.navbar {
   }
 
   .discord-link::before {
-    background-image: url("/img/discord-logo-white.png");
+    background-image: url("/img/discord.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -146,7 +305,6 @@ nav.navbar {
     display: inline-flex;
     height: 24px;
     width: 24px;
-    margin-right: 0.5rem;
   }
 
   .x-link {
@@ -155,7 +313,7 @@ nav.navbar {
   }
 
   .x-link::before {
-    background-image: url("/img/x-logo-white.png");
+    background-image: url("/img/X.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -163,7 +321,6 @@ nav.navbar {
     display: inline-flex;
     height: 24px;
     width: 24px;
-    margin-right: 0.5rem;
   }
 
   .github-link {
@@ -204,22 +361,30 @@ nav.navbar {
 }
 
 /* Sidebar menu */
+@media screen and (min-width: 996px) {
+  .menu {
+    max-width: 287px;
+  }
+}
 .menu__link {
-  font-family: 'GT Eesti Display', sans-serif;
+  font-family: 'Inter Normal', sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 26px;
   transition: color 0.3s;
 }
-
-[data-theme='dark'] .menu__link {
-  color: #FFFFFF;
-}
 [data-theme='dark'] .menu__link:hover {
   color: #38FF9C;
+  background-color: transparent !important;
+}
+.menu__link--active:not(.menu__link--sublist) {
+  background-color: transparent !important;
 }
 [data-theme='dark'] .menu__link--active[aria-current="page"] {
-  color: #38FF9C;
+  color: #28B56F;
+}
+.menu__link--active{
+  color: #28B56F;
 }
 
 [data-theme='light'] .menu__link {
@@ -242,11 +407,21 @@ nav.navbar {
 }
 
 /* Table of contents */
-[data-theme='dark'] .table-of-contents .table-of-contents__link--active, .table-of-contents .table-of-contents__link:hover {
-  color: #38FF9C;
+.table-of-contents {
+  border: none;
+  padding-left: 25px;
 }
-[data-theme='light'] .table-of-contents__link:hover, .table-of-contents__link:hover code, .table-of-contents__link--active {
-  color: #2A9660;
+.table-of-contents li {
+  list-style-type: disc;
+  font-size: 14px;
+}
+@media screen and (max-width: 996px) {
+  .table-of-contents li {
+    list-style-type: none;
+  }
+}
+.table-of-contents .table-of-contents__link:hover, .table-of-contents .table-of-contents__link--active {
+  color: #38FF9C;
 }
 
 /* hide next and previous */
@@ -301,7 +476,7 @@ article a[target="_blank"]:after {
 
 /* more space between sidebar categories */
 .theme-doc-sidebar-item-category:not(:first-child) {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 /* Use Inter font for wordmark */
@@ -309,8 +484,17 @@ article a[target="_blank"]:after {
   font-family: 'Inter SemiBold', 'Roboto', sans-serif;
 }
 
+article {
+  max-width: 800px;
+  margin: auto;
+}
 article table {
   overflow: visible;
+}
+
+article img {
+  border-radius: 32px;
+  box-shadow: 0px 0px 6px 0px rgba(56, 255, 156, 0.40);
 }
 
 /* Fix issue with color switcher button disappearing in mobile dark mode */
@@ -329,4 +513,52 @@ article table {
 }
 [data-theme='light'] .deemphasize-disadvantage {
   color: rgb(28, 30, 33);
+}
+
+/* Markdown */
+.markdown h1 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+}
+.markdown p {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 28px;
+}
+
+/* Custom table */
+.customTableContainer {
+  padding: 12px;
+  border-radius: 32px;
+  background: #151515;
+  box-shadow: 0px 0px 6px 0px rgba(56, 255, 156, 0.40);
+  width: 100%;
+  overflow-x: auto;
+}
+.customTableContainer thead {
+  width: 100%;
+  background-color: #151515;
+  font-size: 18px;
+}
+.customTableContainer thead tr {
+  border: none;
+}
+.customTableContainer thead tr th {
+  border: none;
+  width: 10%;
+  border-radius: 10px 10px 0px 0px;
+  text-align: start;
+}
+
+.customTableContainer tbody tr td {
+  border: none;
+  border-top: 1px transparent solid;
+  border-radius: 5px;
+}
+.customTableContainer tbody tr:nth-child(odd) {
+  background-color: #1B1B1B;
+}
+.customTableContainer tbody tr:nth-child(even) {
+  background-color: #151515;
 }
