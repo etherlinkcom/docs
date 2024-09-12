@@ -11,7 +11,7 @@ Follow these steps to verify a contract on the Etherlink block explorer:
 1. On the **Contract** tab, click **Verify & publish**.
 
 1. In the **New smart contract verification** window, select the license and verification method.
-In most cases, use the **Solidity (Flattened source code)** verification method.
+In most cases, use the **Solidity (Single file)** verification method.
 
 1. Under "Contract verification via Solidity (flattened source code)", in the **Compiler** field, select the same compiler version that you used to compile the contract.
 
