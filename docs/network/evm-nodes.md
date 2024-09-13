@@ -52,7 +52,35 @@ The default is `$HOME/.octez-evm-node`.
 
 You can initialize the node from a snapshot or allow it to compute the Etherlink state from genesis, which can take a long time.
 
+### From an EVM node etherlink snapshot
+
+This is the recommended method as it allows to bootstrap an Etherlink node the
+quickest with the complete history.
+
+1. Download [an Etherlink Smart Rollup node snapshot](#<url>).
+
+   ```bash
+   wget <url> -O etherlink.snapshot
+   ```
+
+1. Import the snapshot using the `octez-evm-node` binary.
+
+   ```bash
+   octez-evm-node snapshot import etherlink.snapshot --data-dir $evm_observer_dir
+   ```
+
+1. Run this command to start the node:
+
+   ```bash
+   octez-evm-node run observer --data-dir $evm_observer_dir
+   ```
+
 ### From an existing Etherlink Smart Rollup node
+
+In case EVM node snapshots are not available, one can initialize an Etherlink
+node using a Smart Rollup node snapshot (or a Smart Rollup node data
+directory). The EVM node will contain the state and history of the chain
+starting with the snapshot block.
 
 1. Download [an Etherlink Smart Rollup node snapshot](https://snapshots.eu.tzinit.org/etherlink-ghostnet/), and use the `octez-smart-rollup-node` binary to import it in a temporary directory.
 
