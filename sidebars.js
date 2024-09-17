@@ -33,9 +33,9 @@ const sidebars = {
         'building-on-etherlink/endpoint-support',
         'building-on-etherlink/deploying-contracts',
         'building-on-etherlink/verifying-contracts',
+        'building-on-etherlink/indexing-graph',
         'building-on-etherlink/tokens',
         'building-on-etherlink/development-toolkits',
-        'building-on-etherlink/indexing-graph',
       ],
     },
     {
