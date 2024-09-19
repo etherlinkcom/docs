@@ -546,7 +546,7 @@ article img {
 }
 .customTableContainer thead tr th {
   border: none;
-  width: 10%;
+  width: 1%;
   border-radius: 10px 10px 0px 0px;
   text-align: start;
 }
