@@ -1,0 +1,52 @@
+.paginationContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.upper {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+}
+.upper:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+.upper p {
+    margin: 0px;
+    font-size: 14px;
+    color: #38FF9C;
+}
+.upper img {
+    transform: rotate(270deg);
+}
+
+.divider {
+    display: block;
+    height: 1px;
+    background-color: #515151;
+    width: 230px;
+    margin: 6px 0px;
+}
+@media screen and (max-width: 996px) {
+    .divider {
+        width: 123px;
+    }
+}
+
+.bottom {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: -0.28px;
+}
+@media screen and (max-width: 996px) {
+    .bottom {
+        display: none;
+    }
+}

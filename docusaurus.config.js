@@ -104,24 +104,16 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        style: 'primary',
-        title: 'Etherlink documentation',
-        logo: {
-          alt: 'Etherlink developer documentation',
-          src: '/img/favicon.svg',
-        },
+        // style: 'primary',
+        // title: 'Etherlink documentation',
+        // logo: {
+        //   alt: 'Etherlink developer documentation',
+        //   src: '/img/Etherlink-Docs-Logo.svg',
+        // },
         items: [
           {
-            to: 'https://status.etherlink.com',
-            position: 'right',
-            target: '_blank',
-            label: 'Status',
-          },
-          {
-            to: 'https://discord.gg/etherlink',
-            position: 'right',
-            target: '_blank',
-            className: 'discord-link',
+            type: 'search',
+            position: 'left'
           },
           {
             to: 'https://x.com/etherlink',
@@ -130,10 +122,10 @@ const config = {
             className: 'x-link',
           },
           {
-            to: 'https://github.com/etherlinkcom/docs',
+            to: 'https://discord.gg/etherlink',
             position: 'right',
             target: '_blank',
-            className: 'github-link',
+            className: 'discord-link',
           },
         ],
       },
@@ -173,6 +165,7 @@ const config = {
         // searchParameters: {},
         // Optional: path for search page that enabled by default (`false` to disable it)
         searchPagePath: false,
+        disableUserPersonalization: true,
         //... other Algolia params
       },
     }),

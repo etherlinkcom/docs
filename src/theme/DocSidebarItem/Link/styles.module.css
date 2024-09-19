@@ -1,0 +1,14 @@
+.menuExternalLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 14px;
+  padding-right: 18px;
+}
+
+.leftHand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

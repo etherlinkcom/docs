@@ -1,0 +1,7 @@
+.socialBox {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0px;
+}
