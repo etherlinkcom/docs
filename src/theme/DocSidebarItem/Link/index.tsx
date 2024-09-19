@@ -9,7 +9,7 @@ import type {Props} from '@theme/DocSidebarItem/Link';
 
 import styles from './styles.module.css';
 
-const ICONS_PATH = ['/img/HiOutlineStatusOnline.svg', '/img/MdCode.svg', '/img/Github.svg']
+const ICONS_PATH = ['/img/HiOutlineStatusOnline.svg', '/img/MdCode.svg', '/img/Gitlab.svg']
 
 const isTopSection = (name: string) => {
   return name === 'Documentation' || name === 'Status' || name === 'Developers' || name === 'GitHub'

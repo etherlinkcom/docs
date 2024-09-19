@@ -14,8 +14,8 @@ const sidebars = {
     },
     {
       type: 'link',
-      label: 'GitHub',
-      href: 'https://github.com/etherlinkcom/docs',
+      label: 'GitLab',
+      href: 'https://gitlab.com/tezos/tezos/-/tree/master/etherlink?ref_type=heads',
     },
     {
       type: 'category',
