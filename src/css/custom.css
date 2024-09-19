@@ -205,7 +205,7 @@ nav.navbar {
   border-radius: 40px;
   margin: 10px 15px;
   /* min-height is to hide the dropdown initially */
-  min-height: 0px !important;
+  min-height: fit-content !important;
 }
 @media (max-width: 768px) {
   .DocSearch-Modal {
