@@ -193,10 +193,13 @@ nav.navbar {
 .DocSearch-Modal::after {
   content: 'esc';
   position: absolute;
-  top: 23px;
+  top: 30px;
   right: 35px;
-  font-family: 'Inter Normal';
-  font-size: 20px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.28px;
+  font-size: 18px;
 }
 .DocSearch-Modal .DocSearch-Dropdown {
   border-radius: 40px;
