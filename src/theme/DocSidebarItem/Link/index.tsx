@@ -9,10 +9,10 @@ import type {Props} from '@theme/DocSidebarItem/Link';
 
 import styles from './styles.module.css';
 
-const ICONS_PATH = ['/img/HiOutlineStatusOnline.svg', '/img/MdCode.svg', '/img/Gitlab.svg']
+const ICONS_PATH = ['/img/etherlinkIcon.svg', '/img/HiOutlineStatusOnline.svg', '/img/MdCode.svg', '/img/Gitlab.svg']
 
 const isTopSection = (name: string) => {
-  return name === 'Documentation' || name === 'Status' || name === 'Developers' || name === 'GitHub'
+  return name === 'Etherlink' || name === 'Documentation' || name === 'Status' || name === 'Developers' || name === 'GitLab'
 }
 
 export default function DocSidebarItemLink({
@@ -30,20 +30,22 @@ export default function DocSidebarItemLink({
   return (
     <li
       className={clsx(
-        ThemeClassNames.docs.docSidebarItemLink,
-        ThemeClassNames.docs.docSidebarItemLinkLevel(level),
-        'menu__list-item',
-        className,
+        // ThemeClassNames.docs.docSidebarItemLink,
+        // ThemeClassNames.docs.docSidebarItemLinkLevel(level),
+        // 'menu__list-item',
+        // className,
+        level === 2 && styles.customLi,
+        level === 3 && styles.level3Box
       )}
       style={{
-        marginTop: `${!isInternalLink && index === 0 && '40px'}`,
-        marginBottom: `${!isInternalLink && index === 2 && '40px'}`
+        margin: `${item.label === 'Etherlink' && '40px 0px'}`,
+        marginBottom: `${!isInternalLink && index === 3 && '40px'}`,
       }}
       key={label}>
       <Link
         className={clsx(
           'menu__link',
-          !isInternalLink && styles.menuExternalLink,
+          isTopSection(item.label) && styles.menuExternalLink,
           {
             'menu__link--active': isActive,
           },

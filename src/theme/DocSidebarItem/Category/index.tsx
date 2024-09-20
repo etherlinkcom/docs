@@ -168,13 +168,15 @@ export default function DocSidebarItemCategory({
           'menu__list-item--collapsed': collapsed,
         },
         className,
+        level === 1 && styles.categoryContainer
       )}>
       <div
+      style={{paddingRight: level === 2 ? '15px' :''}}
         className={clsx('menu__list-item-collapsible', {
           'menu__list-item-collapsible--active': isCurrentPage,
         }, styles.categoryLink)}>
           {
-            level === 1 && <span className={styles.categoryIcon}><img src={ITEMICONS[index - 3]} alt='icon' /></span>
+            level === 1 && <span className={styles.categoryIcon}><img src={ITEMICONS[index - 4]} alt='icon' /></span>
           }
         <Link
           style={{padding: '6px 12px 6px 8px'}}

@@ -12,17 +12,16 @@ Hide color mode toggle in small viewports
   grid-template-columns: 280px 60% 1fr;
   width: 100%;
   height: fit-content;
-  background: rgba(16, 16, 16, 0.10);
-  backdrop-filter: blur(12px);
 }
 
 .centerContainer {
-  width: 80%;
+  width: 100%;
+  padding-left: 30px;
 }
 @media screen and (max-width: 996px) {
   .centerContainer {
     position: fixed;
-    top: 5px;
+    top: 25px;
     right:18px;
     width: auto;
   }

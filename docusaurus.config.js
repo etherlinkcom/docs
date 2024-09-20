@@ -134,6 +134,11 @@ const config = {
         darkTheme: require('prism-react-renderer/themes/dracula'),
         additionalLanguages: ['solidity'],
       },
+      docs: {
+        sidebar: {
+          autoCollapseCategories: true,
+        },
+      },
       // https://github.com/flexanalytics/plugin-image-zoom
       // Enable click to zoom in to large images
       imageZoom: {

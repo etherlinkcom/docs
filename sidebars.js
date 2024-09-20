@@ -4,6 +4,11 @@ const sidebars = {
   documentationSidebar: [
     {
       type: 'link',
+      label: 'Etherlink',
+      href: 'https://www.etherlink.com/',
+    },
+    {
+      type: 'link',
       label: 'Status',
       href: 'https://status.etherlink.com',
     },
