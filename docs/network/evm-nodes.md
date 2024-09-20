@@ -15,10 +15,10 @@ You can get the kernel by importing it from a running Etherlink Smart Rollup nod
 
 ## Getting the `octez-evm-node` binary
 
-The easiest way to get the `octez-evm-node` binary is to download the binaries distributed as part of its latest release (currently [`v0.1`](https://gitlab.com/tezos/tezos/-/releases/octez-evm-node-v0.1)).
+The easiest way to get the `octez-evm-node` binary is to download the binaries distributed as part of its latest release (currently [`v0.3`](https://gitlab.com/tezos/tezos/-/releases/octez-evm-node-v0.3)).
 More precisely, we provide static binaries for Linux systems (for amd64 and arm64 architectures).
 
-As an alternative, you can use the minimal Docker image [tezos/tezos-bare:octez-evm-node-v0.1](https://hub.docker.com/layers/tezos/tezos-bare/octez-evm-node-v0.1/images/sha256-e5fdf87f2827dd971e2097faff88c6c6ce53793a2191a903a6a905a647c051f5?context=explore), which contains the correct version of the binary.
+As an alternative, you can use the minimal Docker image [tezos/tezos-bare:octez-evm-node-v0.3](https://hub.docker.com/layers/tezos/tezos-bare/octez-evm-node-v0.3/images/sha256-f994902095d4400678bfe701ad41c39974491b9770972d378f59b3971aeeefd9?context=explore), which contains the correct version of the binary.
 
 ## Initializing the data directory
 
@@ -51,6 +51,28 @@ The default is `$HOME/.octez-evm-node`.
 ## Running the node
 
 You can initialize the node from a snapshot or allow it to compute the Etherlink state from genesis, which can take a long time.
+
+### From a snapshot
+
+1. Download [an Etherlink snapshot](http://vps-58f6d7fc.vps.ovh.net/snapshots/), and use the `octez-evm-node` to import it. Assuming you have set `$latest_snapshot` to the name of the latest snapshot,
+
+   ```bash
+   wget http://vps-58f6d7fc.vps.ovh.net/snapshots/$latest_snapshot -O snapshot.gz
+   octez-evm-node snapshot import snapshot.gz --data-dir $evm_observer_dir
+   ```
+2. Run this command to start the node:
+
+   ```bash
+   octez-evm-node run observer --data-dir $evm_observer_dir
+   ```
+
+By default, the EVM node exposes its JSON RPC API endpoint to `localhost:8545`.
+You can test that everything works as expected by running RPC requests manually or by setting your wallet to use your local node.
+For example, this command gets the number of the most recent block in hexadecimal:
+
+```bash
+curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_blockNumber"}' http://localhost:8545
+```
 
 ### From an existing Etherlink Smart Rollup node
 
