@@ -28,29 +28,6 @@
   src: url(/fonts/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-@font-face {
-  font-family: 'GT Eesti Display';
-  src: url('/fonts/GT-Eesti-Display-Regular-7b2c45500bd08f6d098ad934759b7bb0.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'GT Eesti Display Light';
-  src: url('/fonts/GT-Eesti-Display-Light-a728f2a4f92e840beb1cc388caaea938.woff') format('woff');
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Inter SemiBold';
-  src: url('/fonts/Inter-SemiBold.woff2') format('woff');
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Inter Normal';
-  src: url('/fonts/Inter-VariableFont_opsz,wght.ttf') format('ttf');
-  font-weight: 400;
-  font-style: normal;
-}
 
 /* You can override the default Infima variables here. */
 :root {
@@ -83,9 +60,6 @@
 
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Inter Normal', 'GT Eesti Display Light', sans-serif;
-}
 h1 {
   margin-bottom: 8px !important;
 }
@@ -98,27 +72,31 @@ h2 {
 }
 html {
   background-color: #101010;
-  font-family: 'Inter Normal','Roboto', sans-serif !important;
 }
 body {
   background-color: #101010;
-  max-width: 1560px;
+  max-width: 1440px;
   margin: auto;
   padding: 0px 50px;
 }
 @media (max-width: 996px) {
   body {
-    padding: 0px 8px;
+    padding: 0px 0px;
   }
 }
 
-nav {
-  padding: 24px 0px 24px 0px !important;
+main .row .col.col--3 {
+  max-width: none;
 }
+aside {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 342px !important;
+}
+
 nav.navbar {
-  background-color: #101010;
   height: fit-content;
-  font-family: 'Inter Normal', sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
@@ -170,7 +148,6 @@ nav.navbar {
   justify-content: end;
 }
 .DocSearch-Button-Key {
-  font-family: 'Inter Normal', sans-serif;
   color:white !important;
   font-size: 14px;
   width: 0px !important;
@@ -190,12 +167,18 @@ nav.navbar {
   background: #151515 !important;
   box-shadow: 0px 0px 6px 0px rgba(56, 255, 156, 0.40) !important;
 }
+@media screen and (max-width: 768px) {
+  .DocSearch-Modal {
+    left: 46%;
+    transform: translateX(-50%);
+    max-width: 318px !important;
+  }
+}
 .DocSearch-Modal::after {
   content: 'esc';
   position: absolute;
   top: 30px;
   right: 35px;
-  font-family: 'Inter', sans-serif;
   font-weight: 400;
   line-height: 20px;
   letter-spacing: -0.28px;
@@ -267,9 +250,10 @@ background-color: #1B1B1B !important;
 }
 
 [data-theme='dark'] .navbar-sidebar {
-  background-color: #171717;
   color: #FFFFFF;
   width: 100%;
+  background: rgba(16, 16, 16, 0.90);
+  backdrop-filter: blur(12px);
 }
 
 .navbar-sidebar__item {
@@ -364,13 +348,9 @@ background-color: #1B1B1B !important;
 }
 
 /* Sidebar menu */
-@media screen and (min-width: 996px) {
-  .menu {
-    max-width: 287px;
-  }
-}
 .menu__link {
-  font-family: 'Inter Normal', sans-serif;
+  display: flex;
+  justify-content: space-between;
   font-weight: 400;
   font-size: 14px;
   line-height: 26px;
@@ -381,7 +361,7 @@ background-color: #1B1B1B !important;
   background-color: transparent !important;
 }
 .menu__link--active:not(.menu__link--sublist) {
-  background-color: transparent !important;
+  background-color: #232323 !important;
 }
 [data-theme='dark'] .menu__link--active[aria-current="page"] {
   color: #28B56F;
@@ -433,7 +413,6 @@ background-color: #1B1B1B !important;
 }
 
 .pagination-nav__label {
-  font-family: 'GT Eesti Display', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
@@ -481,15 +460,17 @@ article a[target="_blank"]:after {
 .theme-doc-sidebar-item-category:not(:first-child) {
   margin-top: 10px;
 }
-
-/* Use Inter font for wordmark */
-.navbar__title {
-  font-family: 'Inter SemiBold', 'Roboto', sans-serif;
+.menu__list {
+  padding-bottom: 24px;
 }
 
 article {
-  max-width: 800px;
   margin: auto;
+}
+@media screen and (min-width: 997px) {
+  article {
+    max-width: 558px;
+  }
 }
 article table {
   overflow: visible;
