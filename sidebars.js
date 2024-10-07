@@ -35,21 +35,19 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'Bridging',
+      collapsed: false,
+      items: [
+        'building-on-etherlink/bridging',
+        'building-on-etherlink/bridging-xtz',
+        'building-on-etherlink/bridging-wrapped-assets',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Developing',
       collapsed: false,
       items: [
-        {
-          type: 'category',
-          label: 'Bridging tokens',
-          link: {
-            type: 'doc',
-            id: 'building-on-etherlink/bridging',
-          },
-          items: [
-            'building-on-etherlink/bridging-xtz',
-            'building-on-etherlink/bridging-wrapped-assets',
-          ],
-        },
         'building-on-etherlink/endpoint-support',
         'building-on-etherlink/deploying-contracts',
         'building-on-etherlink/tokens',
