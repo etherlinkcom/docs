@@ -5,53 +5,24 @@ sidebar_label: Indexing contracts
 
 [TheGraph](https://thegraph.com/) indexes smart contracts and provides information about them in a GraphQL interface.
 You provide your contract address and interface and TheGraph provides historical information about how it has been called based on the events it emits.
+For more information about TheGraph, see its [Quickstart](https://thegraph.com/docs/en/quick-start/).
+
+## Prerequisites
+
+To index a contract, TheGraph needs the contract's ABI, which is a JSON object that describes the contract interface.
+You can provide the ABI directly to TheGraph or it can use the verified source code via the block explorer.
+To verify a contract via the block explorer, see [Verifying contracts](/building-on-etherlink/verifying-contracts).
+
+Solidity compilers provide the ABI for contracts, so you can get the ABI from your compiler.
+For example, if you are using the command-line solidity compiler, you can get the ABI from a contract's source code with this command:
+
+```bash
+solc --abi MyContract.sol -o build
+```
 
 ## Indexing Etherlink contracts
 
 Follow these steps to set up a subgraph in TheGraph to provide information about a smart contract:
-
-1. Deploy the contract to Etherlink as you would deploy any other smart contract to an EVM-compatible chain.
-
-   You can use any EVM client including the [Geth](https://geth.ethereum.org/) toolkit and the [Remix](https://remix.ethereum.org/) online IDE.
-   For a walkthrough, see [How to take part in Etherlink](https://medium.com/etherlink/how-to-take-part-in-etherlink-8c8d00b0ca3e).
-
-1. Optional: Verify the source code on the Etherlink block explorer:
-
-   1. Find the deployed contract on https://explorer.etherlink.com/ or https://testnet.explorer.etherlink.com/.
-
-   1. On the **Contract** tab, click **Verify & publish**.
-
-   1. In the **New smart contract verification** window, select the license and verification method.
-   In most cases, use the **Solidity (Flattened source code)** verification method.
-
-   1. Under "Contract verification via Solidity (flattened source code)", in the **Compiler** field, select the same compiler version that you used to compile the contract.
-
-   1. In the **EVM version** field, select the same EVM version that you used to compile the contract.
-
-   1. If your compiler optimized the contract source code, select the **Optimization enabled** check box.
-   This setting must match your compiler's setting.
-
-   1. Paste the source code of the contract in the **Contract code** field.
-
-      The page looks like this:
-
-      ![Verifying the source code](/img/verify-source.png)
-
-   1. Click **Verify & publish**.
-
-   Now the block explorer shows the source code and ABI of the contract on the **Contract** tab.
-
-1. If you did not verify the source code on the Etherlink block explorer, get the Application Binary Interface (ABI) for the contract and store it in a file.
-
-   The ABI is a JSON object that describes the contract interface.
-   Solidity compilers provide the ABI for contracts, so you can get the ABI from your compiler.
-   For example, if you are using the command-line solidity compiler, you can get the ABI from a contract's source code with this command:
-
-   ```bash
-   solc --abi MyContract.sol -o build
-   ```
-
-1. Get your deployed contract's address.
 
 1. In [Subgraph Studio](https://thegraph.com/studio/), connect your wallet.
 
