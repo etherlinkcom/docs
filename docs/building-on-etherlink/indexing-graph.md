@@ -5,6 +5,7 @@ sidebar_label: Indexing contracts
 
 [TheGraph](https://thegraph.com/) indexes smart contracts and provides information about them in a GraphQL interface.
 You provide your contract address and interface and TheGraph provides historical information about how it has been called based on the events it emits.
+For more information about TheGraph, see its [Quickstart](https://thegraph.com/docs/en/quick-start/).
 
 ## Prerequisites
 
