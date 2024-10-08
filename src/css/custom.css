@@ -512,14 +512,32 @@ article img {
 }
 
 /* Custom table */
-.customTableContainer {
-  padding: 12px;
+.customTableContainerWrapper {
   border-radius: 32px;
-  background: #151515;
   box-shadow: 0px 0px 6px 0px rgba(56, 255, 156, 0.40);
-  width: 100%;
   overflow-x: auto;
 }
+.customTableContainer {
+  background: #151515;
+  padding: 12px;
+  overflow-x: auto;
+}
+.customTableContainer::-webkit-scrollbar {
+  height: 1px;
+}
+.customTableContainer::-webkit-scrollbar-track {
+  background: #515151; 
+  box-shadow: 0px 0px 60px 0px rgba(56, 255, 156, 0.40);
+  backdrop-filter: blur(60px);
+}
+.customTableContainer::-webkit-scrollbar-thumb {
+  background-color: #38FF9C;
+  border-radius: 24px;
+  box-shadow: 0px 0px 6px 0px rgba(56, 255, 156, 0.40);
+  backdrop-filter: blur(6px);
+}
+
+
 .customTableContainer thead {
   width: 100%;
   background-color: #151515;
