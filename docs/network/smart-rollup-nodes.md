@@ -12,6 +12,10 @@ The data for the original kernel is stored in separate files called _preimages_.
 
 You can run the Smart Rollup node starting from Etherlink genesis or from a snapshot of a recent Etherlink state.
 
+## System requirements
+
+Running an Etherlink Smart Rollup node on Etherlink Mainnet requires a computer with 500GB of disk space and at least 16GB RAM.
+
 ## Modes
 
 Running the Smart Rollup node in operator or maintenance mode is the best way to participate in Etherlink because in these modes the node posts commitments about Etherlink's state to layer 1.
