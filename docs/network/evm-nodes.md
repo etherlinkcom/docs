@@ -15,7 +15,7 @@ You can get the kernel by importing it from a running Etherlink Smart Rollup nod
 
 ## System requirements
 
-Running an Etherlink EVM node on Etherlink Mainnet requires a computer with 1TB of disk space and at least 16GB RAM.
+Running an Etherlink EVM node on Etherlink Mainnet requires a computer with 500GB of disk space and at least 16GB RAM.
 
 ## Getting the `octez-evm-node` binary
 

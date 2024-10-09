@@ -14,7 +14,7 @@ You can run the Smart Rollup node starting from Etherlink genesis or from a snap
 
 ## System requirements
 
-Running an Etherlink Smart Rollup node on Etherlink Mainnet requires a computer with 1TB of disk space and at least 16GB RAM.
+Running an Etherlink Smart Rollup node on Etherlink Mainnet requires a computer with 500GB of disk space and at least 16GB RAM.
 
 ## Modes
 
