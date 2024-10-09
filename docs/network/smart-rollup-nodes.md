@@ -131,7 +131,7 @@ Converting the observer node to maintenance mode requires these prerequisites:
    Using a public layer 1 node as the basis for a Smart Rollup node in maintenance or operator mode exposes the Smart Rollup node to security risks.
    For example, a malicious layer 1 node can expose the Smart Rollup node to an incorrect branch, which can cause the Smart Rollup node to post invalid commitments and lose tez when other node operators computing from the correct branch refute them.
 
-   As these steps describe, it is safe to bootstrap a node in observer mode by connecting it to a public node, switch to maintenance or operator mode, and then promptly connect it to a layer 1 node that you control.
+   As these steps describe, it is safe to bootstrap a node in observer mode by connecting it to a public node, connect it to a layer 1 node that you control, and then switch to maintenance or operator mode.
 
    :::
 
