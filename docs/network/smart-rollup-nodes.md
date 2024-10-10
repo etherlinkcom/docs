@@ -217,3 +217,6 @@ For example, this query gets the health of the node:
    ```
 
 Now that you have a Smart Rollup node configured for Etherlink, you can run an Etherlink EVM node, as described in [Running an Etherlink EVM node](/network/evm-nodes).
+
+When you want to stop running the Smart Rollup node, you can stop the `octez-smart-rollup-node` process and unstake the tez for the account with the `octez-client unstake` and `octez-client finalize unstake` commands.
+For more information, see [Staking mechanism](https://tezos.gitlab.io/alpha/staking.html) in the Octez documentation.
