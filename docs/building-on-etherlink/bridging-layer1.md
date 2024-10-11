@@ -1,20 +1,18 @@
 ---
-title: Bridging FA tokens between Tezos layer 1 and Etherlink
-sidebar_label: Bridging FA tokens
+title: Bridging tokens between Tezos layer 1 and Etherlink
 ---
 
-You can bridge tokens that are compliant with FA standards between Tezos layer 1 and Etherlink.
-The process converts FA-compliant tokens on Tezos to ERC-20-compatible tokens on Etherlink.
+You can bridge two kinds of tokens from Tezos layer 1 to Etherlink and back:
 
+- The native token on Etherlink and Tezos, which is called tez and shown on price tickers with the symbol [XTZ](https://coinmarketcap.com/currencies/tezos/)
+- Tokens that are compliant with the Tezos FA standards.
 The Tezos FA standards are token standards like the Ethereum ERC-20, ERC-721, and ERC-1155 standards.
 For more information about the FA standards, see [Token standards](https://docs.tezos.com/architecture/tokens#token-standards) on docs.tezos.com.
 
-## Using the FA bridge frontend
+Two bridging operations are available:
 
-The FA bridge has a web interface that can bridge certain tokens between Tezos and Etherlink:
-
-- Etherlink Testnet: https://ghostnet.tezos-etherlink-bridge-front.pages.dev/
-- Etherlink Mainnet: https://tezos-etherlink-bridge-front.pages.dev/
+- Bridging tokens from Tezos layer 1 to Etherlink is referred to as _depositing_ tokens.
+- Bridging tokens from Etherlink to Tezos layer 1 is referred to as _withdrawing_ tokens.
 
 :::note Bridging time
 Tokens that you bridge from Tezos layer 1 to Etherlink are available for use on Etherlink immediately.
@@ -30,26 +28,86 @@ Users can execute the bridging transactions in a commitment only after the commi
 The Etherlink indexer run by Nomadic Labs automatically executes these bridging transactions when they are cemented, which makes the bridged tokens available on Tezos.
 :::
 
+## Using the bridge web interface
+
+The bridge has a web interface that can bridge XTZ and certain FA-compliant tokens between Tezos layer 1 and Etherlink:
+
+- Etherlink Mainnet: https://bridge.etherlink.com
+- Etherlink Testnet: https://testnet.bridge.etherlink.com
+
 To use these bridges, follow these general steps:
 
 1. Connect your Tezos and Etherlink-compatible wallets.
-
-1. Click the button with the arrows to switch between depositing and withdrawing tokens.
+1. Select the type of transfer:
 
    - **Deposit** transfers tokens from Tezos layer 1 to Etherlink
    - **Withdraw** transfers tokens from Etherlink to Tezos layer 1
 
-1. Select the type of tokens to bridge.
+1. Enter the amount of tokens to transfer.
 
-1. Set the amount of tokens to send.
+1. Click **Move funds to Etherlink** or **Move funds to Tezos**.
 
-1. Click **Deposit** or **Withdraw**.
+You can monitor the status of your bridge operations on the **Transaction History** tab.
 
-You can monitor the status of your bridge operations on the **Transfers** tab.
+## How bridging XTZ works
+
+The process of bridging XTZ between Etherlink and Tezos layer 1 uses two contracts on Tezos layer 1:
+
+- A bridge contract that accepts deposits and sends them to be exchanged.
+This bridge contract is not a fundamental part of the bridge; it is a helper contract that avoids limitations around tickets by forwarding them to the Etherlink Smart Rollup on behalf of user accounts.
+
+  - The source code of this contract is in [`evm_bridge.mligo`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/tezos_contracts/evm_bridge.mligo).
+  - This contract is deployed to testnet at [`KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3`](https://ghostnet.tzkt.io/KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3/).
+  - This contract is deployed to Mainnet at [`KT1Wj8SUGmnEPFqyahHAcjcNQwe6YGhEXJb5`](https://tzkt.io/KT1Wj8SUGmnEPFqyahHAcjcNQwe6YGhEXJb5/).
+
+- An exchanger contract that stores the tokens and issues tickets that represent those tokens.
+This contract is a fundamental part of the bridging process because Etherlink accepts tickets from only this contract for the purpose of bridging XTZ.
+
+  - The source code of this contract is in [`evm_bridge.mligo`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/tezos_contracts/exchanger.mligo).
+  - This contract is deployed to testnet at [`KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3`](https://ghostnet.tzkt.io/KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3/).
+  - This contract is deployed to Mainnet at [`KT1CeFqjJRJPNVvhvznQrWfHad2jCiDZ6Lyj`](https://tzkt.io/KT1CeFqjJRJPNVvhvznQrWfHad2jCiDZ6Lyj/).
+
+### Deposit process
+
+The deposit process (moving tez from layer 1 to Etherlink) follows these general steps:
+
+1. A Tezos user sends a request to the layer 1 bridge contract's `deposit` entrypoint.
+The request includes the tez to bridge, the address of the Etherlink Smart Rollup, and the user's Etherlink wallet address.
+1. The bridge contract stores the address of the Etherlink Smart Rollup temporarily.
+1. It sends the tez in a transaction to the exchanger contract's `mint` entrypoint.
+1. The exchanger contract stores the tez and creates a [ticket](https://docs.tezos.com/smart-contracts/data-types/complex-data-types#tickets) that represents the receipt of the tokens.
+1. The exchanger contract sends the ticket to the bridge contract's `callback` entrypoint.
+1. The bridge contract forwards the ticket to the Smart Rollup inbox and clears its storage for the next transfer.
+1. Etherlink Smart Rollup nodes receive the deposit transaction from the Smart Rollup inbox.
+1. The Smart Rollup nodes put the deposit transaction in the delayed inbox.
+1. The sequencer requests the state of Etherlink from a Smart Rollup node and receives the delayed inbox.
+1. The sequencer creates a corresponding transaction on Etherlink to transfer XTZ from the [zero address](https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000000) to the user's address.
+1. The sequencer adds this transaction to a blueprint as in the usual transaction lifecycle described in [Architecture](/network/architecture).
+
+This diagram is an overview of the deposit process:
+
+![Overview of the token bridging deposit process](/img/bridging-deposit.png)
+<!-- https://lucid.app/lucidchart/4ebdf949-72bd-47e3-a8ce-7ca4fba2e556/edit -->
+
+### Withdrawal process
+
+The withdrawal process (moving XTZ from Etherlink to tez on Tezos layer 1) follows these general steps:
+
+1. An Etherlink user sends XTZ and their layer 1 address to the [withdrawal precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) in the Etherlink Smart Rollup via an Etherlink EVM node.
+1. The contract locks the XTZ.
+1. The contract creates a transaction to the exchanger contract's `burn` entrypoint and puts this transaction in the Smart Rollup outbox.
+This outbox message becomes part of Etherlink's commitment to its state.
+1. When the commitment that contains the transaction is cemented on layer 1, anyone can run the transaction by running the Octez client `execute outbox message` command.
+1. The exchanger contract receives the ticket, burns it, and sends the equivalent amount of tez to the user's layer 1 address.
+
+This diagram is an overview of the withdrawal process:
+
+![Overview of the token bridging withdrawal process](/img/bridging-withdrawal.png)
+<!-- https://lucid.app/lucidchart/d4fb99c8-74eb-4336-b971-117b0045772b/edit -->
 
 ## How bridging FA tokens works
 
-The process of bridging FA tokens is similar to the process of bridging tez, as described in [Bridging tez (XTZ) between Tezos layer 1 and Etherlink](/building-on-etherlink/bridging-xtz).
+The process of bridging FA tokens is similar to the process of bridging tez.
 In short, the bridge uses tickets to send tokens from the source network to the target network.
 
 ### Contracts
@@ -143,18 +201,18 @@ This diagram is an overview of the process of bridging tokens from Etherlink to 
 ![Overview of the FA token bridging withdrawal process](/img/bridging-withdrawal-fa.png)
 <!-- https://lucid.app/lucidchart/068d1822-29cb-4f8c-8aa1-2bd79f9b8490/edit -->
 
-## Configuring a token for bridging
+### Configuring a token for bridging
 
 You can configure any FA1.2 or FA2 token for bridging by deploying the necessary contracts.
 You can use this tool to simplify the process by deploying the contracts for a single token: https://github.com/baking-bad/etherlink-bridge.
 
 <!-- Any other info appropriate here? -->
 
-## Sending bridging transactions
+### Sending FA bridging transactions
 
 Because the contracts that control bridging FA tokens follow the [TZIP-029](https://gitlab.com/baking-bad/tzip/-/blob/wip/029-etherlink-token-bridge/drafts/current/draft-etherlink-token-bridge/etherlink-token-bridge.md) standard, the transactions to bridge tokens are the same for any token.
 
-### Depositing tokens from layer 1 to Etherlink
+#### Depositing FA tokens from layer 1 to Etherlink
 
 It takes two transactions to bridge a token from layer 1 to Etherlink: one to give the token bridge helper contract access to the tokens and another to initiate the deposit.
 
@@ -204,10 +262,10 @@ The token bridge helper contract sends that ticket to the ERC-20 proxy contract,
 To see the tokens in your Etherlink wallet, look up the ERC-20 proxy contract in a block explorer or use its address to manually add the tokens to your wallet.
 Because the Etherlink tokens are compatible with the ERC-20 standard, EVM-compatible wallets should be able to display them.
 
-### Withdrawing tokens from Etherlink to layer 1
+#### Withdrawing FA tokens from Etherlink to layer 1
 
 It takes two transactions to withdraw an FA token back to Etherlink: one to initiate the withdrawal and another to run the outbox transaction on Tezos layer 1.
-As described in [Bridging tez (XTZ) between Tezos layer 1 and Etherlink](/building-on-etherlink/bridging-xtz), you must wait two weeks to run the outbox transaction.
+As described above, you must wait two weeks to run the outbox transaction due to the Smart Rollup refutation period.
 
 Neither of these transactions are easy to do.
 Initiating the withdrawal requires sending complex information about the ticket and contracts to the FA2 withdrawal precompile on Etherlink.
