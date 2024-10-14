@@ -34,7 +34,7 @@ module.exports = {
     customChains: [
       {
         network: "etherlinkMainnet",
-        chainId: 128123,
+        chainId: 42793,
         urls: {
           apiURL: "https://explorer.etherlink.com/api",
           browserURL: "https://explorer.etherlink.com",
