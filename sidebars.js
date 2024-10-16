@@ -38,7 +38,6 @@ const sidebars = {
       label: 'Bridging',
       collapsed: false,
       items: [
-        'building-on-etherlink/bridging',
         'building-on-etherlink/bridging-layer1',
         'building-on-etherlink/bridging-wrapped-assets',
       ],
