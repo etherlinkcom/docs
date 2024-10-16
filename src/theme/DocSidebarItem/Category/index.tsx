@@ -104,7 +104,7 @@ function CollapseButton({
   );
 }
 
-const ITEMICONS = ['/img/FiHome.svg', '/img/FiBox.svg', '/img/FiWifi.svg', '/img/FiSettings.svg', '/img/FiUsers.svg', '/img/FiTrendingUp.svg', '/img/FiBookOpen.svg']
+const ITEMICONS = ['/img/FiHome.svg', '/img/BiSortAlt2.svg', '/img/FiBox.svg', '/img/FiWifi.svg', '/img/FiSettings.svg', '/img/FiUsers.svg', '/img/FiTrendingUp.svg', '/img/FiBookOpen.svg']
 
 export default function DocSidebarItemCategory({
   item,
@@ -121,7 +121,7 @@ export default function DocSidebarItemCategory({
     },
   } = useThemeConfig();
   const hrefWithSSRFallback = useCategoryHrefWithSSRFallback(item);
-  
+
 
   const isActive = isActiveSidebarItem(item, activePath);
   const isCurrentPage = isSamePath(href, activePath);
@@ -208,7 +208,7 @@ export default function DocSidebarItemCategory({
           {label}
         </Link>
         {href && collapsible && (
-          <SecondLevelItemIcon 
+          <SecondLevelItemIcon
             onClick={
             (e) => {
               e.preventDefault();
@@ -234,17 +234,17 @@ const SecondLevelItemIcon = ({onClick}:{onClick: (e) => void}) => {
   const [isRotated, setIsRotated] = useState(false);
 
   return (
-    <img  
+    <img
       style={{
         transform: isRotated ? 'rotate(90deg)' : 'rotate(180deg)',
         transition: 'transform 0.3s ease',
       }}
-      className={styles.secondLevelItemIcon} 
+      className={styles.secondLevelItemIcon}
       onClick={(e) => {
         setIsRotated(!isRotated)
         onClick(e)
       }}
-      src='/img/GreenFiChevronUp.svg' alt='arrow icon' 
+      src='/img/GreenFiChevronUp.svg' alt='arrow icon'
     />
-  )   
+  )
 }
