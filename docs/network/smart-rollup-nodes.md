@@ -114,6 +114,9 @@ The best place to get the most recent binary files to use with Etherlink is http
 
    If you loaded a snapshot, the node must process every block that has been created since the snapshot was taken, which takes time depending on the age of the snapshot.
 
+   By default, the node runs in archive mode.
+   To run in full mode, which stores only the minimal data since the genesis required to reconstruct the ledger state, pass the argument `--history-mode full`.
+
 1. Verify that the Smart Rollup node is running by querying it.
 For example, this query gets the health of the node:
 

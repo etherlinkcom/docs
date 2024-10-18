@@ -107,6 +107,8 @@ curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","metho
    octez-evm-node run observer --data-dir $evm_observer_dir
    ```
 
+   The EVM node runs in archive mode.
+
 By default, the EVM node exposes its JSON RPC API endpoint to `localhost:8545`.
 You can test that everything works as expected by running RPC requests manually or by setting your wallet to use your local node.
 For example, this command gets the number of the most recent block in hexadecimal:
