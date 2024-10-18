@@ -46,7 +46,7 @@
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-font-color-base: #FFFFFF;
+  --ifm-font-color-base: #E9E9E9;
   --ifm-link-color: #38FF9C;
   --ifm-navbar-link-color: #38FF9C;
   --ifm-color-primary: #38FF9C;
@@ -355,6 +355,7 @@ background-color: #1B1B1B !important;
   font-size: 14px;
   line-height: 26px;
   transition: color 0.3s;
+  color: #E9E9E9;
 }
 [data-theme='dark'] .menu__link:hover {
   color: #38FF9C;
@@ -397,6 +398,9 @@ background-color: #1B1B1B !important;
 .table-of-contents li {
   list-style-type: disc;
   font-size: 14px;
+}
+.table-of-contents .table-of-contents__link {
+  color: #E9E9E9 !important;
 }
 @media screen and (max-width: 996px) {
   .table-of-contents li {
