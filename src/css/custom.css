@@ -46,7 +46,7 @@
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-font-color-base: #FFFFFF;
+  --ifm-font-color-base: #E9E9E9;
   --ifm-link-color: #38FF9C;
   --ifm-navbar-link-color: #38FF9C;
   --ifm-color-primary: #38FF9C;
