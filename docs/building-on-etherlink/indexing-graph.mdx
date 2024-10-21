@@ -28,12 +28,12 @@ Here’s a step by step walk through:
 
 Go to the [Subgraph Studio](https://thegraph.com/studio/) and connect your wallet. Once your wallet is connected, you can begin by clicking “Create a Subgraph”. When choosing a name, it is recommended to use Title Case: “Subgraph Name Chain Name.”
 
-![Create a Subgraph](https://lh7-us.googleusercontent.com/docsz/AD_4nXf8OTdwMxlKQGKzIF_kYR7NPKeh9TmWnZBYxb7ft_YbdOdx_VVtbp6PslN7N1KGUzNpIDCmaXppdrllM1cw_J4L8Na03BXOWzJTK1POCve0nkRjQYgWJ60QHAdtQ4Niy83SMM8m0F0f-N-AJj4PDqDPlA5M?key=fnI6SyFgXU9SZRNX5C5vPQ)
+![Create a Subgraph](/img/thegraph-studio-create-subgraph.png)
 
 
 You will then land on your subgraph’s page. All the CLI commands you need will be visible on the right side of the page:
 
-![CLI commands](https://raw.githubusercontent.com/alinobrasil/the_graph_getting_started/etherlink/img/studio-cli-commands.png)
+![CLI commands](/img/thegraph-studio-cli-commands.png)
 
 
 ### Install the Graph CLI⁠
@@ -51,7 +51,7 @@ graph init --studio <SUBGRAPH_SLUG>
 ```
 You’ll be prompted to provide some info on your subgraph like this:
 
-![cli sample](https://raw.githubusercontent.com/alinobrasil/the_graph_getting_started/refs/heads/etherlink/img/cli-initialize-output.png)
+![cli sample](/img/thegraph-cli-initialize-output.png)
 
 
 Simply have your contract verified on the block explorer and the CLI will automatically obtain the ABI and set up your subgraph. The default settings will generate an entity for each event.
@@ -80,21 +80,21 @@ You will be asked for a version label. You can enter something like v0.0.1, but 
 
 You can test your subgraph by making a sample query in the playground section. The Details tab will show you an API endpoint. You can use that endpoint to test from your dapp.
 
-![Playground](https://raw.githubusercontent.com/alinobrasil/the_graph_getting_started/refs/heads/etherlink/img/studio-playground.png)
+![Playground](/img/thegraph-studio-playground.png)
 
 
 ### Publish Your Subgraph to The Graph’s Decentralized Network
 
 Once your subgraph is ready to be put into production, you can publish it to the decentralized network. On your subgraph’s page in Subgraph Studio, click on the Publish button:
 
-![publish button](https://raw.githubusercontent.com/alinobrasil/the_graph_getting_started/etherlink/img/studio-publish-button.png)
+![publish button](/img/thegraph-studio-publish-button.png)
 
 
 Before you can query your subgraph, Indexers need to begin serving queries on it. In order to streamline this process, you can curate your own subgraph using GRT.
 
 When publishing, you’ll see the option to curate your subgraph. As of May 2024, it is recommended that you curate your own subgraph with at least 3,000 GRT to ensure that it is indexed and available for querying as soon as possible.
 
-![Publish screen](https://raw.githubusercontent.com/alinobrasil/the_graph_getting_started/etherlink/img/studio-publish-modal.png)
+![Publish screen](/img/thegraph-studio-publish-modal.png)
 
 > **Note:** The Graph's smart contracts are all on Arbitrum One, even though your subgraph is indexing data from Etherlink, Ethereum or any other [supported chain](https://thegraph.com/docs/en/developing/supported-networks/). 
 
@@ -106,7 +106,7 @@ For any subgraph on the decentralized network, you can start querying it by pass
 
 Here’s an example from the [CryptoPunks Ethereum subgraph](https://thegraph.com/explorer/subgraphs/HdVdERFUe8h61vm2fDyycHgxjsde5PbB832NHgJfZNqK) by Messari:
 
-![Query URL](https://lh7-us.googleusercontent.com/docsz/AD_4nXebivsPOUjPHAa3UVtvxoYTFXaGBao9pQOAJvFK0S7Uv0scfL6TcTVjmNCzT4DgsIloAQyrPTCqHjFPtmjyrzoKkfSeV28FjS32F9-aJJm0ILAHey2gqMr7Seu4IqPz2d__QotsWG3OKv2dEghiD74eypzs?key=fnI6SyFgXU9SZRNX5C5vPQ)
+![Query URL](/img/thegraph-query-url.png)
 
 
 The query URL for this subgraph is:
@@ -117,7 +117,7 @@ Now, you simply need to  fill in your own API Key to start sending GraphQL quer
 
 ### Getting your own API Key
 
-![API keys](https://lh7-us.googleusercontent.com/docsz/AD_4nXdz7H8hSRf2XqrU0jN3p3KbmuptHvQJbhRHOJh67nBfwh8RVnhTsCFDGA_JQUFizyMn7psQO0Vgk6Vy7cKYH47OyTq5PqycB0xxLyF4kSPsT7hYdMv2MEzAo433sJT6VlQbUAzgPnSxKI9a5Tn3ShSzaxI?key=fnI6SyFgXU9SZRNX5C5vPQ)
+![API keys](/img/thegraph-query-api-key.png)
 
 
 In Subgraph Studio, you’ll see the “API Keys” menu at the top of the page. Here you can create API Keys.
