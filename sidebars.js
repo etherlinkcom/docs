@@ -40,7 +40,7 @@ const sidebars = {
       items: [
         'bridging/bridging',
         'bridging/bridging-xtz',
-        'bridging/bridging-wrapped-assets',
+        'bridging/bridging-evm',
       ],
     },
     {
