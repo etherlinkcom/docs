@@ -5,7 +5,7 @@ title: Bridging tokens between Etherlink and other EVM networks
 import InlineCopy from '@site/src/components/InlineCopy';
 import Video from '@site/src/components/Video';
 
-[The Etherlink wrapped asset bridge](https://www.etherlinkbridge.com/) is a web application that allows you to transfer wrapped tokens between Etherlink and several other EVM-compatible blockchain networks.
+[The Etherlink EVM bridge](https://www.etherlinkbridge.com/bridge) is a web application that allows you to transfer wrapped tokens between Etherlink and several other EVM-compatible blockchain networks.
 The bridge uses the decentralized smart contracts of [LayerZero](https://layerzero.network/) that are deployed on each of those networks without the intervention of a third party.
 
 The EVM bridge supports connections from Etherlink to these networks:
@@ -29,15 +29,15 @@ It allows users to transfer several wrapped tokens, including:
 
 For the Etherlink addresses of these tokens, see [Token addresses](#token-addresses).
 
-## Using the wrapped asset bridge
+## Using the EVM bridge
 
 For a video walkthrough of the bridge, see this video:
 
 <Video src="https://www.loom.com/embed/6a1bb548a5c7439fafdb328b4785adca?sid=bfeed550-9191-4fea-b274-453ff1f1caf9"/>
 
-![Overview of the wrapped asset bridge](/img/wab-details.png)
+![Overview of the EVM bridge](/img/wab-details.png)
 
-1. Go to the Etherlink wrapped asset bridge at https://www.etherlinkbridge.com/bridge.
+1. Go to the Etherlink EVM bridge at https://www.etherlinkbridge.com/bridge.
 
 1. Click the **Connect** button and connect your EVM wallet.
 
@@ -367,7 +367,7 @@ These tables show the addresses of the equivalent tokens on other networks:
 
 ## How bridging wrapped assets works
 
-The Etherlink wrapped asset bridge uses a [wrapped asset bridge](https://github.com/LayerZero-Labs/wrapped-asset-bridge) created by [LayerZero](https://layerzero.network/).
+The Etherlink EVM bridge uses a [wrapped asset bridge](https://github.com/LayerZero-Labs/wrapped-asset-bridge) created by [LayerZero](https://layerzero.network/).
 It works by maintaining liquidity pools on other networks and minting equivalent tokens on Etherlink.
 
 When you bridge tokens from other networks to Etherlink, the bridge contracts lock the tokens in a liquidity pool on the source network, send a message over LayerZero's software to Etherlink, and mint tokens on Etherlink.
@@ -375,9 +375,9 @@ When you bridge tokens out of Etherlink, the contracts burn the tokens on Etherl
 Therefore, bridging tokens out of Etherlink is dependent on the liquidity pool on the target chain.
 LayerZero also maintains Etherlink EVM and Smart Rollup nodes to verify that the transactions complete on Etherlink.
 
-This diagram shows how the wrapped asset bridge works:
+This diagram shows how the EVM bridge works:
 
-![Overview of the wrapped asset bridge, showing the interaction between contracts on other chains and Etherlink, moderated by LayerZero](/img/wrapped-asset-bridge.png)
+![Overview of the EVM bridge, showing the interaction between contracts on other chains and Etherlink, moderated by LayerZero](/img/wrapped-asset-bridge.png)
 {/* https://lucid.app/lucidchart/cac80916-85c8-455d-b50b-f265057dcc1b/edit */}
 
 For more information, see the repository for the bridge: https://github.com/LayerZero-Labs/wrapped-asset-bridge.
@@ -388,4 +388,4 @@ For more information, see the repository for the bridge: https://github.com/Laye
 - For information about Etherlink transactions, see the [Etherlink block explorer](https://explorer.etherlink.com/).
 - More Information about the LayerZero protocol is available in their [official documentation](https://docs.layerzero.network/).
 - The audit reports of the LayerZero protocol are available in this [LayerZero GitHub Repository](https://github.com/LayerZero-Labs/LayerZero/tree/main/audit).
-- To review the open source code of the wrapped asset bridge, visit the [LayerZero Github Repository](https://github.com/LayerZero-Labs/wrapped-asset-bridge).
+- To review the open source code of the EVM bridge, visit the [LayerZero Github Repository](https://github.com/LayerZero-Labs/wrapped-asset-bridge).

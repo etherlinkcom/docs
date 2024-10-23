@@ -6,11 +6,11 @@ You can bridge the native token on Etherlink and Tezos, which is called tez and 
 You can bridge tez from Tezos Mainnet to XTZ on Etherlink Mainnet and back, and you can bridge tez from Tezos Testnet (Ghostnet) to XTZ on Etherlink Testnet and back.
 For more information about tez, see [Tokens](https://docs.tezos.com/architecture/tokens) on docs.tezos.com.
 
-Etherlink provides canonical bridges for XTZ tokens.
+Etherlink provides Tezos bridges for XTZ tokens.
 These bridges are trustless and permissionless; anyone can use them without restrictions or the intervention of a third party.
 
-- [Mainnet canonical bridge](https://bridge.etherlink.com/)
-- [Testnet canonical bridge](https://testnet.bridge.etherlink.com/)
+- [Mainnet Tezos bridge](https://www.etherlinkbridge.com/tezos-bridge)
+- [Testnet Tezos bridge](https://testnet.bridge.etherlink.com/)
 
 - Bridging tokens from Tezos layer 1 to Etherlink is referred to as _depositing_ tokens.
 - Bridging tokens from Etherlink to Tezos layer 1 is referred to as _withdrawing_ tokens.
@@ -26,11 +26,31 @@ This delay is caused by the Smart Rollup refutation period. As with all Smart Ro
 The Etherlink indexer run by Nomadic Labs automatically executes these bridging transactions when they are cemented, which makes the bridged tokens available on Tezos.
 :::
 
-## Using the canonical bridges
+## Using the Mainnet Tezos bridge
 
-To use these bridges, follow these general steps:
+To use the Mainnet bridge, follow these general steps:
+
+1. Go to the bridge at https://www.etherlinkbridge.com/tezos-bridge.
 
 1. Connect your Tezos and Etherlink-compatible wallets.
+
+1. Select the type of transfer:
+
+   - **Deposit** transfers XTZ from Tezos layer 1 to Etherlink
+   - **Withdraw** transfers XTZ from Etherlink to Tezos layer 1
+
+1. Enter the amount of XTZ tokens to transfer.
+
+1. Click **Transfer**.
+
+## Using the Testnet Tezos bridge
+
+To use the Testnet bridge, follow these general steps:
+
+1. Go to the bridge at https://testnet.bridge.etherlink.com.
+
+1. Connect your Tezos and Etherlink-compatible wallets.
+
 1. Select the type of transfer:
 
    - **Deposit** transfers XTZ from Tezos layer 1 to Etherlink
@@ -42,7 +62,7 @@ To use these bridges, follow these general steps:
 
 You can monitor the status of your bridge operations on the **Transaction History** tab.
 
-### How bridging XTZ works
+## How bridging XTZ works
 
 The process of bridging XTZ between Etherlink and Tezos layer 1 uses two contracts on Tezos layer 1:
 
