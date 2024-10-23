@@ -62,7 +62,7 @@ To use the Testnet bridge, follow these general steps:
 
 You can monitor the status of your bridge operations on the **Transaction History** tab.
 
-### How bridging XTZ works
+## How bridging XTZ works
 
 The process of bridging XTZ between Etherlink and Tezos layer 1 uses two contracts on Tezos layer 1:
 
