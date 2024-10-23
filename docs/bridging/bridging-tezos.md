@@ -26,11 +26,31 @@ This delay is caused by the Smart Rollup refutation period. As with all Smart Ro
 The Etherlink indexer run by Nomadic Labs automatically executes these bridging transactions when they are cemented, which makes the bridged tokens available on Tezos.
 :::
 
-## Using the Tezos bridges
+## Using the Mainnet Tezos bridge
 
-To use these bridges, follow these general steps:
+To use the Mainnet bridge, follow these general steps:
+
+1. Go to the bridge at https://www.etherlinkbridge.com/tezos-bridge.
 
 1. Connect your Tezos and Etherlink-compatible wallets.
+
+1. Select the type of transfer:
+
+   - **Deposit** transfers XTZ from Tezos layer 1 to Etherlink
+   - **Withdraw** transfers XTZ from Etherlink to Tezos layer 1
+
+1. Enter the amount of XTZ tokens to transfer.
+
+1. Click **Transfer**.
+
+## Using the Testnet Tezos bridge
+
+To use the Testnet bridge, follow these general steps:
+
+1. Go to the bridge at https://testnet.bridge.etherlink.com.
+
+1. Connect your Tezos and Etherlink-compatible wallets.
+
 1. Select the type of transfer:
 
    - **Deposit** transfers XTZ from Tezos layer 1 to Etherlink
