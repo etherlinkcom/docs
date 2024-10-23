@@ -39,7 +39,7 @@ const sidebars = {
       collapsed: false,
       items: [
         'bridging/bridging',
-        'bridging/bridging-xtz',
+        'bridging/bridging-tezos',
         'bridging/bridging-evm',
       ],
     },
