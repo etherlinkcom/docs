@@ -39,8 +39,13 @@ const sidebars = {
       collapsed: false,
       items: [
         'bridging/bridging',
+<<<<<<< HEAD
         'bridging/bridging-tezos',
         'bridging/bridging-evm',
+=======
+        'bridging/bridging-xtz',
+        'bridging/bridging-wrapped-assets',
+>>>>>>> 4f74a4b (Move bridging to its own section)
       ],
     },
     {
