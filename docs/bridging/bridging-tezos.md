@@ -1,19 +1,23 @@
 ---
-title: Bridging XTZ between Tezos layer 1 and Etherlink
+title: Bridging tokens between Tezos layer 1 and Etherlink
 ---
 
-You can bridge the native token on Etherlink and Tezos, which is called tez and shown on price tickers with the symbol [XTZ](https://coinmarketcap.com/currencies/tezos/).
-You can bridge tez from Tezos Mainnet to XTZ on Etherlink Mainnet and back, and you can bridge tez from Tezos Testnet (Ghostnet) to XTZ on Etherlink Testnet and back.
-For more information about tez, see [Tokens](https://docs.tezos.com/architecture/tokens) on docs.tezos.com.
+You can bridge two kinds of tokens from Tezos layer 1 to Etherlink and back:
 
-Etherlink provides Tezos bridges for XTZ tokens.
+- The native token on Etherlink and Tezos, which is called tez and shown on price tickers with the symbol [XTZ](https://coinmarketcap.com/currencies/tezos/)
+- Tokens that are compliant with the Tezos FA standards.
+The Tezos FA standards are token standards like the Ethereum ERC-20, ERC-721, and ERC-1155 standards.
+For more information about the FA standards, see [Token standards](https://docs.tezos.com/architecture/tokens#token-standards) on docs.tezos.com.
+
+Two bridging operations are available:
+
+- Bridging tokens from Tezos layer 1 to Etherlink is referred to as _depositing_ tokens.
+- Bridging tokens from Etherlink to Tezos layer 1 is referred to as _withdrawing_ tokens.
+
 These bridges are trustless and permissionless; anyone can use them without restrictions or the intervention of a third party.
 
 - [Mainnet Tezos bridge](https://www.etherlinkbridge.com/tezos-bridge)
 - [Testnet Tezos bridge](https://testnet.bridge.etherlink.com/)
-
-- Bridging tokens from Tezos layer 1 to Etherlink is referred to as _depositing_ tokens.
-- Bridging tokens from Etherlink to Tezos layer 1 is referred to as _withdrawing_ tokens.
 
 :::note
 <h3>Bridging time</h3>
