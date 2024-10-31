@@ -44,15 +44,57 @@ Metrics provide information about the node in the form of a [gauge](https://gith
 a [counter](https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#counter) that can only increase (like the number of calls to a particular method),
 or a [histogram](https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#histogram) used to track the size of events and how long they usually take (e.g., the time spent processing a block).
 
+### Metrics listing
 
-The label value is sometimes used to store information that can't be described by the metric value (which can only be a float). This is used for example by the ``octez_evm_node_info`` metric that provides the current mode of the node.
+Some of the metrics are computed when scraped from the node. As there is no rate limiter, you should consider scraping wisely and adding a proxy for a public endpoint, to limit the impact on performance.
 
-   Some of the metrics are computed when scraped from the node. As there is no rate limiter, you should consider scraping wisely and adding a proxy for a public endpoint, to limit the impact on performance.
+The metric names in the table omit the namespace and subsystem for readability, so to have the full metric name you must add `octez_evm_node_`, e.g. `octez_evm_node_boostrapping`.
 
+|             Metric names       |    Type   |                                                       Description                                                      |    Relevant mode    |
+|:------------------------------:|:---------:|:----------------------------------------------------------------------------------------------------------------------:|:-------------------:|
+| bootstrapping                  | gauge     | 1.0 if the EVM node is catching up with its upstream EVM node, 0.0 otherwise                                           | Observer, RPC       |
+| head                           | gauge     | Level of the node’s head                                                                                               | all                 |
+| confirmed_head                 | gauge     | Confirmed level (smart rollup node's head, ie as registered on L1)                                                     | all                 |
+| gas_price                      | gauge     | Base gas price of the last block                                                                                       | sequencer, observer | 
+| info                           | gauge     | Information about the kernel (commit hash and date), the node (mode)  and the targeted rollup (smart_rollup_address)   | all                 |
+| block_process_time_histogram   | histogram | The time the EVM node spent processing a block. Buckets : [0.1; 0.1; 0.5; 1.; 2.; 5.; 10.; infinity] (in seconds)      | Sequencer, observer |
+| time_processed                 | counter   | Time to process blocks                                                                                                 | Sequencer, observer |
+| transactions                   | counter   | Number of transactions in the blocks                                                                                   | all                 |
+| calls                          | summary   | RPC endpoint call counts and sum of execution times                                                                    | all                 |
+| calls_method                   | counter   | Method call counts                                                                                                     | all                 |
+| tx_pool                        | gauge     | Metrics about transaction pool content (computed when scraped)                                                         | sequencer           |
+| blueprint_chunks_sent_on_inbox | counter   | Number of blueprint chunks sent on the shared inbox                                                                    | sequencer           |
+| blueprint_chunks_sent_on_dal   | counter   | Number of blueprint chunks sent on the DAL                                                                             | sequencer           |
+| signals_sent                   | counter   | Number of DAL import signals sent on the inbox                                                                         | sequencer, observer |
+| time_waiting                   | counter   | Time spent by a request waiting for a worker (in picosecond)                                                           | sequencer, observer |
+| queue_size                     | gauge     | Size of the execution queue of simulations                                                                             | sequencer, observer |
+| inconsistent_da_fees           | counter   | Node DA fees are inconsistent with kernel ones                                                                         | sequencer\*         |
+| confirm_gas_needed             | counter   | Initially provided gas was not enough, confirmation was needed                                                         | sequencer\*         |
 
-   ------- List of metrics TBA --------------
+\* `inconsistent_da_fees` and `confirm_gas_needed` are listed for exhausitivity, but are mainly useful to the development team for testing and debugging the node side validation feature.
 
-### Prometheus
+Some metrics have labels that store information that can't be described by the metric value (which can only be a float).
+For example, the `octez_evm_node_info` metric has a label named `mode` (among others) that provides the mode of the node (RPC, observer, proxy, sequencer).
+Here is an example of the content from this metric with its labels:
+
+```
+octez_evm_node_info{commit_hash="99aa672c", commit_date="2024-10-29 11:53:40 +0100", mode="observer", smart_rollup_address="sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf"} 0.000000
+```
+
+This table shows the available labels:
+
+|             Metric             |        Label(s)        |                       Description                         |
+|:------------------------------:|:----------------------:|:---------------------------------------------------------:|
+| information                    | commit_hash            | commit hash of the node version                           |
+| information                    | commit_date            | commit date of the node version                           |
+| information                    | mode                   | mode of the node (RPC, observer, sequencer, proxy)        |
+| information                    | smart_rollup_address   | address of the Smart Rollup monitored                      |
+| calls                          | endpoint               | endpoint reached (`/`, etc.)                              |
+| calls                          | method                 | JSON RPC method called (`etc_call`, etc.)                 |
+| calls_method                   | method                 | JSON RPC method called (`etc_call`, etc.)                 |
+| tx_pool                        | kind                   | Either `number_of_addresses` of `number_of_transactions`  |
+
+### Scraping metrics with prometheus
 
 Scraping metrics gives you instant values of the metrics. For more effective monitoring, create a time series of these metrics.
 
