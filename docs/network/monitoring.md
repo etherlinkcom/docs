@@ -47,8 +47,22 @@ The label value is sometimes used to store information that can't be described b
 
    Some of the metrics are computed when scraped from the node. As there is no rate limiter, you should consider scraping wisely and adding a proxy for a public endpoint, to limit the impact on performance.
 
-
-   ------- List of metrics TBA --------------
+|             Metrics            |    Type   |                        Label(s)                       |    Relevant mode    |                                                       Description                                                      |
+|:------------------------------:|:---------:|:-----------------------------------------------------:|:-------------------:|:----------------------------------------------------------------------------------------------------------------------:|
+| bootstrapping                  | gauge     |                                                       | Observer, RPC       | 1.0 if the EVM node is catching up with its upstream EVM node. 0.0 otherwise.                                          |
+| head                           | gauge     |                                                       | all                 | Level of the node’s head.                                                                                              |
+| confirmed_head                 | gauge     |                                                       | all                 | Confirmed level (smart rollup node's head, ie as registered on L1)                                                     |
+| information                    | gauge     | commit_hash, commit_date, mode, smart_rollup_address  | all                 | Information about the kernel (commit hash and date), the node (mode)  and the targeted rollup (smart_rollup_address).  |
+| block_process_time_histogram   | histogram | -                                                     | Sequencer, observer | The time the EVM node spent processing a block. Buckets : [0.1; 0.1; 0.5; 1.; 2.; 5.; 10.; infinity]                   |
+| time_processed                 | counter   |                                                       | Sequencer, observer | Time to process blocks                                                                                                 |
+| transactions                   | counter   |                                                       | all                 | Number of transactions in the blocks                                                                                   |
+| calls                          | summary   | Endpoint, method                                      | all                 | RPC endpoint call counts and sum of execution times.                                                                   |
+| calls_method                   | counter   | method                                                | all                 | Method call counts                                                                                                     |
+| tx_pool                        | gauge     | number_of_addresses, number_of_transactions           | sequencer           | Metrics about transaction pool content                                                                                 |
+| inconsistent_da_fees           | counter   |                                                       | sequencer           | Node DA fees are inconsistent with kernel ones                                                                         |
+| confirm_gas_needed             | counter   |                                                       | sequencer           | Initially provided gas was not enough, confirmation was needed                                                         |
+| blueprint_chunks_sent_on_inbox | counter   |                                                       | sequencer           | Number of blueprint chunks sent on the shared inbox                                                                    |
+| blueprint_chunks_sent_on_dal   | counter   |                                                       | sequencer           | Number of blueprint chunks sent on the DAL                                                                             |
 
 ### Prometheus
 
