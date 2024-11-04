@@ -6,7 +6,7 @@ Monitoring the behavior of the EVM node can be partially achieved by exploring t
 
 ## Metrics
 
-Metrics for the node are always available on the `/metrics` endpoint of the address and port of the `--rpc-addr` argument. One can query this using:
+Metrics for the node are always available on the `/metrics` endpoint of the address and port of the node (by default "http://127.0.0.1:8545"). One can query this using:
 
 ```bash
 curl http://<rpc_addr>:<rpc_port>/metrics
@@ -183,6 +183,151 @@ Then you need to configure a scraping job on the prometheus config:
 The target address of the node exporter is typically `localhost:9100`.
 
 ## Logs
-### Loki
+
+The node outputs logs in the `<DATA_DIR>/daily_logs` directory for major events
+(such as block production, connection to rollup node, etc) and a separate set of
+logs for the inner working of the internal EVM (or, more precisely, the kernel)
+in the `<DATA_DIR>/kernel_logs`. 
+
+The standards logs are output in files with a daily rotation and a retention 
+period of 5 days. They are limited to `INFO` and `ERROR` by default, but the 
+EVM node can be started with the option `--verbose` for more.
+
+```
+...
+2024-11-01T23:59:54.999-00:00 [evm_node.dev.evm_events_follower_upstream_blueprint_applied] The rollup node kernel applied blueprint 505715 leading to creating block 0xa33824839766bea9eb16e3cfb6a3e06fd5aedae1d19e50729f1575892[...].
+2024-11-01T23:59:59.598-00:00 [evm_node.dev.blueprint_application] Applied a blueprint for level 505719 at 2024-11-01T23:59:59Z containing 0 transactions for 0 gas leading to creating block 0xe09fcee34c4f3fb7ac701e0508fadac7264cf7e595621a1d69d4dc533[...].
+...
+```
+
+The EVM logs are stored in different files according to the context of the EVM call: creating blocks, simulation, validation of a transaction before inclusion in the tx pool, etc.
+
+|              File             |                  Usage                 |
+|:-----------------------------:|:--------------------------------------:|
+| daily_logs/daily-YYYYMMDD.log | Major node events                           |
+| kernel_logs/estimate_gas      | EVM logs during gas estimation         |
+| kernel_logs/kernel_log        | EVM logs during block production       |
+| kernel_logs/replay            | EVM logs during replay operations      |
+| kernel_logs/simulate_call     | EVM logs during simulation             |
+| kernel_logs/trace_transaction | EVM logs during tracing                |
+| kernel_logs/tx_validity       | EVM logs during transaction validation |
+
+### Scraping logs with Loki
+
+Scraping logs makes them more easily searchable, and allows creating metrics to
+be used in monitoring. 
+
+We suggest using [Loki](https://github.com/grafana/loki) for that purpose.
+Loki is a server that can be queried for logs, similar to what prometheus is 
+for metrics. It relies on an agent to scrape and send the logs, we suggest Promtail.
+Promtail will scrape the logs and push them to the Loki instance which will make
+them available to the dashboard.
+
+To install follow the [instructions on the grafana website](https://grafana.com/docs/loki/latest/setup/install/). 
+Note that we don't discuss using the `Alloy` agent, but rather `Promtail`.
+To install using a package manager, see the [install locally](https://grafana.com/docs/loki/latest/setup/install/local/) 
+section, to add the grafana package repository.
+
+Install Loki on the graphana server and Promtail on the EVM server.
+
+Once both are installed, you need to add the scraping job to the Promtail 
+configuration file (e.g. `/etc/promtail/config.yaml`) and specify the target 
+Loki server.
+
+```yaml
+clients:
+- url: <LOKI_ENDPOINT>
+```
+
+You must also configure a parsing pipeline for the logs.
+Below is an example of a pipeline suitable for the daily logs. It uses `grep`
+to extract the event's name from the log, to make searching the logs easier. 
+Alternatively, we present [later](#adding-log-sinks) a method to produce logs in a json format, and the 
+appropriate Promtail pipeline.
+
+```yaml
+scrape_configs:
+- job_name: "evm-node-log-exporter" 
+  pipeline_stages:
+    - regex:
+        expression: "^(?P<time>\\S+)\\s*\\[(?P<event>\\S+)\\](?P<msg>.*)$"
+    - timestamp:
+        source: time
+        format: RFC3339
+    - labels:
+        event:
+  static_configs:
+  - targets:
+      - 127.0.0.1
+    labels:
+      __path__: <EVM_NODE_DATA_DIR>/daily_logs/*.log
+
+```
+
+Replace `<EVM_NODE_DATA_DIR>` with the path to the EVM node data dir, and
+`<LOKI_ENDPOINT>` with the Loki endpoint, most probably:
+
+```
+http://<LOKI_SERVER_ADDRESS>:3100/loki/api/v1/push
+```
+
+so if Loki is installed on the same server:
+
+```
+http://localhost:3100/loki/api/v1/push
+```
+
+Make sure that the Promtail daemon is able to access the log files. If it's 
+installed as a service, an easy way is to make the `promtail` user part of the 
+same group as the user used to run the EVM node.
+
 ### Adding log sinks
-## Dashboards
+
+The EVM Node uses the same [logging features](https://tezos.gitlab.io/user/logging.html#file-descriptor-sinks)
+as the [octez node](https://tezos.gitlab.io/). It is possible to add new 
+`sinks` using [environment variables](https://tezos.gitlab.io/user/logging.html#environment-variables).
+
+For example, the following definition will add logs in json format, with a 
+daily rotation, 4 file retention, with `rw-r-----` unix rights, in the 
+(fictional) `/some/data/dir/json_daily_logs` directory.
+
+```
+TEZOS_EVENTS_CONFIG="file-descriptor-path:///some/data/dir/json_daily_logs/daily.log?daily-logs=4&format=one-per-line&create-dirs=true&chmod=0o640"
+```
+
+This will result in files containing one json object per line.
+```
+...
+{"fd-sink-item.v0":{"hostname":"etherlink-pinata-sequencer","time_stamp":1730505587.606614,"section":["evm_node","dev"],"event":{"blueprint_injection.v0":"505717"}}}
+{"fd-sink-item.v0":{"hostname":"etherlink-pinata-sequencer","time_stamp":1730505590.115897,"section":["evm_node","dev"],"event":{"evm_events_follower_upstream_blueprint_applied.v0":{"level":"505714","hash":"0xfb6f61fe268481f1d18d31d7567011065418379b34722e83c517a6c509d3dfdb"}}}}
+...
+```
+
+Such files can be scraped using the following Promtail configuration.
+This will create a json event containing only the `event` of each log line.
+
+```yaml
+- job_name: "evm-node-json-log-exporter" 
+  static_configs:
+    - targets:
+      - 127.0.0.1
+      labels:
+        __path__: /some/data/dir/json_daily_logs/*.log
+  pipeline_stages:
+  - json:
+      expressions:
+        event-sink: '"fd-sink-item.v0"'
+  - json:
+      source: event-sink
+      expressions:
+        event-name: event.keys(@)[0]
+        event: event.* | [0] 
+        timestamp: time_stamp
+  - labels:
+      event: event-name
+  - timestamp:
+      source: timestamp
+      format: Unix
+  - output:
+      source: event
+```
