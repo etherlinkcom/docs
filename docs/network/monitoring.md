@@ -52,7 +52,7 @@ The metric names in the table omit the namespace and subsystem for readability, 
 
 |             Metric names       |    Type   |                                                       Description                                                      |    Relevant mode    |
 |:------------------------------:|:---------:|:----------------------------------------------------------------------------------------------------------------------:|:-------------------:|
-| bootstrapping                  | gauge     | 1.0 if the EVM node is catching up with its upstream EVM node, 0.0 otherwise                                           | Observer, RPC       |
+| bootstrapping                  | gauge     | 0.0 if the EVM node is caught up with its upstream EVM node or 1.0 if it is in the process of bootstrapping            | Observer, RPC       |
 | head                           | gauge     | Level of the node’s head                                                                                               | all                 |
 | confirmed_head                 | gauge     | Confirmed level (smart rollup node's head, ie as registered on L1)                                                     | all                 |
 | gas_price                      | gauge     | Base gas price of the last block                                                                                       | sequencer, observer | 
