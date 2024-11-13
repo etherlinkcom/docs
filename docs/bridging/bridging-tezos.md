@@ -207,6 +207,8 @@ This diagram is an overview of the process of bridging tokens from Etherlink to 
 You can configure any FA1.2 or FA2 token for bridging by deploying the necessary contracts.
 You can use this tool to simplify the process by deploying the contracts for a single token: https://github.com/baking-bad/etherlink-bridge.
 
+Setting up a token for bridging in this way does not make it appear on the bridge web site.
+
 <!-- Any other info appropriate here? -->
 
 ### Sending FA bridging transactions
