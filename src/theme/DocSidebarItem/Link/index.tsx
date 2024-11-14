@@ -39,7 +39,7 @@ export default function DocSidebarItemLink({
       )}
       style={{
         margin: `${item.label === 'Etherlink' && '40px 0px'}`,
-        marginBottom: `${!isInternalLink && index === 3 && '40px'}`,
+        marginBottom: `${!isInternalLink && isTopSection(item.label) && index === 3 && '40px'}`,
       }}
       key={label}>
       <Link
@@ -64,10 +64,10 @@ export default function DocSidebarItemLink({
         }}
         {...props}>
         <div className={styles.leftHand}>
-          {!isInternalLink && <img src={ICONS_PATH[index]} alt='external link icon' />}
+          {!isInternalLink && isTopSection(item.label) && <img src={ICONS_PATH[index]} alt='external link icon' />}
           {label}
         </div>
-        {!isInternalLink && <img src='/img/FiArrowUpRight.svg' alt='external link icon' />}
+        {!isInternalLink && isTopSection(item.label) && <img src='/img/FiArrowUpRight.svg' alt='external link icon' />}
       </Link>
     </li>
   );
