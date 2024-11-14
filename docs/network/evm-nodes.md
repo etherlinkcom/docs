@@ -34,11 +34,10 @@ The default is `$HOME/.octez-evm-node`.
    ```bash
    octez-evm-node init config \
      --data-dir $evm_observer_dir --dont-track-rollup-node \
-     --preimages-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
-     --evm-node-endpoint https://relay.mainnet.etherlink.com
+     --preimages-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
    ```
 
-   Alternatively, if you want to rely on a Smart Rollup node to check the correctness of blueprints coming from the sequencer, use `--rollup-node-endpoint`:
+   Alternatively, if you want to rely on a Smart Rollup node to check the correctness of blueprints coming from the sequencer, use `--rollup-node-endpoint` and specify the URL of the EVM node with the `--evm-node-endpoint` argument:
 
    ```bash
    octez-evm-node init config \
