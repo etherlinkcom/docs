@@ -11,7 +11,9 @@ For more information about the FA standards, see [Token standards](https://docs.
 Two bridging operations are available:
 
 - Bridging tokens from Tezos layer 1 to Etherlink is referred to as _depositing_ tokens.
+Depositing an FA token locks it in a contract on layer 1 and mints an equivalent ERC-20 token on Etherlink.
 - Bridging tokens from Etherlink to Tezos layer 1 is referred to as _withdrawing_ tokens.
+Withdrawing an FA token burns the ERC-20 token on Etherlink and unlocks the equivalent token on Tezos layer 1.
 
 :::note
 <h3>Bridging time</h3>
