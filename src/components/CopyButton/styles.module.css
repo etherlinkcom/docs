@@ -8,7 +8,8 @@
   display: inline;
   background-color: transparent;
   border: none;
-  transform: translate(-2px, 2px);
+  transform: translateY(2px);
+  padding: 0px 2px;
 }
 .copyButton:hover {
   cursor: pointer;
