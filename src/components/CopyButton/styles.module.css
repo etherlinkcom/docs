@@ -4,19 +4,16 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-:global(.theme-code-block:hover) .copyButtonCopied {
-  opacity: 1 !important;
-}
-
-.copyButtonIcons {
-  position: relative;
+.copyButton {
   display: inline;
-  width: 1rem;
-  height: 1rem;
+  background-color: transparent;
+  border: none;
+  transform: translate(-2px, 2px);
+}
+.copyButton:hover {
+  cursor: pointer;
 }
 
-.copyButtonIcon,
 .copyButtonSuccessIcon {
   fill: currentColor;
   opacity: inherit;
@@ -26,7 +23,6 @@
 }
 
 .copyButtonSuccessIcon {
-  left: -18px;
   margin-right: -18px;
   opacity: 0;
   color: #00d600;
@@ -34,12 +30,17 @@
   display: none;
 }
 
-.copyButtonCopied .copyButtonIcon {
-  opacity: 0;
-}
-
 .copyButtonCopied .copyButtonSuccessIcon {
   opacity: 1;
   display: inline;
   transition-delay: 0.075s;
+}
+
+.copyIcon {
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.noZoom {
+  pointer-events: none !important;
 }

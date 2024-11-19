@@ -37,10 +37,12 @@ export default function CopyButton({code, className}) {
         isCopied && styles.copyButtonCopied,
       )}
       onClick={handleCopyCode}>
-      <span className={styles.copyButtonIcons} aria-hidden="true">
-        <IconCopy className={styles.copyButtonIcon} />
-        <IconSuccess className={styles.copyButtonSuccessIcon} />
-      </span>
+        {isCopied 
+          ? <IconSuccess className={styles.copyButtonSuccessIcon} /> 
+          : <button className={styles.copyButton}>
+              <img className={clsx(styles.copyIcon, styles.noZoom)}  src='/img/FiCopy.svg' alt='copy icon' />
+            </button>
+        }
     </button>
   );
 }
