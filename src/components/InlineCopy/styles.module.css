@@ -1,7 +1,6 @@
 .container {
   display: inline;
   position: unset;
-  background-color: var(--ifm-code-background);
 }
 
 .link:hover {

@@ -8,8 +8,6 @@
 import React, {useCallback, useState, useRef, useEffect} from 'react';
 import clsx from 'clsx';
 import copy from 'copy-text-to-clipboard';
-import IconCopy from '@theme/Icon/Copy';
-import IconSuccess from '@theme/Icon/Success';
 
 import styles from './styles.module.css';
 
@@ -34,13 +32,12 @@ export default function CopyButton({code, className}) {
       className={clsx(
         className,
         styles.copyButton,
-        isCopied && styles.copyButtonCopied,
       )}
       onClick={handleCopyCode}>
-      <span className={styles.copyButtonIcons} aria-hidden="true">
-        <IconCopy className={styles.copyButtonIcon} />
-        <IconSuccess className={styles.copyButtonSuccessIcon} />
-      </span>
+        {isCopied 
+          ? <img className={clsx(styles.copyIcon, styles.noZoom)}  src='/img/copy-success.svg' alt='copy success icon' />
+          : <img className={clsx(styles.copyIcon, styles.noZoom)}  src='/img/FiCopy.svg' alt='copy icon' />
+        }
     </button>
   );
 }
