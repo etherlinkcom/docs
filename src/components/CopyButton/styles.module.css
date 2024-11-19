@@ -8,38 +8,20 @@
   display: inline;
   background-color: transparent;
   border: none;
-  transform: translateY(2px);
-  padding: 0px 2px;
+  transform: translateY(5px);
+  padding: 0px 4px;
 }
 .copyButton:hover {
   cursor: pointer;
 }
 
-.copyButtonSuccessIcon {
-  fill: currentColor;
-  opacity: inherit;
-  width: inherit;
-  height: inherit;
-  transition: all var(--ifm-transition-fast) ease;
-}
-
-.copyButtonSuccessIcon {
-  margin-right: -18px;
-  opacity: 0;
-  color: #00d600;
-  position: relative;
-  display: none;
-}
-
-.copyButtonCopied .copyButtonSuccessIcon {
-  opacity: 1;
-  display: inline;
-  transition-delay: 0.075s;
-}
-
 .copyIcon {
   box-shadow: none;
   border-radius: 0;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 .noZoom {
