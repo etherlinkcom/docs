@@ -14,35 +14,35 @@ const customTheme = lightTheme({
   },
 });
 
-// const ghostnet = {
-//   chainId: 128123,
-//   rpc: ["https://node.ghostnet.etherlink.com"],
-//   nativeCurrency: {
-//     decimals: 18,
-//     name: "XTZ",
-//     symbol: "XTZ",
-//   },
-//   shortName: "etherlink",
-//   slug: "etherlink",
-//   testnet: true,
-//   chain: "Etherlink",
-//   name: "Etherlink Testnet",
-// };
+const testnet = {
+  // chainId: 128123,
+  // rpc: ["https://node.ghostnet.etherlink.com"],
+  nativeCurrency: {
+    decimals: 18,
+    name: "XTZ",
+    symbol: "XTZ",
+  },
+  // shortName: "etherlink",
+  // slug: "etherlink",
+  testnet: true,
+  // chain: "Etherlink",
+  name: "Etherlink Testnet",
+};
 
-// const mainnet = {
-//   chainId: 42793,
-//   rpc: ["https://node.mainnet.etherlink.com"],
-//   nativeCurrency: {
-//     decimals: 18,
-//     name: "XTZ",
-//     symbol: "XTZ",
-//   },
-//   shortName: "etherlink",
-//   slug: "etherlink",
-//   testnet: true,
-//   chain: "Etherlink",
-//   name: "Etherlink Mainnet",
-// };
+const mainnet = {
+  // chainId: 42793,
+  // rpc: ["https://node.mainnet.etherlink.com"],
+  nativeCurrency: {
+    decimals: 18,
+    name: "XTZ",
+    symbol: "XTZ",
+  },
+  // shortName: "etherlink",
+  // slug: "etherlink",
+  testnet: false,
+  // chain: "Etherlink",
+  name: "Etherlink Mainnet",
+};
 
 export default function WalletConnectButton({ network, title }) {
 
@@ -50,7 +50,7 @@ export default function WalletConnectButton({ network, title }) {
     siteConfig: {customFields},
   } = useDocusaurusContext();
 
-  // const activeChain = network === "mainnet" ? mainnet : ghostnet;
+  const activeChain = network === "mainnet" ? mainnet : testnet;
 
   const dAppMeta = {
     name: "Etherlink documentation",
@@ -63,12 +63,13 @@ export default function WalletConnectButton({ network, title }) {
   const client = createThirdwebClient({ clientId: customFields.THIRDWEB_CLIENT_ID });
 
   return (
-    <ThirdwebProvider>
+    <ThirdwebProvider activeChain={activeChain} clientId={customFields.THIRDWEB_CLIENT_ID}>
       <ConnectButton
         client={client}
         appMetadata={dAppMeta}
         theme={customTheme}
         connectButton={{ label: title }}
+        // chain={activeChain} // Causes errors
       />
     </ThirdwebProvider>
   )
