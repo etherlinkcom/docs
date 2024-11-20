@@ -19,10 +19,11 @@ Running an Etherlink EVM node on Etherlink Mainnet requires a computer with 500G
 
 ## Getting the `octez-evm-node` binary
 
-The easiest way to get the `octez-evm-node` binary is to download the binaries distributed as part of its latest release (currently [`v0.3`](https://gitlab.com/tezos/tezos/-/releases/octez-evm-node-v0.3)).
-More precisely, we provide static binaries for Linux systems (for amd64 and arm64 architectures).
+The easiest way to get the `octez-evm-node` binary is to download the binaries distributed as part of its latest release from https://gitlab.com/tezos/tezos/-/releases.
+The release page provides static binaries for Linux systems (for amd64 and arm64 architectures).
 
-As an alternative, you can use the minimal Docker image [tezos/tezos-bare:octez-evm-node-v0.3](https://hub.docker.com/layers/tezos/tezos-bare/octez-evm-node-v0.3/images/sha256-f994902095d4400678bfe701ad41c39974491b9770972d378f59b3971aeeefd9?context=explore), which contains the correct version of the binary.
+As an alternative, you can use the minimal Docker image [tezos/tezos-bare](https://hub.docker.com/r/tezos/tezos-bare/tags?name=octez-evm-node) with a tag that includes `octez-evm-node`.
+These images contain the correct version of the binary.
 
 ## Initializing the data directory
 
