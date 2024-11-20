@@ -22,7 +22,6 @@
     "@mdx-js/react": "3.0.0",
     "@mui/icons-material": "5.14.18",
     "@mui/material": "5.14.18",
-    "@thirdweb-dev/react": "^4.9.4",
     "clsx": "1.2.1",
     "copy-text-to-clipboard": "3.2.0",
     "docusaurus-pushfeedback": "1.0.1",
@@ -35,7 +34,8 @@
     "react-dom": "18.2",
     "rehype-katex": "7.0.0",
     "remark-math": "6.0.0",
-    "slick-carousel": "1.8.1"
+    "slick-carousel": "1.8.1",
+    "thirdweb": "5.42.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.3.2",

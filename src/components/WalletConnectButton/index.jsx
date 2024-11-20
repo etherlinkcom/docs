@@ -1,5 +1,7 @@
-import { ThirdwebProvider, metamaskWallet, localWallet, walletConnect, ConnectWallet, lightTheme } from "@thirdweb-dev/react";
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
+import { createThirdwebClient } from 'thirdweb';
+import { ConnectButton, ThirdwebProvider, lightTheme } from 'thirdweb/react';
 
 const customTheme = lightTheme({
   colors: {
@@ -12,35 +14,35 @@ const customTheme = lightTheme({
   },
 });
 
-const ghostnet = {
-  chainId: 128123,
-  rpc: ["https://node.ghostnet.etherlink.com"],
-  nativeCurrency: {
-    decimals: 18,
-    name: "XTZ",
-    symbol: "XTZ",
-  },
-  shortName: "etherlink",
-  slug: "etherlink",
-  testnet: true,
-  chain: "Etherlink",
-  name: "Etherlink Testnet",
-};
+// const ghostnet = {
+//   chainId: 128123,
+//   rpc: ["https://node.ghostnet.etherlink.com"],
+//   nativeCurrency: {
+//     decimals: 18,
+//     name: "XTZ",
+//     symbol: "XTZ",
+//   },
+//   shortName: "etherlink",
+//   slug: "etherlink",
+//   testnet: true,
+//   chain: "Etherlink",
+//   name: "Etherlink Testnet",
+// };
 
-const mainnet = {
-  chainId: 42793,
-  rpc: ["https://node.mainnet.etherlink.com"],
-  nativeCurrency: {
-    decimals: 18,
-    name: "XTZ",
-    symbol: "XTZ",
-  },
-  shortName: "etherlink",
-  slug: "etherlink",
-  testnet: true,
-  chain: "Etherlink",
-  name: "Etherlink Mainnet",
-};
+// const mainnet = {
+//   chainId: 42793,
+//   rpc: ["https://node.mainnet.etherlink.com"],
+//   nativeCurrency: {
+//     decimals: 18,
+//     name: "XTZ",
+//     symbol: "XTZ",
+//   },
+//   shortName: "etherlink",
+//   slug: "etherlink",
+//   testnet: true,
+//   chain: "Etherlink",
+//   name: "Etherlink Mainnet",
+// };
 
 export default function WalletConnectButton({ network, title }) {
 
@@ -48,7 +50,7 @@ export default function WalletConnectButton({ network, title }) {
     siteConfig: {customFields},
   } = useDocusaurusContext();
 
-  const activeChain = network === "mainnet" ? mainnet : ghostnet;
+  // const activeChain = network === "mainnet" ? mainnet : ghostnet;
 
   const dAppMeta = {
     name: "Etherlink documentation",
@@ -58,28 +60,16 @@ export default function WalletConnectButton({ network, title }) {
     isDarkMode: true,
   };
 
+  const client = createThirdwebClient({ clientId: customFields.THIRDWEB_CLIENT_ID });
+
   return (
-    <ThirdwebProvider clientId={customFields.THIRDWEB_CLIENT_ID}
-      activeChain={activeChain}
-      supportedWallets={[
-        metamaskWallet({ recommended: true }),
-        walletConnect(),
-        localWallet(),
-        // embeddedWallet({
-        //   auth: {
-        //     options: ["email", "apple", "google"],
-        //   },
-        // }),
-        // phantomWallet({ recommended: true }),
-      ]}
-      dAppMeta={dAppMeta}>
-      <ConnectWallet
-        switchToActiveChain={true}
+    <ThirdwebProvider>
+      <ConnectButton
+        client={client}
+        appMetadata={dAppMeta}
         theme={customTheme}
-        modalSize={"wide"}
-        btnTitle={title}
+        connectButton={{ label: title }}
       />
     </ThirdwebProvider>
-
   )
 }
