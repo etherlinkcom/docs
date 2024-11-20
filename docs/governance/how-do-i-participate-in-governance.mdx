@@ -57,11 +57,12 @@ The commands are the same for kernel upgrades and security upgrades but they tar
 
 You can get information about the current period at https://governance.etherlink.com.
 
-To get information about the current state of the kernel or security governance contract directly from the contract, call its `get_voting_state` view.
+To get information about the current state of the kernel or security governance contract directly from the contract, connect the Octez client to an active node and call the contract's `get_voting_state` view.
 For example, this Octez client command calls this view for the security governance contract on Mainnet:
 
 ```bash
-octez-client run view get_voting_state on contract KT1H5pCmFuhAwRExzNNrPQFKpunJx1yEVa6J
+octez-client -E https://mainnet.ecadinfra.com \
+  run view get_voting_state on contract KT1H5pCmFuhAwRExzNNrPQFKpunJx1yEVa6J
 ```
 
 The view returns information about the current governance period in this order:
