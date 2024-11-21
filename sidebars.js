@@ -79,7 +79,8 @@ const sidebars = {
         'tools/data-indexers',
         'tools/cross-chain-comms',
         'tools/developer-experience',
-        'tools/institutions'
+        'tools/institutions',
+        'tools/communication'
       ],
     },
     {
