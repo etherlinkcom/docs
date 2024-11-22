@@ -41,7 +41,18 @@ const sidebars = {
         'bridging/bridging',
         'bridging/bridging-tezos',
         'bridging/bridging-evm',
-        'bridging/bridging-fa',
+        {
+          type: 'category',
+          label: 'Bridging FA tokens between Tezos layer 1 and Etherlink',
+          link: {
+            id: 'bridging/bridging-fa',
+            type: 'doc',
+          },
+          items: [
+            'bridging/bridging-fa-how',
+            'bridging/bridging-fa-transactions',
+          ],
+        },
       ],
     },
     {
