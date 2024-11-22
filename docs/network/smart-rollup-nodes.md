@@ -197,7 +197,8 @@ This example uses `$OPERATOR_ACCOUNT` for the account with 10,000 liquid tez and
      --history-mode archive \
      --rpc-addr 0.0.0.0 \
      --data-dir $SR_DATA_DIR \
-     --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
+     --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
+     --force
    ```
 
    This command generates updates the configuration file to contain the addresses of the accounts that post operations to layer 1, including the node's commitments.
@@ -247,7 +248,8 @@ A node running in `bailout` mode defends its existing commitments but does not m
         executing_outbox:$SECONDARY_ACCOUNT \
         --rpc-addr 0.0.0.0 \
         --data-dir $SR_DATA_DIR \
-        --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
+        --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
+        --force
       ```
 
    1. Restart the node:
