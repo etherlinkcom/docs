@@ -194,7 +194,6 @@ This example uses `$OPERATOR_ACCOUNT` for the account with 10,000 liquid tez and
      operating:$OPERATOR_ACCOUNT \
      cementing:$SECONDARY_ACCOUNT \
      executing_outbox:$SECONDARY_ACCOUNT \
-     --history-mode archive \
      --rpc-addr 0.0.0.0 \
      --data-dir $SR_DATA_DIR \
      --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
