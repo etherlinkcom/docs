@@ -55,8 +55,8 @@ export default function WalletConnectButton({ network, title }) {
   const dAppMeta = {
     name: "Etherlink documentation",
     description: "Connect your wallet to Etherlink",
-    logoUrl: "https://etherlink.com/logo.png",
-    url: "https://etherlink.com",
+    logoUrl: "/img/etherlinkIcon.svg",
+    url: "https://docs.etherlink.com",
     isDarkMode: true,
   };
 
@@ -70,6 +70,11 @@ export default function WalletConnectButton({ network, title }) {
         theme={customTheme}
         connectButton={{ label: title }}
         chain={activeChain} // Causes errors
+        connectModal={{
+          title: title,
+          titleIcon: "/img/etherlinkIcon.svg",
+          size: "compact",
+        }}
       />
     </ThirdwebProvider>
   )
