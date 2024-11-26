@@ -258,7 +258,7 @@ A node running in `bailout` mode defends its existing commitments but does not m
         --data-dir $SR_DATA_DIR
       ```
 
-1. Wait two weeks for the node's last commitment to be cemented.
+1. Keep the node running for two weeks for the node's last commitment to be cemented.
 
 1. Recover the node's bonded tez by running this command:
 
