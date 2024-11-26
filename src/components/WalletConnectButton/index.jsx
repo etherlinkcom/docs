@@ -15,8 +15,8 @@ const customTheme = lightTheme({
 });
 
 const testnet = {
-  // chainId: 128123,
-  // rpc: ["https://node.ghostnet.etherlink.com"],
+  chainId: 128123,
+  rpc: "https://node.ghostnet.etherlink.com",
   nativeCurrency: {
     decimals: 18,
     name: "XTZ",
@@ -30,8 +30,8 @@ const testnet = {
 };
 
 const mainnet = {
-  // chainId: 42793,
-  // rpc: ["https://node.mainnet.etherlink.com"],
+  chainId: 42793,
+  rpc: "https://node.mainnet.etherlink.com",
   nativeCurrency: {
     decimals: 18,
     name: "XTZ",
@@ -69,7 +69,7 @@ export default function WalletConnectButton({ network, title }) {
         appMetadata={dAppMeta}
         theme={customTheme}
         connectButton={{ label: title }}
-        // chain={activeChain} // Causes errors
+        chain={activeChain} // Causes errors
       />
     </ThirdwebProvider>
   )
