@@ -10,6 +10,6 @@ Check out their amazing [video tutorials](https://www.youtube.com/watch?v=0DQqtx
 
 ## Safe
 
-[Etherlink Safe](https://safe.etherlink.com) is an Etherlink implementation of [Safe{Wallet}](https://github.com/safe-global/safe-wallet-web), which manages multi-signature smart contracts (multisigs).
+[Etherlink Safe](https://safe.etherlink.com) is an Etherlink implementation of [Safe\{Wallet\}](https://github.com/safe-global/safe-wallet-web), which manages multi-signature smart contracts (multisigs).
 Etherlink Safe is currently available only on Etherlink Testnet.
 For more information about multisigs, see [Multi-signature smart contracts](https://docs.tezos.com/smart-contracts/multisig)
