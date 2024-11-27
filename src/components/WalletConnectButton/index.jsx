@@ -3,6 +3,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { createThirdwebClient } from 'thirdweb';
 import { ConnectButton, ThirdwebProvider, lightTheme } from 'thirdweb/react';
 import { inAppWallet, createWallet } from "thirdweb/wallets";
+import { defineChain } from "thirdweb/chains";
 
 const customTheme = lightTheme({
   colors: {
@@ -15,7 +16,7 @@ const customTheme = lightTheme({
   },
 });
 
-const testnet = {
+const testnet = defineChain({
   chainId: 128123,
   rpc: "https://node.ghostnet.etherlink.com",
   nativeCurrency: {
@@ -28,9 +29,9 @@ const testnet = {
   testnet: true,
   // chain: "Etherlink",
   name: "Etherlink Testnet",
-};
+});
 
-const mainnet = {
+const mainnet = defineChain({
   chainId: 42793,
   rpc: "https://node.mainnet.etherlink.com",
   nativeCurrency: {
@@ -43,7 +44,7 @@ const mainnet = {
   testnet: false,
   // chain: "Etherlink",
   name: "Etherlink Mainnet",
-};
+});
 
 const wallets = [
   inAppWallet({
@@ -93,7 +94,7 @@ export default function WalletConnectButton({ network, title }) {
         wallets={wallets}
         theme={customTheme}
         connectButton={{ label: title }}
-        // chain={activeChain} // Causes errors
+        chain={activeChain} // Causes errors
         connectModal={{
           title: title,
           titleIcon: "/img/etherlinkIcon.svg",
