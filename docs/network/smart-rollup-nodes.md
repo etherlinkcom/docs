@@ -225,7 +225,7 @@ Then you can recover the node's bonded tez and stop the node.
 
 :::warning
 
-If you stop the node before waiting for its last commitment to be cemented, the bonded tez is at risk if other Smart Rollup nodes challenge that commitment and your node is not online to defend it in the Smart Rollup refutation game.
+If you stop the node before waiting for its last commitment to be cemented, the bonded tez is at risk if other challenge that commitment and your node is not online to defend it in the Smart Rollup refutation game.
 For more information, see [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com.
 
 :::
