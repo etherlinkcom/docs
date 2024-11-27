@@ -17,11 +17,6 @@
     transition: all 0.3s ease;
 }
 
-/* Tweak spacing for second-level nested items */
-ul ul .categoryLink {
-    margin-bottom: 30px;
-}
-
 .categoryIcon {
     display: flex;
     align-items: center;
