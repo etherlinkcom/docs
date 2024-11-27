@@ -124,6 +124,27 @@ For example, this query gets the health of the node:
    curl -s http://localhost:8932/health
    ```
 
+   If the response includes the fields `healthy: false` and the `blocks_late` field is more than 0, the node is catching up to the current state of Etherlink.
+
+   ```json
+   {
+     "healthy": false,
+     "degraded": false,
+     "l1": {
+       "connection": "connected",
+       "blocks_late": 6949,
+       "last_seen_head": {
+         "hash": "BKmkbnFPsmQ28m4Wnsp3wgzvQnDeA9usqqfAFTsXieVGGJVEjS3",
+         "level": 9253862,
+         "timestamp": "2024-11-26T15:21:59Z"
+       }
+     },
+     "active_workers": []
+   }
+   ```
+
+1. Wait until the response includes the field `healthy: true` and the `blocks_late` field is 0.
+
 Now the Smart Rollup node is running and tracking the state of Etherlink by receiving information from layer 1.
 
 ## Converting the Smart Rollup node to maintenance mode
