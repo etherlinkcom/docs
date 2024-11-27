@@ -17,32 +17,32 @@ const customTheme = lightTheme({
 });
 
 const testnet = defineChain({
-  chainId: 128123,
+  id: 128123,
   rpc: "https://node.ghostnet.etherlink.com",
   nativeCurrency: {
     decimals: 18,
     name: "XTZ",
     symbol: "XTZ",
   },
-  // shortName: "etherlink",
-  // slug: "etherlink",
+  shortName: "etherlink",
+  slug: "etherlink",
   testnet: true,
-  // chain: "Etherlink",
+  chain: "Etherlink",
   name: "Etherlink Testnet",
 });
 
 const mainnet = defineChain({
-  chainId: 42793,
+  id: 42793,
   rpc: "https://node.mainnet.etherlink.com",
   nativeCurrency: {
     decimals: 18,
     name: "XTZ",
     symbol: "XTZ",
   },
-  // shortName: "etherlink",
-  // slug: "etherlink",
+  shortName: "etherlink",
+  slug: "etherlink",
   testnet: false,
-  // chain: "Etherlink",
+  chain: "Etherlink",
   name: "Etherlink Mainnet",
 });
 
@@ -94,7 +94,7 @@ export default function WalletConnectButton({ network, title }) {
         wallets={wallets}
         theme={customTheme}
         connectButton={{ label: title }}
-        chain={activeChain} // Causes errors
+        chain={activeChain}
         connectModal={{
           title: title,
           titleIcon: "/img/etherlinkIcon.svg",
