@@ -241,10 +241,7 @@ A node running in `bailout` mode defends its existing commitments but does not m
 
       ```bash
       octez-smart-rollup-node init bailout config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
-        with operators \
-        operating:$OPERATOR_ACCOUNT \
-        cementing:$SECONDARY_ACCOUNT \
-        executing_outbox:$SECONDARY_ACCOUNT \
+        with operators $OPERATOR_ACCOUNT cementing:$SECONDARY_ACCOUNT \
         --rpc-addr 0.0.0.0 \
         --data-dir $SR_DATA_DIR \
         --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
