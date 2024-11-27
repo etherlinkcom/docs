@@ -41,18 +41,9 @@ const sidebars = {
         'bridging/bridging',
         'bridging/bridging-tezos',
         'bridging/bridging-evm',
-        {
-          type: 'category',
-          label: 'Bridging FA tokens',
-          link: {
-            id: 'bridging/bridging-fa',
-            type: 'doc',
-          },
-          items: [
-            'bridging/bridging-fa-how',
-            'bridging/bridging-fa-transactions',
-          ],
-        },
+        'bridging/bridging-fa',
+        'bridging/bridging-fa-how',
+        'bridging/bridging-fa-transactions',
       ],
     },
     {
