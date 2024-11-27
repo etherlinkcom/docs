@@ -1,5 +1,6 @@
 ---
 title: Bridging XTZ between Tezos layer 1 and Etherlink
+sidebar_label: Bridging to Tezos
 ---
 
 You can bridge XTZ tokens from Tezos layer 1 to Etherlink and back.

@@ -1,5 +1,6 @@
 ---
 title: Bridging FA tokens between Tezos layer 1 and Etherlink
+sidebar_label: Bridging FA tokens
 ---
 
 You can bridge FA standards-compliant tokens in and out of Etherlink by deploying contracts that move the tokens.
