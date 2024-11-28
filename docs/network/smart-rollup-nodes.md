@@ -185,28 +185,19 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 
 1. Stop the node.
 
-1. Re-initialize the node for maintenance mode by running the `init maintenance config` command and passing the addresses or Octez aliases of the accounts.
+1. Run the node in maintenance mode, passing the addresses or Octez aliases of the accounts and the layer 1 node that you control.
 This example uses `$OPERATOR_ACCOUNT` for the account with 10,000 liquid tez and `$SECONDARY_ACCOUNT` for the other account:
 
    ```bash
-   octez-smart-rollup-node init maintenance config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
+   octez-smart-rollup-node run maintenance for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
      with operators \
      operating:$OPERATOR_ACCOUNT \
      cementing:$SECONDARY_ACCOUNT \
      executing_outbox:$SECONDARY_ACCOUNT \
+     --endpoint $MY_LAYER_1_NODE \
      --rpc-addr 0.0.0.0 \
      --data-dir $SR_DATA_DIR \
-     --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
-     --force
-   ```
-
-   This command generates updates the configuration file to contain the addresses of the accounts that post operations to layer 1, including the node's commitments.
-
-1. Restart the node, again with the layer 1 node that you control:
-
-   ```bash
-   octez-smart-rollup-node --endpoint $MY_LAYER_1_NODE run \
-     --data-dir $SR_DATA_DIR
+     --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
    ```
 
 1. Verify that the Smart Rollup node is running by querying it.
@@ -237,22 +228,16 @@ A node running in `bailout` mode defends its existing commitments but does not m
 
    1. Stop the node.
 
-   1. Re-initialize the node for `bailout` mode by running this command:
+   1. Restart the node in bailout mode:
 
       ```bash
-      octez-smart-rollup-node init bailout config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
-        with operators $OPERATOR_ACCOUNT cementing:$SECONDARY_ACCOUNT \
+      octez-smart-rollup-node run bailout for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
+        with operators \
+        cementing:$SECONDARY_ACCOUNT \
+        --endpoint $MY_LAYER_1_NODE \
         --rpc-addr 0.0.0.0 \
         --data-dir $SR_DATA_DIR \
-        --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
-        --force
-      ```
-
-   1. Restart the node:
-
-      ```bash
-      octez-smart-rollup-node --endpoint $MY_LAYER_1_NODE run \
-        --data-dir $SR_DATA_DIR
+        --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
       ```
 
 1. Keep the node running for two weeks for the node's last commitment to be cemented.
