@@ -43,4 +43,23 @@ You must deploy and operate the FA bridge contracts yourself as described in [Se
 ## Adding an FA token to the bridge UI
 
 To request that your FA token be added to the bridge UI, you must fill out the request form with information including the addresses of your FA contract, the addresses of the bridge contracts that you deployed, and the token metadata, including its name, symbol, decimals, and icon.
+
+The request form is here:
 <!-- TODO link to form -->
+
+The form requires information about the token and the bridging contracts:
+
+- The address of the FA token contract on Tezos
+- The address of the ticketer contract on Tezos
+- The address of the token bridge helper contract on Tezos
+- The address of the ERC-20 proxy contract on Etherlink
+- The name of the token
+- The ticker symbol for the token
+- The number of decimal places used in the token quantity
+- An icon for the token
+- The Twitter user name of the token creator
+- A contact email address for follow-up questions
+
+You can get information about the bridging contracts from the response messages from the [bridging tool](https://github.com/baking-bad/etherlink-bridge) and from block explorers.
+
+After you submit the form, the team that manages the Etherlink bridge UI reviews it and adds it to the UI if they approve it.
