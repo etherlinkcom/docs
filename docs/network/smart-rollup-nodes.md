@@ -163,7 +163,7 @@ Converting the observer node to maintenance mode requires these prerequisites:
 
    :::
 
-- An account with at least 10,000 liquid (unstaked) tez, referred to as the _operator account_.
+- An account with at least 10,000 liquid, available tez, referred to as the _operator account_.
 You can use the same account that you use for a layer 1 baker, but for better security, you can use a different account and delegate its tez to the layer 1 account.
 
 - An account with a small amount of liquid tez for cementing and outbox operations.
