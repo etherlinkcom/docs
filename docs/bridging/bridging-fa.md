@@ -44,8 +44,7 @@ You must deploy and operate the FA bridge contracts yourself as described in [Se
 
 To request that your FA token be added to the bridge UI, you must fill out the request form with information including the addresses of your FA contract, the addresses of the bridge contracts that you deployed, and the token metadata, including its name, symbol, decimals, and icon.
 
-The request form is here:
-<!-- TODO link to form -->
+The request form is here: https://tt-tezos.typeform.com/to/RmiMO04v
 
 The form requires information about the token and the bridging contracts:
 
