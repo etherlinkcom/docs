@@ -70,6 +70,28 @@ const StyledButton = styled(Button)({
 
 export default function WalletConnectButton({ network, title }) {
 
+  async function connectButtonClick(activeChain) {
+    try {
+      await window.ethereum.request({
+        method: 'wallet_addEthereumChain',
+        params: [{
+          chainId: activeChain.chainId,
+          chainName: activeChain.name,
+          rpcUrls: activeChain.rpc,
+          iconUrls: [logoUrl],
+          nativeCurrency: activeChain.nativeCurrency,
+          blockExplorerUrls: activeChain.blockExplorerUrls,
+        }],
+      });
+      await window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{chainId: activeChain.chainId}],
+        });
+    } catch (error) {
+      // Do nothing
+    }
+  }
+
   const activeChain = network === "mainnet" ? mainnet : testnet;
 
   const {siteConfig} = useDocusaurusContext();
@@ -78,23 +100,7 @@ export default function WalletConnectButton({ network, title }) {
   return (
     <StyledButton
       variant="contained"
-      onClick={async () => {
-        await window.ethereum.request({
-          method: 'wallet_addEthereumChain',
-          params: [{
-            chainId: activeChain.chainId,
-            chainName: activeChain.name,
-            rpcUrls: activeChain.rpc,
-            iconUrls: [logoUrl],
-            nativeCurrency: activeChain.nativeCurrency,
-            blockExplorerUrls: activeChain.blockExplorerUrls,
-          }],
-        });
-        await window.ethereum.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{chainId: activeChain.chainId}],
-        });
-      }}
+      onClick={() => connectButtonClick(activeChain)}
     >{title}</StyledButton>
   )
 }
