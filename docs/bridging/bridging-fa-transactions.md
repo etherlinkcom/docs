@@ -13,7 +13,7 @@ Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
 1. Give the token bridge helper contract access to the tokens, depending on the type of token:
 
    - For FA1.2 tokens, give the token bridge helper contract an allowance for the number of tokens to deposit.
-   You can submit this transaction with any Tezos client, including on many block explorers.
+   You can submit this transaction with any Tezos client.
    For example, this Octez client command sets the contract's allowance to 5 tokens:
 
       ```bash
