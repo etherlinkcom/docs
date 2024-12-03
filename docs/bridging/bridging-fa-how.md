@@ -67,16 +67,6 @@ The process of bridging FA-compatible tokens from Etherlink to layer 1 (also kno
 
    The proxy contract uses the address of the ticketer contract and the content of the ticket to verify that the user owns the specified tokens.
 
-   <!-- TODO the payload consists of two forged contracts concatenated:
-   | receiver | proxy | 44 bytes
-   Forged contract consists of binary suffix/prefix and body (blake2b hash digest):
-
-   - tz1 — 0x00 0x00 <body>
-   - tz2 — 0x00 0x01 <body>
-   - tz3 — 0x00 0x02 <body>
-   - KT1 — 0x01 <body> 0x00
-   -->
-
 1. The precompiled contract creates a transaction for the ERC-20 proxy contract to send the ticket to the helper contract and puts this transaction in the Smart Rollup outbox.
 This transaction includes the target layer 1 address.
 
