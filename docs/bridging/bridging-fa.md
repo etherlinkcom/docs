@@ -4,7 +4,7 @@ sidebar_label: Bridging FA tokens
 ---
 
 You can bridge FA standards-compliant tokens in and out of Etherlink by deploying contracts that move the tokens.
-You can call those contracts to bridge the tokens or request that the Etherlink team add them to the bridge UI.
+Then you can create dApps that use these contracts to move tokens or send a request to the Etherlink team to add your tokens to the bridge at https://www.etherlinkbridge.com/tezos-bridge.
 
 The Tezos FA standards are token standards like the Ethereum ERC-20, ERC-721, and ERC-1155 standards.
 For more information about the FA standards, see [Token standards](https://docs.tezos.com/architecture/tokens#token-standards) on docs.tezos.com.
