@@ -1,7 +1,6 @@
-import { ThirdwebProvider, metamaskWallet, localWallet, walletConnect, ConnectWallet, lightTheme } from "@thirdweb-dev/react";
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { Button } from '@mui/material';
 
-const customTheme = lightTheme({
+const customTheme = {
   colors: {
     primaryText: 'black',
     primaryButtonBg: '#38ff9c',
@@ -10,10 +9,11 @@ const customTheme = lightTheme({
     connectedButtonBgHover: '#59ad8c',
     borderColor: '#59ad8c'
   },
-});
+};
 
 const ghostnet = {
-  chainId: 128123,
+  // chainId: '128123',
+  chainId: '0x1F47B',
   rpc: ["https://node.ghostnet.etherlink.com"],
   nativeCurrency: {
     decimals: 18,
@@ -25,10 +25,12 @@ const ghostnet = {
   testnet: true,
   chain: "Etherlink",
   name: "Etherlink Testnet",
+  blockExplorerUrls: ["https://testnet.explorer.etherlink.com/"],
 };
 
 const mainnet = {
-  chainId: 42793,
+  // chainId: 42793,
+  chainId: '0xA729',
   rpc: ["https://node.mainnet.etherlink.com"],
   nativeCurrency: {
     decimals: 18,
@@ -40,13 +42,10 @@ const mainnet = {
   testnet: true,
   chain: "Etherlink",
   name: "Etherlink Mainnet",
+  blockExplorerUrls: ["https://explorer.etherlink.com/"],
 };
 
 export default function WalletConnectButton({ network, title }) {
-
-  const {
-    siteConfig: {customFields},
-  } = useDocusaurusContext();
 
   const activeChain = network === "mainnet" ? mainnet : ghostnet;
 
@@ -59,27 +58,25 @@ export default function WalletConnectButton({ network, title }) {
   };
 
   return (
-    <ThirdwebProvider clientId={customFields.THIRDWEB_CLIENT_ID}
-      activeChain={activeChain}
-      supportedWallets={[
-        metamaskWallet({ recommended: true }),
-        walletConnect(),
-        localWallet(),
-        // embeddedWallet({
-        //   auth: {
-        //     options: ["email", "apple", "google"],
-        //   },
-        // }),
-        // phantomWallet({ recommended: true }),
-      ]}
-      dAppMeta={dAppMeta}>
-      <ConnectWallet
-        switchToActiveChain={true}
-        theme={customTheme}
-        modalSize={"wide"}
-        btnTitle={title}
-      />
-    </ThirdwebProvider>
-
+    <Button
+      variant="contained"
+      onClick={async () => {
+        await window.ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [{
+            chainId: activeChain.chainId,
+            chainName: activeChain.name,
+            rpcUrls: activeChain.rpc,
+            // iconUrls:
+            nativeCurrency: activeChain.nativeCurrency,
+            blockExplorerUrls: activeChain.blockExplorerUrls,
+          }],
+        });
+        await window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{chainId: activeChain.chainId}],
+        });
+      }}
+    >{title}</Button>
   )
 }
