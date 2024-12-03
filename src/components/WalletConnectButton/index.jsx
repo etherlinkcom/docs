@@ -1,15 +1,7 @@
-import { Button } from '@mui/material';
-
-const customTheme = {
-  colors: {
-    primaryText: 'black',
-    primaryButtonBg: '#38ff9c',
-    primaryButtonText: 'black',
-    secondaryButtonBg: '#59ad8c',
-    connectedButtonBgHover: '#59ad8c',
-    borderColor: '#59ad8c'
-  },
-};
+import { Button } from '@mui/base/Button';
+import { styled } from '@mui/system';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 const ghostnet = {
   // chainId: '128123',
@@ -45,20 +37,46 @@ const mainnet = {
   blockExplorerUrls: ["https://explorer.etherlink.com/"],
 };
 
+const StyledButton = styled(Button)({
+  borderRadius: 6,
+  boxShadow: 'none',
+  textTransform: 'none',
+  fontSize: 16,
+  padding: '6px 12px',
+  border: 'none',
+  color: 'black',
+  lineHeight: 1.5,
+  backgroundColor: '#38ff9c',
+  borderColor: '#59ad8c',
+  fontFamily: [
+    'Roboto',
+    'system-ui',
+    '-apple-system',
+    'Segoe UI',
+    'Ubuntu',
+    'Cantarell',
+    'Noto Sans',
+    'sans-serif',
+    'BlinkMacSystemFont',
+    "Segoe UI",
+    'Helvetica',
+    'Arial',
+    'sans-serif',
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+  ].join(','),
+});
+
 export default function WalletConnectButton({ network, title }) {
 
   const activeChain = network === "mainnet" ? mainnet : ghostnet;
 
-  const dAppMeta = {
-    name: "Etherlink documentation",
-    description: "Connect your wallet to Etherlink",
-    logoUrl: "https://etherlink.com/logo.png",
-    url: "https://etherlink.com",
-    isDarkMode: true,
-  };
+  const {siteConfig} = useDocusaurusContext();
+  const logoUrl = siteConfig.url + useBaseUrl("/img/Logo-05.svg");
 
   return (
-    <Button
+    <StyledButton
       variant="contained"
       onClick={async () => {
         await window.ethereum.request({
@@ -67,7 +85,7 @@ export default function WalletConnectButton({ network, title }) {
             chainId: activeChain.chainId,
             chainName: activeChain.name,
             rpcUrls: activeChain.rpc,
-            // iconUrls:
+            iconUrls: [logoUrl],
             nativeCurrency: activeChain.nativeCurrency,
             blockExplorerUrls: activeChain.blockExplorerUrls,
           }],
@@ -77,6 +95,6 @@ export default function WalletConnectButton({ network, title }) {
           params: [{chainId: activeChain.chainId}],
         });
       }}
-    >{title}</Button>
+    >{title}</StyledButton>
   )
 }
