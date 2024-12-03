@@ -42,9 +42,10 @@ You must deploy and operate the FA bridge contracts yourself as described in [Se
 
 ## Adding an FA token to the bridge UI
 
-To request that your FA token be added to the bridge UI, you must fill out the request form with information including the addresses of your FA contract, the addresses of the bridge contracts that you deployed, and the token metadata, including its name, symbol, decimals, and icon.
+You can set up your own UI to call the bridging contracts using any Tezos and EVM clients.
 
-The request form is here: https://tt-tezos.typeform.com/to/RmiMO04v
+You can also send a request to the Etherlink team to add your token to the bridge UI at https://www.etherlinkbridge.com/tezos-bridge.
+To request that your FA token be added to the bridge UI, fill out this request form: https://tt-tezos.typeform.com/to/RmiMO04v
 
 The form requires information about the token and the bridging contracts:
 
