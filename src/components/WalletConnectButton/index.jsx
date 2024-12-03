@@ -3,7 +3,7 @@ import { styled } from '@mui/system';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
-const ghostnet = {
+const testnet = {
   // chainId: '128123',
   chainId: '0x1F47B',
   rpc: ["https://node.ghostnet.etherlink.com"],
@@ -70,7 +70,7 @@ const StyledButton = styled(Button)({
 
 export default function WalletConnectButton({ network, title }) {
 
-  const activeChain = network === "mainnet" ? mainnet : ghostnet;
+  const activeChain = network === "mainnet" ? mainnet : testnet;
 
   const {siteConfig} = useDocusaurusContext();
   const logoUrl = siteConfig.url + useBaseUrl("/img/Logo-05.svg");
