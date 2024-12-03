@@ -67,7 +67,9 @@ The process of bridging FA-compatible tokens from Etherlink to layer 1 (also kno
 
    The proxy contract uses the address of the ticketer contract and the content of the ticket to verify that the user owns the specified tokens.
 
-1. The precompiled contract creates a transaction for the ERC-20 proxy contract to send the ticket to the helper contract and puts this transaction in the Smart Rollup outbox.
+1. The precompiled contract calls the withdrawal endpoint of the ERC-20 proxy contract.
+
+1. The proxy contract generates a ticket and sends it to the helper contract by putting it in a transaction in the Smart Rollup outbox.
 This transaction includes the target layer 1 address.
 
 This outbox message becomes part of Etherlink's commitment to its state.
