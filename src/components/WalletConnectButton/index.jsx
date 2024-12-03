@@ -72,6 +72,12 @@ export default function WalletConnectButton({ network, title }) {
 
   async function connectButtonClick(activeChain) {
     try {
+
+      if (!window.ethereum) {
+        alert('No wallet detected. You need an EVM wallet to connect to Etherlink.')
+        return;
+      }
+
       await window.ethereum.request({
         method: 'wallet_addEthereumChain',
         params: [{
