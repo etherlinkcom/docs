@@ -57,7 +57,7 @@ Because the Etherlink tokens are compatible with the ERC-20 standard, EVM-compat
 ## Withdrawing FA tokens from Etherlink to layer 1
 
 It takes two transactions to withdraw an FA token back to Etherlink: one to initiate the withdrawal and another to run the outbox transaction on Tezos layer 1.
-As described above, you must wait two weeks to run the outbox transaction due to the Smart Rollup refutation period.
+As described in [Bridging FA tokens](/bridging/bridging-fa), you must wait two weeks to run the outbox transaction due to the Smart Rollup refutation period.
 
 Neither of these transactions are easy to do.
 Initiating the withdrawal requires sending complex information about the ticket and contracts to the FA2 withdrawal precompile on Etherlink.
