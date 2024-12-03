@@ -60,8 +60,8 @@ The process of bridging FA-compatible tokens from Etherlink to layer 1 (also kno
 1. The user calls the FA withdrawal precompiled contract on Etherlink and includes this information:
 
    - The address of the ERC-20 proxy contract that stores the ticket that represents the tokens
-   - The amount of tokens to bridge
    - The user's layer 1 address or the address of a contract to send the tokens to
+   - The amount of tokens to bridge
    - The address of the ticketer contract on layer 1
    - The content of the ticket to remove from the proxy contract (not the ticket itself)
 
