@@ -17,6 +17,10 @@ It receives transactions from EVM nodes, puts them in order, and packages them i
 These blocks are specific to Etherlink and are separate from Tezos layer blocks.
 These blocks are also called "blueprints."
 
+The sequencer generates blocks on demand.
+It generates a block at least every 6 seconds, even if the block is empty.
+As demand increases, it generates blocks more quickly, up to a block every 500ms.
+
 Each Etherlink block contains:
 
 - A list of transactions
