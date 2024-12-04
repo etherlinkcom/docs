@@ -78,6 +78,8 @@ export default function WalletConnectButton({ network, title }) {
         return;
       }
 
+      // Connect to network and switch to network
+      // Fails if the network is already connected
       await window.ethereum.request({
         method: 'wallet_addEthereumChain',
         params: [{
@@ -89,12 +91,8 @@ export default function WalletConnectButton({ network, title }) {
           blockExplorerUrls: activeChain.blockExplorerUrls,
         }],
       });
-      await window.ethereum.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{chainId: activeChain.chainId}],
-        });
     } catch (error) {
-      // Do nothing
+      // Do nothing; already connected
     }
   }
 
