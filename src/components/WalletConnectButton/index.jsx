@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Button } from '@mui/base/Button';
 import { styled } from '@mui/system';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -70,6 +71,10 @@ const StyledButton = styled(Button)({
 
 export default function WalletConnectButton({ network, title }) {
 
+  const [chainId, setChainId] = useState(async () => await window.ethereum.request({
+      method: "eth_chainId",
+  }));
+
   async function connectButtonClick(activeChain) {
     try {
 
@@ -91,12 +96,18 @@ export default function WalletConnectButton({ network, title }) {
           blockExplorerUrls: activeChain.blockExplorerUrls,
         }],
       });
+      setChainId(activeChain.chainId);
     } catch (error) {
       // Do nothing; already connected
     }
   }
 
   const activeChain = network === "mainnet" ? mainnet : testnet;
+
+  let buttonLabel = title;
+  if (chainId === activeChain.chainId) {
+    buttonLabel = "Connected";
+  }
 
   const {siteConfig} = useDocusaurusContext();
   const logoUrl = siteConfig.url + useBaseUrl("/img/Logo-05.svg");
@@ -105,6 +116,6 @@ export default function WalletConnectButton({ network, title }) {
     <StyledButton
       variant="contained"
       onClick={() => connectButtonClick(activeChain)}
-    >{title}</StyledButton>
+    >{buttonLabel}</StyledButton>
   )
 }
