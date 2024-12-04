@@ -1,19 +1,20 @@
 ---
 title: Bridging XTZ between Tezos layer 1 and Etherlink
+sidebar_label: Bridging to Tezos
 ---
 
-You can bridge the native token on Etherlink and Tezos, which is called tez and shown on price tickers with the symbol [XTZ](https://coinmarketcap.com/currencies/tezos/).
-You can bridge tez from Tezos Mainnet to XTZ on Etherlink Mainnet and back, and you can bridge tez from Tezos Testnet (Ghostnet) to XTZ on Etherlink Testnet and back.
-For more information about tez, see [Tokens](https://docs.tezos.com/architecture/tokens) on docs.tezos.com.
+You can bridge XTZ tokens from Tezos layer 1 to Etherlink and back.
+XTZ is the native token on Etherlink and Tezos, which is called tez and shown on price tickers with the symbol [XTZ](https://coinmarketcap.com/currencies/tezos/).
 
-Etherlink provides Tezos bridges for XTZ tokens.
+Two bridging operations are available:
+
+- Bridging tokens from Tezos layer 1 to Etherlink is referred to as _depositing_ tokens.
+- Bridging tokens from Etherlink to Tezos layer 1 is referred to as _withdrawing_ tokens.
+
 These bridges are trustless and permissionless; anyone can use them without restrictions or the intervention of a third party.
 
 - [Mainnet Tezos bridge](https://www.etherlinkbridge.com/tezos-bridge)
 - [Testnet Tezos bridge](https://testnet.bridge.etherlink.com/)
-
-- Bridging tokens from Tezos layer 1 to Etherlink is referred to as _depositing_ tokens.
-- Bridging tokens from Etherlink to Tezos layer 1 is referred to as _withdrawing_ tokens.
 
 :::note
 <h3>Bridging time</h3>
@@ -21,46 +22,30 @@ Tokens that you bridge from Tezos layer 1 to Etherlink are available for use on 
 
 Tokens that you bridge from Etherlink to Tezos layer 1 are available for use on Tezos in 15 days.
 
-This delay is caused by the Smart Rollup refutation period. As with all Smart Rollups, Etherlink nodes post commitments about their state to Tezos layer 1, including incoming bridging transactions, on a regular schedule. Other nodes have the length of the refutation period (15 days) to challenge those commitments. At the end of the refutation period, the correct commitment is cemented, or made final and unchangeable. Users can execute the bridging transactions in a commitment only after the commitment is cemented.
+This delay is caused by the Smart Rollup refutation period.
+As with all Smart Rollups, Etherlink nodes post commitments about their state to Tezos layer 1, including incoming bridging transactions, on a regular schedule.
+Other nodes have the length of the refutation period (14 days) to challenge those commitments.
+At the end of the refutation period, the correct commitment is cemented, or made final and unchangeable.
+Users can execute the bridging transactions in a commitment only after the commitment is cemented.
 
-The Etherlink indexer run by Nomadic Labs automatically executes these bridging transactions when they are cemented, which makes the bridged tokens available on Tezos.
+The Etherlink indexer run by Nomadic Labs automatically executes these bridging transactions soon after they are cemented, which makes the bridged tokens available on Tezos about 15 days after you submit the withdrawal.
 :::
 
-## Using the Mainnet Tezos bridge
+## Using the bridge
 
-To use the Mainnet bridge, follow these general steps:
+To use the bridge, follow these general steps:
 
-1. Go to the bridge at https://www.etherlinkbridge.com/tezos-bridge.
+1. Go to the bridge at https://www.etherlinkbridge.com/tezos-bridge for Mainnet or https://testnet.bridge.etherlink.com for Testnet.
 
 1. Connect your Tezos and Etherlink-compatible wallets.
 
-1. Select the type of transfer:
+1. At the top of the page, select the source token and network.
 
-   - **Deposit** transfers XTZ from Tezos layer 1 to Etherlink
-   - **Withdraw** transfers XTZ from Etherlink to Tezos layer 1
+1. Below the source token, select the target token and network.
 
-1. Enter the amount of XTZ tokens to transfer.
+1. Enter the amount of tokens to transfer.
 
 1. Click **Transfer**.
-
-## Using the Testnet Tezos bridge
-
-To use the Testnet bridge, follow these general steps:
-
-1. Go to the bridge at https://testnet.bridge.etherlink.com.
-
-1. Connect your Tezos and Etherlink-compatible wallets.
-
-1. Select the type of transfer:
-
-   - **Deposit** transfers XTZ from Tezos layer 1 to Etherlink
-   - **Withdraw** transfers XTZ from Etherlink to Tezos layer 1
-
-1. Enter the amount of XTZ tokens to transfer.
-
-1. Click **Move funds to Etherlink** or **Move funds to Tezos**.
-
-You can monitor the status of your bridge operations on the **Transaction History** tab.
 
 ## How bridging XTZ works
 

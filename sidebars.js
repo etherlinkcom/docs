@@ -41,6 +41,9 @@ const sidebars = {
         'bridging/bridging',
         'bridging/bridging-tezos',
         'bridging/bridging-evm',
+        'bridging/bridging-fa',
+        'bridging/bridging-fa-how',
+        'bridging/bridging-fa-transactions',
       ],
     },
     {
