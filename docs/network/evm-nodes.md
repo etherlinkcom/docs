@@ -2,12 +2,12 @@
 title: Running an Etherlink EVM node
 ---
 
-The Etherlink EVM nodes are responsible for maintaining a copy of the Etherlink context and applying new blueprints that process EVM transactions.
+The Etherlink EVM nodes are responsible for maintaining a copy of the Etherlink context and applying new blocks that process EVM transactions.
 
 ## Prerequisites
 
 - Make sure you understand the interaction between different nodes as described in [Etherlink architecture](/network/architecture).
-- If you want to verify the blueprints that come from the sequencer, run an Etherlink Smart Rollup node as described in [Running an Etherlink Smart Rollup node](/network/smart-rollup-nodes).
+- If you want to verify the blocks that come from the sequencer, run an Etherlink Smart Rollup node as described in [Running an Etherlink Smart Rollup node](/network/smart-rollup-nodes).
 Public Smart Rollup nodes for Etherlink are not yet available, so you must run your own if you want to participate in the Etherlink network.
 
 The EVM node runs Etherlink's kernel.
@@ -27,10 +27,10 @@ These images contain the correct version of the binary.
 
 ## Initializing the data directory
 
-1. If you want your EVM node to check the correctness of the blueprints it receives via a Smart Rollup node, set the `sr_node_observer_rpc` environment variable to the URL of that Etherlink Smart Rollup node, such as `http://localhost:8932`.
+1. If you want your EVM node to check the correctness of the blocks it receives via a Smart Rollup node, set the `sr_node_observer_rpc` environment variable to the URL of that Etherlink Smart Rollup node, such as `http://localhost:8932`.
 1. Set the `evm_observer_dir` environment variable to the directory where the node should store its local data.
 The default is `$HOME/.octez-evm-node`.
-1. Initialize the node. To trust incoming blueprints, use `--dont-track-rollup-node`:
+1. Initialize the node. To trust incoming blocks, use `--dont-track-rollup-node`:
 
    ```bash
    octez-evm-node init config \
@@ -39,7 +39,7 @@ The default is `$HOME/.octez-evm-node`.
      --evm-node-endpoint https://relay.mainnet.etherlink.com
    ```
 
-   Alternatively, if you want to rely on a Smart Rollup node to check the correctness of blueprints coming from the sequencer, use `--rollup-node-endpoint`:
+   Alternatively, if you want to rely on a Smart Rollup node to check the correctness of blocks coming from the sequencer, use `--rollup-node-endpoint`:
 
    ```bash
    octez-evm-node init config \
