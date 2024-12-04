@@ -3,6 +3,8 @@ title: Etherlink architecture
 ---
 
 Etherlink's main components are its nodes and the sequencer.
+The nodes and sequencer handle blocks in a way that is similar to how Tezos layer 1 handles blocks.
+Some major differences are that only the sequencer can create blocks and the timing for blocks changes based on the demand.
 
 These components are instances of binaries in the [Octez software suite](https://tezos.gitlab.io/introduction/tezos.html).
 
