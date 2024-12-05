@@ -80,7 +80,7 @@ function WalletConnectButton({ title, onButtonClick }) {
 
 export default function WalletConnectionButtonTable() {
 
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   const logoUrl = siteConfig.url + useBaseUrl("/img/Logo-05.svg");
 
   async function connectButtonClick(clickedChain, setConnected) {
@@ -116,9 +116,7 @@ export default function WalletConnectionButtonTable() {
   }
 
   // Currently connected chain ID
-  const [activeChainId, setActiveChainId] = useState(async () => await window.ethereum.request({
-    method: "eth_chainId",
-  }));
+  const [activeChainId, setActiveChainId] = useState('');
 
   const [isMainnetConnected, setIsMainnetConnected] = useState(false);
   const [isTestnetConnected, setIsTestnetConnected] = useState(false);
@@ -144,14 +142,18 @@ export default function WalletConnectionButtonTable() {
       </thead>
       <tbody>
         <tr>
-          <td><WalletConnectButton
-            title={getTitle(mainnet, isMainnetConnected)}
-            onButtonClick={() => connectButtonClick(mainnet, setIsMainnetConnected)}
-          /></td>
-          <td><WalletConnectButton
-            title={getTitle(testnet, isTestnetConnected)}
-            onButtonClick={() => connectButtonClick(testnet, setIsTestnetConnected)}
-          /></td>
+          <td>
+            <WalletConnectButton
+              title={getTitle(mainnet, isMainnetConnected)}
+              onButtonClick={() => connectButtonClick(mainnet, setIsMainnetConnected)}
+            />
+          </td>
+          <td>
+            <WalletConnectButton
+              title={getTitle(testnet, isTestnetConnected)}
+              onButtonClick={() => connectButtonClick(testnet, setIsTestnetConnected)}
+            />
+          </td>
         </tr>
       </tbody>
     </table>
