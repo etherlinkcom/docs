@@ -49,6 +49,7 @@ const StyledButton = styled(Button)({
   lineHeight: 1.5,
   backgroundColor: '#38ff9c',
   borderColor: '#59ad8c',
+
   fontFamily: [
     'Roboto',
     'system-ui',
@@ -67,11 +68,21 @@ const StyledButton = styled(Button)({
     "Segoe UI Emoji",
     "Segoe UI Symbol",
   ].join(','),
+
 });
 
 function WalletConnectButton({ title, onButtonClick }) {
   return (
     <StyledButton
+    sx={{
+      cursor: 'pointer',
+      transition: 'all 0.3s ease-in-out',
+      '&:hover': {
+          opacity: 0.8,
+          filter: 'brightness(0.8)',
+          backgroundColor: '#38ff9c !important'
+        }
+    }}
       variant="contained"
       onClick={onButtonClick}
     >{title}</StyledButton>
