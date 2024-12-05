@@ -106,7 +106,7 @@ export default function WalletConnectButton({ network, title }) {
 
   let buttonLabel = title;
   if (chainId === activeChain.chainId) {
-    buttonLabel = "Connected";
+    buttonLabel = "Switch network";
   }
 
   const {siteConfig} = useDocusaurusContext();
