@@ -2,7 +2,7 @@
 title: Using your wallet
 ---
 
-import WalletConnectButton from '@site/src/components/WalletConnectButton';
+import WalletConnectionButtonTable from '@site/src/components/WalletConnectionButtonTable';
 
 ## Which wallets can I use?
 
@@ -16,20 +16,7 @@ You can connect any wallet that supports custom EVM networks:
 The easiest way to connect your MetaMask wallet to Etherlink is to go to [the faucet](https://faucet.etherlink.com/) and connect as described in [Getting testnet tokens](/get-started/getting-testnet-tokens).
 You can also click these buttons:
 
-<table class="customTableContainer">
-  <thead>
-    <tr>
-        <th>Mainnet</th>
-        <th>Testnet</th>
-    </tr>
-  </thead>
- <tbody>
-    <tr>
-      <td><WalletConnectButton network="mainnet" title="Connect to Etherlink Mainnet"/></td>
-      <td><WalletConnectButton network="testnet" title="Connect to Etherlink Testnet"/></td>
-    </tr>
-  </tbody>
-</table>
+<WalletConnectionButtonTable />
 
 ## Connecting wallets manually
 
