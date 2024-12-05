@@ -94,11 +94,12 @@ export default function WalletConnectionButtonTable() {
   const { siteConfig } = useDocusaurusContext();
   const logoUrl = siteConfig.url + useBaseUrl("/img/Logo-05.svg");
 
+  const [ethBrowser, setEthBrowser] = useState(true);
   async function connectButtonClick(clickedChain, setConnected) {
     try {
 
       if (!window.ethereum) {
-        alert('No wallet detected. You need an EVM wallet to connect to Etherlink.')
+        setEthBrowser(false);
         return;
       }
 
@@ -128,7 +129,6 @@ export default function WalletConnectionButtonTable() {
 
   // Currently connected chain ID
   const [activeChainId, setActiveChainId] = useState('');
-
   const [isMainnetConnected, setIsMainnetConnected] = useState(false);
   const [isTestnetConnected, setIsTestnetConnected] = useState(false);
 
@@ -154,16 +154,29 @@ export default function WalletConnectionButtonTable() {
       <tbody>
         <tr>
           <td>
+          {ethBrowser ?
             <WalletConnectButton
               title={getTitle(mainnet, isMainnetConnected)}
               onButtonClick={() => connectButtonClick(mainnet, setIsMainnetConnected)}
+            /> :
+            <WalletConnectButton
+              title='No Wallet Detected'
+              onButtonClick={() => null}
             />
+          }
           </td>
           <td>
+          {ethBrowser ?
             <WalletConnectButton
               title={getTitle(testnet, isTestnetConnected)}
               onButtonClick={() => connectButtonClick(testnet, setIsTestnetConnected)}
+            /> :
+            <WalletConnectButton
+              title='No Wallet Detected'
+              onButtonClick={() => null}
             />
+          }
+
           </td>
         </tr>
       </tbody>
