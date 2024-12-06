@@ -15,9 +15,7 @@ These components are instances of binaries in the [Octez software suite](https:/
 ## Sequencer
 
 Etherlink relies on a sequencer to publish transactions.
-It receives transactions from EVM nodes, puts them in order, and packages them into a block.
-These blocks are specific to Etherlink and are separate from Tezos layer blocks.
-These blocks are also called "blueprints."
+The sequencer receives transactions from EVM nodes, puts them in order, and packages them into an Etherlink block.
 
 The sequencer generates blocks on demand.
 It generates a block at least every 6 seconds, even if the block is empty.
