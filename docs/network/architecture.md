@@ -80,8 +80,8 @@ The lifecycle of a typical operation under normal circumstances is as follows:
 
 1. A user submits a transaction to an EVM node.
 1. The EVM node forwards the transaction to the sequencer.
-1. The sequencer puts the transaction in its queue as soon as possible (less than 500ms after receiving it in a nominal scenario).
-1. The sequencer puts the transaction into a block.
+1. The sequencer puts the transaction in its pool.
+1. The sequencer puts the transaction into a block as soon as possible (less than 500ms after receiving it in a nominal scenario).
 1. The sequencer publishes the block to the EVM nodes, which update their states based on the transactions in the block.
 1. The sequencer publishes the block to the Smart Rollup inbox on layer 1 via a Smart Rollup node running in operator or batcher mode.
 1. The Smart Rollup nodes tracking the state of Etherlink fetch the block from the Smart Rollup inbox, read its transactions, and update their states.
