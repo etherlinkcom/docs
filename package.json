@@ -33,7 +33,8 @@
     "react-dom": "18.2",
     "rehype-katex": "7.0.0",
     "remark-math": "6.0.0",
-    "slick-carousel": "1.8.1"
+    "slick-carousel": "1.8.1",
+    "thirdweb": "^5.74.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.3.2",

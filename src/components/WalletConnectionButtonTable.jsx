@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { Button } from '@mui/base/Button';
 import { styled } from '@mui/system';
+import { createThirdwebClient } from 'thirdweb';
+import { ConnectButton, ThirdwebProvider, lightTheme } from 'thirdweb/react';
+import { inAppWallet, createWallet, injectedProvider } from "thirdweb/wallets";
+import { defineChain } from "thirdweb/chains";
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
@@ -21,6 +25,22 @@ const testnet = {
   blockExplorerUrls: ["https://testnet.explorer.etherlink.com/"],
 };
 
+const testnetChain = defineChain({
+  id: 128123,
+  name: "Etherlink Testnet",
+  rpc: "https://node.ghostnet.etherlink.com",
+  blockExplorers: [{
+    name: "Block explorer",
+    url: "https://testnet.explorer.etherlink.com/",
+  }],
+  blockExplorerUrl: ["https://testnet.explorer.etherlink.com/"],
+  nativeCurrency: {
+    decimals: 18,
+    name: "XTZ",
+    symbol: "XTZ",
+  },
+});
+
 const mainnet = {
   // chainId: 42793,
   chainId: '0xa729',
@@ -37,6 +57,22 @@ const mainnet = {
   name: "Etherlink Mainnet",
   blockExplorerUrls: ["https://explorer.etherlink.com/"],
 };
+
+const mainnetChain = defineChain({
+  id: 42793,
+  name: "Etherlink Mainnet",
+  rpc: "https://node.mainnet.etherlink.com",
+  blockExplorers: [{
+    name: "Block explorer",
+    url: "https://explorer.etherlink.com/",
+  }],
+  blockExplorerUrl: ["https://explorer.etherlink.com/"],
+  nativeCurrency: {
+    decimals: 18,
+    name: "XTZ",
+    symbol: "XTZ",
+  },
+});
 
 const StyledButton = styled(Button)({
   borderRadius: 6,
@@ -90,10 +126,14 @@ function WalletConnectButton({ title, onButtonClick }) {
 export default function WalletConnectionButtonTable() {
 
   const { siteConfig } = useDocusaurusContext();
+
+  const { customFields } = siteConfig;
   const logoUrl = siteConfig.url + useBaseUrl("/img/Logo-05.svg");
 
+  const client = createThirdwebClient({ clientId: customFields.THIRDWEB_CLIENT_ID });
+
   const [ethBrowser, setEthBrowser] = useState(true);
-  async function connectButtonClick(clickedChain, setConnected) {
+  async function connectButtonClick(chainObject, setConnected) {
     try {
 
       if (!window.ethereum) {
@@ -101,19 +141,25 @@ export default function WalletConnectionButtonTable() {
         return;
       }
 
-      // Connect to network and switch to network
-      // Fails if the network is already connected
-      await window.ethereum.request({
-        method: 'wallet_addEthereumChain',
-        params: [{
-          chainId: clickedChain.chainId,
-          chainName: clickedChain.name,
-          rpcUrls: clickedChain.rpc,
-          iconUrls: [logoUrl],
-          nativeCurrency: clickedChain.nativeCurrency,
-          blockExplorerUrls: clickedChain.blockExplorerUrls,
-        }],
-      });
+      const wallet = createWallet("io.metamask"); // pass the wallet id
+
+      // if user has wallet installed, connect to it
+      if (injectedProvider("io.metamask")) {
+        console.log("Got metamask");
+        await wallet.connect({
+          client,
+          chain: chainObject,
+        });
+      }
+      // open WalletConnect modal so user can scan the QR code and connect
+      else {
+        console.log("No metamask");
+        await wallet.connect({
+          client,
+          walletConnect: { showQrModal: true },
+          chain: chainObject,
+        });
+      }
 
       const newActiveChainId = await window.ethereum.request({
         method: "eth_chainId",
@@ -122,6 +168,7 @@ export default function WalletConnectionButtonTable() {
       setConnected(true);
     } catch (error) {
       // Do nothing; already connected
+      console.log(error);
     }
   }
 
@@ -155,7 +202,7 @@ export default function WalletConnectionButtonTable() {
           {ethBrowser ?
             <WalletConnectButton
               title={getTitle(mainnet, isMainnetConnected)}
-              onButtonClick={() => connectButtonClick(mainnet, setIsMainnetConnected)}
+              onButtonClick={() => connectButtonClick(mainnetChain, setIsMainnetConnected)}
             /> :
             <WalletConnectButton
               title='No Wallet Detected'
@@ -167,7 +214,7 @@ export default function WalletConnectionButtonTable() {
           {ethBrowser ?
             <WalletConnectButton
               title={getTitle(testnet, isTestnetConnected)}
-              onButtonClick={() => connectButtonClick(testnet, setIsTestnetConnected)}
+              onButtonClick={() => connectButtonClick(testnetChain, setIsTestnetConnected)}
             /> :
             <WalletConnectButton
               title='No Wallet Detected'
