@@ -17,9 +17,10 @@ These components are instances of binaries in the [Octez software suite](https:/
 Etherlink relies on a sequencer to publish transactions.
 The sequencer receives transactions from EVM nodes, puts them in order, and packages them into an Etherlink block.
 
-The sequencer generates blocks on demand.
-It generates a block at least every 6 seconds, even if the block is empty.
+The sequencer generates blocks at a variable rate, depending on demand.
+Currently, it generates a block at least every 6 seconds, even if the block is empty.
 As demand increases, it generates blocks more quickly, up to a block every 500ms.
+These values can change with Etherlink upgrades.
 
 Each Etherlink block contains:
 
