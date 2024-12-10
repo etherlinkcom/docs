@@ -68,8 +68,8 @@ const config = {
         docs: {
           sidebarPath: 'sidebars.js',
           routeBasePath: '/', // Serve the docs at the site's root
-          remarkPlugins: [math],
-          rehypePlugins: [katex],
+          // remarkPlugins: [math],
+          // rehypePlugins: [katex],
           showLastUpdateTime: true,
         },
         blog: false,
