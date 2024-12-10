@@ -44,9 +44,7 @@ If the backlog is less than the tolerance, the execution fee for a transaction i
 
 If the backlog is greater than the tolerance, Etherlink calculates the execution fee with this equation:
 
-$$
-\texttt{execution fee} = \texttt{minimum\_base\_fee\_per\_gas} * e ^{a * (\texttt{backlog} - \texttt{tolerance})}
-$$
+
 
 In other words, the execution fee is the base fee times the exponential function of the alpha scaling factor times the backlog in excess of the tolerance.
 
@@ -57,7 +55,3 @@ The inclusion fee, also called the _data availability fee_, helps Etherlink cove
 The amount of the fee depends on the size of the data in the transaction (as provided by `tx.data.size()`) and the size of the access list, a list of addresses and storage keys that a transaction intends to access (as provided by `tx.access_list.size()`).
 
 Etherlink calculates the inclusion fee with this equation:
-
-$$
-\texttt{0.000004 XTZ} * (150 + \texttt{tx.data.size()} + \texttt{tx.access\_list.size()})
-$$
