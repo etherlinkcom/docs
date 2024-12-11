@@ -16,6 +16,8 @@ const Provider = composeProviders([
   PluginHtmlClassNameProvider,
   NavbarProvider,
 ]);
+import { ThirdwebProvider } from "thirdweb/react";
+
 export default function LayoutProvider({children}) {
-  return <Provider>{children}</Provider>;
+  return <ThirdwebProvider><Provider>{children}</Provider></ThirdwebProvider>;
 }
