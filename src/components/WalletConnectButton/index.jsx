@@ -1,4 +1,7 @@
-import { ThirdwebProvider, metamaskWallet, localWallet, walletConnect, ConnectWallet, lightTheme } from "@thirdweb-dev/react";
+import { createThirdwebClient } from 'thirdweb';
+import { ConnectButton, ThirdwebProvider, lightTheme } from 'thirdweb/react';
+import { inAppWallet, createWallet } from "thirdweb/wallets";
+import { defineChain } from "thirdweb/chains";
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 const customTheme = lightTheme({
@@ -12,7 +15,7 @@ const customTheme = lightTheme({
   },
 });
 
-const ghostnet = {
+const ghostnet = defineChain({
   chainId: 128123,
   rpc: ["https://node.ghostnet.etherlink.com"],
   nativeCurrency: {
@@ -20,16 +23,24 @@ const ghostnet = {
     name: "XTZ",
     symbol: "XTZ",
   },
+  blockExplorers: {
+    name: "Testnet block explorer",
+    url: "https://testnet.explorer.etherlink.com/",
+  },
   shortName: "etherlink",
   slug: "etherlink",
   testnet: true,
   chain: "Etherlink",
   name: "Etherlink Testnet",
-};
+});
 
-const mainnet = {
+const mainnet = defineChain({
   chainId: 42793,
   rpc: ["https://node.mainnet.etherlink.com"],
+  blockExplorers: {
+    name: "Mainnet block explorer",
+    url: "https://explorer.etherlink.com/",
+  },
   nativeCurrency: {
     decimals: 18,
     name: "XTZ",
@@ -37,10 +48,32 @@ const mainnet = {
   },
   shortName: "etherlink",
   slug: "etherlink",
-  testnet: true,
+  testnet: false,
   chain: "Etherlink",
   name: "Etherlink Mainnet",
-};
+});
+
+const wallets = [
+  inAppWallet({
+    auth: {
+      options: [
+        "google",
+        "discord",
+        "telegram",
+        "farcaster",
+        "email",
+        "x",
+        "passkey",
+        "phone",
+      ],
+    },
+  }),
+  createWallet("io.metamask"),
+  createWallet("com.coinbase.wallet"),
+  createWallet("me.rainbow"),
+  createWallet("io.rabby"),
+  createWallet("io.zerion.wallet"),
+];
 
 export default function WalletConnectButton({ network, title }) {
 
@@ -53,33 +86,28 @@ export default function WalletConnectButton({ network, title }) {
   const dAppMeta = {
     name: "Etherlink documentation",
     description: "Connect your wallet to Etherlink",
-    logoUrl: "https://etherlink.com/logo.png",
+    logoUrl: "/img/etherlinkIcon.svg",
     url: "https://etherlink.com",
     isDarkMode: true,
   };
 
+  const client = createThirdwebClient({ clientId: customFields.THIRDWEB_CLIENT_ID });
+
   return (
-    <ThirdwebProvider clientId={customFields.THIRDWEB_CLIENT_ID}
-      activeChain={activeChain}
-      supportedWallets={[
-        metamaskWallet({ recommended: true }),
-        walletConnect(),
-        localWallet(),
-        // embeddedWallet({
-        //   auth: {
-        //     options: ["email", "apple", "google"],
-        //   },
-        // }),
-        // phantomWallet({ recommended: true }),
-      ]}
-      dAppMeta={dAppMeta}>
-      <ConnectWallet
-        switchToActiveChain={true}
+    <ThirdwebProvider activeChain={activeChain} clientId={customFields.THIRDWEB_CLIENT_ID}>
+      <ConnectButton
+        client={client}
+        appMetadata={dAppMeta}
+        wallets={wallets}
         theme={customTheme}
-        modalSize={"wide"}
-        btnTitle={title}
+        connectButton={{ label: title }}
+        chain={activeChain}
+        connectModal={{
+          title: title,
+          titleIcon: "/img/etherlinkIcon.svg",
+          size: "compact",
+        }}
       />
     </ThirdwebProvider>
-
-  )
+  );
 }
