@@ -80,7 +80,8 @@ Etherlink has a standard method of processing transactions and a backup method t
 The lifecycle of a typical operation under normal circumstances is as follows:
 
 1. A user submits a transaction to an EVM node.
-1. The EVM node forwards the transaction to the sequencer.
+1. The EVM node forwards the transaction to the sequencer when it is valid.
+If users submit multiple transactions that depend on each other (that is, they have nonces that are not yet valid), the EVM node stores them until they are valid.
 1. The sequencer puts the transaction in its pool.
 1. The sequencer puts the transaction into a block as soon as possible (less than 500ms after receiving it in a nominal scenario).
 1. The sequencer publishes the block to the EVM nodes, which update their states based on the transactions in the block.
