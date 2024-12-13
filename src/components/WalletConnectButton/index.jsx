@@ -10,9 +10,9 @@ export default function WalletConnectButton({ network, title }) {
     mainnet: '42793'
   };
 
-  const networkParams = {
+  const addNetworkParams = {
     testnet: {
-      chainId: chainIds.testnet,
+      chainId: "0x1F47B",
       chainName: 'Etherlink Testnet',
       nativeCurrency: {
         name: 'XTZ',
@@ -22,7 +22,7 @@ export default function WalletConnectButton({ network, title }) {
       rpcUrls: ['https://node.ghostnet.etherlink.com'],
     },
     mainnet: {
-      chainId: chainIds.mainnet,
+      chainId: "0xa729",
       chainName: 'Etherlink Mainnet',
       nativeCurrency: {
         name: 'XTZ',
@@ -86,7 +86,7 @@ export default function WalletConnectButton({ network, title }) {
     try {
       await window.ethereum.request({
         method: 'wallet_addEthereumChain',
-        params: [networkParams[network]],
+        params: [addNetworkParams[network]],
       });
     } catch (error) {
       console.error(error);
@@ -106,9 +106,7 @@ export default function WalletConnectButton({ network, title }) {
             params: [{ chainId: '0x' + parseInt(chainIds[network]).toString(16) }],
           });
         } catch (switchError) {
-          if (switchError.code === 4902) {
             await addNetwork();
-          }
         }
       } catch (error) {
         console.error('User rejected connection');
