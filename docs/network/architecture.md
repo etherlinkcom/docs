@@ -3,6 +3,8 @@ title: Etherlink architecture
 ---
 
 Etherlink's main components are its nodes and the sequencer.
+The sequencer and nodes handle blocks, but they create and handle blocks in a way different from Tezos layer 1.
+Some major differences are that only the sequencer can create blocks and that the timing for blocks changes based on the demand.
 
 These components are instances of binaries in the [Octez software suite](https://tezos.gitlab.io/introduction/tezos.html).
 
@@ -13,16 +15,21 @@ These components are instances of binaries in the [Octez software suite](https:/
 ## Sequencer
 
 Etherlink relies on a sequencer to publish transactions.
-It receives transactions from EVM nodes, puts them in order, and packages them into a blueprint, which is a group of Etherlink transactions.
+The sequencer receives transactions from EVM nodes, puts them in order, and packages them into an Etherlink block.
 
-Each blueprint contains:
+The sequencer generates blocks at a variable rate, depending on demand.
+Currently, it generates a block at least every 6 seconds, even if the block is empty.
+As demand increases, it generates blocks more quickly, up to a block every 500ms.
+These values can change with Etherlink upgrades.
+
+Each Etherlink block contains:
 
 - A list of transactions
 - A list of transactions that are currently in the delayed inbox, as described in [Transaction lifecycle](#transaction-lifecycle)
-- The hash of the previous blueprint
-- The timestamp of the blueprint.
+- The hash of the previous block
+- The timestamp of the block.
 
-The sequencer publishes each blueprint in two ways:
+The sequencer publishes each block in two ways:
 
 - It publishes them to EVM nodes, which can consider the transactions final as long as they trust that the sequencer will publish them to layer 1.
 - It publishes them to Tezos layer 1, which finalizes the transactions.
@@ -73,22 +80,24 @@ Etherlink has a standard method of processing transactions and a backup method t
 The lifecycle of a typical operation under normal circumstances is as follows:
 
 1. A user submits a transaction to an EVM node.
-1. The EVM node forwards the transaction to the sequencer.
-1. The sequencer puts the transaction in its queue as soon as possible (less than 500ms after receiving it in a nominal scenario).
-1. The sequencer puts the transaction into a blueprint.
-1. The sequencer publishes the blueprint to the EVM nodes, which update their states based on the transactions in the blueprint.
-1. The sequencer publishes the blueprint to the Smart Rollup inbox on layer 1 via a Smart Rollup node running in operator or batcher mode.
-1. The Smart Rollup nodes tracking the state of Etherlink fetch the blueprint from the Smart Rollup inbox, read its transactions, and update their states.
-1. The EVM nodes check the state of the Smart Rollup nodes to verify that blueprints have successfully and faithfully been finalized on layer 1.
+1. The EVM node forwards the transaction to the sequencer when it is valid.
+If users submit multiple transactions that depend on each other (that is, they have nonces that are not yet valid), the EVM node stores them until they are valid.
+1. The sequencer puts the transaction in its pool.
+1. The sequencer puts the transaction into a block as soon as possible (less than 500ms after receiving it in a nominal scenario).
+1. The sequencer publishes the block to the EVM nodes, which update their states based on the transactions in the block.
+1. The sequencer publishes the block to the Smart Rollup inbox on layer 1 via a Smart Rollup node running in operator or batcher mode.
+1. The Smart Rollup nodes tracking the state of Etherlink fetch the block from the Smart Rollup inbox, read its transactions, and update their states.
+1. The EVM nodes check the state of the Smart Rollup nodes to verify that blocks have successfully and faithfully been finalized on layer 1.
 1. The Smart Rollup nodes running in operator mode post hashes of Etherlink's state to layer 1 as commitments.
 
 This diagram summarizes the transaction process:
 
-![A more detailed diagram of Etherlink architecture, showing the flow of transactions and blueprints](/img/architecture-full.png)
+![A more detailed diagram of Etherlink architecture, showing the flow of transactions and blocks](/img/architecture-full.png)
+<!-- https://lucid.app/lucidchart/b363063d-f1fe-4081-a717-f7ae9dae4242/edit -->
 
 ### Delayed inbox transaction processing
 
-Under normal circumstances, the sequencer handles all incoming transactions fairly and packages them into blueprints to finalize them.
+Under normal circumstances, the sequencer handles all incoming transactions fairly and packages them into blocks to finalize them.
 If the sequencer doesn't include transactions promptly for any reason, Etherlink provides a backup method of processing transactions that does not rely on the sequencer.
 This method allows users to add transactions to an area of storage called the _delayed inbox_ and to force Etherlink to include them.
 
@@ -105,16 +114,16 @@ This address is hard-coded in the Etherlink kernel.
    This delay is to give the sequencer time to catch up if it is trying to include transactions normally and the network is slow for some reason.
 
 1. If the sequencer is running normally, it processes the transaction in the delayed inbox in the same way that it processes other transactions.
-Then, when the Smart Rollup nodes receive the blueprint with the transaction as in the standard transaction process, they remove it from the delayed inbox.
+Then, when the Smart Rollup nodes receive the block with the transaction as in the standard transaction process, they remove it from the delayed inbox.
 The only way to remove a transaction from the delayed inbox is to process it.
-1. If the sequencer has not included the transaction at the end of the delay, the Smart Rollup nodes take over the blueprint creation process by following these steps:
+1. If the sequencer has not included the transaction at the end of the delay, the Smart Rollup nodes take over the block creation process by following these steps:
 
    1. Each time the Smart Rollup nodes run the Etherlink kernel (at every layer 1 block level), they check to see if the delay has passed for any delayed inbox transactions.
    1. If any transaction needs to be forced, the nodes retrieve all transactions in the delayed inbox, even if they haven't been in the delayed inbox longer than the delay.
-   1. The nodes package these transactions into a blueprint and process the transactions in the same way as they process transactions in blueprints that come from the sequencer.
+   1. The nodes package these transactions into a block and process the transactions in the same way as they process transactions in blocks that come from the sequencer.
 
    In this way, transactions in the delayed inbox take precedence over the sequencer.
-   If the kernel (via the Smart Rollup nodes) generates a blueprint, that blueprint results in a new branch of the Etherlink chain, and the states of the sequencer and the Smart Rollup nodes diverge.
-   It becomes the responsibility of the sequencer to reorganize itself to build blueprints on top of the kernel-generated blueprint.
+   If the kernel (via the Smart Rollup nodes) generates a block, that block results in a new branch of the Etherlink chain, and the states of the sequencer and the Smart Rollup nodes diverge.
+   It becomes the responsibility of the sequencer to reorganize itself to build blocks on top of the kernel-generated block.
 
 The delayed bridge contract is deployed to Tezos layer 1 Mainnet at [KT1Vocor3bL5ZSgsYH9ztt42LNhqFK64soR4](https://better-call.dev/mainnet/KT1Vocor3bL5ZSgsYH9ztt42LNhqFK64soR4).
