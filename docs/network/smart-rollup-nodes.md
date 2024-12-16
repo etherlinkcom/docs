@@ -232,7 +232,9 @@ A node running in `bailout` mode defends its existing commitments but does not m
    ```bash
    octez-smart-rollup-node run bailout for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
      with operators \
-     cementing:$SECONDARY_ACCOUNT \
+     operating:$OPERATOR_ACCOUNT \
+     cementing:$OPERATOR_ACCOUNT \
+     recovering:$OPERATOR_ACCOUNT \
      --endpoint $MY_LAYER_1_NODE \
      --rpc-addr 0.0.0.0 \
      --data-dir $SR_DATA_DIR \
