@@ -22,6 +22,8 @@
     "@mdx-js/react": "3.0.0",
     "@mui/icons-material": "5.14.18",
     "@mui/material": "5.14.18",
+    "@tanstack/react-query": "5.62.7",
+    "@tanstack/react-query-devtools": "5.62.7",
     "clsx": "1.2.1",
     "copy-text-to-clipboard": "3.2.0",
     "docusaurus-pushfeedback": "1.0.1",
