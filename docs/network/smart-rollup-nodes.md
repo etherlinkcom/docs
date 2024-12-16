@@ -224,35 +224,35 @@ For more information, see [Smart Rollups](https://docs.tezos.com/architecture/sm
 
 Follow these steps to stop an Etherlink Smart Rollup node:
 
-1. Switch the node to `bailout` mode.
+1. Stop the node temporarily.
+
+1. Restart the node in `bailout` mode.
 A node running in `bailout` mode defends its existing commitments but does not make new commitments.
 
-   1. Stop the node.
-
-   1. Restart the node in bailout mode:
-
-      ```bash
-      octez-smart-rollup-node run bailout for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
-        with operators \
-        cementing:$SECONDARY_ACCOUNT \
-        --endpoint $MY_LAYER_1_NODE \
-        --rpc-addr 0.0.0.0 \
-        --data-dir $SR_DATA_DIR \
-        --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
-      ```
+   ```bash
+   octez-smart-rollup-node run bailout for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
+     with operators \
+     cementing:$SECONDARY_ACCOUNT \
+     --endpoint $MY_LAYER_1_NODE \
+     --rpc-addr 0.0.0.0 \
+     --data-dir $SR_DATA_DIR \
+     --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
+   ```
 
 1. Keep the node running for two weeks for the node's last commitment to be cemented.
 
-1. Recover the node's bonded tez by running this command:
+1. When the last commitment is cemented, the node automatically recovers the bonded tez and shuts down.
 
-   ```bash
-   octez-client recover bond of $BONDED_ACCOUNT for smart rollup $SMART_ROLLUP_ADDRESS from $MY_ACCOUNT
-   ```
+Now the node has stopped and the bonded tez is liquid.
 
-   This command uses these arguments:
+If you want to recover the bond manually, use this command:
 
-      - `BONDED_ACCOUNT`: The account that you used to run the Smart Rollup in operator mode
-      - `SMART_ROLLUP_ADDRESS`: The address of the Etherlink Smart Rollup
-      - `MY_ACCOUNT`: The account to use to send this `recover bond` operation
+```bash
+octez-client recover bond of $BONDED_ACCOUNT for smart rollup $SMART_ROLLUP_ADDRESS from $MY_ACCOUNT
+```
 
-1. Stop the node.
+This command uses these arguments:
+
+- `BONDED_ACCOUNT`: The account that you used to run the Smart Rollup in operator mode
+- `SMART_ROLLUP_ADDRESS`: The address of the Etherlink Smart Rollup
+- `MY_ACCOUNT`: The account to use to send this `recover bond` operation
