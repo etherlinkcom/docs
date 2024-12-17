@@ -91,6 +91,7 @@ module.exports = async function createConfigAsync() {
           project: 'zh2wgyi1d7',
         },
       ],
+      require.resolve('./plugins/webpack-config-plugin'),
     ],
 
     themeConfig:
