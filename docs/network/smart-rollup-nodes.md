@@ -187,12 +187,14 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 1. Stop the node.
 
 1. Run the node in maintenance mode, passing the addresses or Octez aliases of the accounts and the layer 1 node that you control.
-This example uses `$OPERATOR_ACCOUNT` for the account with 10,000 liquid tez and `$SECONDARY_ACCOUNT` for the other account:
+
+   The first address after `with operators` is the default address that the node uses for operations.
+   You can use different accounts for specific operations by adding the operation and the address to the command.
+   This example uses `$OPERATOR_ACCOUNT` for the account with 10,000 liquid tez and `$SECONDARY_ACCOUNT` for cementing operations and executing outbox operations:
 
    ```bash
    octez-smart-rollup-node run maintenance for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
-     with operators \
-     operating:$OPERATOR_ACCOUNT \
+     with operators $OPERATOR_ACCOUNT \
      cementing:$SECONDARY_ACCOUNT \
      executing_outbox:$SECONDARY_ACCOUNT \
      --endpoint $MY_LAYER_1_NODE \
@@ -231,10 +233,7 @@ A node running in `bailout` mode defends its existing commitments but does not m
 
    ```bash
    octez-smart-rollup-node run bailout for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
-     with operators \
-     operating:$OPERATOR_ACCOUNT \
-     cementing:$OPERATOR_ACCOUNT \
-     recovering:$OPERATOR_ACCOUNT \
+     with operators $OPERATOR_ACCOUNT \
      --endpoint $MY_LAYER_1_NODE \
      --rpc-addr 0.0.0.0 \
      --data-dir $SR_DATA_DIR \
