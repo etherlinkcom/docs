@@ -1,9 +1,7 @@
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-
-import { createThirdwebClient } from 'thirdweb';
-import { ConnectButton, ThirdwebProvider, lightTheme } from 'thirdweb/react';
+import { ConnectButton, lightTheme } from 'thirdweb/react';
 import { inAppWallet, createWallet } from "thirdweb/wallets";
 import { defineChain } from "thirdweb/chains";
+import client from '@site/src/components/ThirdwebClient';
 
 const customTheme = lightTheme({
   colors: {
@@ -70,10 +68,6 @@ const wallets = [
 
 export default function WalletConnectButton({ network, title }) {
 
-  const {
-    siteConfig: {customFields},
-  } = useDocusaurusContext();
-
   const activeChain = network === "mainnet" ? mainnet : testnet;
 
   const dAppMeta = {
@@ -84,10 +78,7 @@ export default function WalletConnectButton({ network, title }) {
     isDarkMode: true,
   };
 
-  const client = createThirdwebClient({ clientId: customFields.THIRDWEB_CLIENT_ID });
-
   return (
-    <ThirdwebProvider activeChain={activeChain} clientId={customFields.THIRDWEB_CLIENT_ID}>
       <ConnectButton
         client={client}
         appMetadata={dAppMeta}
@@ -101,6 +92,5 @@ export default function WalletConnectButton({ network, title }) {
           size: "compact",
         }}
       />
-    </ThirdwebProvider>
   )
 }
