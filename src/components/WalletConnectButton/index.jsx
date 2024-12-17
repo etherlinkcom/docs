@@ -1,7 +1,8 @@
 import { ConnectButton, lightTheme } from 'thirdweb/react';
+import { createThirdwebClient } from 'thirdweb';
 import { inAppWallet, createWallet } from "thirdweb/wallets";
 import { defineChain } from "thirdweb/chains";
-import client from '@site/src/components/ThirdwebClient';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 const customTheme = lightTheme({
   colors: {
@@ -77,6 +78,12 @@ export default function WalletConnectButton({ network, title }) {
     url: "https://docs.etherlink.com",
     isDarkMode: true,
   };
+
+  const {
+    siteConfig: {customFields},
+  } = useDocusaurusContext();
+
+  const client = createThirdwebClient({ clientId: customFields.THIRDWEB_CLIENT_ID });
 
   return (
       <ConnectButton
