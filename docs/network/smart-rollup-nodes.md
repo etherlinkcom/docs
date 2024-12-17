@@ -212,7 +212,7 @@ Now that you have a Smart Rollup node configured for Etherlink, you can run an E
 
 ## Stopping the Smart Rollup node
 
-When you want to stop running the Smart Rollup node, you must wait for the last commitment that your node made to be cemented.
+When you want to stop running the Smart Rollup node, you must wait for the last commitment that your node made to be cemented if you had any.
 Then you can recover the node's bonded tez and stop the node.
 
 :::warning
