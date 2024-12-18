@@ -163,8 +163,9 @@ Converting the observer node to maintenance mode requires these prerequisites:
 
    :::
 
-- An account with at least 10,000 liquid (unstaked) tez, referred to as the _operator account_.
+- An account with at least 10,000 liquid, available tez, referred to as the _operator account_.
 You can use the same account that you use for a layer 1 baker, but for better security, you can use a different account and delegate its tez to the layer 1 account.
+Without 10,000 liquid tez, the Smart Rollup node will not start in operator or maintenance mode.
 
 - An account with a small amount of liquid tez for cementing and outbox operations.
 
@@ -185,28 +186,21 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 
 1. Stop the node.
 
-1. Re-initialize the node for maintenance mode by running the `init maintenance config` command and passing the addresses or Octez aliases of the accounts.
-This example uses `$OPERATOR_ACCOUNT` for the account with 10,000 liquid tez and `$SECONDARY_ACCOUNT` for the other account:
+1. Run the node in maintenance mode, passing the addresses or Octez aliases of the accounts and the layer 1 node that you control.
+
+   The first address after `with operators` is the default address that the node uses for operations.
+   You can use different accounts for specific operations by adding the operation and the address to the command.
+   This example uses `$OPERATOR_ACCOUNT` for the account with 10,000 liquid tez and `$SECONDARY_ACCOUNT` for cementing operations and executing outbox operations:
 
    ```bash
-   octez-smart-rollup-node init maintenance config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
-     with operators \
-     operating:$OPERATOR_ACCOUNT \
+   octez-smart-rollup-node run maintenance for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
+     with operators $OPERATOR_ACCOUNT \
      cementing:$SECONDARY_ACCOUNT \
      executing_outbox:$SECONDARY_ACCOUNT \
-     --history-mode archive \
+     --endpoint $MY_LAYER_1_NODE \
      --rpc-addr 0.0.0.0 \
      --data-dir $SR_DATA_DIR \
      --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
-   ```
-
-   This command generates updates the configuration file to contain the addresses of the accounts that post operations to layer 1, including the node's commitments.
-
-1. Restart the node, again with the layer 1 node that you control:
-
-   ```bash
-   octez-smart-rollup-node --endpoint $MY_LAYER_1_NODE run \
-     --data-dir $SR_DATA_DIR
    ```
 
 1. Verify that the Smart Rollup node is running by querying it.
@@ -217,3 +211,49 @@ For example, this query gets the health of the node:
    ```
 
 Now that you have a Smart Rollup node configured for Etherlink, you can run an Etherlink EVM node, as described in [Running an Etherlink EVM node](/network/evm-nodes).
+
+## Stopping the Smart Rollup node
+
+When you want to stop running the Smart Rollup node, you must wait for the last commitment that your node made to be cemented if you had any.
+Then you can recover the node's bonded tez and stop the node.
+
+:::warning
+
+If you stop the node before waiting for its last commitment to be cemented, the bonded tez is at risk if other nodes challenge that commitment and your node is not online to defend it in the Smart Rollup refutation game.
+For more information, see [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com.
+
+:::
+
+Follow these steps to stop an Etherlink Smart Rollup node:
+
+1. Stop the node temporarily.
+
+1. Restart the node in `bailout` mode.
+A node running in `bailout` mode defends its existing commitments but does not make new commitments.
+
+   ```bash
+   octez-smart-rollup-node run bailout for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
+     with operators $OPERATOR_ACCOUNT \
+     --endpoint $MY_LAYER_1_NODE \
+     --rpc-addr 0.0.0.0 \
+     --data-dir $SR_DATA_DIR \
+     --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
+   ```
+
+1. Keep the node running for two weeks for the node's last commitment to be cemented.
+
+1. When the last commitment is cemented, the node automatically recovers the bonded tez and shuts down.
+
+Now the node has stopped and the bonded tez is liquid.
+
+If you want to recover the bond manually, use this command:
+
+```bash
+octez-client recover bond of $BONDED_ACCOUNT for smart rollup $SMART_ROLLUP_ADDRESS from $MY_ACCOUNT
+```
+
+This command uses these arguments:
+
+- `BONDED_ACCOUNT`: The account that you used to run the Smart Rollup in operator mode
+- `SMART_ROLLUP_ADDRESS`: The address of the Etherlink Smart Rollup
+- `MY_ACCOUNT`: The account to use to send this `recover bond` operation
