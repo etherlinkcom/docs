@@ -59,11 +59,12 @@ You can initialize the node from a snapshot or allow it to compute the Etherlink
 
 ### From a snapshot
 
-1. Download [an Etherlink snapshot](http://vps-58f6d7fc.vps.ovh.net/snapshots/), and use the `octez-evm-node` to import it. Assuming you have set `$latest_snapshot` to the name of the latest snapshot,
+1. Download [an Etherlink snapshot](http://snapshotter-sandbox.nomadic-labs.eu/), and use the `octez-evm-node` to import it.
 
    ```bash
-   wget http://vps-58f6d7fc.vps.ovh.net/snapshots/$latest_snapshot -O snapshot.gz
-   octez-evm-node snapshot import snapshot.gz --data-dir $evm_observer_dir
+   wget http://snapshotter-sandbox.nomadic-labs.eu/etherlink-mainnet/evm-snapshot-sr1Ghq66tYK9y-latest.gz # this is for the latest mainnet etherlink snapshots, similarly there is one for testnet
+   octez-evm-node snapshot import evm-snapshot-sr1Ghq66tYK9y-latest.gz --data-dir $evm_observer_dir
+
    ```
 2. Run this command to start the node:
 
