@@ -19,3 +19,12 @@ Learn how to use their SDK with this [guide](https://docs.subsquid.io/sdk/how-to
 [DipDup](https://dipdup.io) provides a framework for creating custom indexers.
 
 For information on indexing Etherlink with DipDup, see [Etherlink](https://dipdup.io/docs/supported-networks/etherlink) in the DipDup documentation.
+
+## Subquery
+
+[Subquery indexer](https://www.subquery.network/indexer) is an open-source indexer that supports Etherlink, along with many other networks.
+
+For examples of using Subquery with Etherlink, see these sample projects:
+
+- Mainnet: https://github.com/subquery/ethereum-subql-starter/tree/main/Etherlink%20Mainnet/etherlink-mainnet-etherlink-starter
+- Testnet: https://github.com/subquery/ethereum-subql-starter/tree/main/Etherlink/etherlink-testnet-starter
