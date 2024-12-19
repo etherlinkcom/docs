@@ -17,11 +17,11 @@ manifest-src 'self';
 script-src ${scriptSrc};
 style-src https://cdn.jsdelivr.net https://fonts.googleapis.com 'self' 'unsafe-inline';
 font-src https://cdn.jsdelivr.net https://fonts.gstatic.com 'self';
-img-src 'self' https://*.googletagmanager.com https://*.google-analytics.com data:;
+img-src 'self' https://*.googletagmanager.com https://*.google-analytics.com data: https://*.walletconnect.com;
 media-src 'self';
 form-action 'self';
-connect-src 'self' https://node.mainnet.etherlink.com https://node.ghostnet.etherlink.com https://*.thirdweb.com https://*.algolia.net https://*.algolianet.com https://app.pushfeedback.com https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com;
-frame-src https://tezosbot.vercel.app https://*.loom.com https://*.thirdweb.com;`;
+connect-src 'self' https://node.mainnet.etherlink.com https://node.ghostnet.etherlink.com https://*.thirdweb.com https://*.algolia.net https://*.algolianet.com https://app.pushfeedback.com https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.walletconnect.com https://*.walletconnect.org wss://relay.walletconnect.org;
+frame-src https://tezosbot.vercel.app https://*.loom.com https://*.thirdweb.com https://*.walletconnect.org;`;
 
 /** @type {import('@docusaurus/types').Config} */
 module.exports = async function createConfigAsync() {
