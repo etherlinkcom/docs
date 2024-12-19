@@ -86,18 +86,27 @@ export default function WalletConnectButton({ network, title }) {
   const client = createThirdwebClient({ clientId: customFields.THIRDWEB_CLIENT_ID });
 
   return (
-      <ConnectButton
-        client={client}
-        appMetadata={dAppMeta}
-        wallets={wallets}
-        theme={customTheme}
-        connectButton={{ label: title }}
-        chain={activeChain}
-        connectModal={{
-          title: title,
-          titleIcon: "/img/etherlinkIcon.svg",
-          size: "compact",
-        }}
-      />
+    <ConnectButton
+      client={client}
+      appMetadata={dAppMeta}
+      wallets={wallets}
+      theme={customTheme}
+      connectButton={{ label: title }}
+      chain={activeChain}
+      connectModal={{
+        title: title,
+        titleIcon: "/img/etherlinkIcon.svg",
+        size: "compact",
+      }}
+      style={{
+        '&:hover': {
+          opacity: 0.8,
+          filter: 'brightness(0.8)',
+          backgroundColor: '#38ff9c !important'
+        },
+        cursor: 'pointer',
+        transition: 'all 0.3s ease-in-out',
+      }}
+    />
   )
 }
