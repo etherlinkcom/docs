@@ -66,6 +66,7 @@ const sidebars = {
       items: [
         'network/architecture',
         'network/fees',
+        'network/operators',
         'network/smart-rollup-nodes',
         'network/evm-nodes',
         'network/building-kernel',
