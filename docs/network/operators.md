@@ -33,4 +33,4 @@ These features give Etherlink users two important checks on the sequencer operat
 - The delayed inbox ensures that if the sequencer does not include transactions, Etherlink users can force transactions to be included
 - If the sequencer does not operate efficiently or fairly, Etherlink users through Tezos bakers can vote the operator out
 
-The sequencer is currently run by [MIDL.dev](http://midl.dev/) at the address [0xCF02B9Ca488f8F6F4E28e37AA1bDD16b3F1b2aD8](https://explorer.etherlink.com/address/0xCF02B9Ca488f8F6F4E28e37AA1bDD16b3F1b2aD8).
+The sequencer is currently run by [MIDL.dev](http://midl.dev/), whose address on Etherlink is [0xCF02B9Ca488f8F6F4E28e37AA1bDD16b3F1b2aD8](https://explorer.etherlink.com/address/0xCF02B9Ca488f8F6F4E28e37AA1bDD16b3F1b2aD8).
