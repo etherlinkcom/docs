@@ -8,7 +8,7 @@ For information on the roles of these different nodes, see [Etherlink architectu
 ## Nodes
 
 Anyone can run Etherlink [EVM nodes](/network/evm-nodes) and [Smart Rollup nodes](/network/smart-rollup-nodes), and due to the optimistic nature of Tezos [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) it takes only one honest Smart Rollup node operator to keep Etherlink secure.
-Honest nodes can catch any misbehavior by other nodes by refuting their incorrect commitments.
+Honest Rollup Nodes can catch any misbehavior by other nodes by refuting their incorrect commitments.
 
 These organizations currently run Etherlink nodes:
 
