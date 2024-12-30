@@ -16,7 +16,6 @@ These organizations currently run Etherlink nodes:
 - [MIDL.dev](http://midl.dev/)
 - [Zeeve](https://www.zeeve.io)
 
-The sequencer operator also runs a Smart Rollup node that the sequencer uses exclusively.
 
 ## Sequencer
 
