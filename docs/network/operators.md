@@ -31,6 +31,6 @@ You can watch the results of the governance process at https://governance.etherl
 These features give Etherlink users two important checks on the sequencer operator's power:
 
 - The delayed inbox ensures that if the sequencer censors transactions, Etherlink users can force transactions to be included
-- If the sequencer does not operate efficiently or fairly, Etherlink users can vote the operator out
+- If the sequencer does not operate efficiently or fairly, Etherlink users through Tezos bakers can vote the operator out
 
 The sequencer is currently run by [MIDL.dev](http://midl.dev/) at the address [0xCF02B9Ca488f8F6F4E28e37AA1bDD16b3F1b2aD8](https://explorer.etherlink.com/address/0xCF02B9Ca488f8F6F4E28e37AA1bDD16b3F1b2aD8).
