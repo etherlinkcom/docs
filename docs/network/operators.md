@@ -24,7 +24,7 @@ Under normal circumstances, Etherlink users trust the sequencer to include their
 
 Currently only the sequencer operator can run a sequencer, which is an Etherlink EVM node running in sequencer mode.
 Users relying on the sequencer to include their transactions in Etherlink pay a so-called DA (Data Availibility) fee, which covers the cost of including the transaction in a Layer 1 block.
-The address of the sequencer operator's account is determined as part of the governance process.
+The address of the sequencer operator's account receiving the DA fees is determined as part of the governance process.
 As described in [Sequencer Committee governance](/governance/how-is-etherlink-governed#sequencer-committee-governance), users can propose and vote on new sequencer operators.
 You can watch the results of the governance process at https://governance.etherlink.com.
 
