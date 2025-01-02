@@ -2,6 +2,16 @@
 title: Data indexers
 ---
 
+Etherlink has public block explorers that use indexers to provide information about Etherlink:
+
+- Etherlink Mainnet: https://explorer.etherlink.com
+- Etherlink Testnet: https://testnet.explorer.etherlink.com/
+
+If you need custom information about your contracts or information formatted in a specific way, you may need to run a custom indexer.
+Several Etherlink-compatible indexers are listed below.
+
+For more information about indexers on Tezos, see [Indexers](https://docs.tezos.com/developing/information/indexers) on docs.tezos.com.
+
 ## The Graph
 
 [The Graph](https://thegraph.com/) is an indexing protocol for organizing blockchain data and making it easily accessible with GraphQL. Etherlink dApps can use GraphQL to query open APIs called subgraphs, to retrieve data that is indexed on the network.
