@@ -16,6 +16,7 @@ These organizations currently run Etherlink nodes:
 - [MIDL.dev](http://midl.dev/)
 - [Zeeve](https://www.zeeve.io)
 
+You can look up the current node operators by checking the accounts that currently have bond set so they can post commitments for the Etherlink Smart Rollup, such as on the TzKT block explorer: https://tzkt.io/sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf/bondholders.
 
 ## Sequencer
 
