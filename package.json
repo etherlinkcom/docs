@@ -10,6 +10,7 @@
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
+    "test": "mocha",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids"
   },
@@ -39,7 +40,17 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.3.2",
-    "docusaurus-node-polyfills": "^1.0.0"
+    "chai": "^5.1.2",
+    "docusaurus-node-polyfills": "^1.0.0",
+    "glob": "^11.0.0",
+    "mdast-util-from-markdown": "^2.0.2",
+    "mdast-util-mdx": "^3.0.0",
+    "micromark-extension-mdxjs": "^3.0.0",
+    "minimist": "^1.2.8",
+    "mocha": "^11.0.1",
+    "rehype-stringify": "^10.0.1",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.0.0"
   },
   "browserslist": {
     "production": [
