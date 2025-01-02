@@ -2,6 +2,8 @@
 title: Using your wallet
 ---
 
+import WalletConnectButton from '@site/src/components/WalletConnectButton';
+
 ## Which wallets can I use?
 
 You can connect any wallet that supports custom EVM networks:
@@ -11,8 +13,31 @@ You can connect any wallet that supports custom EVM networks:
 - [Altme wallet](https://altme.io/)
 - [Rabby wallet](https://rabby.io/)
 
-## How do I connect?
+You can use these buttons to connect your wallet to Etherlink:
 
-The easiest way to connect your MetaMask wallet to Etherlink is to go to [the faucet](https://faucet.etherlink.com/) and connect as described in [Getting testnet tokens](/get-started/getting-testnet-tokens).
+<table class="customTableContainer">
+  <thead>
+    <tr>
+        <th>Mainnet</th>
+        <th>Testnet</th>
+    </tr>
+  </thead>
+ <tbody>
+    <tr>
+      <td><WalletConnectButton network="mainnet" title="Connect to Etherlink Mainnet"/></td>
+      <td><WalletConnectButton network="testnet" title="Connect to Etherlink Testnet"/></td>
+    </tr>
+  </tbody>
+</table>
 
-You can also connect wallets manually with the parameters in [Network information](/get-started/network-information).
+Your wallet may show warnings about connecting to this site (https://docs.etherlink.com) because it is not a popular source of Etherlink transactions and is not listed on community platforms.
+These warnings appear because this documentation site does not handle any transactions, only these wallet connection buttons.
+If you want to be sure that you are connecting to the correct network, you can connect to Etherlink on another Etherlink site such as these:
+
+To connect to Etherlink Mainnet, use the [Mainnet block explorer](https://explorer.etherlink.com/) or the [bridge](https://www.etherlinkbridge.com).
+
+To connect to Etherlink Testnet, use the [Testnet block explorer](https://testnet.explorer.etherlink.com/) or the [faucet](https://faucet.etherlink.com/).
+
+## Connecting wallets manually
+
+To connect your wallet manually, use the parameters in [Network information](/get-started/network-information).
