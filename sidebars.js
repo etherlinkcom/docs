@@ -35,6 +35,20 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'Tutorial',
+      collapsed: false,
+      items: [
+        'tutorials/marketpulse/index',
+        'tutorials/marketpulse/setup',
+        'tutorials/marketpulse/backend',
+        'tutorials/marketpulse/test',
+        'tutorials/marketpulse/deploy',
+        'tutorials/marketpulse/frontend',
+        'tutorials/marketpulse/cicd',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Bridging',
       collapsed: false,
       items: [
