@@ -12,6 +12,7 @@ You can use the SDK to:
 - Use smart contracts as backend logic for games
 
 The SDK supports wallets that connect via the WalletConnect protocol, including MetaMask.
+It can call Etherlink contracts and initiate transfers of XTZ on Etherlink.
 
 Using Etherlink in a Unity application requires version 4.0.0 of the Tezos Unity SDK or later.
 For more information, see the documentation for the [Tezos Unity SDK](https://docs.tezos.com/unity).
