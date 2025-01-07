@@ -263,4 +263,5 @@ With blockchain development, testing is very important because you don't have th
    npx hardhat test
    ```
 
-   The technical Ping test and the full end2end scenario should pass
+   The technical Ping test and the full end2end scenario should pass.
+   If you see errors, make sure that your application matches the application in this repository: https://github.com/trilitech/tutorial-applications/tree/main/etherlink-marketpulse.

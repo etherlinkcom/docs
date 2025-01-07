@@ -48,11 +48,11 @@ Follow these steps to set up a Solidity smart contract:
        uint256 public constant FEES = 10; // as PERCENTAGE unit (%)
 
        /** SLOTS */
-       address payable public admin; 
-       mapping(uint256 => Bet) public bets; 
-       uint256[] public betKeys; 
-       BET_RESULT public status = BET_RESULT.PENDING; 
-       string public winner; 
+       address payable public admin;
+       mapping(uint256 => Bet) public bets;
+       uint256[] public betKeys;
+       BET_RESULT public status = BET_RESULT.PENDING;
+       string public winner;
 
        event Pong();
 
@@ -308,3 +308,5 @@ Follow these steps to set up a Solidity smart contract:
    ```
 
    You can ignore any warnings in the console because they do not affect the application.
+
+   If you see errors, make sure that your contract matches the contract in this repository: https://github.com/trilitech/tutorial-applications/tree/main/etherlink-marketpulse.

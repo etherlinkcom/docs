@@ -169,3 +169,5 @@ Here is an example of one using the Github configuration files and [Vercel](http
    ![The two secrets in the settings for GitHub actions for the repository](/img/tutorials/github-secrets.png)
 
 Now each time that you push your code, the GitHub action runs all the jobs, including compiling the contract, deploying it, and deploying the frontend app. When the run is finished you can follow the deployment on the Vercel deployment page (`https://vercel.com/<ORG_NAME>/<PROJECT_NAME>/deployments`) and the get the URL of your deployed application.
+
+The complete application is in this repository: https://github.com/trilitech/tutorial-applications/tree/main/etherlink-marketpulse.

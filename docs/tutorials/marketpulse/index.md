@@ -27,3 +27,7 @@ You can use many different smart contract and frontend development tools and tec
 ## Disclaimer
 
 The code is for education purposes and hasn’t been audited or optimized. You shouldn’t use this code in production.
+
+## Application source code
+
+You can see the source code for the completed application here: https://github.com/trilitech/tutorial-applications/tree/main/etherlink-marketpulse.
