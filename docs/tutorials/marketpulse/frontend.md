@@ -12,6 +12,8 @@
 
 1. Choose a name for the frontend project (such as `app`, which is what the examples later use), select the `React` framework, and select the `Typescript` language.
 
+1. Copy the images from the folder https://github.com/trilitech/tutorial-applications/tree/main/etherlink-marketpulse/app/public/ to the `app/public` folder of your application.
+
 1. Run the commands as in this example to install the dependencies and start the server:
 
    ```bash
@@ -606,7 +608,7 @@
            <div style={{ width: "calc(66vw - 4rem)" }}>
            <img
                style={{ maxHeight: "40vh" }}
-               src="/img/tutorials/graph.png"
+               src="graph.png"
            />
            <hr />
 
@@ -626,11 +628,7 @@
                        <div className="picDiv">
                            <img
                            style={{ objectFit: "cover", height: "inherit" }}
-                           src={
-                               "https://zamrokk.github.io/marketpulse/images/" +
-                               option +
-                               ".png"
-                           }
+                           src={option + ".png"}
                            ></img>
                        </div>
                        {option}
