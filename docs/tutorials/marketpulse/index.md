@@ -1,6 +1,6 @@
 # Introduction
 
-This guide is an [Etherlink](https://www.etherlink.com/) tutorial to create a real application from scratch for a betting platform.
+This guide is an Etherlink tutorial to create a real application from scratch for a betting platform.
 It allows users to bet cryptocurrency on the outcome of Super Bowl Championship as a way of demonstrating how to deploy and run dApps on the Etherlink platform.
 
 ![](/img/tutorials/screen.png)
@@ -26,4 +26,4 @@ You can use many different smart contract and frontend development tools and tec
 
 ## Disclaimer
 
-The code is for education purposes and hasn’t been audited or optimized. You shouldn’t use this code in production
+The code is for education purposes and hasn’t been audited or optimized. You shouldn’t use this code in production.

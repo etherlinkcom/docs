@@ -105,7 +105,7 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
       export default config;
       ```
 
-   1. Set up an Etherlink Testnet account with some native tokens to deploy the contract. Follow this [guide](https://docs.etherlink.com/get-started/using-your-wallet) to create an account using a wallet. Then use the [faucet](https://docs.etherlink.com/get-started/getting-testnet-tokens) to get some XTZ tokens on Etherlink Testnet.
+   1. Set up an Etherlink Testnet account with some native tokens to deploy the contract. See [Using your wallet](/get-started/using-your-wallet) connect your wallet to Etherlink. Then use the faucet to get XTZ tokens on Etherlink Testnet, as described in [Getting testnet tokens](/get-started/getting-testnet-tokens).
 
    1. Export your account private key from your wallet application.
 
