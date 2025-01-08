@@ -3,6 +3,8 @@
 
 require('dotenv').config();
 
+const { themes } = require('prism-react-renderer');
+
 // script-src causes development builds to fail
 // But unsafe-eval should NOT be in production builds
 // Also, put GTM first because sometimes the ';' in the escaped single quotes causes the browser to think it's the end
@@ -17,11 +19,11 @@ manifest-src 'self';
 script-src ${scriptSrc};
 style-src https://cdn.jsdelivr.net https://fonts.googleapis.com 'self' 'unsafe-inline';
 font-src https://cdn.jsdelivr.net https://fonts.gstatic.com 'self';
-img-src 'self' https://*.googletagmanager.com https://*.google-analytics.com data: https://*.walletconnect.com;
+img-src 'self' https://*.googletagmanager.com https://*.google-analytics.com data:;
 media-src 'self';
 form-action 'self';
-connect-src 'self' https://node.mainnet.etherlink.com https://node.ghostnet.etherlink.com https://*.thirdweb.com https://*.algolia.net https://*.algolianet.com https://app.pushfeedback.com https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.walletconnect.com https://*.walletconnect.org wss://relay.walletconnect.org;
-frame-src https://tezosbot.vercel.app https://*.loom.com https://*.thirdweb.com https://*.walletconnect.org;`;
+connect-src 'self' https://node.mainnet.etherlink.com https://node.ghostnet.etherlink.com https://ethereum.rpc.thirdweb.com https://*.algolia.net https://*.algolianet.com https://c.thirdweb.com https://app.pushfeedback.com https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com;
+frame-src https://tezosbot.vercel.app https://*.loom.com;`;
 
 /** @type {import('@docusaurus/types').Config} */
 module.exports = async function createConfigAsync() {
@@ -91,7 +93,6 @@ module.exports = async function createConfigAsync() {
           project: 'zh2wgyi1d7',
         },
       ],
-      require.resolve('./src/plugins/webpack-config-plugin'),
     ],
 
     themeConfig:
@@ -131,8 +132,8 @@ module.exports = async function createConfigAsync() {
           ],
         },
         prism: {
-          theme: require('prism-react-renderer/themes/github'),
-          darkTheme: require('prism-react-renderer/themes/dracula'),
+          theme: themes.github,
+          darkTheme: themes.dracula,
           additionalLanguages: ['solidity'],
         },
         docs: {
