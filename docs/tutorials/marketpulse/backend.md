@@ -152,7 +152,7 @@ Follow these steps to set up a Solidity smart contract:
        /**
         *
        * @param option selected option
-       * @param betAmount (Optional : default is 0) if user want to know the output gain after putting some money on it. Otherwise it gives actual gain without betting and influencing odds calculation
+       * @param betAmount (Optional: default is 0) if user want to know the output gain after putting some money on it. Otherwise it gives actual gain without betting and influencing odds calculation
        * @return odds (in ODDS_DECIMAL unit)
        */
        function calculateOdds(
@@ -177,7 +177,7 @@ Follow these steps to set up a Solidity smart contract:
                    totalLoserAmount = result;
                }
            }
-           console.log("totalLoserAmount : %d", totalLoserAmount);
+           console.log("totalLoserAmount: %d", totalLoserAmount);
 
            uint256 totalWinnerAmount = betAmount; //wei
            for (uint i = 0; i < betKeys.length; i++) {
@@ -191,28 +191,28 @@ Follow these steps to set up a Solidity smart contract:
                    totalWinnerAmount = result;
                }
            }
-           console.log("totalWinnerAmount  : %d", totalWinnerAmount);
+           console.log("totalWinnerAmount: %d", totalWinnerAmount);
            uint256 part = Math.mulDiv(
                totalLoserAmount,
                10 ** ODD_DECIMALS,
                totalWinnerAmount
            );
 
-           console.log("part per ODD_DECIMAL : %d", part);
+           console.log("part per ODD_DECIMAL: %d", part);
 
            (bool success1, uint256 oddwithoutFees) = part.tryAdd(
                10 ** ODD_DECIMALS
            );
            require(success1, "Cannot add part and 1");
 
-           console.log("oddwithoutFees  : %d", oddwithoutFees);
+           console.log("oddwithoutFees: %d", oddwithoutFees);
 
            (bool success2, uint256 odd) = oddwithoutFees.trySub(
                (FEES * 10 ** ODD_DECIMALS) / 100
            );
            require(success2, "Cannot remove fees from odd");
 
-           console.log("odd  : %d", odd);
+           console.log("odd: %d", odd);
 
            return odd;
        }
@@ -234,7 +234,7 @@ Follow these steps to set up a Solidity smart contract:
                status == BET_RESULT.PENDING,
                string(
                    abi.encodePacked(
-                       "Result is already given and bets are resolved : ",
+                       "Result is already given and bets are resolved: ",
                        status
                    )
                )
@@ -257,7 +257,7 @@ Follow these steps to set up a Solidity smart contract:
                        calculateOdds(bet.option, 0),
                        10 ** ODD_DECIMALS
                    );
-                   console.log("earnings : %d for %s", earnings, bet.owner);
+                   console.log("earnings: %d for %s", earnings, bet.owner);
                    bet.owner.transfer(earnings);
                    winner = optionResult;
                } else if (result == BET_RESULT.DRAW) {
@@ -272,7 +272,7 @@ Follow these steps to set up a Solidity smart contract:
                    require(success, "Cannot sub fees amount from amount");
 
                    console.log(
-                       "give back money : %d for %s",
+                       "give back money: %d for %s",
                        moneyBack,
                        bet.owner
                    );
@@ -293,7 +293,7 @@ Follow these steps to set up a Solidity smart contract:
    Each bet includes an ID, the address of the submitter, an option that represents their choice, and the bet amount in wei.
 
    The ID is randomly generated to showcase on the next advanced tutorial how to use an indexer to list all the bets for local odd calculation and use an oracle for randomization.
-   > Note : An optimized implementation would remove the bets themselves and keep only some aggregated variables, saving storage space and removing the need for an indexer.
+   > Note: An optimized implementation would remove the bets themselves and keep only some aggregated variables, saving storage space and removing the need for an indexer.
 
    Users can place as many bets as they want.
    When you are ready to resolve the bets, you can call `resolveResult` and make the contract pay the correct bets.

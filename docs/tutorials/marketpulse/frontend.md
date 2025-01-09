@@ -22,9 +22,11 @@
    npm run dev
    ```
 
-   Now the Deno server is running a starter frontend application.
+   Now the Deno or Vite server is running a starter frontend application.
 
-1. Stay your frontend `./app` project and import the `Viem` library for blockchain interactions, `thirdweb` for the wallet connection and `bignumber` for calculations on large numbers:
+1. Stop the application.
+
+1. Within your frontend `./app` project, import the `Viem` library for blockchain interactions, `thirdweb` for the wallet connection and `bignumber` for calculations on large numbers:
 
    ```bash
    npm i viem thirdweb bignumber.js
@@ -49,7 +51,7 @@
 1. Create an utility file to manage Viem errors. Better than the technical defaults and not helpful ones
 
    ```bash
-   touch ./app/src/DecodeEvmTransactionLogsArgs.ts
+   touch src/DecodeEvmTransactionLogsArgs.ts
    ```
 
 1. Put this code in the `./app/src/DecodeEvmTransactionLogsArgs.ts` file:
@@ -159,7 +161,7 @@
 
    ThirdwebProvider encapsulates your application to inject account context and wrapped Viem functions
 
-1. Edit `App.tsx` to have this code:
+1. Edit `./app/src/App.tsx` to have this code:
 
    ```TypeScript
    import { Marketpulse, Marketpulse__factory } from "./typechain-types";
@@ -169,13 +171,13 @@
    import "./App.css";
 
    import {
-   defineChain,
-   getContract,
-   prepareContractCall,
-   readContract,
-   sendTransaction,
-   ThirdwebClient,
-   waitForReceipt,
+     defineChain,
+     getContract,
+     prepareContractCall,
+     readContract,
+     sendTransaction,
+     ThirdwebClient,
+     waitForReceipt,
    } from "thirdweb";
    import { ConnectButton, useActiveAccount } from "thirdweb/react";
    import { createWallet, inAppWallet } from "thirdweb/wallets";
@@ -185,135 +187,135 @@
    import CONTRACT_ADDRESS_JSON from "./deployed_addresses.json";
 
    const wallets = [
-   inAppWallet({
+     inAppWallet({
        auth: {
-       options: ["google", "email", "passkey", "phone"],
+         options: ["google", "email", "passkey", "phone"],
        },
-   }),
-   createWallet("io.metamask"),
-   createWallet("com.coinbase.wallet"),
-   createWallet("io.rabby"),
-   createWallet("com.trustwallet.app"),
-   createWallet("global.safe"),
+     }),
+     createWallet("io.metamask"),
+     createWallet("com.coinbase.wallet"),
+     createWallet("io.rabby"),
+     createWallet("com.trustwallet.app"),
+     createWallet("global.safe"),
    ];
 
    //copy pasta from Solidity code as Abi and Typechain does not export enum types
    enum BET_RESULT {
-   WIN = 0,
-   DRAW = 1,
-   PENDING = 2,
+     WIN = 0,
+     DRAW = 1,
+     PENDING = 2,
    }
 
    interface AppProps {
-   thirdwebClient: ThirdwebClient;
+     thirdwebClient: ThirdwebClient;
    }
 
    export default function App({ thirdwebClient }: AppProps) {
-   console.log("*************App");
+     console.log("*************App");
 
-   const account = useActiveAccount();
+     const account = useActiveAccount();
 
-   const [options, setOptions] = useState<Map<string, bigint>>(new Map());
+     const [options, setOptions] = useState<Map<string, bigint>>(new Map());
 
-   const [error, setError] = useState<string>("");
+     const [error, setError] = useState<string>("");
 
-   const [status, setStatus] = useState<BET_RESULT>(BET_RESULT.PENDING);
-   const [winner, setWinner] = useState<string | undefined>(undefined);
-   const [fees, setFees] = useState<number>(0);
-   const [betKeys, setBetKeys] = useState<bigint[]>([]);
-   const [_bets, setBets] = useState<Marketpulse.BetStruct[]>([]);
+     const [status, setStatus] = useState<BET_RESULT>(BET_RESULT.PENDING);
+     const [winner, setWinner] = useState<string | undefined>(undefined);
+     const [fees, setFees] = useState<number>(0);
+     const [betKeys, setBetKeys] = useState<bigint[]>([]);
+     const [_bets, setBets] = useState<Marketpulse.BetStruct[]>([]);
 
-   const reload = async () => {
+     const reload = async () => {
        if (!account?.address) {
-       console.log("No address...");
+         console.log("No address...");
        } else {
-       const dataStatus = await readContract({
+         const dataStatus = await readContract({
            contract: getContract({
-           abi: Marketpulse__factory.abi,
-           client: thirdwebClient,
-           chain: defineChain(etherlinkTestnet.id),
-           address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
+             abi: Marketpulse__factory.abi,
+             client: thirdwebClient,
+             chain: defineChain(etherlinkTestnet.id),
+             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
            }),
            method: "status",
            params: [],
-       });
+         });
 
-       const dataWinner = await readContract({
+         const dataWinner = await readContract({
            contract: getContract({
-           abi: Marketpulse__factory.abi,
-           client: thirdwebClient,
-           chain: defineChain(etherlinkTestnet.id),
-           address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
+             abi: Marketpulse__factory.abi,
+             client: thirdwebClient,
+             chain: defineChain(etherlinkTestnet.id),
+             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
            }),
            method: "winner",
            params: [],
-       });
+         });
 
-       const dataFEES = await readContract({
+         const dataFEES = await readContract({
            contract: getContract({
-           abi: Marketpulse__factory.abi,
-           client: thirdwebClient,
-           chain: defineChain(etherlinkTestnet.id),
-           address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
+             abi: Marketpulse__factory.abi,
+             client: thirdwebClient,
+             chain: defineChain(etherlinkTestnet.id),
+             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
            }),
            method: "FEES",
            params: [],
-       });
+         });
 
-       const dataBetKeys = await readContract({
+         const dataBetKeys = await readContract({
            contract: getContract({
-           abi: Marketpulse__factory.abi,
-           client: thirdwebClient,
-           chain: defineChain(etherlinkTestnet.id),
-           address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
+             abi: Marketpulse__factory.abi,
+             client: thirdwebClient,
+             chain: defineChain(etherlinkTestnet.id),
+             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
            }),
            method: "getBetKeys",
            params: [],
-       });
+         });
 
-       setStatus(dataStatus as unknown as BET_RESULT);
-       setWinner(dataWinner as unknown as string);
-       setFees(Number(dataFEES as unknown as bigint) / 100);
-       setBetKeys(dataBetKeys as unknown as bigint[]);
+         setStatus(dataStatus as unknown as BET_RESULT);
+         setWinner(dataWinner as unknown as string);
+         setFees(Number(dataFEES as unknown as bigint) / 100);
+         setBetKeys(dataBetKeys as unknown as bigint[]);
 
-       console.log(
+         console.log(
            "**********status, winner, fees, betKeys",
            status,
            winner,
            fees,
            betKeys
-       );
+         );
        }
-   };
+     };
 
-   //first call to load data
-   useEffect(() => {
+     //first call to load data
+     useEffect(() => {
        (() => reload())();
-   }, [account?.address]);
+     }, [account?.address]);
 
-   //fetch bets
+     //fetch bets
 
-   useEffect(() => {
+     useEffect(() => {
        (async () => {
-       if (!betKeys || betKeys.length === 0) {
+         if (!betKeys || betKeys.length === 0) {
            console.log("no dataBetKeys");
            setBets([]);
-       } else {
+         } else {
            const bets = await Promise.all(
-           betKeys.map(
+             betKeys.map(
                async (betKey) =>
-               (await readContract({
+                 (await readContract({
                    contract: getContract({
-                   abi: Marketpulse__factory.abi,
-                   client: thirdwebClient,
-                   chain: defineChain(etherlinkTestnet.id),
-                   address:
+                     abi: Marketpulse__factory.abi,
+                     client: thirdwebClient,
+                     chain: defineChain(etherlinkTestnet.id),
+                     address:
                        CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
                    }),
                    method: "getBets",
                    params: [betKey],
-               })) as unknown as Marketpulse.BetStruct
-           )
+                 })) as unknown as Marketpulse.BetStruct
+             )
            );
            setBets(bets);
 
@@ -321,148 +323,148 @@
            let newOptions = new Map();
            setOptions(newOptions);
            bets.forEach((bet) => {
-           if (newOptions.has(bet!.option)) {
+             if (newOptions.has(bet!.option)) {
                newOptions.set(
-               bet!.option,
-               newOptions.get(bet!.option)! + bet!.amount
+                 bet!.option,
+                 newOptions.get(bet!.option)! + bet!.amount
                ); //acc
-           } else {
+             } else {
                newOptions.set(bet!.option, bet!.amount);
-           }
+             }
            });
            setOptions(newOptions);
            console.log("options", newOptions);
-       }
+         }
        })();
-   }, [betKeys]);
+     }, [betKeys]);
 
-   const Ping = () => {
+     const Ping = () => {
        // Comprehensive error handling
        const handlePing = async () => {
-       try {
+         try {
            const preparedContractCall = await prepareContractCall({
-           contract: getContract({
+             contract: getContract({
                abi: Marketpulse__factory.abi,
                client: thirdwebClient,
                chain: defineChain(etherlinkTestnet.id),
                address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           }),
-           method: "ping",
-           params: [],
+             }),
+             method: "ping",
+             params: [],
            });
 
            console.log("preparedContractCall", preparedContractCall);
 
            const transaction = await sendTransaction({
-           transaction: preparedContractCall,
-           account: account!,
+             transaction: preparedContractCall,
+             account: account!,
            });
 
            //wait for tx to be included on a block
            const receipt = await waitForReceipt({
-           client: thirdwebClient,
-           chain: defineChain(etherlinkTestnet.id),
-           transactionHash: transaction.transactionHash,
+             client: thirdwebClient,
+             chain: defineChain(etherlinkTestnet.id),
+             transactionHash: transaction.transactionHash,
            });
 
-           console.log("receipt :", receipt);
+           console.log("receipt:", receipt);
 
            setError("");
-       } catch (error) {
+         } catch (error) {
            const errorParsed = extractErrorDetails(
-           error,
-           Marketpulse__factory.abi
+             error,
+             Marketpulse__factory.abi
            );
            setError(errorParsed.message);
-       }
+         }
        };
 
        return (
-       <span style={{ alignContent: "center", paddingLeft: 100 }}>
+         <span style={{ alignContent: "center", paddingLeft: 100 }}>
            <button onClick={handlePing}>Ping</button>
            {!error || error === "" ? <>&#128994;</> : <>&#128308;</>}
-       </span>
+         </span>
        );
-   };
+     };
 
-   const BetFunction = () => {
+     const BetFunction = () => {
        const [amount, setAmount] = useState<BigNumber>(BigNumber(0)); //in Ether decimals
        const [option, setOption] = useState("chiefs");
 
        const runFunction = async () => {
-       try {
+         try {
            const contract = getContract({
-           abi: Marketpulse__factory.abi,
-           client: thirdwebClient,
-           chain: defineChain(etherlinkTestnet.id),
-           address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
+             abi: Marketpulse__factory.abi,
+             client: thirdwebClient,
+             chain: defineChain(etherlinkTestnet.id),
+             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
            });
 
            const preparedContractCall = await prepareContractCall({
-           contract,
-           method: "bet",
-           params: [option, parseEther(amount.toString(10))],
-           value: parseEther(amount.toString(10)),
+             contract,
+             method: "bet",
+             params: [option, parseEther(amount.toString(10))],
+             value: parseEther(amount.toString(10)),
            });
 
            const transaction = await sendTransaction({
-           transaction: preparedContractCall,
-           account: account!,
+             transaction: preparedContractCall,
+             account: account!,
            });
 
            //wait for tx to be included on a block
            const receipt = await waitForReceipt({
-           client: thirdwebClient,
-           chain: defineChain(etherlinkTestnet.id),
-           transactionHash: transaction.transactionHash,
+             client: thirdwebClient,
+             chain: defineChain(etherlinkTestnet.id),
+             transactionHash: transaction.transactionHash,
            });
 
-           console.log("receipt :", receipt);
+           console.log("receipt:", receipt);
 
            await reload();
 
            setError("");
-       } catch (error) {
+         } catch (error) {
            const errorParsed = extractErrorDetails(
-           error,
-           Marketpulse__factory.abi
+             error,
+             Marketpulse__factory.abi
            );
            console.log("ERROR", error);
            setError(errorParsed.message);
-       }
+         }
        };
 
        const calculateOdds = (option: string, amount?: bigint): BigNumber => {
-       //check option exists
-       if (!options.has(option)) return new BigNumber(0);
+         //check option exists
+         if (!options.has(option)) return new BigNumber(0);
 
-       console.log(
+         console.log(
            "actuel",
            options && options.size > 0
-           ? new BigNumber(options.get(option)!.toString()).toString()
-           : 0,
+             ? new BigNumber(options.get(option)!.toString()).toString()
+             : 0,
            "total",
            new BigNumber(
-           [...options.values()]
+             [...options.values()]
                .reduce((acc, newValue) => acc + newValue, amount ? amount : 0n)
                .toString()
            ).toString()
-       );
+         );
 
-       return options && options.size > 0
+         return options && options.size > 0
            ? new BigNumber(options.get(option)!.toString(10))
                .plus(
-               amount ? new BigNumber(amount.toString(10)) : new BigNumber(0)
+                 amount ? new BigNumber(amount.toString(10)) : new BigNumber(0)
                )
                .div(
-               new BigNumber(
+                 new BigNumber(
                    [...options.values()]
-                   .reduce(
+                     .reduce(
                        (acc, newValue) => acc + newValue,
                        amount ? amount : 0n
-                   )
-                   .toString(10)
-               )
+                     )
+                     .toString(10)
+                 )
                )
                .plus(1)
                .minus(fees)
@@ -470,232 +472,235 @@
        };
 
        return (
-       <span style={{ alignContent: "center", width: "100%" }}>
+         <span style={{ alignContent: "center", width: "100%" }}>
            {status && status === BET_RESULT.PENDING ? (
-           <>
+             <>
                <h3>Choose team</h3>
 
                <select
-               name="options"
-               onChange={(e) => setOption(e.target.value)}
-               value={option}
+                 name="options"
+                 onChange={(e) => setOption(e.target.value)}
+                 value={option}
                >
-               <option value="chiefs"> Chiefs</option>
-               <option value="lions">Lions </option>
+                 <option value="chiefs"> Chiefs</option>
+                 <option value="lions">Lions </option>
                </select>
                <h3>Amount</h3>
                <input
-               type="number"
-               id="amount"
-               name="amount"
-               required
-               onChange={(e) => {
+                 type="number"
+                 id="amount"
+                 name="amount"
+                 required
+                 onChange={(e) => {
                    if (e.target.value && !isNaN(Number(e.target.value))) {
-                   //console.log("e.target.value",e.target.value)
-                   setAmount(new BigNumber(e.target.value));
+                     //console.log("e.target.value",e.target.value)
+                     setAmount(new BigNumber(e.target.value));
                    }
-               }}
+                 }}
                />
 
                <hr />
                {account?.address ? <button onClick={runFunction}>Bet</button> : ""}
 
                <table style={{ fontWeight: "normal", width: "100%" }}>
-               <tbody>
+                 <tbody>
                    <tr>
-                   <td style={{ textAlign: "left" }}>Avg price (decimal)</td>
-                   <td style={{ textAlign: "right" }}>
+                     <td style={{ textAlign: "left" }}>Avg price (decimal)</td>
+                     <td style={{ textAlign: "right" }}>
                        {options && options.size > 0
-                       ? calculateOdds(option, parseEther(amount.toString(10)))
-                           .toFixed(3)
-                           .toString()
-                       : 0}
-                   </td>
+                         ? calculateOdds(option, parseEther(amount.toString(10)))
+                             .toFixed(3)
+                             .toString()
+                         : 0}
+                     </td>
                    </tr>
 
                    <tr>
-                   <td style={{ textAlign: "left" }}>Potential return</td>
-                   <td style={{ textAlign: "right" }}>
+                     <td style={{ textAlign: "left" }}>Potential return</td>
+                     <td style={{ textAlign: "right" }}>
                        XTZ{" "}
                        {amount
-                       ? calculateOdds(option, parseEther(amount.toString(10)))
-                           .multipliedBy(amount)
-                           .toFixed(6)
-                           .toString()
-                       : 0}{" "}
+                         ? calculateOdds(option, parseEther(amount.toString(10)))
+                             .multipliedBy(amount)
+                             .toFixed(6)
+                             .toString()
+                         : 0}{" "}
                        (
                        {options && options.size > 0
-                       ? calculateOdds(option, parseEther(amount.toString(10)))
-                           .minus(new BigNumber(1))
-                           .multipliedBy(100)
-                           .toFixed(2)
-                           .toString()
-                       : 0}
+                         ? calculateOdds(option, parseEther(amount.toString(10)))
+                             .minus(new BigNumber(1))
+                             .multipliedBy(100)
+                             .toFixed(2)
+                             .toString()
+                         : 0}
                        %)
-                   </td>
+                     </td>
                    </tr>
-               </tbody>
+                 </tbody>
                </table>
-           </>
+             </>
            ) : (
-           <>
+             <>
                <span style={{ color: "#2D9CDB", fontSize: "1.125rem" }}>
-               Outcome: {BET_RESULT[status]}
+                 Outcome: {BET_RESULT[status]}
                </span>
                {winner ? <div style={{ color: "#858D92" }}>{winner}</div> : ""}
-           </>
+             </>
            )}
-       </span>
+         </span>
        );
-   };
+     };
 
-   const resolve = async (option: string) => {
+     const resolve = async (option: string) => {
        try {
-       const preparedContractCall = await prepareContractCall({
+         const preparedContractCall = await prepareContractCall({
            contract: getContract({
-           abi: Marketpulse__factory.abi,
-           client: thirdwebClient,
-           chain: defineChain(etherlinkTestnet.id),
-           address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
+             abi: Marketpulse__factory.abi,
+             client: thirdwebClient,
+             chain: defineChain(etherlinkTestnet.id),
+             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
            }),
            method: "resolveResult",
            params: [option, BET_RESULT.WIN],
-       });
+         });
 
-       console.log("preparedContractCall", preparedContractCall);
+         console.log("preparedContractCall", preparedContractCall);
 
-       const transaction = await sendTransaction({
+         const transaction = await sendTransaction({
            transaction: preparedContractCall,
            account: account!,
-       });
+         });
 
-       //wait for tx to be included on a block
-       const receipt = await waitForReceipt({
+         //wait for tx to be included on a block
+         const receipt = await waitForReceipt({
            client: thirdwebClient,
            chain: defineChain(etherlinkTestnet.id),
            transactionHash: transaction.transactionHash,
-       });
+         });
 
-       console.log("receipt :", receipt);
+         console.log("receipt:", receipt);
 
-       await reload();
+         await reload();
 
-       setError("");
+         setError("");
        } catch (error) {
-       const errorParsed = extractErrorDetails(error, Marketpulse__factory.abi);
-       setError(errorParsed.message);
+         const errorParsed = extractErrorDetails(error, Marketpulse__factory.abi);
+         setError(errorParsed.message);
        }
-   };
+     };
 
-   return (
+     return (
        <>
-       <header>
+         <header>
            <span style={{ display: "flex" }}>
-           <h1>Market Pulse</h1>
+             <h1>Market Pulse</h1>
 
-           <div className="flex items-center gap-4">
+             <div className="flex items-center gap-4">
                <ConnectButton
-               client={thirdwebClient}
-               wallets={wallets}
-               connectModal={{ size: "compact" }}
-               chain={defineChain(etherlinkTestnet.id)}
+                 client={thirdwebClient}
+                 wallets={wallets}
+                 connectModal={{ size: "compact" }}
+                 chain={defineChain(etherlinkTestnet.id)}
                />
-           </div>
+             </div>
            </span>
-       </header>
+         </header>
 
-       <div id="content" style={{ display: "flex", paddingTop: 10 }}>
+         <div id="content" style={{ display: "flex", paddingTop: 10 }}>
            <div style={{ width: "calc(66vw - 4rem)" }}>
-           <img
+             <img
                style={{ maxHeight: "40vh" }}
-               src="graph.png"
-           />
-           <hr />
+               src="https://zamrokk.github.io/marketpulse/images/graph.png"
+             />
+             <hr />
 
-           <table style={{ width: "inherit" }}>
+             <table style={{ width: "inherit" }}>
                <thead>
-               <tr>
+                 <tr>
                    <th>Outcome</th>
                    <th>% chance</th>
                    <th>action</th>
-               </tr>
+                 </tr>
                </thead>
                <tbody>
-               {options && options.size > 0 ? (
+                 {options && options.size > 0 ? (
                    [...options.entries()].map(([option, amount]) => (
-                   <tr key={option}>
+                     <tr key={option}>
                        <td className="tdTable">
-                       <div className="picDiv">
+                         <div className="picDiv">
                            <img
-                           style={{ objectFit: "cover", height: "inherit" }}
-                           src={option + ".png"}
+                             style={{ objectFit: "cover", height: "inherit" }}
+                             src={
+                               "https://zamrokk.github.io/marketpulse/images/" +
+                               option +
+                               ".png"
+                             }
                            ></img>
-                       </div>
-                       {option}
+                         </div>
+                         {option}
                        </td>
                        <td>
-                       {new BigNumber(amount.toString())
+                         {new BigNumber(amount.toString())
                            .div(
-                           new BigNumber(
+                             new BigNumber(
                                [...options.values()]
-                               .reduce((acc, newValue) => acc + newValue, 0n)
-                               .toString()
-                           )
+                                 .reduce((acc, newValue) => acc + newValue, 0n)
+                                 .toString()
+                             )
                            )
                            .multipliedBy(100)
                            .toFixed(2)}
-                       %
+                         %
                        </td>
 
                        <td>
-                       {status && status === BET_RESULT.PENDING ? (
+                         {status && status === BET_RESULT.PENDING ? (
                            <button onClick={() => resolve(option)}>Winner</button>
-                       ) : (
+                         ) : (
                            ""
-                       )}
+                         )}
                        </td>
-                   </tr>
+                     </tr>
                    ))
-               ) : (
+                 ) : (
                    <></>
-               )}
+                 )}
                </tbody>
-           </table>
+             </table>
            </div>
 
            <div
-           style={{
+             style={{
                width: "calc(33vw - 4rem)",
                boxShadow: "",
                margin: "1rem",
                borderRadius: "12px",
                border: "1px solid #344452",
                padding: "1rem",
-           }}
+             }}
            >
-           <span className="tdTable">{<BetFunction />}</span>
+             <span className="tdTable">{<BetFunction />}</span>
            </div>
-       </div>
+         </div>
 
-       <footer>
+         <footer>
            <h3>Errors</h3>
 
            <textarea
-           readOnly
-           rows={10}
-           style={{ width: "100%" }}
-           value={error}
+             readOnly
+             rows={10}
+             style={{ width: "100%" }}
+             value={error}
            ></textarea>
 
            {account?.address ? <Ping /> : ""}
-       </footer>
+         </footer>
        </>
-   );
+     );
    }
-
    ```
 
-   Explanations :
+   Explanations:
 
    - `import { Marketpulse, Marketpulse__factory } from "./typechain-types";`: Imports the contract ABI and contract structures
    - `import CONTRACT_ADDRESS_JSON from "./deployed_addresses.json";`: Imports the address of the last deployed contract automatically
@@ -805,7 +810,9 @@
 
      color-scheme: light dark;
      color: rgba(255, 255, 255, 0.87);
-     background-color: #1d2b39;
+     background-color: #1D2B39;
+
+
 
      font-synthesis: none;
      text-rendering: optimizeLegibility;
@@ -829,6 +836,7 @@
      place-items: center;
      min-width: 320px;
      min-height: 100vh;
+
    }
 
    h1 {
@@ -843,7 +851,7 @@
      font-size: 1em;
      font-weight: 500;
      font-family: inherit;
-     background-color: #2d9cdb;
+     background-color: #2D9CDB;
      cursor: pointer;
      transition: border-color 0.25s;
    }
@@ -860,7 +868,7 @@
    select {
      width: inherit;
      font-size: 0.875rem;
-     color: #858d92;
+     color: #858D92;
      border-color: #344452;
      transition: color 0.2s;
      text-align: center;
@@ -868,7 +876,7 @@
      border-style: solid;
      align-self: center;
      padding: 1rem 1rem;
-     background: #1d2b39;
+     background: #1D2B39;
      outline: none;
      outline-color: currentcolor;
      outline-style: none;
@@ -879,7 +887,7 @@
    input {
      width: calc(100% - 35px);
      font-size: 0.875rem;
-     color: #858d92;
+     color: #858D92;
      border-color: #344452;
      transition: color 0.2s;
      text-align: center;
@@ -887,7 +895,7 @@
      border-style: solid;
      align-self: center;
      padding: 1rem 1rem;
-     background: #1d2b39;
+     background: #1D2B39;
      outline: none;
      outline-color: currentcolor;
      outline-style: none;
@@ -925,7 +933,7 @@
 
    1. Select ** Chiefs** on the select box on the right corner, choose a small amount like **0.00001 XTZ**, and click the **Bet** button.
 
-   1. Confirm the transaction in your wallet. Beware of funding your wallet with Etherlink testnet XTZ, otherwise you will receive an `OutOfFund` error
+   1. Confirm the transaction in your wallet. Beware of funding your wallet with Etherlink testnet XTZ, otherwise you will receive an `OutOfFund` error.
 
    1. Disconnect and connect with another account in your wallet.
 

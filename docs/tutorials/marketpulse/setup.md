@@ -40,6 +40,6 @@ It provides low-level, efficient blockchain interactions with minimal abstractio
    ```
 
    Verify is a feature that verifies contracts on an Ethereum block explorer by checking the compiled code against the source code.
-   Verifying your contracts provides source code transparency and a source reference for some tools to generate utility code
+   Verifying your contracts provides source code transparency and a source reference for some tools to generate utility code.
 
 1. (Optional) If you are using VsCode for development, install the Hardhat/Solidity plugin from Nomic: [Solidity plugin for VsCode](https://marketplace.visualstudio.com/items?itemName=NomicFoundation.hardhat-solidity)

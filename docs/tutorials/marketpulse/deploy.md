@@ -150,6 +150,8 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
    npx hardhat verify --network etherlinkTestnet <CONTRACT_ADDRESS>
    ```
 
+   The response should include the message "Successfully verified contract Marketpulse on the block explorer" and a link to the block explorer.
+
    You can also pass the `--verify` option to the deployment command to verify the contract as part of the deployment process.
 
 The next step is to create the frontend application.
