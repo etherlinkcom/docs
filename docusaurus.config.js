@@ -3,6 +3,8 @@
 
 require('dotenv').config();
 
+const { themes } = require('prism-react-renderer');
+
 // script-src causes development builds to fail
 // But unsafe-eval should NOT be in production builds
 // Also, put GTM first because sometimes the ';' in the escaped single quotes causes the browser to think it's the end
@@ -131,8 +133,8 @@ module.exports = async function createConfigAsync() {
           ],
         },
         prism: {
-          theme: require('prism-react-renderer/themes/github'),
-          darkTheme: require('prism-react-renderer/themes/dracula'),
+          theme: themes.github,
+          darkTheme: themes.dracula,
           additionalLanguages: ['solidity'],
         },
         docs: {
