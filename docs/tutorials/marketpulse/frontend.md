@@ -941,7 +941,7 @@
 
    1. Confirm the transaction in your wallet.
 
-      Both teams have 50% of chance to win. Note: Default platform fees have been set to 10%, and the odds calculation take those fees into account.
+      Both teams have 50% of chance to win. Note: Default platform fees have been set to 10%, and the odds calculation takes those fees into account.
 
    1. Click one of the **Winner** buttons to resolve the poll.
 
