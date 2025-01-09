@@ -35,7 +35,7 @@ Here is an example of one using the Github configuration files and [Vercel](http
            uses: actions/setup-node@v4
            with:
              node-version: 18
-             cache: "npm"
+             cache: 'npm'
          - run: npm ci
          - run: HARDHAT_VAR_DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }} npx hardhat compile
          - run: HARDHAT_VAR_DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }} npx hardhat test
@@ -60,7 +60,7 @@ Here is an example of one using the Github configuration files and [Vercel](http
            uses: actions/setup-node@v4
            with:
              node-version: 18
-             cache: "npm"
+             cache: 'npm'
          - run: npm ci
          - run: yes | HARDHAT_VAR_DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }}  npx hardhat ignition deploy ignition/modules/Marketpulse.ts --verify --reset --network etherlinkTestnet
          - name: Cache hardhat-ignition
@@ -89,17 +89,17 @@ Here is an example of one using the Github configuration files and [Vercel](http
            uses: actions/setup-node@v4
            with:
              node-version: 18
-             cache: "npm"
+             cache: 'npm'
          - run: npm ci
-           working-directory: ./marketpulse
+           working-directory: ./app
          - run: more ./ignition/deployments/chain-128123/deployed_addresses.json
          - run: npm run build
-           working-directory: ./marketpulse
+           working-directory: ./app
          - name: Cache app build
            uses: actions/upload-artifact@v4
            with:
              name: ${{ runner.os }}-build-app-artifacts
-             path: ./marketpulse/dist
+             path: ./app/dist
              retention-days: 1
      deploy-app:
        needs: build-app
@@ -111,7 +111,7 @@ Here is an example of one using the Github configuration files and [Vercel](http
            uses: actions/setup-node@v4
            with:
              node-version: 18
-             cache: "npm"
+             cache: 'npm'
          - name: Install Vercel CLI
            run: npm install -g vercel
          - name: Link to Vercel
@@ -131,11 +131,11 @@ Here is an example of one using the Github configuration files and [Vercel](http
          - name: Prepare build for Vercel
            env:
              VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-           run: vercel build --prod --yes --token=$VERCEL_TOKEN --cwd=./marketpulse
+           run: vercel build --prod --yes --token=$VERCEL_TOKEN --cwd=./app
          - name: Deploy to Vercel
            env:
              VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-           run: vercel deploy --prebuilt --prod --yes --token=$VERCEL_TOKEN --cwd=./marketpulse
+           run: vercel deploy --prebuilt --prod --yes --token=$VERCEL_TOKEN --cwd=./app
    ```
 
    This pipeline includes several jobs that reproduce what you did manually in the tutorial:
