@@ -10,7 +10,7 @@ For information on the roles of these different nodes, see [Etherlink architectu
 Anyone can run Etherlink [Smart Rollup nodes](/network/smart-rollup-nodes), and due to the optimistic nature of Tezos [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) it takes only one honest Smart Rollup node operator to keep Etherlink secure.
 Honest Smart Rollup nodes can catch any misbehavior by other nodes by refuting their incorrect commitments.
 
-These organizations currently run Etherlink Smart Rollup nodes:
+These organizations currently run Etherlink Smart Rollup nodes in operator mode to post and defend commitments for the current state of Etherlink:
 
 - [The Tezos Foundation](https://tezos.foundation/)
 - [MIDL.dev](http://midl.dev/)
