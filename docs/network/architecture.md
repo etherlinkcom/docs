@@ -50,7 +50,10 @@ Etherlink relies on three types of nodes, with instances of each type running in
 They forward these transactions to the sequencer and receive transactions from the sequencer, which they use to update their state.
 They also check Smart Rollup nodes to verify that these transactions make it to Tezos layer 1.
 
-- Smart Rollup nodes (`octez-smart-rollup-node`): Smart Rollup nodes store the state of the Etherlink blockchain from the perspective of Tezos layer 1.
+- Smart Rollup nodes (`octez-smart-rollup-node`): Smart Rollup nodes are Octez daemons that run the kernel of a Tezos Smart Rollup.
+For more information about Smart Rollup nodes in general, see [Smart Rollup node](https://tezos.gitlab.io/shell/smart_rollup_node.html) in the Octez documentation.
+
+  Etherlink Smart Rollup nodes run the kernel for the Etherlink Smart Rollup and store the state of the Etherlink blockchain from the perspective of Tezos layer 1.
   They monitor the Tezos layer 1 Smart Rollup inbox, filter the inbox to Etherlink-related messages, process them, and update their states.
 
   Importantly, the Smart Rollup nodes store the state of Etherlink based on the information that they get from layer 1, not on information from EVM nodes or the sequencer.
