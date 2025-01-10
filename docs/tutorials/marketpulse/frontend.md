@@ -933,7 +933,8 @@
 
    1. Select ** Chiefs** on the select box on the right corner, choose a small amount like **0.00001 XTZ**, and click the **Bet** button.
 
-   1. Confirm the transaction in your wallet. Beware of funding your wallet with Etherlink testnet XTZ, otherwise you will receive an `OutOfFund` error.
+   1. Confirm the transaction in your wallet.
+   If you don't have enough XTZ in your account, the application shows an `OutOfFund` error.
 
    1. Disconnect and connect with another account in your wallet.
 
