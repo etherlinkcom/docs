@@ -104,7 +104,7 @@ function CollapseButton({
   );
 }
 
-const ITEMICONS = ['/img/FiHome.svg', '/img/BiSortAlt2.svg', '/img/FiBox.svg', '/img/FiWifi.svg', '/img/FiSettings.svg', '/img/FiUsers.svg', '/img/FiTrendingUp.svg', '/img/FiBookOpen.svg']
+const ITEMICONS = ['/img/FiHome.svg', '/img/FiBookOpen.svg', '/img/BiSortAlt2.svg', '/img/FiBox.svg', '/img/FiWifi.svg', '/img/FiSettings.svg', '/img/FiUsers.svg', '/img/FiTrendingUp.svg', '/img/FiBookOpen.svg']
 
 export default function DocSidebarItemCategory({
   item,
