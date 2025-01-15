@@ -80,14 +80,6 @@ Then, run this command to start the node:
 octez-evm-node run observer --data-dir $evm_observer_dir
 ```
 
-By default, the EVM node exposes its JSON RPC API endpoint to `localhost:8545`.
-You can test that everything works as expected by running RPC requests manually or by setting your wallet to use your local node.
-For example, this command gets the number of the most recent block in hexadecimal:
-
-```bash
-curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_blockNumber"}' http://localhost:8545
-```
-
 ### From an existing Etherlink Smart Rollup node
 
 1. Download [an Etherlink Smart Rollup node snapshot](https://snapshots.eu.tzinit.org/etherlink-ghostnet/), and use the `octez-smart-rollup-node` binary to import it in a temporary directory.
@@ -119,14 +111,6 @@ curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","metho
 
    The EVM node runs in archive mode.
 
-By default, the EVM node exposes its JSON RPC API endpoint to `localhost:8545`.
-You can test that everything works as expected by running RPC requests manually or by setting your wallet to use your local node.
-For example, this command gets the number of the most recent block in hexadecimal:
-
-```bash
-curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_blockNumber"}' http://localhost:8545
-```
-
 ### From genesis
 
 1. Get the Etherlink installer kernel (`installer.hex` file), which you can build yourself as described in [Building the Etherlink kernel](/network/building-kernel) or download here: [installer.hex](/files/installer.hex).
@@ -138,10 +122,20 @@ curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","metho
 
    The `--initial-kernel` argument is needed only the first time that you start the node.
 
+## Verifying that the node is running
+
+When the node is running, its log shows information about the blocks it receives from the sequencer (referred to here as _blueprints_), as in this example:
+
+```
+Jan 15 20:17:23.794: Applied a blueprint for level 16867349 at 2025-01-15T19:38:35Z containing 1
+Jan 15 20:17:23.794:   transactions for 2814041 gas leading to creating block
+Jan 15 20:17:23.794:   0xeb720c1c5df94f820d4ede15ddef92b9267d1291dea15a716a160b4c2[...] in 245ms.
+```
+
 By default, the EVM node exposes its JSON RPC API endpoint to `localhost:8545`.
 You can test that everything works as expected by running RPC requests manually or by setting your wallet to use your local node.
-For example, you can call the node's RPC API with this command, putting the URL to your EVM node at the end:
+For example, this command gets the number of the most recent block in hexadecimal:
 
 ```bash
-curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"tez_kernelVersion"}' http://localhost:8545
+curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_blockNumber"}' http://localhost:8545
 ```
