@@ -59,18 +59,26 @@ You can initialize the node from a snapshot or allow it to compute the Etherlink
 
 ### From a snapshot
 
-1. Download [an Etherlink snapshot](http://snapshotter-sandbox.nomadic-labs.eu/), and use the `octez-evm-node` to import it.
+To automatically download and import a snapshot, start the node with the `--init-from-snapshot` switch, as in this example:
 
-   ```bash
-   wget http://snapshotter-sandbox.nomadic-labs.eu/etherlink-mainnet/evm-snapshot-sr1Ghq66tYK9y-latest.gz # this is for the latest mainnet etherlink snapshots, similarly there is one for testnet
-   octez-evm-node snapshot import evm-snapshot-sr1Ghq66tYK9y-latest.gz --data-dir $evm_observer_dir
+```bash
+octez-evm-node run observer --data-dir $evm_observer_dir
+```
 
-   ```
-2. Run this command to start the node:
+The node can take time to download and import the snapshot.
 
-   ```bash
-   octez-evm-node run observer --data-dir $evm_observer_dir
-   ```
+To import the snapshot manually, download the snapshot from http://snapshotter-sandbox.nomadic-labs.eu/ and import it with this command:
+
+```bash
+wget http://snapshotter-sandbox.nomadic-labs.eu/etherlink-mainnet/evm-snapshot-sr1Ghq66tYK9y-latest.gz # this is for the latest mainnet etherlink snapshots, similarly there is one for testnet
+octez-evm-node snapshot import evm-snapshot-sr1Ghq66tYK9y-latest.gz --data-dir $evm_observer_dir
+```
+
+Then, run this command to start the node:
+
+```bash
+octez-evm-node run observer --data-dir $evm_observer_dir
+```
 
 By default, the EVM node exposes its JSON RPC API endpoint to `localhost:8545`.
 You can test that everything works as expected by running RPC requests manually or by setting your wallet to use your local node.
