@@ -59,10 +59,10 @@ You can initialize the node from a snapshot or allow it to compute the Etherlink
 
 ### From a snapshot
 
-To automatically download and import a snapshot, start the node with the `--init-from-snapshot` switch, as in this example:
+To automatically download and import a snapshot, start the node with the `--init-from-snapshot` switch and the network, as in this example:
 
 ```bash
-octez-evm-node run observer --data-dir $evm_observer_dir
+octez-evm-node run observer --data-dir $evm_observer_dir --network testnet --init-from-snapshot
 ```
 
 The node can take time to download and import the snapshot.
