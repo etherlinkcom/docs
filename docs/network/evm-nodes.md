@@ -59,7 +59,7 @@ You can initialize the node from a snapshot or allow it to compute the Etherlink
 
 ### From a snapshot
 
-To automatically download and import a snapshot, start the node with the `--init-from-snapshot` switch and the network, as in this example:
+To automatically download and import a snapshot, start the node with the `--init-from-snapshot` switch and the network to use ("mainnet" or "testnet"), as in this example:
 
 ```bash
 octez-evm-node run observer --data-dir $evm_observer_dir --network testnet --init-from-snapshot
@@ -74,10 +74,10 @@ wget http://snapshotter-sandbox.nomadic-labs.eu/etherlink-mainnet/evm-snapshot-s
 octez-evm-node snapshot import evm-snapshot-sr1Ghq66tYK9y-latest.gz --data-dir $evm_observer_dir
 ```
 
-Then, run this command to start the node:
+Then, run this command to start the node, passing the data directory and the network to use ("mainnet" or "testnet"):
 
 ```bash
-octez-evm-node run observer --data-dir $evm_observer_dir
+octez-evm-node run observer --network testnet --data-dir $evm_observer_dir
 ```
 
 ### From an existing Etherlink Smart Rollup node
