@@ -22,6 +22,8 @@ For this reason, if the block time gets shorter during the commitment's refutati
 Therefore, commitments that are not cemented when the number of blocks changes must wait slightly longer before they can be cemented.
 
 This variation affects only transactions that are not cemented when the layer 1 protocol upgrade happens.
-The delay is based on how close a commitment is to being cemented when the number of blocks in the refutation period changes.
+The delay is based on how much the block times changed and on how close a commitment is to being cemented when the number of blocks in the refutation period changes.
+For example, if the block time was reduced by 20%, the maximum addition to a commitment's refutation period is 20% of 14 days, which is about 3 extra days.
+Commitments that are made shortly before the block time changes have the longest change to their refutation periods, while commitments that were close to being cemented have a very small change.
 
 :::
