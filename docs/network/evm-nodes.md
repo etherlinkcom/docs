@@ -13,6 +13,9 @@ Public Smart Rollup nodes for Etherlink are not yet available, so you must run y
 The EVM node runs Etherlink's kernel.
 You can get the kernel by importing it from a running Etherlink Smart Rollup node or by providing the installer kernel.
 
+The Etherlink EVM node is part of Octez suite.
+See this page for system requirements for the latest release of the Octez suite: https://tezos.gitlab.io/releases/latest.html.
+
 ## System requirements
 
 Running an Etherlink EVM node on Etherlink Mainnet requires a computer with 500GB of disk space and at least 16GB RAM.

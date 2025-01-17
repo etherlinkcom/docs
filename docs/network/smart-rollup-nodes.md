@@ -9,6 +9,7 @@ Public Smart Rollup nodes for Etherlink are not yet available, so you must run y
 
 In this context, an _Etherlink Smart Rollup node_ is an [Octez Smart Rollup node](https://tezos.gitlab.io/shell/smart_rollup_node.html) that runs the Etherlink kernel.
 This kernel is a Rust program compiled in WASM implementing the semantics of Etherlink blocks and transactions.
+For system requirements, see the documentation for the latest release of the Octez suite here: https://tezos.gitlab.io/releases/latest.html.
 
 :::
 
