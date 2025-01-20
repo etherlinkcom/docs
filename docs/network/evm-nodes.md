@@ -30,39 +30,51 @@ These images contain the correct version of the binary.
 1. If you want your EVM node to check the correctness of the blocks it receives via a Smart Rollup node, set the `sr_node_observer_rpc` environment variable to the URL of that Etherlink Smart Rollup node, such as `http://localhost:8932`.
 1. Set the `evm_observer_dir` environment variable to the directory where the node should store its local data.
 The default is `$HOME/.octez-evm-node`.
-1. Initialize the node. To trust incoming blocks, use `--dont-track-rollup-node`:
+1. Initialize the node by setting the data directory in the `--data-dir` argument and the network to use (such as `mainnet` or `testnet`) in the `--network` argument.
+
+   To trust incoming blocks, use `--dont-track-rollup-node`:
 
    ```bash
    octez-evm-node init config \
-     --data-dir $evm_observer_dir --dont-track-rollup-node \
-     --preimages-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
-     --evm-node-endpoint https://relay.mainnet.etherlink.com
+     --network mainnet \
+     --data-dir $evm_observer_dir \
+     --dont-track-rollup-node
    ```
 
-   Alternatively, if you want to rely on a Smart Rollup node to check the correctness of blocks coming from the sequencer, use `--rollup-node-endpoint`:
+   Alternatively, if you want to rely on a Smart Rollup node to check the correctness of blocks coming from the sequencer, pass the `sr_node_observer_rpc` environment variable to the `--rollup-node-endpoint` argument:
 
    ```bash
    octez-evm-node init config \
-     --data-dir $evm_observer_dir --rollup-node-endpoint $sr_node_observer_rpc \
-     --preimages-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
-     --evm-node-endpoint https://relay.mainnet.etherlink.com
+     --network mainnet \
+     --data-dir $evm_observer_dir \
+     --rollup-node-endpoint $sr_node_observer_rpc
    ```
 
-   This configuration uses the preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
+   The `--network` argument sets the node to use preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
+   For example, passing `--network mainnet` implies these arguments:
+
+   ```bash
+   --preimages-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
+   --evm-node-endpoint https://relay.mainnet.etherlink.com
+   ```
+
    It's safe to use these preimages because the node verifies them.
    If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink kernel](/network/building-kernel).
    However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink after that.
 
 ## Running the node
 
-You can initialize the node from a snapshot or allow it to compute the Etherlink state from genesis, which can take a long time.
+You can initialize the node from a snapshot, initialize it from an existing Etherlink Smart Rollup node, or allow it to compute the Etherlink state from genesis.
 
 ### From a snapshot
 
-To automatically download and import a snapshot, start the node with the `--init-from-snapshot` switch and the network to use ("mainnet" or "testnet"), as in this example:
+To automatically download and import a snapshot, start the node with the `--init-from-snapshot` switch and the network to use, as in this example:
 
 ```bash
-octez-evm-node run observer --data-dir $evm_observer_dir --network testnet --init-from-snapshot
+octez-evm-node run observer \
+  --data-dir $evm_observer_dir \
+  --network testnet \
+  --init-from-snapshot
 ```
 
 The node can take time to download and import the snapshot.
@@ -71,13 +83,16 @@ To import the snapshot manually, download the snapshot from http://snapshotter-s
 
 ```bash
 wget http://snapshotter-sandbox.nomadic-labs.eu/etherlink-mainnet/evm-snapshot-sr1Ghq66tYK9y-latest.gz # this is for the latest mainnet etherlink snapshots, similarly there is one for testnet
-octez-evm-node snapshot import evm-snapshot-sr1Ghq66tYK9y-latest.gz --data-dir $evm_observer_dir
+octez-evm-node snapshot import evm-snapshot-sr1Ghq66tYK9y-latest.gz \
+  --data-dir $evm_observer_dir
 ```
 
-Then, run this command to start the node, passing the data directory and the network to use ("mainnet" or "testnet"):
+Then, run this command to start the node, passing the data directory and the network to use:
 
 ```bash
-octez-evm-node run observer --network testnet --data-dir $evm_observer_dir
+octez-evm-node run observer \
+  --network testnet \
+  --data-dir $evm_observer_dir
 ```
 
 ### From an existing Etherlink Smart Rollup node
