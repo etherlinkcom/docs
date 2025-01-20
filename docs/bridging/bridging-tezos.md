@@ -3,6 +3,8 @@ title: Bridging XTZ between Tezos layer 1 and Etherlink
 sidebar_label: Bridging to Tezos
 ---
 
+import CementingDelayNote from '@site/docs/conrefs/cementing-delay.md';
+
 You can bridge XTZ tokens from Tezos layer 1 to Etherlink and back.
 XTZ is the native token on Etherlink and Tezos, which is called tez and shown on price tickers with the symbol [XTZ](https://coinmarketcap.com/currencies/tezos/).
 
@@ -16,20 +18,7 @@ These bridges are trustless and permissionless; anyone can use them without rest
 - [Mainnet Tezos bridge](https://www.etherlinkbridge.com/tezos-bridge)
 - [Testnet Tezos bridge](https://testnet.bridge.etherlink.com/)
 
-:::note
-<h3>Bridging time</h3>
-Tokens that you bridge from Tezos layer 1 to Etherlink are available for use on Etherlink immediately.
-
-Tokens that you bridge from Etherlink to Tezos layer 1 are available for use on Tezos in 15 days.
-
-This delay is caused by the Smart Rollup refutation period.
-As with all Smart Rollups, Etherlink nodes post commitments about their state to Tezos layer 1, including incoming bridging transactions, on a regular schedule.
-Other nodes have the length of the refutation period (14 days) to challenge those commitments.
-At the end of the refutation period, the correct commitment is cemented, or made final and unchangeable.
-Users can execute the bridging transactions in a commitment only after the commitment is cemented.
-
-The Etherlink indexer run by Nomadic Labs automatically executes these bridging transactions soon after they are cemented, which makes the bridged tokens available on Tezos about 15 days after you submit the withdrawal.
-:::
+<CementingDelayNote />
 
 ## Using the bridge
 
