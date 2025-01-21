@@ -87,6 +87,8 @@ octez-evm-node snapshot import evm-snapshot-sr1Ghq66tYK9y-latest.gz \
   --data-dir $evm_observer_dir
 ```
 
+You can also pass the URL of the snapshot directly to the `octez-evm-node snapshot import` command.
+
 Then, run this command to start the node, passing the data directory and the network to use:
 
 ```bash
