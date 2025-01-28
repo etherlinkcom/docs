@@ -12,7 +12,104 @@ This build process creates the installer kernel, which is a compressed version o
 The data for the original kernel is stored in separate files called preimages.
 For more information about installer kernels and preimages, see the tutorial [Deploy a Smart Rollup](https://docs.tezos.com/tutorials/smart-rollup) on docs.tezos.com.
 
-The Etherlink build process relies on a Docker image to ensure reproducible builds, so you must have Docker installed.
+## Prerequisites
+
+Before you begin, make sure that you have these prerequisites installed:
+
+- Docker, because the Etherlink build process relies on a Docker image to ensure reproducible builds
+
+- Rust, because of its support for WebAssembly (WASM), the language that Smart Rollups use to communicate.
+
+   To install Rust via the `rustup` command, run this command:
+
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   ```
+
+   You can see other ways of installing Rust at https://www.rust-lang.org.
+
+- Clang and LLVM, which are required for compilation to WebAssembly.
+   Version 11 or later of Clang is required.
+   Here are instructions for installing the appropriate tools on different operating systems:
+
+   **MacOS**
+
+   ```bash
+   brew install llvm
+   export CC="$(brew --prefix llvm)/bin/clang"
+   ```
+
+   In some cases for MacOS you may need to update your `PATH` environment variable to include LLVM by running this command:
+
+   ```bash
+   echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc
+   ```
+
+   **Ubuntu**
+
+   ```bash
+   sudo apt-get install clang-11
+   export CC=clang-11
+   ```
+
+   **Fedora**
+
+   ```bash
+   dnf install clang
+   export CC=clang
+   ```
+
+   **Arch Linux**
+
+   ```bash
+   pacman -S clang
+   export CC=clang
+   ```
+
+   The `export CC` command sets Clang as the default C/C++ compiler.
+
+   After you run these commands, run `$CC --version` to verify that you have version 11 or greater installed.
+
+   Also, ensure that your version of Clang `wasm32` target with by running the command `$CC -print-targets | grep wasm32` and verifying that the results include `wasm32`.
+
+- AR (macOS only)
+
+   To compile to WebAssembly on macOS, you need to use the LLVM archiver.
+   If you've used Homebrew to install LLVM, you can configure it to use the archiver by running this command:
+
+   ```bash
+   export AR="$(brew --prefix llvm)/bin/llvm-ar"
+   ```
+
+- The [WebAssembly Toolkit (`wabt`)](https://github.com/WebAssembly/wabt) provides tooling for reducing (or _stripping_) the size of WebAssembly binaries (with the `wasm-strip` command) and conversion utilities between the textual and binary representations of WebAssembly (including the `wat2wasm` and `wasm2wat` commands).
+
+   Most distributions ship a `wabt` package, which you can install with the appropriate command for your operating system:
+
+   **MacOS**
+
+   ```bash
+   brew install wabt
+   ```
+
+   **Ubuntu**
+
+   ```bash
+   sudo apt install wabt
+   ```
+
+   **Fedora**
+
+   ```bash
+   dnf install wabt
+   ```
+
+   **Arch Linux**
+
+   ```bash
+   pacman -S wabt
+   ```
+
+## Building the installer kernel
 
 Follow these steps to build the installer kernel:
 
