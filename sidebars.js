@@ -92,7 +92,6 @@ const sidebars = {
       label: 'Tools',
       collapsed: false,
       items: [
-        'tools/node-providers',
         'tools/price-feeds',
         'tools/vrf',
         'tools/data-indexers',
