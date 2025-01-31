@@ -96,6 +96,7 @@ const sidebars = {
         'tools/vrf',
         'tools/data-indexers',
         'tools/cross-chain-comms',
+        'tools/game-development',
         'tools/developer-experience',
         'tools/institutions',
         'tools/communication'
