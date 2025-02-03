@@ -21,8 +21,8 @@ import { exampleAstWithBrokenLinks, expectedImagesInAst } from './resources/imag
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const docsFolder = path.resolve(__dirname, '../docs');
-const imageFolder = path.resolve(__dirname, '../static');
+const docsFolder = path.resolve(__dirname, '../../docs');
+const imageFolder = path.resolve(__dirname, '../../static');
 
 // Convert file to AST, using the correct processors for MD and MDX files
 const getAst = async (filePath) => {
