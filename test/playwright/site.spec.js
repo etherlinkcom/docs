@@ -36,3 +36,30 @@ test('code copy buttons', async ({ page, context }) => {
   await expect(clipboardContent2).toEqual('https://node.mainnet.etherlink.com');
 
 });
+
+
+// Can't select the search field
+// test('search', async ({ page }) => {
+//   await page.getByRole('button', { name: 'Search' }).click();
+
+// });
+
+// Can't select the feedback form button
+/*
+test('feedback form', async ({ page }) => {
+  await page.goto('https://docs.etherlink.com');
+  // Preferred ways of getting the Feedback button via page.getBy* fail
+  // const feedbackFormButton = await page.getByRole('button', { name: 'Feedback' });
+  // const feedbackFormButton = await page.getByLabel('Feedback');
+  // const feedbackFormButton = await page.getByText('Feedback');
+  const feedbackFormButton = page.locator('xpath=//a[@class="feedback-button-content"]');
+  // fall back to xpath, but this doesn't work either
+  // const feedbackFormButton = page.locator('xpath=//feedback-button');
+  await expect(feedbackFormButton).toBeVisible();
+  await feedbackFormButton.click();
+  await page.screenshot({ path: 'screenshot.png' });
+  // await feedbackFormButton.click();
+  // const feedbackForm = await page.getByText('Share your feedback');
+  // await expect(feedbackForm).toBeVisible();
+});
+*/
