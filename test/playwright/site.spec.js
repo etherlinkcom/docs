@@ -3,11 +3,20 @@ import { test, expect } from '@playwright/test';
 
 test('has title', async ({ page }) => {
   await page.goto('https://docs.etherlink.com/');
-  await expect(page).toHaveTitle("What is Etherlink? | Etherlink documentation");
+  await expect(page).toHaveTitle('What is Etherlink? | Etherlink documentation');
+  await expect(page.getByAltText('logo')).toBeVisible();
+});
+
+test('navigation', async ({ page }) => {
+  await page.goto('https://docs.etherlink.com/');
+  await page.getByRole('button', { name: 'Developing' }).click();
+  await expect(page.getByText('Ethereum endpoint support')).toBeVisible();
+  await page.getByRole('button', { name: 'Governance' }).click();
+  await expect(page.getByText('How is Etherlink governed?')).toBeVisible();
 });
 
 test('code copy buttons', async ({ page, context }) => {
-  await context.grantPermissions(["clipboard-read"]);
+  await context.grantPermissions(['clipboard-read']);
   await page.goto('https://docs.etherlink.com/get-started/network-information');
 
   // Click copy button
