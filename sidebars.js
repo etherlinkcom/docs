@@ -116,7 +116,7 @@ const sidebars = {
       label: 'Track Progress',
       collapsed: false,
       items: [
-        'upgrades',
+        'progress/upgrades',
         {
           type: 'link',
           label: 'Changelog',
