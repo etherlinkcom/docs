@@ -198,11 +198,11 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
    This example uses `$OPERATOR_ACCOUNT` for the account with 10,000 liquid tez and `$SECONDARY_ACCOUNT` for cementing operations and executing outbox operations:
 
    ```bash
-   octez-smart-rollup-node run maintenance for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
+   octez-smart-rollup-node --endpoint $MY_LAYER_1_NODE \
+     run maintenance for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
      with operators $OPERATOR_ACCOUNT \
      cementing:$SECONDARY_ACCOUNT \
      executing_outbox:$SECONDARY_ACCOUNT \
-     --endpoint $MY_LAYER_1_NODE \
      --rpc-addr 0.0.0.0 \
      --data-dir $SR_DATA_DIR \
      --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
@@ -237,9 +237,9 @@ Follow these steps to stop an Etherlink Smart Rollup node:
 A node running in `bailout` mode defends its existing commitments but does not make new commitments.
 
    ```bash
-   octez-smart-rollup-node run bailout for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
+   octez-smart-rollup-node --endpoint $MY_LAYER_1_NODE \
+     run bailout for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
      with operators $OPERATOR_ACCOUNT \
-     --endpoint $MY_LAYER_1_NODE \
      --rpc-addr 0.0.0.0 \
      --data-dir $SR_DATA_DIR \
      --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
