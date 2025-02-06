@@ -117,11 +117,7 @@ const sidebars = {
       collapsed: false,
       items: [
         'progress/upgrades',
-        {
-          type: 'link',
-          label: 'Changelog',
-          href: 'https://gitlab.com/tezos/tezos/-/blob/master/etherlink/CHANGES_KERNEL.md',
-        },
+        'progress/changelogs',
         {
           type: 'link',
           href: 'https://gitlab.com/tezos/tezos/-/tree/master/etherlink',

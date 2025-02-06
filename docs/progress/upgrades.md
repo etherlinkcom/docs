@@ -21,4 +21,4 @@ For more information, see [Announcing Bifröst: a 2nd upgrade proposal for Ether
 
 ## Changelog
 
-For full details about changes to Etherlink, see the [Changelog](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/CHANGES_KERNEL.md).
+For full details about changes to Etherlink, see [Changelogs](/progress/changelogs).
