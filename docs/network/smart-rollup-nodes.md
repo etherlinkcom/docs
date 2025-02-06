@@ -168,15 +168,81 @@ Converting the observer node to maintenance mode requires these prerequisites:
 
    :::
 
-- An account with at least 10,000 liquid, available tez, referred to as the _operator account_.
-You can use the same account that you use for a layer 1 baker, but for better security, you can use a different account and delegate its tez to the layer 1 account.
-Without 10,000 liquid tez, the Smart Rollup node will not start in operator or maintenance mode.
+- Two accounts:
 
-- An account with a small amount of liquid tez for cementing and outbox operations.
+   - An account with at least 10,000 liquid, available tez, referred to as the _operator account_.
+   You can use the same account that you use for a layer 1 baker, but for better security, you can use a different account and delegate its tez to the layer 1 account.
+   Without 10,000 liquid tez, the Smart Rollup node will not start in operator or maintenance mode.
+
+   - An account with a small amount of liquid tez for cementing and outbox operations.
+
+   In most cases, you set these accounts up on another machine and use the Octez remote signer (`octez-signer`) to allow the Smart Rollup node to use them remotely.
+   You can use a Ledger device to secure the keys.
+   For more information, see [Key management](https://tezos.gitlab.io/user/key-management.html) in the Octez documentation.
+
+   The following instructions include information about using the remote signer.
 
 Follow these steps to convert a Smart Rollup node from observer mode to maintenance mode:
 
-1. Set up the two accounts in the Octez client.
+1. If you are using a remote signer, set up the two accounts in the remote signer:
+
+   1. Create the two accounts in the `octez-signer` program or import them from a Ledger device.
+   For example, to create accounts, run this command:
+
+      ```bash
+      octez-signer gen keys REMOTE_OPERATOR
+      ```
+
+      To import accounts from a Ledger device, get the address of the connected device by running the command `octez-signer list connected ledgers` and then import the key from the ledger by running the command `octez-signer import secret key REMOTE_OPERATOR ledger://XXXXXXXXXX`, where `ledger://XXXXXXXXXX` is the address of the connected device.
+
+   1. Configure the remote signer to allow other Octez programs to sign with those accounts.
+   For example, this command makes the keys available over the TCP protocol on localhost:
+
+      ```bash
+      octez-signer launch socket signer -a localhost
+      ```
+
+      For more information about configuring the remote signer, see [Signer configuration](https://tezos.gitlab.io/user/key-management.html#signer-configuration) in the Octez documentation.
+
+   1. Get the addresses of the accounts on the remote signer by running this command:
+
+      ```bash
+      octez-signer list known addresses
+      ```
+
+   1. Ensure that the remote signer runs persistently.
+
+1. Set up the two accounts in the Octez client on the machine that is running the Smart Rollup node.
+
+   To import keys from a remote signer, use this command:
+
+   ```bash
+   octez-client import secret key <ALIAS> <URL>/<ADDRESS>
+   ```
+
+   Use these values for the variables:
+
+      - `<ALIAS>`: The alias for the key in the client
+      - `<URL>`: The full URL that the remote signer is hosting the keys at, such as `tcp://localhost:7732`
+      - `<ADDRESS>`: The address (public key hash) of the account to import
+
+   For example:
+
+   ```bash
+   octez-client import secret key REMOTE_OPERATOR tcp://localhost:7732/tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx
+   ```
+
+   If you are not using a remote signer, you can use the `octez-client gen keys` or `octez-client import secret key` commands to create or import keys as usual.
+
+1. Verify that the machine that is running the Smart Rollup node can use the keys by signing a message with them, as in this example:
+
+   ```bash
+   octez-client sign bytes 0x03 for REMOTE_OPERATOR
+   ```
+
+   If the client is successful, it returns `Signature:` and the signed message.
+
+1. Ensure that the operator account has at least 10,000 liquid, unstaked tez and that the secondary account has a small amount of tez to sign operations.
 
 1. Stop the Smart Rollup node.
 
