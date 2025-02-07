@@ -52,6 +52,11 @@ The following instructions use the variable `<EVM_DATA_DIR>` to represent this d
      --rollup-node-endpoint <SR_NODE_OBSERVER_RPC>
    ```
 
+   By default, the node uses the `archive` history mode, which stores a copy of all Etherlink information.
+   To save disk space, starting with version 0.16, you can use the `rolling` history mode by passing the argument `--history-mode rolling:<DAYS>`, where `<DAYS>` is the number of days of complete data to keep.
+   The default for `rolling` history mode is 14 days.
+   You can switch the mode from `archive` mode to `rolling` mode later by stopping the node and running the command `octez-evm-node switch history to rolling`.
+
    The `--network` argument sets the node to use preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
    For example, passing `--network mainnet` implies these arguments:
 
