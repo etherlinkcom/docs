@@ -212,36 +212,6 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 
    1. Ensure that the remote signer runs persistently.
 
-1. Set up the two accounts in the Octez client on the machine that is running the Smart Rollup node.
-
-   To import keys from a remote signer, use this command:
-
-   ```bash
-   octez-client import secret key <ALIAS> <URL>/<ADDRESS>
-   ```
-
-   Use these values for the variables:
-
-      - `<ALIAS>`: The alias for the key in the client
-      - `<URL>`: The full URL that the remote signer is hosting the keys at, such as `tcp://localhost:7732`
-      - `<ADDRESS>`: The address (public key hash) of the account to import
-
-   For example:
-
-   ```bash
-   octez-client import secret key REMOTE_OPERATOR tcp://localhost:7732/tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx
-   ```
-
-   If you are not using a remote signer, you can use the `octez-client gen keys` or `octez-client import secret key` commands to create or import keys as usual.
-
-1. Verify that the machine that is running the Smart Rollup node can use the keys by signing a message with them, as in this example:
-
-   ```bash
-   octez-client sign bytes 0x03 for REMOTE_OPERATOR
-   ```
-
-   If the client is successful, it returns `Signature:` and the signed message.
-
 1. Ensure that the operator account has at least 10,000 liquid, unstaked tez and that the secondary account has a small amount of tez to sign operations.
 
 1. Stop the Smart Rollup node.
@@ -257,14 +227,16 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 
 1. Stop the node.
 
-1. Run the node in maintenance mode, passing the addresses or Octez aliases of the accounts and the layer 1 node that you control.
+1. Run the node in maintenance mode, passing the addresses or Octez client aliases of the accounts and the layer 1 node that you control.
 
    The first address after `with operators` is the default address that the node uses for operations.
    You can use different accounts for specific operations by adding the operation and the address to the command.
-   This example uses `$REMOTE_OPERATOR` for the account with 10,000 liquid tez and `$REMOTE_SECONDARY` for cementing operations and executing outbox operations:
+   This example uses two accounts on the remote signer: `$REMOTE_OPERATOR` for the account with 10,000 liquid tez and `$REMOTE_SECONDARY` for cementing operations and executing outbox operations.
+   It connects to the remote signer with the `-R` argument and the URL to the remote signer:
 
    ```bash
    octez-smart-rollup-node --endpoint $MY_LAYER_1_NODE \
+     -R tcp://localhost:7732 \
      run maintenance for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
      with operators $REMOTE_OPERATOR \
      cementing:$REMOTE_SECONDARY \
