@@ -37,17 +37,17 @@ test('code copy buttons', async ({ page, context }) => {
 
 });
 
-
-// Can't select the search field
-// test('search', async ({ page }) => {
-//   await page.getByRole('button', { name: 'Search' }).click();
-
-// });
-
-// This test does not work; it does not fail when I disable the feedback button
-test.skip('feedback form', async ({ page }) => {
+test('search', async ({ page }) => {
   await page.goto('https://docs.etherlink.com/');
-  const feedbackFormButton = await page.getByRole('button', { name: 'Feedback' });
-  await expect(feedbackFormButton).toBeDefined();
-  // await feedbackFormButton.click();
+  await page.getByRole('button', { name: 'Search (Command+K)' }).click();
+  await page.getByRole('searchbox', { name: 'Search' }).fill('node');
+  await page.getByRole('link', { name: 'Running an Etherlink Smart Rollup node', exact: true }).click();
+  await expect(page).toHaveURL(/.*smart-rollup-nodes/);
+});
+
+test('feedback form', async ({ page }) => {
+  await page.goto('https://docs.etherlink.com/');
+  await expect(page.locator('#default a')).toBeVisible();
+  await page.locator('#default a').click();
+  await expect(page.getByText('Share your feedback')).toBeVisible();
 });
