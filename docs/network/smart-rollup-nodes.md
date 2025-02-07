@@ -53,7 +53,7 @@ The best place to get the most recent binary files to use with Etherlink is http
 
 1. Initialize the local context of the node, which is where it stores local data:
 
-   1. Set the environment variable `SR_DATA_DIR` to the directory where the node should store its local data.
+   1. Set the environment variable `<SR_DATA_DIR>` to the directory where the node should store its local data.
    The default value is `$HOME/.tezos-smart-rollup-node`.
 
    1. Initialize the local context by running this command and passing the address of the Etherlink Smart Rollup and the preimages endpoint.
@@ -63,7 +63,7 @@ The best place to get the most recent binary files to use with Etherlink is http
 
       ```bash
       octez-smart-rollup-node init observer config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
-        with operators --data-dir $SR_DATA_DIR \
+        with operators --data-dir <SR_DATA_DIR> \
         --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
       ```
 
@@ -71,7 +71,7 @@ The best place to get the most recent binary files to use with Etherlink is http
 
       ```bash
       octez-smart-rollup-node init observer config for sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg \
-        with operators --data-dir $SR_DATA_DIR \
+        with operators --data-dir <SR_DATA_DIR> \
         --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-ghostnet/wasm_2_0_0
       ```
 
@@ -105,14 +105,14 @@ The best place to get the most recent binary files to use with Etherlink is http
       ```bash
       octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet \
         snapshot import eth-mainnet.full \
-        --data-dir $SR_DATA_DIR
+        --data-dir <SR_DATA_DIR>
       ```
 
 1. Start the Smart Rollup node in observer mode with the `run` command:
 
    ```bash
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet run \
-     --data-dir $SR_DATA_DIR
+     --data-dir <SR_DATA_DIR>
    ```
 
    If you did not load a snapshot, the process of starting the node from genesis can take a long time because it must process every block.
@@ -246,11 +246,11 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 
 1. Stop the Smart Rollup node.
 
-1. Restart the node with the layer 1 node that you control, represented in this example by the variable `$MY_LAYER_1_NODE`:
+1. Restart the node with the layer 1 node that you control, represented in this example by the variable `<MY_LAYER_1_NODE>`:
 
    ```bash
-   octez-smart-rollup-node --endpoint $MY_LAYER_1_NODE run \
-     --data-dir $SR_DATA_DIR
+   octez-smart-rollup-node --endpoint <MY_LAYER_1_NODE> run \
+     --data-dir <SR_DATA_DIR>
    ```
 
 1. Verify that the node continues to run as expected in observer mode.
@@ -261,16 +261,16 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 
    The first address after `with operators` is the default address that the node uses for operations.
    You can use different accounts for specific operations by adding the operation and the address to the command.
-   This example uses `$REMOTE_OPERATOR` for the account with 10,000 liquid tez and `$REMOTE_SECONDARY` for cementing operations and executing outbox operations:
+   This example uses `<REMOTE_OPERATOR>` for the account with 10,000 liquid tez and `<REMOTE_SECONDARY>` for cementing operations and executing outbox operations:
 
    ```bash
-   octez-smart-rollup-node --endpoint $MY_LAYER_1_NODE \
+   octez-smart-rollup-node --endpoint <MY_LAYER_1_NODE> \
      run maintenance for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
-     with operators $REMOTE_OPERATOR \
-     cementing:$REMOTE_SECONDARY \
-     executing_outbox:$REMOTE_SECONDARY \
+     with operators <REMOTE_OPERATOR> \
+     cementing:<REMOTE_SECONDARY> \
+     executing_outbox:<REMOTE_SECONDARY> \
      --rpc-addr 0.0.0.0 \
-     --data-dir $SR_DATA_DIR \
+     --data-dir <SR_DATA_DIR> \
      --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
    ```
 
@@ -303,11 +303,11 @@ Follow these steps to stop an Etherlink Smart Rollup node:
 A node running in `bailout` mode defends its existing commitments but does not make new commitments.
 
    ```bash
-   octez-smart-rollup-node --endpoint $MY_LAYER_1_NODE \
+   octez-smart-rollup-node --endpoint <MY_LAYER_1_NODE> \
      run bailout for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
-     with operators $REMOTE_OPERATOR \
+     with operators <REMOTE_OPERATOR> \
      --rpc-addr 0.0.0.0 \
-     --data-dir $SR_DATA_DIR \
+     --data-dir <SR_DATA_DIR> \
      --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
    ```
 
@@ -320,11 +320,11 @@ Now the node has stopped and the bonded tez is liquid.
 If you want to recover the bond manually, use this command:
 
 ```bash
-octez-client recover bond of $REMOTE_OPERATOR for smart rollup $SMART_ROLLUP_ADDRESS from $MY_ACCOUNT
+octez-client recover bond of <BONDED_ACCOUNT> for smart rollup <SMART_ROLLUP_ADDRESS> from <MY_ACCOUNT>
 ```
 
 This command uses these arguments:
 
-- `BONDED_ACCOUNT`: The account that you used to run the Smart Rollup in operator mode
-- `SMART_ROLLUP_ADDRESS`: The address of the Etherlink Smart Rollup
-- `MY_ACCOUNT`: The account to use to send this `recover bond` operation
+- `<BONDED_ACCOUNT>`: The account that you used to run the Smart Rollup in operator mode
+- `<SMART_ROLLUP_ADDRESS>`: The address of the Etherlink Smart Rollup
+- `<MY_ACCOUNT>`: The account to use to send this `recover bond` operation
