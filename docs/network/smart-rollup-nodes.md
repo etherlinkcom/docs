@@ -53,8 +53,9 @@ The best place to get the most recent binary files to use with Etherlink is http
 
 1. Initialize the local context of the node, which is where it stores local data:
 
-   1. Set the environment variable `$sr_data_dir` to the directory where the node should store its local data.
-   The default value is `$HOME/.tezos-smart-rollup-node`.
+   1. Create a directory for the node to store its data in.
+   The default directory is `$HOME/.tezos-smart-rollup-node`.
+   The following instructions use the variable `<SR_DATA_DIR>` to represent this directory.
 
    1. Initialize the local context by running this command and passing the address of the Etherlink Smart Rollup and the preimages endpoint.
    You can get this information on the [Network information](/get-started/network-information) page.
@@ -63,7 +64,7 @@ The best place to get the most recent binary files to use with Etherlink is http
 
       ```bash
       octez-smart-rollup-node init observer config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
-        with operators --data-dir "$sr_data_dir" \
+        with operators --data-dir <SR_DATA_DIR> \
         --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
       ```
 
@@ -71,7 +72,7 @@ The best place to get the most recent binary files to use with Etherlink is http
 
       ```bash
       octez-smart-rollup-node init observer config for sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg \
-        with operators --data-dir "$sr_data_dir" \
+        with operators --data-dir <SR_DATA_DIR> \
         --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-ghostnet/wasm_2_0_0
       ```
 
@@ -105,14 +106,14 @@ The best place to get the most recent binary files to use with Etherlink is http
       ```bash
       octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet \
         snapshot import eth-mainnet.full \
-        --data-dir "$sr_data_dir"
+        --data-dir <SR_DATA_DIR>
       ```
 
 1. Start the Smart Rollup node in observer mode with the `run` command:
 
    ```bash
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet run \
-     --data-dir "$sr_data_dir"
+     --data-dir <SR_DATA_DIR>
    ```
 
    If you did not load a snapshot, the process of starting the node from genesis can take a long time because it must process every block.
@@ -251,7 +252,7 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 
    ```bash
    octez-smart-rollup-node --endpoint <MY_LAYER_1_NODE> run \
-     --data-dir "$sr_data_dir"
+     --data-dir <SR_DATA_DIR>
    ```
 
 1. Verify that the node continues to run as expected in observer mode.
@@ -271,7 +272,7 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
      cementing:<REMOTE_SECONDARY> \
      executing_outbox:<REMOTE_SECONDARY> \
      --rpc-addr 0.0.0.0 \
-     --data-dir "$sr_data_dir" \
+     --data-dir <SR_DATA_DIR> \
      --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
    ```
 
@@ -308,7 +309,7 @@ A node running in `bailout` mode defends its existing commitments but does not m
      run bailout for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
      with operators <REMOTE_OPERATOR> \
      --rpc-addr 0.0.0.0 \
-     --data-dir "$sr_data_dir" \
+     --data-dir <SR_DATA_DIR> \
      --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
    ```
 
