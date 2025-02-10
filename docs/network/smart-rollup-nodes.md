@@ -94,13 +94,21 @@ The best place to get the most recent binary files to use with Etherlink is http
    1. Download the latest snapshot.
    Mainnet snapshots are available at https://snapshots.eu.tzinit.org/etherlink-mainnet and Testnet snapshots are available at https://snapshots.eu.tzinit.org/etherlink-ghostnet.
 
-      For example, this command downloads the latest snapshot for Etherlink mainnet:
+      For example, this command downloads the latest snapshot for Etherlink Mainnet:
 
       ```bash
       wget https://snapshots.eu.tzinit.org/etherlink-mainnet/eth-mainnet.full
       ```
 
-   1. Load the snapshot by running the `snapshot import` command:
+      This command downloads the latest snapshot for Etherlink Testnet:
+
+      ```bash
+      wget https://snapshots.eu.tzinit.org/etherlink-ghostnet/eth-ghostnet.full
+      ```
+
+   1. Load the snapshot by running the `snapshot import` command.
+
+      Run this command for Mainnet:
 
       ```bash
       octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet \
@@ -108,10 +116,27 @@ The best place to get the most recent binary files to use with Etherlink is http
         --data-dir $SR_DATA_DIR
       ```
 
-1. Start the Smart Rollup node in observer mode with the `run` command:
+      Run this command for Testnet:
+
+      ```bash
+      octez-smart-rollup-node --endpoint https://rpc.tzkt.io/ghostnet \
+        snapshot import eth-ghostnet.full \
+        --data-dir $SR_DATA_DIR
+      ```
+
+1. Start the Smart Rollup node in observer mode with the `run` command.
+
+   Run this command for Mainnet:
 
    ```bash
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet run \
+     --data-dir $SR_DATA_DIR
+   ```
+
+   Run this command for Testnet:
+
+   ```bash
+   octez-smart-rollup-node --endpoint https://rpc.tzkt.io/ghostnet run \
      --data-dir $SR_DATA_DIR
    ```
 
