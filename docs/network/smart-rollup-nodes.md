@@ -262,14 +262,14 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 
    The first address after `with operators` is the default address that the node uses for operations.
    You can use different accounts for specific operations by adding the operation and the address to the command.
-   This example uses `<REMOTE_OPERATOR>` for the account with 10,000 liquid tez and `<REMOTE_SECONDARY>` for cementing operations and executing outbox operations:
+   This example uses `$REMOTE_OPERATOR` for the account with 10,000 liquid tez and `$SECONDARY_ACCOUNT` for cementing operations and executing outbox operations:
 
    ```bash
-   octez-smart-rollup-node --endpoint <MY_LAYER_1_NODE> \
-     run maintenance for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
-     with operators <REMOTE_OPERATOR> \
-     cementing:<REMOTE_SECONDARY> \
-     executing_outbox:<REMOTE_SECONDARY> \
+   octez-smart-rollup-node run maintenance for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
+     with operators $REMOTE_OPERATOR \
+     cementing:$SECONDARY_ACCOUNT \
+     executing_outbox:$SECONDARY_ACCOUNT \
+     --endpoint $MY_LAYER_1_NODE \
      --rpc-addr 0.0.0.0 \
      --data-dir $SR_DATA_DIR \
      --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
