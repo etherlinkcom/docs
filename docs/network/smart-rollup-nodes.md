@@ -179,6 +179,7 @@ Converting the observer node to maintenance mode requires these prerequisites:
    In most cases, you set these accounts up on another machine and use the Octez remote signer (`octez-signer`) to allow the Smart Rollup node to use them remotely.
    You can use a Ledger device to secure the keys.
    For more information, see [Key management](https://tezos.gitlab.io/user/key-management.html) in the Octez documentation.
+   You must also set up security to prevent anyone but your Smart Rollup node from using the remote signer as described in [Secure the connection](https://tezos.gitlab.io/user/key-management.html#secure-the-connection).
 
    The following instructions include information about using the remote signer.
 
