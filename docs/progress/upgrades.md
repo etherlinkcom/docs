@@ -23,6 +23,8 @@ For more information, see [Announcing Bifröst: a 2nd upgrade proposal for Ether
 
 ## Calypso upgrade
 
+<!-- TODO add info about when it goes live on Testnet and make it clear that it's a proposal. -->
+
 This upgrade includes significant performance and reliability improvements, including:
 
 - Up to 30x performance improvement for smart contract storage interactions
