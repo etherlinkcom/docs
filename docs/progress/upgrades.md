@@ -1,5 +1,5 @@
 ---
-title: Protocol upgrades
+title: Kernel upgrades
 ---
 
 This page lists the major updates to the Etherlink kernel.
