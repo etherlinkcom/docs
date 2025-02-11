@@ -23,7 +23,12 @@ For more information, see [Announcing Bifröst: a 2nd upgrade proposal for Ether
 
 ## Calypso upgrade
 
-<!-- TODO add info about when it goes live on Testnet and make it clear that it's a proposal. -->
+<!--
+TODO if promoted to Mainnet, update with the date of activation.
+If rejected, change this section to say that it was proposed but not approved.
+-->
+
+The proposed Calypso upgrade to the Etherlink kernel was installed on Etherlink Testnet on TODO DATE.
 
 This upgrade includes significant performance and reliability improvements, including:
 
