@@ -191,7 +191,7 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 1. If you are using a remote signer, set up the two accounts in the remote signer:
 
    1. Create the two accounts in the `octez-signer` program or import them from a Ledger device.
-   For example, to create accounts, run this command, where `<REMOTE_OPERATOR>` is the alias for the account:
+   For example, to create accounts, run this command:
 
       ```bash
       octez-signer gen keys <REMOTE_OPERATOR>
@@ -264,8 +264,7 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 1. Run the node in maintenance mode, passing the addresses or Octez aliases of the accounts and the layer 1 node that you control.
 
    The first address after `with operators` is the default address that the node uses for operations.
-   You can use different accounts for specific operations by adding the operation and the address to the command.
-   This example uses `<REMOTE_OPERATOR>` for the account with 10,000 liquid tez and `<SECONDARY_ACCOUNT>` for cementing operations and executing outbox operations:
+   You can use different accounts for specific operations by adding the operation and the address to the command, as in this example:
 
    ```bash
    octez-smart-rollup-node \
