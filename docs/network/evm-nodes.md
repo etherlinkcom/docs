@@ -27,9 +27,11 @@ These images contain the correct version of the binary.
 
 ## Initializing the data directory
 
-1. If you want your EVM node to check the correctness of the blocks it receives via a Smart Rollup node, set the `sr_node_observer_rpc` environment variable to the URL of that Etherlink Smart Rollup node, such as `http://localhost:8932`.
-1. Set the `evm_observer_dir` environment variable to the directory where the node should store its local data.
-The default is `$HOME/.octez-evm-node`.
+1. If you want your EVM node to check the correctness of the blocks it receives via a Smart Rollup node, get the RPC URL of that Etherlink Smart Rollup node, such as `http://localhost:8932`.
+The following instructions use the variable `<SR_NODE_OBSERVER_RPC>` to represent this URL.
+1. Create a directory for the node to store its data in.
+The default directory is `$HOME/.octez-evm-node`.
+The following instructions use the variable `<EVM_DATA_DIR>` to represent this directory.
 1. Initialize the node by setting the data directory in the `--data-dir` argument and the network to use (such as `mainnet` or `testnet`) in the `--network` argument.
 
    To trust incoming blocks, use `--dont-track-rollup-node`:
@@ -37,17 +39,17 @@ The default is `$HOME/.octez-evm-node`.
    ```bash
    octez-evm-node init config \
      --network mainnet \
-     --data-dir $evm_observer_dir \
+     --data-dir <EVM_DATA_DIR> \
      --dont-track-rollup-node
    ```
 
-   Alternatively, if you want to rely on a Smart Rollup node to check the correctness of blocks coming from the sequencer, pass the `sr_node_observer_rpc` environment variable to the `--rollup-node-endpoint` argument:
+   Alternatively, if you want to rely on a Smart Rollup node to check the correctness of blocks coming from the sequencer, pass the address of the Smart Rollup node to the `--rollup-node-endpoint` argument, as in this example:
 
    ```bash
    octez-evm-node init config \
      --network mainnet \
-     --data-dir $evm_observer_dir \
-     --rollup-node-endpoint $sr_node_observer_rpc
+     --data-dir <EVM_DATA_DIR> \
+     --rollup-node-endpoint <SR_NODE_OBSERVER_RPC>
    ```
 
    The `--network` argument sets the node to use preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
@@ -72,7 +74,7 @@ To automatically download and import a snapshot, start the node with the `--init
 
 ```bash
 octez-evm-node run observer \
-  --data-dir $evm_observer_dir \
+  --data-dir <EVM_DATA_DIR> \
   --network testnet \
   --init-from-snapshot
 ```
@@ -84,7 +86,7 @@ To import the snapshot manually, download the snapshot from http://snapshotter-s
 ```bash
 wget http://snapshotter-sandbox.nomadic-labs.eu/etherlink-mainnet/evm-snapshot-sr1Ghq66tYK9y-latest.gz # this is for the latest mainnet etherlink snapshots, similarly there is one for testnet
 octez-evm-node snapshot import evm-snapshot-sr1Ghq66tYK9y-latest.gz \
-  --data-dir $evm_observer_dir
+  --data-dir <EVM_DATA_DIR>
 ```
 
 You can also pass the URL of the snapshot directly to the `octez-evm-node snapshot import` command.
@@ -94,36 +96,35 @@ Then, run this command to start the node, passing the data directory and the net
 ```bash
 octez-evm-node run observer \
   --network testnet \
-  --data-dir $evm_observer_dir
+  --data-dir <EVM_DATA_DIR>
 ```
 
 ### From an existing Etherlink Smart Rollup node
 
 1. Download [an Etherlink Smart Rollup node snapshot](https://snapshots.eu.tzinit.org/etherlink-ghostnet/), and use the `octez-smart-rollup-node` binary to import it in a temporary directory.
+The following examples use `<SR_OBSERVER_DATA_DIR>` as the location of this temporary directory.
 
    ```bash
    wget https://snapshots.eu.tzinit.org/etherlink-mainnet/eth-mainnet.full
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet \
      snapshot import eth-mainnet.full \
-     --data-dir $sr_observer_data_dir
+     --data-dir <SR_OBSERVER_DATA_DIR>
    ```
 
    :::tip
    If you are running a Smart Rollup node on the same machine, you can skip this step because you can reuse its data directory.
    :::
 
-1. Set the `sr_observer_data_dir` environment variable to the location of the data directory you got from the previous step.
-
 1. Run this command to import the kernel from the Smart Rollup node:
 
    ```bash
-   octez-evm-node init from rollup node $sr_observer_data_dir --data-dir $evm_observer_dir
+   octez-evm-node init from rollup node <SR_OBSERVER_DATA_DIR> --data-dir <EVM_DATA_DIR>
    ```
 
 1. Run this command to start the node:
 
    ```bash
-   octez-evm-node run observer --data-dir $evm_observer_dir
+   octez-evm-node run observer --data-dir <EVM_DATA_DIR>
    ```
 
    The EVM node runs in archive mode.
@@ -134,7 +135,7 @@ octez-evm-node run observer \
 1. Run this command to start the node with the Etherlink installer kernel that you built or downloaded; change the name of the `installer.hex` file in the command accordingly:
 
    ```bash
-   octez-evm-node run observer --data-dir $evm_observer_dir --initial-kernel installer.hex
+   octez-evm-node run observer --data-dir <EVM_DATA_DIR> --initial-kernel installer.hex
    ```
 
    The `--initial-kernel` argument is needed only the first time that you start the node.

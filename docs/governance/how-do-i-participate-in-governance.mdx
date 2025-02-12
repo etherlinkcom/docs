@@ -176,15 +176,15 @@ To propose a member for the Sequencer Committee, bakers can call the `new_propos
 ```bash
 octez-client transfer 0 from my_wallet to KT1NcZQ3y9Wv32BGiUfD2ZciSUz9cY1DBDGF \
   --entrypoint "new_proposal" \
-  --arg "Pair \"$PUBLIC_KEY\" $L2_ADDRESS"
+  --arg "Pair \"<PUBLIC_KEY>\" <L2_ADDRESS>"
 ```
 
 The command takes these parameters:
 
 - The address or Octez client alias of your baker account
 - The address of the Sequencer Committee governance contract
-- The public key (not the public key hash or account address) of the account to propose, including the double quotes
-- The Etherlink address of the account to propose; the examples below use `0xb7a970` as the account address
+- The public key (not the public key hash or account address) of the account to propose, including the double quotes, represented in this example as `<PUBLIC_KEY>`
+- The Etherlink address of the account to propose, represented in the previous example as `<L2_ADDRESS>`; the examples below use `0xb7a970` as the account address
 
 For example:
 

@@ -53,8 +53,9 @@ The best place to get the most recent binary files to use with Etherlink is http
 
 1. Initialize the local context of the node, which is where it stores local data:
 
-   1. Set the environment variable `SR_DATA_DIR` to the directory where the node should store its local data.
-   The default value is `$HOME/.tezos-smart-rollup-node`.
+   1. Create a directory for the node to store its data in.
+   The default directory is `$HOME/.tezos-smart-rollup-node`.
+   The following instructions use the variable `<SR_DATA_DIR>` to represent this directory.
 
    1. Initialize the local context by running this command and passing the address of the Etherlink Smart Rollup and the preimages endpoint.
    You can get this information on the [Network information](/get-started/network-information) page.
@@ -63,7 +64,7 @@ The best place to get the most recent binary files to use with Etherlink is http
 
       ```bash
       octez-smart-rollup-node init observer config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
-        with operators --data-dir $SR_DATA_DIR \
+        with operators --data-dir <SR_DATA_DIR> \
         --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
       ```
 
@@ -71,7 +72,7 @@ The best place to get the most recent binary files to use with Etherlink is http
 
       ```bash
       octez-smart-rollup-node init observer config for sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg \
-        with operators --data-dir $SR_DATA_DIR \
+        with operators --data-dir <SR_DATA_DIR> \
         --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-ghostnet/wasm_2_0_0
       ```
 
@@ -105,14 +106,14 @@ The best place to get the most recent binary files to use with Etherlink is http
       ```bash
       octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet \
         snapshot import eth-mainnet.full \
-        --data-dir $SR_DATA_DIR
+        --data-dir <SR_DATA_DIR>
       ```
 
 1. Start the Smart Rollup node in observer mode with the `run` command:
 
    ```bash
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet run \
-     --data-dir $SR_DATA_DIR
+     --data-dir <SR_DATA_DIR>
    ```
 
    If you did not load a snapshot, the process of starting the node from genesis can take a long time because it must process every block.
@@ -173,8 +174,10 @@ Converting the observer node to maintenance mode requires these prerequisites:
    - An account with at least 10,000 liquid, available tez, referred to as the _operator account_.
    You can use the same account that you use for a layer 1 baker, but for better security, you can use a different account and delegate its tez to the layer 1 account.
    Without 10,000 liquid tez, the Smart Rollup node will not start in operator or maintenance mode.
+   The following examples use the variable `<REMOTE_OPERATOR>` to represent this account.
 
    - An account with a small amount of liquid tez for cementing and outbox operations.
+   The following examples use the variable `<SECONDARY_ACCOUNT>` to represent this account.
 
    In most cases, you set these accounts up on another machine and use the Octez remote signer (`octez-signer`) to allow the Smart Rollup node to use them remotely.
    You can use a Ledger device to secure the keys.
@@ -191,10 +194,10 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
    For example, to create accounts, run this command:
 
       ```bash
-      octez-signer gen keys REMOTE_OPERATOR
+      octez-signer gen keys <REMOTE_OPERATOR>
       ```
 
-      To import accounts from a Ledger device, get the address of the connected device by running the command `octez-signer list connected ledgers` and then import the key from the ledger by running the command `octez-signer import secret key REMOTE_OPERATOR ledger://XXXXXXXXXX`, where `ledger://XXXXXXXXXX` is the address of the connected device.
+      To import accounts from a Ledger device, get the address of the connected device by running the command `octez-signer list connected ledgers` and then import the key from the ledger by running the command `octez-signer import secret key <REMOTE_OPERATOR> ledger://XXXXXXXXXX`, where `ledger://XXXXXXXXXX` is the address of the connected device.
 
    1. Configure the remote signer to allow other Octez programs to sign with those accounts.
    For example, this command makes the keys available over the TCP protocol on localhost:
@@ -230,7 +233,7 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
    For example:
 
    ```bash
-   octez-client import secret key REMOTE_OPERATOR tcp://localhost:7732/tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx
+   octez-client import secret key <REMOTE_OPERATOR> tcp://localhost:7732/tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx
    ```
 
    If you are not using a remote signer, you can use the `octez-client gen keys` or `octez-client import secret key` commands to create or import keys as usual.
@@ -238,7 +241,7 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 1. Verify that the machine that is running the Smart Rollup node can use the keys by signing a message with them, as in this example:
 
    ```bash
-   octez-client sign bytes 0x03 for REMOTE_OPERATOR
+   octez-client sign bytes 0x03 for <REMOTE_OPERATOR>
    ```
 
    If the client is successful, it returns `Signature:` and the signed message.
@@ -247,11 +250,11 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 
 1. Stop the Smart Rollup node.
 
-1. Restart the node with the layer 1 node that you control, represented in this example by the variable `$MY_LAYER_1_NODE`:
+1. Restart the node with the layer 1 node that you control, represented in this example by the variable `<MY_LAYER_1_NODE>`:
 
    ```bash
-   octez-smart-rollup-node --endpoint $MY_LAYER_1_NODE run \
-     --data-dir $SR_DATA_DIR
+   octez-smart-rollup-node --endpoint <MY_LAYER_1_NODE> run \
+     --data-dir <SR_DATA_DIR>
    ```
 
 1. Verify that the node continues to run as expected in observer mode.
@@ -261,18 +264,17 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 1. Run the node in maintenance mode, passing the addresses or Octez aliases of the accounts and the layer 1 node that you control.
 
    The first address after `with operators` is the default address that the node uses for operations.
-   You can use different accounts for specific operations by adding the operation and the address to the command.
-   This example uses `$REMOTE_OPERATOR` for the account with 10,000 liquid tez and `$SECONDARY_ACCOUNT` for cementing operations and executing outbox operations:
+   You can use different accounts for specific operations by adding the operation and the address to the command, as in this example:
 
    ```bash
    octez-smart-rollup-node \
-     --endpoint $MY_LAYER_1_NODE \
+     --endpoint <MY_LAYER_1_NODE> \
      run maintenance for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
-     with operators $REMOTE_OPERATOR \
-     cementing:$SECONDARY_ACCOUNT \
-     executing_outbox:$SECONDARY_ACCOUNT \
+     with operators <REMOTE_OPERATOR> \
+     cementing:<SECONDARY_ACCOUNT> \
+     executing_outbox:<SECONDARY_ACCOUNT> \
      --rpc-addr 0.0.0.0 \
-     --data-dir $SR_DATA_DIR \
+     --data-dir <SR_DATA_DIR> \
      --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
    ```
 
@@ -307,9 +309,9 @@ A node running in `bailout` mode defends its existing commitments but does not m
    ```bash
    octez-smart-rollup-node --endpoint <MY_LAYER_1_NODE> \
      run bailout for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
-     with operators $REMOTE_OPERATOR \
+     with operators <REMOTE_OPERATOR> \
      --rpc-addr 0.0.0.0 \
-     --data-dir $SR_DATA_DIR \
+     --data-dir <SR_DATA_DIR> \
      --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
    ```
 
@@ -322,11 +324,11 @@ Now the node has stopped and the bonded tez is liquid.
 If you want to recover the bond manually, use this command:
 
 ```bash
-octez-client recover bond of $BONDED_ACCOUNT for smart rollup $SMART_ROLLUP_ADDRESS from $MY_ACCOUNT
+octez-client recover bond of <BONDED_ACCOUNT> for smart rollup <SMART_ROLLUP_ADDRESS> from <MY_ACCOUNT>
 ```
 
 This command uses these arguments:
 
-- `BONDED_ACCOUNT`: The account that you used to run the Smart Rollup in operator mode
-- `SMART_ROLLUP_ADDRESS`: The address of the Etherlink Smart Rollup
-- `MY_ACCOUNT`: The account to use to send this `recover bond` operation
+- `<BONDED_ACCOUNT>`: The account that you used to run the Smart Rollup in operator mode
+- `<SMART_ROLLUP_ADDRESS>`: The address of the Etherlink Smart Rollup
+- `<MY_ACCOUNT>`: The account to use to send this `recover bond` operation
