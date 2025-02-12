@@ -5,16 +5,20 @@ import styles from './styles.module.css';
 import Link from '@docusaurus/Link';
 
 import CopyButton from '@site/src/components/CopyButton';
+import { getAbbreviation } from '@site/src/utils';
 
-export default function InlineCopy({ code, href, children }) {
+// For the abbreviate property, pass two numbers separated by a comma
+export default function InlineCopy({ code, href, abbreviate, children }) {
+  // If abbreviate, automatically abbreviate the code as an address
+  const codeToShow = abbreviate ? getAbbreviation(code, abbreviate) : children || code;
   return (
     <div className={clsx(styles.container)}>
       {href ?
         <Link to={href} className={clsx(styles.link)}>
-          <code>{children || code}</code>
+          <code>{codeToShow}</code>
         </Link>
       :
-        <code>{children || code}</code>
+        <code>{codeToShow}</code>
       }
       <CopyButton code={code} />
     </div>
