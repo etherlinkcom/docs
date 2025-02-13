@@ -40,7 +40,7 @@ Any baker can submit kernel upgrade proposals and upvote proposals, with the wei
 Bakers can submit and upvote up to 20 proposals in a single Proposal period.
 
 At the end of the period, if a proposal has enough voting power to meet a certain percentage of the total voting power, it moves to the next phase.
-As of the Bifröst update, a proposal must get 1% of the total voting power to move to the next phase.
+As of the Bifröst update, the leading proposal must gather support from at least 1% of the total voting power to move to the next phase.
 If no proposal gathers adequate support, a new Proposal period begins.
 
 ### 2. Promotion period
