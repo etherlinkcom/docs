@@ -142,6 +142,6 @@ This table shows the requirements as of the Bifröst Etherlink update:
 
 Period | Requirement | Threshold
 --- | --- | ---
-Proposal | Quorum | 5% of all voting power must vote for a specific proposal
+Proposal | Quorum | 1% of all voting power must vote for a specific proposal
 Promotion | Quorum | 8% of all voting power must vote Yea, Nay, or Pass
 Promotion | Supermajority | 75% of Yea or Nay votes must be Yea
