@@ -25,8 +25,8 @@ This table shows the period lengths as of the Bifröst Etherlink update and the 
 
 Period | Length | Approximate time
 --- | --- | ---
-Proposal | 30720 layer 1 blocks | About 3 days
-Promotion | 30720 layer 1 blocks | About 3 days
+Proposal | 20480 layer 1 blocks | About 2 days
+Promotion | 20480 layer 1 blocks | About 2 days
 Cooldown | 86400 seconds | About 1 day
 
 Note that these periods can vary.
@@ -35,7 +35,7 @@ Also, an Etherlink user must trigger the protocol upgrade after the Cooldown per
 
 ### 1. Proposal period
 
-During this period, Etherlink bakers have about 3 days to submit and upvote proposals for new kernels.
+During this period, Etherlink bakers submit and upvote proposals for new kernels.
 Any baker can submit kernel upgrade proposals and upvote proposals, with the weight of their vote determined by the voting power of their baker account.
 Bakers can submit and upvote up to 20 proposals in a single Proposal period.
 
