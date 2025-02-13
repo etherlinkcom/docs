@@ -13,10 +13,25 @@ Like Tezos's governance process, Etherlink's governance process promotes transpa
 
 For information about governance proposals and updates, see https://governance.etherlink.com.
 
+For the addresses of the contracts that manage governance, see [How do I participate in governance?](/governance/how-do-i-participate-in-governance).
+
 ## Kernel governance
 
 The Etherlink kernel governance process is a streamlined version of the [Tezos governance and self-amendment process](https://docs.tezos.com/architecture/governance).
 It consists of three periods: a Proposal period and a Promotion period, which are supervised by Etherlink's kernel governance contract, and a Cooldown period, which is enforced by the Etherlink kernel itself.
+
+The lengths of these periods are stored in the [kernel governance contract](https://better-call.dev/mainnet/KT1H5pCmFuhAwRExzNNrPQFKpunJx1yEVa6J).
+This table shows the period lengths as of the Bifröst Etherlink update and the Tezos Quebec protocol:
+
+Period | Length | Approximate time
+--- | --- | ---
+Proposal | 30720 layer 1 blocks | About 3 days
+Promotion | 30720 layer 1 blocks | About 3 days
+Cooldown | 86400 seconds | About 1 day
+
+Note that these periods can vary.
+For example, 8 seconds is the minimal block time on layer 1, which means that blocks can take longer than 8 seconds and therefore periods that are based on blocks can last longer than this minimal time.
+Also, an Etherlink user must trigger the protocol upgrade after the Cooldown period is over, so the exact time of the upgrade can vary.
 
 ### 1. Proposal period
 
@@ -45,7 +60,7 @@ In either case, a new Proposal period begins.
 ### 3. Cooldown period
 
 The Cooldown period is a delay in the process that gives developers and bakers time to adapt their code and infrastructure to the new Etherlink kernel.
-This period lasts 24 hours, and at the end, Etherlink users can trigger the kernel to upgrade itself to the new kernel.
+This period lasts about 24 hours, and at the end, Etherlink users can trigger the kernel to upgrade itself to the new kernel.
 
 This period can overlap with another Proposal period.
 
@@ -68,11 +83,32 @@ The security governance process is like the kernel governance process, with thes
 - The quorum and supermajority requirements are higher
 - The timeframes are shorter
 
-These changes ensure expedited resolution of urgent issues while upholding integrity by demanding higher quorum to prevent potential nefarious actions.
+These differences ensure expedited resolution of urgent issues while upholding integrity by demanding higher quorum to prevent potential nefarious actions.
+
+The security governance process has the same Proposal, Promotion, and Cooldown periods as the kernel governance process, but the lengths of these periods are different.
+The lengths are stored in the [security governance contract](https://better-call.dev/mainnet/KT1N5MHQW5fkqXkW9GPjRYfn5KwbuYrvsY1g).
+This table shows the period lengths as of the Bifröst Etherlink update and the Tezos Quebec protocol:
+
+Period | Length | Approximate time
+--- | --- | ---
+Proposal | 2560 layer 1 blocks | About 5.5 hours
+Promotion | 2560 layer 1 blocks | About 5.5 hours
+Cooldown | 86400 seconds | About 1 day
+
+Like the kernel governance periods, these periods can vary based on the timing of layer 1 blocks and when users activate the new kernel at the end of the Cooldown period.
 
 ## Sequencer Committee governance
 
 A separate sequencer governance contract handles the selection process for Etherlink's Sequencer Committee.
 
-Similar to the kernel and security governance processes, the Sequencer Committee voting process has Proposal and Promotion periods.
+Similar to the kernel and security governance processes, the Sequencer Committee voting process has Proposal, Promotion, and Cooldown periods.
 In this process, bakers propose and vote on members for the Sequencer Committee.
+
+The lengths of the periods are stored in the [sequencer committee governance contract](https://better-call.dev/mainnet/KT1NcZQ3y9Wv32BGiUfD2ZciSUz9cY1DBDGF).
+This table shows the period lengths as of the Bifröst Etherlink update and the Tezos Quebec protocol:
+
+Period | Length | Approximate time
+--- | --- | ---
+Proposal | 40960 layer 1 blocks | About 4 days
+Promotion | 40960 layer 1 blocks | About 4 days
+Cooldown | 86400 seconds | About 1 day
