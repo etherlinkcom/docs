@@ -40,6 +40,7 @@ Any baker can submit kernel upgrade proposals and upvote proposals, with the wei
 Bakers can submit and upvote up to 20 proposals in a single Proposal period.
 
 At the end of the period, if a proposal has enough voting power to meet a certain percentage of the total voting power, it moves to the next phase.
+As of the Bifröst update, a proposal must get 1% of the total voting power to move to the next phase.
 If no proposal gathers adequate support, a new Proposal period begins.
 
 ### 2. Promotion period
@@ -53,6 +54,12 @@ To pass, the proposal must meet both of these requirements:
 - Supermajority: The total voting power of the Yea votes must reach a supermajority.
 
 The thresholds for these requirements are stored in the governance contract.
+This table shows the requirements as of the Bifröst Etherlink update:
+
+Requirement | Threshold
+--- | ---
+Quorum | 5% of all voting power must vote Yea, Nay, or Pass
+Supermajority | 75% of Yea or Nay votes must be Yea
 
 If the proposal reaches both the quorum and supermajority requirements, it moves to the next period.
 In either case, a new Proposal period begins.
@@ -83,7 +90,7 @@ The security governance process is like the kernel governance process, with thes
 - The quorum and supermajority requirements are higher
 - The timeframes are shorter
 
-These differences ensure expedited resolution of urgent issues while upholding integrity by demanding higher quorum to prevent potential nefarious actions.
+### Periods
 
 The security governance process has the same Proposal, Promotion, and Cooldown periods as the kernel governance process, but the lengths of these periods are different.
 The lengths are stored in the [security governance contract](https://better-call.dev/mainnet/KT1N5MHQW5fkqXkW9GPjRYfn5KwbuYrvsY1g).
@@ -97,9 +104,24 @@ Cooldown | 86400 seconds | About 1 day
 
 Like the kernel governance periods, these periods can vary based on the timing of layer 1 blocks and when users activate the new kernel at the end of the Cooldown period.
 
+### Thresholds
+
+The differences in thresholds in the security governance process ensure expedited resolution of urgent issues while upholding integrity by demanding higher quorum to prevent potential nefarious actions.
+
+The thresholds for the quorum and supermajority requirements are stored in the governance contract.
+This table shows the requirements as of the Bifröst Etherlink update:
+
+Period | Requirement | Threshold
+--- | --- | ---
+Proposal | Quorum | 5% of all voting power must vote for a specific proposal
+Promotion | Quorum | 15% of all voting power must vote Yea, Nay, or Pass
+Promotion | Supermajority | 80% of Yea or Nay votes must be Yea
+
 ## Sequencer Committee governance
 
 A separate sequencer governance contract handles the selection process for Etherlink's Sequencer Committee.
+
+### Periods
 
 Similar to the kernel and security governance processes, the Sequencer Committee voting process has Proposal, Promotion, and Cooldown periods.
 In this process, bakers propose and vote on members for the Sequencer Committee.
@@ -112,3 +134,14 @@ Period | Length | Approximate time
 Proposal | 40960 layer 1 blocks | About 4 days
 Promotion | 40960 layer 1 blocks | About 4 days
 Cooldown | 86400 seconds | About 1 day
+
+### Thresholds
+
+The thresholds for the quorum and supermajority requirements are stored in the governance contract.
+This table shows the requirements as of the Bifröst Etherlink update:
+
+Period | Requirement | Threshold
+--- | --- | ---
+Proposal | Quorum | 5% of all voting power must vote for a specific proposal
+Promotion | Quorum | 8% of all voting power must vote Yea, Nay, or Pass
+Promotion | Supermajority | 75% of Yea or Nay votes must be Yea
