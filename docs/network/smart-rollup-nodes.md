@@ -7,7 +7,7 @@ Public Smart Rollup nodes for Etherlink are not yet available, so you must run y
 
 :::note
 
-In this context, an _Etherlink Smart Rollup node_ is an [Octez Smart Rollup node](https://tezos.gitlab.io/shell/smart_rollup_node.html) that runs the Etherlink kernel.
+In this context, an _Etherlink Smart Rollup node_ is an [Octez Smart Rollup node](https://octez.tezos.com/docs/shell/smart_rollup_node.html) that runs the Etherlink kernel.
 This kernel is a Rust program compiled in WASM implementing the semantics of Etherlink blocks and transactions.
 
 :::
@@ -30,13 +30,13 @@ As described in [Smart Rollups](https://docs.tezos.com/architecture/smart-rollup
 The best way to run a node that can post commitments is to start with a node in observer mode, verify that it works, and convert it to maintenance mode.
 Maintenance mode is similar to operator mode but it does not require settings for batching operations, which are required only for sequencer nodes.
 
-For more information on modes, see [Smart Rollup node](https://tezos.gitlab.io/shell/smart_rollup_node.html) in the Octez documentation.
+For more information on modes, see [Smart Rollup node](https://octez.tezos.com/docs/shell/smart_rollup_node.html) in the Octez documentation.
 
 ## References
 
 Make sure that you understand the interaction between different nodes as described in [Etherlink architecture](/network/architecture).
 
-For more information about Smart Rollup nodes in general, see [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com and [Smart Rollup Node](https://tezos.gitlab.io/shell/smart_rollup_node.html) in the Octez documentation.
+For more information about Smart Rollup nodes in general, see [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com and [Smart Rollup Node](https://octez.tezos.com/docs/shell/smart_rollup_node.html) in the Octez documentation.
 
 ## Starting the Smart Rollup node in observer mode
 
@@ -181,8 +181,8 @@ Converting the observer node to maintenance mode requires these prerequisites:
 
    In most cases, you set these accounts up on another machine and use the Octez remote signer (`octez-signer`) to allow the Smart Rollup node to use them remotely.
    You can use a Ledger device to secure the keys.
-   For more information, see [Key management](https://tezos.gitlab.io/user/key-management.html) in the Octez documentation.
-   You must also set up security to prevent anyone but your Smart Rollup node from using the remote signer as described in [Secure the connection](https://tezos.gitlab.io/user/key-management.html#secure-the-connection).
+   For more information, see [Key management](https://octez.tezos.com/docs/user/key-management.html) in the Octez documentation.
+   You must also set up security to prevent anyone but your Smart Rollup node from using the remote signer as described in [Secure the connection](https://octez.tezos.com/docs/user/key-management.html#secure-the-connection).
 
    The following instructions include information about using the remote signer.
 
@@ -206,7 +206,7 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
       octez-signer launch socket signer -a localhost
       ```
 
-      For more information about configuring the remote signer, see [Signer configuration](https://tezos.gitlab.io/user/key-management.html#signer-configuration) in the Octez documentation.
+      For more information about configuring the remote signer, see [Signer configuration](https://octez.tezos.com/docs/user/key-management.html#signer-configuration) in the Octez documentation.
 
    1. Get the addresses of the accounts on the remote signer by running this command:
 

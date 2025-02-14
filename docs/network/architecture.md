@@ -6,7 +6,7 @@ Etherlink's main components are its nodes and the sequencer.
 The sequencer and nodes handle blocks, but they create and handle blocks in a way different from Tezos layer 1.
 Some major differences are that only the sequencer can create blocks and that the timing for blocks changes based on the demand.
 
-These components are instances of binaries in the [Octez software suite](https://tezos.gitlab.io/introduction/tezos.html).
+These components are instances of binaries in the [Octez software suite](https://octez.tezos.com/docs/introduction/tezos.html).
 
 ## High-level diagram
 
@@ -51,7 +51,7 @@ They forward these transactions to the sequencer and receive transactions from t
 They also check Smart Rollup nodes to verify that these transactions make it to Tezos layer 1.
 
 - Smart Rollup nodes (`octez-smart-rollup-node`): Smart Rollup nodes are Octez daemons that run the kernel of a Tezos Smart Rollup.
-For more information about Smart Rollup nodes in general, see [Smart Rollup node](https://tezos.gitlab.io/shell/smart_rollup_node.html) in the Octez documentation.
+For more information about Smart Rollup nodes in general, see [Smart Rollup node](https://octez.tezos.com/docs/shell/smart_rollup_node.html) in the Octez documentation.
 
   Etherlink Smart Rollup nodes run the kernel for the Etherlink Smart Rollup and store the state of the Etherlink blockchain from the perspective of Tezos layer 1.
   They monitor the Tezos layer 1 Smart Rollup inbox, filter the inbox to Etherlink-related messages, process them, and update their states.
@@ -67,7 +67,7 @@ For more information about Smart Rollup nodes in general, see [Smart Rollup node
      - The sequencer can use a node running in batcher mode to publish transactions to layer 1.
      It can also use a node running in operator mode to publish transactions.
 
-  For more information about Smart Rollup nodes in general, see [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com and [Smart Rollup Node](https://tezos.gitlab.io/shell/smart_rollup_node.html) in the Octez documentation.
+  For more information about Smart Rollup nodes in general, see [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com and [Smart Rollup Node](https://octez.tezos.com/docs/shell/smart_rollup_node.html) in the Octez documentation.
 
 - Tezos layer 1 nodes (`octez-node`): Layer 1 nodes are responsible for the state of layer 1.
 In addition to ordinary layer 1 transactions, they receive Etherlink transactions from the sequencer.
