@@ -40,7 +40,7 @@ This upgrade includes significant performance and reliability improvements, incl
 
 The upgrade also includes foundational work to the withdrawal precompiled contract that is a step toward allowing faster withdrawals from Etherlink to Tezos layer 1.
 
-<!-- TODO add link to announcement blog. -->
+For more information, see [Announcing Calypso: The Next Etherlink Upgrade Proposal](https://medium.com/@etherlink/announcing-calypso-the-next-etherlink-upgrade-proposal-dbe92c576da9)
 
 ## Changelog
 
