@@ -55,7 +55,7 @@ The metric names in the table omit the namespace and subsystem for readability, 
 | bootstrapping                  | gauge     | 0.0 if the EVM node is caught up with its upstream EVM node or 1.0 if it is in the process of bootstrapping            | Observer, RPC       |
 | head                           | gauge     | Level of the node’s head                                                                                               | all                 |
 | confirmed_head                 | gauge     | Confirmed level (smart rollup node's head, ie as registered on L1)                                                     | all                 |
-| gas_price                      | gauge     | Base gas price of the last block                                                                                       | sequencer, observer | 
+| gas_price                      | gauge     | Base gas price of the last block                                                                                       | sequencer, observer |
 | info                           | gauge     | Information about the kernel (commit hash and date), the node (mode)  and the targeted rollup (smart_rollup_address)   | all                 |
 | block_process_time_histogram   | histogram | The time the EVM node spent processing a block. Buckets : [0.1; 0.1; 0.5; 1.; 2.; 5.; 10.; infinity] (in seconds)      | Sequencer, observer |
 | time_processed                 | counter   | Time to process blocks                                                                                                 | Sequencer, observer |
@@ -187,10 +187,10 @@ The target address of the node exporter is typically `localhost:9100`.
 The node outputs logs in the `<DATA_DIR>/daily_logs` directory for major events
 (such as block production, connection to rollup node, etc) and a separate set of
 logs for the inner working of the internal EVM (or, more precisely, the kernel)
-in the `<DATA_DIR>/kernel_logs`. 
+in the `<DATA_DIR>/kernel_logs`.
 
-The standards logs are output in files with a daily rotation and a retention 
-period of 5 days. They are limited to `INFO` and `ERROR` by default, but the 
+The standards logs are output in files with a daily rotation and a retention
+period of 5 days. They are limited to `INFO` and `ERROR` by default, but the
 EVM node can be started with the option `--verbose` for more.
 
 ```
@@ -215,23 +215,23 @@ The EVM logs are stored in different files according to the context of the EVM c
 ### Scraping logs with Loki
 
 Scraping logs makes them more easily searchable, and allows creating metrics to
-be used in monitoring. 
+be used in monitoring.
 
 We suggest using [Loki](https://github.com/grafana/loki) for that purpose.
-Loki is a server that can be queried for logs, similar to what prometheus is 
+Loki is a server that can be queried for logs, similar to what prometheus is
 for metrics. It relies on an agent to scrape and send the logs, we suggest Promtail.
 Promtail will scrape the logs and push them to the Loki instance which will make
 them available to the dashboard.
 
-To install follow the [instructions on the grafana website](https://grafana.com/docs/loki/latest/setup/install/). 
+To install follow the [instructions on the grafana website](https://grafana.com/docs/loki/latest/setup/install/).
 Note that we don't discuss using the `Alloy` agent, but rather `Promtail`.
-To install using a package manager, see the [install locally](https://grafana.com/docs/loki/latest/setup/install/local/) 
+To install using a package manager, see the [install locally](https://grafana.com/docs/loki/latest/setup/install/local/)
 section, to add the grafana package repository.
 
 Install Loki on the graphana server and Promtail on the EVM server.
 
-Once both are installed, you need to add the scraping job to the Promtail 
-configuration file (e.g. `/etc/promtail/config.yaml`) and specify the target 
+Once both are installed, you need to add the scraping job to the Promtail
+configuration file (e.g. `/etc/promtail/config.yaml`) and specify the target
 Loki server.
 
 ```yaml
@@ -241,13 +241,13 @@ clients:
 
 You must also configure a parsing pipeline for the logs.
 Below is an example of a pipeline suitable for the daily logs. It uses `grep`
-to extract the event's name from the log, to make searching the logs easier. 
-Alternatively, we present [later](#adding-log-sinks) a method to produce logs in a json format, and the 
+to extract the event's name from the log, to make searching the logs easier.
+Alternatively, we present [later](#adding-log-sinks) a method to produce logs in a json format, and the
 appropriate Promtail pipeline.
 
 ```yaml
 scrape_configs:
-- job_name: "evm-node-log-exporter" 
+- job_name: "evm-node-log-exporter"
   pipeline_stages:
     - regex:
         expression: "^(?P<time>\\S+)\\s*\\[(?P<event>\\S+)\\](?P<msg>.*)$"
@@ -277,18 +277,18 @@ so if Loki is installed on the same server:
 http://localhost:3100/loki/api/v1/push
 ```
 
-Make sure that the Promtail daemon is able to access the log files. If it's 
-installed as a service, an easy way is to make the `promtail` user part of the 
+Make sure that the Promtail daemon is able to access the log files. If it's
+installed as a service, an easy way is to make the `promtail` user part of the
 same group as the user used to run the EVM node.
 
 ### Adding log sinks
 
-The EVM Node uses the same [logging features](https://tezos.gitlab.io/user/logging.html#file-descriptor-sinks)
-as the [octez node](https://tezos.gitlab.io/). It is possible to add new 
-`sinks` using [environment variables](https://tezos.gitlab.io/user/logging.html#environment-variables).
+The EVM Node uses the same [logging features](https://octez.tezos.com/docs/user/logging.html#file-descriptor-sinks)
+as the [octez node](https://octez.tezos.com/docs/). It is possible to add new
+`sinks` using [environment variables](https://octez.tezos.com/docs/user/logging.html#environment-variables).
 
-For example, the following definition will add logs in json format, with a 
-daily rotation, 4 file retention, with `rw-r-----` unix rights, in the 
+For example, the following definition will add logs in json format, with a
+daily rotation, 4 file retention, with `rw-r-----` unix rights, in the
 (fictional) `/some/data/dir/json_daily_logs` directory.
 
 ```
@@ -307,7 +307,7 @@ Such files can be scraped using the following Promtail configuration.
 This will create a json event containing only the `event` of each log line.
 
 ```yaml
-- job_name: "evm-node-json-log-exporter" 
+- job_name: "evm-node-json-log-exporter"
   static_configs:
     - targets:
       - 127.0.0.1
@@ -321,7 +321,7 @@ This will create a json event containing only the `event` of each log line.
       source: event-sink
       expressions:
         event-name: event.keys(@)[0]
-        event: event.* | [0] 
+        event: event.* | [0]
         timestamp: time_stamp
   - labels:
       event: event-name
