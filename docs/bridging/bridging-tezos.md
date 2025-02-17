@@ -13,7 +13,7 @@ Two bridging operations are available:
 - Bridging tokens from Tezos layer 1 to Etherlink is referred to as _depositing_ tokens.
 - Bridging tokens from Etherlink to Tezos layer 1 is referred to as _withdrawing_ tokens.
 
-These bridges are trustless and permissionless; anyone can use them without restrictions or the intervention of a third party.
+These bridges are permissionless; anyone can use them without restrictions or the intervention of a third party.
 
 - [Mainnet Tezos bridge](https://www.etherlinkbridge.com/tezos-bridge)
 - [Testnet Tezos bridge](https://testnet.bridge.etherlink.com/)
