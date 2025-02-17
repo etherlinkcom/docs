@@ -28,7 +28,7 @@ TODO if promoted to Mainnet, update with the date of activation.
 If rejected, change this section to say that it was proposed but not approved.
 -->
 
-The proposed Calypso upgrade to the Etherlink kernel was installed on Etherlink Testnet on TODO DATE.
+The proposed Calypso upgrade to the Etherlink kernel was installed on Etherlink Testnet on 17 February 2025.
 
 This upgrade includes significant performance and reliability improvements, including:
 
