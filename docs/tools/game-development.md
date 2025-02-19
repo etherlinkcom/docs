@@ -22,9 +22,9 @@ For more information, see the documentation for the [Tezos Unity SDK](https://do
 ## Sequence
 
 [Sequence](https://sequence.xyz) is a comprehensive web3 integration platform for game developers that simplifies blockchain implementation with plug-and-play tools.
-It supports Etherlink and many other EVM chains.
 Sequence offers:
 
+- Support for Etherlink Mainnet and Testnet
 - Full-stack development support across frontend, backend, and on-chain
 - SDK integration for Unity, Unreal, and mobile
 - Payment solutions with fiat-crypto onramps and NFT checkout
