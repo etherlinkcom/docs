@@ -21,5 +21,13 @@ For more information, see the documentation for the [Tezos Unity SDK](https://do
 
 ## Sequence
 
-[Sequence](https://sequence.xyz) is a game platform development hub.
-It provides tools for managing wallets, managing token marketplaces, and tracking analytics.
+[Sequence](https://sequence.xyz) is a comprehensive web3 integration platform for game developers that simplifies blockchain implementation with plug-and-play tools.
+It supports Etherlink and many other EVM chains.
+Sequence offers:
+
+- Full-stack development support across frontend, backend, and on-chain
+- SDK integration for Unity, Unreal, and mobile
+- Payment solutions with fiat-crypto onramps and NFT checkout
+- Development acceleration tools for faster market entry
+- Analytics and indexing capabilities for performance tracking
+- Smart contract wallet solutions and marketplace building tools
