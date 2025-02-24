@@ -114,14 +114,14 @@ Before you begin, make sure that you have these prerequisites installed:
 Follow these steps to build the installer kernel:
 
 1. Clone the repository at https://gitlab.com/tezos/tezos.
-1. Check out the commit with the hash `b9f6c9138719220db83086f0548e49c5c4c8421f`.
+1. Check out the commit with the hash `604663095ad8d9f537a7035821bc78112c3b865b`.
 1. Build the kernel by running this command from the root directory:
 
    ```bash
    ./etherlink/scripts/build-wasm.sh
    ```
 
-   This command creates the file `etherlink/kernels-b9f6c9138719220db83086f0548e49c5c4c8421f/evm_kernel.wasm`.
+   This command creates the file `etherlink/kernels-604663095ad8d9f537a7035821bc78112c3b865b/evm_kernel.wasm`.
 
 1. Run this command to install the installer kernel build dependencies:
 
@@ -147,7 +147,7 @@ Follow these steps to build the installer kernel:
 
    ```bash
    smart-rollup-installer get-reveal-installer \
-     -u etherlink/kernels-b9f6c9138719220db83086f0548e49c5c4c8421f/evm_kernel.wasm \
+     -u etherlink/kernels-604663095ad8d9f537a7035821bc78112c3b865b/evm_kernel.wasm \
      -o installer.hex \
      -P wasm_2_0_0 \
      -S setup_file.yml \
