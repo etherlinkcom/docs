@@ -18,6 +18,9 @@ Depositing an FA token locks it in a contract on layer 1 and mints an equivalent
 - Bridging tokens from Etherlink to Tezos layer 1 is referred to as _withdrawing_ tokens.
 Withdrawing an FA token burns the ERC-20 token on Etherlink and unlocks the equivalent token on Tezos layer 1.
 
+Like the bridge that transfers XTZ tokens (see [Bridging XTZ between Tezos layer 1 and Etherlink](/bridging/bridging-tezos)), the FA bridge is permissionless, meaning that anyone can use it without restrictions or the intervention of a third party.
+It is also trustless, meaning that it relies on automated, transparent, and audited smart contracts installed on Etherlink and Tezos.
+
 <CementingDelayNote />
 
 For information about how FA token bridging works, see [How bridging FA tokens works](/bridging/bridging-fa-how).
