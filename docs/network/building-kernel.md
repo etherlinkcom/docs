@@ -136,9 +136,9 @@ Follow these steps to build the installer kernel:
      --sequencer edpktufVZGs2JmEwHSFLdA7XHXotmnkD2Nwr75ACpxUr1iKUWzYFHJ      \
      --delayed-bridge KT1AZeXH8qUdLMfwN2g7iwiYYSZYG4RrwhCj                   \
      --ticketer KT1CeFqjJRJPNVvhvznQrWfHad2jCiDZ6Lyj                         \
-     --sequencer-governance KT1NcZQ3y9Wv32BGiUfD2ZciSUz9cY1DBDGF             \
-     --kernel-governance KT1H5pCmFuhAwRExzNNrPQFKpunJx1yEVa6J                \
-     --kernel-security-governance KT1N5MHQW5fkqXkW9GPjRYfn5KwbuYrvsY1g       \
+     --sequencer-governance KT1UvCsnXpLAssgeJmrbQ6qr3eFkYXxsTG9U             \
+     --kernel-governance KT1FPG4NApqTJjwvmhWvqA14m5PJxu9qgpBK                \
+     --kernel-security-governance KT1UvCsnXpLAssgeJmrbQ6qr3eFkYXxsTG9U       \
      --sequencer-pool-address 0xCF02B9Ca488f8F6F4E28e37AA1bDD16b3F1b2aD8     \
      --delayed-inbox-min-levels 1600 --remove-whitelist
    ```
