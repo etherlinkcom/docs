@@ -9,6 +9,17 @@ Etherlink has separate governance processes for the kernel, for security inciden
 To ensure that decisions accurately reflect the consensus of the Etherlink community, all three governance processes are designed with the same robust safeguards.
 Like Tezos's governance process, Etherlink's governance process promotes transparency and fairness in decision-making.
 
+:::note
+
+Each Etherlink governance period lasts a certain number of layer 1 blocks.
+The minimum time between layer 1 blocks is set by the `minimal_block_delay` constant.
+If the first baker chosen to bake a block does not bake it after a certain amount of time, other bakers have the opportunity to bake it, which increases the time between blocks.
+
+For this reason, the lengths of Etherlink governance periods listed below are approximate times.
+The real-world duration of governance periods can be longer, depending on the actual timing of layer 1 blocks.
+
+:::
+
 ## Governance information
 
 For information about governance proposals and updates, see https://governance.etherlink.com.
