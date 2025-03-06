@@ -28,3 +28,8 @@ For examples of using Subquery with Etherlink, see these sample projects:
 
 - Mainnet: https://github.com/subquery/ethereum-subql-starter/tree/main/Etherlink%20Mainnet/etherlink-mainnet-etherlink-starter
 - Testnet: https://github.com/subquery/ethereum-subql-starter/tree/main/Etherlink/etherlink-testnet-starter
+
+## Goldsky
+
+[Goldsky](https://goldsky.com/) hosts subgraphs with information about Etherlink.
+See its documentation at https://docs.goldsky.com.
