@@ -20,13 +20,13 @@ For the addresses of the contracts that manage governance, see [How do I partici
 The Etherlink kernel governance process is a streamlined version of the [Tezos governance and self-amendment process](https://docs.tezos.com/architecture/governance).
 It consists of three periods: a Proposal period and a Promotion period, which are supervised by Etherlink's kernel governance contract, and a Cooldown period, which is enforced by the Etherlink kernel itself.
 
-The lengths of these periods are stored in the [kernel governance contract](https://better-call.dev/mainnet/KT1H5pCmFuhAwRExzNNrPQFKpunJx1yEVa6J).
-This table shows the period lengths as of the Bifröst Etherlink update and the Tezos Quebec protocol:
+The lengths of these periods are stored in the [kernel governance contract](https://better-call.dev/mainnet/KT1FPG4NApqTJjwvmhWvqA14m5PJxu9qgpBK).
+This table shows the period lengths as of the Calypso Etherlink update and the Tezos Quebec protocol:
 
 Period | Length | Approximate time
 --- | --- | ---
-Proposal | 20480 layer 1 blocks | About 2 days
-Promotion | 20480 layer 1 blocks | About 2 days
+Proposal | 30720 layer 1 blocks | About 3 days
+Promotion | 30720 layer 1 blocks | About 3 days
 Cooldown | 86400 seconds | About 1 day
 
 Note that these periods can vary.
@@ -40,7 +40,7 @@ Any baker can submit kernel upgrade proposals and upvote proposals, with the wei
 Bakers can submit and upvote up to 20 proposals in a single Proposal period.
 
 At the end of the period, if a proposal has enough voting power to meet a certain percentage of the total voting power, it moves to the next phase.
-As of the Bifröst update, the leading proposal must gather support from at least 1% of the total voting power to move to the next phase.
+As of the Calypso update, the leading proposal must gather support from at least 1% of the total voting power to move to the next phase.
 If no proposal gathers adequate support, a new Proposal period begins.
 
 ### 2. Promotion period
@@ -54,7 +54,7 @@ To pass, the proposal must meet both of these requirements:
 - Supermajority: The total voting power of the Yea votes must reach a supermajority.
 
 The thresholds for these requirements are stored in the governance contract.
-This table shows the requirements as of the Bifröst Etherlink update:
+This table shows the requirements as of the Calypso Etherlink update:
 
 Requirement | Threshold
 --- | ---
@@ -93,13 +93,13 @@ The security governance process is like the kernel governance process, with thes
 ### Periods
 
 The security governance process has the same Proposal, Promotion, and Cooldown periods as the kernel governance process, but the lengths of these periods are different.
-The lengths are stored in the [security governance contract](https://better-call.dev/mainnet/KT1N5MHQW5fkqXkW9GPjRYfn5KwbuYrvsY1g).
-This table shows the period lengths as of the Bifröst Etherlink update and the Tezos Quebec protocol:
+The lengths are stored in the [security governance contract](https://better-call.dev/mainnet/KT1GRAN26ni19mgd6xpL6tsH52LNnhKSQzP2).
+This table shows the period lengths as of the Calypso Etherlink update and the Tezos Quebec protocol:
 
 Period | Length | Approximate time
 --- | --- | ---
-Proposal | 2560 layer 1 blocks | About 5.5 hours
-Promotion | 2560 layer 1 blocks | About 5.5 hours
+Proposal | 3200 layer 1 blocks | About 7 hours
+Promotion | 3200 layer 1 blocks | About 7 hours
 Cooldown | 86400 seconds | About 1 day
 
 Like the kernel governance periods, these periods can vary based on the timing of layer 1 blocks and when users activate the new kernel at the end of the Cooldown period.
@@ -109,7 +109,7 @@ Like the kernel governance periods, these periods can vary based on the timing o
 The differences in thresholds in the security governance process ensure expedited resolution of urgent issues while upholding integrity by demanding higher quorum to prevent potential nefarious actions.
 
 The thresholds for the quorum and supermajority requirements are stored in the governance contract.
-This table shows the requirements as of the Bifröst Etherlink update:
+This table shows the requirements as of the Calypso Etherlink update:
 
 Period | Requirement | Threshold
 --- | --- | ---
@@ -126,19 +126,19 @@ A separate sequencer governance contract handles the selection process for Ether
 Similar to the kernel and security governance processes, the Sequencer Committee voting process has Proposal, Promotion, and Cooldown periods.
 In this process, bakers propose and vote on members for the Sequencer Committee.
 
-The lengths of the periods are stored in the [sequencer committee governance contract](https://better-call.dev/mainnet/KT1NcZQ3y9Wv32BGiUfD2ZciSUz9cY1DBDGF).
-This table shows the period lengths as of the Bifröst Etherlink update and the Tezos Quebec protocol:
+The lengths of the periods are stored in the [sequencer committee governance contract](https://better-call.dev/mainnet/KT1UvCsnXpLAssgeJmrbQ6qr3eFkYXxsTG9U).
+This table shows the period lengths as of the Calypso Etherlink update and the Tezos Quebec protocol:
 
 Period | Length | Approximate time
 --- | --- | ---
-Proposal | 40960 layer 1 blocks | About 4 days
-Promotion | 40960 layer 1 blocks | About 4 days
+Proposal | 51200 layer 1 blocks | About 5 days
+Promotion | 51200 layer 1 blocks | About 5 days
 Cooldown | 86400 seconds | About 1 day
 
 ### Thresholds
 
 The thresholds for the quorum and supermajority requirements are stored in the governance contract.
-This table shows the requirements as of the Bifröst Etherlink update:
+This table shows the requirements as of the Calypso Etherlink update:
 
 Period | Requirement | Threshold
 --- | --- | ---
