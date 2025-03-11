@@ -461,6 +461,10 @@ The Etherlink EVM node supports these [ethers.js](https://docs.ethers.org/v6/) m
   </thead>
   <tbody>
     <tr>
+      <td>EVM version</td>
+      <td><code>Shanghai</code></td>
+    </tr>
+    <tr>
       <td>Whitelisting Fireblocks IP addresses</td>
       <td>Not Supported</td>
     </tr>
