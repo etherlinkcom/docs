@@ -137,6 +137,7 @@ octez-evm-node run observer \
   --network testnet \
   --history rolling:1 \
   --data-dir <EVM_DATA_DIR> \
+  --dont-track-rollup-node \
   --init-from-snapshot
 ```
 
