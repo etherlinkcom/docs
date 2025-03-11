@@ -98,11 +98,9 @@ These snapshots are equivalent to the mode `rolling:1` or `full:1`.
 
 If you want a mode with a longer retention period, you can:
 
-- Specify the same mode with a longer retention period when you run the node.
-In this case the node does not immediately retrieve the new data, but continues to store data until it has enough for the specified retention period.
 - Download an older snapshot and allow the EVM node to compute the data since the snapshot was taken.
 - Create your own snapshot with the appropriate retention period from another EVM node.
-- Start with a node in a mode that has the necessary data (such as `archive` mode) and switch to another mode with the retention period that you want.
+- Start with a node in a mode that has the necessary data and [switch to another mode](#switching-history-modes) with the retention period that you want.
 
 To download and import the snapshot manually, download the appropriate snapshot for the network and mode (such as from http://snapshotter-sandbox.nomadic-labs.eu/) and import it with the `octez-evm-node snapshot import` command, as in this example:
 
@@ -141,6 +139,9 @@ octez-evm-node run observer \
   --data-dir <EVM_DATA_DIR> \
   --init-from-snapshot
 ```
+
+The `--history` argument is required in this case to tell the node what snapshot to download.
+However, an appropriate snapshot must be available on the [Nomadic Labs snapshot site](http://snapshotter-sandbox.nomadic-labs.eu/).
 
 The node can take time to download and import the snapshot.
 
