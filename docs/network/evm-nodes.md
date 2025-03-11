@@ -23,7 +23,7 @@ The EVM node supports these history modes:
 
 - `archive` (the default): The node stores a copy of all available Etherlink information.
 
-- `full`: The node stores all of the necessary information to construct the current Etherlink state.
+- `full` (available starting with version 0.17): The node stores all of the necessary information to construct the current Etherlink state.
 
 - `rolling` (available starting with version 0.16): The node stores the current context plus the complete transaction data for a certain number of previous days.
 The default `rolling` mode stores the complete data for the previous 14 days.
