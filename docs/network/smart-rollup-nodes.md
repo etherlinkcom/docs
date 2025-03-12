@@ -278,6 +278,21 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
      --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
    ```
 
+   If you are using a remote signer, pass the address of the remote signer in the `--remote-signer` argument before the `run` command, as in this example:
+
+   ```bash
+   octez-smart-rollup-node \
+     --endpoint <MY_LAYER_1_NODE> \
+     --remote-signer tcp://localhost:7732/ \
+     run maintenance for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
+     with operators <REMOTE_OPERATOR> \
+     cementing:<SECONDARY_ACCOUNT> \
+     executing_outbox:<SECONDARY_ACCOUNT> \
+     --rpc-addr 0.0.0.0 \
+     --data-dir <SR_DATA_DIR> \
+     --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
+   ```
+
 1. Verify that the Smart Rollup node is running by querying it.
 For example, this query gets the health of the node:
 
