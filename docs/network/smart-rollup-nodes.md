@@ -199,6 +199,12 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 
       To import accounts from a Ledger device, get the address of the connected device by running the command `octez-signer list connected ledgers` and then import the key from the ledger by running the command `octez-signer import secret key <REMOTE_OPERATOR> ledger://XXXXXXXXXX`, where `ledger://XXXXXXXXXX` is the address of the connected device.
 
+   1. Get the addresses of the accounts on the remote signer by running this command:
+
+      ```bash
+      octez-signer list known addresses
+      ```
+
    1. Configure the remote signer to allow other Octez programs to sign with those accounts.
    For example, this command makes the keys available over the TCP protocol on localhost:
 
@@ -207,12 +213,6 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
       ```
 
       For more information about configuring the remote signer, see [Signer configuration](https://octez.tezos.com/docs/user/key-management.html#signer-configuration) in the Octez documentation.
-
-   1. Get the addresses of the accounts on the remote signer by running this command:
-
-      ```bash
-      octez-signer list known addresses
-      ```
 
    1. Ensure that the remote signer runs persistently.
 
