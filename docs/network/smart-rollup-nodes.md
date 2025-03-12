@@ -199,6 +199,12 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 
       To import accounts from a Ledger device, get the address of the connected device by running the command `octez-signer list connected ledgers` and then import the key from the ledger by running the command `octez-signer import secret key <REMOTE_OPERATOR> ledger://XXXXXXXXXX`, where `ledger://XXXXXXXXXX` is the address of the connected device.
 
+   1. Get the addresses of the accounts on the remote signer by running this command:
+
+      ```bash
+      octez-signer list known addresses
+      ```
+
    1. Configure the remote signer to allow other Octez programs to sign with those accounts.
    For example, this command makes the keys available over the TCP protocol on localhost:
 
@@ -208,12 +214,6 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 
       For more information about configuring the remote signer, see [Signer configuration](https://octez.tezos.com/docs/user/key-management.html#signer-configuration) in the Octez documentation.
 
-   1. Get the addresses of the accounts on the remote signer by running this command:
-
-      ```bash
-      octez-signer list known addresses
-      ```
-
    1. Ensure that the remote signer runs persistently.
 
 1. Set up the two accounts in the Octez client on the machine that is running the Smart Rollup node.
@@ -221,19 +221,19 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
    To import keys from a remote signer, use this command:
 
    ```bash
-   octez-client import secret key <ALIAS> <URL>/<ADDRESS>
+   octez-client --remote-signer <URL> import secret key <ALIAS> remote:<ADDRESS>
    ```
 
    Use these values for the variables:
 
-      - `<ALIAS>`: The alias for the key in the client
       - `<URL>`: The full URL that the remote signer is hosting the keys at, such as `tcp://localhost:7732`
+      - `<ALIAS>`: The alias for the key in the client
       - `<ADDRESS>`: The address (public key hash) of the account to import
 
    For example:
 
    ```bash
-   octez-client import secret key <REMOTE_OPERATOR> tcp://localhost:7732/tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx
+   octez-client --remote-signer tcp://localhost:7732/ import secret key <REMOTE_OPERATOR> remote:tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx
    ```
 
    If you are not using a remote signer, you can use the `octez-client gen keys` or `octez-client import secret key` commands to create or import keys as usual.
@@ -241,7 +241,7 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 1. Verify that the machine that is running the Smart Rollup node can use the keys by signing a message with them, as in this example:
 
    ```bash
-   octez-client sign bytes 0x03 for <REMOTE_OPERATOR>
+   octez-client --remote-signer tcp://localhost:7732/ sign bytes 0x03 for <REMOTE_OPERATOR>
    ```
 
    If the client is successful, it returns `Signature:` and the signed message.
@@ -269,6 +269,21 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
    ```bash
    octez-smart-rollup-node \
      --endpoint <MY_LAYER_1_NODE> \
+     run maintenance for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
+     with operators <REMOTE_OPERATOR> \
+     cementing:<SECONDARY_ACCOUNT> \
+     executing_outbox:<SECONDARY_ACCOUNT> \
+     --rpc-addr 0.0.0.0 \
+     --data-dir <SR_DATA_DIR> \
+     --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
+   ```
+
+   If you are using a remote signer, pass the address of the remote signer in the `--remote-signer` argument before the `run` command, as in this example:
+
+   ```bash
+   octez-smart-rollup-node \
+     --endpoint <MY_LAYER_1_NODE> \
+     --remote-signer tcp://localhost:7732/ \
      run maintenance for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
      with operators <REMOTE_OPERATOR> \
      cementing:<SECONDARY_ACCOUNT> \
