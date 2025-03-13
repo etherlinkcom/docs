@@ -17,6 +17,21 @@ You can get the kernel by importing it from a running Etherlink Smart Rollup nod
 
 Running an Etherlink EVM node on Etherlink Mainnet requires a computer with 500GB of disk space and at least 16GB RAM.
 
+## Modes
+
+The EVM node supports these history modes:
+
+- `archive` (the default): The node stores a copy of all available Etherlink information.
+
+- `full` (available starting with version 0.17): The node stores all of the necessary information to construct the current Etherlink state plus the states for a certain number of previous days, known as the _retention period_.
+
+- `rolling` (available starting with version 0.16): The node stores the current context plus the complete transaction data for a certain number of previous days, known as the _retention period_.
+
+The Octez EVM node history modes follow the same semantics as the Octez layer 1 node history modes.
+For more information about modes, see [History modes](https://octez.tezos.com/docs/user/history_modes.html) in the Octez documentation.
+
+To switch modes, see [Switching modes](#switching-modes).
+
 ## Getting the `octez-evm-node` binary
 
 The easiest way to get the `octez-evm-node` binary is to download the binaries distributed as part of its latest release from https://gitlab.com/tezos/tezos/-/releases.
@@ -38,7 +53,7 @@ The following instructions use the variable `<EVM_DATA_DIR>` to represent this d
 
    ```bash
    octez-evm-node init config \
-     --network mainnet \
+     --network testnet \
      --data-dir <EVM_DATA_DIR> \
      --dont-track-rollup-node
    ```
@@ -47,7 +62,7 @@ The following instructions use the variable `<EVM_DATA_DIR>` to represent this d
 
    ```bash
    octez-evm-node init config \
-     --network mainnet \
+     --network testnet \
      --data-dir <EVM_DATA_DIR> \
      --rollup-node-endpoint <SR_NODE_OBSERVER_RPC>
    ```
@@ -70,44 +85,75 @@ You can initialize the node from a snapshot, initialize it from an existing Ethe
 
 ### From a snapshot
 
-To automatically download and import a snapshot, start the node with the `--init-from-snapshot` switch and the network to use, as in this example:
+You can import a snapshot into the EVM node in any of these ways:
+
+- Manually download and import the snapshot
+- Provide the URL of the snapshot to the node
+- Allow the node to download the snapshot automatically
+
+You must download the appropriate snapshot for the network and mode.
+Rolling and full snapshots provided on the [Nomadic Labs snapshot site](http://snapshotter-sandbox.nomadic-labs.eu/) include 1 day of complete data.
+These snapshots are equivalent to the mode `rolling:1` or `full:1`.
+
+If you want a mode with a longer retention period, you can:
+
+- Download an older snapshot and allow the EVM node to compute the data since the snapshot was taken.
+- Create your own snapshot with the appropriate retention period from another EVM node.
+- Start with a node in a mode that has the necessary data and [switch to another mode](#switching-history-modes) with the retention period that you want.
+
+To download and import the snapshot manually, download the appropriate snapshot for the network and mode (such as from http://snapshotter-sandbox.nomadic-labs.eu/) and import it with the `octez-evm-node snapshot import` command, as in this example:
+
+```bash
+wget https://storage.googleapis.com/nl-sandboxes-etherlink--snapshots/etherlink-testnet/rolling/etherlink-testnet-rolling-latest.gz
+octez-evm-node snapshot import etherlink-testnet-rolling-latest.gz \
+  --data-dir <EVM_DATA_DIR>
+```
+
+You can also pass the snapshot URL to the command, as in this example:
+
+```bash
+octez-evm-node snapshot import https://storage.googleapis.com/nl-sandboxes-etherlink--snapshots/etherlink-testnet/rolling/etherlink-testnet-rolling-latest.gz \
+  --data-dir <EVM_DATA_DIR>
+```
+
+Then, run this command to start the node, passing the data directory and the network and mode to use:
 
 ```bash
 octez-evm-node run observer \
-  --data-dir <EVM_DATA_DIR> \
   --network testnet \
+  --history rolling:1 \
+  --data-dir <EVM_DATA_DIR>
+```
+
+If you have configured the data directory and imported a snapshot, you can omit the `--history` argument from the `octez-evm-node run` command.
+Including this argument allows you to verify that the node is configured for the mode and retention period that you want to run the node in.
+The node throws an error if you try to run it in a mode that it is not configured for.
+
+To automatically download and import a snapshot, start the node with the `--init-from-snapshot` switch and the network and mode to use, as in this example:
+
+```bash
+octez-evm-node run observer \
+  --network testnet \
+  --history rolling:1 \
+  --data-dir <EVM_DATA_DIR> \
+  --dont-track-rollup-node \
   --init-from-snapshot
 ```
 
+The `--history` argument is required in this case to tell the node what snapshot to download.
+However, an appropriate snapshot must be available on the [Nomadic Labs snapshot site](http://snapshotter-sandbox.nomadic-labs.eu/).
+
 The node can take time to download and import the snapshot.
-
-To import the snapshot manually, download the snapshot from http://snapshotter-sandbox.nomadic-labs.eu/ and import it with this command:
-
-```bash
-wget http://snapshotter-sandbox.nomadic-labs.eu/etherlink-mainnet/evm-snapshot-sr1Ghq66tYK9y-latest.gz # this is for the latest mainnet etherlink snapshots, similarly there is one for testnet
-octez-evm-node snapshot import evm-snapshot-sr1Ghq66tYK9y-latest.gz \
-  --data-dir <EVM_DATA_DIR>
-```
-
-You can also pass the URL of the snapshot directly to the `octez-evm-node snapshot import` command.
-
-Then, run this command to start the node, passing the data directory and the network to use:
-
-```bash
-octez-evm-node run observer \
-  --network testnet \
-  --data-dir <EVM_DATA_DIR>
-```
 
 ### From an existing Etherlink Smart Rollup node
 
-1. Download [an Etherlink Smart Rollup node snapshot](https://snapshots.eu.tzinit.org/etherlink-ghostnet/), and use the `octez-smart-rollup-node` binary to import it in a temporary directory.
+1. Download [an Etherlink Smart Rollup node snapshot](https://snapshots.eu.tzinit.org), and use the `octez-smart-rollup-node` binary to import it in a temporary directory.
 The following examples use `<SR_OBSERVER_DATA_DIR>` as the location of this temporary directory.
 
    ```bash
-   wget https://snapshots.eu.tzinit.org/etherlink-mainnet/eth-mainnet.full
-   octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet \
-     snapshot import eth-mainnet.full \
+   wget https://snapshots.eu.tzinit.org/etherlink-ghostnet/eth-ghostnet.full
+   octez-smart-rollup-node --endpoint https://rpc.tzkt.io/ghostnet \
+     snapshot import eth-ghostnet.full \
      --data-dir <SR_OBSERVER_DATA_DIR>
    ```
 
@@ -128,6 +174,7 @@ The following examples use `<SR_OBSERVER_DATA_DIR>` as the location of this temp
    ```
 
    The EVM node runs in archive mode.
+   You can switch modes with the command `octez-evm-node switch history to <MODE>`.
 
 ### From genesis
 
@@ -139,6 +186,31 @@ The following examples use `<SR_OBSERVER_DATA_DIR>` as the location of this temp
    ```
 
    The `--initial-kernel` argument is needed only the first time that you start the node.
+
+## Switching history modes
+
+After the node is running in one mode you can switch to another history mode:
+
+1. Stop the node.
+1. Switch to the new mode with the command `octez-evm-node switch history to <MODE>`, where `<MODE>` is the new mode.
+1. Start the node as usual with the command `octez-evm-node run`.
+
+For example, you can switch to `rolling` mode with the command `octez-evm-node switch history to rolling:<DAYS>`, where `<DAYS>` is the number of days of compete data to keep.
+Then when you restart the node, run `octez-evm-node run observer --network testnet --history rolling:<DAYS> --data-dir <EVM_DATA_DIR>`.
+
+Because the node cannot reconstruct data that it does not have, you can switch from only some modes to some other modes:
+
+- The node can go from `archive` mode to `rolling` or `full` mode.
+- The node can go from `full` mode to `rolling` mode or `full` mode with a different retention period.
+- The node can go from `rolling` mode to `rolling` mode with a different retention period.
+
+When you switch from `full` or `rolling` mode and change the retention period, the node can increase the retention period, but it does not immediately retrieve the new data.
+For example, you can switch from `rolling:1` mode to `rolling:5` mode, but the node does not immediately download the previous 5 days of data.
+Instead, it begins storing more data as time passes until it has enough for 5 days of history.
+You can also start a node in `rolling:5` mode by downloading a rolling snapshot that is 5 days old or by switching from `archive` mode.
+
+Switching modes can increase the size of the data directory, so be sure that the node has enough disk space before switching.
+For example, switching from another mode to `rolling` mode requires more space than starting a new node in `rolling` mode from a new data directory with the same retention period.
 
 ## Verifying that the node is running
 
