@@ -207,7 +207,7 @@ Because the node cannot reconstruct data that it does not have, you can switch f
 When you switch from `full` or `rolling` mode and change the retention period, the node can increase the retention period, but it does not immediately retrieve the new data.
 For example, you can switch from `rolling:1` mode to `rolling:5` mode, but the node does not immediately download the previous 5 days of data.
 Instead, it begins storing more data as time passes until it has enough for 5 days of history.
-You can also start a node in `rolling:5` mode by downloading a rolling snapshot that is 5 days old or by switching from `archive` mode or `full` mode.
+You can also start a node in `rolling:5` mode by downloading a rolling snapshot that is 5 days old or by switching from `archive` mode.
 
 Switching modes can increase the size of the data directory, so be sure that the node has enough disk space before switching.
 For example, switching from another mode to `rolling` mode requires more space than starting a new node in `rolling` mode from a new data directory with the same retention period.
