@@ -26,7 +26,6 @@ The EVM node supports these history modes:
 - `full` (available starting with version 0.17): The node stores all of the necessary information to construct the current Etherlink state plus the states for a certain number of previous days, known as the _retention period_.
 
 - `rolling` (available starting with version 0.16): The node stores the current context plus the complete transaction data for a certain number of previous days, known as the _retention period_.
-The default `rolling` mode stores the complete data for the previous 14 days.
 
 The Octez EVM node history modes follow the same semantics as the Octez layer 1 node history modes.
 For more information about modes, see [History modes](https://octez.tezos.com/docs/user/history_modes.html) in the Octez documentation.
