@@ -69,6 +69,7 @@ const sidebars = {
         'building-on-etherlink/deploying-contracts',
         'building-on-etherlink/verifying-contracts',
         'building-on-etherlink/indexing-graph',
+        'building-on-etherlink/websockets',
         'building-on-etherlink/tokens',
         'building-on-etherlink/development-toolkits',
       ],
