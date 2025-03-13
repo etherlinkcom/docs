@@ -211,7 +211,7 @@ Instead, it begins storing more data as time passes until it has enough for 5 da
 You can also start a node in `rolling:5` mode by downloading a rolling snapshot that is 5 days old or by switching from `archive` mode or `full` mode.
 
 Switching modes can increase the size of the data directory, so be sure that the node has enough disk space before switching.
-For example, switching from another mode to `rolling` mode requires more space than starting a node in `rolling` mode with the same retention period.
+For example, switching from another mode to `rolling` mode requires more space than starting a new node in `rolling` mode from a new data directory with the same retention period.
 
 ## Verifying that the node is running
 
