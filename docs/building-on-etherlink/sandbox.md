@@ -30,6 +30,13 @@ Follow these steps to start the local sandbox:
      --dont-track-rollup-node
    ```
 
+   :::note
+
+   After you use the node in sandbox mode with a certain data directory, you cannot re-use that data directory for running an EVM node on Etherlink Mainnet or Testnet.
+   Consider using a different data directory for the sandbox than you use for other EVM nodes.
+
+   :::
+
 1. (Optional) Enable WebSockets in the node by editing the configuration file as described in [Getting updates with WebSockets](/building-on-etherlink/websockets).
 
 1. Start the node in sandbox mode from a snapshot, either based on the Mainnet or Testnet context:
