@@ -41,6 +41,10 @@ For examples of using Subquery with Etherlink, see these sample projects:
 
 ## Goldsky
 
-[Goldsky](https://goldsky.com/) hosts subgraphs with information about Etherlink.
-It also provides Mirror, a product that sends a live stream of data about Etherlink to your database or warehouse.
-See its documentation at https://docs.goldsky.com.
+[Goldsky](https://goldsky.com/) makes it easy to access real-time Web3 data with little maintenance.
+It provides these services:
+
+- [Subgraphs](https://docs.goldsky.com/subgraphs/introduction) let you intelligently extract Etherlink onchain data with ease - handling reorgs, RPC provider failures, and other complexities on your behalf.
+- [Mirror](https://docs.goldsky.com/mirror/introduction) lets you replicate Subgraph data or chain-level streams directly to a data store of your choosing for highly flexible usage in your front-end or back-end.
+
+See the Goldsky documentation at https://docs.goldsky.com.
