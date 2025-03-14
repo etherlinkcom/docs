@@ -66,6 +66,7 @@ const sidebars = {
       collapsed: false,
       items: [
         'building-on-etherlink/endpoint-support',
+        'building-on-etherlink/sandbox',
         'building-on-etherlink/deploying-contracts',
         'building-on-etherlink/verifying-contracts',
         'building-on-etherlink/indexing-graph',

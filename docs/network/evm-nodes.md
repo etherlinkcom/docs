@@ -83,6 +83,8 @@ The following instructions use the variable `<EVM_DATA_DIR>` to represent this d
 
 You can initialize the node from a snapshot, initialize it from an existing Etherlink Smart Rollup node, or allow it to compute the Etherlink state from genesis.
 
+For a faster way of running a node locally for a short time, see [Running a local sandbox](/building-on-etherlink/sandbox).
+
 ### From a snapshot
 
 You can import a snapshot into the EVM node in any of these ways:
