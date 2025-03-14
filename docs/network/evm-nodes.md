@@ -229,3 +229,7 @@ For example, this command gets the number of the most recent block in hexadecima
 ```bash
 curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_blockNumber"}' http://localhost:8545
 ```
+
+## Stopping the node
+
+The EVM node respects SIGTERM and exits cleanly when stopped, so you can stop it in any way that you would ordinarily stop a program on your system.
