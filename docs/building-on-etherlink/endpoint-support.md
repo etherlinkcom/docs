@@ -339,6 +339,11 @@ For information about these endpoints, see [JSON-RPC API](https://ethereum.org/e
       <td></td>
     </tr>
     <tr>
+      <td>`eth_subscribe` (experimental)</td>
+      <td>See <a href="/building-on-etherlink/websockets">Getting updates with WebSockets</a></td>
+      <td></td>
+    </tr>
+    <tr>
       <td>`eth_syncing`</td>
       <td>No</td>
       <td></td>
