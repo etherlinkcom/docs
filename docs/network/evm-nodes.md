@@ -233,6 +233,8 @@ Jan 15 20:17:23.794:   0xeb720c1c5df94f820d4ede15ddef92b9267d1291dea15a716a160b4
 ```
 
 By default, the EVM node exposes its JSON RPC API endpoint to `localhost:8545`.
+To set the host name or port that the node listens on, use the `--rpc-addr` or `--rpc-port` arguments of the `octez-evm-node run` command.
+
 You can test that everything works as expected by running RPC requests manually or by setting your wallet to use your local node.
 For example, this command gets the number of the most recent block in hexadecimal:
 
