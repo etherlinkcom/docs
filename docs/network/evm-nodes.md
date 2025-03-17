@@ -107,11 +107,6 @@ The `--history` argument is required in this case to tell the node which snapsho
 An appropriate snapshot must be available on the [Nomadic Labs snapshot site](http://snapshotter-sandbox.nomadic-labs.eu/).
 
 The node can take time to download and import the snapshot.
-The node is ready when the log shows new block numbers, as in this example:
-
-```
-Mar 14 11:04:04.155 NOTICE │ head is now 7523759, applied in 11.422ms
-```
 
 ### From a manual snapshot
 
@@ -224,12 +219,10 @@ For example, switching from another mode to `rolling` mode requires more space t
 
 ## Verifying that the node is running
 
-When the node is running, its log shows information about the blocks it receives from the sequencer (referred to here as _blueprints_), as in this example:
+The node is ready when the log shows new block numbers, as in this example:
 
 ```
-Jan 15 20:17:23.794: Applied a blueprint for level 16867349 at 2025-01-15T19:38:35Z containing 1
-Jan 15 20:17:23.794:   transactions for 2814041 gas leading to creating block
-Jan 15 20:17:23.794:   0xeb720c1c5df94f820d4ede15ddef92b9267d1291dea15a716a160b4c2[...] in 245ms.
+Mar 14 11:04:04.155 NOTICE │ head is now 7523759, applied in 11.422ms
 ```
 
 By default, the EVM node exposes its JSON RPC API endpoint to `localhost:8545`.
