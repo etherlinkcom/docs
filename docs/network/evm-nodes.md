@@ -83,6 +83,8 @@ The following instructions use the variable `<EVM_DATA_DIR>` to represent this d
 
 You can initialize the node from a snapshot, initialize it from an existing Etherlink Smart Rollup node, or allow it to compute the Etherlink state from genesis.
 
+For a faster way of running a node locally for a short time, see [Running a local sandbox](/building-on-etherlink/sandbox).
+
 ### From a snapshot
 
 You can import a snapshot into the EVM node in any of these ways:
@@ -144,6 +146,11 @@ The `--history` argument is required in this case to tell the node what snapshot
 However, an appropriate snapshot must be available on the [Nomadic Labs snapshot site](http://snapshotter-sandbox.nomadic-labs.eu/).
 
 The node can take time to download and import the snapshot.
+The node is ready when the log shows new block numbers, as in this example:
+
+```
+Mar 14 11:04:04.155 NOTICE │ head is now 7523759, applied in 11.422ms
+```
 
 ### From an existing Etherlink Smart Rollup node
 
