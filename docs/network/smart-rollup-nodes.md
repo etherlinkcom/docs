@@ -131,7 +131,7 @@ The best place to get the most recent binary files to use with Etherlink is http
 
    ```bash
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/ghostnet run \
-     --data-dir $SR_DATA_DIR
+     --data-dir <SR_DATA_DIR>
    ```
 
    If you did not load a snapshot, the process of starting the node from genesis can take a long time because it must process every block.
