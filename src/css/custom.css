@@ -469,7 +469,7 @@ article a[target="_blank"]:after {
 }
 
 article {
-  margin: auto;
+  margin: auto auto auto 40px;
 }
 @media screen and (min-width: 997px) {
   article {
