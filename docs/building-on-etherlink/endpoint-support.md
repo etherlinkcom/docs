@@ -398,8 +398,8 @@ For information about these endpoints, see the Geth documentation at https://get
   <tbody>
     <tr>
       <td>`debug_traceTransaction`</td>
-      <td>Partially</td>
-      <td>Supported on testnet but not Mainnet</td>
+      <td>Yes</td>
+      <td></td>
     </tr>
     <tr>
       <td>`eth_call`</td>
