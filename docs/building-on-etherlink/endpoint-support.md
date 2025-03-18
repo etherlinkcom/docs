@@ -15,7 +15,7 @@ For information about these endpoints, see [JSON-RPC API](https://ethereum.org/e
     <tr>
       <th>Endpoint</th>
       <th>Supported</th>
-      <th>Notes</th>
+      <th class="absorbingColumn">Notes</th>
     </tr>
   </thead>
   <tbody>
@@ -393,7 +393,7 @@ For information about these endpoints, see the Geth documentation at https://get
     <tr>
       <th>Endpoint</th>
       <th>Supported</th>
-      <th>Notes</th>
+      <th class="absorbingColumn">Notes</th>
     </tr>
   </thead>
   <tbody>
@@ -424,7 +424,7 @@ The Etherlink EVM node supports these [ethers.js](https://docs.ethers.org/v6/) m
     <tr>
       <th>Method</th>
       <th>Supported</th>
-      <th>Notes</th>
+      <th class="absorbingColumn">Notes</th>
     </tr>
   </thead>
   <tbody>
@@ -462,7 +462,7 @@ The Etherlink EVM node supports these [ethers.js](https://docs.ethers.org/v6/) m
   <thead>
     <tr>
       <th></th>
-      <th>Comments</th>
+      <th class="absorbingColumn">Comments</th>
     </tr>
   </thead>
   <tbody>

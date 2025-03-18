@@ -582,4 +582,7 @@ article img {
   .fullWidthTable {
     width: calc(90vw - 90%);
   }
+  .fullWidthTable .absorbingColumn {
+    width: 100%;
+  }
 }
