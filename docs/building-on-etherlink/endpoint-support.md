@@ -1,5 +1,6 @@
 ---
 title: Ethereum endpoint support
+hide_table_of_contents: true
 ---
 
 Etherlink nodes use [Geth](https://geth.ethereum.org/) to provide access to both standard Ethereum RPC endpoints and Geth-specific RPC endpoints.
@@ -9,12 +10,12 @@ These tables list these endpoints and whether Etherlink supports them:
 
 For information about these endpoints, see [JSON-RPC API](https://ethereum.org/en/developers/docs/apis/json-rpc) and the [Ethereum JSON-RPC Specification](https://ethereum.github.io/execution-apis/api-documentation/) in the Ethereum documentation.
 
-<table class="customTableContainer">
+<table class="customTableContainer fullWidthTable">
   <thead>
     <tr>
       <th>Endpoint</th>
       <th>Supported</th>
-      <th>Notes</th>
+      <th class="absorbingColumn">Notes</th>
     </tr>
   </thead>
   <tbody>
@@ -339,9 +340,9 @@ For information about these endpoints, see [JSON-RPC API](https://ethereum.org/e
       <td></td>
     </tr>
     <tr>
-      <td>`eth_subscribe` (experimental)</td>
+      <td>`eth_subscribe`</td>
+      <td>Experimental</td>
       <td>See <a href="/building-on-etherlink/websockets">Getting updates with WebSockets</a></td>
-      <td></td>
     </tr>
     <tr>
       <td>`eth_syncing`</td>
@@ -387,12 +388,12 @@ This table shows the Geth endpoints that Etherlink nodes support.
 All other Geth endpoints are not supported.
 For information about these endpoints, see the Geth documentation at https://geth.ethereum.org/docs.
 
-<table class="customTableContainer">
+<table class="customTableContainer fullWidthTable">
   <thead>
     <tr>
       <th>Endpoint</th>
       <th>Supported</th>
-      <th>Notes</th>
+      <th class="absorbingColumn">Notes</th>
     </tr>
   </thead>
   <tbody>
@@ -418,12 +419,12 @@ For information about these endpoints, see the Geth documentation at https://get
 
 The Etherlink EVM node supports these [ethers.js](https://docs.ethers.org/v6/) methods:
 
-<table class="customTableContainer">
+<table class="customTableContainer fullWidthTable">
   <thead>
     <tr>
       <th>Method</th>
       <th>Supported</th>
-      <th>Notes</th>
+      <th class="absorbingColumn">Notes</th>
     </tr>
   </thead>
   <tbody>
@@ -457,11 +458,11 @@ The Etherlink EVM node supports these [ethers.js](https://docs.ethers.org/v6/) m
 
 ## Additional information
 
-<table class="customTableContainer">
+<table class="customTableContainer fullWidthTable">
   <thead>
     <tr>
       <th></th>
-      <th>Comments</th>
+      <th class="absorbingColumn">Comments</th>
     </tr>
   </thead>
   <tbody>
