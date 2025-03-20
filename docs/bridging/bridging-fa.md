@@ -6,7 +6,7 @@ sidebar_label: Bridging FA tokens
 import CementingDelayNote from '@site/docs/conrefs/cementing-delay.md';
 
 You can bridge FA standards-compliant tokens in and out of Etherlink by deploying contracts that move the tokens.
-Then you can create dApps that use these contracts to move tokens or send a request to the Etherlink team to add your tokens to the bridge at https://www.etherlinkbridge.com/tezos-bridge.
+Then you can create dApps that use these contracts to move tokens or send a request to the Etherlink team to add your tokens to the bridge at https://bridge.etherlink.com/tezos.
 
 The Tezos FA standards are token standards like the Ethereum ERC-20, ERC-721, and ERC-1155 standards.
 For more information about the FA standards, see [Token standards](https://docs.tezos.com/architecture/tokens#token-standards) on docs.tezos.com.
@@ -37,7 +37,7 @@ You must deploy and operate the FA bridge contracts yourself as described in [Se
 
 You can set up your own UI to call the bridging contracts using any Tezos and EVM clients.
 
-You can also send a request to the Etherlink team to add your token to the bridge UI at https://www.etherlinkbridge.com/tezos-bridge.
+You can also send a request to the Etherlink team to add your token to the bridge UI at https://bridge.etherlink.com/tezos.
 To request that your FA token be added to the bridge UI, fill out this request form: https://tt-tezos.typeform.com/to/RmiMO04v
 
 The form requires information about the token and the bridging contracts:
