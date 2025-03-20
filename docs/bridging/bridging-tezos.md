@@ -16,7 +16,7 @@ Two bridging operations are available:
 These bridges are permissionless, meaning that anyone can use them without restrictions or the intervention of a third party.
 They are also trustless, meaning that they rely on automated, transparent, and audited smart contracts installed on Etherlink and Tezos.
 
-- [Mainnet Tezos bridge](https://www.etherlinkbridge.com/tezos-bridge)
+- [Mainnet Tezos bridge](https://bridge.etherlink.com/tezos)
 - [Testnet Tezos bridge](https://testnet.bridge.etherlink.com/)
 
 <CementingDelayNote />
@@ -25,7 +25,7 @@ They are also trustless, meaning that they rely on automated, transparent, and a
 
 To use the bridge, follow these general steps:
 
-1. Go to the bridge at https://www.etherlinkbridge.com/tezos-bridge for Mainnet or https://testnet.bridge.etherlink.com for Testnet.
+1. Go to the bridge at https://bridge.etherlink.com/tezos for Mainnet or https://testnet.bridge.etherlink.com for Testnet.
 
 1. Connect your Tezos and Etherlink-compatible wallets.
 
