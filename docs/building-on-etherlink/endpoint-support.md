@@ -398,9 +398,14 @@ For information about these endpoints, see the Geth documentation at https://get
   </thead>
   <tbody>
     <tr>
-      <td>`debug_traceTransaction`</td>
+      <td>`debug_traceCall`</td>
       <td>Partially</td>
-      <td>Supported on testnet but not Mainnet</td>
+      <td>Supports only callTracer and structLogger, not custom call tracers</td>
+    </tr>
+    <tr>
+      <td>`debug_traceTransaction`</td>
+      <td>Yes</td>
+      <td></td>
     </tr>
     <tr>
       <td>`eth_call`</td>

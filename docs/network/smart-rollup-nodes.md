@@ -337,6 +337,9 @@ Then you can recover the node's bonded tez and stop the node.
 If you stop the node before waiting for its last commitment to be cemented, the bonded tez is at risk if other nodes challenge that commitment and your node is not online to defend it in the Smart Rollup refutation game.
 For more information, see [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com.
 
+If you are not running the node in a mode that posts commitments, you can stop the node in any way you want.
+The Smart Rollup node respects SIGTERM and exits cleanly when stopped.
+
 :::
 
 Follow these steps to stop an Etherlink Smart Rollup node:
