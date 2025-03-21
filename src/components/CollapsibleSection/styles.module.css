@@ -1,0 +1,39 @@
+.title {
+  color: #28B56F;
+}
+
+.title::before {
+  background-image: url("/img/GreenFiChevronUp.svg");
+  background-repeat: no-repeat;
+  background-position-x: 5px;
+  background-position-y: -2px;
+  filter: none;
+  content: "";
+  display: inline-block;
+  transform: rotate(90deg);
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform var(--ifm-transition-fast) linear;
+  margin-right: 5px;
+  margin-left: -25px;
+}
+
+.title.titleOpen::before {
+  background-image: url("/img/GreenFiChevronUp.svg");
+  background-repeat: no-repeat;
+  background-position-x: 6px;
+  background-position-y: -2px;
+  filter: none;
+  content: "";
+  display: inline-block;
+  transform: rotate(180deg);
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform var(--ifm-transition-fast) linear;
+  margin-right: 5px;
+  margin-left: -25px;
+}
+
+.content {
+  transition: transform var(--ifm-transition-fast) ease;
+}

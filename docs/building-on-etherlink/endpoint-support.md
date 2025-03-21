@@ -3,12 +3,16 @@ title: Ethereum endpoint support
 hide_table_of_contents: true
 ---
 
+import CollapsibleSection from '@site/src/components/CollapsibleSection';
+
 Etherlink nodes use [Geth](https://geth.ethereum.org/) to provide access to both standard Ethereum RPC endpoints and Geth-specific RPC endpoints.
 These tables list these endpoints and whether Etherlink supports them:
 
 ## Standard Ethereum endpoints
 
 For information about these endpoints, see [JSON-RPC API](https://ethereum.org/en/developers/docs/apis/json-rpc) and the [Ethereum JSON-RPC Specification](https://ethereum.github.io/execution-apis/api-documentation/) in the Ethereum documentation.
+
+<CollapsibleSection title="Table of supported Ethereum endpoints">
 
 <table class="customTableContainer fullWidthTable">
   <thead>
@@ -382,11 +386,15 @@ For information about these endpoints, see [JSON-RPC API](https://ethereum.org/e
   </tbody>
 </table>
 
+</CollapsibleSection>
+
 ## Geth-specific endpoints
 
 This table shows the Geth endpoints that Etherlink nodes support.
 All other Geth endpoints are not supported.
 For information about these endpoints, see the Geth documentation at https://geth.ethereum.org/docs.
+
+<CollapsibleSection title="Table of supported Geth endpoints">
 
 <table class="customTableContainer fullWidthTable">
   <thead>
@@ -456,7 +464,11 @@ The Etherlink EVM node supports these [ethers.js](https://docs.ethers.org/v6/) m
   </tbody>
 </table>
 
+</CollapsibleSection>
+
 ## Additional information
+
+<CollapsibleSection title="Table of additional information">
 
 <table class="customTableContainer fullWidthTable">
   <thead>
@@ -484,3 +496,5 @@ The Etherlink EVM node supports these [ethers.js](https://docs.ethers.org/v6/) m
     </tr>
   </tbody>
 </table>
+
+</CollapsibleSection>
