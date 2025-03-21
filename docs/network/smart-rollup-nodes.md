@@ -325,6 +325,9 @@ For example, this query gets the health of the node:
    curl -s http://localhost:8932/health
    ```
 
+By default, the Smart Rollup node exposes its JSON RPC API endpoint to `localhost:8932`.
+To set the host name or port that the node listens on, use the `--rpc-addr` or `--rpc-port` arguments of the `octez-smart-rollup-node run` command.
+
 Now that you have a Smart Rollup node configured for Etherlink, you can run an Etherlink EVM node, as described in [Running an Etherlink EVM node](/network/evm-nodes).
 
 ## Stopping the Smart Rollup node
