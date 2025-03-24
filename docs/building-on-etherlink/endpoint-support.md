@@ -147,7 +147,7 @@ For information about these endpoints, see [JSON-RPC API](https://ethereum.org/e
     <tr>
       <td>`eth_call`</td>
       <td>Yes</td>
-      <td>Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version; Etherlink does not support the state override set parameter</td>
+      <td>Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version</td>
     </tr>
     <tr>
       <td>`eth_chainId`</td>
