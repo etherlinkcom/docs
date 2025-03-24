@@ -10,9 +10,6 @@ The Etherlink EVM nodes are responsible for maintaining a copy of the Etherlink 
 - If you want to verify the blocks that come from the sequencer, run an Etherlink Smart Rollup node as described in [Running an Etherlink Smart Rollup node](/network/smart-rollup-nodes).
 Public Smart Rollup nodes for Etherlink are not yet available, so you must run your own if you want to participate in the Etherlink network.
 
-The EVM node runs Etherlink's kernel.
-You can get the kernel by importing it from a running Etherlink Smart Rollup node or by providing the installer kernel.
-
 ## System requirements
 
 Running an Etherlink EVM node on Etherlink Mainnet requires a computer with 500GB of disk space and at least 16GB RAM.
@@ -40,35 +37,22 @@ The release page provides static binaries for Linux systems (for amd64 and arm64
 As an alternative, you can use the minimal Docker image [tezos/tezos-bare](https://hub.docker.com/r/tezos/tezos-bare/tags?name=octez-evm-node) with a tag that includes `octez-evm-node`.
 These images contain the correct version of the binary.
 
-## Initializing the data directory
+## Configuring the node
 
-1. If you want your EVM node to check the correctness of the blocks it receives via a Smart Rollup node, get the RPC URL of that Etherlink Smart Rollup node, such as `http://localhost:8932`.
-The following instructions use the variable `<SR_NODE_OBSERVER_RPC>` to represent this URL.
-1. Create a directory for the node to store its data in.
+The node uses the following main parameters.
+In versions of the `octez-evm-node` binary prior to version 0.20, you must specify the parameters as arguments to most commands.
+In version 0.20 and later, you can set environment variables instead of using the arguments.
+
+- The directory where it stores its data, which you specify in the `--data-dir` argument or in the `EVM_NODE_DATA_DIR` environment variable.
 The default directory is `$HOME/.octez-evm-node`.
 The following instructions use the variable `<EVM_DATA_DIR>` to represent this directory.
-1. Initialize the node by setting the data directory in the `--data-dir` argument and the network to use (such as `mainnet` or `testnet`) in the `--network` argument.
+- The location of its configuration file, which you specify in the `--config-file` argument or in the `EVM_NODE_CONFIG_FILE` environment variable.
+You can set a different location for the file if you want to separate the data directory from the node configuration, such as often happens in Kubernetes.
+The default location is the file `config.json` in the data directory.
+- The network to use, such as `mainnet` or `testnet`, which you specify in the `--network` argument or the `EVM_NODE_NETWORK` environment variable.
 
-   To trust incoming blocks, use `--dont-track-rollup-node`:
-
-   ```bash
-   octez-evm-node init config \
-     --network testnet \
-     --data-dir <EVM_DATA_DIR> \
-     --dont-track-rollup-node
-   ```
-
-   Alternatively, if you want to rely on a Smart Rollup node to check the correctness of blocks coming from the sequencer, pass the address of the Smart Rollup node to the `--rollup-node-endpoint` argument, as in this example:
-
-   ```bash
-   octez-evm-node init config \
-     --network testnet \
-     --data-dir <EVM_DATA_DIR> \
-     --rollup-node-endpoint <SR_NODE_OBSERVER_RPC>
-   ```
-
-   The `--network` argument sets the node to use preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
-   For example, passing `--network mainnet` implies these arguments:
+   Choosing a network sets the node to use preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
+   For example, setting the network to `mainnet` implies these arguments:
 
    ```bash
    --preimages-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
@@ -78,6 +62,41 @@ The following instructions use the variable `<EVM_DATA_DIR>` to represent this d
    It's safe to use these preimages because the node verifies them.
    If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink kernel](/network/building-kernel).
    However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink after that.
+
+When you have the information for these parameters, follow these steps to generate the configuration file:
+
+1. If you want your EVM node to check the correctness of the blocks it receives via a Smart Rollup node, get the RPC URL of that Etherlink Smart Rollup node, such as `http://localhost:8932`.
+The following instructions use the variable `<SR_NODE_OBSERVER_RPC>` to represent this URL.
+1. Create a directory for the node to store its data in.
+1. Create the configuration file by setting the parameters in the environment variables or passing the arguments to the `octez-evm-node init config` command.
+
+   If you are not running an Etherlink Smart Rollup node and are trusting incoming blocks, use the `--dont-track-rollup-node` flag, as in this example:
+
+   ```bash
+   octez-evm-node init config \
+     --network testnet \
+     --data-dir <EVM_DATA_DIR> \
+     --dont-track-rollup-node
+   ```
+
+   If you set the `EVM_NODE_DATA_DIR` and `EVM_NODE_NETWORK` environment variables, you can omit the `--network` and `--data-dir` arguments, as in this example:
+
+   ```bash
+   export EVM_NODE_DATA_DIR="<EVM_DATA_DIR>"
+   export EVM_NODE_NETWORK=mainnet
+   octez-evm-node init config --dont-track-rollup-node
+   ```
+
+   If you want to rely on a Smart Rollup node to check the correctness of blocks coming from the sequencer, pass the address of the Smart Rollup node to the `--rollup-node-endpoint` argument, as in this example:
+
+   ```bash
+   octez-evm-node init config \
+     --network testnet \
+     --data-dir <EVM_DATA_DIR> \
+     --rollup-node-endpoint <SR_NODE_OBSERVER_RPC>
+   ```
+
+The EVM node generates a configuration file and puts it in the data directory that you specified in the command.
 
 ## Running the node
 
@@ -90,6 +109,8 @@ You can initialize and start the node in several ways:
 
 For a faster way of running a node locally for a short time, see [Running a local sandbox](/building-on-etherlink/sandbox).
 
+In each case, you can specify the `--network`, `--data-dir`, and `--config-file` arguments or set the equivalent environment variables as described in [Configuring the node](#configuring-the-node).
+
 ### From an automatic snapshot
 
 To automatically download and import a snapshot, start the node with the `--init-from-snapshot` switch and the network and mode to use, as in this example:
@@ -99,6 +120,17 @@ octez-evm-node run observer \
   --network testnet \
   --history rolling:1 \
   --data-dir <EVM_DATA_DIR> \
+  --dont-track-rollup-node \
+  --init-from-snapshot
+```
+
+If you set the `EVM_NODE_DATA_DIR` and `EVM_NODE_NETWORK` environment variables, you can omit the `--network` and `--data-dir` arguments, as in this example:
+
+```bash
+export EVM_NODE_DATA_DIR="<EVM_DATA_DIR>"
+export EVM_NODE_NETWORK=testnet
+octez-evm-node run observer \
+  --history rolling:1 \
   --dont-track-rollup-node \
   --init-from-snapshot
 ```
@@ -144,6 +176,17 @@ octez-evm-node run observer \
   --network testnet \
   --history rolling:1 \
   --data-dir <EVM_DATA_DIR>
+```
+
+If you set the `EVM_NODE_DATA_DIR` and `EVM_NODE_NETWORK` environment variables, you can omit the `--network` and `--data-dir` arguments, as in this example:
+
+```bash
+export EVM_NODE_DATA_DIR="<EVM_DATA_DIR>"
+export EVM_NODE_NETWORK=testnet
+octez-evm-node run observer \
+  --history rolling:1 \
+  --dont-track-rollup-node \
+  --init-from-snapshot
 ```
 
 If you have configured the data directory and imported a snapshot, you can omit the `--history` argument from the `octez-evm-node run` command.
