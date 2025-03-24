@@ -82,6 +82,8 @@ The following instructions use the variable `<SR_NODE_OBSERVER_RPC>` to represen
    If you set the `EVM_NODE_DATA_DIR` and `EVM_NODE_NETWORK` environment variables, you can omit the `--network` and `--data-dir` arguments, as in this example:
 
    ```bash
+   export EVM_NODE_DATA_DIR="<EVM_DATA_DIR>"
+   export EVM_NODE_NETWORK=mainnet
    octez-evm-node init config --dont-track-rollup-node
    ```
 
@@ -118,6 +120,17 @@ octez-evm-node run observer \
   --network testnet \
   --history rolling:1 \
   --data-dir <EVM_DATA_DIR> \
+  --dont-track-rollup-node \
+  --init-from-snapshot
+```
+
+If you set the `EVM_NODE_DATA_DIR` and `EVM_NODE_NETWORK` environment variables, you can omit the `--network` and `--data-dir` arguments, as in this example:
+
+```bash
+export EVM_NODE_DATA_DIR="<EVM_DATA_DIR>"
+export EVM_NODE_NETWORK=testnet
+octez-evm-node run observer \
+  --history rolling:1 \
   --dont-track-rollup-node \
   --init-from-snapshot
 ```
@@ -163,6 +176,17 @@ octez-evm-node run observer \
   --network testnet \
   --history rolling:1 \
   --data-dir <EVM_DATA_DIR>
+```
+
+If you set the `EVM_NODE_DATA_DIR` and `EVM_NODE_NETWORK` environment variables, you can omit the `--network` and `--data-dir` arguments, as in this example:
+
+```bash
+export EVM_NODE_DATA_DIR="<EVM_DATA_DIR>"
+export EVM_NODE_NETWORK=testnet
+octez-evm-node run observer \
+  --history rolling:1 \
+  --dont-track-rollup-node \
+  --init-from-snapshot
 ```
 
 If you have configured the data directory and imported a snapshot, you can omit the `--history` argument from the `octez-evm-node run` command.
