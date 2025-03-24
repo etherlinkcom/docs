@@ -48,6 +48,7 @@ The default directory is `$HOME/.octez-evm-node`.
 The following instructions use the variable `<EVM_DATA_DIR>` to represent this directory.
 - The location of its configuration file, which you specify in the `--config-file` argument or in the `EVM_NODE_CONFIG_FILE` environment variable.
 The default location is the file `config.json` in the data directory.
+You can set a different location of the file if you want to separate the data directory from the node configuration, such as often happens in Kubernetes.
 - The network to use, such as `mainnet` or `testnet`, which you specify in the `--network` argument or the `EVM_NODE_NETWORK` environment variable.
 
    Choosing a network sets the node to use preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
