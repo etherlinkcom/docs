@@ -81,17 +81,36 @@ The following instructions use the variable `<EVM_DATA_DIR>` to represent this d
 
 ## Running the node
 
-You can initialize the node from a snapshot, initialize it from an existing Etherlink Smart Rollup node, or allow it to compute the Etherlink state from genesis.
+You can initialize and start the node in several ways:
+
+- [From a snapshot that the node downloads automatically](#from-an-automatic-snapshot)
+- [From a snapshot that you download manually](#from-a-manual-snapshot)
+- [From an existing Etherlink Smart Rollup node](#from-an-existing-etherlink-smart-rollup-node)
+- [From genesis](#from-genesis)
 
 For a faster way of running a node locally for a short time, see [Running a local sandbox](/building-on-etherlink/sandbox).
 
-### From a snapshot
+### From an automatic snapshot
 
-You can import a snapshot into the EVM node in any of these ways:
+To automatically download and import a snapshot, start the node with the `--init-from-snapshot` switch and the network and mode to use, as in this example:
 
-- Manually download and import the snapshot
-- Provide the URL of the snapshot to the node
-- Allow the node to download the snapshot automatically
+```bash
+octez-evm-node run observer \
+  --network testnet \
+  --history rolling:1 \
+  --data-dir <EVM_DATA_DIR> \
+  --dont-track-rollup-node \
+  --init-from-snapshot
+```
+
+The `--history` argument is required in this case to tell the node which snapshot to download.
+An appropriate snapshot must be available on the [Nomadic Labs snapshot site](http://snapshotter-sandbox.nomadic-labs.eu/).
+
+The node can take time to download and import the snapshot.
+
+### From a manual snapshot
+
+You can manually select a snapshot and download it manually or provide the URL of the snapshot to the node.
 
 You must download the appropriate snapshot for the network and mode.
 Rolling and full snapshots provided on the [Nomadic Labs snapshot site](http://snapshotter-sandbox.nomadic-labs.eu/) include 1 day of complete data.
@@ -130,27 +149,6 @@ octez-evm-node run observer \
 If you have configured the data directory and imported a snapshot, you can omit the `--history` argument from the `octez-evm-node run` command.
 Including this argument allows you to verify that the node is configured for the mode and retention period that you want to run the node in.
 The node throws an error if you try to run it in a mode that it is not configured for.
-
-To automatically download and import a snapshot, start the node with the `--init-from-snapshot` switch and the network and mode to use, as in this example:
-
-```bash
-octez-evm-node run observer \
-  --network testnet \
-  --history rolling:1 \
-  --data-dir <EVM_DATA_DIR> \
-  --dont-track-rollup-node \
-  --init-from-snapshot
-```
-
-The `--history` argument is required in this case to tell the node what snapshot to download.
-However, an appropriate snapshot must be available on the [Nomadic Labs snapshot site](http://snapshotter-sandbox.nomadic-labs.eu/).
-
-The node can take time to download and import the snapshot.
-The node is ready when the log shows new block numbers, as in this example:
-
-```
-Mar 14 11:04:04.155 NOTICE │ head is now 7523759, applied in 11.422ms
-```
 
 ### From an existing Etherlink Smart Rollup node
 
@@ -221,15 +219,15 @@ For example, switching from another mode to `rolling` mode requires more space t
 
 ## Verifying that the node is running
 
-When the node is running, its log shows information about the blocks it receives from the sequencer (referred to here as _blueprints_), as in this example:
+The node is ready when the log shows new block numbers, as in this example:
 
 ```
-Jan 15 20:17:23.794: Applied a blueprint for level 16867349 at 2025-01-15T19:38:35Z containing 1
-Jan 15 20:17:23.794:   transactions for 2814041 gas leading to creating block
-Jan 15 20:17:23.794:   0xeb720c1c5df94f820d4ede15ddef92b9267d1291dea15a716a160b4c2[...] in 245ms.
+Mar 14 11:04:04.155 NOTICE │ head is now 7523759, applied in 11.422ms
 ```
 
 By default, the EVM node exposes its JSON RPC API endpoint to `localhost:8545`.
+To set the host name or port that the node listens on, use the `--rpc-addr` or `--rpc-port` arguments of the `octez-evm-node run` command.
+
 You can test that everything works as expected by running RPC requests manually or by setting your wallet to use your local node.
 For example, this command gets the number of the most recent block in hexadecimal:
 
