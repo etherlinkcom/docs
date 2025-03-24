@@ -69,7 +69,7 @@ The EVM node supports these history modes:
 The Octez EVM node history modes follow the same semantics as the Octez layer 1 node history modes.
 For more information about modes, see [History modes](https://octez.tezos.com/docs/user/history_modes.html) in the Octez documentation.
 
-To switch modes, see [Switching modes](#switching-modes).
+To switch modes, see [Switching history modes](#switching-history-modes).
 
 ## Getting the `octez-evm-node` binary
 
