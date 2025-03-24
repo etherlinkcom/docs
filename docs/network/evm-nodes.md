@@ -14,6 +14,37 @@ Public Smart Rollup nodes for Etherlink are not yet available, so you must run y
 
 Running an Etherlink EVM node on Etherlink Mainnet requires a computer with 500GB of disk space and at least 16GB RAM.
 
+## Quickstart
+
+If you don't want to see all of the options and settings for the EVM node, you can run the node quickly with these steps:
+
+1. Download the latest release of the `octez-evm-node` binary from from https://gitlab.com/tezos/tezos/-/releases.
+
+1. Run this command to start the node:
+
+   ```bash
+   octez-evm-node run observer \
+     --network <NETWORK> \
+     --history rolling:1 \
+     --data-dir <EVM_DATA_DIR> \
+     --dont-track-rollup-node \
+     --init-from-snapshot
+   ```
+
+   Pass the network to use (`mainnet` or `testnet`) for the `<NETWORK>` variable and the directory to store the node's data in for the `<EVM_DATA_DIR>` variable, as in this example:
+
+   ```bash
+   octez-evm-node run observer \
+     --network testnet \
+     --history rolling:1 \
+     --data-dir $HOME/.octez-evm-node \
+     --dont-track-rollup-node \
+     --init-from-snapshot
+   ```
+
+1. Wait for the node to download a snapshot and catch up to the current state of the network.
+See [Verifying that the node is running](#verifying-that-the-node-is-running).
+
 ## Modes
 
 The EVM node supports these history modes:
