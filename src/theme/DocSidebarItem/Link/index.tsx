@@ -9,10 +9,10 @@ import type {Props} from '@theme/DocSidebarItem/Link';
 
 import styles from './styles.module.css';
 
-const ICONS_PATH = ['/img/etherlinkIcon.svg', '/img/HiOutlineStatusOnline.svg', '/img/MdCode.svg', '/img/Gitlab.svg']
+const ICONS_PATH = ['/img/etherlinkIcon.svg', '/img/map_green.png', '/img/HiOutlineStatusOnline.svg', '/img/MdCode.svg', '/img/Gitlab.svg']
 
 const isTopSection = (name: string) => {
-  return name === 'Etherlink' || name === 'Documentation' || name === 'Status' || name === 'Developers' || name === 'GitLab'
+  return name === 'Etherlink' || name === 'Documentation' || name === 'Documentation map' || name === 'Status' || name === 'Developers' || name === 'GitLab'
 }
 
 export default function DocSidebarItemLink({
@@ -22,7 +22,7 @@ export default function DocSidebarItemLink({
   level,
   index,
   ...props
-}: Props): JSX.Element {  
+}: Props): JSX.Element {
   const {href, label, className, autoAddBaseUrl} = item;
   const isActive = isActiveSidebarItem(item, activePath);
   const isInternalLink = isInternalUrl(href);
@@ -39,7 +39,7 @@ export default function DocSidebarItemLink({
       )}
       style={{
         margin: `${item.label === 'Etherlink' && '40px 0px'}`,
-        marginBottom: `${!isInternalLink && isTopSection(item.label) && index === 3 && '40px'}`,
+        marginBottom: `${!isInternalLink && isTopSection(item.label) && index === 4 && '40px'}`,
       }}
       key={label}>
       <Link

@@ -176,7 +176,7 @@ export default function DocSidebarItemCategory({
           'menu__list-item-collapsible--active': isCurrentPage,
         }, styles.categoryLink)}>
           {
-            level === 1 && <span className={styles.categoryIcon}><img src={ITEMICONS[index - 4]} alt='icon' /></span>
+            level === 1 && <span className={styles.categoryIcon}><img src={ITEMICONS[index - 5]} alt='icon' /></span>
           }
         <Link
           style={{padding: '6px 12px 6px 8px'}}
