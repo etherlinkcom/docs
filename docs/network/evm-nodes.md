@@ -10,9 +10,6 @@ The Etherlink EVM nodes are responsible for maintaining a copy of the Etherlink 
 - If you want to verify the blocks that come from the sequencer, run an Etherlink Smart Rollup node as described in [Running an Etherlink Smart Rollup node](/network/smart-rollup-nodes).
 Public Smart Rollup nodes for Etherlink are not yet available, so you must run your own if you want to participate in the Etherlink network.
 
-The EVM node runs Etherlink's kernel.
-You can get the kernel by importing it from a running Etherlink Smart Rollup node or by providing the installer kernel.
-
 ## System requirements
 
 Running an Etherlink EVM node on Etherlink Mainnet requires a computer with 500GB of disk space and at least 16GB RAM.
