@@ -20,24 +20,24 @@ If you don't want to see all of the options and settings for the EVM node, you c
 
 1. Download the latest release of the `octez-evm-node` binary from from https://gitlab.com/tezos/tezos/-/releases.
 
-1. Run this command to start the node:
+1. Run the `octez-evm-node run observer` command to start the node as an observer:
+
+   Use this command for Etherlink Mainnet:
 
    ```bash
    octez-evm-node run observer \
-     --network <NETWORK> \
+     --network mainnet \
      --history rolling:1 \
-     --data-dir <EVM_DATA_DIR> \
      --dont-track-rollup-node \
      --init-from-snapshot
    ```
 
-   Pass the network to use (`mainnet` or `testnet`) for the `<NETWORK>` variable and the directory to store the node's data in for the `<EVM_DATA_DIR>` variable, as in this example:
+   Use this command for Etherlink Testnet:
 
    ```bash
    octez-evm-node run observer \
      --network testnet \
      --history rolling:1 \
-     --data-dir $HOME/.octez-evm-node \
      --dont-track-rollup-node \
      --init-from-snapshot
    ```
