@@ -9,6 +9,11 @@ const sidebars = {
     },
     {
       type: 'link',
+      label: 'Documentation map',
+      href: 'https://docs.tezos.com/overview/resources#documentation-map',
+    },
+    {
+      type: 'link',
       label: 'Status',
       href: 'https://status.etherlink.com',
     },
