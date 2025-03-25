@@ -42,6 +42,9 @@ If you don't want to see all of the options and settings for the EVM node, you c
      --init-from-snapshot
    ```
 
+   By default, the node stores its data and configuration file in the folder `$HOME/.octez-evm-node`.
+   You can change these default locations by passing the `--data-dir`, and `--config-file` arguments or setting the equivalent environment variables as described in [Configuring the node](#configuring-the-node).
+
 1. Wait for the node to download a snapshot and catch up to the current state of the network.
 See [Verifying that the node is running](#verifying-that-the-node-is-running).
 
