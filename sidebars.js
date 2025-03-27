@@ -36,6 +36,7 @@ const sidebars = {
         'get-started/using-your-wallet',
         'get-started/network-information',
         'get-started/getting-testnet-tokens',
+        'get-started/getting-mainnet-tokens',
       ],
     },
     {
