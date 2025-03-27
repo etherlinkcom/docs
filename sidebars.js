@@ -99,6 +99,8 @@ const sidebars = {
       label: 'Tools',
       collapsed: false,
       items: [
+        'tools/exchanges',
+        'tools/onramps',
         'tools/price-feeds',
         'tools/vrf',
         'tools/data-indexers',
