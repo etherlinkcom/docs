@@ -45,6 +45,11 @@ For information about these endpoints, see [JSON-RPC API](https://ethereum.org/e
       <td></td>
     </tr>
     <tr>
+      <td>`debug_traceBlockByNumber`</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>`engine_exchangeCapabilities`</td>
       <td>No</td>
       <td></td>
