@@ -143,3 +143,101 @@ curl --request POST \
 }
 '
 ```
+
+The response is the estimate gas for the transaction in hexadecimal format, as in this example:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": "0x98496",
+  "id": 1
+}
+```
+
+## Transferring ERC-20 tokens
+
+To transfer ERC-20 tokens, you can use the standard `transfer` entrypoint, as in this example:
+
+```javascript
+const { ethers } = require("ethers");
+
+// Define the provider by its RPC address
+const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+
+// Sender's private key
+const privateKey = process.env.ETHERLINK_PRIVATE_KEY;
+const wallet = new ethers.Wallet(privateKey, provider);
+
+async function sendTransaction() {
+
+  const contractAddress = "0xaE96b26F0F9FD52ddd07227E0B73dFc58a1531Ec";
+  // Standard transfer ABI for ERC-20 contracts
+  const erc20Abi = [
+    "function transfer(address to, uint256 amount) public returns (bool)"
+  ];
+  const tokenContract = new ethers.Contract(contractAddress, erc20Abi, wallet);
+
+  const targetAddress = "0x46899d4FA5Ba90E3ef3B7aE8aae053C662c1Ca1d";
+
+  const amountToTransfer = ethers.parseUnits("1", 18);
+
+  // Send the transaction
+  const ercTx = await tokenContract.transfer(targetAddress, amountToTransfer);
+  console.log("Transaction Hash:", ercTx.hash);
+
+  // Wait for the transaction to be confirmed
+  await ercTx.wait();
+  console.log("Transaction Confirmed!");
+}
+
+sendTransaction();
+```
+
+If you have the full ABI for the contract you can use other entrypoints to do things like get the account's current balance and the number of decimals that the account uses in its ledger of tokens, as in this example:
+
+```javascript
+const { ethers } = require("ethers");
+
+const fullABI = []; // Add complete ABI here
+
+// Define the provider by its RPC address
+const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+
+// Sender's private key
+const privateKey = process.env.ETHERLINK_PRIVATE_KEY;
+const wallet = new ethers.Wallet(privateKey, provider);
+
+async function sendTransaction() {
+
+  const contractAddress = "0xaE96b26F0F9FD52ddd07227E0B73dFc58a1531Ec";
+  const tokenContract = new ethers.Contract(contractAddress, erc20Abi, wallet);
+
+  const targetAddress = "0x46899d4FA5Ba90E3ef3B7aE8aae053C662c1Ca1d";
+
+  const rawBalance = await tokenContract.balanceOf(wallet.address);
+
+  // Get token decimals and format balance
+  const decimals = await tokenContract.decimals();
+  const formattedBalance = ethers.formatUnits(rawBalance, decimals);
+
+  console.log("Account has", formattedBalance, "tokens.");
+
+  // Transfer 1 token, formatted for number of decimals the token uses
+  const amountToTransfer = ethers.parseUnits("1", decimals);
+
+  // Send the transaction
+  const ercTx = await tokenContract.transfer(targetAddress, amountToTransfer);
+  console.log("Transaction Hash:", ercTx.hash);
+
+  // Wait for the transaction to be confirmed
+  await ercTx.wait();
+  console.log("Transaction Confirmed!");
+
+  // Check balance after the transaction
+  const updatedBalance = await tokenContract.balanceOf(wallet.address);
+  const formattedUpdatedBalance = ethers.formatUnits(updatedBalance, decimals);
+  console.log("Account now has", formattedUpdatedBalance, "tokens remaining.");
+}
+
+sendTransaction();
+```
