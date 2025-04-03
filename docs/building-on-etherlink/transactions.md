@@ -304,3 +304,64 @@ async function sendTransaction() {
 
 sendTransaction();
 ```
+
+## Getting event logs
+
+Etherlink does not support listening for smart contract events with endpoints such as `eth_newFilter` and `eth_getFilterChanges`.
+You can't use the standard ethers.js `contract.on`  or `contract.addListener` functions to add a listener to a contract because they use these entrypoints.
+
+To get updates about activity on Etherlink via WebSockets, see [Subscribing to events](/building-on-etherlink/websockets#subscribing-to-events).
+
+You can look up event logs with the `eth_getLogs` endpoint, which accepts different filters.
+For example, this command returns the event logs from the specified contract from block 18465925 to the current state:
+
+```bash
+curl --request POST \
+  --url https://node.ghostnet.etherlink.com \
+  --header 'accept: application/json' \
+  --header 'content-type: application/json' \
+  --data '{"jsonrpc":"2.0","method":"eth_getLogs","params":[{"fromBlock":"18465925", "toBlock":"latest", "address": "0xaE96b26F0F9FD52ddd07227E0B73dFc58a1531Ec"}],"id":1}'
+```
+
+The response includes information about the matching events:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "address": "0xae96b26f0f9fd52ddd07227e0b73dfc58a1531ec",
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x00000000000000000000000045ff91b4bf16ac9907cf4a11436f9ce61be0650d",
+        "0x000000000000000000000000ae96b26f0f9fd52ddd07227e0b73dfc58a1531ec"
+      ],
+      "data": "0x0000000000000000000000000000000000000000000000000de0b6b3a7640000",
+      "blockNumber": "0x119c486",
+      "transactionHash": "0x3802692bf4ed0418bedc4d919f8ef5295fce9efc4b7223ebc91d04fadd3a8b65",
+      "transactionIndex": "0x0",
+      "blockHash": "0xf14d24040b30aa3b463687c2a1746a0aac80a145474d34789a8b7db2619d60ae",
+      "logIndex": "0x0",
+      "removed": false
+    },
+    {
+      "address": "0xae96b26f0f9fd52ddd07227e0b73dfc58a1531ec",
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x00000000000000000000000045ff91b4bf16ac9907cf4a11436f9ce61be0650d",
+        "0x000000000000000000000000ae96b26f0f9fd52ddd07227e0b73dfc58a1531ec"
+      ],
+      "data": "0x0000000000000000000000000000000000000000000000000de0b6b3a7640000",
+      "blockNumber": "0x119c547",
+      "transactionHash": "0x82419cccc1363c931024d76d253056d2dd5ed56917121150808739f5dc9a04bc",
+      "transactionIndex": "0x0",
+      "blockHash": "0xa65584a8d7a36ec30e63ed61daf06b6336db43fc55d6366f484f2be1d92c858b",
+      "logIndex": "0x0",
+      "removed": false
+    }
+  ],
+  "id": 1
+}
+```
+
+For other filters, see [`eth_getLogs`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getstorageat) in the Ethereum JSON-RPC API reference.
