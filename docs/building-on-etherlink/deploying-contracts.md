@@ -56,7 +56,7 @@ Your MetaMask wallet opens to confirm the network connection.
 
 1. In the IDE, verify that the **Account** field shows your account and the tokens in it, as in this picture:
 
-   ![The connectec account in the IDE](/img/remix-connected-account.png)
+   ![The connected account in the IDE](/img/remix-connected-account.png)
 
 1. Click **Deploy** and confirm the transaction in MetaMask.
 
