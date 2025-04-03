@@ -154,6 +154,69 @@ The response is the estimate gas for the transaction in hexadecimal format, as i
 }
 ```
 
+## Calling smart contracts
+
+Calling an Etherlink smart contract is just like calling any other EVM smart contract.
+For example, this Solidity contract stores an integer and lets callers change it:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+contract SimpleStorage {
+  uint storedData;
+
+  function set(uint x) public {
+    storedData = x;
+  }
+
+  function get() public view returns (uint) {
+    return storedData;
+  }
+}
+```
+
+This program uses ethers.js to call the deployed contract:
+
+```javascript
+const { ethers } = require("ethers");
+
+const fullABI = [{"inputs":[],"name":"get","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"x","type":"uint256"}],"name":"set","outputs":[],"stateMutability":"nonpayable","type":"function"}];
+
+// Define the provider by its RPC address
+const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+
+// Sender's private key
+const privateKey = process.env.ETHERLINK_PRIVATE_KEY;
+const wallet = new ethers.Wallet(privateKey, provider);
+
+const contractAddress = "0x3D3402f42Fb1ef5Cd643a458A4059E0055d48F9e";
+const simpleContract = new ethers.Contract(contractAddress, fullABI, wallet);
+
+const getValue = async () => {
+  console.log("Value:", await simpleContract.get());
+}
+
+async function sendTransaction() {
+
+  // Send the transaction
+  const ercTx = await simpleContract.set(5);
+  console.log("Transaction Hash:", ercTx.hash);
+
+  // Wait for the transaction to be confirmed
+  await ercTx.wait();
+  console.log("Transaction Confirmed!");
+}
+
+const run = async () => {
+  await getValue();
+  await sendTransaction();
+  await getValue();
+}
+
+run();
+
+```
+
 ## Transferring ERC-20 tokens
 
 To transfer ERC-20 tokens, you can use the standard `transfer` entrypoint, as in this example:
