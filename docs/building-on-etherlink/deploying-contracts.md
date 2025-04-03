@@ -15,6 +15,8 @@ Etherlink supports Solidity versions up to and including 0.8.24.
 
 You can use any of the toolkits in [Development toolkits](/building-on-etherlink/development-toolkits) to deploy to Etherlink, as well as standard tools such as the [Remix Ethereum IDE](https://remix.ethereum.org/).
 
+To call the contract after you deploy it, see [Sending transactions](/building-on-etherlink/transactions).
+
 ## Deploying with Remix
 
 The Remix online IDE lets you code, compile, and deploy contracts to EVM chains, including Etherlink
