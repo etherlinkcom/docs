@@ -2,6 +2,8 @@
 title: Deploying smart contracts
 ---
 
+import PublicRpcRateLimitNote from '@site/docs/conrefs/rate-limit.md';
+
 As an EVM-compatible chain, Etherlink runs Solidity contracts.
 You can deploy Solidity smart contracts in any way that you would deploy them to an EVM-compatible chain.
 
@@ -63,3 +65,42 @@ If you used the example contract above, you can call the `greet` entrypoint and 
 
 Now the contract is deployed on Etherlink.
 You can look it up on the [Testnet block explorer](https://testnet.explorer.etherlink.com/).
+
+## Deploying with ethers.js
+
+If you have the compiled bytecode of the Solidity contract, you can use [ethers.js](https://docs.ethers.org/v6/) to deploy it.
+
+<PublicRpcRateLimitNote />
+
+For example, this program uses ethers.js to deploy a contract:
+
+```javascript
+const { ethers } = require("ethers");
+
+const fullABI = []; // Add complete ABI here
+
+const contractByteCode = "0x..."; // Add compiled bytecode here
+
+// Define the provider by its RPC address
+const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+
+// Sender's private key
+const privateKey = process.env.ETHERLINK_PRIVATE_KEY;
+const wallet = new ethers.Wallet(privateKey, provider);
+
+async function deployContract() {
+
+  // Create contract factory
+  const factory = new ethers.ContractFactory(fullABI, contractByteCode, wallet);
+
+  console.log("Deploying contract...");
+  const contract = await factory.deploy();
+
+  // Wait for deployment confirmation
+  await contract.deploymentTransaction().wait();
+
+  console.log("Contract deployed at:", contract.target);
+}
+
+deployContract();
+```
