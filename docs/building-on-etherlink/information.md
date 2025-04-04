@@ -119,3 +119,39 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"jsonrpc": "2.0", "params": ["0x6c8490898a6b3d959ba46657d4e995771b076288a97508c0f80f22ee6925e210", "0x0"], "method": "eth_getTransactionByBlockHashAndIndex"}'
 ```
+
+## Using ethers.js
+
+Similarly, you can use [ethers.js](https://docs.ethers.org/v6/) to get information about Etherlink.
+This example uses ethers.js to get information about Etherlink, including the current block number, an account balance, and information about a block and a transaction:
+
+```javascript
+const { ethers } = require("ethers");
+
+// Define the provider by its RPC address
+const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+
+// Sender's private key
+const privateKey = process.env.ETHERLINK_PRIVATE_KEY;
+const wallet = new ethers.Wallet(privateKey, provider);
+
+async function getInfo() {
+
+  // Get the current block number
+  console.log(await provider.getBlockNumber());
+
+  // Get account balance in XTZ
+  const rawBalance = await provider.getBalance(wallet.address);
+  console.log(ethers.formatUnits(rawBalance, 18));
+
+  // Get a block by its hash
+  const block = await provider.getBlock("0xb8ebd2a872bd0008d2eae550e9fd41f409709e71acd4cf652ae58bf62ed1cdf3");
+  console.log(block.number);
+
+  // Get information about a transaction by its hash
+  const receipt = await provider.getTransactionReceipt("0x6bc8e2c56b31081e915b9d15ae0eb2a1373b9f5a4b30f432c0abe9e344884410");
+  console.log(receipt.blockNumber);
+}
+
+getInfo();
+```

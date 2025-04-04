@@ -49,6 +49,55 @@ The response includes the number of tokens that the account has, in hexadecimal 
 }
 ```
 
+Similarly, you can use [ethers.js](https://docs.ethers.org/v6/) to get information from smart contracts.
+This example calls two read-only entrypoints on an ERC-20 contract:
+
+```javascript
+const { ethers } = require("ethers");
+
+const fullABI = []; // Add complete ABI here
+
+// Define the provider by its RPC address
+const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+
+// Sender's private key
+const privateKey = process.env.ETHERLINK_PRIVATE_KEY;
+const wallet = new ethers.Wallet(privateKey, provider);
+
+// ERC-20 contract
+const contractAddress = "0xaE96b26F0F9FD52ddd07227E0B73dFc58a1531Ec";
+
+const acct1 = "0x45Ff91b4bF16aC9907CF4A11436f9Ce61BE0650d";
+const acct2 = "0xaE96b26F0F9FD52ddd07227E0B73dFc58a1531Ec";
+const accounts = [
+  { name: "Account 1", address: acct1 },
+  { name: "Account 2", address: acct2 },
+];
+
+async function getBalances() {
+
+  const tokenContract = new ethers.Contract(contractAddress, fullABI, wallet);
+
+  await Promise.all(accounts.map(async ({ name, address }) => {
+    // Call balanceOf entrypoint
+    const rawBalance = await tokenContract.balanceOf(address);
+    // Call decimals entrypoint
+    const decimals = await tokenContract.decimals();
+    const formattedBalance = ethers.formatUnits(rawBalance, decimals);
+    console.log(name, "has", formattedBalance, "tokens.");
+  }));
+}
+
+getBalances();
+```
+
+The output includes information about the tokens that the specified accounts own:
+
+```
+Account 1 has 10.0 tokens.
+Account 2 has 6.0 tokens.
+```
+
 ## Sending XTZ
 
 To send a XTZ in a transaction, you can call the `eth_sendRawTransaction` RPC endpoint with a signed transaction.

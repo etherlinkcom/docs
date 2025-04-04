@@ -152,7 +152,7 @@ For information about these endpoints, see [JSON-RPC API](https://ethereum.org/e
     <tr>
       <td>`eth_call`</td>
       <td>Yes</td>
-      <td>Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version</td>
+      <td>Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version; see [Sending transactions](/building-on-etherlink/transactions)</td>
     </tr>
     <tr>
       <td>`eth_chainId`</td>
@@ -172,7 +172,7 @@ For information about these endpoints, see [JSON-RPC API](https://ethereum.org/e
     <tr>
       <td>`eth_estimateGas`</td>
       <td>Yes</td>
-      <td></td>
+      <td>See [Sending transactions](/building-on-etherlink/transactions)</td>
     </tr>
     <tr>
       <td>`eth_feeHistory`</td>
@@ -232,7 +232,7 @@ For information about these endpoints, see [JSON-RPC API](https://ethereum.org/e
     <tr>
       <td>`eth_getLogs`</td>
       <td>Yes</td>
-      <td></td>
+      <td>See [Getting event logs](/building-on-etherlink/transactions#getting-event-logs)</td>
     </tr>
     <tr>
       <td>`eth_getProof`</td>
@@ -327,7 +327,7 @@ For information about these endpoints, see [JSON-RPC API](https://ethereum.org/e
     <tr>
       <td>`eth_sendRawTransaction`</td>
       <td>Yes</td>
-      <td></td>
+      <td>See [Sending transactions](/building-on-etherlink/transactions)</td>
     </tr>
     <tr>
       <td>`eth_sendTransaction`</td>
@@ -415,7 +415,7 @@ For information about these endpoints, see the Geth documentation at https://get
     <tr>
       <td>`eth_call`</td>
       <td>No</td>
-      <td>Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version</td>
+      <td>Etherlink nodes use the standard Ethereum version of the `eth_call` endpoint instead of the Geth version; see [Sending transactions](/building-on-etherlink/transactions)</td>
     </tr>
     <tr>
       <td>`txpool_content`</td>
@@ -465,6 +465,8 @@ The Etherlink EVM node supports these [ethers.js](https://docs.ethers.org/v6/) m
     </tr>
   </tbody>
 </table>
+
+For examples of using these ethers.js methods, see [Using ethers.js](/building-on-etherlink/information).
 
 ## Additional information
 
