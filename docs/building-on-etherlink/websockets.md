@@ -102,6 +102,7 @@ This example uses the [Web3.js](https://docs.web3js.org/) library to subscribe t
 
 ```javascript
 import Web3 from 'web3';
+
 const web3Instance = new Web3(new Web3.providers.WebsocketProvider('ws://127.0.0.1:8545/ws'));
 
 // Subscribe to new block headers
@@ -114,6 +115,56 @@ newBlocksSubscription.on('data', blockhead => {
     // Log the block number
     console.log(`New block: ${blockhead.number}`);
 });
+```
+
+This example subscribes to the event logs for an ERC-20 contract and logs information about each transfer event:
+
+```javascript
+import Web3 from 'web3';
+
+const web3Instance = new Web3(new Web3.providers.WebsocketProvider('ws://127.0.0.1:8545/ws'));
+
+const fullABI = []; // Add ABI here
+
+const contractAddress = "0xaE96b26F0F9FD52ddd07227E0B73dFc58a1531Ec";
+const contract = new web3Instance.eth.Contract(fullABI, contractAddress);
+
+const eventsSubscription = contract.events.Transfer();
+
+// Subscribe to new block headers
+eventsSubscription.on('error', error => {
+    console.log('Error when subscribing to New block header:', error);
+});
+
+eventsSubscription.on('data', data => {
+    console.log(data);
+});
+
+```
+
+This example uses [ethers.js](https://docs.ethers.org/v6/) to subscribe to transfer events from the same contract:
+
+```javascript
+const { ethers } = require("ethers");
+
+const provider = new ethers.WebSocketProvider('ws://127.0.0.1:8545/ws');
+
+const fullABI = []; // Add ABI here
+
+const contractAddress = "0xaE96b26F0F9FD52ddd07227E0B73dFc58a1531Ec";
+
+// Create a contract instance
+const contract = new ethers.Contract(contractAddress, fullABI, provider);
+
+// Subscribe to the event using on with WebSocket provider
+contract.on("Transfer", (from, to, value) => {
+    console.log(`Transfer event detected:
+From: ${from}
+To: ${to}
+Value: ${ethers.formatUnits(value, 18)} tokens`);
+});
+
+console.log("Listening for Transfer events...");
 ```
 
 See the documentation for your WebSocket client library for how to manage the connection, receive messages, and close the connection.
