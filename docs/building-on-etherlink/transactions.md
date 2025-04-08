@@ -510,6 +510,7 @@ curl --request POST \
 
 Etherlink supports only the `callTracer` tracer for this endpoint, and only for blocks after the Bifröst upgrade.
 Calling this endpoint on blocks prior to Bifröst returns empty data.
+Bifröst was activated on block 10,758,937 on Testnet and block 4,162,673 on Mainnet.
 
 :::
 
