@@ -248,11 +248,11 @@ const getValue = async () => {
 async function sendTransaction() {
 
   // Send the transaction
-  const ercTx = await simpleContract.set(5);
-  console.log("Transaction Hash:", ercTx.hash);
+  const simpleTransaction = await simpleContract.set(5);
+  console.log("Transaction Hash:", simpleTransaction.hash);
 
   // Wait for the transaction to be confirmed
-  await ercTx.wait();
+  await simpleTransaction.wait();
   console.log("Transaction Confirmed!");
 }
 
