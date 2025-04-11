@@ -36,6 +36,7 @@ const sidebars = {
         'get-started/using-your-wallet',
         'get-started/network-information',
         'get-started/getting-testnet-tokens',
+        'get-started/getting-mainnet-tokens',
       ],
     },
     {
@@ -101,6 +102,8 @@ const sidebars = {
       label: 'Tools',
       collapsed: false,
       items: [
+        'tools/exchanges',
+        'tools/onramps',
         'tools/price-feeds',
         'tools/vrf',
         'tools/data-indexers',
