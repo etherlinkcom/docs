@@ -9,6 +9,8 @@ On-ramps and off-ramps can integrate with your application to allow it to:
 - Receive payments in Etherlink without requiring users to buy cryptocurrency manually
 - Make it easier to bridge and swap cryptocurrency tokens
 
+Some on-ramps and off-ramps also allow users to conduct transactions with their wallets directly, without using a specific dApp.
+
 These on-ramps/off-ramps support Etherlink:
 
 - [Transak](https://transak.com)
