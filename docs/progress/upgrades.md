@@ -36,6 +36,16 @@ The upgrade also includes foundational work to the withdrawal precompiled contra
 
 For more information, see [Announcing Calypso: The Next Etherlink Upgrade Proposal](https://medium.com/@etherlink/announcing-calypso-the-next-etherlink-upgrade-proposal-dbe92c576da9)
 
+## Calypso2 upgrade
+
+On 12 April 2025, the Calypso2 security upgrade went live on Etherlink Mainnet, in Etherlink block 10,453,254.
+This upgrade improves error handling of FA bridging transactions, which hardens the Etherlink sequencer against potential DDOS attacks.
+This upgrade includes only a [security patch](https://www.google.com/url?q=https://gitlab.com/tezos/tezos/-/commit/9ab8acd92eb91c5aa2325fbb2c1794bc11aa1b68&sa=D&source=docs&ust=1744727209624752&usg=AOvVaw07zM1UuZjKJ4Teuo_L51Nl) for the Calypso kernel and no other changes.
+
+This upgrade was carried out through Etherlink’s [security governance process](https://docs.etherlink.com/governance/how-is-etherlink-governed#security-governance).
+
+For more information, see [Calypso2: A security upgrade to harden the Etherlink sequencer and FA bridge](https://research-development.nomadic-labs.com/etherlink-calypso2-upgrade.html).
+
 ## Changelog
 
 For full details about changes to Etherlink, see [Changelogs](/progress/changelogs).
