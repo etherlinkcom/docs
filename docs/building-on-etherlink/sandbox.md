@@ -63,6 +63,9 @@ Follow these steps to start the local sandbox:
 
    The `--fund` arguments in these commands send 10,000 XTZ to one or more bootstrap addresses that you can use in the sandbox.
 
+   To replicate an environment with high traffic, pass the RPC URL of an EVM node on the same network to the `--replicate` argument, as in `--replicate https://node.ghostnet.etherlink.com`.
+   Your sandbox node uses the blocks from that EVM node to simulate a real environment with real transactions.
+
    The sandbox node runs in `rolling:1` history mode.
 
    The node takes time to download the snapshot and start the sandbox.
