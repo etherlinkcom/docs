@@ -44,7 +44,7 @@ Follow these steps to start the local sandbox:
    Testnet:
 
    ```bash
-   ./octez-evm-node run sandbox \
+   octez-evm-node run sandbox \
      --network testnet \
      --data-dir <EVM_DATA_DIR> \
      --init-from-snapshot \
@@ -54,7 +54,7 @@ Follow these steps to start the local sandbox:
    Mainnet:
 
    ```bash
-   ./octez-evm-node run sandbox \
+   octez-evm-node run sandbox \
      --network mainnet \
      --data-dir <EVM_DATA_DIR> \
      --init-from-snapshot \
