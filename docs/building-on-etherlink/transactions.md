@@ -4,12 +4,16 @@ title: Sending transactions
 
 import PublicRpcRateLimitNote from '@site/docs/conrefs/rate-limit.md';
 
+import GasPriceWarning from '@site/docs/conrefs/gas-price-warning.md';
+
 Etherlink supports the standard Ethereum `eth_call` and `eth_sendRawTransaction` RPC endpoints for calling smart contracts and sending transactions.
 
 - For a list of endpoints that Etherlink supports, see [Ethereum endpoint support](/building-on-etherlink/endpoint-support)
 - For more information about the endpoints on this page, see the reference for the Ethereum [JSON-RPC API](https://ethereum.org/en/developers/docs/apis/json-rpc).
 
 <PublicRpcRateLimitNote />
+
+<GasPriceWarning />
 
 ## Calling read-only entrypoints
 
