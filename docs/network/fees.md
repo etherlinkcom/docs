@@ -2,6 +2,8 @@
 title: Fee structure
 ---
 
+import GasPriceWarning from '@site/docs/conrefs/gas-price-warning.md';
+
 Etherlink transactions include two fees:
 
 - The _execution fee_, sometimes known as the _gas fee_, is a fee for running the transaction.
@@ -16,6 +18,8 @@ Because the Etherlink sequencer orders transactions in first-come-first-served o
 The base fee of the transaction (in the Ethereum `max_fee_per_gas` [EIP-1559](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1559.md) field) must be enough to cover these Etherlink fees.
 Etherlink ignores the priority fee in the `max_priority_fee_per_gas` field.
 If the transaction's base fee is not enough to cover Etherlink's fees, the transaction fails, even if the amount of the priority fee would be enough to cover the fee.
+
+<GasPriceWarning />
 
 ## Execution fee
 
