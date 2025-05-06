@@ -16,6 +16,7 @@ These components are instances of binaries in the [Octez software suite](https:/
 
 Etherlink relies on a sequencer to publish transactions.
 The sequencer receives transactions from EVM nodes, puts them in order, and packages them into an Etherlink block.
+If the Tezos [Data Availability Layer](https://docs.tezos.com/architecture/data-availability-layer) (DAL) is active, the sequencer publishes the block via the DAL; otherwise, it publishes the block directly to Tezos layer 1 via the Smart Rollup outbox.
 
 The sequencer generates blocks at a variable rate, depending on demand.
 Currently, it generates a block at least every 6 seconds, even if the block is empty.
@@ -32,7 +33,7 @@ Each Etherlink block contains:
 The sequencer publishes each block in two ways:
 
 - It publishes them to EVM nodes, which can consider the transactions final as long as they trust that the sequencer will publish them to layer 1.
-- It publishes them to Tezos layer 1, which finalizes the transactions.
+- It publishes them to Tezos layer 1 via the DAL or via the Smart Rollup outbox, which finalizes the transactions.
 
 The sequencer is the primary way that Etherlink transactions are processed.
 However, to protect the system from censorship and any other problems with the sequencer, Etherlink provides a backup way of handling transactions; see [Transaction lifecycle](#transaction-lifecycle).
