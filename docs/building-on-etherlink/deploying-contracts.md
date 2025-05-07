@@ -21,9 +21,9 @@ To call the contract after you deploy it, see [Sending transactions](/building-o
 
 The Remix online IDE lets you code, compile, and deploy contracts to EVM chains, including Etherlink
 
-1. Connect your wallet to Etherlink testnet as described in [Using your wallet](/get-started/using-your-wallet).
+1. Connect your wallet to Etherlink Testnet as described in [Using your wallet](/get-started/using-your-wallet).
 
-1. Get some Etherlink tokens as described in [Getting testnet tokens](/get-started/getting-testnet-tokens).
+1. Get some Etherlink tokens as described in [Getting Testnet tokens](/get-started/getting-testnet-tokens).
 
 1. Open the Remix IDE at https://remix.ethereum.org.
 
@@ -56,7 +56,7 @@ Your MetaMask wallet opens to confirm the network connection.
 
 1. In the IDE, verify that the **Account** field shows your account and the tokens in it, as in this picture:
 
-   ![The connectec account in the IDE](/img/remix-connected-account.png)
+   ![The connected account in the IDE](/img/remix-connected-account.png)
 
 1. Click **Deploy** and confirm the transaction in MetaMask.
 

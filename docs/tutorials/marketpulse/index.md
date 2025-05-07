@@ -11,7 +11,7 @@ In this tutorial, you will learn:
 
 - How to set up a development environment with Hardhat
 - How to write a simple smart contract in Solidity
-- How to create an Etherlink account and get testnet tokens using the faucet
+- How to create an Etherlink account and get Testnet tokens using the faucet
 - How to test a smart contract locally
 - How to use Hardhat to deploy the contract to Etherlink
 - How to verify your contract on the Etherlink explorer
