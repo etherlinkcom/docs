@@ -101,6 +101,8 @@ The base fee of the transaction (in the Ethereum `max_fee_per_gas` [EIP-1559](ht
 Etherlink ignores the priority fee in the `max_priority_fee_per_gas` field.
 If the transaction's base fee is not enough to cover Etherlink's fees, the transaction fails, even if the amount of the priority fee would be enough to cover the fee.
 
+The gas limit, or the maximum total amount of fees in a single Etherlink block, is 30 million times the current gas price.
+
 ### Execution fee
 
 The execution fee changes based on the transaction throughput over time.
