@@ -41,7 +41,7 @@ It returns the gas price plus a safety margin as a hexadecimal number, as in thi
 ```
 
 In this response, the hex number `0x3b9aca00` corresponds to the decimal number 1,000,000,000.
-The gas price is given in billionths of one XTZ (as with ETH and gwei), which means that the current gas price is 1 XTZ.
+The gas price is given in units of 1<sup>-18</sup> XTZ (as EVM chains give gas prices in wei), which means that the current gas price is 1<sup>-9</sup> XTZ, or 0.000000001 XTZ (equivalent to 1 gwei in ETH terms).
 This gas price is the cost per unit of computation required by a transaction.
 
 <GasPriceWarning />
