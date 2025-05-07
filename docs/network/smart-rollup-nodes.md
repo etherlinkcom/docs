@@ -68,7 +68,7 @@ The best place to get the most recent binary files to use with Etherlink is http
         --pre-images-endpoint https://snapshots.tzinit.org/etherlink-mainnet/wasm_2_0_0
       ```
 
-      For Etherlink testnet, use this command:
+      For Etherlink Testnet, use this command:
 
       ```bash
       octez-smart-rollup-node init observer config for sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg \
