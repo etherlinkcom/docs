@@ -197,7 +197,7 @@ curl --request POST \
 '
 ```
 
-The response is the estimate gas for the transaction in hexadecimal format, as in this example:
+The response is the estimated transaction fee in hexadecimal format, as in this example:
 
 ```json
 {
@@ -206,6 +206,8 @@ The response is the estimate gas for the transaction in hexadecimal format, as i
   "id": 1
 }
 ```
+
+For more information about Etherlink's fee structure, see [Estimating fees](/building-on-etherlink/fees).
 
 ## Calling smart contracts
 
