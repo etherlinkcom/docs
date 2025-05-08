@@ -2,7 +2,8 @@
 <h3>Bridging time</h3>
 Tokens that you bridge from Tezos layer 1 to Etherlink are available for use on Etherlink immediately.
 
-Tokens that you bridge from Etherlink to Tezos layer 1 are available for use on Tezos in 15 days.
+By default, tokens that you bridge from Etherlink to Tezos layer 1 are available for use on Tezos in 15 days.
+You can bridge XTZ tokens faster for an additional fee with [fast withdrawals](/bridging/bridging-tezos#fast-withdrawals).
 
 This delay is caused by the Smart Rollup refutation period.
 As with all Smart Rollups, Etherlink nodes post commitments about their state to Tezos layer 1, including incoming bridging transactions, on a regular schedule.
