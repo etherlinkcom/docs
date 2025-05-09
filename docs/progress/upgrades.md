@@ -53,7 +53,9 @@ TODO if promoted to Mainnet, update with the date of activation.
 If rejected, change this section to say that it was proposed but not approved.
 -->
 
+<!-- TODO
 The proposed Dionysus upgrade to the Etherlink kernel was installed on Etherlink Testnet on [TODO DATE].
+-->
 
 The Dionysus kernel upgrade includes:
 
@@ -65,7 +67,7 @@ The Dionysus kernel upgrade includes:
 
 Running an Etherlink EVM node on Dionysus requires version 0.24 or later of the `octez-evm-node` binary.
 
-For more information, see [TODO BLOG TITLE]([TODO BLOG LINK]).
+For more information, see [Announcing Dionysus: The Next Etherlink Upgrade Proposal](https://medium.com/p/announcing-dionysus-the-next-etherlink-upgrade-proposal-4601c6920709).
 
 ## Changelog
 
