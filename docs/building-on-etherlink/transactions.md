@@ -207,7 +207,7 @@ The response is the estimated transaction fee in hexadecimal format, as in this 
 }
 ```
 
-For more information about Etherlink's fee structure, see [Estimating fees](/building-on-etherlink/fees).
+For more information, see [Estimating fees](/building-on-etherlink/estimating-fees).
 
 ## Calling smart contracts
 

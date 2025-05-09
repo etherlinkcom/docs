@@ -74,7 +74,7 @@ const sidebars = {
         'building-on-etherlink/endpoint-support',
         'building-on-etherlink/sandbox',
         'building-on-etherlink/information',
-        'building-on-etherlink/fees',
+        'building-on-etherlink/estimating-fees',
         'building-on-etherlink/transactions',
         'building-on-etherlink/deploying-contracts',
         'building-on-etherlink/verifying-contracts',
@@ -90,6 +90,7 @@ const sidebars = {
       collapsed: false,
       items: [
         'network/architecture',
+        'network/fees',
         'network/operators',
         'network/smart-rollup-nodes',
         'network/evm-nodes',
