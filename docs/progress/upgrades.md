@@ -46,6 +46,29 @@ This upgrade was carried out through Etherlink’s [security governance process]
 
 For more information, see [Calypso2: A security upgrade to harden the Etherlink sequencer and FA bridge](https://research-development.nomadic-labs.com/etherlink-calypso2-upgrade.html).
 
+## Dionysus upgrade
+
+<!--
+TODO if promoted to Mainnet, update with the date of activation.
+If rejected, change this section to say that it was proposed but not approved.
+-->
+
+<!-- TODO
+The proposed Dionysus upgrade to the Etherlink kernel was installed on Etherlink Testnet on [TODO DATE].
+-->
+
+The Dionysus kernel upgrade includes:
+
+- Support for EVM version Dencun features
+- Foundational work to allow faster withdrawals of FA tokens to Tezos layer 1
+- Improvements to gas price computation logic to reduce the effect of price spikes
+- The ability for the sequencer to publish blocks via the [Data Availability Layer](https://docs.tezos.com/architecture/data-availability-layer)
+- Upgraded governance contracts to be compatible with the Tezos Rio upgrade
+
+Running an Etherlink EVM node on Dionysus requires version 0.24 or later of the `octez-evm-node` binary.
+
+For more information, see [Announcing Dionysus: The Next Etherlink Upgrade Proposal](https://medium.com/p/announcing-dionysus-the-next-etherlink-upgrade-proposal-4601c6920709).
+
 ## Changelog
 
 For full details about changes to Etherlink, see [Changelogs](/progress/changelogs).
