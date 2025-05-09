@@ -27,23 +27,23 @@ If the transaction's base fee is not enough to cover Etherlink's fees, the trans
 
 The execution fee changes based on the transaction throughput over time.
 
-Etherlink measures throughput in terms of _ticks_, which are execution steps.
-As demand increases, Etherlink runs more ticks per second to process more transactions in the same amount of time.
+Etherlink measures throughput in terms of the amount of execution fees collected over time.
+As demand increases and more execution fees are collected in a shorter time, Etherlink increases the gas price to increase fees.
 
-Etherlink has a target number of ticks to run per second, referred to as the _speed limit_.
-To calculate the throughput, Etherlink stores the number of ticks used by transactions and subtracts the speed limit every second.
-The remaining number of ticks is known as the _backlog_.
+Etherlink has a target amount of execution fees to collect per second, referred to as the _speed limit_.
+To calculate the throughput, Etherlink records the total execution fees paid and subtracts the speed limit every second.
+The remaining execution fee amount is known as the _backlog_.
 
-In this way, if the number of ticks that transactions use per second exceeds the speed limit, the backlog increases and the execution fee goes up.
-If the number of ticks they use per second is below the speed limit, the backlog decreases or reaches zero and the execution fee decreases or reaches a base amount.
+In this way, if the execution fees paid per second exceed the speed limit, the backlog increases and the execution fee can go up.
+If the fees per second are below the speed limit, the backlog decreases or reaches zero and the execution fee decreases or reaches a base amount.
 The backlog never goes below zero and the execution fee never goes below the base amount.
 
 The execution fee depends on these parameters:
 
 - `minimum_base_fee_per_gas`: The minimum fee for Etherlink transactions, which is 1 gwei
-- `speed_limit`: The target number of ticks per second
+- `speed_limit`: The target amount of execution fees collected per second
 - `tolerance`: The size the backlog is allowed to grow to before the execution fee increases
-- `backlog`: A measure of the number of ticks used per second in excess of the speed limit; Etherlink deducts the speed limit from the backlog every second
+- `backlog`: A measure of the amount of execution fees collected excess of the speed limit; Etherlink deducts the speed limit from the backlog every second
 - `alpha`: A scaling factor
 
 If the backlog is less than the tolerance, the execution fee for a transaction is `minimum_base_fee_per_gas`.
