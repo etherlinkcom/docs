@@ -84,12 +84,12 @@ You can also subscribe to the `voting_finished` event to be notified when the Pr
 
 ### Proposing and upvoting upgrades
 
-During a Proposal period, bakers can propose kernel or security updates by calling the `new_proposal` entrypoint of the appropriate governance contract and passing the hash of their proposed kernel, as in this example, which uses `0x00927d...` as an example kernel hash:
+During a Proposal period, bakers can propose kernel or security updates by calling the `new_proposal` entrypoint of the appropriate governance contract and passing the hash of their proposed kernel, as in this example, which uses `<KERNEL_HASH>` as the kernel hash:
 
 ```bash
 octez-client transfer 0 from my_wallet to KT1FPG4NApqTJjwvmhWvqA14m5PJxu9qgpBK \
   --entrypoint "new_proposal" \
-  --arg "0x009279df4982e47cf101e2525b605fa06cd3ccc0f67d1c792a6a3ea56af9606abc"
+  --arg "<KERNEL_HASH>"
 ```
 
 The command takes these parameters:
@@ -101,13 +101,12 @@ The command takes these parameters:
 The proposer must make the code of the new kernel available for people to evaluate.
 Proposers can make it easier for bakers to upgrade to the new kernel by providing the preimages for the kernel online so nodes can update from them directly.
 
-To upvote a proposed kernel or security update during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters.
-This example again uses `0x00927d...` as an example kernel hash:
+To upvote a proposed kernel or security update during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters
 
 ```bash
 octez-client transfer 0 from my_wallet to KT1FPG4NApqTJjwvmhWvqA14m5PJxu9qgpBK \
   --entrypoint "upvote_proposal" \
-  --arg "0x009279df4982e47cf101e2525b605fa06cd3ccc0f67d1c792a6a3ea56af9606abc"
+  --arg "<KERNEL_HASH>"
 ```
 
 It's not necessary to upvote a proposal that you submitted; submitting a proposal implies that your account upvotes it.
