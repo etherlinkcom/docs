@@ -457,7 +457,7 @@ async function sendTransaction() {
   // Get trace information and print the top level of data
   const trace = await provider.send("debug_traceTransaction", [simpleTransaction.hash]);
   console.log("Transaction trace output:");
-  console.dir(trace, { depth: 1 });
+  console.dir(trace, { depth: 2 });
 }
 ```
 
@@ -472,16 +472,7 @@ Trace output:
   failed: false,
   returnValue: '0x',
   structLogs: [
-    [Object], [Object], [Object],
-    [Object], [Object], [Object],
-    [Object], [Object], [Object],
-    [Object], [Object], [Object],
-    [Object], [Object], [Object],
-    [Object], [Object], [Object],
-    [Object], [Object], [Object],
-    [Object], [Object], [Object],
-    [Object], [Object], [Object],
-    [Object], [Object], [Object]
+    // Omitted for length
   ]
 }
 ```
