@@ -418,6 +418,8 @@ For other filters, see [`eth_getLogs`](https://ethereum.org/en/developers/docs/a
 ## Tracing transactions
 
 Etherlink supports the `debug_traceTransaction` and `debug_traceBlockByNumber` RPC endpoints, which provide debugging information about transactions and blocks.
+Note that the `debug_traceTransaction` endpoint supports only the `structLogger` and `callTracer` tracers.
+For more information about tracers, see [Built-in tracers](https://geth.ethereum.org/docs/developers/evm-tracing/built-in-tracers) in the Geth documentation.
 
 To get debugging information about a transaction with `debug_traceTransaction`, pass the hash of the transaction, as in this example:
 
