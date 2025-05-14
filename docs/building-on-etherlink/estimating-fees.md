@@ -79,7 +79,9 @@ The response is the estimated gas units consumed by the transaction in hexadecim
 }
 ```
 
-In this case, the estimated gas usage for the transaction is 623766 gas units. The total fee can be calculated by multiplying the gas price by this gas estimate, i.e. 1<sup>-9</sup> x 623766 = 0.000623766 XTZ.
-This fee includes all fees described in [Fee structure](/network/fees), but you can set a higher amount for the transaction's gas consumption as a safety margin (sometimes known as setting the gas limit) to ensure that if the transaction requires more gas, it can use it. 
+In this case, the estimated gas usage for the transaction is 623766 gas units.
+To get the total fee, multiply the gas price by this gas usage estimate.
+If the gas price is 1 gwei, the total fee estimate is 1<sup>-9</sup> x 623766, or 0.000623766 XTZ.
+This fee includes all fees described in [Fee structure](/network/fees), but you can set a higher amount for the transaction's gas consumption as a safety margin (sometimes known as setting the gas limit) to ensure that if the transaction requires more gas, it can use it.
 
-A maximum base gas price for the transaction can also be set when submitting the transaction to increase the chances that it will be included in a block. 
+You can also set a maximum base gas price for the transaction when submitting the transaction to increase the chances that it will be included in a block.
