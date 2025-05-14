@@ -197,7 +197,7 @@ curl --request POST \
 '
 ```
 
-The response is the estimated transaction fee in hexadecimal format, as in this example:
+The response is the estimated transaction gas usage in hexadecimal format, as in this example:
 
 ```json
 {

@@ -44,7 +44,7 @@ This gas price is the cost per unit of computation required by a transaction.
 
 <GasPriceWarning />
 
-To use the gas price to calculate the fee for a given transaction, you can send the transaction to the `eth_estimateGas` endpoint, as in this example:
+To calculate the fee estimate for a given transaction, you can send the transaction to the `eth_estimateGas` endpoint to obtain the estimated gas usage for the the transaction (as in this example), and then calculate the total expected gas fee:
 
 ```bash
 curl --request POST \
@@ -69,7 +69,7 @@ curl --request POST \
 '
 ```
 
-The response is the estimated total transaction fee in hexadecimal format, as in this example:
+The response is the estimated gas units consumed by the transaction in hexadecimal format, as in this example:
 
 ```json
 {
@@ -79,5 +79,7 @@ The response is the estimated total transaction fee in hexadecimal format, as in
 }
 ```
 
-In this case, the estimated fee for the transaction is 0.000623766 XTZ.
-This fee includes all fees described in [Fee structure](/network/fees), but you can include additional fees for the transaction as a safety margin to ensure that the transaction will succeed even if the gas price goes up.
+In this case, the estimated gas usage for the transaction is 623766 gas units. The total fee can be calculated by multiplying the gas price by this gas estimate, i.e. 1<sup>-9</sup> x 623766 = 0.000623766 XTZ.
+This fee includes all fees described in [Fee structure](/network/fees), but you can set a higher amount for the transaction's gas consumption as a safety margin (sometimes known as setting the gas limit) to ensure that if the transaction requires more gas, it can use it. 
+
+A maximum base gas price for the transaction can also be set when submitting the transaction to increase the chances that it will be included in a block. 

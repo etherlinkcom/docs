@@ -6,7 +6,7 @@ The Etherlink gas price (and therefore the fee for a given transaction) varies b
 As activity increases, fees increase, and vice versa.
 For information about estimating fees, see [Estimating fees](/building-on-etherlink/estimating-fees).
 
-Etherlink fees include the cost of running the transaction and writing the transaction to layer 1 but not a voluntary tip.
+Etherlink fees include the cost of running the transaction and writing the transaction to layer 1. It's not possible to set a voluntary tip or priority fee to increase the chances of a transaction being accepted, if included as part of the transaction parameters it will be ignored.
 
 Etherlink transactions include two fees:
 
@@ -68,10 +68,10 @@ $$
 \texttt{0.000004 XTZ} * (150 + \texttt{tx.data.size()} + \texttt{tx.access\_list.size()})
 $$
 
-## Gas limit
+## Block gas limit
 
-The gas limit, or the maximum total amount of execution fees in a single Etherlink block, is 30 million times the current gas price.
+The block gas limit, or the maximum total amount of execution fees in a single Etherlink block, is 30 million gas units (i.e. excluding inclusion fees).
 Transactions that require a higher execution fee fail.
 
-There is no straightforward way of determining the execution fee for a transaction because estimating transaction fees with the `eth_estimateGas` endpoint the sum of the execution fee and the inclusion fee.
+There is no straightforward way of determining the execution fee for a transaction because estimating transaction fees with the `eth_estimateGas` endpoint the sum of the execution fee and the inclusion fee is returned as a single amount.
 For this reason, some large transactions with a total fee higher than the gas limit may succeed because the execution fee is still less than the gas limit.
