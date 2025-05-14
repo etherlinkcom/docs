@@ -145,9 +145,8 @@ async function sendTransaction() {
   const estimateTx = {
     to: "0x46899d4FA5Ba90E3ef3B7aE8aae053C662c1Ca1d",
     value: ethers.parseEther("0.1"), // Sending 0.1 XTZ
-    gasLimit: 21000,
-    maxPriorityFeePerGas: ethers.parseUnits("2", "gwei"),
-    maxFeePerGas: ethers.parseUnits("50", "gwei"), // Replace with estimate later
+    gasLimit: 21000, // Replace with an estimate later
+    maxFeePerGas: ethers.parseUnits("1", "gwei"), // Limit transaction to gas price of 1 gwei
     nonce: await provider.getTransactionCount(wallet.address, "latest"),
     chainId: (await provider.getNetwork()).chainId.toString(),
   };
@@ -197,7 +196,7 @@ curl --request POST \
 '
 ```
 
-The response is the estimate gas for the transaction in hexadecimal format, as in this example:
+The response is the estimated transaction gas usage in hexadecimal format, as in this example:
 
 ```json
 {
@@ -206,6 +205,9 @@ The response is the estimate gas for the transaction in hexadecimal format, as i
   "id": 1
 }
 ```
+
+You can multiply the estimated gas usage by the current gas price to estimate the total fee.
+For more information, see [Estimating fees](/building-on-etherlink/estimating-fees).
 
 ## Calling smart contracts
 

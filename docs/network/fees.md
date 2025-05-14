@@ -2,7 +2,11 @@
 title: Fee structure
 ---
 
-import GasPriceWarning from '@site/docs/conrefs/gas-price-warning.md';
+The Etherlink gas price (and therefore the fee for a given transaction) varies based on the activity on the chain.
+As activity increases, fees increase, and vice versa.
+For information about estimating fees, see [Estimating fees](/building-on-etherlink/estimating-fees).
+
+Etherlink fees include the cost of running the transaction and writing the transaction to layer 1. It's not possible to set a voluntary tip or priority fee to increase the chances of a transaction being accepted, if included as part of the transaction parameters it will be ignored.
 
 Etherlink transactions include two fees:
 
@@ -18,8 +22,6 @@ Because the Etherlink sequencer orders transactions in first-come-first-served o
 The base fee of the transaction (in the Ethereum `max_fee_per_gas` [EIP-1559](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1559.md) field) must be enough to cover these Etherlink fees.
 Etherlink ignores the priority fee in the `max_priority_fee_per_gas` field.
 If the transaction's base fee is not enough to cover Etherlink's fees, the transaction fails, even if the amount of the priority fee would be enough to cover the fee.
-
-<GasPriceWarning />
 
 ## Execution fee
 
@@ -38,7 +40,7 @@ The backlog never goes below zero and the execution fee never goes below the bas
 
 The execution fee depends on these parameters:
 
-- `minimum_base_fee_per_gas`: The base fee for Etherlink transactions, which is 1 gwei
+- `minimum_base_fee_per_gas`: The minimum fee for Etherlink transactions, which is 1 gwei
 - `speed_limit`: The target number of ticks per second
 - `tolerance`: The size the backlog is allowed to grow to before the execution fee increases
 - `backlog`: A measure of the number of ticks used per second in excess of the speed limit; Etherlink deducts the speed limit from the backlog every second
@@ -52,7 +54,7 @@ $$
 \texttt{execution fee} = \texttt{minimum\_base\_fee\_per\_gas} * e ^{a * (\texttt{backlog} - \texttt{tolerance})}
 $$
 
-In other words, the execution fee is the base fee times the exponential function of the alpha scaling factor times the backlog in excess of the tolerance.
+In other words, the execution fee is the minimum fee times the exponential function of the alpha scaling factor times the backlog in excess of the tolerance.
 
 ## Inclusion fee
 
@@ -65,3 +67,11 @@ Etherlink calculates the inclusion fee with this equation:
 $$
 \texttt{0.000004 XTZ} * (150 + \texttt{tx.data.size()} + \texttt{tx.access\_list.size()})
 $$
+
+## Block gas limit
+
+The block gas limit, or the maximum total amount of execution fees in a single Etherlink block, is 30 million gas units (i.e. excluding inclusion fees).
+Transactions that require a higher execution fee fail.
+
+There is no straightforward way of determining the execution fee for a transaction because estimating transaction fees with the `eth_estimateGas` endpoint the sum of the execution fee and the inclusion fee is returned as a single amount.
+For this reason, some large transactions with a total fee higher than the gas limit may succeed because the execution fee is still less than the gas limit.
