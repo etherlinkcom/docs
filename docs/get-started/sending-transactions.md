@@ -68,8 +68,13 @@ The fee for a transaction depends on the gas price.
 The Etherlink gas price (and therefore the fee for a given transaction) varies based on the activity on the chain.
 The default gas price is 1 gwei, or 0.000000001 XTZ, but at times of high activity it can go higher.
 
-To check the current gas price on Etherlink, go to the [Gas tracker](https://explorer.etherlink.com/gas-tracker) page on the Etherlink block explorer.
-This page shows the current gas price, a graph of historical gas prices, and the prices for transactions to be included at normal speed or at a higher speed.
+Here are some ways to get Etherlink's gas price:
+
+- For an average of Etherlink gas prices, go to the [Gas tracker](https://explorer.etherlink.com/gas-tracker) page on the Etherlink block explorer.
+
+- For the actual gas price of the previous block, go to https://explorer.etherlink.com/blocks, click the most recent block, and check the `Base fee per gas` field.
+
+- Developers can use the standard EVM `eth_gasPrice` endpoint, as described in [Estimating fees](/building-on-etherlink/estimating-fees).
 
 The actual cost of a transaction depends on the gas price and the complexity of the transaction.
 Wallets show the estimated cost for a transaction before you approve the transaction.
