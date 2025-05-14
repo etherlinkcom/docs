@@ -34,6 +34,7 @@ const sidebars = {
       items: [
         'index',
         'get-started/using-your-wallet',
+        'get-started/sending-transactions',
         'get-started/network-information',
         'get-started/getting-testnet-tokens',
         'get-started/getting-mainnet-tokens',
