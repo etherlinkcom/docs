@@ -207,6 +207,7 @@ The response is the estimated transaction gas usage in hexadecimal format, as in
 }
 ```
 
+You can multiply the estimated gas usage by the current gas price to estimate the total fee.
 For more information, see [Estimating fees](/building-on-etherlink/estimating-fees).
 
 ## Calling smart contracts
