@@ -55,6 +55,11 @@ Etherlink has dropped the transaction but the wallet has not updated its status 
 <img src="/img/metamask-speed-up-pending.png" alt="A pending transaction in Metamask" style={{width: 300}} />
 
 To speed up the transaction, click **Speed up** and provide a larger transaction fee.
+Then you can set a new fee, as shown in this picture:
+
+<img src="/img/metamask-speed-up-set-fee.png" alt="Setting a new fee for a pending transaction" style={{width: 300}} />
+
+The wallet sends a new transaction with the increased fee.
 
 ## Checking gas prices
 
