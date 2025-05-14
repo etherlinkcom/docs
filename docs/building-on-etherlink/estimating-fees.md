@@ -84,4 +84,5 @@ To get the total fee, multiply the gas price by this gas usage estimate.
 If the gas price is 1 gwei, the total fee estimate is 1<sup>-9</sup> x 623766, or 0.000623766 XTZ.
 This fee includes all fees described in [Fee structure](/network/fees), but you can set a higher amount for the transaction's gas consumption as a safety margin (sometimes known as setting the gas limit) to ensure that if the transaction requires more gas, it can use it.
 
-You can also set a maximum base gas price for the transaction when submitting the transaction to increase the chances that it will be included in a block.
+You can also set a maximum base gas price for the transaction when submitting the transaction to increase the chances that it will be included in a block or to make it fail if the gas price goes up.
+The example in [Sending XTZ](/building-on-etherlink/transactions#sending-xtz) sets a maximum gas price by setting the `maxFeePerGas` field on the transaction object.
