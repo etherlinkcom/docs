@@ -47,13 +47,16 @@ Now you can send the transaction as usual and accept a higher fee if it is neces
 
 ### Increasing fees for a new transaction (Rabby wallet)
 
-To change the fees in the Rabby wallet browser extension, click **Advanced Settings** in the transaction confirmation window:
+To change the fees in the Rabby wallet browser extension, start a transaction as usual and click the transaction speed button next to the transaction fee, as in this picture:
 
-<img src="/img/rabby-change-fee-advanced.png" alt="Selecting the advanced settings for the transaction" style={{width: 300}} />
+<img src="/img/rabby-change-fee-speed.png" alt="Selecting the speed for the transaction" style={{width: 300}} />
 
-Then in the advanced settings, change the gas limit, which is the maximum transaction fee to include with the transaction, in gwei:
+The popup window shows the transaction fees as a multiple of the current gas price, not as a raw amount of XTZ.
 
-<img src="/img/rabby-change-fee-max-fee.png" alt="Selecting the advanced settings for the transaction" style={{width: 300}} />
+In the popup window, in the **Custom** field, set a new gas price multiple.
+For example, if you enter 2, the transaction fee can be up to twice the estimate based on the current gas price, as in this picture:
+
+<img src="/img/rabby-change-fee-max-fee.png" alt="Setting the maximum gas price for the transaction" style={{width: 300}} />
 
 Now you can send the transaction as usual and accept a higher fee if it is necessary based on the network's base fee.
 
@@ -67,7 +70,7 @@ Etherlink has dropped the transaction but the wallet has not updated its status 
 To speed up the transaction, click **Speed up** and provide a larger transaction fee.
 Then you can set a new fee, as shown in this picture:
 
-<img src="/img/metamask-speed-up-set-fee.png" alt="Setting a new fee for a pending transaction" style={{width: 300}} />
+<img src="/img/metamask-speed-up-set-fee.png" alt="Setting a new fee for a new transaction" style={{width: 300}} />
 
 The wallet sends a new transaction with the increased fee.
 
@@ -86,10 +89,12 @@ Rabby wallet shows the pending transactions and warnings about how long they hav
 
 Then, click the lightning bolt icon next to the transaction:
 
-<img src="/img/rabby-speed-up-lightning-bolt.png" alt="Clicking the lightning bold next to a pending transaction" style={{width: 300}} />
+<img src="/img/rabby-speed-up-lightning-bolt.png" alt="Clicking the lightning bolt next to a pending transaction" style={{width: 300}} />
 
-A window for the new transaction opens.
-From here, click **Advanced Settings**, put in a higher gas limit as described in [Increasing fees for a new transaction (Rabby wallet)](#increasing-fees-for-a-new-transaction-rabby-wallet), and submit the new transaction.
+The popup window lets you set a new transaction fee as a multiple of the current gas price, not as a raw amount of XTZ.
+From here, put in a higher gas limit as described in [Increasing fees for a new transaction (Rabby wallet)](#increasing-fees-for-a-new-transaction-rabby-wallet), and submit the new transaction.
+
+<img src="/img/rabby-speed-up-custom.png" alt="Setting a new fee for a pending transaction" style={{width: 300}} />
 
 The wallet sends a new transaction with the increased fee.
 
