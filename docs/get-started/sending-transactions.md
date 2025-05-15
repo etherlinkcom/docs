@@ -27,6 +27,12 @@ Etherlink takes only the fee that is necessary to include the transaction at the
 
 :::
 
+:::note
+
+Etherlink does not use a priority fee (also called a tip) to speed up transactions, so you can ignore the Priority fee field if it is shown.
+
+:::
+
 ### Increasing fees for a new transaction (Metamask)
 
 In the Metamask web browser extension, when you are sending a transaction you can click the edit button next to the **Network fee** field and change the amount, as shown in this picture:
@@ -39,7 +45,6 @@ From here, click **Advanced** to set a custom transaction fee:
 
 Then, increase the base fee in the **Max base fee (gwei)** field, not the Priority fee field, as in the following picture, which shows a base fee of 3 gwei, which is 3 times the default.
 The resulting transaction fee is 0.0018713 XTZ.
-Etherlink does not use a priority fee (also called a tip) to speed up transactions, so you can ignore the Priority fee field.
 
 <img src="/img/metamask-change-fee-custom-base-fee.png" alt="Setting the maximum base fee" style={{width: 300}} />
 
