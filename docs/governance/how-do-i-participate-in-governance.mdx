@@ -32,17 +32,17 @@ You need the address of the correct governance contract to propose changes and v
 </tr>
 <tr>
 <td>Kernel governance</td>
-<td><InlineCopy code="KT1FPG4NApqTJjwvmhWvqA14m5PJxu9qgpBK" href="https://better-call.dev/mainnet/KT1FPG4NApqTJjwvmhWvqA14m5PJxu9qgpBK" abbreviate="6,4"></InlineCopy></td>
+<td><InlineCopy code="KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh" href="https://better-call.dev/mainnet/KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh" abbreviate="6,4"></InlineCopy></td>
 <td><InlineCopy code="KT1HfJb718fGszcgYguA4bfTjAqe1BEmFHkv" href="https://better-call.dev/ghostnet/KT1HfJb718fGszcgYguA4bfTjAqe1BEmFHkv" abbreviate="6,4"></InlineCopy></td>
 </tr>
 <tr>
 <td>Kernel security governance</td>
-<td><InlineCopy code="KT1GRAN26ni19mgd6xpL6tsH52LNnhKSQzP2" href="https://better-call.dev/mainnet/KT1GRAN26ni19mgd6xpL6tsH52LNnhKSQzP2" abbreviate="6,4"></InlineCopy></td>
+<td><InlineCopy code="KT1D1fRgZVdjTj5sUZKcSTPPnuR7LRxVYnDL" href="https://better-call.dev/mainnet/KT1D1fRgZVdjTj5sUZKcSTPPnuR7LRxVYnDL" abbreviate="6,4"></InlineCopy></td>
 <td><InlineCopy code="KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk" href="https://better-call.dev/ghostnet/KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk" abbreviate="6,4"></InlineCopy></td>
 </tr>
 <tr>
 <td>Sequencer committee</td>
-<td><InlineCopy code="KT1UvCsnXpLAssgeJmrbQ6qr3eFkYXxsTG9U" href="https://better-call.dev/mainnet/KT1UvCsnXpLAssgeJmrbQ6qr3eFkYXxsTG9U" abbreviate="6,4"></InlineCopy></td>
+<td><InlineCopy code="KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa" href="https://better-call.dev/mainnet/KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa" abbreviate="6,4"></InlineCopy></td>
 <td><InlineCopy code="KT1FRzozuzFMWLimpFeSdADHTMxzU8KtgCr9" href="https://better-call.dev/ghostnet/KT1FRzozuzFMWLimpFeSdADHTMxzU8KtgCr9" abbreviate="6,4"></InlineCopy></td>
 </tr>
 </tbody>
@@ -62,7 +62,7 @@ For example, this Octez client command calls this view for the kernel governance
 
 ```bash
 octez-client -E https://mainnet.ecadinfra.com \
-  run view get_voting_state on contract KT1FPG4NApqTJjwvmhWvqA14m5PJxu9qgpBK
+  run view get_voting_state on contract KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh
 ```
 
 The view returns information about the current governance period in this order:
@@ -87,7 +87,7 @@ You can also subscribe to the `voting_finished` event to be notified when the Pr
 During a Proposal period, bakers can propose kernel or security updates by calling the `new_proposal` entrypoint of the appropriate governance contract and passing the hash of their proposed kernel, as in this example, which uses `<KERNEL_HASH>` as the kernel hash:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1FPG4NApqTJjwvmhWvqA14m5PJxu9qgpBK \
+octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
   --entrypoint "new_proposal" \
   --arg "<KERNEL_HASH>"
 ```
@@ -105,7 +105,7 @@ Proposers can make it easier for bakers to upgrade to the new kernel by providin
 To upvote a proposed kernel or security update during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1FPG4NApqTJjwvmhWvqA14m5PJxu9qgpBK \
+octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
   --entrypoint "upvote_proposal" \
   --arg "<KERNEL_HASH>"
 ```
@@ -117,7 +117,7 @@ It's not necessary to upvote a proposal that you submitted; submitting a proposa
 When a proposal is in the Promotion period, you can vote for or against it or pass on voting by calling the `vote` entrypoint of the appropriate governance contract:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1FPG4NApqTJjwvmhWvqA14m5PJxu9qgpBK \
+octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
   --entrypoint "vote" --arg '"yea"'
 ```
 
@@ -134,7 +134,7 @@ The command does not need the hash of the kernel because only one kernel can be 
 After a proposal wins a vote, any user can trigger the kernel or security upgrade by calling the governance contract's `trigger_kernel_upgrade` entrypoint:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1GRAN26ni19mgd6xpL6tsH52LNnhKSQzP2 \
+octez-client transfer 0 from my_wallet to KT1D1fRgZVdjTj5sUZKcSTPPnuR7LRxVYnDL \
   --entrypoint "trigger_kernel_upgrade" \
   --arg '"sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf"'
 ```
@@ -161,7 +161,7 @@ To get information about the current state of the Sequencer Committee governance
 For example, this Octez client command calls this view for the kernel governance contract on Mainnet:
 
 ```bash
-octez-client run view get_voting_state on contract KT1UvCsnXpLAssgeJmrbQ6qr3eFkYXxsTG9U
+octez-client run view get_voting_state on contract KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa
 ```
 
 The view returns information about the current governance period.
@@ -174,7 +174,7 @@ You can also subscribe to the `voting_finished` event to be notified when the Pr
 To propose a member for the Sequencer Committee, bakers can call the `new_proposal` entrypoint of the governance contract during the Proposal period:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1UvCsnXpLAssgeJmrbQ6qr3eFkYXxsTG9U \
+octez-client transfer 0 from my_wallet to KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa \
   --entrypoint "new_proposal" \
   --arg "Pair \"<PUBLIC_KEY>\" <L2_ADDRESS>"
 ```
@@ -189,7 +189,7 @@ The command takes these parameters:
 For example:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1UvCsnXpLAssgeJmrbQ6qr3eFkYXxsTG9U \
+octez-client transfer 0 from my_wallet to KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa \
   --entrypoint "new_proposal" \
   --arg 'Pair "edpkurcgafZ2URyB6zsm5d1YqmLt9r1Lk89J81N6KpyMaUzXWEsv1X" 0xb7a97043983f24991398e5a82f63f4c58a417185'
 ```
@@ -197,7 +197,7 @@ octez-client transfer 0 from my_wallet to KT1UvCsnXpLAssgeJmrbQ6qr3eFkYXxsTG9U \
 To upvote a proposed committee member during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1UvCsnXpLAssgeJmrbQ6qr3eFkYXxsTG9U \
+octez-client transfer 0 from my_wallet to KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa \
   --entrypoint "upvote_proposal" \
   --arg 'Pair "edpkurcgafZ2URyB6zsm5d1YqmLt9r1Lk89J81N6KpyMaUzXWEsv1X" 0xb7a97043983f24991398e5a82f63f4c58a417185'
 ```
@@ -209,7 +209,7 @@ It's not necessary to upvote a proposal that you submitted; submitting a proposa
 When a proposal is in the Promotion period, you can vote for or against it or pass on voting by calling the `vote` entrypoint of the governance contract:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1FPG4NApqTJjwvmhWvqA14m5PJxu9qgpBK \
+octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
   --entrypoint "vote" --arg '"yea"'
 ```
 
@@ -231,7 +231,7 @@ octez-client transfer 0 from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq to KT1FRzozuzF
 After a proposed member wins a vote, any user can trigger the change to the committee by calling the governance contract's `trigger_committee_upgrade` entrypoint:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1FPG4NApqTJjwvmhWvqA14m5PJxu9qgpBK \
+octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
   --entrypoint "trigger_committee_upgrade" \
   --arg '"sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf"'
 ```
