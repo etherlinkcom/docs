@@ -20,9 +20,21 @@ During this time, the wallet continues to try to send the transaction, and you c
 Most wallets include options to increase the transaction fee by enough to get the transaction finalized.
 You can increase the fee at the time you send the transaction or add fees to a previously sent transaction.
 
-### Increasing fees for a new transaction
+:::note
 
-Most wallets include an option to customize the fees for a transaction before you send it.
+Any difference between the fee that you set and the necessary fee for the transaction is refunded to you.
+Etherlink takes only the fee that is necessary to include the transaction at the current gas cost, not the maximum that you set for the transaction.
+
+:::
+
+:::note
+
+Etherlink does not use a priority fee (also called a tip) to speed up transactions, so you can ignore the Priority fee field if it is shown.
+
+:::
+
+### Increasing fees for a new transaction (Metamask)
+
 In the Metamask web browser extension, when you are sending a transaction you can click the edit button next to the **Network fee** field and change the amount, as shown in this picture:
 
 <img src="/img/metamask-change-fee-signing.png" alt="Clicking the Network fee field while signing a Metamask transaction" style={{width: 300}} />
@@ -33,23 +45,29 @@ From here, click **Advanced** to set a custom transaction fee:
 
 Then, increase the base fee in the **Max base fee (gwei)** field, not the Priority fee field, as in the following picture, which shows a base fee of 3 gwei, which is 3 times the default.
 The resulting transaction fee is 0.0018713 XTZ.
-Etherlink does not use a priority fee (also called a tip) to speed up transactions, so you can ignore the Priority fee field.
-
-:::note
-
-Any difference between the base fee that you set and the necessary fee for the transaction is refunded to you.
-Etherlink takes only the fee that is necessary to include the transaction at the current base fee, not the maximum that you set for the transaction.
-
-:::
 
 <img src="/img/metamask-change-fee-custom-base-fee.png" alt="Setting the maximum base fee" style={{width: 300}} />
 
 Now you can send the transaction as usual and accept a higher fee if it is necessary based on the network's base fee.
 
-### Increasing the fees on a pending transaction
+### Increasing fees for a new transaction (Rabby wallet)
 
-If you have already sent the transaction, most wallets include an option to speed it up by adding more fees.
-For example, this Metamask transaction is shown as pending because it did not include enough transaction fees.
+To change the fees in the Rabby wallet browser extension, start a transaction as usual and click the transaction speed button next to the transaction fee, as in this picture:
+
+<img src="/img/rabby-change-fee-speed.png" alt="Selecting the speed for the transaction" style={{width: 300}} />
+
+The popup window shows the transaction fees as a multiple of the current gas price, not as a raw amount of XTZ.
+
+In the popup window, in the **Custom** field, set a new gas price multiple.
+For example, if you enter 2, the transaction fee can be up to twice the estimate based on the current gas price, as in this picture:
+
+<img src="/img/rabby-change-fee-max-fee.png" alt="Setting the maximum gas price for the transaction" style={{width: 300}} />
+
+Now you can send the transaction as usual and accept a higher fee if it is necessary based on the network's base fee.
+
+### Increasing the fees on a pending transaction (Metamask)
+
+This Metamask transaction is shown as pending because it did not include enough transaction fees.
 Etherlink has dropped the transaction but the wallet has not updated its status yet:
 
 <img src="/img/metamask-speed-up-pending.png" alt="A pending transaction in Metamask" style={{width: 300}} />
@@ -57,7 +75,31 @@ Etherlink has dropped the transaction but the wallet has not updated its status 
 To speed up the transaction, click **Speed up** and provide a larger transaction fee.
 Then you can set a new fee, as shown in this picture:
 
-<img src="/img/metamask-speed-up-set-fee.png" alt="Setting a new fee for a pending transaction" style={{width: 300}} />
+<img src="/img/metamask-speed-up-set-fee.png" alt="Setting a new fee for a new transaction" style={{width: 300}} />
+
+The wallet sends a new transaction with the increased fee.
+
+### Increasing the fees on a pending transaction (Rabby wallet)
+
+Rabby wallet shows a spinning indicator with a number to indicate pending transactions.
+In this picture, one transaction is shown as pending because it did not include enough transaction fees.
+Etherlink has dropped the transaction but the wallet has not updated its status yet:
+
+<img src="/img/rabby-speed-up-pending.png" alt="A pending transaction in Rabby wallet" style={{width: 300}} />
+
+To speed up the transaction, click the pending indicator.
+Rabby wallet shows the pending transactions and warnings about how long they have been pending:
+
+<img src="/img/rabby-speed-up-pending-list.png" alt="The list of pending transactions and warnings about the delay" style={{width: 300}} />
+
+Then, click the lightning bolt icon next to the transaction:
+
+<img src="/img/rabby-speed-up-lightning-bolt.png" alt="Clicking the lightning bolt next to a pending transaction" style={{width: 300}} />
+
+The popup window lets you set a new transaction fee as a multiple of the current gas price, not as a raw amount of XTZ.
+From here, put in a higher gas limit as described in [Increasing fees for a new transaction (Rabby wallet)](#increasing-fees-for-a-new-transaction-rabby-wallet), and submit the new transaction.
+
+<img src="/img/rabby-speed-up-custom.png" alt="Setting a new fee for a pending transaction" style={{width: 300}} />
 
 The wallet sends a new transaction with the increased fee.
 
