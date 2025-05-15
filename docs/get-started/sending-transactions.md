@@ -15,10 +15,27 @@ However, if the transaction fee that your wallet included is insufficient to pay
 The amount of time depends on the wallet and its settings.
 During this time, the wallet continues to try to send the transaction, and you can wait for it to complete, cancel it, or increase the transaction fee to speed it up.
 
+Wallets can submit transactions with insufficient fees if the necessary fee changes or if they have cached an older, lower price for transactions.
+
+## How does Etherlink calculate transaction fees?
+
+Etherlink calculates transaction fees based on a value known as the _gas price_ or the _base fee per gas_.
+This gas price is the cost per unit of computation required by a transaction.
+The total fee for a transaction is the gas price multiplied by the units of computation required.
+Simple transactions like transfers of XTZ have lower transaction fees and more complicated transactions have higher transaction fees.
+
+:::important
+
+Because Etherlink calculates transaction fees based on the gas price, most wallets show transaction fees not as a raw amount of XTZ but as a multiple of the current gas price.
+To change the maximum transaction fee, you set a new multiple of the gas price to specify the maximum transaction fee that you are willing to accept.
+For example, if you set the multiple to 3, the wallet creates a transaction that allows Etherlink to use up to three times the transaction fee as calculated by the current gas price.
+
+:::
+
 ## Speeding up transactions
 
 Most wallets include options to increase the transaction fee by enough to get the transaction finalized.
-You can increase the fee at the time you send the transaction or add fees to a previously sent transaction.
+You can increase the fee at the time you send the transaction or increase the fee on a previously sent transaction.
 
 ### Increasing fees for a new transaction
 
