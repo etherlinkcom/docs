@@ -18,7 +18,7 @@ For more information, see [The First Regular Upgrade for Etherlink: One Step Clo
 ## Bifröst upgrade
 
 The Bifröst upgrade to the Etherlink kernel went live on Etherlink Mainnet on 7 November 2024.
-It adds support for bridging [FA tokens from Tezos layer 1](https://docs.tezos.com/architecture/tokens#token-standards) to ERC-20 tokens on Etherlink and support for the callTracer tracer, which makes it possible for third-party tools like the Blockscout block explorer to index Etherlink transactions.
+It adds support for bridging [FA tokens from Tezos layer 1](https://docs.tezos.com/architecture/tokens#token-standards) to ERC-20 tokens on Etherlink and support for the callTracer tracer, which makes it possible for third-party tools like the Blockscout block explorer to index Etherlink transactions and for applications to trace transactions as described in [Tracing transactions](/building-on-etherlink/transactions#tracing-transactions).
 For more information, see [Announcing Bifröst: a 2nd upgrade proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-bifr%C3%B6st-a-2nd-upgrade-proposal-for-etherlink-mainnet-ef1a7cf9715f).
 
 ## Calypso upgrade
