@@ -89,7 +89,7 @@ The default location is the file `config.json` in the data directory.
    For example, setting the network to `mainnet` implies these arguments:
 
    ```bash
-   --preimages-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
+   --preimages-endpoint https://snapshots.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
    --evm-node-endpoint https://relay.mainnet.etherlink.com
    ```
 
@@ -229,11 +229,11 @@ The node throws an error if you try to run it in a mode that it is not configure
 
 ### From an existing Etherlink Smart Rollup node
 
-1. Download [an Etherlink Smart Rollup node snapshot](https://snapshots.eu.tzinit.org), and use the `octez-smart-rollup-node` binary to import it in a temporary directory.
+1. Download [an Etherlink Smart Rollup node snapshot](https://snapshots.tzinit.org), and use the `octez-smart-rollup-node` binary to import it in a temporary directory.
 The following examples use `<SR_OBSERVER_DATA_DIR>` as the location of this temporary directory.
 
    ```bash
-   wget https://snapshots.eu.tzinit.org/etherlink-ghostnet/eth-ghostnet.full
+   wget https://snapshots.tzinit.org/etherlink-ghostnet/eth-ghostnet.full
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/ghostnet \
      snapshot import eth-ghostnet.full \
      --data-dir <SR_OBSERVER_DATA_DIR>

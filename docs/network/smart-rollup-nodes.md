@@ -65,7 +65,7 @@ The best place to get the most recent binary files to use with Etherlink is http
       ```bash
       octez-smart-rollup-node init observer config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
         with operators --data-dir <SR_DATA_DIR> \
-        --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
+        --pre-images-endpoint https://snapshots.tzinit.org/etherlink-mainnet/wasm_2_0_0
       ```
 
       For Etherlink testnet, use this command:
@@ -73,7 +73,7 @@ The best place to get the most recent binary files to use with Etherlink is http
       ```bash
       octez-smart-rollup-node init observer config for sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg \
         with operators --data-dir <SR_DATA_DIR> \
-        --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-ghostnet/wasm_2_0_0
+        --pre-images-endpoint https://snapshots.tzinit.org/etherlink-ghostnet/wasm_2_0_0
       ```
 
       This command generates a minimal configuration file (`config.json`) in the local data folder:
@@ -82,7 +82,7 @@ The best place to get the most recent binary files to use with Etherlink is http
       { "smart-rollup-address": "sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf",
         "smart-rollup-node-operator": {}, "fee-parameters": {}, "mode": "observer",
         "pre-images-endpoint":
-          "https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0" }
+          "https://snapshots.tzinit.org/etherlink-mainnet/wasm_2_0_0" }
       ```
 
       This configuration uses the preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
@@ -93,18 +93,18 @@ The best place to get the most recent binary files to use with Etherlink is http
 1. To speed up the setup process by loading a snapshot, follow these steps:
 
    1. Download the latest snapshot.
-   Mainnet snapshots are available at https://snapshots.eu.tzinit.org/etherlink-mainnet and Testnet snapshots are available at https://snapshots.eu.tzinit.org/etherlink-ghostnet.
+   Mainnet snapshots are available at https://snapshots.tzinit.org/etherlink-mainnet and Testnet snapshots are available at https://snapshots.tzinit.org/etherlink-ghostnet.
 
       For example, this command downloads the latest snapshot for Etherlink Mainnet:
 
       ```bash
-      wget https://snapshots.eu.tzinit.org/etherlink-mainnet/eth-mainnet.full
+      wget https://snapshots.tzinit.org/etherlink-mainnet/eth-mainnet.full
       ```
 
       This command downloads the latest snapshot for Etherlink Testnet:
 
       ```bash
-      wget https://snapshots.eu.tzinit.org/etherlink-ghostnet/eth-ghostnet.full
+      wget https://snapshots.tzinit.org/etherlink-ghostnet/eth-ghostnet.full
       ```
 
    1. Load the snapshot by running the `snapshot import` command.
@@ -300,7 +300,7 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
      executing_outbox:<SECONDARY_ACCOUNT> \
      --rpc-addr 0.0.0.0 \
      --data-dir <SR_DATA_DIR> \
-     --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
+     --pre-images-endpoint https://snapshots.tzinit.org/etherlink-mainnet/wasm_2_0_0
    ```
 
    If you are using a remote signer, pass the address of the remote signer in the `--remote-signer` argument before the `run` command, as in this example:
@@ -315,7 +315,7 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
      executing_outbox:<SECONDARY_ACCOUNT> \
      --rpc-addr 0.0.0.0 \
      --data-dir <SR_DATA_DIR> \
-     --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
+     --pre-images-endpoint https://snapshots.tzinit.org/etherlink-mainnet/wasm_2_0_0
    ```
 
 1. Verify that the Smart Rollup node is running by querying it.
@@ -358,7 +358,7 @@ A node running in `bailout` mode defends its existing commitments but does not m
      with operators <REMOTE_OPERATOR> \
      --rpc-addr 0.0.0.0 \
      --data-dir <SR_DATA_DIR> \
-     --pre-images-endpoint https://snapshots.eu.tzinit.org/etherlink-mainnet/wasm_2_0_0
+     --pre-images-endpoint https://snapshots.tzinit.org/etherlink-mainnet/wasm_2_0_0
    ```
 
 1. Keep the node running for two weeks for the node's last commitment to be cemented.
