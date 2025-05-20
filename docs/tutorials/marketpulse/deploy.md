@@ -1,6 +1,6 @@
 # Deploy the contract
 
-Deploy the contract locally is fine for doing simple tests, but we recommend to target the Etherlink testnet to run complete scenarios as you may depend on other services like block explorers, oracles, etc.
+Deploy the contract locally is fine for doing simple tests, but we recommend to target the Etherlink Testnet to run complete scenarios as you may depend on other services like block explorers, oracles, etc.
 
 1. Deploy the contract locally with Hardhat:
 

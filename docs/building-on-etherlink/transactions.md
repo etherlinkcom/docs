@@ -17,7 +17,8 @@ Etherlink supports the standard Ethereum `eth_call` and `eth_sendRawTransaction`
 
 ## Calling read-only entrypoints
 
-You can use the `eth_call` endpoint to call read-only smart contract functions, which does not require you to create a transaction.
+You can use the `eth_call` endpoint to call read-only smart contract functions.
+These functions do not require you to create a transaction.
 For example, this command calls the ERC-20 contract at the address `0xCda9B8eD25E465f24C26Ad8fF5E1f05661Df50B2` and gets the balance of tokens for the address `0x45Ff91b4bF16aC9907CF4A11436f9Ce61BE0650d`.
 
 ```bash
