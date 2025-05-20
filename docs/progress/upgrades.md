@@ -59,7 +59,7 @@ The proposed Dionysus upgrade to the Etherlink kernel was installed on Etherlink
 
 The proposed Dionysus kernel upgrade includes:
 
-- Support for EVM version Dencun features
+- Support for EVM version Cancun features
 - Foundational work to allow faster withdrawals of FA tokens to Tezos layer 1
 - Improvements to gas price computation logic to reduce the effect of price spikes
 - The ability for the sequencer to publish blocks via the [Data Availability Layer](https://docs.tezos.com/architecture/data-availability-layer)

@@ -480,7 +480,7 @@ For examples of using these ethers.js methods, see [Using ethers.js](/building-o
   <tbody>
     <tr>
       <td>EVM version</td>
-      <td><code>Dencun</code></td>
+      <td><code>Cancun</code></td>
     </tr>
     <tr>
       <td>Whitelisting Fireblocks IP addresses</td>
