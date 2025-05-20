@@ -46,18 +46,10 @@ This upgrade was carried out through Etherlink’s [security governance process]
 
 For more information, see [Calypso2: A security upgrade to harden the Etherlink sequencer and FA bridge](https://research-development.nomadic-labs.com/etherlink-calypso2-upgrade.html).
 
-## Dionysus upgrade (proposed)
+## Dionysus upgrade
 
-<!--
-TODO if promoted to Mainnet, update with the date of activation.
-If rejected, change this section to say that it was proposed but not approved.
--->
-
-<!-- TODO
-The proposed Dionysus upgrade to the Etherlink kernel was installed on Etherlink Testnet on [TODO DATE].
--->
-
-The proposed Dionysus kernel upgrade includes:
+On 21 May 2025, the Dionysus kernel upgrade went live on Etherlink Mainnet.
+This upgrade includes:
 
 - Support for EVM version Cancun features
 - Foundational work to allow faster withdrawals of FA tokens to Tezos layer 1
