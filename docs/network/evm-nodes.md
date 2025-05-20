@@ -71,6 +71,16 @@ The release page provides static binaries for Linux systems (for amd64 and arm64
 As an alternative, you can use the minimal Docker image [tezos/tezos-bare](https://hub.docker.com/r/tezos/tezos-bare/tags?name=octez-evm-node) with a tag that includes `octez-evm-node`.
 These images contain the correct version of the binary.
 
+When you run the Docker image, you must expose the port that the EVM node runs on to the host system.
+For example, this command runs the EVM node in the Docker container on port 8545 (the default) and uses the Docker `-p` argument to expose that port as port 8445 on the host system:
+
+```bash
+docker run -it -p 8545:8545 \
+  --rm tezos/tezos-bare:octez-evm-node-v0.25 octez-evm-node run observer \
+  --network mainnet --history rolling:1  --dont-track-rollup-node \
+  --init-from-snapshot --rpc-addr "0.0.0.0" --rpc-port "8545"
+```
+
 ## Configuring the node
 
 The node uses the following main parameters.
