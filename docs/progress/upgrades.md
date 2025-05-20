@@ -57,7 +57,7 @@ This upgrade includes:
 - The ability for the sequencer to publish blocks via the [Data Availability Layer](https://docs.tezos.com/architecture/data-availability-layer)
 - Upgraded governance contracts to be compatible with the Tezos Rio upgrade
 
-Running an Etherlink EVM node on Dionysus requires version 0.24 or later of the `octez-evm-node` binary.
+Running an Etherlink EVM node on Dionysus requires version 0.26 or later of the `octez-evm-node` binary.
 
 For more information, see [Announcing Dionysus: The Next Etherlink Upgrade Proposal](https://medium.com/p/announcing-dionysus-the-next-etherlink-upgrade-proposal-4601c6920709).
 
