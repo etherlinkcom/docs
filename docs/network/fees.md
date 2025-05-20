@@ -34,7 +34,7 @@ Etherlink has a target amount of execution gas to use per second, referred to as
 To calculate the throughput, Etherlink records the total execution gas used and subtracts the speed limit every second.
 The remaining execution gas amount is known as the _backlog_.
 
-In this way, if the execution gas used per second exceeds the speed limit, the backlog increases and the execution fee can go up.
+In this way, if the execution gas used per second exceeds the speed limit for a certain amount of time, the backlog increases and the execution fee can go up.
 If the gas used per second is below the speed limit, the backlog decreases or reaches zero and the execution fee decreases or reaches a base amount.
 The backlog never goes below zero and the execution fee never goes below the base amount.
 
