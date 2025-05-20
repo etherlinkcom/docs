@@ -46,7 +46,7 @@ Also, an Etherlink user must trigger the protocol upgrade after the Cooldown per
 
 ### 1. Proposal period
 
-During this period, Etherlink bakers submit and upvote proposals for new kernels.
+During this period, Tezos bakers submit and upvote proposals for new kernels.
 Any baker can submit kernel upgrade proposals and upvote proposals, with the weight of their vote determined by the voting power of their baker account.
 Bakers can submit and upvote up to 20 proposals in a single Proposal period.
 
