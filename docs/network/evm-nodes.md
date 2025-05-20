@@ -72,7 +72,7 @@ As an alternative, you can use the minimal Docker image [tezos/tezos-bare](https
 These images contain the correct version of the binary.
 
 When you run the Docker image, you must expose the port that the EVM node runs on to the host system.
-For example, this command runs the EVM node in the Docker container on port 8545 (the default) and uses the Docker `-p` argument to expose that port as port 8445 on the host system:
+For example, this command runs the EVM node in the Docker container on port 8545 (the default) and uses the Docker `-p` argument to expose that port as port 8545 on the host system:
 
 ```bash
 docker run -it -p 8545:8545 \
