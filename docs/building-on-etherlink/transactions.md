@@ -570,3 +570,167 @@ async function sendTransaction() {
   console.dir(traceBlock, { depth: null });
 }
 ```
+
+## Sending transactions to the delayed inbox
+
+As described in [Delayed inbox transaction processing](/network/architecture#delayed-inbox-transaction-processing), if the sequencer is not operating normally, you can send transactions to the delayed inbox to force Etherlink to include them.
+
+When you submit a transaction to the delayed inbox, you encode and sign it as an Etherlink transaction but submit it to the delayed bridge contract on Tezos layer 1.
+Under normal circumstances, the sequencer receives the transaction and runs it as usual, but if the sequencer is not working for any reason and the transaction has not been run after a certain amount of time, the Etherlink Smart Rollup nodes run the transaction themselves.
+In this way, you can submit emergency transactions to the delayed inbox when the sequencer is not working.
+Delayed inbox transactions also require an additional cost of 1 Tezos layer 1 tez in addition to the normal Etherlink transaction fees.
+
+The general steps for submitting a transaction to the delayed inbox are:
+
+1. Encode and sign the Etherlink transaction as usual with a library such as ethers.js.
+1. Send the transaction to the delayed inbox contract as in an ordinary Tezos transaction, with a library such as [Taquito](https://taquito.io/).
+
+The delayed inbox transaction requires 1 tez and these parameters:
+
+- `evm_rollup`: The address of the Etherlink Smart Rollup, which you can get from [Network information](/get-started/network-information)
+- `transaction`: The signed transaction to run on Etherlink
+
+The addresses of the delayed inbox smart contracts are:
+
+- Testnet: `KT1X1M4ywyz9cHvUgBLTUUdz3GTiYJhPcyPh`
+- Mainnet: `KT1Vocor3bL5ZSgsYH9ztt42LNhqFK64soR4`
+
+This example signs an Etherlink transaction that transfers 1 XTZ and submits it to the delayed inbox on Testnet:
+
+```javascript
+const { ethers } = require("ethers");
+const { TezosToolkit } = require("@taquito/taquito");
+const { InMemorySigner } = require('@taquito/signer');
+
+// Define the provider by its RPC address
+const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+
+// Sender's private key
+const privateKey = process.env.ETHERLINK_PRIVATE_KEY;
+const etherlinkWallet = new ethers.Wallet(privateKey, provider);
+
+// Sign and return Etherlink transaction
+const signEtherlinkTransaction = async () => {
+
+  // Create the transaction
+  const estimateTx = {
+    // Send XTZ to this address
+    to: "0x46899d4FA5Ba90E3ef3B7aE8aae053C662c1Ca1d",
+    value: ethers.parseEther("0.1"), // Sending 0.1 XTZ
+    gasLimit: 21000, // Replace with an estimate later
+    maxFeePerGas: ethers.parseUnits("1", "gwei"), // Limit transaction to gas price of 1 gwei
+    nonce: await provider.getTransactionCount(etherlinkWallet.address, "latest"),
+    chainId: (await provider.getNetwork()).chainId.toString(),
+  };
+
+  // Estimate the gas
+  const estimatedGas = await provider.estimateGas(estimateTx);
+
+  // Update the transaction with the estimated gas
+  const tx = { ...estimateTx, gasLimit: estimatedGas };
+
+  // Sign the transaction
+  const signedTx = await etherlinkWallet.signTransaction(tx);
+  console.log("Signed Transaction:", signedTx);
+
+  return signedTx;
+}
+
+// Set up Taquito
+const rpcUrl = 'https://ghostnet.ecadinfra.com';
+const Tezos = new TezosToolkit(rpcUrl);
+Tezos.setProvider({ signer: new InMemorySigner(process.env.TEZOS_PRIVATE_KEY) })
+const delayedInboxContractAddress = "KT1X1M4ywyz9cHvUgBLTUUdz3GTiYJhPcyPh"; // Testnet
+const rollupAddress = 'sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg'; // Testnet
+
+// Send the transaction to the delayed inbox
+const sendDelayedInboxTransaction = async (etherlinkTransaction) => {
+  const delayedInboxContract = await Tezos.wallet.at(delayedInboxContractAddress);
+  try {
+    const op = await delayedInboxContract.methodsObject.default({
+      evm_rollup: rollupAddress,
+      transaction: etherlinkTransaction.slice(2), // removes the 0x prefix
+    }).send({ amount: 1 }); // Include 1 tez
+    console.log(`Waiting for ${op.opHash} to be confirmed...`);
+    await op.confirmation(2);
+  } catch (error) {
+    console.log(`Error: ${JSON.stringify(error, null, 2)}`);
+  }
+}
+
+signEtherlinkTransaction()
+  .then(sendDelayedInboxTransaction);
+```
+
+Similarly, this example signs a call to a smart contract and submits it to the delayed inbox:
+
+```javascript
+const { ethers } = require("ethers");
+const { TezosToolkit } = require("@taquito/taquito");
+const { InMemorySigner } = require('@taquito/signer');
+
+const fullABI = [{"inputs":[],"name":"get","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"x","type":"uint256"}],"name":"set","outputs":[],"stateMutability":"nonpayable","type":"function"}];
+
+// Define the provider by its RPC address
+const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+
+// Sender's private key
+const privateKey = process.env.ETHERLINK_PRIVATE_KEY;
+const etherlinkWallet = new ethers.Wallet(privateKey, provider);
+
+const contractAddress = "0x3D3402f42Fb1ef5Cd643a458A4059E0055d48F9e";
+
+// Sign and return Etherlink smart contract call
+const signEtherlinkSmartContractCall = async () => {
+  const contractInterface = new ethers.Interface(fullABI);
+  const data = contractInterface.encodeFunctionData("set", [11]);
+
+  // Create the transaction
+  const estimateTx = {
+    to: contractAddress,
+    value: 0,
+    data: data,
+    gasLimit: 41000, // Replace with an estimate later
+    maxFeePerGas: ethers.parseUnits("1", "gwei"), // Limit transaction to gas price of 1 gwei
+    nonce: await provider.getTransactionCount(etherlinkWallet.address, "latest"),
+    chainId: (await provider.getNetwork()).chainId.toString(),
+  };
+
+  // Estimate the gas
+  const estimatedGas = await provider.estimateGas(estimateTx);
+  console.log("Estimated gas:", estimatedGas);
+
+  // Update the transaction with the estimated gas
+  const tx = { ...estimateTx, gasLimit: estimatedGas };
+
+  // Sign the transaction
+  const signedTx = await etherlinkWallet.signTransaction(tx);
+  console.log("Signed Transaction:", signedTx);
+
+  return signedTx;
+}
+
+// Set up Taquito
+const Tezos = new TezosToolkit('https://ghostnet.smartpy.io');
+Tezos.setProvider({ signer: new InMemorySigner(process.env.TEZOS_PRIVATE_KEY) })
+const delayedInboxContractAddress = "KT1X1M4ywyz9cHvUgBLTUUdz3GTiYJhPcyPh"; // Testnet
+const rollupAddress = 'sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg'; // Testnet
+
+// Send the transaction to the delayed inbox
+const sendDelayedInboxTransaction = async (etherlinkTransaction) => {
+  const delayedInboxContract = await Tezos.wallet.at(delayedInboxContractAddress);
+  try {
+    const op = await delayedInboxContract.methodsObject.default({
+      evm_rollup: rollupAddress,
+      transaction: etherlinkTransaction.slice(2), // removes the 0x prefix
+    }).send({ amount: 1 }); // Include 1 tez
+    console.log(`Waiting for ${op.opHash} to be confirmed...`);
+    await op.confirmation(2);
+  } catch (error) {
+    console.log(`Error: ${JSON.stringify(error, null, 2)}`);
+  }
+}
+
+signEtherlinkSmartContractCall()
+  .then(sendDelayedInboxTransaction);
+```
