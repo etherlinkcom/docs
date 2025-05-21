@@ -48,7 +48,7 @@ For more information, see [Calypso2: A security upgrade to harden the Etherlink 
 
 ## Dionysus upgrade
 
-On 21 May 2025, the Dionysus kernel upgrade went live on Etherlink Mainnet.
+On 21 May 2025, the Dionysus kernel upgrade went live on Etherlink Mainnet, in Etherlink block 15,262,162.
 This upgrade includes:
 
 - Support for EVM version Cancun features
