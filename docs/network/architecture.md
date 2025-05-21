@@ -129,4 +129,4 @@ The only way to remove a transaction from the delayed inbox is to process it.
    If the kernel (via the Smart Rollup nodes) generates a block, that block results in a new branch of the Etherlink chain, and the states of the sequencer and the Smart Rollup nodes diverge.
    It becomes the responsibility of the sequencer to reorganize itself to build blocks on top of the kernel-generated block.
 
-The delayed bridge contract is deployed to Tezos layer 1 Mainnet at [KT1Vocor3bL5ZSgsYH9ztt42LNhqFK64soR4](https://better-call.dev/mainnet/KT1Vocor3bL5ZSgsYH9ztt42LNhqFK64soR4).
+To submit a transaction to the delayed inbox, see [Sending transactions to the delayed inbox](/building-on-etherlink/transactions#sending-transactions-to-the-delayed-inbox).
