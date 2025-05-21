@@ -31,6 +31,7 @@ Etherlink measures throughput in terms of the amount of execution gas (that is, 
 As demand increases and more execution gas is used in a shorter time, Etherlink increases the gas price to increase the execution fee.
 
 Etherlink has a target amount of execution gas to use per second, referred to as the _speed limit_.
+The speed limit is currently set to 2 million gas per second.
 To calculate the throughput, Etherlink records the total execution gas used and subtracts the speed limit every second.
 The remaining execution gas amount is known as the _backlog_.
 
