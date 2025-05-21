@@ -578,7 +578,7 @@ As described in [Delayed inbox transaction processing](/network/architecture#del
 When you submit a transaction to the delayed inbox, you encode and sign it as an Etherlink transaction but submit it to the delayed bridge contract on Tezos layer 1.
 Under normal circumstances, the sequencer receives the transaction and runs it as usual, but if the sequencer is not working for any reason and the transaction has not been run after a certain amount of time, the Etherlink Smart Rollup nodes run the transaction themselves.
 In this way, you can submit emergency transactions to the delayed inbox when the sequencer is not working.
-Delayed inbox transactions also require an additional cost of 1 Tezos layer 1 tez in addition to the normal Etherlink transaction fees.
+Delayed inbox transactions cost 1 tez (on Tezos, charged to the account that submits it) in addition to the normal Etherlink transaction fees that will be deducted from the account that signed the transaction.
 
 The general steps for submitting a transaction to the delayed inbox are:
 
