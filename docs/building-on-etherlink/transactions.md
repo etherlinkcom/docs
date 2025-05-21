@@ -474,6 +474,17 @@ Trace output:
   failed: false,
   returnValue: '0x',
   structLogs: [
+    {    
+      depth: 1,
+      error: "",
+      gas: '21180',
+      gasCost: 3,
+      memory: null,
+      op: "PUSH1",
+      pc: 0,
+      stack: [],
+      storage: {}
+    }
     // Omitted for length
   ]
 }
