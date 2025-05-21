@@ -573,7 +573,7 @@ async function sendTransaction() {
 
 ## Sending transactions to the delayed inbox
 
-As described in [Delayed inbox transaction processing](/network/architecture#delayed-inbox-transaction-processing), if the sequencer is not operating normally, you can send transactions to the delayed inbox to force Etherlink to include them.
+As described in [Delayed inbox transaction processing](/network/architecture#delayed-inbox-transaction-processing), the delayed inbox provides an alternative mechanism to add a transaction to Etherlink. If the sequencer is not operating normally, sending transactions to the delayed inbox is a way to force Etherlink to include them.
 
 When you submit a transaction to the delayed inbox, you encode and sign it as an Etherlink transaction but submit it to the delayed bridge contract on Tezos layer 1.
 Under normal circumstances, the sequencer receives the transaction and runs it as usual, but if the sequencer is not working for any reason and the transaction has not been run after a certain amount of time, the Etherlink Smart Rollup nodes run the transaction themselves.
