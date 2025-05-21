@@ -254,11 +254,11 @@ const getValue = async () => {
 async function sendTransaction() {
 
   // Send the transaction
-  const ercTx = await simpleContract.set(5);
-  console.log("Transaction Hash:", ercTx.hash);
+  const simpleTransaction = await simpleContract.set(5);
+  console.log("Transaction Hash:", simpleTransaction.hash);
 
   // Wait for the transaction to be confirmed
-  await ercTx.wait();
+  await simpleTransaction.wait();
   console.log("Transaction Confirmed!");
 }
 
@@ -420,3 +420,153 @@ The response includes information about the matching events:
 ```
 
 For other filters, see [`eth_getLogs`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getstorageat) in the Ethereum JSON-RPC API reference.
+
+## Tracing transactions
+
+Etherlink supports the `debug_traceTransaction` and `debug_traceBlockByNumber` RPC endpoints, which provide debugging information about transactions and blocks.
+Note that the `debug_traceTransaction` endpoint supports only the `structLogger` and `callTracer` tracers.
+For more information about tracers, see [Built-in tracers](https://geth.ethereum.org/docs/developers/evm-tracing/built-in-tracers) in the Geth documentation.
+
+To get debugging information about a transaction with `debug_traceTransaction`, pass the hash of the transaction, as in this example:
+
+```bash
+curl --request POST \
+     --url https://node.ghostnet.etherlink.com \
+     --header 'accept: application/json' \
+     --header 'content-type: application/json' \
+     --data '
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "debug_traceTransaction",
+  "params": [
+    "0x7b4c5cd4816aa5b529e11f9f5799d6a0f4b04ac53496688fef35c5762c5f9601"
+  ]
+}
+'
+```
+
+The response includes data about the transaction, including its status, gas cost, and return value.
+It also includes the structured logs from the EVM execution of the transaction.
+
+You can also get this information via ethers.js, as in this example:
+
+```javascript
+async function sendTransaction() {
+
+  // Send the transaction
+  const simpleTransaction = await simpleContract.set(5);
+  console.log("Transaction hash:", simpleTransaction.hash);
+
+  // Wait for the transaction to be confirmed
+  await simpleTransaction.wait();
+  console.log("Transaction confirmed!");
+
+  // Get trace information and print the top level of data
+  const trace = await provider.send("debug_traceTransaction", [simpleTransaction.hash]);
+  console.log("Transaction trace output:");
+  console.dir(trace, { depth: 2 });
+}
+```
+
+The result looks like this:
+
+```
+Transaction hash: 0x11231008cfe87e107cadca34136da439c4e980b27af7c6c84e4b44c93aab45a0
+Transaction confirmed!
+Trace output:
+{
+  gas: '21183',
+  failed: false,
+  returnValue: '0x',
+  structLogs: [
+    {    
+      depth: 1,
+      error: "",
+      gas: '21180',
+      gasCost: 3,
+      memory: null,
+      op: "PUSH1",
+      pc: 0,
+      stack: [],
+      storage: {}
+    }
+    // Omitted for length
+  ]
+}
+```
+
+Similarly, you can use the `debug_traceBlockByNumber` endpoint to get information about a block by passing its number in hexadecimal, as in the following example:
+
+```bash
+curl --request POST \
+     --url https://node.ghostnet.etherlink.com \
+     --header 'accept: application/json' \
+     --header 'content-type: application/json' \
+     --data '
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "debug_traceBlockByNumber",
+  "params": [
+    "0x011b1ac0",
+    {"tracer": "callTracer"}
+  ]
+}
+'
+```
+
+:::note
+
+Etherlink supports only the `callTracer` tracer for this endpoint, and only for blocks after the Bifröst upgrade.
+Calling this endpoint on blocks prior to Bifröst returns empty data.
+Bifröst was activated on block 10,758,937 on Testnet and block 4,162,673 on Mainnet.
+
+:::
+
+The response includes information about the transactions in that block, as in this example:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "txHash": "0x063530177d43cf3e5b685b399ff3ad7c097e8684c374f0c23be5d6343f1bc82a",
+      "result": {
+        "type": "CALL",
+        "from": "0x45ff91b4bf16ac9907cf4a11436f9ce61be0650d",
+        "to": "0xfe508b2cc2e1706c4ade46773162fe161d807000",
+        "value": "0x0de0b6b3a7640000",
+        "gas": "0x5d91",
+        "gasUsed": "0x52bf",
+        "input": "0xd0e30db0",
+        "output": "0x",
+        "logs": [],
+        "calls": []
+      }
+    }
+  ],
+  "id": 1
+}
+```
+
+You can also use ethers.js, as in this example:
+
+```javascript
+async function sendTransaction() {
+
+  // Send the transaction
+  const simpleTransaction = await simpleContract.set(5);
+  console.log("Transaction hash:", simpleTransaction.hash);
+
+  // Wait for the transaction to be confirmed
+  const receipt = await simpleTransaction.wait();
+  console.log("Transaction included in block:", receipt.blockNumber);
+  const hexBlockNumber = ethers.toBeHex(receipt.blockNumber);
+
+  // Get information about the block
+  const traceBlock = await provider.send("debug_traceBlockByNumber", [hexBlockNumber, {"tracer": "callTracer"}]);
+  console.log("Block trace output:");
+  console.dir(traceBlock, { depth: null });
+}
+```

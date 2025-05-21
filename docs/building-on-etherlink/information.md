@@ -120,6 +120,8 @@ curl --request POST \
   --data '{"jsonrpc": "2.0", "params": ["0x6c8490898a6b3d959ba46657d4e995771b076288a97508c0f80f22ee6925e210", "0x0"], "method": "eth_getTransactionByBlockHashAndIndex"}'
 ```
 
+For even more information about transactions and blocks, see [Tracing transactions](/building-on-etherlink/transactions#tracing-transactions).
+
 ## Using ethers.js
 
 Similarly, you can use [ethers.js](https://docs.ethers.org/v6/) to get information about Etherlink.
