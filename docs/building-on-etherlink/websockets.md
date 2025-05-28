@@ -2,7 +2,7 @@
 title: Getting updates with WebSockets
 ---
 
-Starting with version 0.14, the Octez EVM node supports requests over WebSockets.
+The Octez EVM node supports requests over WebSockets.
 The WebSocket protocol provides bidirectional, real-time, and persistent communication between a client and server over a single, long-lived TCP connection.
 WebSockets provide faster and more efficient data transfer than calling the node's REST HTTP endpoints, avoiding the overhead of repeatedly opening and closing connections with the server and performing TLS handshakes.
 
@@ -15,7 +15,7 @@ You can use any WebSocket framework to connect to Etherlink nodes.
 
 :::note
 
-WebSockets are an experimental feature and may change in future versions.
+Using WebSockets as described on this page requires version 0.28 or later of the Octez EVM node.
 
 :::
 
@@ -32,25 +32,17 @@ The EVM node does not enforce rate limits on WebSocket connections, so be carefu
 
 1. Set up an EVM node as described in [Running an Etherlink EVM node](/network/evm-nodes).
 
-1. In the EVM node configuration file, enable WebSockets by setting the `enable_websocket` feature to `true` in the `experimental_features` section.
-The configuration file looks like this example:
+1. Start or restart the node with the `--ws` switch, as in this example:
 
-   ```json
-   {
-     "observer": {
-       "evm_node_endpoint": "https://relay.ghostnet.etherlink.com",
-       "rollup_node_tracking": false
-     },
-     "experimental_features": {
-       "enable_websocket": true
-     },
-     "kernel_execution": {
-       "preimages_endpoint": "https://snapshots.tzinit.org/etherlink-ghostnet/wasm_2_0_0"
-     }
-   }
+   ```bash
+   octez-evm-node run observer \
+     --network testnet \
+     --history rolling:1 \
+     --data-dir <EVM_DATA_DIR> \
+     --dont-track-rollup-node \
+     --init-from-snapshot \
+     --ws
    ```
-
-1. Restart the node.
 
 1. Verify that the node accepts WebSocket connections.
 For example, you can use the `wscat` program to send and receive messages over a WebSocket connection on the command line:
