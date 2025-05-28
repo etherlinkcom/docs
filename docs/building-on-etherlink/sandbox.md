@@ -37,7 +37,7 @@ Follow these steps to start the local sandbox:
 
    :::
 
-1. (Optional) Enable WebSockets in the node by editing the configuration file as described in [Getting updates with WebSockets](/building-on-etherlink/websockets).
+1. (Optional) Enable WebSockets on the node as described in [Getting updates with WebSockets](/building-on-etherlink/websockets).
 
 1. Start the node in sandbox mode from a snapshot, either based on the Mainnet or Testnet context:
 
