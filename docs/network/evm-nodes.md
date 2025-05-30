@@ -12,7 +12,13 @@ Public Smart Rollup nodes for Etherlink are not yet available, so you must run y
 
 ## System requirements
 
-Running an Etherlink EVM node on Etherlink Mainnet requires a computer with 500GB of disk space and at least 16GB RAM.
+The system requirements for the node depend on the [History mode](#modes):
+
+Mode | Memory | Storage
+--- | --- | ---
+Rolling | 32GB | 500GB
+Archive | 32GB | 3TB
+Full | 32GB | ??
 
 ## Quickstart
 
