@@ -37,7 +37,7 @@
     "rehype-katex": "7.0.0",
     "remark-math": "6.0.0",
     "slick-carousel": "1.8.1",
-    "thirdweb": "5.79.0"
+    "thirdweb": "5.102.3"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.7.0",
