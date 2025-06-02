@@ -175,3 +175,8 @@ Posting the blocks on layer 1 also gives the Smart Rollup nodes the opportunity 
    }
    '
    ```
+
+   After the block is confirmed on layer 1, it is very unlikely that it can become invalid.
+   The main way that it can be made invalid is if the sequencer ignores transactions in the delayed inbox as described in [Delayed inbox transaction processing](#delayed-inbox-transaction-processing).
+   In the unlikely event that the sequencer ignores transactions in the delayed inbox for too long, the Smart Rollup nodes process the transactions automatically and update the state of Etherlink to include those transactions.
+   This new state may be different from the state of the sequencer and thus may not include all of the transactions that are in the blocks that the sequencer has posted to layer 1.
