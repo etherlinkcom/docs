@@ -36,8 +36,8 @@ This table shows the period lengths as of the Calypso Etherlink update and the T
 
 Period | Length | Approximate time
 --- | --- | ---
-Proposal | 30720 layer 1 blocks | About 3 days
-Promotion | 30720 layer 1 blocks | About 3 days
+Proposal | 50400 layer 1 blocks | About 4.5 days
+Promotion | 50400 layer 1 blocks | About 4.5 days
 Cooldown | 86400 seconds | About 1 day
 
 Note that these periods can vary.
@@ -109,8 +109,8 @@ This table shows the period lengths as of the Calypso Etherlink update and the T
 
 Period | Length | Approximate time
 --- | --- | ---
-Proposal | 3200 layer 1 blocks | About 7 hours
-Promotion | 3200 layer 1 blocks | About 7 hours
+Proposal | 3600 layer 1 blocks | About 8 hours
+Promotion | 3600 layer 1 blocks | About 8 hours
 Cooldown | 86400 seconds | About 1 day
 
 Like the kernel governance periods, these periods can vary based on the timing of layer 1 blocks and when users activate the new kernel at the end of the Cooldown period.
@@ -142,8 +142,8 @@ This table shows the period lengths as of the Calypso Etherlink update and the T
 
 Period | Length | Approximate time
 --- | --- | ---
-Proposal | 51200 layer 1 blocks | About 5 days
-Promotion | 51200 layer 1 blocks | About 5 days
+Proposal | 50400 layer 1 blocks | About 4.5 days
+Promotion | 50400 layer 1 blocks | About 4.5 days
 Cooldown | 86400 seconds | About 1 day
 
 ### Thresholds
