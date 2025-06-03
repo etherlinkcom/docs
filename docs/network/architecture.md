@@ -159,7 +159,7 @@ Tezos blocks are generated every 4 seconds, so Etherlink transactions are posted
 Posting the blocks on layer 1 also gives the Smart Rollup nodes the opportunity to refute them, which they can do immediately if they see a problem.
 
    When the Etherlink block has been posted and confirmed on Tezos layer 1, Etherlink treats the block (and the transactions in it) as finalized.
-   For example, when you pass the `finalized` parameter to the `eth_getBlockByNumber` RPC endpoint, Etherlink returns not the block that it created most recently but the block that it most recently posted on layer 1:
+   For example, when you pass the `finalized` parameter to the `eth_getBlockByNumber` RPC endpoint, the EVM node returns not the most recently created block but the block that was most recently posted on layer 1:
 
    ```bash
    curl --request POST \
@@ -175,6 +175,8 @@ Posting the blocks on layer 1 also gives the Smart Rollup nodes the opportunity 
    }
    '
    ```
+
+   For this RPC call to work, the EVM node must be following a Smart Rollup node; that is, it must not use the `--dont-track-rollup-node` flag.
 
    After the block is confirmed on layer 1, it is very unlikely that it can become invalid.
    The main way that it can be made invalid is if the sequencer ignores transactions in the delayed inbox as described in [Delayed inbox transaction processing](#delayed-inbox-transaction-processing).
