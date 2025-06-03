@@ -43,9 +43,9 @@ The execution fee depends on these parameters:
 
 - `minimum_base_fee_per_gas`: The base fee for Etherlink transactions, which is 1 gwei
 - `speed_limit`: The target amount of execution gas used per second
-- `tolerance`: The size the backlog is allowed to grow to before the execution fee increases
+- `tolerance`: The size the backlog is allowed to grow to before the execution fee increases, which is 20 million gas units
 - `backlog`: A measure of the amount of execution gas used in excess of the speed limit; Etherlink deducts the speed limit from the backlog every second
-- `alpha`: A scaling factor
+- `alpha`: A scaling factor, currently 7 * 10<sup>-9</sup>
 
 If the backlog is less than the tolerance, the execution fee for a transaction is `minimum_base_fee_per_gas`.
 
@@ -56,6 +56,23 @@ $$
 $$
 
 In other words, the execution fee is the minimum fee times the exponential function of the alpha scaling factor times the backlog in excess of the tolerance.
+For example, if the backlog reaches 40 million gas units (twice the tolerance), the gas price is:
+
+$$
+1 \texttt{gwei} * e ^{(7 * 10^9) * (40,000,000 - 20,000,000)} = 1.15 \texttt{gwei}
+$$
+
+Here is a table of gas prices at different backlog levels:
+
+Backlog amount (in gas units) | Backlog amount relative to tolerance | Gas price (gwei)
+--- | --- | ---
+20,000,000 or less | Less than or equal to the tolerance | 1
+30,000,000 | 150% of the tolerance | 1.07
+40,000,000 | 200% of the tolerance | 1.15
+80,000,000 | 400% of the tolerance | 1.52
+160,000,000 | 800% of the tolerance | 2.66
+240,000,000 | 1200% of the tolerance | 4.66
+320,000,000 | 1600% of the tolerance | 8.17
 
 ## Inclusion fee
 
