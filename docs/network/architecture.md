@@ -155,7 +155,7 @@ At this point, the previous block is considered _confirmed_ and it would take a 
 - **Transactions are confirmed on layer 1 in 8 seconds.**
 The sequencer also posts blocks to Tezos layer 1.
 As with Etherlink blocks, Tezos blocks are confirmed when another block builds on them, as described in [The consensus algorithm](https://octez.tezos.com/docs/active/consensus.html) in the Octez documentation.
-Tezos blocks are generated every 4 seconds, so Etherlink transactions are posted and confirmed on Tezos after 8 seconds.
+Tezos blocks are generated every 8 seconds, so Etherlink transactions are posted and confirmed on Tezos after 8 seconds, when another block is posted.
 Posting the blocks on layer 1 also gives the Smart Rollup nodes the opportunity to refute them, which they can do immediately if they see a problem.
 
    When the Etherlink block has been posted and confirmed on Tezos layer 1, Etherlink treats the block (and the transactions in it) as finalized.
