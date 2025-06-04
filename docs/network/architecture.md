@@ -156,7 +156,7 @@ At this point, the previous block is considered _confirmed_ and it would take a 
 The sequencer also posts blocks to Tezos layer 1.
 As with Etherlink blocks, Tezos blocks are confirmed when another block builds on them, as described in [The consensus algorithm](https://octez.tezos.com/docs/active/consensus.html) in the Octez documentation.
 Tezos blocks are generated every 8 seconds, so Etherlink transactions are posted and confirmed on Tezos after 8 seconds, when another block is posted.
-Posting the blocks on layer 1 also gives the Smart Rollup nodes the opportunity to refute them, which they can do immediately if they see a problem.
+Etherlink Smart Rollup nodes also pick up these blocks and their instance of the kernel decides immediately whether these blocks are valid and if they should become the next Etherlink block.
 
    When the Etherlink block has been posted and confirmed on Tezos layer 1, Etherlink treats the block (and the transactions in it) as finalized.
    For example, when you pass the `finalized` parameter to the `eth_getBlockByNumber` RPC endpoint, the EVM node returns not the most recently created block but the block that was most recently posted on layer 1:
@@ -178,8 +178,17 @@ Posting the blocks on layer 1 also gives the Smart Rollup nodes the opportunity 
 
    For this RPC call to work, the EVM node must be following a Smart Rollup node; that is, it must not use the `--dont-track-rollup-node` flag.
 
-   After the block is confirmed on layer 1, it is very unlikely that it can become invalid.
-   The main way that it can be made invalid is if the sequencer ignores transactions in the delayed inbox as described in [Delayed inbox transaction processing](#delayed-inbox-transaction-processing).
-   In the unlikely event that the sequencer ignores transactions in the delayed inbox for too long, the Smart Rollup nodes process the transactions automatically and update the state of Etherlink to include those transactions.
-   This new state may be different from the state of the sequencer and thus may not include all of the transactions that are in the blocks that the sequencer has posted to layer 1.
-   In this case, the sequencer automatically reorganizes its blocks to follow the new state of Etherlink.
+After a block containing Etherlink transactions is confirmed on Etherlink and on Tezos layer 1, it is very unlikely that it can be replaced by other blocks (sometimes known as a _reorg_ because it reorganizes the chain of blocks).
+Here are two possible but unlikely ways that Etherlink blocks can be reorganized after they are confirmed on layer 1:
+
+- If the sequencer ignores transactions in the delayed inbox as described in [Delayed inbox transaction processing](#delayed-inbox-transaction-processing) for too long, the Smart Rollup nodes process the transactions automatically and generate a block to include those transactions.
+This chain may be different from the blocks that the sequencer has posted to layer 1.
+In this case, the sequencer automatically reorganizes its blocks to follow the new state of Etherlink.
+This type of reorg happens quickly because the Smart Rollup nodes constantly check the delayed inbox and respond quickly when a transaction has been in it for too long.
+
+- As with all [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups), Smart Rollup nodes running in operator or maintenance mode post commitments about their state to Tezos layer 1.
+If they execute the kernel honestly, all of their commitments are the same.
+If commitments differ, the Smart Rollup nodes play a refutation game to determine the correct commitment and therefore the correct state of Etherlink.
+Eliminating these incorrect commitments can mean rejecting blocks that have been confirmed on layer 1.
+
+For these reasons, you can have complete confidence that a transaction is final after the refutation period has elapsed for the block that contains it.
