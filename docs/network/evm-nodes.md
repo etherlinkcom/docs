@@ -16,9 +16,9 @@ The system requirements for the node depend on the [History mode](#modes):
 
 Mode | Memory | Storage
 --- | --- | ---
-Rolling | 32GB | 500GB
+Rolling | 32GB | 100GB
 Archive | 32GB | 3TB
-Full | 32GB | ??
+Full | 32GB | 1TB
 
 ## Quickstart
 
