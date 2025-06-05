@@ -5,6 +5,12 @@ require('dotenv').config();
 
 const { themes } = require('prism-react-renderer');
 
+const BIEL_PROJECT = 'w30c27l8fg';
+const BIEL_WARNING = 'AI-generated answers may contain errors. Verify the information before use. For more information, see <a href="https://docs.tezos.com/overview/chatbot">Using the chatbot</a>.';
+const BIEL_SEARCH_HEADER_TITLE = 'Search or use AI to learn about Tezos';
+const BIEL_SEARCH_BOX_TEXT = 'Search all docs/Ask AI';
+const ALGOLIA_SEARCH_BOX_TEXT = 'Search docs.etherlink.com';
+
 // script-src causes development builds to fail
 // But unsafe-eval should NOT be in production builds
 // Also, put GTM first because sometimes the ';' in the escaped single quotes causes the browser to think it's the end
@@ -46,6 +52,11 @@ module.exports = async function createConfigAsync() {
     },
 
     customFields: {
+      BIEL_PROJECT,
+      BIEL_WARNING,
+      BIEL_SEARCH_HEADER_TITLE,
+      BIEL_SEARCH_BOX_TEXT,
+      ALGOLIA_SEARCH_BOX_TEXT,
       THIRDWEB_CLIENT_ID: process.env.THIRDWEB_CLIENT_ID,
     },
 
@@ -96,7 +107,7 @@ module.exports = async function createConfigAsync() {
       require.resolve('./src/plugins/webpack-config-plugin'),
       [
         'docusaurus-biel',{
-          project: 'w30c27l8fg',
+          project: BIEL_PROJECT,
           headerTitle: 'Etherlink/Tezos documentation chatbot (beta)',
           buttonPosition: 'center-right',
           version: 'latest',
@@ -105,7 +116,7 @@ module.exports = async function createConfigAsync() {
             'What assets can I bridge to Etherlink?',
           ],
           welcomeMessage: "Hi! How can I help you learn about Etherlink and Tezos?",
-          footerText: 'AI-generated answers may contain errors. Verify the information before use. For more information, see <a href="https://docs.tezos.com/overview/chatbot">Using the chatbot</a>.',
+          footerText: BIEL_WARNING,
         },
       ],
     ],

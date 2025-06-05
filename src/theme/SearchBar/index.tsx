@@ -26,6 +26,8 @@ import type {
   StoredDocSearchHit,
 } from "@docsearch/react/dist/esm/types";
 import type { SearchClient } from "algoliasearch/lite";
+import clsx from 'clsx';
+import styles from './styles.module.css';
 
 type DocSearchProps = Omit<
   DocSearchModalProps,
@@ -210,6 +212,15 @@ function DocSearch({
     searchButtonRef,
   });
 
+  const {siteConfig} = useDocusaurusContext();
+
+  const customTranslations = {
+    button: {
+      buttonText: siteConfig.customFields.ALGOLIA_SEARCH_BOX_TEXT,
+      buttonAriaLabel: siteConfig.customFields.ALGOLIA_SEARCH_BOX_TEXT,
+    },
+  };
+
   return (
     <>
       <Head>
@@ -229,7 +240,7 @@ function DocSearch({
         onMouseOver={importDocSearchModalIfNeeded}
         onClick={onOpen}
         ref={searchButtonRef}
-        translations={translations.button}
+        translations={customTranslations.button}
       />
 
       {isOpen &&
@@ -260,5 +271,15 @@ function DocSearch({
 
 export default function SearchBar(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
-  return <DocSearch {...(siteConfig.themeConfig.algolia as DocSearchProps)} />;
+  return <div className={clsx(styles.container)}>
+    <biel-search-button
+      project={siteConfig.customFields.BIEL_PROJECT}
+      hide-ctrl-k="true"
+      button-style="rounded"
+      header-title={siteConfig.customFields.BIEL_SEARCH_HEADER_TITLE}
+      footer-text={siteConfig.customFields.BIEL_WARNING}>
+        {siteConfig.customFields.BIEL_SEARCH_BOX_TEXT}
+    </biel-search-button>
+    <DocSearch {...(siteConfig.themeConfig.algolia as DocSearchProps)} />
+  </div>;
 }
