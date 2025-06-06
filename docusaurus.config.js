@@ -7,6 +7,9 @@ const { themes } = require('prism-react-renderer');
 
 const BIEL_PROJECT = 'w30c27l8fg';
 const BIEL_WARNING = 'AI-generated answers may contain errors. Verify the information before use. For more information, see <a href="https://docs.tezos.com/overview/chatbot">Using the chatbot</a>.';
+const BIEL_SEARCH_HEADER_TITLE = 'Search or use AI to learn about Tezos';
+const BIEL_SEARCH_BOX_TEXT = 'Search all docs/Ask AI';
+const ALGOLIA_SEARCH_BOX_TEXT = 'Search docs.etherlink.com';
 
 // script-src causes development builds to fail
 // But unsafe-eval should NOT be in production builds
@@ -50,8 +53,16 @@ module.exports = async function createConfigAsync() {
     future: {
       v4: true,
     },
+    scripts: [
+      '/scripts/cssForBielSearch.js',
+    ],
 
     customFields: {
+      BIEL_PROJECT,
+      BIEL_WARNING,
+      BIEL_SEARCH_HEADER_TITLE,
+      BIEL_SEARCH_BOX_TEXT,
+      ALGOLIA_SEARCH_BOX_TEXT,
       THIRDWEB_CLIENT_ID: process.env.THIRDWEB_CLIENT_ID,
     },
 
