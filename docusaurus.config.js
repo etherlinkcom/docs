@@ -5,6 +5,9 @@ require('dotenv').config();
 
 const { themes } = require('prism-react-renderer');
 
+const BIEL_PROJECT = 'w30c27l8fg';
+const BIEL_WARNING = 'AI-generated answers may contain errors. Verify the information before use. For more information, see <a href="https://docs.tezos.com/overview/chatbot">Using the chatbot</a>.';
+
 // script-src causes development builds to fail
 // But unsafe-eval should NOT be in production builds
 // Also, put GTM first because sometimes the ';' in the escaped single quotes causes the browser to think it's the end
@@ -22,7 +25,7 @@ font-src https://cdn.jsdelivr.net https://fonts.gstatic.com 'self';
 img-src 'self' https://*.googletagmanager.com https://*.google-analytics.com data: https://*.walletconnect.com;
 media-src 'self';
 form-action 'self';
-connect-src 'self' https://node.mainnet.etherlink.com https://node.ghostnet.etherlink.com https://*.thirdweb.com https://*.algolia.net https://*.algolianet.com https://app.pushfeedback.com https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.walletconnect.com https://*.walletconnect.org wss://relay.walletconnect.org;
+connect-src 'self' https://node.mainnet.etherlink.com https://node.ghostnet.etherlink.com https://*.thirdweb.com https://*.algolia.net https://*.algolianet.com https://app.pushfeedback.com https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.walletconnect.com https://*.walletconnect.org wss://relay.walletconnect.org wss://app.biel.ai https://app.biel.ai;
 frame-src https://tezosbot.vercel.app https://*.loom.com https://*.thirdweb.com https://*.walletconnect.org;`;
 
 /** @type {import('@docusaurus/types').Config} */
@@ -94,6 +97,20 @@ module.exports = async function createConfigAsync() {
         },
       ],
       require.resolve('./src/plugins/webpack-config-plugin'),
+      [
+        'docusaurus-biel',{
+          project: BIEL_PROJECT,
+          headerTitle: 'Etherlink/Tezos documentation chatbot (beta)',
+          buttonPosition: 'center-right',
+          version: 'latest',
+          suggestedQuestions: [
+            'What development tools does Etherlink support?',
+            'What assets can I bridge to Etherlink?',
+          ],
+          welcomeMessage: "Hi! How can I help you learn about Etherlink and Tezos?",
+          footerText: BIEL_WARNING,
+        },
+      ],
     ],
 
     themeConfig:

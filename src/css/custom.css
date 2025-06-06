@@ -58,6 +58,13 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 
+  --biel-primary-color: var(--ifm-color-primary-darkest);
+  --biel-search-ask-ai-color: var(--ifm-font-color-base);
+
+}
+
+biel-search-button a.biel-search-button-content {
+  box-shadow: 0px 0px 6px 0px rgba(51, 232, 142, 0.40); /* no worky */
 }
 
 h1 {
