@@ -35,6 +35,9 @@ To use the bridge, follow these general steps:
 
 1. Enter the amount of tokens to transfer.
 
+1. For withdrawals, select whether to use fast withdrawals for an additional fee.
+For more information about fast withdrawals, see [Fast withdrawals](#fast-withdrawals).
+
 1. Click **Transfer**.
 
 ## How bridging XTZ works
@@ -92,3 +95,18 @@ This diagram is an overview of the withdrawal process:
 
 ![Overview of the token bridging withdrawal process](/img/bridging-withdrawal.png)
 <!-- https://lucid.app/lucidchart/d4fb99c8-74eb-4336-b971-117b0045772b/edit -->
+
+### Fast withdrawals
+
+As described above, normal withdrawals from Etherlink to Tezos take about 15 days.
+You can receive your XTZ faster by selecting the fast withdrawal option on the bridge.
+In this case, you receive your XTZ within 1 minute, minus a percentage as a fee.
+
+Internally, when you make a fast withdrawal, a liquidity provider on Tezos layer 1 sends you the XTZ that you are withdrawing minus the fee.
+The liquidity provider receives your withdrawn XTZ after the usual 15-day delay and gets to keep the fee.
+
+Because this fast withdrawal feature is built into Etherlink, it is very safe.
+The main risk to the user is if the liquidity provider runs out of funds.
+If you submit a fast withdrawal and the liquidity provider runs out of funds before your withdrawal is confirmed, your fast withdrawal automatically converts to a normal withdrawal.
+There is no risk to your funds, but you cannot convert the normal withdrawal back to a fast withdrawal.
+Etherlink minimizes this risk by checking the liquidity provider's balance frequently and limiting the amount of XTZ that users can transfer in a single fast withdrawal.
