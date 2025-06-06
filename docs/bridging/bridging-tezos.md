@@ -104,3 +104,9 @@ In this case, you receive your XTZ within 1 minute, minus a percentage as a fee.
 
 Internally, when you make a fast withdrawal, a liquidity provider on Tezos layer 1 sends you the XTZ that you are withdrawing minus the fee.
 The liquidity provider receives your withdrawn XTZ after the usual 15-day delay and gets to keep the fee.
+
+Because this fast withdrawal feature is built into Etherlink, it is very safe.
+The main risk to the user is if the liquidity provider runs out of funds.
+If you submit a fast withdrawal and the liquidity provider runs out of funds before your withdrawal is confirmed, your fast withdrawal automatically converts to a normal withdrawal.
+There is no risk to your funds, but you cannot convert the normal withdrawal back to a fast withdrawal.
+Etherlink minimizes this risk by checking the liquidity provider's balance frequently and limiting the amount of XTZ that users can transfer in a single fast withdrawal.
