@@ -100,7 +100,7 @@ This diagram is an overview of the withdrawal process:
 
 As described above, normal withdrawals from Etherlink to Tezos take about 15 days.
 You can receive your XTZ faster by selecting the fast withdrawal option on the bridge.
-In this case, you receive your XTZ immediately, minus a percentage as a fee.
+In this case, you receive your XTZ within 1 minute, minus a percentage as a fee.
 
 Internally, when you make a fast withdrawal, a liquidity provider on Tezos layer 1 sends you the XTZ that you are withdrawing minus the fee.
 The liquidity provider receives your withdrawn XTZ after the usual 15-day delay and gets to keep the fee.
