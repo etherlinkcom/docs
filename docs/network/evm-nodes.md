@@ -14,11 +14,13 @@ Public Smart Rollup nodes for Etherlink are not yet available, so you must run y
 
 The system requirements for the node depend on the [History mode](#modes):
 
-Mode | Memory | Storage
+Mode | Minimal | Recommended
 --- | --- | ---
-Rolling | 32GB | 100GB
-Full | 32GB | 1TB
-Archive | 32GB | 3TB
+Rolling | 16GB memory, 100GB storage | 32GB memory, 100GB storage
+Full | 16GB memory, 300GB storage | 32GB memory, 1TB storage
+Archive | 16GB memory, 1TB storage | 32GB memory, 2TB storage
+
+The recommended disk space allows extra space to accommodate growth.
 
 ## Quickstart
 
