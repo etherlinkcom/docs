@@ -109,4 +109,4 @@ Because this fast withdrawal feature is built into Etherlink, it is very safe.
 The main risk to the user is if the liquidity provider runs out of funds.
 If you submit a fast withdrawal and the liquidity provider runs out of funds before your withdrawal is confirmed, your fast withdrawal automatically converts to a normal withdrawal.
 There is no risk to your funds, but you cannot convert the normal withdrawal back to a fast withdrawal.
-Etherlink minimizes this risk by checking the liquidity provider's balance frequently and limiting the amount of XTZ that users can transfer in a single fast withdrawal.
+The bridge minimizes this risk by checking the liquidity provider's balance frequently and limiting the amount of XTZ that users can transfer in a single fast withdrawal.
