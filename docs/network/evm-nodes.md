@@ -26,7 +26,7 @@ The recommended disk space allows extra space to accommodate growth.
 
 If you don't want to see all of the options and settings for the EVM node, you can run the node quickly with these steps:
 
-1. Download the latest release of the `octez-evm-node` binary from from https://gitlab.com/tezos/tezos/-/releases.
+1. Download the latest release of the `octez-evm-node` binary from https://gitlab.com/tezos/tezos/-/releases.
 
 1. Run the `octez-evm-node run observer` command to start the node as an observer:
 
