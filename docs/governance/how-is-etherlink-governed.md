@@ -5,7 +5,7 @@ title: How is Etherlink governed?
 Like Tezos, Etherlink has a built-in on-chain mechanism for proposing, selecting, testing, and activating upgrades without the need to hard fork.
 This mechanism makes Etherlink self-amending and empowers Tezos bakers to govern Etherlink’s kernel upgrades, security updates, and sequencer operators.
 
-Etherlink has separate governance processes for the kernel, for security incidents, and for the Sequencer Committee.
+Etherlink has separate governance processes for the kernel, for security incidents, and for the sequencer.
 To ensure that decisions accurately reflect the consensus of the Etherlink community, all three governance processes are designed with the same robust safeguards.
 Like Tezos's governance process, Etherlink's governance process promotes transparency and fairness in decision-making.
 
@@ -128,16 +128,16 @@ Proposal | Quorum | 5% of all voting power must vote for a specific proposal
 Promotion | Quorum | 15% of all voting power must vote Yea, Nay, or Pass
 Promotion | Supermajority | 80% of Yea or Nay votes must be Yea
 
-## Sequencer Committee governance
+## Sequencer governance
 
-A separate sequencer governance contract handles the selection process for Etherlink's Sequencer Committee.
+A separate sequencer governance contract handles the selection process for Etherlink's sequencer.
 
 ### Periods
 
-Similar to the kernel and security governance processes, the Sequencer Committee voting process has Proposal, Promotion, and Cooldown periods.
-In this process, bakers propose and vote on members for the Sequencer Committee.
+Similar to the kernel and security governance processes, the sequencer voting process has Proposal, Promotion, and Cooldown periods.
+In this process, bakers propose and vote on the account that operates the sequencer.
 
-The lengths of the periods are stored in the [sequencer committee governance contract](https://better-call.dev/mainnet/KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa).
+The lengths of the periods are stored in the [sequencer governance contract](https://better-call.dev/mainnet/KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa).
 This table shows the period lengths as of the Calypso Etherlink update and the Tezos Quebec protocol:
 
 Period | Length | Approximate time
