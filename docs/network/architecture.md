@@ -192,3 +192,4 @@ If commitments differ, the Smart Rollup nodes play a refutation game to determin
 Eliminating these incorrect commitments can mean rejecting blocks that have been confirmed on layer 1.
 
 For these reasons, you can have complete confidence that a transaction is final after the refutation period has elapsed for the block that contains it.
+At this point, the commitment that includes this transaction is said to be _cemented_ and therefore final and unchangeable.
