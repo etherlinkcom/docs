@@ -33,8 +33,8 @@ Each Etherlink block contains:
 
 The sequencer publishes each block in two ways:
 
-- It publishes them to EVM nodes, which can consider the transactions final as long as they trust that the sequencer will publish them to layer 1.
-- It publishes them via the DAL or directly to Tezos layer 1, which finalizes the transactions.
+- It publishes them to EVM nodes
+- It publishes them via the DAL or directly to Tezos layer 1
 
 The sequencer is the primary way that Etherlink transactions are processed.
 However, to protect the system from censorship and any other problems with the sequencer, Etherlink provides a backup way of handling transactions; see [Transaction lifecycle](#transaction-lifecycle).
@@ -132,3 +132,64 @@ The only way to remove a transaction from the delayed inbox is to process it.
    It becomes the responsibility of the sequencer to reorganize itself to build blocks on top of the kernel-generated block.
 
 To submit a transaction to the delayed inbox, see [Sending transactions to the delayed inbox](/building-on-etherlink/transactions#sending-transactions-to-the-delayed-inbox).
+
+## Transaction finality
+
+Transactions are considered finalized when you can trust that they cannot be reversed.
+
+The source of truth of what Etherlink transactions are final is the state of the rollup, which Etherlink Smart Rollup nodes store and keep up to date.
+They catch any misbehavior by the sequencer or other actors, accept only valid transactions, and challenge questionable behavior.
+As described in [Refutation periods](https://docs.tezos.com/architecture/smart-rollups#refutation-periods) on docs.tezos.com, Smart Rollup nodes have two weeks to challenge commitments made about the state of a Smart Rollup, although they usually challenge any questionable state as soon as possible.
+
+Therefore, an Etherlink transaction is truly finalized two weeks after the block is it in has been published to Tezos layer 1.
+At this point, it is permanently part of the state of the Etherlink Smart Rollup and of Tezos.
+
+However, Etherlink is set up so users can be confident that transactions are irreversible much sooner than that.
+Most users can assume that a transaction is irreversible and will be finalized after one of two milestones:
+
+- **Transactions are confirmed on Etherlink within 500ms.**
+As described in [Sequencer](#sequencer), the sequencer puts transactions in blocks and distributes them to the EVM nodes.
+When the EVM nodes get another block that builds on the previous block, they can trust that the transactions in the previous block are final as long as they trust the that the sequencer will publish them to layer 1.
+At this point, the previous block is considered _confirmed_ and it would take a significant bug in the sequencer for it to generate blocks that do not use the confirmed block and thus reorganize the blocks in such a way as to make the confirmed block invalid.
+
+- **Transactions are confirmed on layer 1 in 8 seconds.**
+The sequencer also posts blocks to Tezos layer 1.
+As with Etherlink blocks, Tezos blocks are confirmed when another block builds on them, as described in [The consensus algorithm](https://octez.tezos.com/docs/active/consensus.html) in the Octez documentation.
+Tezos blocks are generated every 8 seconds, so Etherlink transactions are posted and confirmed on Tezos after 8 seconds, when another block is posted.
+Etherlink Smart Rollup nodes also pick up these blocks and their instance of the kernel decides immediately whether these blocks are valid and if they should become the next Etherlink block.
+
+   When the Etherlink block has been posted and confirmed on Tezos layer 1, Etherlink treats the block (and the transactions in it) as finalized.
+   For example, when you pass the `finalized` parameter to the `eth_getBlockByNumber` RPC endpoint, the EVM node returns not the most recently created block but the block that was most recently posted on layer 1:
+
+   ```bash
+   curl --request POST \
+        --url https://node.ghostnet.etherlink.com \
+        --header 'accept: application/json' \
+        --header 'content-type: application/json' \
+        --data '
+   {
+     "id": 1,
+     "jsonrpc": "2.0",
+     "method": "eth_getBlockByNumber",
+     "params": ["finalized", false]
+   }
+   '
+   ```
+
+   For this RPC call to work, the EVM node must be following a Smart Rollup node; that is, it must not use the `--dont-track-rollup-node` flag.
+
+After a block containing Etherlink transactions is confirmed on Etherlink and on Tezos layer 1, it is very unlikely that it can be replaced by other blocks (sometimes known as a _reorg_ because it reorganizes the chain of blocks).
+Here are two possible but unlikely ways that Etherlink blocks can be reorganized after they are confirmed on layer 1:
+
+- If the sequencer ignores transactions in the delayed inbox as described in [Delayed inbox transaction processing](#delayed-inbox-transaction-processing) for too long, the Smart Rollup nodes process the transactions automatically and generate a block to include those transactions.
+This chain may be different from the blocks that the sequencer has posted to layer 1.
+In this case, the sequencer automatically reorganizes its blocks to follow the new state of Etherlink.
+This type of reorg happens quickly because the Smart Rollup nodes constantly check the delayed inbox and respond quickly when a transaction has been in it for too long.
+
+- As with all [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups), Smart Rollup nodes running in operator or maintenance mode post commitments about their state to Tezos layer 1.
+If they execute the kernel honestly, all of their commitments are the same.
+If commitments differ, the Smart Rollup nodes play a refutation game to determine the correct commitment and therefore the correct state of Etherlink.
+Eliminating these incorrect commitments can mean rejecting blocks that have been confirmed on layer 1.
+
+For these reasons, you can have complete confidence that a transaction is final after the refutation period has elapsed for the block that contains it.
+At this point, the commitment that includes this transaction is said to be _cemented_ and therefore final and unchangeable.
