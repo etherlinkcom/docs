@@ -278,6 +278,7 @@ export default function SearchBar(): JSX.Element {
       hide-ctrl-k="true"
       button-style="rounded"
       header-title={siteConfig.customFields.BIEL_SEARCH_HEADER_TITLE}
+      search-placeholder={siteConfig.customFields.BIEL_SEARCH_BOX_TEXT}
       footer-text={siteConfig.customFields.BIEL_WARNING}>
         {siteConfig.customFields.BIEL_SEARCH_BOX_TEXT}
     </biel-search-button>
