@@ -219,6 +219,7 @@ function DocSearch({
       buttonText: siteConfig.customFields.ALGOLIA_SEARCH_BOX_TEXT,
       buttonAriaLabel: siteConfig.customFields.ALGOLIA_SEARCH_BOX_TEXT,
     },
+    placeholder: siteConfig.customFields.ALGOLIA_SEARCH_BOX_TEXT,
   };
 
   return (
@@ -260,7 +261,7 @@ function DocSearch({
             })}
             {...props}
             searchParameters={searchParameters}
-            placeholder={translations.placeholder}
+            placeholder={customTranslations.placeholder}
             translations={translations.modal}
           />,
           searchContainer.current
