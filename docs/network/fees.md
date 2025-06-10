@@ -6,9 +6,7 @@ The Etherlink gas price (and therefore the fee for a given transaction) varies b
 As activity increases, fees increase, and vice versa.
 For information about estimating fees, see [Estimating fees](/building-on-etherlink/estimating-fees).
 
-Etherlink fees include the cost of running the transaction and writing the transaction to layer 1. It's not possible to set a voluntary tip or priority fee to increase the chances of a transaction being accepted, if included as part of the transaction parameters it will be ignored.
-
-Etherlink transactions include two fees:
+Etherlink fees include the cost of running the transaction and the cost of writing the transaction to layer 1:
 
 - The _execution fee_, sometimes known as the _gas fee_, is a fee for running the transaction.
 It changes depending on Etherlink throughput over time; at times of high demand for Etherlink transactions, the gas fee rises.
@@ -16,12 +14,17 @@ This fee is burned.
 - The _inclusion fee_ goes to the sequencer to defray the cost of the data that Etherlink stores on Tezos layer 1.
 Transactions that use more data pay a higher fee.
 
-Unlike some other chains, Etherlink does not use a voluntary gas fee, also known as a tip, to encourage block producers to include transactions more quickly.
+The base fee of the transaction (in the Ethereum `max_fee_per_gas` [EIP-1559](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1559.md) field) must be enough to cover these Etherlink fees.
+
+:::note
+
+Unlike some other chains, Etherlink does not use a voluntary gas fee, also known as a tip or priority fee, to encourage block producers to include transactions more quickly.
 Because the Etherlink sequencer orders transactions in first-come-first-served order, there is no need to offer higher fees for faster inclusion.
 
-The base fee of the transaction (in the Ethereum `max_fee_per_gas` [EIP-1559](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1559.md) field) must be enough to cover these Etherlink fees.
-Etherlink ignores the priority fee in the `max_priority_fee_per_gas` field.
+For this reason, Etherlink ignores priority fees offered with transactions in the `max_priority_fee_per_gas` field and deducts only the execution fee and the inclusion fee.
 If the transaction's base fee is not enough to cover Etherlink's fees, the transaction fails, even if the amount of the priority fee would be enough to cover the fee.
+
+:::
 
 ## Execution fee
 
