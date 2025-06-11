@@ -47,6 +47,9 @@ module.exports = async function createConfigAsync() {
     markdown: {
       mermaid: true,
     },
+    future: {
+      v4: true,
+    },
 
     customFields: {
       THIRDWEB_CLIENT_ID: process.env.THIRDWEB_CLIENT_ID,
