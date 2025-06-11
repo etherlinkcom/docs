@@ -105,9 +105,21 @@ In this case, you receive your XTZ within 1 minute, minus a percentage as a fee.
 Fast withdrawals build on the standard withdrawal process between Etherlink and Tezos, using built-in protocol support and smart contracts on both networks without requiring third-party services.
 Internally, when you make a fast withdrawal, a liquidity provider on Tezos layer 1 sends you the XTZ that you are withdrawing minus the fee.
 The liquidity provider receives your withdrawn XTZ after the usual 15-day delay and gets to keep the fee.
-They can use the bridge to verify that they will receive the withdrawn funds when the commitment containing that transaction state has been cemented on Tezos
+They can use the bridge to verify that they will receive the withdrawn funds when the commitment containing that transaction state has been cemented on Tezos.
 
-The only risk to the user is if the liquidity provider runs out of funds.
-If you submit a fast withdrawal and the liquidity provider runs out of funds, your fast withdrawal automatically converts to a normal withdrawal.
-There is no risk to your funds, but you cannot convert the normal withdrawal back to a fast withdrawal.
-The bridge minimizes this risk by checking the liquidity provider's balance frequently and limiting the amount of XTZ that users can transfer in a single fast withdrawal.
+### Fast withdrawal process
+
+The process for fast withdrawals is different than for standard withdrawals:
+
+1. An Etherlink user submits a withdrawal transaction to the fast withdrawal precompiled contract instead of the standard withdrawal precompiled contract.
+1. As in the standard withdrawal process, the fast withdrawal precompiled contract locks the Etherlink XTZ and puts a message in the Smart Rollup outbox that represents those tokens.
+However, instead of sending the withdrawn tokens directly to the user's Tezos layer 1 account, it sends them to a fast withdrawal contract on layer 1.
+1. The fast withdrawal precompiled contract emits an event that notifies liquidity providers that a user requested a fast withdrawal.
+1. A liquidity provider calls the layer 1 contract to claim the fast withdrawal.
+This request includes information from the event and the withdrawn tez minus the fee.
+1. The fast withdrawal contract forwards the withdrawn tez to the user's account and marks the fast withdrawal fulfilled.
+1. When the commitment that includes the withdrawn tokens is cemented, the fast withdrawal contract sends the withdrawn tez to the liquidity provider.
+
+Liquidity providers usually claim the fast withdrawal within 1 minute.
+However, if no liquidity providers claim the fast withdrawal within 1 day, the fast withdrawal expires and no liquidity providers can claim it.
+In this case, the fast withdrawal contract waits until the commitment is cemented and sends the withdrawn tokens to the user account without deducting a fee.
