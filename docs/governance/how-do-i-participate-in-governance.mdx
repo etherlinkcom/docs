@@ -8,7 +8,7 @@ Tezos bakers can participate in the [Etherlink governance process](/governance/h
 
 The voting power of a baker is the amount of tez that it has staked plus the tez that delegators have delegated to it, also called its _staking balance_.
 
-Separate contracts manage the kernel updates, security updates, and the Sequencer Committee, so to interact with them, bakers send transactions to those contracts, such as with the Octez client.
+Separate contracts manage the slow kernel updates, the fast kernel updates, and the Sequencer Committee, so to interact with them, bakers send transactions to those contracts, such as with the Octez client.
 The addresses of the governance contracts are specified in Etherlink's kernel.
 For information about the Octez client, see [Command Line Interface](https://octez.tezos.com/docs/active/cli-commands.html) in the Octez documentation.
 
@@ -31,12 +31,12 @@ You need the address of the correct governance contract to propose changes and v
 <td><InlineCopy code="sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg" href="https://ghostnet.tzkt.io/sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg" abbreviate="6,4"></InlineCopy></td>
 </tr>
 <tr>
-<td>Kernel governance</td>
+<td>Kernel governance (slow)</td>
 <td><InlineCopy code="KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh" href="https://better-call.dev/mainnet/KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh" abbreviate="6,4"></InlineCopy></td>
 <td><InlineCopy code="KT1HfJb718fGszcgYguA4bfTjAqe1BEmFHkv" href="https://better-call.dev/ghostnet/KT1HfJb718fGszcgYguA4bfTjAqe1BEmFHkv" abbreviate="6,4"></InlineCopy></td>
 </tr>
 <tr>
-<td>Kernel security governance</td>
+<td>Kernel governance (fast)</td>
 <td><InlineCopy code="KT1D1fRgZVdjTj5sUZKcSTPPnuR7LRxVYnDL" href="https://better-call.dev/mainnet/KT1D1fRgZVdjTj5sUZKcSTPPnuR7LRxVYnDL" abbreviate="6,4"></InlineCopy></td>
 <td><InlineCopy code="KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk" href="https://better-call.dev/ghostnet/KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk" abbreviate="6,4"></InlineCopy></td>
 </tr>
@@ -48,17 +48,17 @@ You need the address of the correct governance contract to propose changes and v
 </tbody>
 </table>
 
-## Participating in kernel and security governance
+## Participating in kernel governance
 
-Bakers can propose, vote on, and trigger kernel updates and security updates with these commands.
-The commands are the same for kernel upgrades and security upgrades but they target different governance contracts.
+Bakers can propose, vote on, and trigger kernel updates with these commands.
+The commands are the same for slow and fast upgrades but they target different governance contracts.
 
 ### Getting information about the current period
 
 You can get information about the current period at https://governance.etherlink.com.
 
-To get information about the current state of the kernel or security governance contract directly from the contract, connect the Octez client to an active node and call the contract's `get_voting_state` view.
-For example, this Octez client command calls this view for the kernel governance contract on Mainnet:
+To get information about the current state of either kernel governance contract directly from the contract, connect the Octez client to an active node and call the contract's `get_voting_state` view.
+For example, this Octez client command calls this view for the slow governance contract on Mainnet:
 
 ```bash
 octez-client -E https://mainnet.ecadinfra.com \
@@ -84,7 +84,7 @@ You can also subscribe to the `voting_finished` event to be notified when the Pr
 
 ### Proposing and upvoting upgrades
 
-During a Proposal period, bakers can propose kernel or security updates by calling the `new_proposal` entrypoint of the appropriate governance contract and passing the hash of their proposed kernel, as in this example, which uses `<KERNEL_HASH>` as the kernel hash:
+During a Proposal period, bakers can propose updates by calling the `new_proposal` entrypoint of the appropriate governance contract and passing the hash of their proposed kernel, as in this example, which uses `<KERNEL_HASH>` as the kernel hash:
 
 ```bash
 octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
@@ -95,14 +95,14 @@ octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
 The command takes these parameters:
 
 - The address or Octez client alias of your baker account
-- The address of the Etherlink kernel or security governance contract
+- The address of the Etherlink kernel governance contract
 - The hash of the upgraded kernel, which the proposer must generate from the code of the new kernel
 
 The proposer must make the code and hash of the new kernel available for people to evaluate.
 You can look for this information in blog posts or other announcements from proposal developers.
 Proposers can make it easier for bakers to upgrade to the new kernel by providing the preimages for the kernel online so nodes can update from them directly.
 
-To upvote a proposed kernel or security update during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters
+To upvote a proposed kernel update during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
 
 ```bash
 octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
@@ -124,14 +124,14 @@ octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
 The command takes these parameters:
 
 - The address or Octez client alias of your baker account
-- The address of the Etherlink kernel or security governance contract
+- The address of the Etherlink kernel governance contract
 - `"yea"`, `"nay"`, or `"pass"`, including the double quotes
 
 The command does not need the hash of the kernel because only one kernel can be in the Promotion period at a time, so the options are to vote for or against that kernel or to abstain by voting "pass."
 
 ### Triggering upgrades
 
-After a proposal wins a vote, any user can trigger the kernel or security upgrade by calling the governance contract's `trigger_kernel_upgrade` entrypoint:
+After a proposal wins a vote, any user can trigger the kernel upgrade by calling the appropriate governance contract's `trigger_kernel_upgrade` entrypoint:
 
 ```bash
 octez-client transfer 0 from my_wallet to KT1D1fRgZVdjTj5sUZKcSTPPnuR7LRxVYnDL \
@@ -142,7 +142,7 @@ octez-client transfer 0 from my_wallet to KT1D1fRgZVdjTj5sUZKcSTPPnuR7LRxVYnDL \
 The command takes these parameters:
 
 - The address or Octez client alias of your baker account
-- The address of the Etherlink kernel or security governance contract
+- The address of the appropriate Etherlink kernel governance contract
 - The address of the Etherlink Smart Rollup; the parameter must include the double quotes
 
 After the new kernel becomes active, bakers must provide their nodes with the preimages for the new kernel to continue to participate in Etherlink.
