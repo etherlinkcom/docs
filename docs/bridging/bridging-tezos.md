@@ -104,7 +104,9 @@ In this case, you receive your XTZ within 1 minute, minus a percentage as a fee.
 
 Fast withdrawals build on the standard withdrawal process between Etherlink and Tezos, using built-in protocol support and smart contracts on both networks without requiring third-party services.
 Internally, when you make a fast withdrawal, a liquidity provider on Tezos layer 1 sends you the XTZ that you are withdrawing minus the fee.
-The liquidity provider receives your withdrawn XTZ after the usual 15-day delay and gets to keep the fee.
+The liquidity provider receives your withdrawn XTZ after the usual 15-day delay.
+
+The liquidity provider gets to keep the fee in exchange for the expenses of providing your funds earlier, running systems to watch for fast withdrawal requests, and taking the risk of providing your funds when the commitment that includes the withdrawal is not cemented yet.
 They can use the bridge to verify that they will receive the withdrawn funds when the commitment containing that transaction state has been cemented on Tezos.
 
 ### Fast withdrawal process
