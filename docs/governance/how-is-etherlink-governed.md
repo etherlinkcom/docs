@@ -106,7 +106,7 @@ However, because Etherlink periods are shorter than layer 1 periods, Etherlink p
 ## Kernel governance (fast)
 
 The fast kernel governance process is separate from the slow process.
-It uses a separate smart contract to handle smaller, simpler, or more urgent changes and prioritizes swift responses to incidents while safeguarding community consensus.
+It uses a separate smart contract to handle smaller, simpler, or more urgent changes and prioritizes quick improvements for users and swift responses to incidents while safeguarding community consensus.
 
 The fast kernel governance process is like the slow kernel governance process, with these differences:
 
