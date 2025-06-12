@@ -117,7 +117,7 @@ The fast kernel governance process is like the slow kernel governance process, w
 
 The fast governance process has the same Proposal, Promotion, and Cooldown periods as the slow governance process, but the lengths of these periods are different.
 The lengths are stored in the [fast governance contract](https://better-call.dev/mainnet/KT1D1fRgZVdjTj5sUZKcSTPPnuR7LRxVYnDL).
-This table shows the period lengths as of the Calypso Etherlink update and the Tezos Quebec protocol:
+This table shows the period lengths as of the Dionysus Etherlink update and the Tezos Rio protocol:
 
 Period | Length | Approximate time
 --- | --- | ---
