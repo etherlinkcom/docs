@@ -29,7 +29,7 @@ Each Etherlink block contains:
 - A list of transactions
 - A list of transactions that are currently in the delayed inbox, as described in [Transaction lifecycle](#transaction-lifecycle)
 - The hash of the previous block
-- The timestamp of the block.
+- The timestamp of the block
 
 The sequencer publishes each block in two ways:
 

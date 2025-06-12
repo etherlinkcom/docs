@@ -26,7 +26,7 @@ The recommended disk space allows extra space to accommodate growth.
 
 If you don't want to see all of the options and settings for the EVM node, you can run the node quickly with these steps:
 
-1. Download the latest release of the `octez-evm-node` binary from from https://gitlab.com/tezos/tezos/-/releases.
+1. Download the latest release of the `octez-evm-node` binary from https://gitlab.com/tezos/tezos/-/releases.
 
 1. Run the `octez-evm-node run observer` command to start the node as an observer:
 
@@ -69,7 +69,7 @@ The EVM node supports these history modes:
 The Octez EVM node history modes follow the same semantics as the Octez layer 1 node history modes.
 For more information about modes, see [History modes](https://octez.tezos.com/docs/user/history_modes.html) in the Octez documentation.
 
-To switch modes, see [Switching modes](#switching-modes).
+To switch modes, see [Switching history modes](#switching-history-modes).
 
 ## Getting the `octez-evm-node` binary
 
