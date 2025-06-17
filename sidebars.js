@@ -42,7 +42,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Tutorial',
+      label: 'Tutorial: Smart contract',
       collapsed: false,
       items: [
         'tutorials/marketpulse/index',
@@ -52,6 +52,16 @@ const sidebars = {
         'tutorials/marketpulse/deploy',
         'tutorials/marketpulse/frontend',
         'tutorials/marketpulse/cicd',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Tutorial: DeFi and oracles',
+      collapsed: false,
+      items: [
+        'tutorials/oracles/index',
+        'tutorials/oracles/environment',
+        'tutorials/oracles/get_data',
       ],
     },
     {
