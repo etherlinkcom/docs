@@ -8,7 +8,7 @@ Tezos bakers can participate in the [Etherlink governance process](/governance/h
 
 The voting power of a baker is the amount of tez that it has staked plus the tez that delegators have delegated to it, also called its _staking balance_.
 
-Separate contracts manage the slow kernel updates, the fast kernel updates, and the Sequencer Committee, so to interact with them, bakers send transactions to those contracts, such as with the Octez client.
+Separate contracts manage the slow kernel updates, the fast kernel updates, and the sequencer operator, so to interact with them, bakers send transactions to those contracts, such as with the Octez client.
 The addresses of the governance contracts are specified in Etherlink's kernel.
 For information about the Octez client, see [Command Line Interface](https://octez.tezos.com/docs/active/cli-commands.html) in the Octez documentation.
 
@@ -41,7 +41,7 @@ You need the address of the correct governance contract to propose changes and v
 <td><InlineCopy code="KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk" href="https://better-call.dev/ghostnet/KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk" abbreviate="6,4"></InlineCopy></td>
 </tr>
 <tr>
-<td>Sequencer committee</td>
+<td>Sequencer operator</td>
 <td><InlineCopy code="KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa" href="https://better-call.dev/mainnet/KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa" abbreviate="6,4"></InlineCopy></td>
 <td><InlineCopy code="KT1FRzozuzFMWLimpFeSdADHTMxzU8KtgCr9" href="https://better-call.dev/ghostnet/KT1FRzozuzFMWLimpFeSdADHTMxzU8KtgCr9" abbreviate="6,4"></InlineCopy></td>
 </tr>
@@ -149,15 +149,16 @@ After the new kernel becomes active, bakers must provide their nodes with the pr
 They can copy the new preimages into the node data directory without stopping or restarting the node.
 If a node uses a preimages endpoint as described in [Running an Etherlink EVM node](/network/evm-nodes) and [Running an Etherlink Smart Rollup node](/network/smart-rollup-nodes), the node updates automatically.
 
-## Participating in Sequencer Committee governance
+## Participating in sequencer governance
 
-Bakers can propose a member for Etherlink's Sequencer Committee, vote for or against proposed members, and trigger the change to committee members.
+Bakers can propose an account to operate Etherlink's sequencer, vote for or against proposed members, and trigger the change to a new account.
+Currently the governance contract tracks a _sequencer committee_, even though at this stage only one account can be a member and therefore only one account can run a sequencer.
 
 ### Getting information about the current period
 
 You can get information about the current period at https://governance.etherlink.com.
 
-To get information about the current state of the Sequencer Committee governance contract directly from the contract, call its `get_voting_state` view.
+To get information about the current state of the sequencer operator governance contract directly from the contract, call its `get_voting_state` view.
 For example, this Octez client command calls this view for the kernel governance contract on Mainnet:
 
 ```bash
@@ -171,7 +172,7 @@ You can also subscribe to the `voting_finished` event to be notified when the Pr
 
 ### Proposing and voting for a new member
 
-To propose a member for the Sequencer Committee, bakers can call the `new_proposal` entrypoint of the governance contract during the Proposal period:
+To propose a member to be the sequencer operator, bakers can call the `new_proposal` entrypoint of the governance contract during the Proposal period:
 
 ```bash
 octez-client transfer 0 from my_wallet to KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa \
@@ -182,7 +183,7 @@ octez-client transfer 0 from my_wallet to KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa \
 The command takes these parameters:
 
 - The address or Octez client alias of your baker account
-- The address of the Sequencer Committee governance contract
+- The address of the sequencer governance contract (referred to on the block explorer as the sequencer committee governance contract)
 - The public key (not the public key hash or account address) of the account to propose, including the double quotes, represented in this example as `<PUBLIC_KEY>`
 - The Etherlink address of the account to propose, represented in the previous example as `<L2_ADDRESS>`; the examples below use `0xb7a970` as the account address
 
@@ -194,7 +195,7 @@ octez-client transfer 0 from my_wallet to KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa \
   --arg 'Pair "edpkurcgafZ2URyB6zsm5d1YqmLt9r1Lk89J81N6KpyMaUzXWEsv1X" 0xb7a97043983f24991398e5a82f63f4c58a417185'
 ```
 
-To upvote a proposed committee member during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
+To upvote a proposed sequencer operator during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
 
 ```bash
 octez-client transfer 0 from my_wallet to KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa \
@@ -204,7 +205,7 @@ octez-client transfer 0 from my_wallet to KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa \
 
 It's not necessary to upvote a proposal that you submitted; submitting a proposal implies that your account upvotes it.
 
-### Voting for or against a new member
+### Voting for or against an operator
 
 When a proposal is in the Promotion period, you can vote for or against it or pass on voting by calling the `vote` entrypoint of the governance contract:
 
@@ -216,7 +217,7 @@ octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
 The command takes these parameters:
 
 - The address or Octez client alias of your baker account
-- The address of the Sequencer Committee governance contract
+- The address of the sequencer governance contract
 - `"yea"`, `"nay"`, or `"pass"`, including the double quotes
 
 For example:
@@ -226,9 +227,9 @@ octez-client transfer 0 from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq to KT1FRzozuzF
   --entrypoint "vote" --arg "\"yea\""
 ```
 
-### Triggering committee upgrades
+### Triggering sequencer operator updates
 
-After a proposed member wins a vote, any user can trigger the change to the committee by calling the governance contract's `trigger_committee_upgrade` entrypoint:
+After a proposed account wins a vote, any user can trigger the change and enable that account to run the sequencer by calling the governance contract's `trigger_committee_upgrade` entrypoint:
 
 ```bash
 octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
@@ -239,5 +240,5 @@ octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
 The command takes these parameters:
 
 - The address or Octez client alias of your baker account
-- The address of the Sequencer Committee governance contract
+- The address of the sequencer governance contract
 - The address of the Etherlink Smart Rollup; the parameter must include the double quotes
