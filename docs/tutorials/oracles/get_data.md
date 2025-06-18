@@ -454,10 +454,10 @@ The addresses of Pyth applications are listed at https://docs.pyth.network/price
 
    ```bash
    forge create src/TutorialContract.sol:TutorialContract \
-      --private-key $PRIVATE_KEY \
-      --rpc-url $RPC_URL \
-      --broadcast \
-      --constructor-args $PYTH_OP_ETHERLINK_TESTNET_ADDRESS $XTZ_USD_ID
+     --private-key $PRIVATE_KEY \
+     --rpc-url $RPC_URL \
+     --broadcast \
+     --constructor-args $PYTH_OP_ETHERLINK_TESTNET_ADDRESS $XTZ_USD_ID
    ```
 
    This Foundry command deploys the contract and returns the address of the deployed contract and the hash of the deployment transaction.
@@ -477,7 +477,7 @@ The addresses of Pyth applications are listed at https://docs.pyth.network/price
       curl -s "https://hermes.pyth.network/v2/updates/price/latest?&ids[]=$XTZ_USD_ID" | jq -r ".binary.data[0]" > price_update.txt
       ```
 
-   1. Send the price update data and some XTZ for the updates fees by running this command:
+   1. Send the price update data and some XTZ for the update fees by running this command:
 
       ```bash
       cast send \
