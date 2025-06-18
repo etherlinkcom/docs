@@ -1,5 +1,5 @@
 ---
-title: "Part 3: Use price data to buy and sell tokens"
+title: "Part 3: Using price data to buy and sell tokens"
 ---
 
 Now that the smart contract has current data about prices, you can use that data to buy and sell tokens.

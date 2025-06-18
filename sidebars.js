@@ -63,6 +63,7 @@ const sidebars = {
         'tutorials/oracles/environment',
         'tutorials/oracles/get_data',
         'tutorials/oracles/tokens',
+        'tutorials/oracles/application',
       ],
     },
     {
