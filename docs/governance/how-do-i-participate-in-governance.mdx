@@ -45,6 +45,11 @@ You need the address of the correct governance contract to propose changes and v
 <td><InlineCopy code="KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa" href="https://better-call.dev/mainnet/KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa" abbreviate="6,4"></InlineCopy></td>
 <td><InlineCopy code="KT1FRzozuzFMWLimpFeSdADHTMxzU8KtgCr9" href="https://better-call.dev/ghostnet/KT1FRzozuzFMWLimpFeSdADHTMxzU8KtgCr9" abbreviate="6,4"></InlineCopy></td>
 </tr>
+<tr>
+<td>Voting delegation</td>
+<td><InlineCopy code="TODO" href="https://better-call.dev/mainnet/TODO" abbreviate="6,4"></InlineCopy></td>
+<td><InlineCopy code="TODO" href="https://better-call.dev/ghostnet/TODO" abbreviate="6,4"></InlineCopy></td>
+</tr>
 </tbody>
 </table>
 
@@ -81,6 +86,46 @@ For example, this response shows that the contract is currently in the Proposal 
 Block explorers show this information in a more human-readable format.
 
 You can also subscribe to the `voting_finished` event to be notified when the Proposal period completes.
+
+### Delegating your key
+
+For convenience, bakers can delegate their Etherlink voting rights to a key other than their baking key.
+This delegation affects only their Etherlink voting rights, not their Tezos layer 1 protocol upgrade voting rights.
+
+To delegate voting rights, call the `set_voting_key` entrypoint of the voting rights delegation contract.
+By default, when you delegate your baking key to another key, that key receives the rights to vote for each type of update.
+For example, the following command delegates voting rights for each type of update from the key with the alias `my_wallet`.
+It uses `<MY_DELEGATE>` in place of the address of the account to delegate to:
+
+```bash
+octez-client transfer 0 from my_wallet to <TODO_VOTING_DELEGATION_CONTRACT_ADDRESS> \
+  --arg "(Pair \"<MY_DELEGATE>\" (Pair True None))"
+```
+
+To remove the delegation and use your baking key to vote as before, use this command:
+
+```bash
+octez-client transfer 0 from my_wallet to <TODO_VOTING_DELEGATION_CONTRACT_ADDRESS> \
+  --arg "(Pair \"<MY_DELEGATE>\" (Pair False None))"
+```
+
+You can also set the type of updates to delegate rights for by specifying certain governance contracts.
+The following example passes `True` and the addresses of the slow kernel governance and sequencer governance contracts.
+As a result, the delegated key can vote on those contracts but not on the kernel fast governance contract:
+
+```bash
+octez-client transfer 0 from my_wallet to <TODO_VOTING_DELEGATION_CONTRACT_ADDRESS> \
+  --arg "(Pair \"tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx\" True (Some { \"KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa\" ; \"KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh\" }))"
+```
+
+The following example passes `False` and the address of the fast kernel governance contract.
+The result is the same as the previous example: the delegated key can vote on the slow kernel governance and sequencer governance contracts but not the fast kernel governance contract:
+
+```bash
+octez-client transfer 0 from  my_wallet to <TODO_VOTING_DELEGATION_CONTRACT_ADDRESS> --arg "(Pair \"tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx\" False (Some { \"KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk\" }))" --burn-cap 1
+```
+
+Bakers can change their delegation at any time.
 
 ### Proposing and upvoting upgrades
 
