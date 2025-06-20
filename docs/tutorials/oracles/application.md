@@ -5,7 +5,7 @@ title: "Part 4: Automating pricing decisions"
 Now that your contract can use pricing data, you can act on that data to make trading decisions.
 In this section, you set up a simple off-chain application to monitor prices and use the contract to buy and sell its simulated token.
 
-You can access the smart contract in many ways, but a simple way is to use Node.JS application because Pyth provides a Node SDK that simplifies getting pricing data from Hermes.
+You can access the smart contract in many ways, but a simple way is to use a Node.JS application because Pyth provides a Node SDK that simplifies getting pricing data from Hermes.
 The application that you create in this section also uses the [Viem](https://viem.sh/) EVM toolkit to interact with Etherlink.
 
 1. In the same directory as your `contracts` folder, create a directory named `app` to store your off-chain application.
@@ -41,7 +41,7 @@ This setting allows programs to import JSON files easily.
    ```
 
    These dependencies include the Pyth and Viem toolkits and the compiled ABI of your contract.
-   You may need to change the path to your contract if you put it in a different place relative to this file.
+   You may need to change the path to your compiled contract if you put the contract in a different place relative to this file.
 
 1. Add these constants to access the environment variables you set, or edit this code to hard-code the values:
 
@@ -116,7 +116,7 @@ Viem (in `view/chains`) has built-in objects that represent Etherlink Mainnet an
    const delaySeconds = (seconds: number) => new Promise(res => setTimeout(res, seconds*1000));
    ```
 
-1. Add this function to get current price data from Hermes, just like the `curl` command you used in previous sections:
+1. Add this function to get current price update data from Hermes, just like the `curl` command you used in previous sections:
 
    ```javascript
    // Utility function to call Hermes and return the current price of one XTZ in USD
@@ -147,7 +147,7 @@ Viem (in `view/chains`) has built-in objects that represent Etherlink Mainnet an
    }
    ```
 
-1. Add a`run` function to contain the main logic of the application:
+1. Add a `run` function to contain the main logic of the application:
 
    ```javascript
    const run = async () => {
@@ -165,11 +165,9 @@ Viem (in `view/chains`) has built-in objects that represent Etherlink Mainnet an
    // Check balance first
    let balance = await getBalance();
    console.log("Starting balance:", balance);
-   let cash = await getCash();
-   console.log("Starting cash in contract:", cash, "XTZ");
    // If not enough tokens, initialize balance with 5 tokens in the contract
    if (balance < 5) {
-     console.log("Initializing account with 5 tez");
+     console.log("Initializing account with 5 tokens");
      const initHash = await contract.write.initAccount([myAccount.address]);
      await publicClient.waitForTransactionReceipt({ hash: initHash });
      balance = await getBalance()
@@ -191,31 +189,34 @@ Viem (in `view/chains`) has built-in objects that represent Etherlink Mainnet an
      console.log("\n");
      console.log("Iteration", i++);
      let baselinePrice = await getPrice(connection);
-     console.log("Baseline price:", baselinePrice);
+     console.log("Baseline price:", baselinePrice, "USD to 1 XTZ");
+     const oneUSDBaseline = Math.ceil((1/baselinePrice) * 10000) / 10000; // Round up to four decimals
+     console.log("Or", oneUSDBaseline, "XTZ to 1 USD");
 
      const updatedPrice = await alertOnPriceFluctuations(baselinePrice, connection);
-     console.log("Price changed:", updatedPrice);
+     console.log("Price changed:", updatedPrice, "USD to 1 XTZ");
      const priceFeedUpdateData = await connection.getLatestPriceUpdates([XTZ_USD_ID]);
-     if (baselinePrice > updatedPrice) {
+     const oneUSD = Math.ceil((1/updatedPrice) * 10000) / 10000; // Round up to four decimals
+
+     if (baselinePrice < updatedPrice) {
        // Buy
-       console.log("Price went down; time to buy");
-       const oneUSD = Math.ceil((1/updatedPrice) * 100) / 100; // Round up to two decimals
+       console.log("Price of USD relative to XTZ went down; time to buy");
        console.log("Sending", oneUSD, "XTZ (about one USD)");
        const buyHash = await contract.write.buy(
          [[`0x${priceFeedUpdateData.binary.data[0]}`]] as any,
          { value: parseEther(oneUSD.toString()), gas: 30000000n },
        );
        await publicClient.waitForTransactionReceipt({ hash: buyHash });
-       console.log("Bought one token");
-     } else if (baselinePrice < updatedPrice) {
-       console.log("Price went up; time to sell");
+       console.log("Bought one token for", oneUSD, "XTZ");
+     } else if (baselinePrice > updatedPrice) {
+       console.log("Price of USD relative to XTZ went up; time to sell");
        // Sell
        const sellHash = await contract.write.sell(
          [[`0x${priceFeedUpdateData.binary.data[0]}`]] as any,
          { gas: 30000000n }
        );
        await publicClient.waitForTransactionReceipt({ hash: sellHash });
-       console.log("Sold one token");
+       console.log("Sold one token for", oneUSD, "XTZ");
      }
      balance = await getBalance();
    }
@@ -225,16 +226,7 @@ Viem (in `view/chains`) has built-in objects that represent Etherlink Mainnet an
    If the price of USD relative to XTZ went down, it's cheaper to buy the simulated token, so the code buys one.
    If the price of USD went up, it sells a token.
 
-1. After the loop, add this code to cash out so you don't leave your sandbox XTZ locked in the contract:
-
-   ```javascript
-   // Cash out
-   console.log("Cashing out");
-   // Call the cashout function to retrieve the XTZ you've sent to the contract (for tutorial purposes)
-   await contract.write.cashout();
-   ```
-
-The complete application looks like this:
+The complete program looks like this:
 
 ```javascript
 import { HermesClient, PriceUpdate } from "@pythnetwork/hermes-client";
@@ -322,7 +314,7 @@ const run = async () => {
   console.log("Starting balance:", balance);
   // If not enough tokens, initialize balance with 5 tokens in the contract
   if (balance < 5) {
-    console.log("Initializing account with 5 tez");
+    console.log("Initializing account with 5 tokens");
     const initHash = await contract.write.initAccount([myAccount.address]);
     await publicClient.waitForTransactionReceipt({ hash: initHash });
     balance = await getBalance()
@@ -336,42 +328,41 @@ const run = async () => {
     console.log("\n");
     console.log("Iteration", i++);
     let baselinePrice = await getPrice(connection);
-    console.log("Baseline price:", baselinePrice);
+    console.log("Baseline price:", baselinePrice, "USD to 1 XTZ");
+    const oneUSDBaseline = Math.ceil((1/baselinePrice) * 10000) / 10000; // Round up to four decimals
+    console.log("Or", oneUSDBaseline, "XTZ to 1 USD");
 
     const updatedPrice = await alertOnPriceFluctuations(baselinePrice, connection);
-    console.log("Price changed:", updatedPrice);
+    console.log("Price changed:", updatedPrice, "USD to 1 XTZ");
     const priceFeedUpdateData = await connection.getLatestPriceUpdates([XTZ_USD_ID]);
-    if (baselinePrice > updatedPrice) {
+    const oneUSD = Math.ceil((1/updatedPrice) * 10000) / 10000; // Round up to four decimals
+
+    if (baselinePrice < updatedPrice) {
       // Buy
-      console.log("Price went down; time to buy");
-      const oneUSD = Math.ceil((1/updatedPrice) * 100) / 100; // Round up to two decimals
+      console.log("Price of USD relative to XTZ went down; time to buy");
       console.log("Sending", oneUSD, "XTZ (about one USD)");
       const buyHash = await contract.write.buy(
         [[`0x${priceFeedUpdateData.binary.data[0]}`]] as any,
         { value: parseEther(oneUSD.toString()), gas: 30000000n },
       );
       await publicClient.waitForTransactionReceipt({ hash: buyHash });
-      console.log("Bought one token");
-    } else if (baselinePrice < updatedPrice) {
-      console.log("Price went up; time to sell");
+      console.log("Bought one token for", oneUSD, "XTZ");
+    } else if (baselinePrice > updatedPrice) {
+      console.log("Price of USD relative to XTZ went up; time to sell");
       // Sell
       const sellHash = await contract.write.sell(
         [[`0x${priceFeedUpdateData.binary.data[0]}`]] as any,
         { gas: 30000000n }
       );
       await publicClient.waitForTransactionReceipt({ hash: sellHash });
-      console.log("Sold one token");
+      console.log("Sold one token for", oneUSD, "XTZ");
     }
     balance = await getBalance();
   }
-
-  // Cash out
-  console.log("Cashing out");
-  // Call the cashout function to retrieve the XTZ you've sent to the contract (for tutorial purposes)
-  await contract.write.cashout();
 }
 
 run();
+
 ```
 
 To run the off-chain application, run the command `npx ts-node src/checkRate.ts`.
@@ -379,35 +370,51 @@ The application calls the `buy` and `sell` function based on real-time data from
 Here is the output from a sample run:
 
 ```
-Baseline price: 0.53016063
-Price changed: 0.53005698
-Price went down; time to buy
-Sending 1.89 XTZ (about one USD)
-Bought one more token
+Starting balance: 0
+Initializing account with 5 tez
+Initialized account. New balance is 5
+
+
+Iteration 0
+Baseline price: 0.5179437100000001 USD to 1 XTZ
+Or 1.9308 XTZ to 1 USD
+Price changed: 0.5177393 USD to 1 XTZ
+Price of USD relative to XTZ went up; time to sell
+Sold one token for 1.9315 XTZ
+
+
+Iteration 1
+Baseline price: 0.51764893 USD to 1 XTZ
+Or 1.9319 XTZ to 1 USD
+Price changed: 0.51743925 USD to 1 XTZ
+Price of USD relative to XTZ went up; time to sell
+Sold one token for 1.9326 XTZ
 
 
 Iteration 2
-Baseline price: 0.52988309
-Price changed: 0.53
-Price went up; time to sell
-Sold one token
+Baseline price: 0.51749921 USD to 1 XTZ
+Or 1.9324 XTZ to 1 USD
+Price changed: 0.51762153 USD to 1 XTZ
+Price of USD relative to XTZ went down; time to buy
+Sending 1.932 XTZ (about one USD)
+Bought one token for 1.932 XTZ
 
 
 Iteration 3
-Baseline price: 0.53
-Price changed: 0.53010189
-Price went up; time to sell
-Sold one token
+Baseline price: 0.51766628 USD to 1 XTZ
+Or 1.9318 XTZ to 1 USD
+Price changed: 0.51781075 USD to 1 XTZ
+Price of USD relative to XTZ went down; time to buy
+Sending 1.9313 XTZ (about one USD)
+Bought one token for 1.9313 XTZ
 
 
 Iteration 4
-Baseline price: 0.53015637
-Price changed: 0.52978122
-Price went down; time to buy
-Sending 1.89 XTZ (about one USD)
-Bought one token
-
-Cashing out
+Baseline price: 0.51786312 USD to 1 XTZ
+Or 1.9311 XTZ to 1 USD
+Price changed: 0.51770622 USD to 1 XTZ
+Price of USD relative to XTZ went up; time to sell
+Sold one token for 1.9316 XTZ
 ```
 
 Now you can use the pricing data in the contract from off-chain applications.

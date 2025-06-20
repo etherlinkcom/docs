@@ -4,17 +4,18 @@ title: "Part 2: Getting information from the Pyth oracle"
 
 Getting price information from the Pyth oracle takes a few steps:
 
-1. The off-chain caller gets current price data from Hermes, Pyth's service that listens for price updates and provides them to off-chain applications via a REST API.
+1. The off-chain caller gets price update data from Hermes, Pyth's service that listens for price updates and provides them to off-chain applications via a REST API.
+This data contains the information that Pyth needs to provide a current price to on-chain applications.
 
-1. The off-chain caller uses that price data to calculate the fee that Pyth charges to provide that price data to smart contracts.
+1. The off-chain caller sends that update data to the smart contract.
 
-1. The off-chain caller sends that price data and the fee to the smart contract.
+1. Based on the update data, smart contract calculates the fee that Pyth charges to provide that price data to smart contracts.
 
 1. The smart contract calls Pyth's on-chain application and pays the fee.
 
 1. The Pyth on-chain application gets the price data from Hermes and provides it to the smart contract.
 
-1. The smart contract stores the price data.
+1. The smart contract stores the updated price data.
 
 ## Getting oracle data in a contract
 
@@ -23,13 +24,13 @@ Follow these steps to create a contract that uses the Pyth oracle in the way des
 1. Create a directory to store your work in:
 
    ```bash
-   mkdir -p etherlink_pyth/contracts
-   cd etherlink_pyth/contracts
+   mkdir -p etherlink_defi/contracts
+   cd etherlink_defi/contracts
    ```
 
-   Later you will create a folder named `etherlink_pyth/app` to store the off-chain portion of the tutorial application.
+   Later you will create a folder named `etherlink_defi/app` to store the off-chain portion of the tutorial application.
 
-1. Create an empty Foundry project in the `etherlink_pyth/contracts` folder:
+1. Create an empty Foundry project in the `etherlink_defi/contracts` folder:
 
    ```bash
    forge init
@@ -95,7 +96,7 @@ Follow these steps to create a contract that uses the Pyth oracle in the way des
    }
    ```
 
-   This function receives price data that an off-chain caller got from Hermes.
+   This function receives price update data that an off-chain caller got from Hermes.
    It uses this data and the Pyth on-chain application to get the cost of the on-chain price update.
    Finally, it passes the fee and the price data to Pyth.
 
@@ -186,7 +187,7 @@ contract TutorialContract {
 ## Testing the data
 
 To test the contract and how it gets data from Pyth, you can write Foundry tests that use a mocked version of Pyth.
-You set the exchange rate in the mocked version of Pyth and use tests to verify that the contract gets that exchange rate correctly.
+In these steps, you set the exchange rate in the mocked version of Pyth and use tests to verify that the contract gets that exchange rate correctly:
 
 1. Create a test file named `test/TutorialContract.t.sol` and open it in any text editor.
 
@@ -220,7 +221,7 @@ You set the exchange rate in the mocked version of Pyth and use tests to verify 
    This stub imports your contract and creates an instance of it in the`setUp` function, which runs automatically before each test.
    It creates a mocked version of Pyth for the purposes of the test.
 
-1. Replace the `// Test functions go here` with this utility function:
+1. Replace the `// Test functions go here` comment with this utility function:
 
    ```solidity
    // Utility function to create a mocked Pyth price update for the test
@@ -466,7 +467,7 @@ The addresses of Pyth applications are listed at https://docs.pyth.network/price
 
 1. Set the `DEPLOYMENT_ADDRESS` environment variable to the address of the deployed contract.
 
-1. Call the contract by getting the latest Hermes data, sending it and the update fee to the `updateAndGet` function, and then calling the `getPrice` function, as described in the next steps.
+1. Call the contract by getting update data from Hermes, sending it and the update fee to the `updateAndGet` function, and then calling the `getPrice` function, as described in the next steps.
 
    Because the price data goes stale after 60 seconds, you need to run these commands within 60 seconds.
    You can put them in a single shell script to run at once or you can copy and paste them quickly.
@@ -512,9 +513,11 @@ The addresses of Pyth applications are listed at https://docs.pyth.network/price
       For example, assume that the response is `0x0000000000000000000000000000000000000000000000001950f85eb8a92984`.
       This hex number corresponds to 1824230934793759108 wei, or about 1.82 XTZ.
       This means that 1.82 XTZ equals 1 USD, so one XTZ is equal to 1 / 1.82 USD, or about 0.55 USD.
+      You can paste the hex number that you get in response to a hex to decimal converter such as https://www.rapidtables.com/convert/number/hex-to-decimal.html.
 
 If the commands failed, verify that the `curl` command to get the Hermes data succeeds; it should write a long string of hex code to the file `price_update.txt`.
 Also make sure that the environment variables are correct and that you are copying and pasting the commands into your terminal correctly.
 
 Now you have a smart contract that can get up-to-date price information from Pyth.
 In the next section, you expand the smart contract to buy and sell based on that information.
+Continue to [Part 3: Using price data to buy and sell tokens](/tutorials/oracles/tokens).

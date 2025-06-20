@@ -81,13 +81,13 @@ Before you begin, make sure that you have these programs installed:
      --fund $ADDRESS
    ```
 
-   This command starts the node in sandbox mode and sends 10,000 to your address.
+   This command starts the node in sandbox mode and sends 10,000 XTZ to your address.
    This sandbox state starts with the current state of Etherlink Testnet but is a separate environment, so you can't use it to deploy contracts or make transactions on Testnet.
 
 1. Wait for the node to download teh snapshot of Etherlink Testnet and synchronize with the current state.
 This can take a few minutes depending on your connection and how old the most recent snapshot is.
 
-   The sandbox environment is ready when the EVM node's log logs the level of the new head block, as in this example:
+   The sandbox environment is ready when the EVM node's log shows the level of the new head block, as in this example:
 
    ```
    Jun 16 14:26:32.041 NOTICE │ head is now 19809131, applied in 10.681ms
@@ -115,3 +115,5 @@ This can take a few minutes depending on your connection and how old the most re
    As with Ethereum, Etherlink records its native token (XTZ) in units of 10^18, also referred to as wei.
 
 Now you can use Foundry to work with Etherlink in a local sandbox environment.
+In the next section, you will create a contract and deploy it to this sandbox.
+Continue to [Part 2: Getting information from the Pyth oracle](/tutorials/oracles/get_data).

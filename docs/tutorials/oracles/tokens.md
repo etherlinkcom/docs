@@ -9,7 +9,7 @@ Specifically, you add a ledger of token owners to the contract to simulate a tok
 ## Adding buy and sell functions
 
 To simulate a token in a very simple way, the contract needs a ledger of token owners and functions to buy and sell that token.
-Of course, this token is not compliant with any token standard, so it's not a good example of a token, but it's enough to simulate buying and selling fur the purposes of the tutorial.
+Of course, this token is not compliant with any token standard, so it's not a good example of a token, but it's enough to simulate buying and selling for the purposes of the tutorial.
 
 1. Near the top of the `src/TutorialContract.sol` file, next to the `pyth` and `xtzUsdPriceId` storage variables, add a map for the token owners:
 
@@ -32,7 +32,6 @@ Of course, this token is not compliant with any token standard, so it's not a go
      // Require 1 USD worth of XTZ
      if (msg.value >= oneDollarInWei) {
        balances[msg.sender] += 1;
-       console2.log("Thank you for sending one dollar in XTZ!");
      } else {
        revert InsufficientFee();
      }
@@ -64,22 +63,7 @@ Of course, this token is not compliant with any token standard, so it's not a go
    It decrements the sender's balance by one token and sends them one USD in XTZ.
    Of course, this contract isn't actually buying and selling tokens through a DEX, so when you deploy the contract, you will include enough sandbox XTZ for it to pay for these sell operations.
 
-1. After the `sell` function, add this function to retrieve the XTZ in the contract:
-
-   ```solidity
-   // For tutorial purposes, cash out the XTZ in the contract
-   function cashout() public {
-     require(address(this).balance > 0, "No XTZ to send");
-     (bool sent, ) = msg.sender.call{value: address(this).balance}("");
-     require(sent, "Failed to send XTZ");
-     balances[msg.sender] = 0;
-   }
-   ```
-
-   This function sets the sender's balance to zero and sends them the XTZ in the contract.
-   Obviously this function is only for the purposes of the tutorial.
-
-1. After the `cashout` function, add this function to initialize a user's account with 5 simulated tokens:
+1. After the `sell` function, add this function to initialize a user's account with 5 simulated tokens:
 
    ```solidity
    // Initialize accounts with 5 tokens for the sake of the tutorial
@@ -177,14 +161,6 @@ contract TutorialContract {
     balances[msg.sender] -= 1;
   }
 
-  // For tutorial purposes, cash out the XTZ in the contract
-  function cashout() public {
-    require(address(this).balance > 0, "No XTZ to send");
-    (bool sent, ) = msg.sender.call{value: address(this).balance}("");
-    require(sent, "Failed to send XTZ");
-    balances[msg.sender] = 0;
-  }
-
   // Initialize accounts with 5 tokens for the sake of the tutorial
   function initAccount(address user) external {
     require(balances[msg.sender] < 5, "You already have at least 5 tokens");
@@ -198,7 +174,6 @@ contract TutorialContract {
   // Error raised if the payment is not sufficient
   error InsufficientFee();
 }
-
 ```
 
 Of course, you could customize these `buy` and `sell` functions to allow users to buy and sell more than one token at a time, but this is enough to demonstrate that the contract pins the price of tokens to one USD in XTZ.
@@ -226,13 +201,6 @@ You could test these new functions in many ways, but in these steps you add a si
      assertEq(7, myContract.getBalance(testUser));
      myContract.sell(updateData);
      assertEq(6, myContract.getBalance(testUser));
-
-     // Test cashout
-     uint256 balanceBefore = testUser.balance;
-     myContract.cashout();
-     uint256 balanceAfter = testUser.balance;
-     assertLt(balanceBefore, balanceAfter);
-     assertEq(0, myContract.getBalance(testUser));
    }
    ```
 
@@ -304,7 +272,7 @@ You could test these new functions in many ways, but in these steps you add a si
    1. Convert the hex number in the response to an amount of XTZ.
    For example, you can paste the hex number that you get in response to a hex to decimal converter such as https://www.rapidtables.com/convert/number/hex-to-decimal.html.
 
-      For example if the response is `0x0000000000000000000000000000000000000000000000001950f85eb8a92984`, it corresponds to 1824230934793759108 wei, or about 1.82 XTZ.
+      For example, if the response is `0x0000000000000000000000000000000000000000000000001950f85eb8a92984`, it corresponds to 1824230934793759108 wei, or about 1.82 XTZ.
       You can use a converter such as https://eth-converter.com/ to convert wei to the primary token.
 
    1. Send that amount of XTZ to the contract's `buy` function, as in this example, which rounds up to 1.85 XTZ for safety:
@@ -338,3 +306,4 @@ You could test these new functions in many ways, but in these steps you add a si
 
 Now you know that the contract can get price data from the Pyth oracle and use that data to make pricing decisions.
 From here, you can expand the contract to handle multiple currencies or do other things with the price data.
+Continue to [Part 4: Automating pricing decisions](/tutorials/oracles/application).
