@@ -59,7 +59,7 @@ In other words, the execution fee is the minimum fee times the exponential funct
 For example, if the backlog reaches 40 million gas units (twice the tolerance), the gas price is:
 
 $$
-1 \texttt{gwei} * e ^{(7 * 10^9) * (40,000,000 - 20,000,000)} = 1.15 \texttt{gwei}
+1 \texttt{gwei} * e ^{(7 * 10^{-9}) * (40,000,000 - 20,000,000)} = 1.15 \texttt{gwei}
 $$
 
 Here is a table of gas prices at different backlog levels:
