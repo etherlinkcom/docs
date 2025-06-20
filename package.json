@@ -34,17 +34,17 @@
     "dotenv": "16.4.5",
     "plugin-image-zoom": "github:flexanalytics/plugin-image-zoom",
     "prism-react-renderer": "2.4.1",
-    "react": "18.2",
-    "react-dom": "18.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "rehype-katex": "7.0.0",
     "remark-math": "6.0.0",
     "slick-carousel": "1.8.1",
-    "thirdweb": "5.102.3"
+    "thirdweb": "5.103.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.8.1",
     "@playwright/test": "^1.50.1",
-    "@types/node": "^22.13.0",
+    "@types/node": "24.0.3",
     "chai": "^5.1.2",
     "docusaurus-node-polyfills": "1.0.0",
     "glob": "^11.0.0",
