@@ -335,16 +335,15 @@ background-color: #1B1B1B !important;
   }
 
   .github-link::before {
-    background-image: url("/img/github-mark-white.png");
+    background-image: url("/img/github-mark-green.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
     content: '';
     display: inline-flex;
-    height: 24px;
-    width: 24px;
-    margin-right: 0.5rem;
-    color: var(--ifm-navbar-link-color);
+    height: 20px;
+    width: 20px;
+    margin-bottom: 3px;
   }
 }
 
