@@ -178,7 +178,7 @@ const getAllUsedImages = async () => {
     '/img/FiX.svg',
     '/img/favicon.svg',
     '/img/Gitlab.svg',
-    '/img/github-mark-white.png',
+    '/img/github-mark-green.png',
     '/img/GreenFiChevronUp.svg',
     '/img/HiOutlineStatusOnline.svg',
     '/img/MdCode.svg',

@@ -139,6 +139,12 @@ module.exports = async function createConfigAsync() {
               position: 'left'
             },
             {
+              href: 'https://github.com/etherlinkcom/docs',
+              position: 'right',
+              className: 'github-link',
+              "aria-label": "Github repository (docs)",
+            },
+            {
               to: 'https://x.com/etherlink',
               position: 'right',
               target: '_blank',
