@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   const magnifyingGlassSVG = bielButtonLink.querySelector('svg.lucide-search');
   magnifyingGlassSVG.setAttribute('width', '18px');
   magnifyingGlassSVG.setAttribute('height', '18px');
+  console.log("done");
 });
 
 const getShadowRoot = async (parentSelector) =>
