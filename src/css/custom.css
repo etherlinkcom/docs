@@ -71,13 +71,20 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 
+  /* See also src/theme/SearchBar/styles.module.css and static/scripts/cssForBielSearch.js */
   --biel-primary-color: var(--ifm-color-primary-darkest);
   --biel-search-ask-ai-color: var(--ifm-font-color-base);
+  --biel-search-button-icon-size: 16px; /* This doesn't seem to work */
+  --biel-search-button-border-radius: 24px;
+  --biel-search-button-border-color: none;
+  --biel-search-button-bg-color: #151515;
+  --biel-search-button-icon-size: 16px;
+  --biel-search-button-padding: 12px 20px 10px 20px;
+  --biel-search-button-text-font-size: 14px;
+  --biel-search-button-text-font-weight: 500;
+  --biel-search-button-z-index: calc(var(--ifm-z-index-fixed) + 1);
+  --biel-search-content-box-shadow: 0px 0px 6px 0px rgba(51, 232, 142, 0.40)!important;
 
-}
-
-biel-search-button a.biel-search-button-content {
-  box-shadow: 0px 0px 6px 0px rgba(51, 232, 142, 0.40); /* no worky */
 }
 
 h1 {
@@ -163,18 +170,7 @@ nav.navbar {
 }
 
 .DocSearch-Button-Keys {
-  display: flex;
-  width: 100%;
-  justify-content: end;
-}
-.DocSearch-Button-Key {
-  color:white !important;
-  font-size: 14px;
-  width: 0px !important;
-  padding: 0px 4px !important;
-  background: #151515 !important;
-  border: none !important;
-  box-shadow: none !important;
+  display: none !important;
 }
 .DocSearch.DocSearch-Container {
   background: rgba(16, 16, 16, 0.10);
