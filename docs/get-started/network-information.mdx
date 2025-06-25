@@ -171,6 +171,10 @@ While Etherlink is intended to be fully EVM-compatible, it differs in some ways:
 
 - Etherlink calculates gas fees differently; see [Fee structure](/network/fees).
 
+- Etherlink computes the state world hash with a different function than Ethereum uses.
+Therefore it is not compatible with EVM "light clients" that compute states in the way that Ethereum does, with the `Keccak-256` hash function.
+Therefore, Etherlink is not compatible with EVM light-client implementations that use this hash function, such as Geth's light client and OpenEthereum.
+
 ## Precompiled contracts
 
 The precompiled contracts on Etherlink are listed in the [`mod.rs`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/kernel_latest/evm_execution/src/precompiles/mod.rs#L181) file.
