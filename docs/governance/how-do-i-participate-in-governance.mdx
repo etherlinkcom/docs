@@ -14,41 +14,35 @@ For information about the Octez client, see [Command Line Interface](https://oct
 
 ## Governance contract addresses
 
-You need the address of the correct governance contract to propose changes and vote on changes.
+You need the address of the correct governance contract (and sometimes the address of the Etherlink Smart Rollup) to propose changes, vote on changes, and trigger approved changes.
 
 <table class="customTableContainer">
 <thead>
 <tr>
-<th>&nbsp;</th>
+<th>Contract</th>
 <th>Mainnet address</th>
-<th>Testnet address</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Smart Rollup</td>
-<td><InlineCopy code="sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf" href="https://tzkt.io/sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf" abbreviate="6,4"></InlineCopy></td>
-<td><InlineCopy code="sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg" href="https://ghostnet.tzkt.io/sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg" abbreviate="6,4"></InlineCopy></td>
-</tr>
-<tr>
 <td>Kernel governance (slow)</td>
-<td><InlineCopy code="KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh" href="https://better-call.dev/mainnet/KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh" abbreviate="6,4"></InlineCopy></td>
-<td><InlineCopy code="KT1HfJb718fGszcgYguA4bfTjAqe1BEmFHkv" href="https://better-call.dev/ghostnet/KT1HfJb718fGszcgYguA4bfTjAqe1BEmFHkv" abbreviate="6,4"></InlineCopy></td>
+<td><InlineCopy code="KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" href="https://better-call.dev/mainnet/KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" abbreviate="6,4"></InlineCopy></td>
 </tr>
 <tr>
 <td>Kernel governance (fast)</td>
-<td><InlineCopy code="KT1D1fRgZVdjTj5sUZKcSTPPnuR7LRxVYnDL" href="https://better-call.dev/mainnet/KT1D1fRgZVdjTj5sUZKcSTPPnuR7LRxVYnDL" abbreviate="6,4"></InlineCopy></td>
-<td><InlineCopy code="KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk" href="https://better-call.dev/ghostnet/KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk" abbreviate="6,4"></InlineCopy></td>
+<td><InlineCopy code="KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R" href="https://better-call.dev/mainnet/KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R" abbreviate="6,4"></InlineCopy></td>
 </tr>
 <tr>
 <td>Sequencer operator</td>
-<td><InlineCopy code="KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa" href="https://better-call.dev/mainnet/KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa" abbreviate="6,4"></InlineCopy></td>
-<td><InlineCopy code="KT1FRzozuzFMWLimpFeSdADHTMxzU8KtgCr9" href="https://better-call.dev/ghostnet/KT1FRzozuzFMWLimpFeSdADHTMxzU8KtgCr9" abbreviate="6,4"></InlineCopy></td>
+<td><InlineCopy code="KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" href="https://better-call.dev/mainnet/KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" abbreviate="6,4"></InlineCopy></td>
 </tr>
 <tr>
-<td>Voting delegation</td>
-<td><InlineCopy code="TODO" href="https://better-call.dev/mainnet/TODO" abbreviate="6,4"></InlineCopy></td>
-<td><InlineCopy code="TODO" href="https://better-call.dev/ghostnet/TODO" abbreviate="6,4"></InlineCopy></td>
+<td>Voting rights delegation</td>
+<td><InlineCopy code="KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH" href="https://better-call.dev/mainnet/KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH" abbreviate="6,4"></InlineCopy></td>
+</tr>
+<tr>
+<td>Etherlink Smart Rollup</td>
+<td><InlineCopy code="sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf" href="https://tzkt.io/sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf" abbreviate="6,4"></InlineCopy></td>
 </tr>
 </tbody>
 </table>
@@ -67,7 +61,7 @@ For example, this Octez client command calls this view for the slow governance c
 
 ```bash
 octez-client -E https://mainnet.ecadinfra.com \
-  run view get_voting_state on contract KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh
+  run view get_voting_state on contract KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r
 ```
 
 The view returns information about the current governance period in this order:
@@ -93,36 +87,36 @@ For convenience, bakers can delegate their Etherlink voting rights to a key othe
 This delegation affects only their Etherlink voting rights, not their Tezos layer 1 protocol upgrade voting rights.
 
 To delegate voting rights, call the `set_voting_key` entrypoint of the voting rights delegation contract.
-By default, when you delegate your baking key to another key, that key receives the rights to vote for each type of update.
-For example, the following command delegates voting rights for each type of update from the key with the alias `my_wallet`.
+By default, when you delegate your baking key to another key, that key receives the rights to vote for each governance contract.
+For example, the following command delegates voting rights for each governance contract from the key with the alias `my_wallet`.
 It uses `<MY_DELEGATE>` in place of the address of the account to delegate to:
 
 ```bash
-octez-client transfer 0 from my_wallet to <TODO_VOTING_DELEGATION_CONTRACT_ADDRESS> \
+octez-client transfer 0 from my_wallet to KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
   --arg "(Pair \"<MY_DELEGATE>\" (Pair True None))"
 ```
 
 To remove the delegation and use your baking key to vote as before, use this command:
 
 ```bash
-octez-client transfer 0 from my_wallet to <TODO_VOTING_DELEGATION_CONTRACT_ADDRESS> \
+octez-client transfer 0 from my_wallet to KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
   --arg "(Pair \"<MY_DELEGATE>\" (Pair False None))"
 ```
 
-You can also set the type of updates to delegate rights for by specifying certain governance contracts.
+You can also set the governance contracts to delegate rights for by specifying certain governance contracts.
 The following example passes `True` and the addresses of the slow kernel governance and sequencer governance contracts.
 As a result, the delegated key can vote on those contracts but not on the kernel fast governance contract:
 
 ```bash
-octez-client transfer 0 from my_wallet to <TODO_VOTING_DELEGATION_CONTRACT_ADDRESS> \
-  --arg "(Pair \"tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx\" True (Some { \"KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa\" ; \"KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh\" }))"
+octez-client transfer 0 from my_wallet to KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
+  --arg "(Pair \"tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx\" True (Some { \"KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf\" ; \"KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r\" }))"
 ```
 
 The following example passes `False` and the address of the fast kernel governance contract.
 The result is the same as the previous example: the delegated key can vote on the slow kernel governance and sequencer governance contracts but not the fast kernel governance contract:
 
 ```bash
-octez-client transfer 0 from  my_wallet to <TODO_VOTING_DELEGATION_CONTRACT_ADDRESS> --arg "(Pair \"tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx\" False (Some { \"KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk\" }))" --burn-cap 1
+octez-client transfer 0 from my_wallet to KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH --arg "(Pair \"tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx\" False (Some { \"KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk\" }))" --burn-cap 1
 ```
 
 Bakers can change their delegation at any time, and delegation changes take effect immediately.
@@ -132,14 +126,14 @@ Bakers can change their delegation at any time, and delegation changes take effe
 During a Proposal period, bakers can propose updates by calling the `new_proposal` entrypoint of the appropriate governance contract and passing the hash of their proposed kernel, as in this example, which uses `<KERNEL_HASH>` as the kernel hash:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
+octez-client transfer 0 from my_wallet to KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r \
   --entrypoint "new_proposal" \
   --arg "<KERNEL_HASH>"
 ```
 
 The command takes these parameters:
 
-- The address or Octez client alias of your baker account
+- The address or Octez client alias of your baker account or the account to which you have delegated your Etherlink voting rights
 - The address of the Etherlink kernel governance contract
 - The hash of the upgraded kernel, which the proposer must generate from the code of the new kernel
 
@@ -150,7 +144,7 @@ Proposers can make it easier for bakers to upgrade to the new kernel by providin
 To upvote a proposed kernel update during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
+octez-client transfer 0 from my_wallet to KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r \
   --entrypoint "upvote_proposal" \
   --arg "<KERNEL_HASH>"
 ```
@@ -162,13 +156,13 @@ It's not necessary to upvote a proposal that you submitted; submitting a proposa
 When a proposal is in the Promotion period, you can vote for or against it or pass on voting by calling the `vote` entrypoint of the appropriate governance contract:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
+octez-client transfer 0 from my_wallet to KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r \
   --entrypoint "vote" --arg '"yea"'
 ```
 
 The command takes these parameters:
 
-- The address or Octez client alias of your baker account
+- The address or Octez client alias of your baker account or the account to which you have delegated your Etherlink voting rights
 - The address of the Etherlink kernel governance contract
 - `"yea"`, `"nay"`, or `"pass"`, including the double quotes
 
@@ -179,14 +173,14 @@ The command does not need the hash of the kernel because only one kernel can be 
 After a proposal wins a vote, any user can trigger the kernel upgrade by calling the appropriate governance contract's `trigger_kernel_upgrade` entrypoint:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1D1fRgZVdjTj5sUZKcSTPPnuR7LRxVYnDL \
+octez-client transfer 0 from my_wallet to KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R \
   --entrypoint "trigger_kernel_upgrade" \
   --arg '"sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf"'
 ```
 
 The command takes these parameters:
 
-- The address or Octez client alias of your baker account
+- The address or Octez client alias of your account
 - The address of the appropriate Etherlink kernel governance contract
 - The address of the Etherlink Smart Rollup; the parameter must include the double quotes
 
@@ -196,8 +190,7 @@ If a node uses a preimages endpoint as described in [Running an Etherlink EVM no
 
 ## Participating in sequencer governance
 
-Bakers can propose an account to operate Etherlink's sequencer, vote for or against proposed members, and trigger the change to a new account.
-Currently the governance contract tracks a _sequencer committee_, even though at this stage only one account can be a member and therefore only one account can run a sequencer.
+Bakers can propose the account to operate Etherlink's sequencer, vote for or against proposed operators, and trigger the change to a new account.
 
 ### Getting information about the current period
 
@@ -207,7 +200,8 @@ To get information about the current state of the sequencer operator governance 
 For example, this Octez client command calls this view for the kernel governance contract on Mainnet:
 
 ```bash
-octez-client run view get_voting_state on contract KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa
+octez-client  -E https://mainnet.ecadinfra.com \
+  run view get_voting_state on contract KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf
 ```
 
 The view returns information about the current governance period.
@@ -215,37 +209,37 @@ Block explorers show this information in a more human-readable format.
 
 You can also subscribe to the `voting_finished` event to be notified when the Proposal period completes.
 
-### Proposing and voting for a new member
+### Proposing and voting for a new operator
 
-To propose a member to be the sequencer operator, bakers can call the `new_proposal` entrypoint of the governance contract during the Proposal period:
+To propose an account to be the sequencer operator, bakers can call the `new_proposal` entrypoint of the governance contract during the Proposal period:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa \
+octez-client transfer 0 from my_wallet to KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf \
   --entrypoint "new_proposal" \
   --arg "Pair \"<PUBLIC_KEY>\" <L2_ADDRESS>"
 ```
 
 The command takes these parameters:
 
-- The address or Octez client alias of your baker account
+- The address or Octez client alias of your baker account or the account to which you have delegated your Etherlink voting rights
 - The address of the sequencer governance contract (referred to on the block explorer as the sequencer committee governance contract)
 - The public key (not the public key hash or account address) of the account to propose, including the double quotes, represented in this example as `<PUBLIC_KEY>`
-- The Etherlink address of the account to propose, represented in the previous example as `<L2_ADDRESS>`; the examples below use `0xb7a970` as the account address
+- The Etherlink address of the account to propose, represented in this example as `<L2_ADDRESS>`
 
 For example:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa \
+octez-client transfer 0 from my_wallet to KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf \
   --entrypoint "new_proposal" \
-  --arg 'Pair "edpkurcgafZ2URyB6zsm5d1YqmLt9r1Lk89J81N6KpyMaUzXWEsv1X" 0xb7a97043983f24991398e5a82f63f4c58a417185'
+  --arg 'Pair "<PUBLIC_KEY>" <L2_ADDRESS>'
 ```
 
 To upvote a proposed sequencer operator during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa \
+octez-client transfer 0 from my_wallet to KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf \
   --entrypoint "upvote_proposal" \
-  --arg 'Pair "edpkurcgafZ2URyB6zsm5d1YqmLt9r1Lk89J81N6KpyMaUzXWEsv1X" 0xb7a97043983f24991398e5a82f63f4c58a417185'
+  --arg 'Pair "<PUBLIC_KEY>" <L2_ADDRESS>'
 ```
 
 It's not necessary to upvote a proposal that you submitted; submitting a proposal implies that your account upvotes it.
@@ -255,20 +249,20 @@ It's not necessary to upvote a proposal that you submitted; submitting a proposa
 When a proposal is in the Promotion period, you can vote for or against it or pass on voting by calling the `vote` entrypoint of the governance contract:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
+octez-client transfer 0 from my_wallet to KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf \
   --entrypoint "vote" --arg '"yea"'
 ```
 
 The command takes these parameters:
 
-- The address or Octez client alias of your baker account
+- The address or Octez client alias of your baker account or the account to which you have delegated your Etherlink voting rights
 - The address of the sequencer governance contract
 - `"yea"`, `"nay"`, or `"pass"`, including the double quotes
 
 For example:
 
 ```bash
-octez-client transfer 0 from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq to KT1FRzozuzFMWLimpFeSdADHTMxzU8KtgCr9 \
+octez-client transfer 0 from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq to KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf \
   --entrypoint "vote" --arg "\"yea\""
 ```
 
@@ -277,13 +271,13 @@ octez-client transfer 0 from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq to KT1FRzozuzF
 After a proposed account wins a vote, any user can trigger the change and enable that account to run the sequencer by calling the governance contract's `trigger_committee_upgrade` entrypoint:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh \
+octez-client transfer 0 from my_wallet to KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf \
   --entrypoint "trigger_committee_upgrade" \
   --arg '"sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf"'
 ```
 
 The command takes these parameters:
 
-- The address or Octez client alias of your baker account
+- The address or Octez client alias of your account
 - The address of the sequencer governance contract
 - The address of the Etherlink Smart Rollup; the parameter must include the double quotes
