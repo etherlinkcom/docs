@@ -35,6 +35,9 @@ To use the bridge, follow these general steps:
 
 1. Enter the amount of tokens to transfer.
 
+1. For withdrawals, select whether to use fast withdrawals for an additional fee.
+For more information about fast withdrawals, see [Fast withdrawals](#fast-withdrawals).
+
 1. Click **Transfer**.
 
 ## How bridging XTZ works
@@ -92,3 +95,32 @@ This diagram is an overview of the withdrawal process:
 
 ![Overview of the token bridging withdrawal process](/img/bridging-withdrawal.png)
 <!-- https://lucid.app/lucidchart/d4fb99c8-74eb-4336-b971-117b0045772b/edit -->
+
+### Fast withdrawals
+
+As described above, normal withdrawals from Etherlink to Tezos take about 15 days.
+You can receive your XTZ faster by selecting the fast withdrawal option on the bridge.
+In this case, you receive your XTZ within 1 minute, minus a percentage as a fee.
+
+Fast withdrawals build on the standard withdrawal process between Etherlink and Tezos, using built-in protocol support and smart contracts on both networks without requiring third-party services.
+Internally, when you make a fast withdrawal, a liquidity provider on Tezos layer 1 sends you the XTZ that you are withdrawing minus the fee.
+The liquidity provider receives your withdrawn XTZ after the usual 15-day delay.
+
+The liquidity provider gets to keep the fee in exchange for the expenses of providing your funds earlier, running systems to watch for fast withdrawal requests, and taking the risk of providing your funds when the commitment that includes the withdrawal is not cemented yet.
+They can use the bridge to verify that they will receive the withdrawn funds when the commitment containing that transaction state has been cemented on Tezos.
+
+### Fast withdrawal process
+
+The process for fast withdrawals is different than for standard withdrawals:
+
+1. An Etherlink user submits a withdrawal transaction to the fast withdrawal precompiled contract instead of the standard withdrawal precompiled contract.
+1. As in the standard withdrawal process, the fast withdrawal precompiled contract locks the Etherlink XTZ and puts a message in the Smart Rollup outbox that represents those tokens.
+However, instead of sending the withdrawn tokens directly to the user's Tezos layer 1 account, it sends them to a fast withdrawal contract on layer 1.
+1. Liquidity providers monitor the Smart Rollup inbox and when they detect fast withdrawal requests with favorable rates, they call the layer 1 contract to claim the fast withdrawal.
+This request includes information from the event and the withdrawn tez minus the fee.
+1. The fast withdrawal contract forwards the withdrawn tez to the user's account and marks the fast withdrawal fulfilled.
+1. When the commitment that includes the withdrawn tokens is cemented, the fast withdrawal contract sends the withdrawn tez to the liquidity provider.
+
+Liquidity providers usually claim the fast withdrawal within 1 minute.
+However, if no liquidity providers claim the fast withdrawal within 1 day, the fast withdrawal expires and no liquidity providers can claim it.
+In this case, the fast withdrawal contract waits until the commitment is cemented and sends the withdrawn tokens to the user account without deducting a fee.
