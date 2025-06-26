@@ -123,6 +123,29 @@ octez-client run view is_voting_key_of on contract KT1Ut6kfrTV9tK967tDYgQPMvy9t5
   with input "Pair \"<MY_BAKER>\" \"<MY_BAKER>\" None"
 ```
 
+:::tip
+
+The source code for the delegation contract is in the file [`delegated_governance.mligo`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/tezos_contracts/governance/contracts/delegated_governance.mligo?ref_type=heads) in the Octez repository.
+You can install LIGO and use its `compile parameter` command and the source code to compile parameters to call it.
+For example, this command compiles the parameter to propose delegation rights for two contracts:
+
+```bash
+ligo compile parameter -m DelegateContract delegated_governance.mligo 'Propose_voting_key ("<MY_DELEGATE>", true, Some (Set.literal [("KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" : address); ("KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" : address)]))'
+```
+
+You can escape the double quotes in the result and use it as the parameter to pass to the delegation contract.
+Here is the result of the command:
+
+```michelson
+(Right
+   (Pair "<MY_DELEGATE>"
+         True
+         (Some { "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" ;
+                 "KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" })))
+```
+
+:::
+
 ## Participating in kernel governance
 
 Bakers can propose, vote on, and trigger kernel updates with these commands.
