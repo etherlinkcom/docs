@@ -175,6 +175,9 @@ While Etherlink is intended to be fully EVM-compatible, it differs in some ways:
 Therefore it is not compatible with EVM "light clients" that compute states in the way that Ethereum does, with the `Keccak-256` hash function.
 Therefore, Etherlink is not compatible with EVM light-client implementations that use this hash function, such as Geth's light client and OpenEthereum.
 
+- Etherlink computes block hashes in a custom way, not including every header field.
+Therefore, you cannot compute Etherlink block hashes with tools such as Geth.
+
 ## Precompiled contracts
 
 The precompiled contracts on Etherlink are listed in the [`mod.rs`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/kernel_latest/evm_execution/src/precompiles/mod.rs#L181) file.
