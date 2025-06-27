@@ -114,14 +114,6 @@ octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
   --arg "(Pair \"<MY_DELEGATE>\" False (Some { \"KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk\" }))" --burn-cap 0.1
 ```
 
-To check if an address has voting rights for a governance contract, pass the baking account address, the voting account address, and an option containing the governance contracts (or `None` for all contracts) to the `is_voting_key_of` view.
-For example, this command verifies that the key represented by the variable `<MY_BAKER>` has not delegated any rights to other accounts:
-
-```bash
-octez-client run view is_voting_key_of on contract KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
-  with input "Pair \"<MY_BAKER>\" \"<MY_BAKER>\" None"
-```
-
 :::tip
 
 The source code for the delegation contract is in the file [`delegated_governance.mligo`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/tezos_contracts/governance/contracts/delegated_governance.mligo?ref_type=heads) in the Octez repository.
@@ -144,6 +136,16 @@ Here is the result of the command:
 ```
 
 :::
+
+## Verifying voting rights
+
+To check if an address has voting rights for a governance contract, pass the baking account address, the voting account address, and an option containing the governance contracts (or `None` for all contracts) to the `is_voting_key_of` view.
+For example, this command verifies that the key represented by the variable `<MY_BAKER>` has not delegated any rights to other accounts:
+
+```bash
+octez-client run view is_voting_key_of on contract KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
+  with input "Pair \"<MY_BAKER>\" \"<MY_BAKER>\" None"
+```
 
 ### Ending delegated rights
 
