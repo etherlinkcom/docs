@@ -81,7 +81,7 @@ octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_DELEGATE> \
   --arg "\"<MY_BAKER>\""
 ```
 
-To remove the delegation and use your baking key to vote as before, propose delegation to the baking key and then claim the rights, as in this example:
+To remove the delegation from your baker key, you can just recall propose_voting_key with (Pair False None), as in this example:
 
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
