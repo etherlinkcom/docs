@@ -61,6 +61,12 @@ Delegating voting rights is a two-step process:
 
 The delegation is not active until both of these steps are complete.
 
+However, delegates claim rights with the `claim_voting_rights` entrypoint only once.
+Suppose that a baking key delegates rights for one contract to a voting key and the voting key claims it.
+Then, the baking key delegates rights for a second contract to the same voting key.
+In this case, the voting key automatically receives rights for the second contract, without needing to call the `claim_voting_rights` entrypoint again.
+In fact, voting keys should not call the `claim_voting_rights` entrypoint more than once because doing so ends delegation to them.
+
 As when bakers vote with their key directly, delegated keys can vote only once.
 The rights for a given baking key can vote only once, even if the delegation changes.
 
