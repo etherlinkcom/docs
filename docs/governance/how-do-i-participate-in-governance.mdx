@@ -173,15 +173,18 @@ octez-client run view is_voting_key_of on contract KT1Ut6kfrTV9tK967tDYgQPMvy9t5
 
 ### Ending delegated rights
 
-To remove the delegation from your baker key, call the `propose_voting_key` entrypoint with the parameter `(Pair False None)`, as in this example:
+To remove the delegation from your voting key, call the `propose_voting_key` entrypoint with the parameter `(Pair <MY_DELEGATE> False None)`, as in this example:
 
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
   --entrypoint propose_voting_key \
-  --arg "(Pair False None)" --burn-cap 0.1
+  --arg "(Pair \"<MY_DELEGATE>\" False None)" --burn-cap 0.1
 ```
 
-In this case you do not need to use the `claim_voting_rights` entrypoint to complete the removal of baking rights.
+This command revokes the delegated rights only for the specified voting key.
+If you have delegated rights to other keys, you must run the same command for those keys.
+
+You do not need to use the `claim_voting_rights` entrypoint to complete the removal of baking rights.
 
 ## Participating in kernel governance
 
