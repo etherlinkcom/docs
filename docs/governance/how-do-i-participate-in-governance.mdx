@@ -61,6 +61,8 @@ Delegating voting rights is a two-step process:
 
 The delegation is not active until both of these steps are complete.
 
+### Delegating voting rights for all contracts
+
 To propose delegation to a voting key, call the `propose_voting_key` entrypoint of the voting rights delegation contract.
 By default, when you delegate your baking key to another key, that key receives the rights to vote for all governance contracts.
 For example, the following command proposes delegation of voting rights for all governance contract from the key with the alias `my_wallet`.
@@ -82,15 +84,7 @@ octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_DELEGATE> \
   --arg "\"<MY_BAKER>\""
 ```
 
-To remove the delegation from your baker key, call the `propose_voting_key` entrypoint with the parameter `(Pair False None)`, as in this example:
-
-```bash
-octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
-  --entrypoint propose_voting_key \
-  --arg "(Pair False None)" --burn-cap 0.1
-```
-
-In this case you do not need to use the `claim_voting_rights` to complete the removal of baking rights.
+### Delegating rights for specific contracts
 
 You can also set the governance contracts to delegate rights for by specifying certain governance contracts.
 The following example passes `True` and the addresses of the slow kernel governance and sequencer governance contracts as a proposal.
@@ -150,6 +144,18 @@ Here is the result of the command:
 ```
 
 :::
+
+### Ending delegated rights
+
+To remove the delegation from your baker key, call the `propose_voting_key` entrypoint with the parameter `(Pair False None)`, as in this example:
+
+```bash
+octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
+  --entrypoint propose_voting_key \
+  --arg "(Pair False None)" --burn-cap 0.1
+```
+
+In this case you do not need to use the `claim_voting_rights` to complete the removal of baking rights.
 
 ## Participating in kernel governance
 
