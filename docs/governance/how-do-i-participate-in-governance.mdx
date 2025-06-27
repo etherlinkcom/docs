@@ -67,8 +67,9 @@ For example, the following command proposes delegation of voting rights for all 
 It uses the variable `<MY_DELEGATE>` in place of the address of the account to delegate to:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
-  --arg "(Right (Pair \"<MY_DELEGATE>\" True None))" --burn-cap 0.1
+octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet\
+  --entrypoint propose_voting_key\
+  --arg "(Pair \"<MY_DELEGATE>\" True None)" --burn-cap 0.1
 ```
 
 Then, to claim the delegated voting rights, call the `claim_voting_rights` entrypoint from the delegated key and pass the baking key address.
@@ -76,18 +77,25 @@ For example, the following command claims the voting rights proposed in the prev
 It uses the variable `<MY_BAKER>` in place of the address of the baking key address:
 
 ```bash
-octez-client transfer 0 from <MY_DELEGATE> to KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
-  --arg "(Left \"<MY_BAKER>\")" --burn-cap 0.1
+octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH <MY_DELEGATE>\
+  --entrypoint claim_voting_rights\
+  --arg "\"<MY_BAKER>\"" --burn-cap 0.1
 ```
 
-To remove the delegation and use your baking key to vote as before, propose delegation to the baking key and then claim the rights, as in this example:
+To remove the delegation from your baker key, you can just recall propose_voting_key with (Pair False None), as in this example:
 
 ```bash
-octez-client transfer 0 from <MY_BAKER> to KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
-  --arg "(Right (Pair \"<MY_BAKER>\" True None))" --burn-cap 0.1
+octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet\
+  --entrypoint propose_voting_key\
+  --arg "(Pair \"<MY_DELEGATE>\" False None)" --burn-cap 0.1
+```
 
-octez-client transfer 0 from <MY_BAKER> to KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
-  --arg "(Left \"<MY_BAKER>\")" --burn-cap 0.1
+To remove the delegation from your voting key, you can just call the claim entrypoint:
+
+```bash
+octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH <MY_DELEGATE>\
+  --entrypoint claim_voting_rights\
+  --arg "\"<MY_BAKER>\""
 ```
 
 You can also set the governance contracts to delegate rights for by specifying certain governance contracts.
@@ -95,7 +103,8 @@ The following example passes `True` and the addresses of the slow kernel governa
 As a result, the delegated key can vote on those contracts but not on the kernel fast governance contract:
 
 ```bash
-octez-client transfer 0 from <MY_BAKER> to KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
+octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER>\
+  --entrypoint propose_voting_key\
   --arg "(Pair \"<MY_DELEGATE>\" True (Some { \"KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf\" ; \"KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r\" }))"
 ```
 
@@ -105,14 +114,16 @@ Then, run this command to claim the voting rights for the specified contracts, w
 octez-client transfer 0 from <MY_DELEGATE> to KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
   --arg "(Left \"<MY_BAKER>\")" --burn-cap 0.1
 ```
+Please note that if you're already delegating to this key and just want to change your delegation, you don't need to claim again.
 
 The following example passes `False` and the address of the fast kernel governance contract.
 The result is the same as the previous proposal example: the delegated key can vote on the slow kernel governance and sequencer governance contracts but not the fast kernel governance contract.
 You can also use this proposal to remove delegation for specific contracts:
 
 ```bash
-octez-client transfer 0 from <MY_BAKER> to KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
-  --arg "(Right (Pair \"<MY_DELEGATE>\" False (Some { \"KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk\" })))" --burn-cap 0.1
+octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER>\
+  --entrypoint propose_voting_key\
+  --arg "(Pair \"<MY_DELEGATE>\" False (Some { \"KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk\" }))" --burn-cap 0.1
 ```
 
 To check if an address has voting rights for a governance contract, pass the baking account address, the voting account address, and an option containing the governance contracts (or `None` for all contracts) to the `is_voting_key_of` view.
