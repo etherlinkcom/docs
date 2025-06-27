@@ -229,7 +229,7 @@ The command does not need the hash of the kernel because only one kernel can be 
 
 ### Triggering upgrades
 
-After a proposal wins a vote, any user can trigger the kernel upgrade by calling the appropriate governance contract's `trigger_kernel_upgrade` entrypoint:
+After a proposal wins a vote, any account with voting rights can trigger the kernel upgrade by calling the appropriate governance contract's `trigger_kernel_upgrade` entrypoint:
 
 ```bash
 octez-client transfer 0 from my_wallet to KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R \
@@ -239,7 +239,7 @@ octez-client transfer 0 from my_wallet to KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R \
 
 The command takes these parameters:
 
-- The address or Octez client alias of your account
+- The address or Octez client alias of your baker account or voting key
 - The address of the appropriate Etherlink kernel governance contract
 - The address of the Etherlink Smart Rollup; the parameter must include the double quotes
 
@@ -327,7 +327,7 @@ octez-client transfer 0 from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq to KT1WckZ2uiL
 
 ### Triggering sequencer operator updates
 
-After a proposed account wins a vote, any user can trigger the change and enable that account to run the sequencer by calling the governance contract's `trigger_committee_upgrade` entrypoint:
+After a proposed account wins a vote, any account with voting rights can trigger the change and enable that account to run the sequencer by calling the governance contract's `trigger_committee_upgrade` entrypoint:
 
 ```bash
 octez-client transfer 0 from my_wallet to KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf \
@@ -337,6 +337,6 @@ octez-client transfer 0 from my_wallet to KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf \
 
 The command takes these parameters:
 
-- The address or Octez client alias of your account
+- The address or Octez client alias of your baker account or voting key
 - The address of the sequencer governance contract
 - The address of the Etherlink Smart Rollup; the parameter must include the double quotes
