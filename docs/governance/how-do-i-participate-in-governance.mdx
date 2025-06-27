@@ -61,6 +61,9 @@ Delegating voting rights is a two-step process:
 
 The delegation is not active until both of these steps are complete.
 
+As when bakers vote with their key directly, delegated keys can vote only once.
+The rights for a given baking key can vote only once, even if the delegation changes.
+
 ### Delegating voting rights for all contracts
 
 To propose delegation to a voting key, call the `propose_voting_key` entrypoint of the voting rights delegation contract.
