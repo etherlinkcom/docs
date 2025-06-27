@@ -82,13 +82,15 @@ octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_DELEGATE> \
   --arg "\"<MY_BAKER>\""
 ```
 
-To remove the delegation from your baker key, you can just recall propose_voting_key with (Pair False None), as in this example:
+To remove the delegation from your baker key, call the `propose_voting_key` entrypoint with the parameter `(Pair False None)`, as in this example:
 
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
   --entrypoint propose_voting_key \
-  --arg "(Pair \"<MY_DELEGATE>\" False None)" --burn-cap 0.1
+  --arg "(Pair False None)" --burn-cap 0.1
 ```
+
+In this case you do not need to use the `claim_voting_rights` to complete the removal of baking rights.
 
 You can also set the governance contracts to delegate rights for by specifying certain governance contracts.
 The following example passes `True` and the addresses of the slow kernel governance and sequencer governance contracts as a proposal.
