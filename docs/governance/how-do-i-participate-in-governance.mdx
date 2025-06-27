@@ -155,11 +155,20 @@ Here is the result of the command:
 ## Verifying voting rights
 
 To check if an address has voting rights for a governance contract, pass the baking account address, the voting account address, and an option containing the governance contracts (or `None` for all contracts) to the `is_voting_key_of` view.
-For example, this command verifies that the key represented by the variable `<MY_BAKER>` has not delegated any rights to other accounts:
+For example, the following command verifies that the key represented by the variable `<MY_DELEGATE>` has the rights to vote for the key represented by the variable `<MY_BAKER>`.
+It returns True if the `<MY_BAKER>` key has delegated rights to the `<MY_DELEGATE>` key for all contracts that use this contract for delegation or False if it has not.
 
 ```bash
 octez-client run view is_voting_key_of on contract KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
-  with input "Pair \"<MY_BAKER>\" \"<MY_BAKER>\" None"
+  with input "Pair \"<MY_DELEGATE>\" \"<MY_BAKER>\" None"
+```
+
+To check delegation rights for a specific contract, pass the address as an option.
+For example, this command verifies delegation for the slow kernel governance contract:
+
+```bash
+octez-client run view is_voting_key_of on contract KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
+  with input "Pair \"<MY_DELEGATE>\" \"<MY_BAKER>\" (some \"KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r\")"
 ```
 
 ### Ending delegated rights
@@ -172,7 +181,7 @@ octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
   --arg "(Pair False None)" --burn-cap 0.1
 ```
 
-In this case you do not need to use the `claim_voting_rights` to complete the removal of baking rights.
+In this case you do not need to use the `claim_voting_rights` entrypoint to complete the removal of baking rights.
 
 ## Participating in kernel governance
 
