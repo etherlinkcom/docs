@@ -70,6 +70,7 @@ It uses the variable `<MY_DELEGATE>` in place of the address of the account to d
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
   --entrypoint propose_voting_key \
   --arg "(Pair \"<MY_DELEGATE>\" True None)" --burn-cap 0.1
+```
 
 Then, to claim the delegated voting rights, call the `claim_voting_rights` entrypoint from the delegated key and pass the baking key address.
 For example, the following command claims the voting rights proposed in the previous command.
