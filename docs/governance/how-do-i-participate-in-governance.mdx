@@ -67,8 +67,8 @@ For example, the following command proposes delegation of voting rights for all 
 It uses the variable `<MY_DELEGATE>` in place of the address of the account to delegate to:
 
 ```bash
-octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet\
-  --entrypoint propose_voting_key\
+octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
+  --entrypoint propose_voting_key \
   --arg "(Pair \"<MY_DELEGATE>\" True None)" --burn-cap 0.1
 
 Then, to claim the delegated voting rights, call the `claim_voting_rights` entrypoint from the delegated key and pass the baking key address.
@@ -76,16 +76,16 @@ For example, the following command claims the voting rights proposed in the prev
 It uses the variable `<MY_BAKER>` in place of the address of the baking key address:
 
 ```bash
-octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_DELEGATE>\
-  --entrypoint claim_voting_rights\
+octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_DELEGATE> \
+  --entrypoint claim_voting_rights \
   --arg "\"<MY_BAKER>\""
 ```
 
 To remove the delegation and use your baking key to vote as before, propose delegation to the baking key and then claim the rights, as in this example:
 
 ```bash
-octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet\
-  --entrypoint propose_voting_key\
+octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
+  --entrypoint propose_voting_key \
   --arg "(Pair \"<MY_DELEGATE>\" False None)" --burn-cap 0.1
 ```
 
@@ -94,16 +94,16 @@ The following example passes `True` and the addresses of the slow kernel governa
 As a result, the delegated key can vote on those contracts but not on the kernel fast governance contract:
 
 ```bash
-octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER>\
-  --entrypoint propose_voting_key\
+octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
+  --entrypoint propose_voting_key \
   --arg "(Pair \"<MY_DELEGATE>\" True (Some { \"KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf\" ; \"KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r\" }))"
 ```
 
 Then, run this command to claim the voting rights for the specified contracts, which is just like the previous command to claim voting rights:
 
 ```bash
-ctez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH <MY_DELEGATE>\
-  --entrypoint claim_voting_rights\
+ctez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH <MY_DELEGATE> \
+  --entrypoint claim_voting_rights \
   --arg "\"<MY_BAKER>\""
 ```
 
@@ -112,8 +112,8 @@ The result is the same as the previous proposal example: the delegated key can v
 You can also use this proposal to remove delegation for specific contracts:
 
 ```bash
-octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER>\
-  --entrypoint propose_voting_key\
+octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
+  --entrypoint propose_voting_key \
   --arg "(Pair \"<MY_DELEGATE>\" False (Some { \"KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk\" }))" --burn-cap 0.1
 ```
 
