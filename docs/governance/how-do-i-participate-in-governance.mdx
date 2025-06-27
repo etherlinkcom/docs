@@ -84,6 +84,12 @@ octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_DELEGATE> \
   --arg "\"<MY_BAKER>\""
 ```
 
+:::warning
+
+Claiming delegated rights a second time with the `claim_voting_rights` entrypoint with the delegated key ends the delegation.
+
+:::
+
 ### Delegating rights for specific contracts
 
 You can also set the governance contracts to delegate rights for by specifying certain governance contracts.
