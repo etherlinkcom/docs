@@ -174,8 +174,30 @@ For example, this command verifies delegation for the slow kernel governance con
 
 ```bash
 octez-client run view is_voting_key_of on contract KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
-  with input "Pair \"<MY_DELEGATE>\" \"<MY_BAKER>\" (some \"KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r\")"
+  with input "Pair \"<MY_DELEGATE>\" \"<MY_BAKER>\" (Some \"KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r\")"
 ```
+
+:::tip
+
+Similar to how you can compile parameters for the entrypoints as described in [Delegating rights for specific contracts](#delegating-rights-for-specific-contracts), you can use the `ligo compile expression` command to compile the parameter for the view.
+The view accepts a tuple that includes the address of the voting key, the address of the baker key, and an option that is either None or a list of contracts.
+
+For example, to compile the parameter from the previous example, install LIGO and run this command:
+
+```bash
+ligo compile expression cameligo "(\"<MY_DELEGATE>\" : address), (\"<MY_BAKER>\" : address), (Some (\"KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r\" : address): address option)"
+```
+
+You can escape the double quotes in the result and use it as the parameter to pass to the view.
+Here is the result of the command:
+
+```michelson
+(Pair "tz1fsVnw7VQD73kUDB8ZWc67GWvCjTEibi9A"
+      "tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx"
+      (Some "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r"))
+```
+
+:::
 
 ### Ending delegated rights
 
