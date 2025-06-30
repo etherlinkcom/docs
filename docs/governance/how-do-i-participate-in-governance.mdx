@@ -54,20 +54,18 @@ This delegation affects only their Etherlink voting rights, not their Tezos laye
 
 Bakers can change their delegation at any time, and delegation changes take effect immediately.
 
-Delegating voting rights is a two-step process:
+Delegating voting rights is a two-step process; delegation is not active until both of these steps are complete:
 
 1. The baking key proposes delegation to a voting key by calling the `propose_voting_key` entrypoint.
 1. The voting key claims the delegated voting rights by calling the `claim_voting_rights` entrypoint.
 
-The delegation is not active until both of these steps are complete.
-
-However, delegates claim rights with the `claim_voting_rights` entrypoint only once.
+However, voting keys claim rights with the `claim_voting_rights` entrypoint only once.
 Suppose that a baking key delegates rights for one contract to a voting key and the voting key claims it.
 Then, the baking key delegates rights for a second contract to the same voting key.
 In this case, the voting key automatically receives rights for the second contract, without needing to call the `claim_voting_rights` entrypoint again.
 In fact, voting keys should not call the `claim_voting_rights` entrypoint more than once because doing so ends delegation to them.
 
-As when bakers vote with their key directly, delegated keys can vote only once.
+As when bakers vote with their key directly, voting keys can vote only once.
 The rights for a given baking key can vote only once, even if the delegation changes.
 
 ### Delegating voting rights for all contracts
@@ -83,7 +81,7 @@ octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
   --arg "(Pair \"<MY_DELEGATE>\" True None)" --burn-cap 0.1
 ```
 
-Then, to claim the delegated voting rights, call the `claim_voting_rights` entrypoint from the delegated key and pass the baking key address.
+Then, to claim the delegated voting rights, call the `claim_voting_rights` entrypoint from the voting key and pass the baking key address.
 For example, the following command claims the voting rights proposed in the previous command.
 It uses the variable `<MY_BAKER>` in place of the address of the baking key address:
 
@@ -95,7 +93,7 @@ octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_DELEGATE> \
 
 :::warning
 
-Claiming delegated rights a second time with the `claim_voting_rights` entrypoint with the delegated key ends the delegation.
+Claiming delegated rights a second time with the `claim_voting_rights` entrypoint with the voting key ends the delegation.
 
 :::
 
@@ -103,7 +101,7 @@ Claiming delegated rights a second time with the `claim_voting_rights` entrypoin
 
 You can also set the governance contracts to delegate rights for by specifying certain governance contracts.
 The following example passes `True` and the addresses of the slow kernel governance and sequencer governance contracts as a proposal.
-As a result, the delegated key can vote on those contracts but not on the kernel fast governance contract:
+As a result, the voting key can vote on those contracts but not on the kernel fast governance contract:
 
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
@@ -120,7 +118,7 @@ ctez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH <MY_DELEGATE> \
 ```
 
 The following example passes `False` and the address of the fast kernel governance contract.
-The result is the same as the previous proposal example: the delegated key can vote on the slow kernel governance and sequencer governance contracts but not the fast kernel governance contract.
+The result is the same as the previous proposal example: the voting key can vote on the slow kernel governance and sequencer governance contracts but not the fast kernel governance contract.
 You can also use this proposal to remove delegation for specific contracts:
 
 ```bash
