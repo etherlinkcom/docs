@@ -253,7 +253,7 @@ You can also subscribe to the `voting_finished` event to be notified when the Pr
 During a Proposal period, bakers can propose updates by calling the `new_proposal` entrypoint of the appropriate governance contract and passing the hash of their proposed kernel, as in this example, which uses `<KERNEL_HASH>` as the kernel hash:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r \
+octez-client call KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r from my_wallet \
   --entrypoint "new_proposal" \
   --arg "<KERNEL_HASH>"
 ```
@@ -271,7 +271,7 @@ Proposers can make it easier for bakers to upgrade to the new kernel by providin
 To upvote a proposed kernel update during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r \
+octez-client call KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r from my_wallet \
   --entrypoint "upvote_proposal" \
   --arg "<KERNEL_HASH>"
 ```
@@ -283,7 +283,7 @@ It's not necessary to upvote a proposal that you submitted; submitting a proposa
 When a proposal is in the Promotion period, you can vote for or against it or pass on voting by calling the `vote` entrypoint of the appropriate governance contract:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r \
+octez-client call KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r from my_wallet \
   --entrypoint "vote" --arg '"yea"'
 ```
 
@@ -300,7 +300,7 @@ The command does not need the hash of the kernel because only one kernel can be 
 After a proposal wins a vote, any account with voting rights can trigger the kernel upgrade by calling the appropriate governance contract's `trigger_kernel_upgrade` entrypoint:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R \
+octez-client call KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R from my_wallet \
   --entrypoint "trigger_kernel_upgrade" \
   --arg '"sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf"'
 ```
@@ -342,7 +342,7 @@ To propose an account to be the sequencer operator, bakers can call the `new_pro
 
 ```bash
 octez-client transfer 0 from my_wallet to KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf \
-  --entrypoint "new_proposal" \
+  --entrypoint new_proposal \
   --arg "Pair \"<PUBLIC_KEY>\" <L2_ADDRESS>"
 ```
 
@@ -356,16 +356,16 @@ The command takes these parameters:
 For example:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf \
-  --entrypoint "new_proposal" \
+octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from my_wallet \
+  --entrypoint new_proposal \
   --arg 'Pair "<PUBLIC_KEY>" <L2_ADDRESS>'
 ```
 
 To upvote a proposed sequencer operator during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf \
-  --entrypoint "upvote_proposal" \
+octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from my_wallet \
+  --entrypoint upvote_proposal \
   --arg 'Pair "<PUBLIC_KEY>" <L2_ADDRESS>'
 ```
 
@@ -376,7 +376,7 @@ It's not necessary to upvote a proposal that you submitted; submitting a proposa
 When a proposal is in the Promotion period, you can vote for or against it or pass on voting by calling the `vote` entrypoint of the governance contract:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf \
+octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from my_wallet \
   --entrypoint "vote" --arg '"yea"'
 ```
 
@@ -389,7 +389,7 @@ The command takes these parameters:
 For example:
 
 ```bash
-octez-client transfer 0 from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq to KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf \
+octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq \
   --entrypoint "vote" --arg "\"yea\""
 ```
 
@@ -398,7 +398,7 @@ octez-client transfer 0 from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq to KT1WckZ2uiL
 After a proposed account wins a vote, any account with voting rights can trigger the change and enable that account to run the sequencer by calling the governance contract's `trigger_committee_upgrade` entrypoint:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf \
+octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from my_wallet \
   --entrypoint "trigger_committee_upgrade" \
   --arg '"sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf"'
 ```
