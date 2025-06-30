@@ -148,6 +148,14 @@ Here is the result of the command:
                  "KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" })))
 ```
 
+However, the `ligo compile parameter` command returns the parameter to call the entire contract, not the entrypoint as with the examples above that use the `--entrypoint` argument.
+Therefore, to use this compiled parameter, pass it as the `--arg` argument without without the `--entrypoint` argument, as in this example:
+
+```bash
+octez-client transfer 0 from <MY_BAKER> to KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
+  --arg "(Right (Pair \"<MY_DELEGATE>\" True (Some { \"KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r\" ; \"KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf\" })))" --burn-cap 0.1
+```
+
 :::
 
 ## Verifying voting rights
