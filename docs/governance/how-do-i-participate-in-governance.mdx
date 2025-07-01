@@ -130,32 +130,32 @@ octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
 :::tip
 
 The source code for the delegation contract is in the file [`delegated_governance.mligo`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/tezos_contracts/governance/contracts/delegated_governance.mligo?ref_type=heads) in the Octez repository.
-You can install LIGO and use its `compile parameter` command and the source code to compile parameters to call it.
-For example, this command compiles the parameter to propose delegation rights for two contracts:
+You can install LIGO and use its `compile expression` command and information from the source code to compile parameters to call it.
+
+For example, from the code of the contract you can see that the parameter to pass to the `propose_voting_key` entrypoint is the type `address * bool * (address set) option`.
+This command compiles an expression of this CameLIGO type to Michelson to propose delegation rights for two contracts:
 
 ```bash
-ligo compile parameter -m DelegateContract delegated_governance.mligo 'Propose_voting_key ("<MY_DELEGATE>", true, Some (Set.literal [("KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" : address); ("KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" : address)]))'
+ligo compile expression cameligo "(\"<MY_DELEGATE>\" : address), True, (Some (Set.literal [(\"KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf\" : address); (\"KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r\" : address)]) : (address set) option)"
 ```
 
-You can escape the double quotes in the result and use it as the parameter to pass to the delegation contract.
+You can escape the double quotes in the result and use it as the parameter to pass to the `propose_voting_key` entrypoint.
 Here is the result of the command:
 
 ```michelson
-(Right
-   (Pair "<MY_DELEGATE>"
-         True
-         (Some { "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" ;
-                 "KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" })))
+(Pair "<MY_DELEGATE>"
+      True
+      (Some { "KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" ;
+              "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" }))
 ```
 
-However, the `ligo compile parameter` command returns the parameter to call the entire contract, not the entrypoint as with the examples above that use the `--entrypoint` argument.
-Therefore, to use this compiled parameter, pass it as the `--arg` argument without without the `--entrypoint` argument, as in this example:
+Here is the resulting `octez-client` command:
 
 ```bash
-octez-client transfer 0 from <MY_BAKER> to KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
-  --arg "(Right (Pair \"<MY_DELEGATE>\" True (Some { \"KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r\" ; \"KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf\" })))" --burn-cap 0.1
+octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
+  --entrypoint propose_voting_key \
+  --arg "(Pair \"<MY_DELEGATE>\" True (Some { \"KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r\" ; \"KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf\" }))"
 ```
-
 :::
 
 ### Verifying voting rights
