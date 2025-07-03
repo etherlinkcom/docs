@@ -73,7 +73,7 @@ The rights for a given baking key can vote only once, even if the delegation cha
 To propose delegation to a voting key, call the `propose_voting_key` entrypoint of the voting rights delegation contract.
 By default, when you delegate your baking key to another key, that key receives the rights to vote for all governance contracts.
 For example, the following command proposes delegation of voting rights for all governance contract from the key with the alias `my_wallet`.
-It uses the variable `<MY_DELEGATE>` in place of the address of the account to delegate to:
+It uses the placeholder `<MY_DELEGATE>` in place of the address of the account to delegate to:
 
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
@@ -83,7 +83,7 @@ octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
 
 Then, to claim the delegated voting rights, call the `claim_voting_rights` entrypoint from the voting key and pass the baking key address.
 For example, the following command claims the voting rights proposed in the previous command.
-It uses the variable `<MY_BAKER>` in place of the address of the baking key address:
+It uses the placeholder `<MY_BAKER>` in place of the address of the baking key address:
 
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_DELEGATE> \
@@ -161,7 +161,7 @@ octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
 ### Verifying voting rights
 
 To check if an address has voting rights for a governance contract, pass the baking account address, the voting account address, and an option containing the governance contracts (or `None` for all contracts) to the `is_voting_key_of` view.
-For example, the following command verifies that the key represented by the variable `<MY_DELEGATE>` has the rights to vote for the key represented by the variable `<MY_BAKER>`.
+For example, the following command verifies that the key represented by the placeholder `<MY_DELEGATE>` has the rights to vote for the key represented by the placeholder `<MY_BAKER>`.
 It returns True if the `<MY_BAKER>` key has delegated rights to the `<MY_DELEGATE>` key for all contracts that use this contract for delegation or False if it has not.
 
 ```bash
