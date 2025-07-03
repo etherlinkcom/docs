@@ -97,7 +97,7 @@ In version 0.20 and later, you can set environment variables instead of using th
 
 - The directory where it stores its data, which you specify in the `--data-dir` argument or in the `EVM_NODE_DATA_DIR` environment variable.
 The default directory is `$HOME/.octez-evm-node`.
-The following instructions use the variable `<EVM_DATA_DIR>` to represent this directory.
+The following instructions use the placeholder `<EVM_DATA_DIR>` to represent this directory.
 - The location of its configuration file, which you specify in the `--config-file` argument or in the `EVM_NODE_CONFIG_FILE` environment variable.
 You can set a different location for the file if you want to separate the data directory from the node configuration, such as often happens in Kubernetes.
 The default location is the file `config.json` in the data directory.
@@ -118,7 +118,7 @@ The default location is the file `config.json` in the data directory.
 When you have the information for these parameters, follow these steps to generate the configuration file:
 
 1. If you want your EVM node to check the correctness of the blocks it receives via a Smart Rollup node, get the RPC URL of that Etherlink Smart Rollup node, such as `http://localhost:8932`.
-The following instructions use the variable `<SR_NODE_OBSERVER_RPC>` to represent this URL.
+The following instructions use the placeholder `<SR_NODE_OBSERVER_RPC>` to represent this URL.
 1. Create a directory for the node to store its data in.
 1. Create the configuration file by setting the parameters in the environment variables or passing the arguments to the `octez-evm-node init config` command.
 

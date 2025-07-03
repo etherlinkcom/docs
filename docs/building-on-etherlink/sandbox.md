@@ -10,7 +10,7 @@ Follow these steps to start the local sandbox:
 
 1. Get the latest release of the `octez-evm-node` binary as described in [Running an Etherlink EVM node](/network/evm-nodes).
 
-1. Initialize the data directory for the EVM node, as in these examples, which use the variable `<EVM_DATA_DIR>` to represent the local folder for the data directory:
+1. Initialize the data directory for the EVM node, as in these examples, which use the placeholder `<EVM_DATA_DIR>` to represent the local folder for the data directory:
 
    Testnet:
 

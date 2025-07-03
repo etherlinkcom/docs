@@ -55,7 +55,7 @@ The best place to get the most recent binary files to use with Etherlink is http
 
    1. Create a directory for the node to store its data in.
    The default directory is `$HOME/.tezos-smart-rollup-node`.
-   The following instructions use the variable `<SR_DATA_DIR>` to represent this directory.
+   The following instructions use the placeholder `<SR_DATA_DIR>` to represent this directory.
 
    1. Initialize the local context by running this command and passing the address of the Etherlink Smart Rollup and the preimages endpoint.
    You can get this information on the [Network information](/get-started/network-information) page.
@@ -100,7 +100,7 @@ The best place to get the most recent binary files to use with Etherlink is http
       - Testnet full nodes: `wget https://snapshots.tzinit.org/etherlink-ghostnet/eth-ghostnet.full`
 
    1. Load the snapshot by running the `snapshot import` command.
-   These examples use the variable `<SNAPSHOT_FILE_NAME>` for the snapshot file name:
+   These examples use the placeholder `<SNAPSHOT_FILE_NAME>` for the snapshot file name:
 
       Run this command for Mainnet:
 
@@ -192,10 +192,10 @@ Converting the observer node to maintenance mode requires these prerequisites:
    - An account with at least 10,000 liquid, available tez, referred to as the _operator account_.
    You can use the same account that you use for a layer 1 baker, but for better security, you can use a different account and delegate its tez to the layer 1 account.
    Without 10,000 liquid tez, the Smart Rollup node will not start in operator or maintenance mode.
-   The following examples use the variable `<REMOTE_OPERATOR>` to represent this account.
+   The following examples use the placeholder `<REMOTE_OPERATOR>` to represent this account.
 
    - An account with a small amount of liquid tez for cementing and outbox operations.
-   The following examples use the variable `<SECONDARY_ACCOUNT>` to represent this account.
+   The following examples use the placeholder `<SECONDARY_ACCOUNT>` to represent this account.
 
    In most cases, you set these accounts up on another machine and use the Octez remote signer (`octez-signer`) to allow the Smart Rollup node to use them remotely.
    You can use a Ledger device to secure the keys.
@@ -242,7 +242,7 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
    octez-client --remote-signer <URL> import secret key <ALIAS> remote:<ADDRESS>
    ```
 
-   Use these values for the variables:
+   Use these values for the placeholders:
 
       - `<URL>`: The full URL that the remote signer is hosting the keys at, such as `tcp://localhost:7732`
       - `<ALIAS>`: The alias for the key in the client
@@ -268,7 +268,7 @@ Follow these steps to convert a Smart Rollup node from observer mode to maintena
 
 1. Stop the Smart Rollup node.
 
-1. Restart the node with the layer 1 node that you control, represented in this example by the variable `<MY_LAYER_1_NODE>`:
+1. Restart the node with the layer 1 node that you control, represented in this example by the placeholder `<MY_LAYER_1_NODE>`:
 
    ```bash
    octez-smart-rollup-node --endpoint <MY_LAYER_1_NODE> run \
