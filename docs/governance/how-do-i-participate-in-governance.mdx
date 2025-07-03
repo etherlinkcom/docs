@@ -78,7 +78,7 @@ It uses the variable `<MY_DELEGATE>` in place of the address of the account to d
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
   --entrypoint propose_voting_key \
-  --arg "(Pair \"<MY_DELEGATE>\" True None)" --burn-cap 0.1
+  --arg '(Pair "<MY_DELEGATE>" True None' --burn-cap 0.1
 ```
 
 Then, to claim the delegated voting rights, call the `claim_voting_rights` entrypoint from the voting key and pass the baking key address.
@@ -88,7 +88,7 @@ It uses the variable `<MY_BAKER>` in place of the address of the baking key addr
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_DELEGATE> \
   --entrypoint claim_voting_rights \
-  --arg "\"<MY_BAKER>\""
+  --arg '"<MY_BAKER>"'
 ```
 
 :::warning
@@ -106,7 +106,7 @@ As a result, the voting key can vote on those contracts but not on the kernel fa
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
   --entrypoint propose_voting_key \
-  --arg "(Pair \"<MY_DELEGATE>\" True (Some { \"KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf\" ; \"KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r\" }))"
+  --arg '(Pair "<MY_DELEGATE>" True (Some { "KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" ; "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" }))'
 ```
 
 Then, run this command to claim the voting rights for the specified contracts, which is just like the previous command to claim voting rights:
@@ -114,7 +114,7 @@ Then, run this command to claim the voting rights for the specified contracts, w
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH <MY_DELEGATE> \
   --entrypoint claim_voting_rights \
-  --arg "\"<MY_BAKER>\""
+  --arg '"<MY_BAKER>"'
 ```
 
 The following example passes `False` and the address of the fast kernel governance contract.
@@ -124,7 +124,7 @@ You can also use this proposal to remove delegation for specific contracts:
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
   --entrypoint propose_voting_key \
-  --arg "(Pair \"<MY_DELEGATE>\" False (Some { \"KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk\" }))" --burn-cap 0.1
+  --arg '(Pair "<MY_DELEGATE>" False (Some { "KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk" }))' --burn-cap 0.1
 ```
 
 :::tip
@@ -139,7 +139,7 @@ This command compiles an expression of this CameLIGO type to Michelson to propos
 ligo compile expression cameligo '("<MY_DELEGATE>" : address), True, (Some (Set.literal [("KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" : address); ("KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" : address)]) : (address set) option)'
 ```
 
-You can escape the double quotes in the result and use it as the parameter to pass to the `propose_voting_key` entrypoint.
+You can use the result as the parameter to pass to the `propose_voting_key` entrypoint.
 Here is the result of the command:
 
 ```michelson
@@ -188,7 +188,7 @@ For example, to compile the parameter from the previous example, install LIGO an
 ligo compile expression cameligo '("<MY_DELEGATE>" : address), ("<MY_BAKER>" : address), (Some ("KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" : address): address option)'
 ```
 
-You can escape the double quotes in the result and use it as the parameter to pass to the view.
+You can use the result as the parameter to pass to the view.
 Here is the result of the command:
 
 ```michelson
@@ -343,7 +343,7 @@ To propose an account to be the sequencer operator, bakers can call the `new_pro
 ```bash
 octez-client transfer 0 from my_wallet to KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf \
   --entrypoint new_proposal \
-  --arg "Pair \"<PUBLIC_KEY>\" <L2_ADDRESS>"
+  --arg 'Pair "<PUBLIC_KEY>" <L2_ADDRESS>'
 ```
 
 The command takes these parameters:
@@ -390,7 +390,7 @@ For example:
 
 ```bash
 octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq \
-  --entrypoint "vote" --arg "\"yea\""
+  --entrypoint "vote" --arg '"yea"'
 ```
 
 ### Triggering sequencer operator updates
