@@ -297,7 +297,7 @@ The command does not need the hash of the kernel because only one kernel can be 
 
 ### Triggering upgrades
 
-After a proposal wins a vote, any account with voting rights can trigger the kernel upgrade by calling the appropriate governance contract's `trigger_kernel_upgrade` entrypoint:
+After a proposal wins a vote, any account can trigger the kernel upgrade by calling the appropriate governance contract's `trigger_kernel_upgrade` entrypoint:
 
 ```bash
 octez-client call KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R from my_wallet \
@@ -395,7 +395,7 @@ octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from tz1RLPEeMxbJYQBFbXYw
 
 ### Triggering sequencer operator updates
 
-After a proposed account wins a vote, any account with voting rights can trigger the change and enable that account to run the sequencer by calling the governance contract's `trigger_committee_upgrade` entrypoint:
+After a proposed account wins a vote, any account can trigger the change and enable that account to run the sequencer by calling the governance contract's `trigger_committee_upgrade` entrypoint:
 
 ```bash
 octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from my_wallet \
