@@ -136,7 +136,7 @@ For example, from the code of the contract you can see that the parameter to pas
 This command compiles an expression of this CameLIGO type to Michelson to propose delegation rights for two contracts:
 
 ```bash
-ligo compile expression cameligo "(\"<MY_DELEGATE>\" : address), True, (Some (Set.literal [(\"KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf\" : address); (\"KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r\" : address)]) : (address set) option)"
+ligo compile expression cameligo '("<MY_DELEGATE>" : address), True, (Some (Set.literal [("KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" : address); ("KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" : address)]) : (address set) option)'
 ```
 
 You can escape the double quotes in the result and use it as the parameter to pass to the `propose_voting_key` entrypoint.
@@ -154,7 +154,7 @@ Here is the resulting `octez-client` command:
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
   --entrypoint propose_voting_key \
-  --arg "(Pair \"<MY_DELEGATE>\" True (Some { \"KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r\" ; \"KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf\" }))"
+  --arg '(Pair "<MY_DELEGATE>" True (Some { "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" ; "KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" }))'
 ```
 :::
 
@@ -166,7 +166,7 @@ It returns True if the `<MY_BAKER>` key has delegated rights to the `<MY_DELEGAT
 
 ```bash
 octez-client run view is_voting_key_of on contract KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
-  with input "Pair \"<MY_DELEGATE>\" \"<MY_BAKER>\" None"
+  with input 'Pair "<MY_DELEGATE>" "<MY_BAKER>" None'
 ```
 
 To check delegation rights for a specific contract, pass the address as an option.
@@ -174,7 +174,7 @@ For example, this command verifies delegation for the slow kernel governance con
 
 ```bash
 octez-client run view is_voting_key_of on contract KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
-  with input "Pair \"<MY_DELEGATE>\" \"<MY_BAKER>\" (Some \"KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r\")"
+  with input 'Pair "<MY_DELEGATE>" "<MY_BAKER>" (Some "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r")'
 ```
 
 :::tip
@@ -185,7 +185,7 @@ The view accepts a tuple that includes the address of the voting key, the addres
 For example, to compile the parameter from the previous example, install LIGO and run this command:
 
 ```bash
-ligo compile expression cameligo "(\"<MY_DELEGATE>\" : address), (\"<MY_BAKER>\" : address), (Some (\"KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r\" : address): address option)"
+ligo compile expression cameligo '("<MY_DELEGATE>" : address), ("<MY_BAKER>" : address), (Some ("KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" : address): address option)'
 ```
 
 You can escape the double quotes in the result and use it as the parameter to pass to the view.
@@ -206,7 +206,7 @@ To remove the delegation from your voting key, call the `propose_voting_key` ent
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
   --entrypoint propose_voting_key \
-  --arg "(Pair \"<MY_DELEGATE>\" False None)" --burn-cap 0.1
+  --arg '(Pair "<MY_DELEGATE>" False None)' --burn-cap 0.1
 ```
 
 This command revokes the delegated rights for only the specified voting key.
