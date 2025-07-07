@@ -192,3 +192,5 @@ callContract();
 
 [Redstone](https://redstone.finance/) offers push-based price feeds for Etherlink.
 Get started with their [docs](https://docs.redstone.finance/docs/introduction) to learn more.
+
+The example in [`etherlinkcom/infra-instruments`](https://github.com/etherlinkcom/infra-instruments/tree/main) includes a contract that retrieves pricing data from Redstone for multiple assets.
