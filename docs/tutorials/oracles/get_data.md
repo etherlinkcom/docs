@@ -440,9 +440,9 @@ Foundry has built-in commands to deploy and call smart contracts, so in this sec
 1. Set the `XTZ_USD_ID` environment variable to the Pyth ID of the XTZ/USD exchange rate.
 These price feeds are listed at https://www.pyth.network/developers/price-feed-ids, where you can see that the price feed ID for XTZ/USD is:
 
-  ```
-  0x0affd4b8ad136a21d79bc82450a325ee12ff55a235abc242666e423b8bcffd03
-  ```
+   ```
+   0x0affd4b8ad136a21d79bc82450a325ee12ff55a235abc242666e423b8bcffd03
+   ```
 
 1. Set the `PYTH_OP_ETHERLINK_TESTNET_ADDRESS` environment variable to the address of the Pyth on-chain application on Etherlink Testnet.
 The addresses of Pyth applications are listed at https://docs.pyth.network/price-feeds/contract-addresses/evm, where you can see that the Pyth application is deployed on Etherlink Testnet at this address:
