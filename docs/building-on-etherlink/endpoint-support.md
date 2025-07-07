@@ -197,7 +197,7 @@ For information about these endpoints, see [JSON-RPC API](https://ethereum.org/e
     <tr>
       <td>`eth_getBlockByNumber`</td>
       <td>Yes</td>
-      <td></td>
+      <td>Note that Etherlink uses a nonstandard way of computing block hashes, so you cannot use the header information from the `eth_getBlockByNumber` endpoint to compute the block hash.</td>
     </tr>
     <tr>
       <td>`eth_getBlockReceipts`</td>
