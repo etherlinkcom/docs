@@ -445,7 +445,7 @@ These price feeds are listed at https://www.pyth.network/developers/price-feed-i
    ```
 
 1. Set the `PYTH_OP_ETHERLINK_TESTNET_ADDRESS` environment variable to the address of the Pyth on-chain application on Etherlink Testnet.
-The addresses of Pyth applications are listed at https://docs.pyth.network/price-feeds/contract-addresses/evm, where you can see that the Pyth application is deployed on Etherlink Testnet at this address:
+The addresses of Pyth applications are listed at https://docs.pyth.network/price-feeds/contract-addresses/evm, where you can see that the Pyth application is deployed on both Etherlink Testnet and Etherlink Mainnet at this address:
 
    ```
    0x2880aB155794e7179c9eE2e38200202908C17B43
