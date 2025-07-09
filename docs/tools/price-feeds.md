@@ -167,6 +167,11 @@ contract RedstoneSimple {
     (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound) = oracle_.latestRoundData();
     return uint256(answer);
   }
+
+  function decimals() view external returns (uint256 _decimals) {
+    AggregatorV3Interface oracle_ = AggregatorV3Interface(monitorAsset);
+    return oracle_.decimals();
+  }
 }
 ```
 
@@ -188,6 +193,19 @@ const RedstoneContractABI = [
       }
     ],
     "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "decimals",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "_decimals",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
   },
   {
     "type": "function",
@@ -238,9 +256,10 @@ const contract = getContract({
 const callContract = async () => {
 
   const price = await contract.read.getPrice();
+  const decimals = await contract.read.decimals();
   console.log(price);
   // 52425196
-  console.log("1 XTZ =", parseInt(price) / 100000000, "USD");
+  console.log("1 XTZ =", parseInt(price) / (10 ** Number(decimals)), "USD");
   // 1 XTZ = 0.52425196 USD
 
 }
