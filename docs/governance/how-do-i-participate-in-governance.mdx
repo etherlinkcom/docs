@@ -47,57 +47,66 @@ You need the address of the correct governance contract (and sometimes the addre
 </tbody>
 </table>
 
-## Delegating your key
+## Setting up an Etherlink voting key
 
-For convenience, bakers can delegate their Etherlink voting rights to a key other than their baking key.
-This delegation affects only their Etherlink voting rights, not their Tezos layer 1 protocol upgrade voting rights.
+For convenience, bakers can delegate their Etherlink voting rights to a key other than their baking key, creating an Etherlink voting key.
 
-Bakers can change their delegation at any time, and delegation changes take effect immediately.
+:::note
 
-Delegating voting rights is a two-step process; delegation is not active until both of these steps are complete:
+Setting up an Etherlink voting key affects only Etherlink voting rights, not Tezos layer 1 protocol upgrade voting rights or layer 1 account delegation.
 
-1. The baking key proposes delegation to a voting key by calling the `propose_voting_key` entrypoint.
-1. The voting key claims the delegated voting rights by calling the `claim_voting_rights` entrypoint.
+:::
 
-However, voting keys claim rights with the `claim_voting_rights` entrypoint only once.
-Suppose that a baking key delegates rights for one contract to a voting key and the voting key claims it.
+Bakers can change their Etherlink voting keys at any time, and changes take effect immediately.
+
+Setting up a voting key is a two-step process; the voting key is not active until both of these steps are complete:
+
+1. The baking key proposes delegating its rights to a voting key by calling the `propose_voting_key` entrypoint.
+1. The voting key claims the voting rights by calling the `claim_voting_rights` entrypoint.
+
+:::warning
+
+Voting keys claim rights with the `claim_voting_rights` entrypoint only once.
+Suppose that a baking key delegates rights for one contract to a voting key and the voting key claims them.
 Then, the baking key delegates rights for a second contract to the same voting key.
 In this case, the voting key automatically receives rights for the second contract, without needing to call the `claim_voting_rights` entrypoint again.
-In fact, voting keys should not call the `claim_voting_rights` entrypoint more than once because doing so ends delegation to them.
 
-As when bakers vote with their key directly, voting keys can vote only once.
-The rights for a given baking key can vote only once, even if the delegation changes.
+In fact, a voting key should never call the `claim_voting_rights` entrypoint more than once because doing so deactivates its voting rights and returns them to the baking key.
 
-### Delegating voting rights for all contracts
+:::
 
-To propose delegation to a voting key, call the `propose_voting_key` entrypoint of the voting rights delegation contract.
-By default, when you delegate your baking key to another key, that key receives the rights to vote for all governance contracts.
-For example, the following command proposes delegation of voting rights for all governance contract from the key with the alias `my_wallet`.
-It uses the placeholder `<MY_DELEGATE>` in place of the address of the account to delegate to:
+The rights for a given baking key can vote only once, even if its voting key changes.
+
+### Delegating voting rights for all contracts to a voting key
+
+To set up a voting key, call the `propose_voting_key` entrypoint of the voting rights delegation contract.
+By default, when you delegate rights from your baking key to a voting key, that voting key receives the rights to vote for all governance contracts.
+For example, the following command proposes delegating voting rights for all governance contracts from the key with the alias `my_wallet`.
+It uses the placeholder `<MY_VOTING_KEY>` in place of the address of the voting key:
 
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
   --entrypoint propose_voting_key \
-  --arg '(Pair "<MY_DELEGATE>" True None' --burn-cap 0.1
+  --arg '(Pair "<MY_VOTING_KEY>" True None' --burn-cap 0.1
 ```
 
-Then, to claim the delegated voting rights, call the `claim_voting_rights` entrypoint from the voting key and pass the baking key address.
+Then, to claim the voting rights, call the `claim_voting_rights` entrypoint from the voting key and pass the baking key address.
 For example, the following command claims the voting rights proposed in the previous command.
-It uses the placeholder `<MY_BAKER>` in place of the address of the baking key address:
+It uses the placeholder `<MY_BAKER>` in place of the address of the baking key:
 
 ```bash
-octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_DELEGATE> \
+octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_VOTING_KEY> \
   --entrypoint claim_voting_rights \
   --arg '"<MY_BAKER>"'
 ```
 
 :::warning
 
-Claiming delegated rights a second time with the `claim_voting_rights` entrypoint with the voting key ends the delegation.
+Claiming rights a second time with the `claim_voting_rights` entrypoint with the voting key returns the voting rights to the baking key.
 
 :::
 
-### Delegating rights for specific contracts
+### Delegating rights for specific contracts to a voting key
 
 You can also set the governance contracts to delegate rights for by specifying certain governance contracts.
 The following example passes `True` and the addresses of the slow kernel governance and sequencer governance contracts as a proposal.
@@ -106,13 +115,13 @@ As a result, the voting key can vote on those contracts but not on the kernel fa
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
   --entrypoint propose_voting_key \
-  --arg '(Pair "<MY_DELEGATE>" True (Some { "KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" ; "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" }))'
+  --arg '(Pair "<MY_VOTING_KEY>" True (Some { "KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" ; "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" }))'
 ```
 
 Then, run this command to claim the voting rights for the specified contracts, which is just like the previous command to claim voting rights:
 
 ```bash
-octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH <MY_DELEGATE> \
+octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH <MY_VOTING_KEY> \
   --entrypoint claim_voting_rights \
   --arg '"<MY_BAKER>"'
 ```
@@ -124,7 +133,7 @@ You can also use this proposal to remove delegation for specific contracts:
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
   --entrypoint propose_voting_key \
-  --arg '(Pair "<MY_DELEGATE>" False (Some { "KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk" }))' --burn-cap 0.1
+  --arg '(Pair "<MY_VOTING_KEY>" False (Some { "KT1QDgF5pBkXEizj5RnmagEyxLxMTwVRpmYk" }))' --burn-cap 0.1
 ```
 
 :::tip
@@ -136,14 +145,14 @@ For example, from the code of the contract you can see that the parameter to pas
 This command compiles an expression of this CameLIGO type to Michelson to propose delegation rights for two contracts:
 
 ```bash
-ligo compile expression cameligo '("<MY_DELEGATE>" : address), True, (Some (Set.literal [("KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" : address); ("KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" : address)]) : (address set) option)'
+ligo compile expression cameligo '("<MY_VOTING_KEY>" : address), True, (Some (Set.literal [("KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" : address); ("KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" : address)]) : (address set) option)'
 ```
 
 You can use the result as the parameter to pass to the `propose_voting_key` entrypoint.
 Here is the result of the command:
 
 ```michelson
-(Pair "<MY_DELEGATE>"
+(Pair "<MY_VOTING_KEY>"
       True
       (Some { "KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" ;
               "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" }))
@@ -154,27 +163,27 @@ Here is the resulting `octez-client` command:
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
   --entrypoint propose_voting_key \
-  --arg '(Pair "<MY_DELEGATE>" True (Some { "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" ; "KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" }))'
+  --arg '(Pair "<MY_VOTING_KEY>" True (Some { "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" ; "KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" }))'
 ```
 :::
 
 ### Verifying voting rights
 
 To check if an address has voting rights for a governance contract, pass the baking account address, the voting account address, and an option containing the governance contracts (or `None` for all contracts) to the `is_voting_key_of` view.
-For example, the following command verifies that the key represented by the placeholder `<MY_DELEGATE>` has the rights to vote for the key represented by the placeholder `<MY_BAKER>`.
-It returns True if the `<MY_BAKER>` key has delegated rights to the `<MY_DELEGATE>` key for all contracts that use this contract for delegation or False if it has not.
+For example, the following command verifies that the key represented by the placeholder `<MY_VOTING_KEY>` has the rights to vote for the key represented by the placeholder `<MY_BAKER>`.
+It returns True if the `<MY_BAKER>` key has delegated rights to the `<MY_VOTING_KEY>` key for all contracts that use this contract for delegation or False if it has not.
 
 ```bash
 octez-client run view is_voting_key_of on contract KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
-  with input 'Pair "<MY_DELEGATE>" "<MY_BAKER>" None'
+  with input 'Pair "<MY_VOTING_KEY>" "<MY_BAKER>" None'
 ```
 
-To check delegation rights for a specific contract, pass the address as an option.
-For example, this command verifies delegation for the slow kernel governance contract:
+To check voting rights for a specific contract, pass the address as an option.
+For example, this command verifies rights for the slow kernel governance contract:
 
 ```bash
 octez-client run view is_voting_key_of on contract KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
-  with input 'Pair "<MY_DELEGATE>" "<MY_BAKER>" (Some "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r")'
+  with input 'Pair "<MY_VOTING_KEY>" "<MY_BAKER>" (Some "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r")'
 ```
 
 :::tip
@@ -185,7 +194,7 @@ The view accepts a tuple that includes the address of the voting key, the addres
 For example, to compile the parameter from the previous example, install LIGO and run this command:
 
 ```bash
-ligo compile expression cameligo '("<MY_DELEGATE>" : address), ("<MY_BAKER>" : address), (Some ("KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" : address): address option)'
+ligo compile expression cameligo '("<MY_VOTING_KEY>" : address), ("<MY_BAKER>" : address), (Some ("KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" : address): address option)'
 ```
 
 You can use the result as the parameter to pass to the view.
@@ -199,18 +208,18 @@ Here is the result of the command:
 
 :::
 
-### Ending delegated rights
+### Removing rights
 
-To remove the delegation from your voting key, call the `propose_voting_key` entrypoint with the parameter `(Pair <MY_DELEGATE> False None)`, as in this example:
+To remove rights from your voting key and return them to the baking key, call the `propose_voting_key` entrypoint with the parameter `(Pair <MY_VOTING_KEY> False None)`, as in this example:
 
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
   --entrypoint propose_voting_key \
-  --arg '(Pair "<MY_DELEGATE>" False None)' --burn-cap 0.1
+  --arg '(Pair "<MY_VOTING_KEY>" False None)' --burn-cap 0.1
 ```
 
 This command revokes the delegated rights for only the specified voting key.
-If you have delegated rights to other keys, you must run the same command for those keys.
+If you have delegated rights to other voting keys, you must run the same command for those keys.
 
 You do not need to use the `claim_voting_rights` entrypoint to complete the removal of baking rights.
 
