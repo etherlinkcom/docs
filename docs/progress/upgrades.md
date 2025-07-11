@@ -66,7 +66,7 @@ For more information, see [Announcing Dionysus: The Next Etherlink Upgrade Propo
 On `<TODO DATE>` the Etherlink 4.1 upgrade went live on Etherlink mainnet.
 This upgrade includes:
 
-- An updated [governance process](/governance/how-is-etherlink-governed) that allows users to delegate their Etherlink voting rights to other keys
+- An updated [governance process](/governance/how-is-etherlink-governed) that allows bakers to authenticate on voting contracts using voting keys
 - The speed limit is increased from 2 million gas units per second to 4 million gas units per second, increasing the transaction throughput that Etherlink accepts before raising the gas price
 - Improvements to gas limit calculations that prevent over-estimation of gas prices from blocking transactions that would have completed successfully.
 

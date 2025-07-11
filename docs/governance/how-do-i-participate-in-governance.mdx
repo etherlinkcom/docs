@@ -37,7 +37,7 @@ You need the address of the correct governance contract (and sometimes the addre
 <td><InlineCopy code="KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" href="https://better-call.dev/mainnet/KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" abbreviate="6,4"></InlineCopy></td>
 </tr>
 <tr>
-<td>Voting rights</td>
+<td>Voting keys</td>
 <td><InlineCopy code="KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH" href="https://better-call.dev/mainnet/KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH" abbreviate="6,4"></InlineCopy></td>
 </tr>
 <tr>
@@ -74,7 +74,7 @@ In fact, a voting key should never call the `claim_voting_rights` entrypoint mor
 
 :::
 
-The rights for a given baking key can vote only once, even if its voting key changes.
+At each vote period, each baker can vote only once, authenticating itself using either a voting key or its baking key.
 
 ### Setting a voting key for all contracts
 
@@ -86,7 +86,7 @@ It uses the placeholder `<MY_VOTING_KEY>` in place of the address of the voting 
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
   --entrypoint propose_voting_key \
-  --arg '(Pair "<MY_VOTING_KEY>" True None' --burn-cap 0.1
+  --arg '(Pair "<MY_VOTING_KEY>" True None)' --burn-cap 0.1
 ```
 
 Then, to claim the voting rights, call the `claim_voting_rights` entrypoint from the voting key and pass the baking key address.
