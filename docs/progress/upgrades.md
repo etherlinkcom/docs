@@ -61,6 +61,17 @@ Running an Etherlink EVM node on Dionysus requires version 0.26 or later of the 
 
 For more information, see [Announcing Dionysus: The Next Etherlink Upgrade Proposal](https://medium.com/p/announcing-dionysus-the-next-etherlink-upgrade-proposal-4601c6920709).
 
+## 4.1 upgrade
+
+On 15 July 2025 the Etherlink 4.1 upgrade went live on Etherlink Mainnet.
+This upgrade includes:
+
+- An updated [governance process](/governance/how-is-etherlink-governed) that allows bakers to authenticate on voting contracts using voting keys
+- The speed limit is increased from 2 million gas units per second to 4 million gas units per second, increasing the transaction throughput that Etherlink accepts before raising the gas price
+- Improvements to gas limit calculations that prevent over-estimation of gas prices from blocking transactions that would have completed successfully.
+
+For more information, see [It’s voting month for Etherlink: Two governance votes coming in July 2025](https://medium.com/@etherlink/its-voting-month-for-etherlink-two-governance-votes-coming-in-july-2025-301ae7bcd29f).
+
 ## Changelog
 
 For full details about changes to Etherlink, see [Changelogs](/progress/changelogs).
