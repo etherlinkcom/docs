@@ -122,14 +122,14 @@ const callContract = async () => {
 callContract();
 ```
 
-## Redstone
+## RedStone
 
-[Redstone](https://redstone.finance/) offers push-based price feeds for Etherlink.
+[RedStone](https://redstone.finance/) offers push-based price feeds for Etherlink.
 Get started with their [docs](https://docs.redstone.finance/docs/introduction) to learn more.
 
-The example in [`etherlinkcom/infra-instruments`](https://github.com/etherlinkcom/infra-instruments/tree/main) includes a contract that retrieves pricing data from Redstone for multiple assets.
+The example in [`etherlinkcom/infra-instruments`](https://github.com/etherlinkcom/infra-instruments/tree/main) includes a contract that retrieves pricing data from RedStone for multiple assets.
 
-This example contract accepts price update data from Redstone and uses it to provide the price of one XTZ in USD:
+This example contract accepts price update data from RedStone and uses it to provide the price of one XTZ in USD:
 
 ```solidity
 // SPDX-License-Identifier: UNLICENSED
@@ -153,7 +153,7 @@ interface AggregatorV3Interface {
     returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
 }
 
-contract RedstoneSimple {
+contract RedStoneSimple {
   address monitorAsset;
 
   constructor(address _monitorAsset) {
@@ -177,6 +177,8 @@ contract RedstoneSimple {
 }
 ```
 
+To deploy this contract you need the address of the RedStone on-chain application on Etherlink (`0xe92c00BC72dD12e26E61212c04E8D93aa09624F2` on both Mainnet and Testnet) and the ID of the XTZ/USD price feed (`0x0affd4b8ad136a21d79bc82450a325ee12ff55a235abc242666e423b8bcffd03` as listed on the Pyth [Price feed IDs](https://www.pyth.network/developers/price-feed-ids)).
+
 Here is an example JavaScript application that uses the [`viem`](https://viem.sh/) SDK to call the contract on Etherlink:
 
 ```javascript
@@ -184,7 +186,7 @@ import { createWalletClient, http, getContract } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import { etherlinkTestnet } from "viem/chains";
 
-const RedstoneContractABI = [
+const RedStoneContractABI = [
   {
     "type": "constructor",
     "inputs": [
@@ -251,7 +253,7 @@ const walletClient = createWalletClient({
 });
 const contract = getContract({
   address: CONTRACT_ADDRESS,
-  abi: RedstoneContractABI,
+  abi: RedStoneContractABI,
   client: walletClient,
 });
 
