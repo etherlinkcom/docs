@@ -63,7 +63,7 @@ For more information, see [Announcing Dionysus: The Next Etherlink Upgrade Propo
 
 ## 4.1 upgrade
 
-On 15 July 2025 the Etherlink 4.1 upgrade went live on Etherlink Mainnet.
+On 15 July 2025 the Etherlink 4.1 upgrade went live on Etherlink Mainnet, in Etherlink block 21,214,618.
 This upgrade includes:
 
 - An updated [governance process](/governance/how-is-etherlink-governed) that allows bakers to authenticate on voting contracts using voting keys
