@@ -96,7 +96,7 @@ html {
 body {
   background-color: #101010;
   max-width: 1440px;
-  margin: auto;
+  margin: auto !important;
   padding: 0px 50px;
 }
 @media (max-width: 996px) {
