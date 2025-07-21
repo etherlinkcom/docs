@@ -33,4 +33,4 @@ These features give Etherlink users two important checks on the sequencer operat
 - The delayed inbox ensures that if the sequencer does not include transactions, Etherlink users can force transactions to be included
 - If the sequencer does not operate efficiently or fairly, Etherlink users through Tezos bakers can vote the operator out
 
-The sequencer is currently run by Optimistic labs, whose address on Etherlink is [0x3b1885eec759c22c878e12c84fac33b3b9d153e4](https://explorer.etherlink.com/address/0x3b1885eec759c22c878e12c84fac33b3b9d153e4).
+The sequencer is currently run by Optimistic labs, whose address on Etherlink is [0x3b1885eec759c22c878e12c84fac33b3b9d153e4](https://explorer.etherlink.com/address/0x3b1885eec759c22c878e12c84fac33b3b9d153e4), in technical partnership with Nomadic Labs and TriliTech.
