@@ -13,7 +13,6 @@ Honest Smart Rollup nodes can catch any misbehavior by other nodes by refuting t
 These organizations currently run Etherlink Smart Rollup nodes in operator mode to post and defend commitments for the current state of Etherlink:
 
 - [The Tezos Foundation](https://tezos.foundation/)
-- [MIDL.dev](http://midl.dev/)
 - [Zeeve](https://www.zeeve.io)
 
 You can look up the current Smart Rollup node operators by checking the accounts that currently have bond set so they can post commitments for the Etherlink Smart Rollup, such as on the TzKT block explorer: https://tzkt.io/sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf/bondholders.
