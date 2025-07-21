@@ -42,8 +42,6 @@ However, to protect the system from censorship and any other problems with the s
 The sequencer is an instance of the `octez-evm-node` binary running in sequencer mode.
 Only one account can run the sequencer; see [Sequencer governance](/governance/how-is-etherlink-governed#sequencer-governance).
 
-The sequencer is an instance of the `octez-evm-node` binary running in sequencer mode.
-
 ## Nodes
 
 Etherlink relies on three types of nodes, with instances of each type running in different modes:
