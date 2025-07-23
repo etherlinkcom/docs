@@ -487,10 +487,6 @@ For examples of using these ethers.js methods, see [Using ethers.js](/building-o
       <td>Not Supported</td>
     </tr>
     <tr>
-      <td>Native Token Decimals</td>
-      <td>18</td>
-    </tr>
-    <tr>
       <td>Fee Structure</td>
       <td>**Post London** (Fee market is not implemented yet, but the rollup supports EIP-1559 transaction types); see <a href="/network/fees">Fee structure</a></td>
     </tr>
