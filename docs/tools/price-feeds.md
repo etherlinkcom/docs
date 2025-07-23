@@ -270,3 +270,101 @@ const callContract = async () => {
 
 callContract();
 ```
+
+## Acelon
+
+[Acelon](https://acelon.io) provides a price feed for the price of stXTZ tokens, part of a staking pool on Tezos layer 1.
+
+Here is an example JavaScript application that uses the [`viem`](https://viem.sh/) SDK to get the price of stXTZ on Etherlink:
+
+```javascript
+import { createWalletClient, http, getContract } from "viem";
+import { privateKeyToAccount } from "viem/accounts";
+import { etherlink } from "viem/chains";
+
+// ABI of Acelon contract, abbreviated for this example
+const abbreviatedAcelonABI = [
+  {
+    "inputs": [],
+    "name": "decimals",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "latestRoundData",
+    "outputs": [
+      {
+        "internalType": "uint80",
+        "name": "roundId",
+        "type": "uint80"
+      },
+      {
+        "internalType": "int256",
+        "name": "answer",
+        "type": "int256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "startedAt",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "updatedAt",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint80",
+        "name": "answeredInRound",
+        "type": "uint80"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+];
+
+ // stXTZ oracle on Etherlink Mainnet
+const CONTRACT_ADDRESS = "0x4Bf5C46Ee59a1110c2a242715f9c3b548A14ee02";
+
+// My account based on private key
+const myAccount = privateKeyToAccount(`<PRIVATE_KEY>`);
+
+// Viem objects that allow programs to call the chain
+const walletClient = createWalletClient({
+  account: myAccount,
+  chain: etherlink,
+  transport: http(),
+});
+const contract = getContract({
+  address: CONTRACT_ADDRESS,
+  abi: abbreviatedAcelonABI,
+  client: walletClient,
+});
+
+const callContract = async () => {
+
+  // Get stxtz price
+  const decimals = await contract.read.decimals();
+  console.log("Decimals:", decimals);
+  const latestRoundData = await contract.read.latestRoundData();
+  const [roundId, answer, startedAt, updatedAt, answeredInRound] = latestRoundData;
+  console.log(answer);
+  console.log("1 STXTZ =", parseInt(answer) / (10 ** Number(decimals)), "XTZ");
+
+}
+
+callContract();
+
+```
+
+
+You can also use the NPM package `@acelon/acelon-sdk` for the same purpose.
