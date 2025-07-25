@@ -177,7 +177,8 @@ contract RedStoneSimple {
 }
 ```
 
-To deploy this contract you need the address of the RedStone on-chain application on Etherlink (`0xe92c00BC72dD12e26E61212c04E8D93aa09624F2` on both Mainnet and Testnet) and the ID of the XTZ/USD price feed (`0x0affd4b8ad136a21d79bc82450a325ee12ff55a235abc242666e423b8bcffd03` as listed on the Pyth [Price feed IDs](https://www.pyth.network/developers/price-feed-ids)).
+To deploy this contract you need the address of the RedStone on-chain application on Etherlink (`0xe92c00BC72dD12e26E61212c04E8D93aa09624F2` on both Mainnet and Testnet) and the ID of the XTZ/USD price feed `0x0affd4b8ad136a21d79bc82450a325ee12ff55a235abc242666e423b8bcffd03`.
+Similarly, you can get the price of the URANIUM token in USD with the price feed `0xb81131B6368b3F0a83af09dB4E39Ac23DA96C2Db`.
 
 Here is an example JavaScript application that uses the [`viem`](https://viem.sh/) SDK to call the contract on Etherlink:
 
