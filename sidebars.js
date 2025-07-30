@@ -106,6 +106,7 @@ const sidebars = {
       items: [
         'tools/exchanges',
         'tools/onramps',
+        'tools/node-providers',
         'tools/price-feeds',
         'tools/vrf',
         'tools/data-indexers',
