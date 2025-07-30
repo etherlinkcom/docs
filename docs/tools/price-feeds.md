@@ -122,6 +122,12 @@ const callContract = async () => {
 callContract();
 ```
 
+:::note
+
+Pyth also provides prices on Etherlink Testnet but the price does not change.
+
+:::
+
 ## RedStone
 
 [RedStone](https://redstone.finance/) offers push-based price feeds for Etherlink.
