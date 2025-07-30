@@ -23,15 +23,15 @@ contract PythSimple {
 
   constructor(address _pyth, bytes32 _priceId) {
     pyth = IPyth(_pyth);
-    priceId = _priceId;
+    xtzUsdPriceId = _priceId;
   }
 
   function getPriceId() view external returns (bytes32 _priceId) {
-    return (priceId);
+    return (xtzUsdPriceId);
   }
 
   function getPrice() view external returns (uint256 _price){
-    PythStructs.Price memory price_ = pyth.getPriceUnsafe(priceId);
+    PythStructs.Price memory price_ = pyth.getPriceUnsafe(xtzUsdPriceId);
     return uint256(int256(price_.price));
   }
 }
