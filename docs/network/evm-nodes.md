@@ -28,9 +28,9 @@ If you don't want to see all of the options and settings for the EVM node, you c
 
 1. Download the latest release of the `octez-evm-node` binary from https://gitlab.com/tezos/tezos/-/releases.
 
-:::warning
-As of August 1st 2025, the minimum version of `octez-evm-node` that supports the live Etherlink mainnet & testnet is **v0.35**
-:::
+   :::note
+   As of August 1st 2025, Etherlink Mainnet and Testnet require at least version 0.35 of the `octez-evm-node` binary.
+   :::
 
 2. Run the `octez-evm-node run observer` command to start the node as an observer:
 
