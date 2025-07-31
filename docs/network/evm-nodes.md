@@ -32,7 +32,7 @@ If you don't want to see all of the options and settings for the EVM node, you c
    As of August 1st 2025, Etherlink Mainnet and Testnet require at least version 0.35 of the `octez-evm-node` binary.
    :::
 
-2. Run the `octez-evm-node run observer` command to start the node as an observer:
+1. Run the `octez-evm-node run observer` command to start the node as an observer:
 
    Use this command for Etherlink Mainnet:
 
@@ -80,7 +80,7 @@ To switch modes, see [Switching history modes](#switching-history-modes).
 The easiest way to get the `octez-evm-node` binary is to download the binaries distributed as part of its latest release from https://gitlab.com/tezos/tezos/-/releases.
 The release page provides static binaries for Linux systems (for amd64 and arm64 architectures).
 
-:::warning
+:::note
 As of August 1st 2025, the minimum version of `octez-evm-node` that supports the live Etherlink mainnet & testnet is **v0.35**
 :::
 
