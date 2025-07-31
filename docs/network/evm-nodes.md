@@ -28,6 +28,10 @@ If you don't want to see all of the options and settings for the EVM node, you c
 
 1. Download the latest release of the `octez-evm-node` binary from https://gitlab.com/tezos/tezos/-/releases.
 
+   :::note
+   As of August 1st 2025, Etherlink Mainnet and Testnet require at least version 0.35 of the `octez-evm-node` binary.
+   :::
+
 1. Run the `octez-evm-node run observer` command to start the node as an observer:
 
    Use this command for Etherlink Mainnet:
@@ -76,6 +80,10 @@ To switch modes, see [Switching history modes](#switching-history-modes).
 The easiest way to get the `octez-evm-node` binary is to download the binaries distributed as part of its latest release from https://gitlab.com/tezos/tezos/-/releases.
 The release page provides static binaries for Linux systems (for amd64 and arm64 architectures).
 
+:::note
+As of August 1st 2025, Etherlink Mainnet and Testnet require at least version 0.35 of the `octez-evm-node` binary.
+:::
+
 As an alternative, you can use the minimal Docker image [tezos/tezos-bare](https://hub.docker.com/r/tezos/tezos-bare/tags?name=octez-evm-node) with a tag that includes `octez-evm-node`.
 These images contain the correct version of the binary.
 
@@ -84,7 +92,7 @@ For example, this command runs the EVM node in the Docker container on port 8545
 
 ```bash
 docker run -it -p 8545:8545 \
-  --rm tezos/tezos-bare:octez-evm-node-v0.25 octez-evm-node run observer \
+  --rm tezos/tezos-bare:octez-evm-node-v0.36 octez-evm-node run observer \
   --network mainnet --history rolling:1  --dont-track-rollup-node \
   --init-from-snapshot --rpc-addr "0.0.0.0" --rpc-port "8545"
 ```
