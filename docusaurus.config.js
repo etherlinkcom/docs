@@ -104,7 +104,8 @@ module.exports = async function createConfigAsync() {
         'docusaurus-biel',{
           project: BIEL_PROJECT,
           headerTitle: 'Etherlink/Tezos documentation chatbot (beta)',
-          buttonPosition: 'center-right',
+          // buttonPosition: 'custom',
+          enable: false, // Hide here to allow us to put the button in a custom position
           version: 'latest',
           suggestedQuestions: [
             'What development tools does Etherlink support?',
@@ -137,6 +138,17 @@ module.exports = async function createConfigAsync() {
             {
               type: 'search',
               position: 'left'
+            },
+            {
+              type: 'html',
+              position: 'right',
+              value: `<biel-button
+                project="${BIEL_PROJECT}"
+                header-title="Biel.ai chatbot"
+                modal-position="bottom-right"
+                button-style="dark">
+                  Ask AI
+                </biel-button>`,
             },
             {
               href: 'https://github.com/etherlinkcom/docs',
@@ -211,6 +223,10 @@ module.exports = async function createConfigAsync() {
           'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
         crossorigin: 'anonymous',
       },
+      'https://cdn.jsdelivr.net/npm/biel-search@latest/dist/biel-search/biel-search.css',
+    ],
+    scripts: [
+      'https://cdn.jsdelivr.net/npm/biel-search@latest/dist/biel-search/biel-search.esm.js',
     ],
   }
 };
