@@ -81,7 +81,7 @@ The easiest way to get the `octez-evm-node` binary is to download the binaries d
 The release page provides static binaries for Linux systems (for amd64 and arm64 architectures).
 
 :::note
-As of August 1st 2025, the minimum version of `octez-evm-node` that supports the live Etherlink mainnet & testnet is **v0.35**
+As of August 1st 2025, Etherlink Mainnet and Testnet require at least version 0.35 of the `octez-evm-node` binary.
 :::
 
 As an alternative, you can use the minimal Docker image [tezos/tezos-bare](https://hub.docker.com/r/tezos/tezos-bare/tags?name=octez-evm-node) with a tag that includes `octez-evm-node`.
