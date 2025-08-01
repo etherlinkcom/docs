@@ -7,3 +7,7 @@ title: Cross chain communication
 [LayerZero](https://layerzero.network/) is an interoperability protocol that connects blockchains, allowing developers to build seamless omnichain applications, tokens, and experiences.
 
 Learn more about sending messages across chains [here](https://docs.layerzero.network/v2/developers/evm/getting-started), and find the endpoint addresses already deployed [here](https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts).
+
+## Gelato
+
+You can also use Gelato Web3 Functions to communicate across chains; see [Gelato](/tools/developer-experience#gelato).
