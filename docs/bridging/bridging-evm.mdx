@@ -29,6 +29,9 @@ It allows users to transfer several wrapped tokens, including:
 
 For the Etherlink addresses of these tokens, see [Token addresses](#token-addresses).
 
+Etherlink's LayerZero bridge infrastructure also supports a number of tokens that meet their [Omnichain Fungible Token (OFT)](https://docs.layerzero.network/v2/developers/evm/oft/quickstart) standard.
+The token addresses for OFTs that can be transferred between Etherlink and other networks (including WXTZ) can be retrieved from the [LayerZero API](https://docs.layerzero.network/v2/tools/api/oft), or are listed [here](#token-addresses).
+
 ## Bridge security
 
 The bridge uses the decentralized smart contracts of [LayerZero](https://layerzero.network/) that are deployed on the supported EVM networks without the intervention of a third party.
@@ -386,6 +389,81 @@ This diagram shows how the EVM bridge works:
 {/* https://lucid.app/lucidchart/cac80916-85c8-455d-b50b-f265057dcc1b/edit */}
 
 For more information, see the repository for the bridge: https://github.com/LayerZero-Labs/wrapped-asset-bridge.
+
+## Bridge contract addresses
+
+The verified contract code, ABI and historic transactions for the wrapped asset bridge on each supported network can be viewed at the following links.
+Developers can integrate these contracts into their own cross-chain bridge if required.
+
+### Mainnet wrapped asset bridge
+
+<table class="customTableContainer">
+<thead>
+<tr>
+  <th>Network</th>
+  <th>Contract address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Etherlink</td>
+  <td><InlineCopy href="https://explorer.etherlink.com/address/0x1f8E735f424B7A49A885571A2fA104E8C13C26c7" code="0x1f8E735f424B7A49A885571A2fA104E8C13C26c7" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>Ethereum</td>
+  <td><InlineCopy href="https://etherscan.io/address/0x1f8E735f424B7A49A885571A2fA104E8C13C26c7" code="0x1f8E735f424B7A49A885571A2fA104E8C13C26c7" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>Arbitrum One</td>
+  <td><InlineCopy href="https://arbiscan.io/address/0x1f8E735f424B7A49A885571A2fA104E8C13C26c7" code="0x1f8E735f424B7A49A885571A2fA104E8C13C26c7" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>Base</td>
+  <td><InlineCopy href="https://basescan.org/address/0x1f8E735f424B7A49A885571A2fA104E8C13C26c7" code="0x1f8E735f424B7A49A885571A2fA104E8C13C26c7" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>Optimism</td>
+  <td><InlineCopy href="https://optimistic.etherscan.io/address/0x1f8E735f424B7A49A885571A2fA104E8C13C26c7" code="0x1f8E735f424B7A49A885571A2fA104E8C13C26c7" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>BNB Chain</td>
+  <td><InlineCopy href="https://bscscan.com/address/0x1f8E735f424B7A49A885571A2fA104E8C13C26c7" code="0x1f8E735f424B7A49A885571A2fA104E8C13C26c7" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>Avalanche C-Chain</td>
+  <td><InlineCopy href="https://avascan.info/blockchain/c/address/0x1f8E735f424B7A49A885571A2fA104E8C13C26c7" code="0x1f8E735f424B7A49A885571A2fA104E8C13C26c7" abbreviate="5,4"></InlineCopy></td>
+</tr>
+</tbody>
+</table>
+
+### Testnet wrapped asset bridge
+
+<table class="customTableContainer">
+<thead>
+<tr>
+  <th>Network</th>
+  <th>Contract address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Etherlink Testnet</td>
+  <td><InlineCopy href="https://testnet.explorer.etherlink.com/address/0x137d4e9C2431A3DCBa6e615E9438F2c558353a17" code="0x137d4e9C2431A3DCBa6e615E9438F2c558353a17" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>Arbitrum Sepolia</td>
+  <td><InlineCopy href="https://sepolia.arbiscan.io/address/0x1687412b4Cb0f0753BA3919849e729E1bbeC8345" code="0x1687412b4Cb0f0753BA3919849e729E1bbeC8345" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>Optimism Sepolia</td>
+  <td><InlineCopy href="https://sepolia-optimism.etherscan.io/address/0x29864554C76b121cd2435962bfaF9AE72D2D5Aaf" code="0x29864554C76b121cd2435962bfaF9AE72D2D5Aaf" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>BSC Testnet</td>
+  <td><InlineCopy href="https://testnet.bscscan.com/address/0x544d75a99916CA53394fFc7E0f38c4FE4d08d11b" code="0x544d75a99916CA53394fFc7E0f38c4FE4d08d11b" abbreviate="5,4"></InlineCopy></td>
+</tr>
+</tbody>
+</table>
 
 ## Related tools and information
 
