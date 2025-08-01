@@ -36,7 +36,7 @@ The upgrade also includes foundational work to the withdrawal precompiled contra
 
 For more information, see [Announcing Calypso: The Next Etherlink Upgrade Proposal](https://medium.com/@etherlink/announcing-calypso-the-next-etherlink-upgrade-proposal-dbe92c576da9)
 
-## Calypso2 upgrade
+### Calypso2 upgrade
 
 On 12 April 2025, the Calypso2 security upgrade went live on Etherlink Mainnet, in Etherlink block 10,453,254.
 This upgrade improves error handling of FA bridging transactions, which hardens the Etherlink sequencer against potential DDOS attacks.
@@ -61,7 +61,7 @@ Running an Etherlink EVM node on Dionysus requires version 0.26 or later of the 
 
 For more information, see [Announcing Dionysus: The Next Etherlink Upgrade Proposal](https://medium.com/p/announcing-dionysus-the-next-etherlink-upgrade-proposal-4601c6920709).
 
-## 4.1 upgrade
+### 4.1 upgrade
 
 On 15 July 2025 the Etherlink 4.1 upgrade went live on Etherlink Mainnet, in Etherlink block 21,214,618.
 This upgrade includes:
