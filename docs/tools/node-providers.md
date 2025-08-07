@@ -8,3 +8,4 @@ If you need your own Etherlink RPC node, these companies offer them:
 - Chainstack: See https://chainstack.com/build-better-with-etherlink/
 - Zeeve: See https://www.zeeve.io/blockchain-protocols/deploy-etherlink-node/
 - Spectrum: See https://spectrumnodes.com/
+- BlockPI: See https://blockpi.io/chain/etherlink
