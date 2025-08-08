@@ -92,12 +92,10 @@ The best place to get the most recent binary files to use with Etherlink is http
 
 1. To speed up the setup process by loading a snapshot, follow these steps:
 
-   1. Download the latest snapshot by running one of the following commands.
-   Mainnet snapshots are available at https://snapshots.tzinit.org/etherlink-mainnet and Testnet snapshots are available at https://snapshots.tzinit.org/etherlink-ghostnet.
+   1. Download the latest snapshot for the appropriate network.
 
-      - Mainnet full nodes: `wget https://snapshots.tzinit.org/etherlink-mainnet/eth-mainnet.full`
-      - Mainnet archive nodes: `wget https://snapshots.tzinit.org/etherlink-mainnet-archive/eth-mainnet.archive`
-      - Testnet full nodes: `wget https://snapshots.tzinit.org/etherlink-ghostnet/eth-ghostnet.full`
+      - For full snapshots on Mainnet, see https://snapshots.tzinit.org/etherlink-mainnet
+      - For full snapshots on Testnet, see https://snapshots.tzinit.org/etherlink-ghostnet
 
    1. Load the snapshot by running the `snapshot import` command.
    These examples use the placeholder `<SNAPSHOT_FILE_NAME>` for the snapshot file name:
