@@ -214,11 +214,10 @@ If you want a mode with a longer retention period, you can:
 - Create your own snapshot with the appropriate retention period from another EVM node.
 - Start with a node in a mode that has the necessary data and [switch to another mode](#switching-history-modes) with the retention period that you want.
 
-To download and import the snapshot manually, download the appropriate snapshot for the network and mode (such as from http://snapshotter-sandbox.nomadic-labs.eu/) and import it with the `octez-evm-node snapshot import` command, as in this example:
+To download and import the snapshot manually, download the appropriate snapshot for the network and mode (such as from http://snapshotter-sandbox.nomadic-labs.eu/) and import it with the `octez-evm-node snapshot import` command, as in this example, which uses `<SNAPSHOT_FILE_NAME>` for the snapshot file:
 
 ```bash
-wget https://storage.googleapis.com/nl-sandboxes-etherlink--snapshots/etherlink-testnet/rolling/etherlink-testnet-rolling-latest.gz
-octez-evm-node snapshot import etherlink-testnet-rolling-latest.gz \
+octez-evm-node snapshot import <SNAPSHOT_FILE_NAME> \
   --data-dir <EVM_DATA_DIR>
 ```
 
@@ -255,13 +254,23 @@ The node throws an error if you try to run it in a mode that it is not configure
 
 ### From an existing Etherlink Smart Rollup node
 
-1. Download [an Etherlink Smart Rollup node snapshot](https://snapshots.tzinit.org), and use the `octez-smart-rollup-node` binary to import it in a temporary directory.
-The following examples use `<SR_OBSERVER_DATA_DIR>` as the location of this temporary directory.
+You can use the Etherlink Smart Rollup node to initialize a data directory for the EVM node without having to actually start the Smart Rollup node.
+The `octez-smart-rollup-node` binary sets up a data directory that the EVM node can use as a starting point.
+
+1. Get a built version of the Smart Rollup node binary, named `octez-smart-rollup-node`.
+The best place to get the most recent binary files to use with Etherlink is https://gitlab.com/tezos/tezos/-/releases.
+
+1. Download an Etherlink Smart Rollup node snapshot for the appropriate Etherlink network:
+
+   - For Mainnet, see https://snapshots.tzinit.org/etherlink-mainnet
+   - For Testnet, see https://snapshots.tzinit.org/etherlink-ghostnet
+
+1. Use the `octez-smart-rollup-node` binary to import the snapshot into a temporary directory.
+The following examples use `<SR_OBSERVER_DATA_DIR>` as the location of this temporary directory and `<SNAPSHOT>` as the snapshot file name.
 
    ```bash
-   wget https://snapshots.tzinit.org/etherlink-ghostnet/eth-ghostnet.full
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/ghostnet \
-     snapshot import eth-ghostnet.full \
+     snapshot import <SNAPSHOT> \
      --data-dir <SR_OBSERVER_DATA_DIR>
    ```
 
