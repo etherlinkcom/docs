@@ -265,6 +265,9 @@ The best place to get the most recent binary files to use with Etherlink is http
    - For Mainnet, see https://snapshots.tzinit.org/etherlink-mainnet
    - For Testnet, see https://snapshots.tzinit.org/etherlink-ghostnet
 
+   The full history snapshot is appropriate for most use cases.
+   The EVM node can run in any history mode starting from these snapshots.
+
 1. Use the `octez-smart-rollup-node` binary to import the snapshot into a temporary directory.
 The following examples use `<SR_OBSERVER_DATA_DIR>` as the location of this temporary directory and `<SNAPSHOT>` as the snapshot file name.
 

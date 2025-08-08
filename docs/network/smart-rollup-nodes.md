@@ -97,6 +97,9 @@ The best place to get the most recent binary files to use with Etherlink is http
       - For full snapshots on Mainnet, see https://snapshots.tzinit.org/etherlink-mainnet
       - For full snapshots on Testnet, see https://snapshots.tzinit.org/etherlink-ghostnet
 
+      The full history snapshot is appropriate for most use cases.
+      If you want to run an EVM node with the Smart Rollup node, they do not need to run in the same history mode.
+
    1. Load the snapshot by running the `snapshot import` command.
    These examples use the placeholder `<SNAPSHOT_FILE_NAME>` for the snapshot file name:
 
