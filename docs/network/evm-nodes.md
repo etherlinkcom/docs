@@ -202,31 +202,29 @@ The node can take time to download and import the snapshot.
 
 ### From a manual snapshot
 
-You can manually select a snapshot and download it manually or provide the URL of the snapshot to the node.
+You can manually select a snapshot and provide the URL of the snapshot to the node or download the file yourself.
 
-You must download the appropriate snapshot for the network and mode.
+You must select the appropriate snapshot for the network and history mode.
 Rolling and full snapshots provided on the [Nomadic Labs snapshot site](http://snapshotter-sandbox.nomadic-labs.eu/) include 1 day of complete data.
 These snapshots are equivalent to the mode `rolling:1` or `full:1`.
 
 If you want a mode with a longer retention period, you can:
 
-- Download an older snapshot and allow the EVM node to compute the data since the snapshot was taken.
+- Use an older snapshot and allow the EVM node to compute the data since the snapshot was taken.
+- Start with a node in a mode that has the necessary data and [switch to another history mode](#switching-history-modes) with the retention period that you want.
 - Create your own snapshot with the appropriate retention period from another EVM node.
-- Start with a node in a mode that has the necessary data and [switch to another mode](#switching-history-modes) with the retention period that you want.
 
-To download and import the snapshot manually, download the appropriate snapshot for the network and mode (such as from http://snapshotter-sandbox.nomadic-labs.eu/) and import it with the `octez-evm-node snapshot import` command, as in this example, which uses `<SNAPSHOT_FILE_NAME>` for the snapshot file:
+EVM node snapshots are available at http://snapshotter-sandbox.nomadic-labs.eu.
+
+To import the snapshot, pass the URL of the snapshot or the path to the downloaded snapshot file (represented here by the placeholder `<SNAPSHOT_URL_OR_FILE>`) to the `octez-evm-node snapshot import` command, as in this example:
 
 ```bash
-octez-evm-node snapshot import <SNAPSHOT_FILE_NAME> \
+octez-evm-node snapshot import <SNAPSHOT_URL_OR_FILE> \
   --data-dir <EVM_DATA_DIR>
 ```
 
-You can also pass the snapshot URL to the command, as in this example:
-
-```bash
-octez-evm-node snapshot import https://storage.googleapis.com/nl-sandboxes-etherlink--snapshots/etherlink-testnet/rolling/etherlink-testnet-rolling-latest.gz \
-  --data-dir <EVM_DATA_DIR>
-```
+If you provided the URL of the snapshot, the node downloads and imports it automatically.
+If you downloaded the snapshot manually, you can delete the snapshot file after the `octez-evm-node snapshot import` command completes.
 
 Then, run this command to start the node, passing the data directory and the network and mode to use:
 
@@ -260,20 +258,20 @@ The `octez-smart-rollup-node` binary sets up a data directory that the EVM node 
 1. Get a built version of the Smart Rollup node binary, named `octez-smart-rollup-node`.
 The best place to get the most recent binary files to use with Etherlink is https://gitlab.com/tezos/tezos/-/releases.
 
-1. Download an Etherlink Smart Rollup node snapshot for the appropriate Etherlink network:
+1. Get the URL of the Etherlink Smart Rollup node snapshot for the appropriate Etherlink network or download the file manually:
 
    - For Mainnet, see https://snapshots.tzinit.org/etherlink-mainnet
    - For Testnet, see https://snapshots.tzinit.org/etherlink-ghostnet
 
    The full history snapshot is appropriate for most use cases.
-   The EVM node can run in any history mode starting from these snapshots.
+   The EVM node can run in any history mode starting from a Smart Rollup node that starts from these snapshots.
 
 1. Use the `octez-smart-rollup-node` binary to import the snapshot into a temporary directory.
-The following examples use `<SR_OBSERVER_DATA_DIR>` as the location of this temporary directory and `<SNAPSHOT>` as the snapshot file name.
+The following examples use `<SR_OBSERVER_DATA_DIR>` as the location of this temporary directory and `<SNAPSHOT_URL_OR_FILE>` as the snapshot URL or file name.
 
    ```bash
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/ghostnet \
-     snapshot import <SNAPSHOT> \
+     snapshot import <SNAPSHOT_URL_OR_FILE> \
      --data-dir <SR_OBSERVER_DATA_DIR>
    ```
 
@@ -281,7 +279,7 @@ The following examples use `<SR_OBSERVER_DATA_DIR>` as the location of this temp
    If you are running a Smart Rollup node on the same machine, you can skip this step because you can reuse its data directory.
    :::
 
-1. Run this command to import the kernel from the Smart Rollup node:
+1. Run this command to import the kernel from the Smart Rollup node into the EVM node:
 
    ```bash
    octez-evm-node init from rollup node <SR_OBSERVER_DATA_DIR> --data-dir <EVM_DATA_DIR>
@@ -294,7 +292,7 @@ The following examples use `<SR_OBSERVER_DATA_DIR>` as the location of this temp
    ```
 
    The EVM node runs in archive mode.
-   You can switch modes with the command `octez-evm-node switch history to <MODE>`.
+   You can switch history modes with the command `octez-evm-node switch history to <MODE>`.
 
 ### From genesis
 
