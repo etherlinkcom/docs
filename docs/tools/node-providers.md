@@ -34,7 +34,7 @@ These restrictions are kept under frequent review and may be updated without not
 
 ## Commercial RPC Providers
 
-If you don't wish to deploy and manage your own Etherlink RPC node, or require features or rate limits higher the ones listed above, these companies offer a wide range of plans:
+If you don't wish to deploy and manage your own Etherlink RPC node, or require features or rate limits higher the ones listed above, these companies offer a wide range of free and paid plans:
 
 - Ankr: See https://www.ankr.com/web3-api/chains-list/etherlink/
 - BlockPI: See https://blockpi.io/chain/etherlink
