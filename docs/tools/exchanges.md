@@ -8,9 +8,15 @@ These centralized exchanges allow users and dApps to trade XTZ with other crypto
 
 - [Gate.io](https://www.gate.io/)
 
-- [MEXC](https://www.gate.io/)
+- [MEXC](https://www.mexc.com/)
 
 These decentralized exchanges allow users and dApps to trade XTZ with other cryptocurrencies:
+
+- [Curve Finance](https://www.curve.finance/dex/etherlink/pools/)
+
+- [Hanji](https://hanji.io/)
+
+- [Oku Trade](https://oku.trade/?inputChain=etherlink)
 
 - [IguanaDEX](https://www.iguanadex.com/?chain=etherlink)
 
