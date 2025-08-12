@@ -8,7 +8,7 @@ These centralized exchanges allow users and dApps to trade XTZ with other crypto
 
 - [Gate.io](https://www.gate.io/)
 
-- [MEXC](https://www.gate.io/)
+- [MEXC](https://www.mexc.com/)
 
 These decentralized exchanges allow users and dApps to trade XTZ with other cryptocurrencies:
 
