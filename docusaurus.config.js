@@ -8,12 +8,17 @@ const { themes } = require('prism-react-renderer');
 const BIEL_PROJECT = 'w30c27l8fg';
 const BIEL_WARNING = 'AI-generated answers may contain errors. Verify the information before use. For more information, see <a href="https://docs.tezos.com/overview/chatbot">Using the chatbot</a>.';
 
+const POSTHOG_ASSETS = 'https://us-assets.i.posthog.com';
+const POSTHOG_API = 'https://us.i.posthog.com';
+
 // script-src causes development builds to fail
 // But unsafe-eval should NOT be in production builds
 // Also, put GTM first because sometimes the ';' in the escaped single quotes causes the browser to think it's the end
-const scriptSrc = process.env.NODE_ENV === 'development' ?
-  `https://*.googletagmanager.com https://cdn.jsdelivr.net 'self' 'unsafe-inline' 'unsafe-eval'`
-  : `https://*.googletagmanager.com https://cdn.jsdelivr.net 'self' 'unsafe-inline'`;
+const scriptSrc =
+  process.env.NODE_ENV === 'development'
+    ? `https://*.googletagmanager.com https://cdn.jsdelivr.net ${POSTHOG_ASSETS} 'self' 'unsafe-inline' 'unsafe-eval'`
+    : `https://*.googletagmanager.com https://cdn.jsdelivr.net ${POSTHOG_ASSETS} 'self' 'unsafe-inline'`;
+
 
 const contentSecurityPolicy = `
 default-src 'none';
@@ -22,11 +27,12 @@ manifest-src 'self';
 script-src ${scriptSrc};
 style-src https://cdn.jsdelivr.net https://fonts.googleapis.com 'self' 'unsafe-inline';
 font-src https://cdn.jsdelivr.net https://fonts.gstatic.com 'self';
-img-src 'self' https://*.googletagmanager.com https://*.google-analytics.com data: https://*.walletconnect.com;
+img-src 'self' https://*.googletagmanager.com https://*.google-analytics.com data: https://*.walletconnect.com ${POSTHOG_API};
 media-src 'self';
 form-action 'self';
-connect-src 'self' https://node.mainnet.etherlink.com https://node.ghostnet.etherlink.com https://*.thirdweb.com https://*.algolia.net https://*.algolianet.com https://app.pushfeedback.com https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.walletconnect.com https://*.walletconnect.org wss://relay.walletconnect.org wss://app.biel.ai https://app.biel.ai;
-frame-src https://tezosbot.vercel.app https://*.loom.com https://*.thirdweb.com https://*.walletconnect.org;`;
+connect-src 'self' ${POSTHOG_API} https://node.mainnet.etherlink.com https://node.ghostnet.etherlink.com https://*.thirdweb.com https://*.algolia.net https://*.algolianet.com https://app.pushfeedback.com https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.walletconnect.com https://*.walletconnect.org wss://relay.walletconnect.org wss://app.biel.ai https://app.biel.ai;
+frame-src https://tezosbot.vercel.app https://*.loom.com https://*.thirdweb.com https://*.walletconnect.org;
+`;
 
 /** @type {import('@docusaurus/types').Config} */
 module.exports = async function createConfigAsync() {
@@ -210,6 +216,12 @@ module.exports = async function createConfigAsync() {
         integrity:
           'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
         crossorigin: 'anonymous',
+      },
+    ],
+    scripts: [
+      {
+        src: '/js/posthog.js',
+        defer: true,
       },
     ],
   }
