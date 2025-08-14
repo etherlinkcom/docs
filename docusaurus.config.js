@@ -212,5 +212,11 @@ module.exports = async function createConfigAsync() {
         crossorigin: 'anonymous',
       },
     ],
+    scripts: [
+      {
+        src: '/posthog.js',
+        defer: true,
+      },
+    ],
   }
 };
