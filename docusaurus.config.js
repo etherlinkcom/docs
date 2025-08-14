@@ -8,8 +8,8 @@ const { themes } = require('prism-react-renderer');
 const BIEL_PROJECT = 'w30c27l8fg';
 const BIEL_WARNING = 'AI-generated answers may contain errors. Verify the information before use. For more information, see <a href="https://docs.tezos.com/overview/chatbot">Using the chatbot</a>.';
 
-const POSTHOG_ASSETS = 'https://us-assets.i.posthog.com'; // loads array.js
-const POSTHOG_API = 'https://us.i.posthog.com';           // events/flags API
+const POSTHOG_ASSETS = 'https://us-assets.i.posthog.com';
+const POSTHOG_API = 'https://us.i.posthog.com';
 
 // script-src causes development builds to fail
 // But unsafe-eval should NOT be in production builds
