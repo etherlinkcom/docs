@@ -214,7 +214,7 @@ module.exports = async function createConfigAsync() {
     ],
     scripts: [
       {
-        src: '/posthog.js',
+        src: '/js/posthog.js',
         defer: true,
       },
     ],
