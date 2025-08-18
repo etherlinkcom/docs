@@ -282,6 +282,57 @@ callContract();
 
 [Acelon](https://acelon.io) provides a price feed for the price of stXTZ tokens, part of a staking pool on Tezos layer 1.
 
+This example contract accepts price update data from Acelon and uses it to provide the price of one STXTZ in XTZ:
+
+```solidity
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
+
+// Chainlink aggregator interface
+interface AggregatorV3Interface {
+  function decimals() external view returns (uint8);
+
+  function description() external view returns (string memory);
+
+  function version() external view returns (uint256);
+
+  function getRoundData(
+    uint80 _roundId
+  ) external view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
+
+  function latestRoundData()
+    external
+    view
+    returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
+}
+
+contract AcurastSimple {
+  address monitorAsset;
+
+  constructor(address _monitorAsset) {
+    monitorAsset = _monitorAsset;
+  }
+
+  function getAsset() view external returns (address _monitorAsset) {
+    return (monitorAsset);
+  }
+
+  function getPrice() view external returns (uint256 _price){
+    AggregatorV3Interface oracle_ = AggregatorV3Interface(monitorAsset);
+    (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound) = oracle_.latestRoundData();
+    return uint256(answer);
+  }
+
+  function decimals() view external returns (uint256 _decimals) {
+    AggregatorV3Interface oracle_ = AggregatorV3Interface(monitorAsset);
+    return oracle_.decimals();
+  }
+}
+
+```
+
+To deploy this contract you need the address of the Acelon proxy on Etherlink (`0x4Bf5C46Ee59a1110c2a242715f9c3b548A14ee02` on Mainnet and `0xf021399FA842A3c9C82f97079cd1a64059Be9122` on Testnet).
+
 Here is an example JavaScript application that uses the [`viem`](https://viem.sh/) SDK to get the price of stXTZ on Etherlink:
 
 ```javascript
