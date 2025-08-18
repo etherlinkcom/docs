@@ -33,6 +33,7 @@ const sidebars = {
       collapsed: false,
       items: [
         'index',
+        'get-started/chatbot',
         'get-started/using-your-wallet',
         'get-started/sending-transactions',
         'get-started/network-information',
