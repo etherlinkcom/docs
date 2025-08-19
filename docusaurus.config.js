@@ -6,7 +6,7 @@ require('dotenv').config();
 const { themes } = require('prism-react-renderer');
 
 const BIEL_PROJECT = 'w30c27l8fg';
-const BIEL_WARNING = 'AI-generated answers may contain errors. Verify the information before use. For more information, see <a href="https://docs.tezos.com/overview/chatbot">Using the chatbot</a>.';
+const BIEL_WARNING = 'AI-generated answers may contain errors. Verify the information before use. For more information, see <a href="https://docs.etherlink.com/get-started/chatbot">Using the chatbot</a>.';
 
 const POSTHOG_ASSETS = 'https://us-assets.i.posthog.com';
 const POSTHOG_API = 'https://us.i.posthog.com';
