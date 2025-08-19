@@ -127,6 +127,7 @@ When you have the information for these parameters, follow these steps to genera
 
 1. If you want your EVM node to check the correctness of the blocks it receives via a Smart Rollup node, get the RPC URL of that Etherlink Smart Rollup node, such as `http://localhost:8932`.
 The following instructions use the placeholder `<SR_NODE_OBSERVER_RPC>` to represent this URL.
+You can use a Smart Rollup node that is running in any mode and history mode as long as it is up to date with the current state of Etherlink.
 1. Create a directory for the node to store its data in.
 1. Create the configuration file by setting the parameters in the environment variables or passing the arguments to the `octez-evm-node init config` command.
 
@@ -254,6 +255,7 @@ The node throws an error if you try to run it in a mode that it is not configure
 
 You can use the Etherlink Smart Rollup node to initialize a data directory for the EVM node without having to actually start the Smart Rollup node.
 The `octez-smart-rollup-node` binary sets up a data directory that the EVM node can use as a starting point.
+You can use a Smart Rollup node that is running in any mode and history mode as long as it is up to date with the current state of Etherlink.
 
 1. Get a built version of the Smart Rollup node binary, named `octez-smart-rollup-node`.
 The best place to get the most recent binary files to use with Etherlink is https://gitlab.com/tezos/tezos/-/releases.
