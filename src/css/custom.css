@@ -426,7 +426,7 @@ background-color: #1B1B1B !important;
   }
 }
 .table-of-contents .table-of-contents__link:hover, .table-of-contents .table-of-contents__link--active {
-  color: #38FF9C;
+  color: #28B56F !important;
 }
 
 /* hide next and previous */
