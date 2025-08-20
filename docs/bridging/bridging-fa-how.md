@@ -44,7 +44,9 @@ The request includes the amount of tokens to bridge, the address of the Etherlin
 
 1. The helper contract forwards the ticket to the Smart Rollup inbox and clears its storage for the next transfer.
 
-1. The Etherlink Smart Rollup receives the ticket and sends it to the ERC-20 proxy contract.
+1. The Etherlink Smart Rollup receives the ticket in an Etherlink block.
+
+1. Any user can call the FA token bridge precompiled contract's `claim` function, which causes the contract to send the ticket to the ERC-20 proxy contract.
 
 1. The ERC-20 proxy contract stores the ticket, mints the equivalent tokens, and sends them to the user's Etherlink account.
 
@@ -57,7 +59,7 @@ This diagram is an overview of the process of bridging tokens from layer 1 to Et
 
 The process of bridging FA-compatible tokens from Etherlink to layer 1 (also known as withdrawing tokens) follows these general steps:
 
-1. The user calls the FA withdrawal precompiled contract on Etherlink and includes this information:
+1. The user calls the FA token bridge precompiled contract on Etherlink and includes this information:
 
    - The address of the ERC-20 proxy contract that stores the ticket that represents the tokens
    - The user's layer 1 address or the address of a contract to send the tokens to

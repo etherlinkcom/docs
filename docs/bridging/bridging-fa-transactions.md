@@ -28,7 +28,7 @@ Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
 
    - For FA2 tokens, make the token bridge helper contract an operator of the token to deposit.
    You can submit this transaction with any Tezos client, including on many block explorers.
-   For example, this Octez client command makes the token bridge helper contract `KT1PaqqmLgyUKyrWQG9tP57rt6tag8nGSrMh` an operator of the  token with the ID 0 on the FA2 contract `KT1N5CWnvabCM71eBmzEhotnQX3eciLLyv8v`:
+   For example, this Octez client command makes the token bridge helper contract `KT1PaqqmLgyUKyrWQG9tP57rt6tag8nGSrMh` an operator of the token with the ID 0 on the FA2 contract `KT1N5CWnvabCM71eBmzEhotnQX3eciLLyv8v`:
 
       ```bash
       octez-client --wait none transfer 0 from my_wallet \
@@ -38,7 +38,7 @@ Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
         --burn-cap 0.1
       ```
 
-1. Call token bridge helper's `deposit` entrypoint and pass the address of the Etherlink Smart Rollup and the address of the Etherlink account to send the tokens to, as in this example:
+1. Call the token bridge helper's `deposit` entrypoint and pass the address of the Etherlink Smart Rollup and the address of the Etherlink account to send the tokens to, as in this example:
 
    ```bash
    octez-client --wait none transfer 0 from my_wallet \
@@ -48,8 +48,20 @@ Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
      --burn-cap 0.1
    ```
 
-The token bridge helper contract sends the tokens to the ticketer contract, which issues a ticket that represents the tokens.
-The token bridge helper contract sends that ticket to the ERC-20 proxy contract, which mints the tokens and sends them to the Etherlink account.
+   The token bridge helper contract sends the tokens to the ticketer contract, which issues a ticket that represents the tokens.
+   The token bridge helper contract sends that ticket to Etherlink.
+
+1. When the deposit is in an Etherlink block, call the FA token bridge precompiled contract's `claim` function to release the ticket.
+
+   The address of the precompiled contract is `0xff00000000000000000000000000000000000002` and to call the function you can use the ABI `claim(uint256 depositId)`, where `depositId` is
+
+   The precompiled contract sends the ticket to the ERC-20 proxy contract, which mints the tokens and sends them to the Etherlink account.
+
+   :::note
+
+   Normally an automated system run by Nomadic Labs calls the `claim` function on behalf of depositors, but if that system is down or does not call the `claim` function for your deposit, you may need to do it yourself.
+
+   :::
 
 To see the tokens in your Etherlink wallet, look up the ERC-20 proxy contract in a block explorer or use its address to manually add the tokens to your wallet.
 Because the Etherlink tokens are compatible with the ERC-20 standard, EVM-compatible wallets should be able to display them.
