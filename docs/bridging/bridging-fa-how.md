@@ -72,7 +72,8 @@ The process of bridging FA-compatible tokens from Etherlink to layer 1 (also kno
 1. The proxy contract sends the ticket to the helper contract by putting it in a transaction in the Smart Rollup outbox.
 This transaction includes the target layer 1 address.
 
-This outbox message becomes part of Etherlink's commitment to its state.
+   This outbox message becomes part of Etherlink's commitment to its state.
+
 1. When the commitment that contains the transaction is cemented on layer 1, anyone can run the transaction by running the Octez client `execute outbox message` command.
 
 1. The helper contract receives the ticket and address and stores the address.

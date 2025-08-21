@@ -139,7 +139,7 @@ The source of truth of what Etherlink transactions are final is the state of the
 They catch any misbehavior by the sequencer or other actors, accept only valid transactions, and challenge questionable behavior.
 As described in [Refutation periods](https://docs.tezos.com/architecture/smart-rollups#refutation-periods) on docs.tezos.com, Smart Rollup nodes have two weeks to challenge commitments made about the state of a Smart Rollup, although they usually challenge any questionable state as soon as possible.
 
-Therefore, an Etherlink transaction is truly finalized two weeks after the block is it in has been published to Tezos layer 1.
+Therefore, an Etherlink transaction is truly finalized two weeks after the block it is in has been published to Tezos layer 1.
 At this point, it is permanently part of the state of the Etherlink Smart Rollup and of Tezos.
 
 However, Etherlink is set up so users can be confident that transactions are irreversible much sooner than that.
