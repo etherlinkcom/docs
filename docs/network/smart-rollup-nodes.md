@@ -92,21 +92,22 @@ The best place to get the most recent binary files to use with Etherlink is http
 
 1. To speed up the setup process by loading a snapshot, follow these steps:
 
-   1. Download the latest snapshot by running one of the following commands.
-   Mainnet snapshots are available at https://snapshots.tzinit.org/etherlink-mainnet and Testnet snapshots are available at https://snapshots.tzinit.org/etherlink-ghostnet.
+   1. Get the URL of the Etherlink Smart Rollup node snapshot for the appropriate Etherlink network or download the file manually:
 
-      - Mainnet full nodes: `wget https://snapshots.tzinit.org/etherlink-mainnet/eth-mainnet.full`
-      - Mainnet archive nodes: `wget https://snapshots.tzinit.org/etherlink-mainnet-archive/eth-mainnet.archive`
-      - Testnet full nodes: `wget https://snapshots.tzinit.org/etherlink-ghostnet/eth-ghostnet.full`
+      - For full snapshots on Mainnet, see https://snapshots.tzinit.org/etherlink-mainnet
+      - For full snapshots on Testnet, see https://snapshots.tzinit.org/etherlink-ghostnet
 
-   1. Load the snapshot by running the `snapshot import` command.
-   These examples use the placeholder `<SNAPSHOT_FILE_NAME>` for the snapshot file name:
+      The full history snapshot is appropriate for most use cases.
+      If you want to run an EVM node with the Smart Rollup node, they do not need to run in the same history mode.
+
+   1. Use the `octez-smart-rollup-node` binary to import the snapshot into a temporary directory.
+   The following examples use `<SR_DATA_DIR>` as the location of this temporary directory and `<SNAPSHOT_URL_OR_FILE>` as the snapshot URL or file name.
 
       Run this command for Mainnet:
 
       ```bash
       octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet \
-        snapshot import <SNAPSHOT_FILE_NAME> \
+        snapshot import <SNAPSHOT_URL_OR_FILE> \
         --data-dir <SR_DATA_DIR>
       ```
 
@@ -114,7 +115,7 @@ The best place to get the most recent binary files to use with Etherlink is http
 
       ```bash
       octez-smart-rollup-node --endpoint https://rpc.tzkt.io/ghostnet \
-        snapshot import <SNAPSHOT_FILE_NAME> \
+        snapshot import <SNAPSHOT_URL_OR_FILE> \
         --data-dir <SR_DATA_DIR>
       ```
 
