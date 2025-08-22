@@ -15,15 +15,15 @@ The first upgrade to the Etherlink kernel went live on Etherlink Mainnet on 22 J
 It includes updates and improvements to Etherlink's support for EVM endpoints to make calling Etherlink more similar to calling any other EVM network.
 For more information, see [The First Regular Upgrade for Etherlink: One Step Closer to Launch](https://medium.com/etherlink/the-first-regular-upgrade-for-etherlink-one-step-closer-to-launch-6176b2136eaf).
 
-## Bifröst upgrade
+## Etherlink 2 (Bifröst)
 
-The Bifröst upgrade to the Etherlink kernel went live on Etherlink Mainnet on 7 November 2024.
+The 2.0 upgrade to the Etherlink kernel went live on Etherlink Mainnet on 7 November 2024.
 It adds support for bridging [FA tokens from Tezos layer 1](https://docs.tezos.com/architecture/tokens#token-standards) to ERC-20 tokens on Etherlink and support for the callTracer tracer, which makes it possible for third-party tools like the Blockscout block explorer to index Etherlink transactions and for applications to trace transactions as described in [Tracing transactions](/building-on-etherlink/transactions#tracing-transactions).
 For more information, see [Announcing Bifröst: a 2nd upgrade proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-bifr%C3%B6st-a-2nd-upgrade-proposal-for-etherlink-mainnet-ef1a7cf9715f).
 
-## Calypso upgrade
+## Etherlink 3 (Calypso)
 
-The proposed Calypso upgrade to the Etherlink kernel went live on Etherlink Mainnet on 4 March 2025.
+The 3.0 upgrade to the Etherlink kernel went live on Etherlink Mainnet on 4 March 2025.
 
 This upgrade includes significant performance and reliability improvements, including:
 
@@ -36,9 +36,9 @@ The upgrade also includes foundational work to the withdrawal precompiled contra
 
 For more information, see [Announcing Calypso: The Next Etherlink Upgrade Proposal](https://medium.com/@etherlink/announcing-calypso-the-next-etherlink-upgrade-proposal-dbe92c576da9)
 
-### Calypso2 upgrade
+### Etherlink 3.1 (Calypso2)
 
-On 12 April 2025, the Calypso2 security upgrade went live on Etherlink Mainnet, in Etherlink block 10,453,254.
+On 12 April 2025, the 3.1 security upgrade went live on Etherlink Mainnet, in Etherlink block 10,453,254.
 This upgrade improves error handling of FA bridging transactions, which hardens the Etherlink sequencer against potential DDOS attacks.
 This upgrade includes only a [security patch](https://gitlab.com/tezos/tezos/-/commit/9ab8acd92eb91c5aa2325fbb2c1794bc11aa1b68&sa=D&source=docs&ust=1744727209624752&usg=AOvVaw07zM1UuZjKJ4Teuo_L51Nl) for the Calypso kernel and no other changes.
 
@@ -46,9 +46,9 @@ This upgrade was carried out through Etherlink’s [security governance process]
 
 For more information, see [Calypso2: A security upgrade to harden the Etherlink sequencer and FA bridge](https://research-development.nomadic-labs.com/etherlink-calypso2-upgrade.html).
 
-## Dionysus upgrade
+## Etherlink 4.0 (Dionysus)
 
-On 21 May 2025, the Dionysus kernel upgrade went live on Etherlink Mainnet, in Etherlink block 15,262,162.
+On 21 May 2025, the 4.0 kernel upgrade went live on Etherlink Mainnet, in Etherlink block 15,262,162.
 This upgrade includes:
 
 - Support for EVM version Cancun features
@@ -61,9 +61,9 @@ Running an Etherlink EVM node on Dionysus requires version 0.26 or later of the 
 
 For more information, see [Announcing Dionysus: The Next Etherlink Upgrade Proposal](https://medium.com/p/announcing-dionysus-the-next-etherlink-upgrade-proposal-4601c6920709).
 
-### 4.1 upgrade
+### Etherlink 4.1
 
-On 15 July 2025 the Etherlink 4.1 upgrade went live on Etherlink Mainnet, in Etherlink block 21,214,618.
+On 15 July 2025, the 4.1 upgrade went live on Etherlink Mainnet, in Etherlink block 21,214,618.
 This upgrade includes:
 
 - An updated [governance process](/governance/how-is-etherlink-governed) that allows bakers to authenticate on voting contracts using voting keys
