@@ -96,9 +96,9 @@ The EVM node supports these history modes:
 
 - `archive` (the default): The node stores a copy of all available Etherlink information.
 
-- `full` (available starting with version 0.17): The node stores all of the necessary information to construct the current Etherlink state plus the states for a certain number of previous days, known as the _retention period_.
+- `full`: The node stores all of the necessary information to construct the current Etherlink state plus the states for a certain number of previous days, known as the _retention period_.
 
-- `rolling` (available starting with version 0.16): The node stores the current context plus the complete transaction data for a certain number of previous days, known as the _retention period_.
+- `rolling`: The node stores the current context plus the complete transaction data for a certain number of previous days, known as the _retention period_.
 
 The Octez EVM node history modes follow the same semantics as the Octez layer 1 node history modes.
 For more information about modes, see [History modes](https://octez.tezos.com/docs/user/history_modes.html) in the Octez documentation.
@@ -161,8 +161,7 @@ For example, this command runs the EVM node in the Docker container on port 8545
 ## Configuring the node
 
 The node uses the following main parameters.
-In versions of the `octez-evm-node` binary prior to version 0.20, you must specify the parameters as arguments to most commands.
-In version 0.20 and later, you can set environment variables instead of using the arguments.
+You can specify these parameters as arguments to most commands or as environment variables:
 
 - The directory where it stores its data, which you specify in the `--data-dir` argument or in the `EVM_NODE_DATA_DIR` environment variable.
 The default directory is `$HOME/.octez-evm-node`.
