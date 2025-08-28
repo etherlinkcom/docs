@@ -6,7 +6,11 @@ Because the contracts that control bridging FA tokens follow the [TZIP-029](http
 
 ## Depositing FA tokens from layer 1 to Etherlink
 
-It takes two transactions to bridge a token from layer 1 to Etherlink: one to give the token bridge helper contract access to the tokens and another to initiate the deposit.
+It takes a few transactions to bridge a token from layer 1 to Etherlink:
+
+- A transaction to give the token bridge helper contract access to the tokens
+- A transaction to initiate the deposit
+- A transaction to claim the tokens on Etherlink
 
 Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
 
@@ -51,11 +55,11 @@ Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
    The token bridge helper contract sends the tokens to the ticketer contract, which issues a ticket that represents the tokens.
    The token bridge helper contract sends that ticket to Etherlink.
 
-1. When the deposit is in an Etherlink block, call the FA token bridge precompiled contract's `claim` function to release the ticket.
+1. When the deposit is in an Etherlink block, call the FA bridging precompiled contract contract's `claim` function to cause the ERC-20 proxy contract to mint the tokens.
 
    The address of the precompiled contract is `0xff00000000000000000000000000000000000002` and to call the function you can use the ABI `claim(uint256 depositId)`, where `depositId` is
 
-   The precompiled contract sends the ticket to the ERC-20 proxy contract, which mints the tokens and sends them to the Etherlink account.
+   The precompiled contract sends information about the deposit to the ERC-20 proxy contract, which mints the tokens and sends them to the Etherlink account.
 
    :::note
 

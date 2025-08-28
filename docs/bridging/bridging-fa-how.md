@@ -16,6 +16,8 @@ Each FA token needs its own copy of these contracts to be able to bridge the tok
 - **Token bridge helper contract**: Accepts requests to bridge tokens on layer 1, uses the ticketer contract to get tickets for them, and sends the tickets to Etherlink
 - **ERC-20 proxy contract**: Stores tickets and mints ERC-20 tokens that are equivalent to the FA tokens in layer 1
 
+You can run these transactions using the bridge, as described in [Bridging FA tokens between Tezos layer 1 and Etherlink](/bridging/bridging-fa).
+For information about how to run these transactions without using the bridge, see [Sending FA bridging transactions](/bridging/bridging-fa-transactions).
 Examples of these contracts and tools to deploy them are available in the repository https://github.com/baking-bad/etherlink-bridge.
 
 ## Depositing tokens from layer 1 to Etherlink
@@ -44,41 +46,43 @@ The request includes the amount of tokens to bridge, the address of the Etherlin
 
 1. The helper contract forwards the ticket to the Smart Rollup inbox and clears its storage for the next transfer.
 
-1. The Etherlink Smart Rollup receives the ticket in an Etherlink block.
+1. The Etherlink Smart Rollup kernel receives the ticket and puts it and information about it (including the addresses of the proxy contract and the user's Etherlink wallet address) in the delayed inbox.
 
-1. Any user can call the FA token bridge precompiled contract's `claim` function, which causes the contract to send the ticket to the ERC-20 proxy contract.
+1. The sequencer reads the ticket and information about it from the delayed inbox, leaves the ticket in control of the Smart Rollup itself, and calls the null address precompiled contract (`0x000...000`) with the information.
 
-1. The ERC-20 proxy contract stores the ticket, mints the equivalent tokens, and sends them to the user's Etherlink account.
+1. The null address precompile sends the information about the deposit to the FA bridging precompiled contract.
+
+1. Any user can call the FA bridging precompiled contract's `claim` function, which causes the contract to call the ERC-20 proxy contract.
+For tokens supported by the bridge, an automated program calls the `claim` function for you.
+
+1. The ERC-20 proxy contract mints the equivalent tokens and sends them to the user's Etherlink account.
 
 This diagram is an overview of the process of bridging tokens from layer 1 to Etherlink:
 
-![Overview of the FA token bridging deposit process](/img/bridging-deposit-fa.png)
-<!-- https://lucid.app/lucidchart/50249082-2195-40fa-8fa0-bd030ef6b12e/edit -->
+<img src="/img/bridging-deposit-fa.png" alt="Overview of the FA token bridging deposit process" style={{width: 500}} />
 
 ## Withdrawing tokens from Etherlink to layer 1
 
 The process of bridging FA-compatible tokens from Etherlink to layer 1 (also known as withdrawing tokens) follows these general steps:
 
-1. The user calls the FA token bridge precompiled contract on Etherlink and includes this information:
+1. The user calls the FA bridging precompiled contract on Etherlink and includes this information:
 
-   - The address of the ERC-20 proxy contract that stores the ticket that represents the tokens
+   - The address of the ERC-20 proxy contract that manages the tokens
    - The user's layer 1 address or the address of a contract to send the tokens to
    - The amount of tokens to bridge
    - The address of the ticketer contract on layer 1
    - The content of the ticket to remove from the proxy contract (not the ticket itself)
 
-   The proxy contract uses the address of the ticketer contract and the content of the ticket to verify that the user owns the specified tokens.
+1. The precompiled contract generates calls the withdrawal endpoint of the ERC-20 proxy contract.
 
-1. The precompiled contract generates a ticket and calls the withdrawal endpoint of the ERC-20 proxy contract.
-
-1. The proxy contract sends the ticket to the helper contract by putting it in a transaction in the Smart Rollup outbox.
+1. The proxy contract sends the information about the withdrawal to the helper contract by putting it in a transaction in the Smart Rollup outbox.
 This transaction includes the target layer 1 address.
 
    This outbox message becomes part of Etherlink's commitment to its state.
 
 1. When the commitment that contains the transaction is cemented on layer 1, anyone can run the transaction by running the Octez client `execute outbox message` command.
 
-1. The helper contract receives the ticket and address and stores the address.
+1. The helper contract receives the ticket from the originally deposited tokens and target address and stores the address.
 
 1. The helper contract sends the ticket to the ticketer contract's `withdraw` entrypoint.
 
@@ -88,5 +92,4 @@ This transaction includes the target layer 1 address.
 
 This diagram is an overview of the process of bridging tokens from Etherlink to layer 1:
 
-![Overview of the FA token bridging withdrawal process](/img/bridging-withdrawal-fa.png)
-<!-- https://lucid.app/lucidchart/068d1822-29cb-4f8c-8aa1-2bd79f9b8490/edit -->
+<img src="/img/bridging-withdrawal-fa.png" alt="Overview of the FA token bridging withdrawal process" style={{width: 500}} />
