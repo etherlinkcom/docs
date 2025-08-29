@@ -6,7 +6,11 @@ Because the contracts that control bridging FA tokens follow the [TZIP-029](http
 
 ## Depositing FA tokens from layer 1 to Etherlink
 
-It takes two transactions to bridge a token from layer 1 to Etherlink: one to give the token bridge helper contract access to the tokens and another to initiate the deposit.
+It takes a few transactions to bridge a token from layer 1 to Etherlink:
+
+- A transaction to give the token bridge helper contract access to the tokens
+- A transaction to initiate the deposit
+- A transaction to claim the tokens on Etherlink
 
 Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
 
@@ -28,7 +32,7 @@ Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
 
    - For FA2 tokens, make the token bridge helper contract an operator of the token to deposit.
    You can submit this transaction with any Tezos client, including on many block explorers.
-   For example, this Octez client command makes the token bridge helper contract `KT1PaqqmLgyUKyrWQG9tP57rt6tag8nGSrMh` an operator of the  token with the ID 0 on the FA2 contract `KT1N5CWnvabCM71eBmzEhotnQX3eciLLyv8v`:
+   For example, this Octez client command makes the token bridge helper contract `KT1PaqqmLgyUKyrWQG9tP57rt6tag8nGSrMh` an operator of the token with the ID 0 on the FA2 contract `KT1N5CWnvabCM71eBmzEhotnQX3eciLLyv8v`:
 
       ```bash
       octez-client --wait none transfer 0 from my_wallet \
@@ -38,7 +42,7 @@ Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
         --burn-cap 0.1
       ```
 
-1. Call token bridge helper's `deposit` entrypoint and pass the address of the Etherlink Smart Rollup and the address of the Etherlink account to send the tokens to, as in this example:
+1. Call the token bridge helper's `deposit` entrypoint and pass the address of the Etherlink Smart Rollup and the address of the Etherlink account to send the tokens to, as in this example:
 
    ```bash
    octez-client --wait none transfer 0 from my_wallet \
@@ -48,8 +52,22 @@ Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
      --burn-cap 0.1
    ```
 
-The token bridge helper contract sends the tokens to the ticketer contract, which issues a ticket that represents the tokens.
-The token bridge helper contract sends that ticket to the ERC-20 proxy contract, which mints the tokens and sends them to the Etherlink account.
+   The token bridge helper contract sends the tokens to the ticketer contract, which issues a ticket that represents the tokens.
+   The token bridge helper contract sends that ticket to Etherlink.
+
+1. When the deposit is in an Etherlink block, call the FA bridging precompiled contract contract's `claim` function to cause the ERC-20 proxy contract to mint the tokens.
+
+   The address of the precompiled contract is `0xff00000000000000000000000000000000000002` and to call the function you can use the ABI `claim(uint256 depositId)`, where `depositId` matches the `depositId` that was emitted in a previous event for this transfer by the precompile (`QueuedDeposit(uint256 depositId, address recipient, uint256 amount, uint256 timelock, uint256 depositCount)`).
+
+   As a reference, here is an [example of the sequencer injecting a deposit](https://explorer.etherlink.com/tx/0x5a06fe64e880d6d1f53c243477cd5656204712f1543b607340996ad246158669) and here is an [example of the corresponding claim transaction](https://explorer.etherlink.com/tx/0xe017665cd7bfdef375a863114ac9f7ed2538da4d8584b0f1e0aa71ce96342aee).
+
+   The precompiled contract sends information about the deposit to the ERC-20 proxy contract, which mints the tokens and sends them to the Etherlink account.
+
+   :::note
+
+   Normally an automated system run by Nomadic Labs calls the `claim` function on behalf of depositors, but if that system is down or does not call the `claim` function for your deposit, you may need to do it yourself.
+
+   :::
 
 To see the tokens in your Etherlink wallet, look up the ERC-20 proxy contract in a block explorer or use its address to manually add the tokens to your wallet.
 Because the Etherlink tokens are compatible with the ERC-20 standard, EVM-compatible wallets should be able to display them.
