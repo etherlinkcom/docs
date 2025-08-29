@@ -59,6 +59,8 @@ Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
 
    The address of the precompiled contract is `0xff00000000000000000000000000000000000002` and to call the function you can use the ABI `claim(uint256 depositId)`, where `depositId` matches the `depositId` that was emitted in a previous event for this transfer by the precompile (`QueuedDeposit(uint256 depositId, address recipient, uint256 amount, uint256 timelock, uint256 depositCount)`).
 
+   As a reference, here is an [example of the sequencer injecting a deposit](https://explorer.etherlink.com/tx/0x5a06fe64e880d6d1f53c243477cd5656204712f1543b607340996ad246158669) and here is an [example of the corresponding claim transaction](https://explorer.etherlink.com/tx/0xe017665cd7bfdef375a863114ac9f7ed2538da4d8584b0f1e0aa71ce96342aee).
+
    The precompiled contract sends information about the deposit to the ERC-20 proxy contract, which mints the tokens and sends them to the Etherlink account.
 
    :::note
