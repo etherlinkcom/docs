@@ -44,7 +44,7 @@ The Etherlink slow kernel governance process is a streamlined version of the [Te
 It consists of three periods: a Proposal period and a Promotion period, which are supervised by Etherlink's kernel governance contract, and a Cooldown period, which is enforced by the Etherlink kernel itself.
 
 The lengths of these periods are stored in the [kernel governance contract](https://better-call.dev/mainnet/KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh).
-This table shows the period lengths as of the Dionysus Etherlink update and the Tezos Rio protocol:
+This table shows the period lengths as of the Dionysus Etherlink update and the Tezos Seoul protocol:
 
 Period | Length | Approximate time
 --- | --- | ---
@@ -117,7 +117,7 @@ The fast kernel governance process is like the slow kernel governance process, w
 
 The fast governance process has the same Proposal, Promotion, and Cooldown periods as the slow governance process, but the lengths of these periods are different.
 The lengths are stored in the [fast governance contract](https://better-call.dev/mainnet/KT1D1fRgZVdjTj5sUZKcSTPPnuR7LRxVYnDL).
-This table shows the period lengths as of the Dionysus Etherlink update and the Tezos Rio protocol:
+This table shows the period lengths as of the Dionysus Etherlink update and the Tezos Seoul protocol:
 
 Period | Length | Approximate time
 --- | --- | ---
@@ -150,7 +150,7 @@ Similar to the kernel governance processes, the sequencer voting process has Pro
 In this process, bakers propose and vote on the account that operates the sequencer.
 
 The lengths of the periods are stored in the [sequencer governance contract](https://better-call.dev/mainnet/KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa).
-This table shows the period lengths as of the Dionysus Etherlink update and the Tezos Rio protocol:
+This table shows the period lengths as of the Dionysus Etherlink update and the Tezos Seoul protocol:
 
 Period | Length | Approximate time
 --- | --- | ---
