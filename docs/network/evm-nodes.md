@@ -353,3 +353,27 @@ curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","metho
 ## Stopping the node
 
 The EVM node respects SIGTERM and exits cleanly when stopped, so you can stop it in any way that you would ordinarily stop a program on your system.
+
+## Recommended practice
+
+### Default Restart Policy
+
+We recommend applying default restart policy for each service with
+automatic recovery scenarios in case of failure.
+
+### Health checks
+
+Based on Etherlink architecture, the following health checks should be performed:
+
+##### Smart Rollup Node Health Checks
+
+1. **RPC Endpoint Health**
+   - **Endpoint**: `/health`
+   - **Purpose**: Returns health status information for the rollup node
+
+##### EVM Node Health Checks
+
+1. **RPC Endpoint Health**
+   - **Method**: `eth_blockNumber`
+   - **Purpose**: Verify EVM node is operational
+   - **Expected**: Returns current block number
