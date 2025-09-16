@@ -76,7 +76,7 @@ For more information, see [It’s voting month for Etherlink: Two governance vot
 
 The Etherlink 5.0 upgrade includes:
 
-- Support for EVM Prague, including support for EIP-7702, EIP-2537, and EIP-7623.
+- Support for EVM Prague, including support for EIP-7702, EIP-2537, and EIP-7623, including the [precompiled contracts](/get-started/network-information) in EIP-2537.
 Note that EIP-7623 causes a breaking change in the way that transaction fees are calculated.
 
 - Changes to the events that are emitted for bridging operations of FA tokens.
