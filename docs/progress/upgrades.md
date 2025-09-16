@@ -85,7 +85,7 @@ Note that EIP-7623 causes a breaking change in the way that transaction fees are
 
 - The sequencer operator can now replace its signing key with a new one without needing to go through a governance vote.
 
-For more information, see TODO BLOG POST.
+For more information, see [Announcing Ebisu: A 5th Upgrade proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-ebisu-a-5th-upgrade-proposal-for-etherlink-mainnet-4dfdd1c8819e).
 
 ## Changelog
 
