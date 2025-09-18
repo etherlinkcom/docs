@@ -93,3 +93,105 @@ This transaction includes the target layer 1 address.
 This diagram is an overview of the process of bridging tokens from Etherlink to layer 1:
 
 <img src="/img/bridging-withdrawal-fa.png" alt="Overview of the FA token bridging withdrawal process" style={{width: 500}} />
+
+## Event reference
+
+The contracts that manage the FA bridge emit these events:
+
+### `QueuedDeposit` event
+
+When a deposit is ready to be claimed, the FA bridging precompiled contract (`0xff0...0002`) emits a `QueuedDeposit` event that includes the following information:
+
+Field | Type | Description
+--- | --- | ---
+`ticket_owner` | address | ???
+`receiver` | address | The Etherlink account that will receive the claimed tokens
+`amount` | uint256 | The amount of tokens
+`inbox_level` | unit256 | ???
+`inbox_msg_id` | unit256 | The ID of the bridging transaction that users need to claim the pending deposit
+
+### `Deposit` event
+
+When a deposit has been claimed, the FA bridging precompiled contract (`0xff0...0002`) emits a `Deposit` event that includes the following information:
+
+Field | Type | Description
+--- | --- | ---
+`nonce` | unit256 | The nonce for the bridging transaction
+`receiver` | address | The Etherlink account that received the claimed tokens
+`amount` | uint256 | The amount of tokens
+`inbox_level` | unit256 | ???
+`inbox_msg_id` | unit256 | The ID of the bridging transaction
+
+TODO ^ This info from `etherlink/kernel_latest/evm_execution/src/fa_bridge/deposit.rs` does not match with the blog post, which says that the signature should be `Deposit(uint256,address,address,uint256,uint256,uint256)`
+
+### `Withdrawal` event
+
+When an account initiates a withdrawal, the FA bridging precompiled contract (`0xff0...0002`) emits a `Withdrawal` event that includes the following information:
+
+
+Field | Type | Description
+--- | --- | ---
+`amount` | unit256 | The amount of tokens
+`sender` | address | The address of the Etherlink account sending the tokens
+`receiver` | bytes22 | A bytecode representation of the Tezos address of the account receiving the tokens
+`withdrawalId` | unit256 | The ID of the bridging transaction
+
+### TODO other events
+
+TODO other withdrawal events from `etherlink/kernel_latest/evm_execution/src/fa_bridge/withdrawal.rs`:
+
+```rust
+alloy_sol_types::sol! {
+    event SolStandardWithdrawalInput (
+        address ticket_owner,
+        bytes   routing_info,
+        uint256 amount,
+        bytes22 ticketer,
+        bytes   content,
+    );
+}
+
+alloy_sol_types::sol! {
+    event SolFastWithdrawalInput (
+        address ticket_owner,
+        bytes   routing_info,
+        uint256 amount,
+        bytes22 ticketer,
+        bytes   content,
+        string  fast_withdrawal_contract_address,
+        bytes   payload,
+    );
+}
+
+alloy_sol_types::sol! {
+    event SolStandardWithdrawalProxyCallData (
+        address sender,
+        uint256 amount,
+        uint256 ticket_hash,
+    );
+}
+
+alloy_sol_types::sol! {
+    event SolStandardWithdrawalEvent (
+        address sender,
+        address ticket_owner,
+        bytes22 receiver,
+        bytes22 proxy,
+        uint256 amount,
+        uint256 withdrawal_id,
+    );
+}
+
+alloy_sol_types::sol! {
+    event SolFastFAWithdrawalEvent (
+        address sender,
+        address ticket_owner,
+        bytes22 receiver,
+        bytes22 proxy,
+        uint256 amount,
+        uint256 withdrawal_id,
+        uint256 timestamp,
+        bytes   payload,
+    );
+}
+```
