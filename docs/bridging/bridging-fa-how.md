@@ -32,7 +32,7 @@ The process of bridging FA-compatible tokens from layer 1 to Etherlink (also kno
    For information about token access control, see [Token standards](https://docs.tezos.com/architecture/tokens#token-standards) on docs.tezos.com.
 
 1. The user calls the helper contract's `deposit` entrypoint.
-The request includes the amount of tokens to bridge, the address of the Etherlink Smart Rollup, and the user's Etherlink wallet address, but not the tokens themselves.
+The request includes the address of the Etherlink Smart Rollup, the user's Etherlink account address, and the amount of tokens to bridge, but not the tokens themselves.
 
 1. The token bridge helper contract stores the address of the Etherlink Smart Rollup and the user's Etherlink address temporarily.
 
@@ -54,6 +54,12 @@ The request includes the amount of tokens to bridge, the address of the Etherlin
 
 1. Any user can call the FA bridging precompiled contract's `claim` function, which causes the contract to call the ERC-20 proxy contract.
 For tokens supported by the bridge, an automated program calls the `claim` function for you.
+
+   You can call the `claim` function yourself with this ABI, using the `depositId` field from the event:
+
+   ```
+   claim(uint256 depositId)
+   ```
 
 1. The ERC-20 proxy contract mints the equivalent tokens and sends them to the user's Etherlink account.
 
@@ -104,11 +110,11 @@ When a deposit is ready to be claimed, the FA bridging precompiled contract (`0x
 
 Field | Type | Description
 --- | --- | ---
-`ticket_owner` | address | ???
-`receiver` | address | The Etherlink account that will receive the claimed tokens
+`depositId` | uint265 | The ID of the bridging transaction that users need to claim the pending deposit
+`recipient` | address | The Etherlink account that will receive the claimed tokens
 `amount` | uint256 | The amount of tokens
-`inbox_level` | unit256 | ???
-`inbox_msg_id` | unit256 | The ID of the bridging transaction that users need to claim the pending deposit
+`timelock` | uint256 | ???
+`depositCount` | uint256 | ???
 
 ### `Deposit` event
 
@@ -128,7 +134,6 @@ TODO ^ This info from `etherlink/kernel_latest/evm_execution/src/fa_bridge/depos
 
 When an account initiates a withdrawal, the FA bridging precompiled contract (`0xff0...0002`) emits a `Withdrawal` event that includes the following information:
 
-
 Field | Type | Description
 --- | --- | ---
 `amount` | unit256 | The amount of tokens
@@ -138,7 +143,7 @@ Field | Type | Description
 
 ### TODO other events
 
-TODO other withdrawal events from `etherlink/kernel_latest/evm_execution/src/fa_bridge/withdrawal.rs`:
+TODO other withdrawal events from `etherlink/kernel_latest/evm_execution/src/fa_bridge/withdrawal.rs` but I'm not sure if these fields translate directly to the fields in the event because  they seemed to be different for the deposit events:
 
 ```rust
 alloy_sol_types::sol! {
