@@ -54,12 +54,20 @@ Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
      --burn-cap 0.1
    ```
 
+   For reference, this is the Micheline type for the parameter for this transaction:
+
+   ```michelson
+   (pair %deposit (address %rollup) (pair (bytes %receiver) (nat %amount)))
+   ```
+
    The token bridge helper contract sends the tokens to the ticketer contract, which issues a ticket that represents the tokens.
    The token bridge helper contract sends that ticket to Etherlink.
 
+   When Etherlink receives that deposit, the FA bridging precompiled contract (`0xff0...0002`) emits a `QueuedDeposit` event that includes the `depositId` for the deposit, which is needed to claim the deposit; see [Event reference](/bridging/bridging-fa-how#event-reference).
+
 1. When the deposit is in an Etherlink block, call the FA bridging precompiled contract contract's `claim` function to cause the ERC-20 proxy contract to mint the tokens.
 
-   The address of the precompiled contract is `0xff00000000000000000000000000000000000002` and to call the function you can use the ABI `claim(uint256 depositId)`, where `depositId` matches the `depositId` that was emitted in a previous event for this transfer by the precompile (`QueuedDeposit(uint256 depositId, address recipient, uint256 amount, uint256 timelock, uint256 depositCount)`).
+   The address of the precompiled contract is `0xff00000000000000000000000000000000000002` and to call the function you can use the ABI `claim(uint256 depositId)`, where `depositId` matches the `depositId` that was emitted in a previous event.
 
    As a reference, here is an [example of the sequencer injecting a deposit](https://explorer.etherlink.com/tx/0x5a06fe64e880d6d1f53c243477cd5656204712f1543b607340996ad246158669) and here is an [example of the corresponding claim transaction](https://explorer.etherlink.com/tx/0xe017665cd7bfdef375a863114ac9f7ed2538da4d8584b0f1e0aa71ce96342aee).
 
@@ -71,6 +79,8 @@ Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
    If that system is down or does not call the `claim` function for your deposit, you may need to do it yourself.
 
    :::
+
+   When the deposit has been claimed, the FA bridging precompiled contract (`0xff0...0002`) emits a `Deposit` event; see [Event reference](/bridging/bridging-fa-how#event-reference).
 
 To see the tokens in your Etherlink wallet, look up the ERC-20 proxy contract in a block explorer or use its address to manually add the tokens to your wallet.
 Because the Etherlink tokens are compatible with the ERC-20 standard, EVM-compatible wallets should be able to display them.
