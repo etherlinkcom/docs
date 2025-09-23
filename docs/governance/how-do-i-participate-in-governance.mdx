@@ -12,6 +12,16 @@ Separate contracts manage the slow kernel updates, the fast kernel updates, and 
 The addresses of the governance contracts are specified in Etherlink's kernel.
 For information about the Octez client, see [Command Line Interface](https://octez.tezos.com/docs/active/cli-commands.html) in the Octez documentation.
 
+## Governance web site
+
+For information about Etherlink governance and to vote on governance proposals, see https://governance.etherlink.com.
+This site:
+
+- Shows information about each governance process
+- Shows the active and past governance contracts
+- Shows active and past proposals and their states
+- Allows voting keys to claim voting rights
+
 ## Governance contract addresses
 
 You need the address of the correct governance contract (and sometimes the address of the Etherlink Smart Rollup) to propose changes, vote on changes, and trigger approved changes.
@@ -67,6 +77,9 @@ Setting up a voting key is a two-step process; the voting key is not active unti
 1. The baking key proposes a voting key by calling the `propose_voting_key` entrypoint.
 1. The voting key claims the voting rights by calling the `claim_voting_rights` entrypoint.
 
+Proposing a voting key requires a transaction from the Octez client or an indexer, but you can claim rights from a voting key with the [governance web site](https://governance.etherlink.com).
+
+
 :::warning
 
 Voting keys claim rights with the `claim_voting_rights` entrypoint only once.
@@ -93,7 +106,9 @@ octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from my_wallet \
   --arg '(Pair "<MY_VOTING_KEY>" True None)' --burn-cap 0.1
 ```
 
-Then, to claim the voting rights, call the `claim_voting_rights` entrypoint from the voting key and pass the baking key address.
+Then, to claim voting rights, go to the [governance web site](https://governance.etherlink.com), connect your voting key with the **Connect** button at the top right of the page, and use the connection dialog to claim rights.
+
+As an alternative, you can claim voting rights directly by calling the `claim_voting_rights` entrypoint from the voting key and passing the baking key address.
 For example, the following command claims the voting rights proposed in the previous command.
 It uses the placeholder `<MY_BAKER>` in place of the address of the baking key:
 
@@ -121,7 +136,9 @@ octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
   --arg '(Pair "<MY_VOTING_KEY>" True (Some { "KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" ; "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" }))'
 ```
 
-Then, run this command to claim the voting rights for the specified contracts, which is just like the previous command to claim voting rights:
+Then, to claim voting rights, go to the [governance web site](https://governance.etherlink.com), connect your voting key with the **Connect** button at the top right of the page, and use the connection dialog to claim rights.
+
+As an alternative, you can claim voting rights directly for the specified contracts, which is just like the previous command to claim voting rights:
 
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_VOTING_KEY> \
@@ -280,7 +297,9 @@ The proposer must make the code and hash of the new kernel available for people 
 You can look for this information in blog posts or other announcements from proposal developers.
 Proposers can make it easier for bakers to upgrade to the new kernel by providing the preimages for the kernel online so nodes can update from them directly.
 
-To upvote a proposed kernel update during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
+To upvote a proposed kernel update during a Proposal period, go to the [governance web site](https://governance.etherlink.com), connect your wallet (baking key or voting key), select the governance process and active period, and cast your vote.
+
+As an alternative, call the `upvote_proposal` entrypoint with the same parameters as the `new_proposal` entrypoint:
 
 ```bash
 octez-client call KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r from my_wallet \
@@ -292,7 +311,9 @@ It's not necessary to upvote a proposal that you submitted; submitting a proposa
 
 ### Voting for or against upgrades
 
-When a proposal is in the Promotion period, you can vote for or against it or pass on voting by calling the `vote` entrypoint of the appropriate governance contract:
+When a proposal is in the Promotion period, you can vote for or against it by going to the [governance web site](https://governance.etherlink.com), connecting your wallet (baking key or voting key), selecting the governance process and active period, and casting your vote.
+
+As an alternative, you can vote for it by calling the `vote` entrypoint of the appropriate governance contract:
 
 ```bash
 octez-client call KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r from my_wallet \
@@ -373,7 +394,9 @@ octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from my_wallet \
   --arg 'Pair "<PUBLIC_KEY>" <L2_ADDRESS>'
 ```
 
-To upvote a proposed sequencer operator during a Proposal period, call the `upvote_proposal` entrypoint with the same parameters:
+To upvote a proposed sequencer operator during a Proposal period, go to the [governance web site](https://governance.etherlink.com), connect your wallet (baking key or voting key), select the governance process and active period, and cast your vote.
+
+As an alternative, call the `upvote_proposal` entrypoint with the same parameters as the `new_proposal` entrypoint:
 
 ```bash
 octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from my_wallet \
@@ -385,7 +408,9 @@ It's not necessary to upvote a proposal that you submitted; submitting a proposa
 
 ### Voting for or against an operator
 
-When a proposal is in the Promotion period, you can vote for or against it or pass on voting by calling the `vote` entrypoint of the governance contract:
+When a proposal is in the Promotion period, you can vote for or against it by going to the [governance web site](https://governance.etherlink.com), connecting your wallet (baking key or voting key), selecting the governance process and active period, and casting your vote.
+
+As an alternative, you can vote for or against it or pass on voting by calling the `vote` entrypoint of the governance contract:
 
 ```bash
 octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from my_wallet \
