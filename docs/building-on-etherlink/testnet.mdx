@@ -1,0 +1,61 @@
+---
+title: Developing on test networks
+---
+
+import InlineCopy from '@site/src/components/InlineCopy';
+
+Etherlink has two active test networks:
+
+- **Ghostnet Testnet** was the original Etherlink public test network.
+It runs on the Tezos Ghostnet test network.
+
+   :::note
+
+   Ghostnet Testnet will be decommissioned soon, so developers should move to Shadownet Testnet.
+
+   :::
+
+- **Shadownet Testnet** is the new Etherlink public test network.
+It runs on the Tezos Shadownet test network.
+Developers should migrate to this test network.
+
+   Here are some important pieces of information for Shadownet:
+
+   - RPC endpoint: <InlineCopy code="https://node.braeburn.etherlink.com" />
+   - Block explorer: <a href="https://testnet.explorer.etherlink.com/">https://testnet.explorer.etherlink.com/</a>
+   - Chain ID: 128123
+
+For more technical details about these networks, see [Network information](/get-started/network-information).
+
+For more information about the Tezos test networks that Etherlink test networks run on, see [Testing on testnets](https://docs.tezos.com/developing/testnets) on docs.tezos.com.
+
+{/*
+TODOs:
+- Info about switching?
+  - Switching applications
+  - Switching nodes
+- Info about the --network argument when we know how it will be handled
+*/}
+
+## Using test networks
+
+In most cases, you can use a test network in place of Mainnet by using the RPC URL of an EVM node that is running on that test network.
+You can use the public RPC node for the network for a small number of transactions (because it has a rate limit), or you can run your own EVM node on the test network by following the instructions in [Running an Etherlink EVM node](/network/evm-nodes).
+
+Then, use the RPC URL in transactions, as in this example, which uses the public RPC node for the Shadownet Testnet:
+
+```bash
+curl --request POST \
+     --url https://node.braeburn.etherlink.com\
+     --header 'accept: application/json' \
+     --header 'content-type: application/json' \
+     --data '
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_gasPrice"
+}
+'
+```
+
+Examples of using test networks are on other pages in this documentation.

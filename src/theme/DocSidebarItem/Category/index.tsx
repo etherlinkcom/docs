@@ -19,6 +19,8 @@ import useIsBrowser from '@docusaurus/useIsBrowser';
 import DocSidebarItems from '@theme/DocSidebarItems';
 import type {Props} from '@theme/DocSidebarItem/Category';
 
+import { sidebarOffset } from '../../constants';
+
 import styles from './styles.module.css'
 
 // If we navigate to a category and it becomes active, it should automatically
@@ -176,7 +178,7 @@ export default function DocSidebarItemCategory({
           'menu__list-item-collapsible--active': isCurrentPage,
         }, styles.categoryLink)}>
           {
-            level === 1 && <span className={styles.categoryIcon}><img src={ITEMICONS[index - 5]} alt='icon' /></span>
+            level === 1 && <span className={styles.categoryIcon}><img src={ITEMICONS[index - (sidebarOffset + 1)]} alt='icon' /></span>
           }
         <Link
           style={{padding: '6px 12px 6px 8px'}}

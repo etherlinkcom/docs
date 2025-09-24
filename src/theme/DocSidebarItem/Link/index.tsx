@@ -7,12 +7,14 @@ import isInternalUrl from '@docusaurus/isInternalUrl';
 import IconExternalLink from '@theme/Icon/ExternalLink';
 import type {Props} from '@theme/DocSidebarItem/Link';
 
+import { sidebarOffset } from '../../constants';
+
 import styles from './styles.module.css';
 
-const ICONS_PATH = ['/img/etherlinkIcon.svg', '/img/map_green.png', '/img/HiOutlineStatusOnline.svg', '/img/MdCode.svg', '/img/Gitlab.svg']
+const ICONS_PATH = ['/img/etherlinkIcon.svg', '/img/HiTestnetAnnouncement.svg', '/img/map_green.png', '/img/HiOutlineStatusOnline.svg', '/img/MdCode.svg', '/img/Gitlab.svg']
 
 const isTopSection = (name: string) => {
-  return name === 'Etherlink' || name === 'Documentation' || name === 'Documentation map' || name === 'Status' || name === 'Developers' || name === 'GitLab'
+  return name === 'Etherlink' || name === 'Documentation' || name === 'Documentation map' || name === 'Status' || name === 'Developers' || name === 'GitLab' || name === 'Announcing Shadownet Testnet'
 }
 
 export default function DocSidebarItemLink({
@@ -38,8 +40,8 @@ export default function DocSidebarItemLink({
         level === 3 && styles.level3Box
       )}
       style={{
-        margin: `${item.label === 'Etherlink' && '40px 0px'}`,
-        marginBottom: `${!isInternalLink && isTopSection(item.label) && index === 4 && '40px'}`,
+        margin: `${(item.label === 'Etherlink' || item.label === 'Announcing Shadownet Testnet')&& '40px 0px'}`,
+        marginBottom: `${isTopSection(item.label) && index === sidebarOffset && '40px'}`,
       }}
       key={label}>
       <Link
@@ -57,17 +59,17 @@ export default function DocSidebarItemLink({
           onClick: onItemClick ? () => onItemClick(item) : undefined,
         })}
         style={{
-          marginBottom: `${!isInternalLink && isTopSection(item.label) && '8px'}`,
-          backgroundColor: `${!isInternalLink && isTopSection(item.label) &&  '#151515'}`,
-          borderRadius: `${!isInternalLink && isTopSection(item.label) &&  '100px'}`,
-          padding: `${!isInternalLink && isTopSection(item.label) &&  '10px 16px'}`,
+          marginBottom: `${(index <= sidebarOffset) && isTopSection(item.label) && '8px'}`,
+          backgroundColor: `${(index <= sidebarOffset) && isTopSection(item.label) &&  '#151515'}`,
+          borderRadius: `${(index <= sidebarOffset) && isTopSection(item.label) &&  '100px'}`,
+          padding: `${(index <= sidebarOffset) && isTopSection(item.label) &&  '10px 16px'}`,
         }}
         {...props}>
         <div className={styles.leftHand}>
-          {!isInternalLink && isTopSection(item.label) && <img src={ICONS_PATH[index]} alt='external link icon' />}
+          {(index <= sidebarOffset) && isTopSection(item.label) && <img src={ICONS_PATH[index]} alt='external link icon' />}
           {label}
         </div>
-        {!isInternalLink && isTopSection(item.label) && <img src='/img/FiArrowUpRight.svg' alt='external link icon' />}
+        {(index <= sidebarOffset) && isTopSection(item.label) && <img src='/img/FiArrowUpRight.svg' alt='external link icon' />}
       </Link>
     </li>
   );
