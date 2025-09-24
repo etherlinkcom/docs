@@ -32,7 +32,7 @@ Follow these steps to start the local sandbox:
 
    :::note
 
-   After you use the node in sandbox mode with a certain data directory, you cannot re-use that data directory for running an EVM node on Etherlink Mainnet or Testnet.
+   After you use the node in sandbox mode with a certain data directory, you cannot re-use that data directory for running an EVM node on Etherlink Mainnet or test network.
    Consider using a different data directory for the sandbox than you use for other EVM nodes.
 
    :::

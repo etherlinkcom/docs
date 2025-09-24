@@ -420,7 +420,7 @@ For information about these endpoints, see the Geth documentation at https://get
     <tr>
       <td>`txpool_content`</td>
       <td>Partially</td>
-      <td>Returns the transaction pool on Testnet but always returns an empty pool on Mainnet</td>
+      <td>Returns the transaction pool on test networks but always returns an empty pool on Mainnet</td>
     </tr>
   </tbody>
 </table>

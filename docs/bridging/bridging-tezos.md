@@ -17,7 +17,7 @@ These bridges are permissionless, meaning that anyone can use them without restr
 They are also trustless, meaning that they rely on automated, transparent, and audited smart contracts installed on Etherlink and Tezos.
 
 - [Mainnet Tezos bridge](https://bridge.etherlink.com/tezos)
-- [Testnet Tezos bridge](https://testnet.bridge.etherlink.com/)
+- [Ghostnet Testnet Tezos bridge](https://testnet.bridge.etherlink.com/)
 
 <CementingDelayNote />
 
@@ -25,7 +25,7 @@ They are also trustless, meaning that they rely on automated, transparent, and a
 
 To use the bridge, follow these general steps:
 
-1. Go to the bridge at https://bridge.etherlink.com/tezos for Mainnet or https://testnet.bridge.etherlink.com for Testnet.
+1. Go to the bridge at https://bridge.etherlink.com/tezos for Mainnet or https://testnet.bridge.etherlink.com for Ghostnet Testnet.
 
 1. Connect your Tezos and Etherlink-compatible wallets.
 
@@ -48,14 +48,14 @@ The process of bridging XTZ between Etherlink and Tezos layer 1 uses two contrac
 This bridge contract is not a fundamental part of the bridge; it is a helper contract that avoids limitations around tickets by forwarding them to the Etherlink Smart Rollup on behalf of user accounts.
 
   - The source code of this contract is in [`evm_bridge.mligo`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/tezos_contracts/evm_bridge.mligo).
-  - This contract is deployed to Testnet at [`KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3`](https://ghostnet.tzkt.io/KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3/).
+  - This contract is deployed to Ghostnet Testnet at [`KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3`](https://ghostnet.tzkt.io/KT1VEjeQfDBSfpDH5WeBM5LukHPGM2htYEh3/).
   - This contract is deployed to Mainnet at [`KT1Wj8SUGmnEPFqyahHAcjcNQwe6YGhEXJb5`](https://tzkt.io/KT1Wj8SUGmnEPFqyahHAcjcNQwe6YGhEXJb5/).
 
 - An exchanger contract that stores the tokens and issues tickets that represent those tokens.
 This contract is a fundamental part of the bridging process because Etherlink accepts tickets from only this contract for the purpose of bridging XTZ.
 
   - The source code of this contract is in [`exchanger.mligo`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/tezos_contracts/exchanger.mligo).
-  - This contract is deployed to Testnet at [`KT1Bp9YUvUBJgXxf5UrYTM2CGRUPixURqx4m`](https://ghostnet.tzkt.io/KT1Bp9YUvUBJgXxf5UrYTM2CGRUPixURqx4m/).
+  - This contract is deployed to Ghostnet Testnet at [`KT1Bp9YUvUBJgXxf5UrYTM2CGRUPixURqx4m`](https://ghostnet.tzkt.io/KT1Bp9YUvUBJgXxf5UrYTM2CGRUPixURqx4m/).
   - This contract is deployed to Mainnet at [`KT1CeFqjJRJPNVvhvznQrWfHad2jCiDZ6Lyj`](https://tzkt.io/KT1CeFqjJRJPNVvhvznQrWfHad2jCiDZ6Lyj/).
 
 ### Deposit process

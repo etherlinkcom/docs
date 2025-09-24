@@ -521,7 +521,7 @@ curl --request POST \
 
 Etherlink supports only the `callTracer` tracer for this endpoint, and only for blocks after the Bifröst upgrade.
 Calling this endpoint on blocks prior to Bifröst returns empty data.
-Bifröst was activated on block 10,758,937 on Testnet and block 4,162,673 on Mainnet.
+Bifröst was activated on block 10,758,937 on Ghostnet Testnet and block 4,162,673 on Mainnet.
 
 :::
 
@@ -593,10 +593,10 @@ The delayed inbox transaction requires 1 tez and these parameters:
 
 The addresses of the delayed inbox smart contracts are:
 
-- Testnet: `KT1X1M4ywyz9cHvUgBLTUUdz3GTiYJhPcyPh`
+- Ghostnet Testnet: `KT1X1M4ywyz9cHvUgBLTUUdz3GTiYJhPcyPh`
 - Mainnet: `KT1Vocor3bL5ZSgsYH9ztt42LNhqFK64soR4`
 
-This example signs an Etherlink transaction that transfers 1 XTZ and submits it to the delayed inbox on Testnet:
+This example signs an Etherlink transaction that transfers 1 XTZ and submits it to the delayed inbox on Ghostnet Testnet:
 
 ```javascript
 const { ethers } = require("ethers");
@@ -641,8 +641,8 @@ const signEtherlinkTransaction = async () => {
 const rpcUrl = 'https://ghostnet.ecadinfra.com';
 const Tezos = new TezosToolkit(rpcUrl);
 Tezos.setProvider({ signer: new InMemorySigner(process.env.TEZOS_PRIVATE_KEY) })
-const delayedInboxContractAddress = "KT1X1M4ywyz9cHvUgBLTUUdz3GTiYJhPcyPh"; // Testnet
-const rollupAddress = 'sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg'; // Testnet
+const delayedInboxContractAddress = "KT1X1M4ywyz9cHvUgBLTUUdz3GTiYJhPcyPh"; // Ghostnet Testnet
+const rollupAddress = 'sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg'; // Ghostnet Testnet
 
 // Send the transaction to the delayed inbox
 const sendDelayedInboxTransaction = async (etherlinkTransaction) => {
@@ -714,8 +714,8 @@ const signEtherlinkSmartContractCall = async () => {
 // Set up Taquito
 const Tezos = new TezosToolkit('https://ghostnet.smartpy.io');
 Tezos.setProvider({ signer: new InMemorySigner(process.env.TEZOS_PRIVATE_KEY) })
-const delayedInboxContractAddress = "KT1X1M4ywyz9cHvUgBLTUUdz3GTiYJhPcyPh"; // Testnet
-const rollupAddress = 'sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg'; // Testnet
+const delayedInboxContractAddress = "KT1X1M4ywyz9cHvUgBLTUUdz3GTiYJhPcyPh"; // Ghostnet Testnet
+const rollupAddress = 'sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg'; // Ghostnet Testnet
 
 // Send the transaction to the delayed inbox
 const sendDelayedInboxTransaction = async (etherlinkTransaction) => {

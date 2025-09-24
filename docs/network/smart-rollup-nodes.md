@@ -68,7 +68,7 @@ The best place to get the most recent binary files to use with Etherlink is http
         --pre-images-endpoint https://snapshots.tzinit.org/etherlink-mainnet/wasm_2_0_0
       ```
 
-      For Etherlink Testnet, use this command:
+      For Etherlink Ghostnet Testnet, use this command:
 
       ```bash
       octez-smart-rollup-node init observer config for sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg \
@@ -95,7 +95,7 @@ The best place to get the most recent binary files to use with Etherlink is http
    1. Get the URL of the Etherlink Smart Rollup node snapshot for the appropriate Etherlink network or download the file manually:
 
       - For full snapshots on Mainnet, see https://snapshots.tzinit.org/etherlink-mainnet
-      - For full snapshots on Testnet, see https://snapshots.tzinit.org/etherlink-ghostnet
+      - For full snapshots on Ghostnet Testnet, see https://snapshots.tzinit.org/etherlink-ghostnet
 
       The full history snapshot is appropriate for most use cases.
       If you want to run an EVM node with the Smart Rollup node, they do not need to run in the same history mode.
@@ -111,7 +111,7 @@ The best place to get the most recent binary files to use with Etherlink is http
         --data-dir <SR_DATA_DIR>
       ```
 
-      Run this command for Testnet:
+      Run this command for Ghostnet Testnet:
 
       ```bash
       octez-smart-rollup-node --endpoint https://rpc.tzkt.io/ghostnet \
@@ -128,7 +128,7 @@ The best place to get the most recent binary files to use with Etherlink is http
      --data-dir <SR_DATA_DIR>
    ```
 
-   Run this command for Testnet:
+   Run this command for Ghostnet Testnet:
 
    ```bash
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/ghostnet run \
