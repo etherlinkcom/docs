@@ -613,3 +613,10 @@ article img {
   color: var(--ifm-color-primary) !important;
   font-style: inherit !important;
 }
+
+/* Set spacing for wallet connection buttons in src/components/WalletConnectionButton/index.jsx
+The style attribute on <ConnectButton> doesn't seem to work */
+.tw-connect-wallet {
+  height: fit-content!important;
+  padding: 8px!important;
+}

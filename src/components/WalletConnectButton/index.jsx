@@ -15,7 +15,7 @@ const customTheme = lightTheme({
   },
 });
 
-const testnet = defineChain({
+const ghostnetTestnet = defineChain({
   id: 128123,
   rpc: "https://node.ghostnet.etherlink.com",
   nativeCurrency: {
@@ -27,7 +27,22 @@ const testnet = defineChain({
   slug: "etherlink",
   testnet: true,
   chain: "Etherlink",
-  name: "Etherlink Testnet",
+  name: "Etherlink Ghostnet Testnet",
+});
+
+const shadownetTestnet = defineChain({
+  id: 127823,
+  rpc: "https://node.braeburn.etherlink.com",
+  nativeCurrency: {
+    decimals: 18,
+    name: "XTZ",
+    symbol: "XTZ",
+  },
+  shortName: "etherlink",
+  slug: "etherlink",
+  testnet: true,
+  chain: "Etherlink",
+  name: "Etherlink Shadownet Testnet",
 });
 
 const mainnet = defineChain({
@@ -55,7 +70,18 @@ const wallets = [
 
 export default function WalletConnectButton({ network, title }) {
 
-  const activeChain = network === "mainnet" ? mainnet : testnet;
+  let activeChain;
+  switch (network) {
+    case "ghostnet":
+      activeChain = ghostnetTestnet;
+      break;
+    case "shadownet":
+      activeChain = shadownetTestnet;
+      break;
+    default:
+      activeChain = mainnet;
+      break;
+  }
 
   const dAppMeta = {
     name: "Etherlink documentation",
