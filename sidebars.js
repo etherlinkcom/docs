@@ -10,7 +10,7 @@ const sidebars = {
     {
       type: 'link',
       label: 'Announcing Shadownet Testnet',
-      href: 'building-on-etherlink/testnet',
+      href: 'https://docs.etherlink.com/building-on-etherlink/testnet',
     },
     {
       type: 'link',
