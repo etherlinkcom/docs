@@ -9,7 +9,7 @@ const sidebars = {
     },
     {
       type: 'link',
-      label: 'Announcing Shadownet Testnet',
+      label: 'Testnet migration',
       href: 'https://docs.etherlink.com/building-on-etherlink/testnet',
     },
     {

@@ -14,7 +14,7 @@ import styles from './styles.module.css';
 const ICONS_PATH = ['/img/etherlinkIcon.svg', '/img/HiTestnetAnnouncement.svg', '/img/map_green.png', '/img/HiOutlineStatusOnline.svg', '/img/MdCode.svg', '/img/Gitlab.svg']
 
 const isTopSection = (name: string) => {
-  return name === 'Etherlink' || name === 'Documentation' || name === 'Documentation map' || name === 'Status' || name === 'Developers' || name === 'GitLab' || name === 'Announcing Shadownet Testnet'
+  return name === 'Etherlink' || name === 'Documentation' || name === 'Documentation map' || name === 'Status' || name === 'Developers' || name === 'GitLab' || name === 'Testnet migration'
 }
 
 export default function DocSidebarItemLink({
@@ -40,7 +40,7 @@ export default function DocSidebarItemLink({
         level === 3 && styles.level3Box
       )}
       style={{
-        margin: `${(item.label === 'Etherlink' || item.label === 'Announcing Shadownet Testnet')&& '40px 0px'}`,
+        margin: `${(item.label === 'Etherlink' || item.label === 'Testnet migration')&& '40px 0px'}`,
         marginBottom: `${isTopSection(item.label) && index === sidebarOffset && '40px'}`,
       }}
       key={label}>
