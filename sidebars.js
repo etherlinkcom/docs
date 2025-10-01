@@ -104,6 +104,7 @@ const sidebars = {
         'network/evm-nodes',
         'network/building-kernel',
         'network/monitoring',
+        'network/migrating-testnet',
       ],
     },
     {

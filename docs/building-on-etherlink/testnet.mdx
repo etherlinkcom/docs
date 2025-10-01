@@ -2,8 +2,6 @@
 title: Developing on test networks
 ---
 
-import InlineCopy from '@site/src/components/InlineCopy';
-
 Etherlink has two active test networks:
 
 - **Ghostnet Testnet** was the original Etherlink public test network.
@@ -11,20 +9,14 @@ It runs on the Tezos Ghostnet test network.
 
    :::note
 
-   Ghostnet Testnet will be decommissioned soon, so developers should move to Shadownet Testnet.
+   Ghostnet Testnet will be decommissioned soon, so developers should move to Shadownet Testnet before its sunset, see [details](/network/migrating-testnet).
 
    :::
 
 - **Shadownet Testnet** is the new Etherlink public test network.
 It runs on the Tezos Shadownet test network.
-Developers, node operators and infrastructure providers should migrate to this test network as soon as possible.
+Developers, node operators and infrastructure providers should [migrate to this test network](/network/migrating-testnet) as soon as possible.
 Please support both Shadownet and Ghostnet Testnets during the transition period, and only deprecate Ghostnet infrastructure after the end of the sunset period.
-
-   Here are some important pieces of information for Shadownet:
-
-   - RPC endpoint: <InlineCopy code="https://node.braeburn.etherlink.com" />
-   - Block explorer: <a href="https://testnet.explorer.etherlink.com/">https://testnet.explorer.etherlink.com/</a>
-   - Chain ID: 128123
 
 For more technical details about these networks, see [Network information](/get-started/network-information).
 
