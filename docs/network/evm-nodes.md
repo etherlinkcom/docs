@@ -44,7 +44,7 @@ If you don't want to see all of the options and settings for the EVM node, you c
      --init-from-snapshot
    ```
 
-   Use this command for Etherlink Testnet:
+   Use this command for Etherlink Ghostnet Testnet:
 
    ```bash
    octez-evm-node run observer \
@@ -81,7 +81,7 @@ The easiest way to get the `octez-evm-node` binary is to download the binaries d
 The release page provides static binaries for Linux systems (for amd64 and arm64 architectures).
 
 :::note
-As of August 1st 2025, Etherlink Mainnet and Testnet require at least version 0.35 of the `octez-evm-node` binary.
+As of August 1st 2025, Etherlink Mainnet and Ethelink Ghostnet Testnet require at least version 0.35 of the `octez-evm-node` binary.
 :::
 
 As an alternative, you can use the minimal Docker image [tezos/tezos-bare](https://hub.docker.com/r/tezos/tezos-bare/tags?name=octez-evm-node) with a tag that includes `octez-evm-node`.
@@ -263,7 +263,7 @@ The best place to get the most recent binary files to use with Etherlink is http
 1. Get the URL of the Etherlink Smart Rollup node snapshot for the appropriate Etherlink network or download the file manually:
 
    - For Mainnet, see https://snapshots.tzinit.org/etherlink-mainnet
-   - For Testnet, see https://snapshots.tzinit.org/etherlink-ghostnet
+   - For Ghostnet Testnet, see https://snapshots.tzinit.org/etherlink-ghostnet
 
    The full history snapshot is appropriate for most use cases.
    The EVM node can run in any history mode starting from a Smart Rollup node that starts from these snapshots.
