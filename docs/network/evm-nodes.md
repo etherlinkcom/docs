@@ -54,6 +54,8 @@ If you don't want to see all of the options and settings for the EVM node, you c
      --init-from-snapshot
    ```
 
+  (replace `testnet` with `shadownet` for Etherlink Shadownet Testnet).
+
    By default, the node stores its data and configuration file in the folder `$HOME/.octez-evm-node`.
    You can change these default locations by passing the `--data-dir`, and `--config-file` arguments or setting the equivalent environment variables as described in [Configuring the node](#configuring-the-node).
 
