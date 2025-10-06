@@ -1,5 +1,5 @@
 ---
-title: Migrating to the Shadownet Testnet
+title: Migrating to Etherlink Shadownet Testnet
 ---
 
 import InlineCopy from '@site/src/components/InlineCopy';
@@ -128,14 +128,14 @@ If you run EVM nodes that follow the existing Ghostnet Testnet please carry out 
 
       1. Set up new Shadownet EVM Nodes from genesis block following [these instructions](/network/evm-nodes)
       1. If you run Smart Rollup testnet nodes, then follow the instructions for setting up your [Etherlink Shadownet Smart Rollup Node](/network/smart-rollup-nodes)
-      1. If you run L1 octez-node, then following these instructions to install [Octez](https://octez.tezos.com/docs/introduction/howtoget.html) for Tezos L1 Shadownet Testnet
+      1. If you run L1 octez-node, then following these instructions to install [Octez](https://octez.tezos.com/docs/introduction/howtoget.html) for Tezos L1 Shadownet testnet
       1. Carry out end-to-end testing to ensure performance is in line with your Ghostnet EVM node.
       1. (For commercial RPC providers) inform your users about availability of the new nodes
     </td>
   </tr>
 </table>
 :::note
-Until snapshots are available, the nodes will be need to be generated from the genesis block. 
+Until snapshots are available, the nodes will be need to be bootstrapped from the genesis block. 
 It should take only a few hours for the node to reach the latest block.
 :::
 
@@ -145,11 +145,11 @@ If you currently operate infrastructure services for Etherlink Ghostnet Testnet,
 
 Migration would typically involve the following steps:
 - Check for any missing on-chain or off-chain dependencies and escalate with the Etherlink team
-- Provision new infrastruture/hosts as needed
-- Update JSON-RPC API endpoints from ghostnet to shadownet. 
-- Obtain Shadownet tez from the faucet
-- Redeploy contracts to Shadownet
-- Update databases with Shadownet data
+- Provision new infrastructure/hosts as needed
+- Update JSON-RPC API endpoints from Etherlink Ghostnet to Etherlink Shadownet. 
+- Obtain Etherlink Shadownet tez from the faucet
+- Redeploy contracts to Etherlink Shadownet
+- Update databases with Etherlink Shadownet data
 - Update your apps to use the new `chainId`
 - Update your web3 SDKs to use Etherlink Shadownet
 - End-to-end testing/QA
@@ -174,12 +174,12 @@ If you currently operate a dApp or Marketplace on Etherlink Ghostnet Testnet for
 
 Migration would typically involve the following steps:
 - Check for any missing on-chain or off-chain dependencies and escalate with the Etherlink team
-- Provision new infrastruture/hosts as needed
-- Update JSON-RPC API endpoints from ghostnet to shadownet. 
-- Obtain Shadownet tez from the faucet
-- Redeploy contracts to Shadownet
+- Provision new infrastructure/hosts as needed
+- Update JSON-RPC API endpoints from Etherlink Ghostnet to Etherlink Shadownet. 
+- Obtain Etherlink Shadownet tez from the faucet
+- Redeploy contracts to Etherlink Shadownet
 - Migrate to new endpoints for data indexers or APIs
-- Update databases with Shadownet data
+- Update databases with Etherlink Shadownet data
 - Update your apps to use the new `chainId`
 - Update your web3 SDKs to use Etherlink Shadownet
 - End-to-end testing/QA
@@ -198,8 +198,8 @@ Detailed links will be added to this page as services on Shadownet are enabled.
 
 ## Getting help
 
-Regular updates will be provided via the following channels:
+Regular updates will be announced via the following channels:
 - [Etherlink Discord](https://discord.gg/etherlink)
 - [Twitter/X](https://x.com/etherlink)
 
-If you have any questions about the testnet migration, please reach out to our team via existing direct channels, or on the [Etherlink Discord](https://discord.gg/etherlink).
+For support, or if you have any questions about the testnet migration, please reach out to our team via existing direct channels, or on the [Etherlink Discord](https://discord.gg/etherlink).
