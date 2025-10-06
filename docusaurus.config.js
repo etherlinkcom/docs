@@ -167,7 +167,7 @@ module.exports = async function createConfigAsync() {
         prism: {
           theme: themes.github,
           darkTheme: themes.dracula,
-          additionalLanguages: ['solidity'],
+          additionalLanguages: ['solidity', 'bash', 'shell-session'],
         },
         docs: {
           sidebar: {
