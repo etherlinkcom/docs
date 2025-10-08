@@ -135,7 +135,7 @@ If you run EVM nodes that follow the existing Ghostnet Testnet please carry out 
   </tr>
 </table>
 :::note
-Until snapshots are available, the nodes will be need to be bootstrapped from the genesis block. 
+Until snapshots are available, the nodes will need to be bootstrapped from the genesis block. 
 It should take only a few hours for the node to reach the latest block.
 :::
 
