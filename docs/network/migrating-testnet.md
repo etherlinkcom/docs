@@ -72,7 +72,7 @@ The migration will be delivered in the following phases:
         - Block Explorer
         - Oracles
         - Network public goods: deployment of tokens, utility contracts (multicall3, create3 factories etc)
-        - Node snapshot service available
+        - Node snapshot service available ✅
         - Updates to developer SDKs (viem, chainlist etc)
         - Network monitoring infrastructure
       </td>
@@ -134,10 +134,6 @@ If you run EVM nodes that follow the existing Ghostnet Testnet please carry out 
     </td>
   </tr>
 </table>
-:::note
-Until snapshots are available, the nodes will need to be bootstrapped from the genesis block. 
-It should take only a few hours for the node to reach the latest block.
-:::
 
 ### For infrastructure providers
 

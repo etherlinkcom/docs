@@ -95,6 +95,14 @@ The best place to get the most recent binary files to use with Etherlink is http
         --pre-images-endpoint https://snapshots.tzinit.org/etherlink-ghostnet/wasm_2_0_0
       ```
 
+      For Etherlink Shadownet Testnet, use this command:
+
+      ```bash
+      octez-smart-rollup-node init observer config for sr19fMYrr5C4qqvQqQrDSjtP31GcrWjodzvg \
+        with operators --data-dir <SR_DATA_DIR> \
+        --pre-images-endpoint https://snapshots.tzinit.org/etherlink-shadownet/wasm_2_0_0
+      ```
+
       This command generates a minimal configuration file (`config.json`) in the local data folder:
 
       ```json
