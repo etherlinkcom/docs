@@ -2,6 +2,9 @@
 title: Running an Etherlink Smart Rollup node
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Etherlink uses Smart Rollup nodes as a bridge between the EVM transactions on the EVM nodes and Tezos layer 1.
 Public Smart Rollup nodes for Etherlink are not yet available, so you must run your own if you want to participate in the Etherlink network.
 
@@ -92,10 +95,11 @@ The best place to get the most recent binary files to use with Etherlink is http
 
 1. To speed up the setup process by loading a snapshot, follow these steps:
 
-   1. Get the URL of the Etherlink Smart Rollup node snapshot for the appropriate Etherlink network or download the file manually:
+   1. Get the URL of the Etherlink Smart Rollup node full history snapshot for the appropriate Etherlink network or download the file manually:
 
-      - For full snapshots on Mainnet, see https://snapshots.tzinit.org/etherlink-mainnet
-      - For full snapshots on Ghostnet Testnet, see https://snapshots.tzinit.org/etherlink-ghostnet
+      - Etherlink Mainnet: https://snapshots.tzinit.org/etherlink-mainnet
+      - Etherlink Ghostnet Testnet: https://snapshots.tzinit.org/etherlink-ghostnet
+      - Etherlink Shadownet Testnet: https://snapshots.tzinit.org/etherlink-shadownet
 
       The full history snapshot is appropriate for most use cases.
       If you want to run an EVM node with the Smart Rollup node, they do not need to run in the same history mode.
