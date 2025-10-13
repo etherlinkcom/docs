@@ -2,6 +2,9 @@
 title: Running an Etherlink EVM node
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The Etherlink EVM nodes are responsible for maintaining a copy of the Etherlink context and applying new blocks that process EVM transactions.
 
 ## Prerequisites
@@ -29,33 +32,66 @@ If you don't want to see all of the options and settings for the EVM node, you c
 1. Download the latest release of the `octez-evm-node` binary from https://gitlab.com/tezos/tezos/-/releases.
 
    :::note
-   As of August 1st 2025, Etherlink Mainnet and Testnet require at least version 0.35 of the `octez-evm-node` binary.
+   As of August 1st 2025, Etherlink Mainnet and Ghostnet or Shadownet Testnets require at least version 0.35 of the `octez-evm-node` binary.
    :::
 
 1. Run the `octez-evm-node run observer` command to start the node as an observer:
 
-   Use this command for Etherlink Mainnet:
+    <Tabs groupId="chain">
+      <TabItem value="mainnet" label="Etherlink Mainnet">
 
-   ```bash
-   octez-evm-node run observer \
-     --network mainnet \
-     --history rolling:1 \
-     --dont-track-rollup-node \
-     --init-from-snapshot
-   ```
+      Use this command for Etherlink Mainnet:
 
-   Use this command for Etherlink Testnet:
+      ```bash
+      octez-evm-node run observer \
+        --network mainnet \
+        --history rolling:1 \
+        --dont-track-rollup-node \
+        --init-from-snapshot
+      ```
 
-   ```bash
-   octez-evm-node run observer \
-     --network testnet \
-     --history rolling:1 \
-     --dont-track-rollup-node \
-     --init-from-snapshot
-   ```
+      </TabItem>
+      <TabItem value="ghostnet" label="Etherlink Ghostnet Testnet">
 
-   By default, the node stores its data and configuration file in the folder `$HOME/.octez-evm-node`.
-   You can change these default locations by passing the `--data-dir`, and `--config-file` arguments or setting the equivalent environment variables as described in [Configuring the node](#configuring-the-node).
+      Use this command for Etherlink Ghostnet Testnet:
+
+      ```bash
+      octez-evm-node run observer \
+        --network testnet \
+        --history rolling:1 \
+        --dont-track-rollup-node \
+        --init-from-snapshot
+      ```
+
+      :::important
+      Etherlink Ghostnet Testnet will sunset on **15 January 2026**, and will then no longer be available. Please [migrate](/network/migrating-testnet) to Etherlink Shadownet Testnet.
+      :::
+
+      </TabItem>
+      <TabItem value="shadownet" label="Etherlink Shadownet Testnet">
+
+      Use this command for Etherlink Shadownet Testnet (coming soon):
+
+      ```bash
+      octez-evm-node run observer \
+        --network shadownet \
+        --history rolling:1 \
+        --dont-track-rollup-node \
+        --init-from-snapshot
+      ```
+
+      :::important
+      Until the EVM node snapshot service for Shadownet is available, please use this temporary command to bootstrap the node from the genesis block:
+
+      `octez-evm-node run observer --network braeburn --dont-track-rollup-node`
+
+      :::
+
+      </TabItem>
+    </Tabs>
+
+    By default, the node stores its data and configuration file in the folder `$HOME/.octez-evm-node`.
+    You can change these default locations by passing the `--data-dir`, and `--config-file` arguments or setting the equivalent environment variables as described in [Configuring the node](#configuring-the-node).
 
 1. Wait for the node to download a snapshot and catch up to the current state of the network.
 See [Verifying that the node is running](#verifying-that-the-node-is-running).
@@ -81,21 +117,52 @@ The easiest way to get the `octez-evm-node` binary is to download the binaries d
 The release page provides static binaries for Linux systems (for amd64 and arm64 architectures).
 
 :::note
-As of August 1st 2025, Etherlink Mainnet and Testnet require at least version 0.35 of the `octez-evm-node` binary.
+As of August 1st 2025, Etherlink Mainnet and Etherlink Ghostnet or Shadownet Testnet require at least version 0.35 of the `octez-evm-node` binary.
 :::
 
 As an alternative, you can use the minimal Docker image [tezos/tezos-bare](https://hub.docker.com/r/tezos/tezos-bare/tags?name=octez-evm-node) with a tag that includes `octez-evm-node`.
-These images contain the correct version of the binary.
+These images contain the correct version of the binary. Docker examples below use `tezos/tezos-bare:octez-evm-node-latest` which will always be the most recent release.
 
 When you run the Docker image, you must expose the port that the EVM node runs on to the host system.
 For example, this command runs the EVM node in the Docker container on port 8545 (the default) and uses the Docker `-p` argument to expose that port as port 8545 on the host system:
 
-```bash
-docker run -it -p 8545:8545 \
-  --rm tezos/tezos-bare:octez-evm-node-v0.36 octez-evm-node run observer \
-  --network mainnet --history rolling:1  --dont-track-rollup-node \
-  --init-from-snapshot --rpc-addr "0.0.0.0" --rpc-port "8545"
-```
+<Tabs groupId="chain">
+  <TabItem value="mainnet" label="Etherlink Mainnet">
+
+      ```bash
+      docker run -it -p 8545:8545 \
+        --rm tezos/tezos-bare:octez-evm-node-latest octez-evm-node run observer \
+        --network mainnet --history rolling:1  --dont-track-rollup-node \
+        --init-from-snapshot --rpc-addr "0.0.0.0" --rpc-port "8545"
+      ```
+
+  </TabItem>
+  <TabItem value="ghostnet" label="Etherlink Ghostnet Testnet">
+
+  ```bash
+  docker run -it -p 8545:8545 \
+    --rm tezos/tezos-bare:octez-evm-node-latest octez-evm-node run observer \
+    --network testnet --history rolling:1  --dont-track-rollup-node \
+    --init-from-snapshot --rpc-addr "0.0.0.0" --rpc-port "8545"
+  ```
+
+  :::important
+  Etherlink Ghostnet Testnet will sunset on **15 January 2026**, and will then no longer be available. Please [migrate](/network/migrating-testnet) to Etherlink Shadownet Testnet.
+  :::
+
+  </TabItem>
+  <TabItem value="shadownet" label="Etherlink Shadownet Testnet (coming soon)">
+
+  ```bash
+  docker run -it -p 8545:8545 \
+    --rm tezos/tezos-bare:octez-evm-node-latest octez-evm-node run observer \
+    --network shadownet --history rolling:1  --dont-track-rollup-node \
+    --init-from-snapshot --rpc-addr "0.0.0.0" --rpc-port "8545"
+  ```
+
+  </TabItem>
+</Tabs>
+
 
 ## Configuring the node
 
@@ -109,15 +176,44 @@ The following instructions use the placeholder `<EVM_DATA_DIR>` to represent thi
 - The location of its configuration file, which you specify in the `--config-file` argument or in the `EVM_NODE_CONFIG_FILE` environment variable.
 You can set a different location for the file if you want to separate the data directory from the node configuration, such as often happens in Kubernetes.
 The default location is the file `config.json` in the data directory.
-- The network to use, such as `mainnet` or `testnet`, which you specify in the `--network` argument or the `EVM_NODE_NETWORK` environment variable.
+- The network to use, which you specify in the `--network` argument or the `EVM_NODE_NETWORK` environment variable.
+    - `--network mainnet` for Etherlink Mainnet
+    - `--network testnet` for Etherlink Ghostnet
+    - `--network shadownet` for Etherlink Shadownet
 
-   Choosing a network sets the node to use preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
-   For example, setting the network to `mainnet` implies these arguments:
+    Choosing a network sets the node to use preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
+    For example, setting the network to `mainnet` implies these arguments:
 
-   ```bash
-   --preimages-endpoint https://snapshots.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
-   --evm-node-endpoint https://relay.mainnet.etherlink.com
-   ```
+   <Tabs groupId="chain">
+   <TabItem value="mainnet" label="Etherlink Mainnet">
+
+      ```bash
+      --preimages-endpoint https://snapshots.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
+      --evm-node-endpoint https://relay.mainnet.etherlink.com
+      ```
+
+   </TabItem>
+   <TabItem value="ghostnet" label="Etherlink Ghostnet Testnet">
+
+    ```bash
+    --preimages-endpoint https://snapshots.tzinit.org/etherlink-testnet/wasm_2_0_0 \
+    --evm-node-endpoint https://relay.testnet.etherlink.com
+    ```
+
+    :::important
+    Etherlink Ghostnet Testnet will sunset on **15 January 2026**, and will then no longer be available. Please [migrate](/network/migrating-testnet) to Etherlink Shadownet Testnet.
+    :::
+
+   </TabItem>
+   <TabItem value="shadownet" label="Etherlink Shadownet Testnet">
+
+      ```bash
+      --preimages-endpoint https://snapshots.tzinit.org/etherlink-shadownet/wasm_2_0_0 \
+      --evm-node-endpoint https://relay.shadownet.etherlink.com
+      ```
+
+   </TabItem>
+   </Tabs>
 
    It's safe to use these preimages because the node verifies them.
    If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink kernel](/network/building-kernel).
@@ -131,28 +227,28 @@ You can use a Smart Rollup node that is running in any mode and history mode as 
 1. Create a directory for the node to store its data in.
 1. Create the configuration file by setting the parameters in the environment variables or passing the arguments to the `octez-evm-node init config` command.
 
-   If you are not running an Etherlink Smart Rollup node and are trusting incoming blocks, use the `--dont-track-rollup-node` flag, as in this example:
+   If you are not running an Etherlink Smart Rollup node and are trusting incoming blocks, use the `--dont-track-rollup-node` flag, as in this `mainnet`  example:
 
    ```bash
    octez-evm-node init config \
-     --network testnet \
+     --network mainnet \
      --data-dir <EVM_DATA_DIR> \
      --dont-track-rollup-node
    ```
 
-   If you set the `EVM_NODE_DATA_DIR` and `EVM_NODE_NETWORK` environment variables, you can omit the `--network` and `--data-dir` arguments, as in this example:
+   If you set the `EVM_NODE_DATA_DIR` and `EVM_NODE_NETWORK` environment variables, you can omit the `--network` and `--data-dir` arguments, as in this `mainnet` example:
 
-   ```bash
-   export EVM_NODE_DATA_DIR="<EVM_DATA_DIR>"
-   export EVM_NODE_NETWORK=mainnet
-   octez-evm-node init config --dont-track-rollup-node
+   ```shell-session
+   $ export EVM_NODE_DATA_DIR="<EVM_DATA_DIR>"
+   $ export EVM_NODE_NETWORK=mainnet
+   $ octez-evm-node init config --dont-track-rollup-node
    ```
 
-   If you want to rely on a Smart Rollup node to check the correctness of blocks coming from the sequencer, pass the address of the Smart Rollup node to the `--rollup-node-endpoint` argument, as in this example:
+   If you want to rely on a Smart Rollup node to check the correctness of blocks coming from the sequencer, pass the address of the Smart Rollup node to the `--rollup-node-endpoint` argument, as in this `mainnet` example:
 
    ```bash
    octez-evm-node init config \
-     --network testnet \
+     --network mainnet \
      --data-dir <EVM_DATA_DIR> \
      --rollup-node-endpoint <SR_NODE_OBSERVER_RPC>
    ```
@@ -176,25 +272,81 @@ In each case, you can specify the `--network`, `--data-dir`, and `--config-file`
 
 To automatically download and import a snapshot, start the node with the `--init-from-snapshot` switch and the network and mode to use, as in this example:
 
-```bash
-octez-evm-node run observer \
-  --network testnet \
-  --history rolling:1 \
-  --data-dir <EVM_DATA_DIR> \
-  --dont-track-rollup-node \
-  --init-from-snapshot
-```
+<Tabs groupId="chain">
+  <TabItem value="mainnet" label="Etherlink Mainnet">
 
-If you set the `EVM_NODE_DATA_DIR` and `EVM_NODE_NETWORK` environment variables, you can omit the `--network` and `--data-dir` arguments, as in this example:
+    ```bash
+    octez-evm-node run observer \
+      --network mainnet \
+      --history rolling:1 \
+      --data-dir <EVM_DATA_DIR> \
+      --dont-track-rollup-node \
+      --init-from-snapshot
+    ```
 
-```bash
-export EVM_NODE_DATA_DIR="<EVM_DATA_DIR>"
-export EVM_NODE_NETWORK=testnet
-octez-evm-node run observer \
-  --history rolling:1 \
-  --dont-track-rollup-node \
-  --init-from-snapshot
-```
+    If you set the `EVM_NODE_DATA_DIR` and `EVM_NODE_NETWORK` environment variables, you can omit the `--network` and `--data-dir` arguments, as in this example:
+
+    ```shell-session
+    $ export EVM_NODE_DATA_DIR="<EVM_DATA_DIR>"
+    $ export EVM_NODE_NETWORK=mainnet
+    $ octez-evm-node run observer \
+      --history rolling:1 \
+      --dont-track-rollup-node \
+      --init-from-snapshot
+    ```
+
+  </TabItem>
+  <TabItem value="ghostnet" label="Etherlink Ghostnet Testnet">
+
+  ```bash
+  octez-evm-node run observer \
+    --network testnet \
+    --history rolling:1 \
+    --data-dir <EVM_DATA_DIR> \
+    --dont-track-rollup-node \
+    --init-from-snapshot
+  ```
+
+  If you set the `EVM_NODE_DATA_DIR` and `EVM_NODE_NETWORK` environment variables, you can omit the `--network` and `--data-dir` arguments, as in this example:
+
+  ```shell-session
+  $ export EVM_NODE_DATA_DIR="<EVM_DATA_DIR>"
+  $ export EVM_NODE_NETWORK=testnet
+  $ octez-evm-node run observer \
+    --history rolling:1 \
+    --dont-track-rollup-node \
+    --init-from-snapshot
+  ```
+
+  :::important
+  Etherlink Ghostnet Testnet will sunset on **15 January 2026**, and will then no longer be available. Please [migrate](/network/migrating-testnet) to Etherlink Shadownet Testnet.
+  :::
+
+  </TabItem>
+  <TabItem value="shadownet" label="Etherlink Shadownet Testnet (coming soon)">
+
+  ```bash
+  octez-evm-node run observer \
+    --network shadownet \
+    --history rolling:1 \
+    --data-dir <EVM_DATA_DIR> \
+    --dont-track-rollup-node \
+    --init-from-snapshot
+  ```
+
+  If you set the `EVM_NODE_DATA_DIR` and `EVM_NODE_NETWORK` environment variables, you can omit the `--network` and `--data-dir` arguments, as in this example:
+
+  ```shell-session
+  $ export EVM_NODE_DATA_DIR="<EVM_DATA_DIR>"
+  $ export EVM_NODE_NETWORK=shadownet
+  $ octez-evm-node run observer \
+    --history rolling:1 \
+    --dont-track-rollup-node \
+    --init-from-snapshot
+  ```
+
+  </TabItem>
+</Tabs>
 
 The `--history` argument is required in this case to tell the node which snapshot to download.
 An appropriate snapshot must be available on the [Nomadic Labs snapshot site](http://snapshotter-sandbox.nomadic-labs.eu/).
@@ -229,19 +381,46 @@ If you downloaded the snapshot manually, you can delete the snapshot file after 
 
 Then, run this command to start the node, passing the data directory and the network and mode to use:
 
-```bash
-octez-evm-node run observer \
-  --network testnet \
-  --history rolling:1 \
-  --data-dir <EVM_DATA_DIR>
-```
+<Tabs groupId="chain">
+  <TabItem value="mainnet" label="Etherlink Mainnet">
 
-If you set the `EVM_NODE_DATA_DIR` and `EVM_NODE_NETWORK` environment variables, you can omit the `--network` and `--data-dir` arguments, as in this example:
+      ```bash
+      octez-evm-node run observer \
+        --network mainnet \
+        --history rolling:1 \
+        --data-dir <EVM_DATA_DIR>
+      ```
 
-```bash
-export EVM_NODE_DATA_DIR="<EVM_DATA_DIR>"
-export EVM_NODE_NETWORK=testnet
-octez-evm-node run observer \
+  </TabItem>
+  <TabItem value="ghostnet" label="Etherlink Ghostnet Testnet">
+
+
+      ```bash
+      octez-evm-node run observer \
+        --network testnet \
+        --history rolling:1 \
+        --data-dir <EVM_DATA_DIR>
+      ```
+
+  </TabItem>
+  <TabItem value="shadownet" label="Etherlink Shadownet Testnet">
+
+      ```bash
+      octez-evm-node run observer \
+        --network shadownet \
+        --history rolling:1 \
+        --data-dir <EVM_DATA_DIR>
+      ```
+
+  </TabItem>
+</Tabs>
+
+If you set the `EVM_NODE_DATA_DIR` and `EVM_NODE_NETWORK` environment variables, you can omit the `--network` and `--data-dir` arguments, as in this `mainnet` example:
+
+```shell-session
+$ export EVM_NODE_DATA_DIR="<EVM_DATA_DIR>"
+$ export EVM_NODE_NETWORK=mainnet
+$ octez-evm-node run observer \
   --history rolling:1 \
   --dont-track-rollup-node \
   --init-from-snapshot
@@ -262,17 +441,18 @@ The best place to get the most recent binary files to use with Etherlink is http
 
 1. Get the URL of the Etherlink Smart Rollup node snapshot for the appropriate Etherlink network or download the file manually:
 
-   - For Mainnet, see https://snapshots.tzinit.org/etherlink-mainnet
-   - For Testnet, see https://snapshots.tzinit.org/etherlink-ghostnet
+   - Etherlink Mainnet: https://snapshots.tzinit.org/etherlink-mainnet
+   - Etherlink Ghostnet Testnet: https://snapshots.tzinit.org/etherlink-ghostnet
+   - Etherlink Shadownet Testnet: https://snapshots.tzinit.org/etherlink-shadownet
 
    The full history snapshot is appropriate for most use cases.
    The EVM node can run in any history mode starting from a Smart Rollup node that starts from these snapshots.
 
 1. Use the `octez-smart-rollup-node` binary to import the snapshot into a temporary directory.
-The following examples use `<SR_OBSERVER_DATA_DIR>` as the location of this temporary directory and `<SNAPSHOT_URL_OR_FILE>` as the snapshot URL or file name.
+The following `mainnet` examples use `<SR_OBSERVER_DATA_DIR>` as the location of this temporary directory and `<SNAPSHOT_URL_OR_FILE>` as the snapshot URL or file name.
 
    ```bash
-   octez-smart-rollup-node --endpoint https://rpc.tzkt.io/ghostnet \
+   octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet \
      snapshot import <SNAPSHOT_URL_OR_FILE> \
      --data-dir <SR_OBSERVER_DATA_DIR>
    ```
@@ -316,7 +496,7 @@ After the node is running in one mode you can switch to another history mode:
 1. Start the node as usual with the command `octez-evm-node run`.
 
 For example, you can switch to `rolling` mode with the command `octez-evm-node switch history to rolling:<DAYS>`, where `<DAYS>` is the number of days of compete data to keep.
-Then when you restart the node, run `octez-evm-node run observer --network testnet --history rolling:<DAYS> --data-dir <EVM_DATA_DIR>`.
+Then when you restart the node, run `octez-evm-node run observer --network <NETWORK> --history rolling:<DAYS> --data-dir <EVM_DATA_DIR>`.
 
 Because the node cannot reconstruct data that it does not have, you can switch from only some modes to some other modes:
 

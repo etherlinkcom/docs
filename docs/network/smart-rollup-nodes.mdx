@@ -2,6 +2,9 @@
 title: Running an Etherlink Smart Rollup node
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Etherlink uses Smart Rollup nodes as a bridge between the EVM transactions on the EVM nodes and Tezos layer 1.
 Public Smart Rollup nodes for Etherlink are not yet available, so you must run your own if you want to participate in the Etherlink network.
 
@@ -60,20 +63,16 @@ The best place to get the most recent binary files to use with Etherlink is http
    1. Initialize the local context by running this command and passing the address of the Etherlink Smart Rollup and the preimages endpoint.
    You can get this information on the [Network information](/get-started/network-information) page.
 
-      For example, this command initializes the context for Etherlink Mainnet:
+
+   <Tabs groupId="chain">
+   <TabItem value="mainnet" label="Etherlink Mainnet">
+
+      This command initializes the context for Etherlink Mainnet:
 
       ```bash
       octez-smart-rollup-node init observer config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
         with operators --data-dir <SR_DATA_DIR> \
         --pre-images-endpoint https://snapshots.tzinit.org/etherlink-mainnet/wasm_2_0_0
-      ```
-
-      For Etherlink Testnet, use this command:
-
-      ```bash
-      octez-smart-rollup-node init observer config for sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg \
-        with operators --data-dir <SR_DATA_DIR> \
-        --pre-images-endpoint https://snapshots.tzinit.org/etherlink-ghostnet/wasm_2_0_0
       ```
 
       This command generates a minimal configuration file (`config.json`) in the local data folder:
@@ -85,6 +84,54 @@ The best place to get the most recent binary files to use with Etherlink is http
           "https://snapshots.tzinit.org/etherlink-mainnet/wasm_2_0_0" }
       ```
 
+   </TabItem>
+   <TabItem value="ghostnet" label="Etherlink Ghostnet Testnet">
+
+      For Etherlink Ghostnet Testnet, use this command:
+
+      ```bash
+      octez-smart-rollup-node init observer config for sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg \
+        with operators --data-dir <SR_DATA_DIR> \
+        --pre-images-endpoint https://snapshots.tzinit.org/etherlink-ghostnet/wasm_2_0_0
+      ```
+
+      This command generates a minimal configuration file (`config.json`) in the local data folder:
+
+      ```json
+      { "smart-rollup-address": "sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg",
+        "smart-rollup-node-operator": {}, "fee-parameters": {}, "mode": "observer",
+        "pre-images-endpoint":
+          "https://snapshots.tzinit.org/etherlink-ghostnet/wasm_2_0_0" }
+      ```
+
+      :::important
+      Etherlink Ghostnet Testnet will sunset on **15 January 2026**, and will then no longer be available. Please [migrate](/network/migrating-testnet) to Etherlink Shadownet Testnet.
+      :::
+
+   </TabItem>
+   <TabItem value="shadownet" label="Etherlink Shadownet Testnet">
+
+      For Etherlink Shadownet Testnet, use this command:
+
+      ```bash
+      octez-smart-rollup-node init observer config for sr19fMYrr5C4qqvQqQrDSjtP31GcrWjodzvg \
+        with operators --data-dir <SR_DATA_DIR> \
+        --pre-images-endpoint https://snapshots.tzinit.org/etherlink-shadownet/wasm_2_0_0
+      ```
+
+      This command generates a minimal configuration file (`config.json`) in the local data folder:
+
+      ```json
+      { "smart-rollup-address": "sr19fMYrr5C4qqvQqQrDSjtP31GcrWjodzvg",
+        "smart-rollup-node-operator": {}, "fee-parameters": {}, "mode": "observer",
+        "pre-images-endpoint":
+          "https://snapshots.tzinit.org/etherlink-shadownet/wasm_2_0_0" }
+      ```
+
+   </TabItem>
+   </Tabs>
+
+
       This configuration uses the preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
       It's safe to use these preimages because the node verifies them.
       If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink kernel](/network/building-kernel).
@@ -92,10 +139,11 @@ The best place to get the most recent binary files to use with Etherlink is http
 
 1. To speed up the setup process by loading a snapshot, follow these steps:
 
-   1. Get the URL of the Etherlink Smart Rollup node snapshot for the appropriate Etherlink network or download the file manually:
+   1. Get the URL of the Etherlink Smart Rollup node full history snapshot for the appropriate Etherlink network or download the file manually:
 
-      - For full snapshots on Mainnet, see https://snapshots.tzinit.org/etherlink-mainnet
-      - For full snapshots on Testnet, see https://snapshots.tzinit.org/etherlink-ghostnet
+      - Etherlink Mainnet: https://snapshots.tzinit.org/etherlink-mainnet
+      - Etherlink Ghostnet Testnet: https://snapshots.tzinit.org/etherlink-ghostnet
+      - Etherlink Shadownet Testnet: https://snapshots.tzinit.org/etherlink-shadownet
 
       The full history snapshot is appropriate for most use cases.
       If you want to run an EVM node with the Smart Rollup node, they do not need to run in the same history mode.
@@ -103,7 +151,8 @@ The best place to get the most recent binary files to use with Etherlink is http
    1. Use the `octez-smart-rollup-node` binary to import the snapshot into a temporary directory.
    The following examples use `<SR_DATA_DIR>` as the location of this temporary directory and `<SNAPSHOT_URL_OR_FILE>` as the snapshot URL or file name.
 
-      Run this command for Mainnet:
+   <Tabs groupId="chain">
+   <TabItem value="mainnet" label="Etherlink Mainnet">
 
       ```bash
       octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet \
@@ -111,7 +160,8 @@ The best place to get the most recent binary files to use with Etherlink is http
         --data-dir <SR_DATA_DIR>
       ```
 
-      Run this command for Testnet:
+   </TabItem>
+   <TabItem value="ghostnet" label="Etherlink Ghostnet Testnet">
 
       ```bash
       octez-smart-rollup-node --endpoint https://rpc.tzkt.io/ghostnet \
@@ -119,21 +169,46 @@ The best place to get the most recent binary files to use with Etherlink is http
         --data-dir <SR_DATA_DIR>
       ```
 
+   </TabItem>
+   <TabItem value="shadownet" label="Etherlink Shadownet Testnet">
+
+      ```bash
+      octez-smart-rollup-node --endpoint https://rpc.tzkt.io/shadownet \
+        snapshot import <SNAPSHOT_URL_OR_FILE> \
+        --data-dir <SR_DATA_DIR>
+      ```
+
+   </TabItem>
+   </Tabs>
+
 1. Start the Smart Rollup node in observer mode with the `run` command.
 
-   Run this command for Mainnet:
+   <Tabs groupId="chain">
+   <TabItem value="mainnet" label="Etherlink Mainnet">
 
    ```bash
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet run \
      --data-dir <SR_DATA_DIR>
    ```
 
-   Run this command for Testnet:
+   </TabItem>
+   <TabItem value="ghostnet" label="Etherlink Ghostnet Testnet">
 
    ```bash
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/ghostnet run \
      --data-dir <SR_DATA_DIR>
    ```
+
+   </TabItem>
+   <TabItem value="shadownet" label="Etherlink Shadownet Testnet">
+
+   ```bash
+   octez-smart-rollup-node --endpoint https://rpc.tzkt.io/shadownet run \
+     --data-dir <SR_DATA_DIR>
+   ```
+
+   </TabItem>
+   </Tabs>
 
    If you did not load a snapshot, the process of starting the node from genesis can take a long time because it must process every block.
 

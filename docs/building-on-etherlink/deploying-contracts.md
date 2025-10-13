@@ -21,7 +21,7 @@ To call the contract after you deploy it, see [Sending transactions](/building-o
 
 The Remix online IDE lets you code, compile, and deploy contracts to EVM chains, including Etherlink
 
-1. Connect your wallet to Etherlink Testnet as described in [Using your wallet](/get-started/using-your-wallet).
+1. Connect your wallet to Etherlink Ghostnet Testnet as described in [Using your wallet](/get-started/using-your-wallet).
 
 1. Get some Etherlink tokens as described in [Getting Testnet tokens](/get-started/getting-testnet-tokens).
 
@@ -66,7 +66,7 @@ If you used the example contract above, you can call the `greet` entrypoint and 
    ![The result of calling the `greet` entrypoint in the example contract](/img/remix-call-contract.png)
 
 Now the contract is deployed on Etherlink.
-You can look it up on the [Testnet block explorer](https://testnet.explorer.etherlink.com/).
+You can look it up on the [Ghostnet Testnet block explorer](https://testnet.explorer.etherlink.com/).
 
 ## Deploying with ethers.js
 

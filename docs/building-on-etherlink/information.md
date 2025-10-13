@@ -17,7 +17,7 @@ To get the balance of a user account or smart contract, pass the account address
 
 ```bash
 curl --request POST \
-  --url https://node.ghostnet.etherlink.com \
+  --url https://node.mainnet.etherlink.com \
   --header 'accept: application/json' \
   --header 'content-type: application/json' \
   --data '{"jsonrpc": "2.0", "params": ["0x45Ff91b4bF16aC9907CF4A11436f9Ce61BE0650d", "latest" ], "method": "eth_getBalance"}'
@@ -39,7 +39,7 @@ The `eth_chainId` endpoint returns the chain ID in hexadecimal and the `net_vers
 
 ```bash
 curl --request POST \
-  --url https://node.ghostnet.etherlink.com \
+  --url https://node.mainnet.etherlink.com \
   --header 'accept: application/json' \
   --header 'content-type: application/json' \
   --data '{"jsonrpc": "2.0", "method": "net_version"}'
@@ -51,10 +51,10 @@ Etherlink supports the standard EVM [`eth_getCode`](https://ethereum.org/en/deve
 
 ```bash
 curl --request POST \
-  --url https://node.ghostnet.etherlink.com \
+  --url https://node.mainnet.etherlink.com \
   --header 'accept: application/json' \
   --header 'content-type: application/json' \
-  --data '{"jsonrpc": "2.0", "params": ["0x319dce04624e67b1fc3DEb21426A1E76113bD732", "0x0", "latest" ], "method": "eth_getStorageAt"}'
+  --data '{"jsonrpc": "2.0", "params": ["0xe92c00BC72dD12e26E61212c04E8D93aa09624F2", "0x0", "latest" ], "method": "eth_getStorageAt"}'
 ```
 
 ## Getting information about transactions
@@ -72,32 +72,38 @@ For example, you can get information about a transaction by passing its hash to 
 
 ```bash
 curl --request POST \
-  --url https://node.ghostnet.etherlink.com \
+  --url https://node.mainnet.etherlink.com \
   --header 'accept: application/json' \
   --header 'content-type: application/json' \
-  --data '{"jsonrpc": "2.0", "params": ["0x9e71aeeaf5146359879c412b24a85d9a0bc958e2e4305dafabf5e908bea265c3"], "method": "eth_getTransactionByHash"}'
+  --data '{"jsonrpc": "2.0", "params": ["0xe017665cd7bfdef375a863114ac9f7ed2538da4d8584b0f1e0aa71ce96342aee"], "method": "eth_getTransactionByHash"}'
 ```
 
 The response includes the amount of XTZ in the transaction, the to and from addresses, and other information, as in this example:
 
 ```json
 {
+  "id": null,
   "jsonrpc": "2.0",
   "result": {
-    "blockHash": "0x6c8490898a6b3d959ba46657d4e995771b076288a97508c0f80f22ee6925e210",
-    "blockNumber": "0x118f087",
-    "from": "0x45ff91b4bf16ac9907cf4a11436f9ce61be0650d",
-    "gas": "0x98496",
-    "gasPrice": "0x3b9aca00",
-    "hash": "0x9e71aeeaf5146359879c412b24a85d9a0bc958e2e4305dafabf5e908bea265c3",
-    "input": "0x",
-    "nonce": "0x43",
-    "to": "0x46899d4fa5ba90e3ef3b7ae8aae053c662c1ca1d",
-    "transactionIndex": "0x0",
-    "value": "0xde0b6b3a7640000",
-    "v": "0x3e919",
-    "r": "0x32b62cdd9b216d23234513504b31696afaef2399b033f61b063d37d7862fd1e2",
-    "s": "0x5f77fc35d6b9156939ea4862de5b1f0ff48265a856dba00c49af59037431136a"
+    "type": "0x2",
+    "chainId": "0xa729",
+    "hash": "0xe017665cd7bfdef375a863114ac9f7ed2538da4d8584b0f1e0aa71ce96342aee",
+    "nonce": "0x18f",
+    "blockHash": "0x45b2e97b0fd5b64a70f107091f013112b88804e76d7556d9922c8c0cfadc5c89",
+    "blockNumber": "0x1737185",
+    "transactionIndex": "0x2",
+    "from": "0xc63c1a772a8b089d011ac224639bb1c25b032793",
+    "to": "0xff00000000000000000000000000000000000002",
+    "value": "0x0",
+    "gas": "0xf4240",
+    "maxFeePerGas": "0x174876e800",
+    "maxPriorityFeePerGas": "0x174876e801",
+    "gasPrice": "0x174876e800",
+    "accessList": [],
+    "input": "0x379607f50000000000000000000000000000000000000000000000000000000000003225",
+    "v": "0x0",
+    "r": "0x5c77847528151c2be044f1836b3b5056d83ac483676a5748e0a7b7d62a5f002",
+    "s": "0x534cdd8c3a70757f9a3ce9a490ef311ba60c69d1e7e210c2d87baebf3a900810"
   }
 }
 ```
@@ -106,7 +112,7 @@ You can also get transactions by block number or hash and the index of the trans
 
 ```bash
 curl --request POST \
-  --url https://node.ghostnet.etherlink.com \
+  --url https://node.mainnet.etherlink.com \
   --header 'accept: application/json' \
   --header 'content-type: application/json' \
   --data '{"jsonrpc": "2.0", "params": ["0x118f087", "0x0"], "method": "eth_getTransactionByBlockNumberAndIndex"}'
@@ -114,10 +120,10 @@ curl --request POST \
 
 ```bash
 curl --request POST \
-  --url https://node.ghostnet.etherlink.com \
+  --url https://node.mainnet.etherlink.com \
   --header 'accept: application/json' \
   --header 'content-type: application/json' \
-  --data '{"jsonrpc": "2.0", "params": ["0x6c8490898a6b3d959ba46657d4e995771b076288a97508c0f80f22ee6925e210", "0x0"], "method": "eth_getTransactionByBlockHashAndIndex"}'
+  --data '{"jsonrpc": "2.0", "params": ["0x45b2e97b0fd5b64a70f107091f013112b88804e76d7556d9922c8c0cfadc5c89", "0x0"], "method": "eth_getTransactionByBlockHashAndIndex"}'
 ```
 
 For even more information about transactions and blocks, see [Tracing transactions](/building-on-etherlink/transactions#tracing-transactions).
@@ -131,7 +137,7 @@ This example uses ethers.js to get information about Etherlink, including the cu
 const { ethers } = require("ethers");
 
 // Define the provider by its RPC address
-const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+const provider = new ethers.JsonRpcProvider("https://node.mainnet.etherlink.com");
 
 // Sender's private key
 const privateKey = process.env.ETHERLINK_PRIVATE_KEY;
@@ -147,11 +153,11 @@ async function getInfo() {
   console.log(ethers.formatUnits(rawBalance, 18));
 
   // Get a block by its hash
-  const block = await provider.getBlock("0xb8ebd2a872bd0008d2eae550e9fd41f409709e71acd4cf652ae58bf62ed1cdf3");
+  const block = await provider.getBlock("0x45b2e97b0fd5b64a70f107091f013112b88804e76d7556d9922c8c0cfadc5c89");
   console.log(block.number);
 
   // Get information about a transaction by its hash
-  const receipt = await provider.getTransactionReceipt("0x6bc8e2c56b31081e915b9d15ae0eb2a1373b9f5a4b30f432c0abe9e344884410");
+  const receipt = await provider.getTransactionReceipt("0xe017665cd7bfdef375a863114ac9f7ed2538da4d8584b0f1e0aa71ce96342aee");
   console.log(receipt.blockNumber);
 }
 

@@ -9,6 +9,11 @@ const sidebars = {
     },
     {
       type: 'link',
+      label: 'Testnet migration',
+      href: 'https://docs.etherlink.com/network/migrating-testnet',
+    },
+    {
+      type: 'link',
       label: 'Documentation map',
       href: 'https://docs.tezos.com/overview/resources#documentation-map',
     },
@@ -75,6 +80,7 @@ const sidebars = {
       items: [
         'building-on-etherlink/endpoint-support',
         'building-on-etherlink/sandbox',
+        'building-on-etherlink/testnet',
         'building-on-etherlink/information',
         'building-on-etherlink/estimating-fees',
         'building-on-etherlink/transactions',
@@ -98,6 +104,7 @@ const sidebars = {
         'network/evm-nodes',
         'network/building-kernel',
         'network/monitoring',
+        'network/migrating-testnet',
       ],
     },
     {

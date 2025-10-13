@@ -11,7 +11,7 @@ title: Development toolkits
 Hardhat works seamlessly with Etherlink.
 You can follow the documentation at https://hardhat.org/docs and insert values for Etherlink.
 
-Here is an example `hardhat.config.js` file for Etherlink Mainnet and Testnet:
+Here is an example `hardhat.config.js` file for Etherlink Mainnet and Ghostnet Testnet:
 
 ```javascript
 module.exports = {
@@ -80,4 +80,4 @@ forge create --rpc-url "https://node.mainnet.etherlink.com" \
     src/YOUR_CONTRACT.sol:YOUR_CONTRACT --legacy
 ```
 
-To use Etherlink Testnet, substitute the RPC URL `https://node.ghostnet.etherlink.com` for the Mainnet URL.
+To use Etherlink Ghostnet Testnet, substitute the RPC URL `https://node.ghostnet.etherlink.com` for the Mainnet URL.

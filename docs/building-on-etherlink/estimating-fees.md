@@ -20,7 +20,7 @@ Etherlink supports the standard EVM `eth_gasPrice` endpoint to provide the curre
 
 ```bash
 curl --request POST \
-     --url https://node.ghostnet.etherlink.com \
+     --url https://node.mainnet.etherlink.com \
      --header 'accept: application/json' \
      --header 'content-type: application/json' \
      --data '
@@ -48,7 +48,7 @@ To calculate the fee estimate for a given transaction, you can send the transact
 
 ```bash
 curl --request POST \
-     --url https://node.ghostnet.etherlink.com \
+     --url https://node.mainnet.etherlink.com \
      --header 'accept: application/json' \
      --header 'content-type: application/json' \
      --data '
