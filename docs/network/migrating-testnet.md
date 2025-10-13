@@ -4,13 +4,15 @@ title: Migrating to Etherlink Shadownet Testnet
 
 import InlineCopy from '@site/src/components/InlineCopy';
 
-The Etherlink testnet is being migrated to a new Shadownet-based Testnet from the legacy Ghostnet-based Testnet.
-This will ensure that Etherlink's Testnet is aligned with the most up-to-date long-running [Tezos L1 test network](https://teztnets.com/) that is similar to mainnet.
+Etherlink is migrating to a new testnet.
+This new testnet is based on the Tezos [Shadownet](https://teztnets.com/shadownet-about) testnet, just as the legacy testnet was based on the Tezos [Ghostnet](https://teztnets.com/ghostnet-about) testnet.
+For this reason, the new test network is referred to as "Etherlink Shadownet Testnet" and the legacy test network is referred in this documentation as "Etherlink Ghostnet Testnet."
+This migration ensures that Etherlink's primary Testnet is aligned with the most up-to-date long-running Tezos test network that is similar to Mainnet.
 
 The two testnets will run in parallel whilst migration by builders and partners takes place.
 Etherlink Ghostnet Testnet will sunset on **15 January 2026**, and will then no longer be available.
 
-This page gives all the details of the migration, including milestones, calls to action, and the current progress.
+This page gives the details of the migration, including milestones, calls to action, and the current progress.
 It is intended for all the Etherlink partners such as infrastructure providers, node operators, and application builders.
 
 ## Key information
@@ -75,7 +77,7 @@ The migration will be delivered in the following phases:
         - Network public goods: deployment of tokens, utility contracts (multicall3, create3 factories etc)
         - Smart rolltup node snapshot service available ✅
         - EVM node snapshot service available
-        - Updates to developer SDKs (viem, chainlist etc)
+        - Updates to developer SDKs (viem, chainlist, etc.)
         - Network monitoring infrastructure
       </td>
       <td>In progress</td>
@@ -97,7 +99,7 @@ The migration will be delivered in the following phases:
       </td>
       <td>
         - Final app testing
-        - Redirection of `shadownet` URLs to `testnet`
+        - Redirection of `testnet` URLs to Shadownet
       </td>
       <td>TODO</td>
     </tr>
@@ -211,4 +213,4 @@ Regular updates will be announced via the following channels:
 - [Etherlink Discord](https://discord.gg/etherlink)
 - [Twitter/X](https://x.com/etherlink)
 
-For support, or if you have any questions about the testnet migration, please reach out to our team via existing direct channels, or on the [Etherlink Discord](https://discord.gg/etherlink).
+For support, or if you have any questions about the testnet migration, please reach out to our team via existing direct channels or on the [Etherlink Discord](https://discord.gg/etherlink).
