@@ -7,7 +7,8 @@ import InlineCopy from '@site/src/components/InlineCopy';
 The Etherlink testnet is being migrated to a new Shadownet-based Testnet from the legacy Ghostnet-based Testnet.
 This will ensure that Etherlink's Testnet is aligned with the most up-to-date long-running [Tezos L1 test network](https://teztnets.com/) that is similar to mainnet.
 
-The two testnets will run in parallel whilst migration by builders and partners takes place. Etherlink Ghostnet Testnet will sunset on **15 January 2026**, and will then no longer be available.
+The two testnets will run in parallel whilst migration by builders and partners takes place.
+Etherlink Ghostnet Testnet will sunset on **15 January 2026**, and will then no longer be available.
 
 This page gives all the details of the migration, including milestones, calls to action, and the current progress.
 It is intended for all the Etherlink partners such as infrastructure providers, node operators, and application builders.
@@ -25,19 +26,19 @@ For more technical details about this network, see [Network information](/get-st
 
 ## Rationale
 
-This migration will ensure better testnet parity with the Etherlink mainnet, ensuring a much smoother launch of applications and services in production.
+This migration will ensure better testnet parity with Etherlink Mainnet, ensuring a much smoother launch of applications and services in production.
 
-This aims in paving the way for more partners to bring their applications to Etherlink, by concretely ensuring:
+This paves the way for more partners to bring their applications to Etherlink, by concretely ensuring:
 
-- earlier Etherlink Stack requirement forecast;
-- better pre-live simulations;
-- better overall builder experience.
+- Earlier Etherlink Stack requirement forecasts
+- Better pre-live simulations
+- Better overall builder experience
 
-Tezos L1 Ghostnet is likely to be discontinued at a similar time.
+In addition, Tezos L1 Ghostnet is likely to be discontinued at a similar time.
 
 ## Migration steps
 
-The migration is being organized around the release and availability of key Shadownet Testnet infrastructure components. 
+The migration is being organized around the release and availability of key Shadownet Testnet infrastructure components.
 
 The migration will be delivered in the following phases:
 
@@ -96,7 +97,7 @@ The migration will be delivered in the following phases:
       </td>
       <td>
         - Final app testing
-        - Redirection of "shadownet" URLs to "testnet"
+        - Redirection of `shadownet` URLs to `testnet`
       </td>
       <td>TODO</td>
     </tr>
@@ -109,55 +110,56 @@ The migration will be delivered in the following phases:
         - Sunset of Etherlink Ghostnet ecosystem infrastructure services and dapps
       </td>
       <td>TODO</td>
-    </tr>    
+    </tr>
   </tbody>
 </table>
 
 ## Calls to action
 
-This section is meant for guiding the different categories of partners into action. 
+This section is meant for guiding the different categories of partners into action.
 Instructions will be updated as the migration progresses.
- 
+
 ### For node operators
 
-If you run EVM nodes that follow the existing Ghostnet Testnet please carry out the following tasks
+If you run EVM nodes on the existing Ghostnet Testnet, please carry out the following tasks:
 
 <table>
   <tr>
     <td>
       ACTION REQUIRED:
 
-      1. Set up new Shadownet EVM Nodes from genesis block following [these instructions](/network/evm-nodes)
-      1. If you run Smart Rollup testnet nodes, then follow the instructions for setting up your [Etherlink Shadownet Smart Rollup Node](/network/smart-rollup-nodes)
-      1. If you run L1 octez-node, then following these instructions to install [Octez](https://octez.tezos.com/docs/introduction/howtoget.html) for Tezos L1 Shadownet testnet
+      1. Set up new Shadownet EVM nodes from genesis block following the instructions in [Running an Etherlink EVM node](/network/evm-nodes).
+      1. If you run Smart Rollup nodes, follow the instructions for setting up your [Etherlink Shadownet Smart Rollup Node](/network/smart-rollup-nodes).
+      1. If you run L1 Octez nodes, then follow these instructions to install [Octez](https://octez.tezos.com/docs/introduction/howtoget.html) for Tezos L1 Shadownet testnet.
       1. Carry out end-to-end testing to ensure performance is in line with your Ghostnet EVM node.
-      1. (For commercial RPC providers) inform your users about availability of the new nodes
+      1. (For commercial RPC providers) Inform your users about availability of the new nodes.
     </td>
   </tr>
 </table>
 
 :::note
-Until EVM node snapshots are available, the nodes will need to be bootstrapped from the genesis block. 
+
+Because EVM node snapshots for Shadownet are not yet available, you must bootstrap EVM nodes from the genesis block.
 It should take only a few hours for the node to reach the latest block.
 :::
 
 ### For infrastructure providers
 
-If you currently operate infrastructure services for Etherlink Ghostnet Testnet, please prepare for the tasks below. 
+If you currently operate infrastructure services for Etherlink Ghostnet Testnet, please prepare for these typical migration tasks:
 
-Migration would typically involve the following steps:
 - Check for any missing on-chain or off-chain dependencies and escalate with the Etherlink team
 - Provision new infrastructure/hosts as needed
-- Update JSON-RPC API endpoints from Etherlink Ghostnet to Etherlink Shadownet. 
+- Update JSON-RPC API endpoints from Etherlink Ghostnet to Etherlink Shadownet
 - Obtain Etherlink Shadownet tez from the faucet
 - Redeploy contracts to Etherlink Shadownet
-- Update databases with Etherlink Shadownet data
-- Update your apps to use the new `chainId`
+- Update databases with Etherlink Shadownet data and addresses
+- Update your apps to use the chain ID of Etherlink Shadownet
 - Update your web3 SDKs to use Etherlink Shadownet
 - End-to-end testing/QA
-- Deployment & release to end-users
+- Deployment and release to end-users
 
 Detailed links will be added to this page as services on Shadownet are enabled.
+
 <table>
   <tr>
     <td>
@@ -166,18 +168,22 @@ Detailed links will be added to this page as services on Shadownet are enabled.
     </td>
   </tr>
 </table>
+
 :::note
-In most cases developers will expect to use your services on both Ghostnet and Shadownet, anticipate running a parallel service for a few months until Ghostnet has been fully deprecated.
+In most cases developers will expect to use your services on both Ghostnet and Shadownet.
+For this reason, anticipate running a parallel service for a few months until Ghostnet has been fully deprecated.
+
 :::
 
 ### For developers
 
-If you currently operate a dApp or Marketplace on Etherlink Ghostnet Testnet for testing purposes, there should be no change in app behaviour following the migration to Shadownet.
+If you currently operate a dApp or marketplace on Etherlink Ghostnet Testnet for testing purposes, there should be no change in app behavior following the migration to Shadownet.
 
 Migration would typically involve the following steps:
+
 - Check for any missing on-chain or off-chain dependencies and escalate with the Etherlink team
 - Provision new infrastructure/hosts as needed
-- Update JSON-RPC API endpoints from Etherlink Ghostnet to Etherlink Shadownet. 
+- Update JSON-RPC API endpoints from Etherlink Ghostnet to Etherlink Shadownet.
 - Obtain Etherlink Shadownet tez from the faucet
 - Redeploy contracts to Etherlink Shadownet
 - Migrate to new endpoints for data indexers or APIs
@@ -185,15 +191,16 @@ Migration would typically involve the following steps:
 - Update your apps to use the new `chainId`
 - Update your web3 SDKs to use Etherlink Shadownet
 - End-to-end testing/QA
-- Deployment & release to end-users
+- Deployment and release to end-users
 
 Detailed links will be added to this page as services on Shadownet are enabled.
 
 <table>
   <tr>
     <td>
-      <p>No immediate migration action is required at this stage, refer to the timelines above and plan for your migration</p>
-      <p>Please join the [Etherlink Discord](https://discord.gg/etherlink) so that you can be alerted to updates when it's time to migrate your applications to Etherlink Shadownet</p>
+      <p>No immediate migration action is required at this stage.
+      Refer to the timelines above and plan for your migration.</p>
+      <p>Please join the [Etherlink Discord](https://discord.gg/etherlink) so that you can be alerted to updates when it's time to migrate your applications to Etherlink Shadownet.</p>
     </td>
   </tr>
 </table>
