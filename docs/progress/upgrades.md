@@ -81,7 +81,7 @@ Note that EIP-7623 causes a breaking change in the way that transaction fees are
 
 - Changes to the events that are emitted for bridging operations of FA tokens.
 
-- The speed limit is increased to 7 million gas units per second.
+- The target is increased to 7 million gas units per second. As a reminder, the Etherlink’s target (a.k.a. speed limit) decides when the gas price raises.
 
 - The sequencer operator can now replace its signing key with a new one without needing to go through a governance vote.
 
