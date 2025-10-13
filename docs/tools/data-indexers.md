@@ -6,6 +6,7 @@ Etherlink has public block explorers that use indexers to provide information ab
 
 - Etherlink Mainnet: https://explorer.etherlink.com
 - Etherlink Ghostnet Testnet: https://testnet.explorer.etherlink.com/
+- Etherlink Shadownet Testnet: https://shadownet.explorer.etherlink.com/
 
 If you need custom information about your contracts or information formatted in a specific way, you may need to run a custom indexer.
 Several Etherlink-compatible indexers are listed below.
