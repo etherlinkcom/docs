@@ -72,6 +72,21 @@ This upgrade includes:
 
 For more information, see [It’s voting month for Etherlink: Two governance votes coming in July 2025](https://medium.com/@etherlink/its-voting-month-for-etherlink-two-governance-votes-coming-in-july-2025-301ae7bcd29f).
 
+## Etherlink 5.0 (Ebisu)
+
+The Etherlink 5.0 upgrade includes:
+
+- Support for EVM Prague, including support for EIP-7702, EIP-2537, and EIP-7623, including the [precompiled contracts](/get-started/network-information) in EIP-2537.
+Note that EIP-7623 causes a breaking change in the way that transaction fees are calculated, especially for transactions posting larger amounts of data on-chain, which may result in slightly higher gas fees.
+
+- Changes to the events that are emitted for bridging operations of FA tokens.
+
+- The target is increased to 7 million gas units per second. As a reminder, the Etherlink’s target (a.k.a. speed limit) decides when the gas price raises.
+
+- The sequencer operator can now replace its signing key with a new one without needing to go through a governance vote.
+
+For more information, see [Announcing Ebisu: A 5th Upgrade proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-ebisu-a-5th-upgrade-proposal-for-etherlink-mainnet-4dfdd1c8819e).
+
 ## Changelog
 
 For full details about changes to Etherlink, see [Changelogs](/progress/changelogs).
