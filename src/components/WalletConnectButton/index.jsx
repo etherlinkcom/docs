@@ -32,7 +32,7 @@ const ghostnetTestnet = defineChain({
 
 const shadownetTestnet = defineChain({
   id: 127823,
-  rpc: "https://node.braeburn.etherlink.com",
+  rpc: "https://node.shadownet.etherlink.com",
   nativeCurrency: {
     decimals: 18,
     name: "XTZ",

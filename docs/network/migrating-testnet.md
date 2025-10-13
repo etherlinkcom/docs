@@ -18,8 +18,8 @@ Here are some important pieces of information for Etherlink Shadownet Testnet:
 
 - Built on Tezos L1 testnet [Shadownet](https://teztnets.com/shadownet-about)
 - Chain ID: `128123`
-- RPC endpoint: <InlineCopy code="https://node.braeburn.etherlink.com" />
-- Block explorer: <a href="https://testnet.explorer.etherlink.com/">https://testnet.explorer.etherlink.com/</a>
+- RPC endpoint: <InlineCopy code="https://node.shadownet.etherlink.com" /> (coming soon)
+- Block explorer: <a href="https://shadownet.explorer.etherlink.com/">https://shadownet.explorer.etherlink.com/</a>
 
 For more technical details about this network, see [Network information](/get-started/network-information).
 
