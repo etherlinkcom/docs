@@ -47,7 +47,7 @@ test('search', async ({ page }) => {
 
 test('feedback form', async ({ page }) => {
   await page.goto('https://docs.etherlink.com/');
-  await expect(page.locator('#default a')).toBeVisible();
-  await page.locator('#default a').click();
+  await expect(page.locator('feedback-button#default a')).toBeVisible();
+  await page.locator('feedback-button#default a').click();
   await expect(page.getByText('Share your feedback')).toBeVisible();
 });
