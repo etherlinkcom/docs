@@ -6,7 +6,7 @@ These centralized exchanges allow users and dApps to trade XTZ with other crypto
 
 - [AscendEx](https://ascendex.com)
 
-- [Gate.io](https://www.gate.io/)
+- [Gate](https://www.gate.com/)
 
 - [MEXC](https://www.mexc.com/)
 
