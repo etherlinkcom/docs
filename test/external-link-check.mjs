@@ -31,6 +31,11 @@ const regexesToIgnore = [
   /https:\/\/explorer\.etherlink\.com/,
   /https:\/\/testnet\.explorer\.etherlink\.com/,
   /https:\/\/shadownet\.explorer\.etherlink\.com/,
+  // The following links are geo-fenced so they get a 403 from some locations
+  /https:\/\/www\.gate\./,
+  /https:\/\/www\.mexc\.com/,
+  /https:\/\/www\.coinbase\.com/,
+  /https:\/\/trustwallet\.com/,
 ];
 
 // Convert file to AST, using the correct processors for MD and MDX files
