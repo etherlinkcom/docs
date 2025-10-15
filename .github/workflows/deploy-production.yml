@@ -35,3 +35,14 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
+
+  crawl:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Algolia Crawler'
+        uses: cssnr/algolia-crawler-action@v1
+        with:
+          crawler_id: ${{ secrets.CRAWLER_ID }}
+          crawler_user_id: ${{ secrets.CRAWLER_USER_ID }}
+          crawler_api_key: ${{ secrets.CRAWLER_API_KEY }}
