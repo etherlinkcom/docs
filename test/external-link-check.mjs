@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import fs from 'fs';
 import { glob } from 'glob';
 import linkCheck from 'link-check';
+import _ from 'lodash';
 
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
@@ -84,35 +85,76 @@ const checkLink = async (url) => new Promise((resolve, reject) => {
 
 const runTest = async () => {
 
-  const linksChecked = [];
-  const brokenLinks = [];
   const allMdFilePaths = await glob(docsFolder + '/**/*.{md,mdx}');
 
-  await Promise.all(allMdFilePaths.map(async (oneFilePath) => {
+  // Assemble an object with information about the links and the pages they are found on
+  // Looks like this:
+  /*
+
+  const linksToCheck = [
+    {
+      url: "https://whatever.com",
+      pages: [
+        "pages/one.md",
+        "pages/two.md",
+      ],
+    },
+  ];
+
+  Later I'll add the error as a field.
+  */
+  const linksToCheck = await allMdFilePaths.reduce(async (linkObjectPromise, oneFilePath) => {
+    let linkObject = await linkObjectPromise;
     const oneAst = await getAst(oneFilePath);
     const linksInAst = getLinksInAst(oneAst);
-    await Promise.all(linksInAst.map(async (oneLink) => {
-      if (!linksChecked.includes(oneLink)) {
-        await checkLink(oneLink)
-          .then(() => linksChecked.push(oneLink))
-          .catch((errOrStatus) => {
-            brokenLinks.push({
-              path: path.relative(rootFolder, oneFilePath),
-              url: oneLink,
-              err: errOrStatus,
-            });
-            linksChecked.push(oneLink);
-          }
-          );
-      }
-    }));
-  }));
+    const localPath = path.relative(rootFolder, oneFilePath);
 
-  console.log('Successfully checked', linksChecked.length, 'links.\n');
+    // Update the object with the links on this page
+    linksInAst.forEach((oneLink) => {
+      const existingObject = _.find(linkObject, ({ url }) => url === oneLink);
+      if (existingObject && !existingObject.pages.includes(localPath)) {
+        // If the link is already listed, add this page
+        // Remove the old element
+        linkObject = _.filter(linkObject, ({url}) => url !== oneLink);
+        // Update it to include this page
+        existingObject.pages.push(localPath);
+        // Add the element back in
+        linkObject.push(existingObject);
+      } else {
+        // If the link is not listed, add it
+        linkObject.push({
+          url: oneLink,
+          pages: [localPath],
+        });
+      }
+
+    });
+    return linkObject;
+  }, Promise.resolve([]));
+
+  // Check each link and add the result field
+  const checkedLinks = await Promise.all(
+    linksToCheck.map(async ({ url, pages }) => {
+      const result = await checkLink(url)
+        .then(() => "ok")
+        .catch((errOrStatus) => errOrStatus);
+      return {
+        url,
+        pages,
+        result,
+      }
+    })
+  );
+
+  // Filter to broken links
+  const brokenLinks = checkedLinks.filter(({ result }) => result !== "ok");
+
+  console.log('Successfully checked', checkedLinks.length, 'links.\n');
+
   if (brokenLinks.length > 0) {
     console.error('Found broken links.');
-    brokenLinks.forEach(({path, url, err}) => {
-      console.error(`Broken link in ${path}:\n  ${url} returned ${err}\n`);
+    brokenLinks.forEach(({ pages, url, result }) => {
+      console.error(`Broken link to ${url} returned ${result}; found on these pages:\n  ${pages.join('\n  ')}\n`);
     });
     console.error('\n\n', 'Found', brokenLinks.length, 'broken links');
     process.exit(1);
