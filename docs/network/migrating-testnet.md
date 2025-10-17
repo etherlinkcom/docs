@@ -20,7 +20,7 @@ It is intended for all the Etherlink partners such as infrastructure providers, 
 Here are some important pieces of information for Etherlink Shadownet Testnet:
 
 - Built on Tezos L1 testnet [Shadownet](https://teztnets.com/shadownet-about)
-- Chain ID: `128123`
+- Chain ID: `127823`
 - RPC endpoint: <InlineCopy code="https://node.shadownet.etherlink.com" /> (coming soon)
 - Block explorer: <a href="https://shadownet.explorer.etherlink.com/">https://shadownet.explorer.etherlink.com/</a>
 
