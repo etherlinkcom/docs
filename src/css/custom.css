@@ -105,6 +105,12 @@ body {
   }
 }
 
+@media (min-width: 997px) {
+  aside {
+    width: 342px !important;
+  }
+}
+
 main .row .col.col--3 {
   max-width: none;
 }
@@ -112,7 +118,6 @@ aside {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  width: 342px !important;
 }
 
 nav.navbar {
