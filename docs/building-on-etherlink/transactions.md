@@ -593,6 +593,7 @@ The delayed inbox transaction requires 1 tez and these parameters:
 
 The addresses of the delayed inbox smart contracts are:
 
+- Shadownet Testnet: `KT18tqoSSpiMy6sizSMx9kQCe29EQfGq9wWv`
 - Ghostnet Testnet: `KT1X1M4ywyz9cHvUgBLTUUdz3GTiYJhPcyPh`
 - Mainnet: `KT1Vocor3bL5ZSgsYH9ztt42LNhqFK64soR4`
 
