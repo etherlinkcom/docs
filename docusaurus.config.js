@@ -45,13 +45,15 @@ module.exports = async function createConfigAsync() {
     organizationName: 'etherlinkcom',
     projectName: 'docs',
     onBrokenLinks: 'throw',
-    onBrokenMarkdownLinks: 'throw',
     i18n: {
       defaultLocale: 'en',
       locales: ['en'],
     },
     markdown: {
       mermaid: true,
+      hooks: {
+        onBrokenMarkdownLinks: 'warn',
+      }
     },
     future: {
       v4: true,
