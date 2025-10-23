@@ -76,17 +76,10 @@ If you don't want to see all of the options and settings for the EVM node, you c
       ```bash
       octez-evm-node run observer \
         --network shadownet \
-        --history archive \
+        --history rolling:1 \
         --dont-track-rollup-node \
         --init-from-snapshot
       ```
-
-      :::note
-
-      At this time, only archive snapshots are available for Etherlink Shadownet Testnet.
-      If you want to run the node in a different mode, start it in archive mode and then switch modes as described in [Switching history modes](#switching-history-modes).
-
-      :::
 
       </TabItem>
     </Tabs>
@@ -330,7 +323,7 @@ To automatically download and import a snapshot, start the node with the `--init
   ```bash
   octez-evm-node run observer \
     --network shadownet \
-    --history archive \
+    --history rolling:1 \
     --data-dir <EVM_DATA_DIR> \
     --dont-track-rollup-node \
     --init-from-snapshot
@@ -342,16 +335,10 @@ To automatically download and import a snapshot, start the node with the `--init
   export EVM_NODE_DATA_DIR="<EVM_DATA_DIR>"
   export EVM_NODE_NETWORK=shadownet
   octez-evm-node run observer \
-    --history archive \
+    --history rolling:1 \
     --dont-track-rollup-node \
     --init-from-snapshot
   ```
-
-  :::note
-
-  At this time, only archive snapshots are available for Etherlink Shadownet Testnet.
-
-  :::
 
   </TabItem>
 </Tabs>
