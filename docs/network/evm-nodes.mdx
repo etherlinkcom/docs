@@ -507,6 +507,8 @@ You can also start a node in `rolling:5` mode by downloading a rolling snapshot 
 Switching modes can increase the size of the data directory, so be sure that the node has enough disk space before switching.
 For example, switching from another mode to `rolling` mode requires more space than starting a new node in `rolling` mode from a new data directory with the same retention period.
 
+If you switch the node to a mode that stores less data, it reduces the size of the data directory the next time that the node runs internal garbage collection, within 24 hours.
+
 ## Verifying that the node is running
 
 The node is ready when the log shows new block numbers, as in this example:
