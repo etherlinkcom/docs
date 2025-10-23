@@ -21,7 +21,7 @@ Here are some important pieces of information for Etherlink Shadownet Testnet:
 
 - Built on Tezos L1 testnet [Shadownet](https://teztnets.com/shadownet-about)
 - Chain ID: `127823`
-- RPC endpoint: <InlineCopy code="https://node.shadownet.etherlink.com" /> (coming soon)
+- RPC endpoint: <InlineCopy code="https://node.shadownet.etherlink.com" />
 - Block explorer: <a href="https://shadownet.explorer.etherlink.com/">https://shadownet.explorer.etherlink.com/</a>
 
 For more technical details about this network, see [Network information](/get-started/network-information).
@@ -69,10 +69,10 @@ The migration will be delivered in the following phases:
         Phase 2<br />Oct-Nov 2025
       </td>
       <td>
-        - JSON-RPC API providers & blockchain indexers nodes setup
+        - JSON-RPC API providers & blockchain indexers nodes setup ✅
         - Shadownet Tezos Bridge
         - EVM Bridge
-        - Block Explorer
+        - Block Explorer ✅
         - Oracles
         - Network public goods: deployment of tokens, utility contracts (multicall3, create3 factories etc)
         - Smart rolltup node snapshot service available ✅
