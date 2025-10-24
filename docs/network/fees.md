@@ -94,5 +94,5 @@ $$
 The block gas limit, or the maximum total amount of execution fees in a single Etherlink block, is 30 million gas units (i.e. excluding inclusion fees).
 Transactions that require a higher execution fee fail.
 
-There is no straightforward way of determining the execution fee for a transaction because estimating transaction fees with the `eth_estimateGas` endpoint the sum of the execution fee and the inclusion fee is returned as a single amount.
+There is no straightforward way of determining the execution fee for a transaction because the `eth_estimateGas` endpoint returns the sum of the execution fee and the inclusion fee as a single amount.
 For this reason, some large transactions with a total fee higher than the gas limit may succeed because the execution fee is still less than the gas limit.
