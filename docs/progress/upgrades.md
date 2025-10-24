@@ -40,7 +40,7 @@ For more information, see [Announcing Calypso: The Next Etherlink Upgrade Propos
 
 On 12 April 2025, the 3.1 security upgrade went live on Etherlink Mainnet, in Etherlink block 10,453,254.
 This upgrade improves error handling of FA bridging transactions, which hardens the Etherlink sequencer against potential DDOS attacks.
-This upgrade includes only a [security patch](https://gitlab.com/tezos/tezos/-/commit/9ab8acd92eb91c5aa2325fbb2c1794bc11aa1b68&sa=D&source=docs&ust=1744727209624752&usg=AOvVaw07zM1UuZjKJ4Teuo_L51Nl) for the Calypso kernel and no other changes.
+This upgrade includes only a security patch for the Calypso kernel and no other changes.
 
 This upgrade was carried out through Etherlink’s [security governance process](https://docs.etherlink.com/governance/how-is-etherlink-governed#security-governance).
 
@@ -81,7 +81,9 @@ Note that EIP-7623 causes a breaking change in the way that transaction fees are
 
 - Changes to the events that are emitted for bridging operations of FA tokens.
 
-- The target is increased to 7 million gas units per second. As a reminder, the Etherlink’s target (a.k.a. speed limit) decides when the gas price raises.
+- The speed limit (also known as the target) is increased to 7 million gas units per second.
+The speed limit decides when the gas price raises.
+For more information, see [Execution fee](/network/fees#execution-fee).
 
 - The sequencer operator can now replace its signing key with a new one without needing to go through a governance vote.
 

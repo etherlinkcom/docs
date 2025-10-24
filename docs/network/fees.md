@@ -33,7 +33,7 @@ The execution fee changes based on the transaction throughput over time.
 Etherlink measures throughput in terms of the amount of execution gas (that is, the units of computation used to execute transactions) used over time.
 As demand increases and more execution gas is used in a shorter time, Etherlink increases the gas price to increase the execution fee.
 
-Etherlink has a target amount of execution gas to use per second, referred to as the _speed limit_.
+Etherlink has a target amount of execution gas to use per second, referred to as the _speed limit_ or _target_.
 The speed limit is currently set to 7 million gas per second.
 To calculate the throughput, Etherlink records the total execution gas used and subtracts the speed limit every second.
 The remaining execution gas amount is known as the _backlog_.
@@ -94,5 +94,5 @@ $$
 The block gas limit, or the maximum total amount of execution fees in a single Etherlink block, is 30 million gas units (i.e. excluding inclusion fees).
 Transactions that require a higher execution fee fail.
 
-There is no straightforward way of determining the execution fee for a transaction because estimating transaction fees with the `eth_estimateGas` endpoint the sum of the execution fee and the inclusion fee is returned as a single amount.
+There is no straightforward way of determining the execution fee for a transaction because the `eth_estimateGas` endpoint returns the sum of the execution fee and the inclusion fee as a single amount.
 For this reason, some large transactions with a total fee higher than the gas limit may succeed because the execution fee is still less than the gas limit.
