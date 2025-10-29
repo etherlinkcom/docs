@@ -65,7 +65,7 @@ Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
 
    :::note
 
-   An automated system run by Nomadic Labs calls the `claim` function on behalf of depositors of XTZ and FA tokens that are supported by the FA bridge.
+   An automated system run by Optimistic Labs calls the `claim` function on behalf of depositors of XTZ and FA tokens that are supported by the FA bridge.
    If that system is down or does not call the `claim` function for your deposit, you may need to do it yourself.
 
    :::
