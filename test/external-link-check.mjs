@@ -26,9 +26,12 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootFolder = path.resolve(__dirname, '..');
 const docsFolder = path.resolve(rootFolder, './docs');
 
+const externalLinkRegex = /https?:\/\//;
+
 // Ignore URLs that match these regexes
 const regexesToIgnore = [
-  /127.0.0.1/,
+  /http?:\/\/127.0.0.1/,
+  /http?:\/\/localhost/,
   /https:\/\/explorer\.etherlink\.com/,
   /https:\/\/testnet\.explorer\.etherlink\.com/,
   /https:\/\/shadownet\.explorer\.etherlink\.com/,
@@ -36,7 +39,12 @@ const regexesToIgnore = [
   /https:\/\/www\.gate\./,
   /https:\/\/www\.mexc\.com/,
   /https:\/\/www\.coinbase\.com/,
+  /https:\/\/cointelegraph\.com/,
   /https:\/\/trustwallet\.com/,
+  /https:\/\/www\.fxhash\.xyz/,
+  /https:\/\/www\.npmjs\.com/,
+  /https:\/\/crates\.io/,
+  /https:\/\/dns.xyz/,
 ];
 
 // Convert file to AST, using the correct processors for MD and MDX files
@@ -59,11 +67,9 @@ const markdownTestFunction = (node) => node.type === 'link';
 const getLinksInAst = (ast) => {
   const linksInAst = [];
   visit(ast, markdownTestFunction, (node) => {
-    let addToList = true;
-    // Filter local links
-    if (node.url.startsWith('/') || node.url.startsWith('#')) addToList = false;
     // Filter by regexes
-    addToList = addToList && regexesToIgnore.reduce((runningResult, oneRegex) => {
+    const isExternal = externalLinkRegex.test(node.url);
+    const addToList = isExternal && regexesToIgnore.reduce((runningResult, oneRegex) => {
       if (!runningResult || oneRegex.test(node.url)) {
         return false;
       }
