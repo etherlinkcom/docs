@@ -1,0 +1,2 @@
+2025/11/03-13:20:29.789 8503 Creating DB /Users/timothymcmackin/tezos/etherlink/test/playwright/metamask-data-dir/Default/IndexedDB/chrome-extension_ndfonphdnmfjlngfimohkienmmhgijmh_0.indexeddb.leveldb since it was missing.
+2025/11/03-13:20:29.794 8503 Reusing MANIFEST /Users/timothymcmackin/tezos/etherlink/test/playwright/metamask-data-dir/Default/IndexedDB/chrome-extension_ndfonphdnmfjlngfimohkienmmhgijmh_0.indexeddb.leveldb/MANIFEST-000001
