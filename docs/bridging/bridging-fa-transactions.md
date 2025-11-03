@@ -65,7 +65,8 @@ Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
 
    :::note
 
-   Normally an automated system run by Nomadic Labs calls the `claim` function on behalf of depositors, but if that system is down or does not call the `claim` function for your deposit, you may need to do it yourself.
+   An automated system run by Optimistic Labs calls the `claim` function on behalf of depositors of XTZ and FA tokens that are supported by the FA bridge.
+   If that system is down or does not call the `claim` function for your deposit, you may need to do it yourself.
 
    :::
 
@@ -77,7 +78,11 @@ Because the Etherlink tokens are compatible with the ERC-20 standard, EVM-compat
 It takes two transactions to withdraw an FA token back to Etherlink: one to initiate the withdrawal and another to run the outbox transaction on Tezos layer 1.
 As described in [Bridging FA tokens](/bridging/bridging-fa), you must wait two weeks to run the outbox transaction due to the Smart Rollup refutation period.
 
-Neither of these transactions are easy to do.
+Normally, an automated system run by Optimistic Labs runs these outbox transactions as soon as the refutation period is over, which sends the withdrawn tez to the layer 1 account.
+However, pending outbox transactions expire after a period equal to the refutation period.
+Therefore, if the system that runs these outbox transactions is down for two weeks after the refutation period ends, the transactions may be lost.
+
+Neither of these transactions are easy to do by yourself.
 Initiating the withdrawal requires sending complex information about the ticket and contracts to the FA2 withdrawal precompile on Etherlink.
 Running the outbox transaction requires you to know the level of the Etherlink commitment that contains it in order to get its proof and commitment, and there is no easy way to get that information without using an indexer to check each level for the transaction.
 
