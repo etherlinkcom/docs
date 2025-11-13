@@ -6,56 +6,44 @@ You can run a local sandbox to test Etherlink transactions and smart contracts l
 The sandbox consists of an [EVM node](/network/evm-nodes) in a special mode that includes the functionality of the sequencer and does not need any other nodes.
 The local sandbox is intended for local testing and debugging.
 
+The sandbox begins by replicating an existing network, so you can use it to work with contracts on Mainnet, Testnet, or Shadownet.
+
 Follow these steps to start the local sandbox:
 
 1. Get the latest release of the `octez-evm-node` binary as described in [Running an Etherlink EVM node](/network/evm-nodes).
 
-1. Initialize the data directory for the EVM node, as in these examples, which use the placeholder `<EVM_DATA_DIR>` to represent the local folder for the data directory:
-
-   Testnet:
+1. Initialize the data directory for the EVM node, as this example, which uses the placeholder `<EVM_DATA_DIR>` to represent the local folder for the data directory and `<NETWORK>` for the network to replicate (`mainnet`, `testnet`, or `shadownet`):
 
    ```bash
    octez-evm-node init config \
-     --network testnet \
+     --network <NETWORK> \
      --data-dir <EVM_DATA_DIR> \
      --dont-track-rollup-node
    ```
 
-   Mainnet:
+   For example, for Etherlink Shadownet, the command might like look like this:
 
    ```bash
    octez-evm-node init config \
-     --network mainnet \
-     --data-dir <EVM_DATA_DIR> \
+     --network shadownet \
+     --data-dir ~/sandbox-shadownet \
      --dont-track-rollup-node
    ```
 
    :::note
 
-   After you use the node in sandbox mode with a certain data directory, you cannot re-use that data directory for running an EVM node on Etherlink Mainnet or test network.
+   After you use the node in sandbox mode with a certain data directory, you cannot re-use that data directory for running an EVM node on the network itself.
    Consider using a different data directory for the sandbox than you use for other EVM nodes.
 
    :::
 
 1. (Optional) Enable WebSockets on the node as described in [Getting updates with WebSockets](/building-on-etherlink/websockets).
 
-1. Start the node in sandbox mode from a snapshot, either based on the Mainnet or Testnet context:
-
-   Testnet:
+1. Start the node in sandbox mode from a snapshot:
 
    ```bash
    octez-evm-node run sandbox \
-     --network testnet \
-     --data-dir <EVM_DATA_DIR> \
-     --init-from-snapshot \
-     --fund 0x45Ff91b4bF16aC9907CF4A11436f9Ce61BE0650d
-   ```
-
-   Mainnet:
-
-   ```bash
-   octez-evm-node run sandbox \
-     --network mainnet \
+     --network <NETWORK> \
      --data-dir <EVM_DATA_DIR> \
      --init-from-snapshot \
      --fund 0x45Ff91b4bF16aC9907CF4A11436f9Ce61BE0650d
@@ -63,7 +51,7 @@ Follow these steps to start the local sandbox:
 
    The `--fund` arguments in these commands send 10,000 XTZ to one or more bootstrap addresses that you can use in the sandbox.
 
-   To replicate an environment with high traffic, pass the RPC URL of an EVM node on the same network to the `--replicate` argument, as in `--replicate https://node.ghostnet.etherlink.com`.
+   To replicate an environment with high traffic, pass the RPC URL of an EVM node on the same network to the `--replicate` argument, as in `--replicate https://node.shadownet.etherlink.com`.
    Your sandbox node uses the blocks from that EVM node in real time to simulate a real environment with real transactions.
    Using this mode allows you to run tests on contracts already deployed on a live network, with a real context, but without having to deploy changes to Testnet or paying transaction fees.
 
