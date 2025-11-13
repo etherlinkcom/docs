@@ -4,7 +4,7 @@ title: Node providers
 
 ## Public RPC
 
-The public RPC nodes at `node.mainnet.etherlink.com` and `node.ghostnet.etherlink.com` are intended for use within user wallets such as MetaMask, and for dApps wanting to test out API access to Etherlink within the rate limits listed below. 
+The public RPC nodes at `node.mainnet.etherlink.com`, `node.ghostnet.etherlink.com`, and `https://node.shadownet.etherlink.com` are intended for use within user wallets such as MetaMask and for dApps wanting to test out API access to Etherlink within the rate limits listed below.
 For higher limits you must [run your own node](/network/evm-nodes) or subscribe to an API plan offered by a commercial RPC node provider.
 
 ### Current restrictions
@@ -24,7 +24,7 @@ For higher limits you must [run your own node](/network/evm-nodes) or subscribe 
     <tr>
       <td>`eth_getLogs`</td>
       <td>Block range: max 500 blocks<br />Max number of logs returned: 5,000</td>
-    </tr>    
+    </tr>
   </tbody>
 </table>
 
