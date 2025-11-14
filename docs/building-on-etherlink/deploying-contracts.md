@@ -21,7 +21,7 @@ To call the contract after you deploy it, see [Sending transactions](/building-o
 
 The Remix online IDE lets you code, compile, and deploy contracts to EVM chains, including Etherlink
 
-1. Connect your wallet to Etherlink Ghostnet Testnet as described in [Using your wallet](/get-started/using-your-wallet).
+1. Connect your wallet to Etherlink Shadownet Testnet as described in [Using your wallet](/get-started/using-your-wallet).
 
 1. Get some Etherlink tokens as described in [Getting Testnet tokens](/get-started/getting-testnet-tokens).
 
@@ -49,7 +49,7 @@ For example, you can create a contract named `4_HelloEtherlink.sol` and use this
 
 1. Compile the contract.
 
-1. On the **Deploy and Run Transactions** tab, in the **Environment** list, select **Injected Provider - MetaMask**.
+1. On the **Deploy and Run Transactions** tab, in the **Environment** list, select **Browser extension > Injected Provider - MetaMask**.
 Your MetaMask wallet opens to confirm the network connection.
 
 1. In MetaMask, confirm the connection and select the account to use.
@@ -66,7 +66,7 @@ If you used the example contract above, you can call the `greet` entrypoint and 
    ![The result of calling the `greet` entrypoint in the example contract](/img/remix-call-contract.png)
 
 Now the contract is deployed on Etherlink.
-You can look it up on the [Ghostnet Testnet block explorer](https://testnet.explorer.etherlink.com/).
+You can look it up on the [Shadownet block explorer](https://shadownet.explorer.etherlink.com/).
 
 ## Deploying with ethers.js
 
@@ -84,7 +84,7 @@ const fullABI = []; // Add complete ABI here
 const contractByteCode = "0x..."; // Add compiled bytecode here
 
 // Define the provider by its RPC address
-const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+const provider = new ethers.JsonRpcProvider("https://node.shadownet.etherlink.com");
 
 // Sender's private key
 const privateKey = process.env.ETHERLINK_PRIVATE_KEY;

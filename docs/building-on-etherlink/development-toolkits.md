@@ -22,7 +22,7 @@ module.exports = {
       accounts: ["<YOUR_PRIVATE_KEY>"],
     },
     etherlinkTestnet: {
-      url: "https://node.ghostnet.etherlink.com",
+      url: "https://node.shadownet.etherlink.com",
       accounts: ["<YOUR_PRIVATE_KEY>"],
     },
   },
@@ -41,11 +41,11 @@ module.exports = {
         },
       },
       {
-        network: "etherlinkTestnet",
-        chainId: 128123,
+        network: "etherlinkShadownet",
+        chainId: 127823,
         urls: {
-          apiURL: "https://testnet.explorer.etherlink.com/api",
-          browserURL: "https://testnet.explorer.etherlink.com",
+          apiURL: "https://shadownet.explorer.etherlink.com/api",
+          browserURL: "https://shadownet.explorer.etherlink.com",
         },
       },
     ],
@@ -80,4 +80,4 @@ forge create --rpc-url "https://node.mainnet.etherlink.com" \
     src/YOUR_CONTRACT.sol:YOUR_CONTRACT --legacy
 ```
 
-To use Etherlink Ghostnet Testnet, substitute the RPC URL `https://node.ghostnet.etherlink.com` for the Mainnet URL.
+To use Etherlink Shadownet Testnet, substitute the RPC URL `https://node.shadownet.etherlink.com` for the Mainnet URL.
