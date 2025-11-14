@@ -19,11 +19,11 @@ Etherlink supports the standard Ethereum `eth_call` and `eth_sendRawTransaction`
 
 You can use the `eth_call` endpoint to call read-only smart contract functions.
 These functions do not require you to create a transaction.
-For example, this command calls the ERC-20 contract at the address `0xCda9B8eD25E465f24C26Ad8fF5E1f05661Df50B2` and gets the balance of tokens for the address `0x45Ff91b4bF16aC9907CF4A11436f9Ce61BE0650d`.
+For example, this command calls the ERC-20 contract at the address `0xb4cB11018194D60B452CAF92a4A656A99E7D0145` and gets the balance of tokens for the address `0x45Ff91b4bF16aC9907CF4A11436f9Ce61BE0650d`.
 
 ```bash
 curl --request POST \
-     --url https://node.ghostnet.etherlink.com \
+     --url https://node.shadownet.etherlink.com \
      --header 'accept: application/json' \
      --header 'content-type: application/json' \
      --data '
@@ -33,7 +33,7 @@ curl --request POST \
   "method": "eth_call",
   "params": [
     {
-      "to": "0xCda9B8eD25E465f24C26Ad8fF5E1f05661Df50B2",
+      "to": "0xb4cB11018194D60B452CAF92a4A656A99E7D0145",
       "data": "0x70a0823100000000000000000000000045Ff91b4bF16aC9907CF4A11436f9Ce61BE0650d"
     }
   ]
@@ -49,10 +49,12 @@ The response includes the number of tokens that the account has, in hexadecimal 
 ```json
 {
   "jsonrpc":"2.0",
-  "result":"0x0000000000000000000000000000000000000000000000000000000000000005",
+  "result":"0x0000000000000000000000000000000000000000000000000de0b6b3a7640000",
   "id":1
 }
 ```
+
+You can use a hex to decimal converter to get the value of the response in decimal.
 
 Similarly, you can use [ethers.js](https://docs.ethers.org/v6/) to get information from smart contracts.
 This example calls two read-only entrypoints on an ERC-20 contract:
@@ -63,17 +65,17 @@ const { ethers } = require("ethers");
 const fullABI = []; // Add complete ABI here
 
 // Define the provider by its RPC address
-const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+const provider = new ethers.JsonRpcProvider("https://node.shadownet.etherlink.com");
 
 // Sender's private key
 const privateKey = process.env.ETHERLINK_PRIVATE_KEY;
 const wallet = new ethers.Wallet(privateKey, provider);
 
 // ERC-20 contract
-const contractAddress = "0xaE96b26F0F9FD52ddd07227E0B73dFc58a1531Ec";
+const contractAddress = "0xb4cB11018194D60B452CAF92a4A656A99E7D0145";
 
 const acct1 = "0x45Ff91b4bF16aC9907CF4A11436f9Ce61BE0650d";
-const acct2 = "0xaE96b26F0F9FD52ddd07227E0B73dFc58a1531Ec";
+const acct2 = "0x46899d4FA5Ba90E3ef3B7aE8aae053C662c1Ca1d";
 const accounts = [
   { name: "Account 1", address: acct1 },
   { name: "Account 2", address: acct2 },
@@ -112,7 +114,7 @@ You must sign the data for the transaction and pass it as the `data` parameter, 
 
 ```bash
 curl --request POST \
-     --url https://node.ghostnet.etherlink.com \
+     --url https://node.shadownet.etherlink.com \
      --header 'accept: application/json' \
      --header 'content-type: application/json' \
      --data '
@@ -134,7 +136,7 @@ For example, this JavaScript program signs a transaction that sends 0.1 XTZ to a
 const { ethers } = require("ethers");
 
 // Define the provider by its RPC address
-const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+const provider = new ethers.JsonRpcProvider("https://node.shadownet.etherlink.com");
 
 // Sender's private key
 const privateKey = process.env.ETHERLINK_PRIVATE_KEY;
@@ -176,7 +178,7 @@ For example, if you use `eth_getGasPrice` and it returns `0x3b9aca00`, you can e
 
 ```bash
 curl --request POST \
-     --url https://node.ghostnet.etherlink.com \
+     --url https://node.shadownet.etherlink.com \
      --header 'accept: application/json' \
      --header 'content-type: application/json' \
      --data '
@@ -239,13 +241,13 @@ const { ethers } = require("ethers");
 const fullABI = [{"inputs":[],"name":"get","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"x","type":"uint256"}],"name":"set","outputs":[],"stateMutability":"nonpayable","type":"function"}];
 
 // Define the provider by its RPC address
-const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+const provider = new ethers.JsonRpcProvider("https://node.shadownet.etherlink.com");
 
 // Sender's private key
 const privateKey = process.env.ETHERLINK_PRIVATE_KEY;
 const wallet = new ethers.Wallet(privateKey, provider);
 
-const contractAddress = "0x3D3402f42Fb1ef5Cd643a458A4059E0055d48F9e";
+const contractAddress = "0x5F333531402b97ae46a0B6F3E8BC35Ac5A76Ead4";
 const simpleContract = new ethers.Contract(contractAddress, fullABI, wallet);
 
 const getValue = async () => {
@@ -281,7 +283,7 @@ To transfer ERC-20 tokens, you can use the standard `transfer` entrypoint, as in
 const { ethers } = require("ethers");
 
 // Define the provider by its RPC address
-const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+const provider = new ethers.JsonRpcProvider("https://node.shadownet.etherlink.com");
 
 // Sender's private key
 const privateKey = process.env.ETHERLINK_PRIVATE_KEY;
@@ -289,7 +291,7 @@ const wallet = new ethers.Wallet(privateKey, provider);
 
 async function sendTransaction() {
 
-  const contractAddress = "0xaE96b26F0F9FD52ddd07227E0B73dFc58a1531Ec";
+  const contractAddress = "0xb4cB11018194D60B452CAF92a4A656A99E7D0145";
   // Standard transfer ABI for ERC-20 contracts
   const erc20Abi = [
     "function transfer(address to, uint256 amount) public returns (bool)"
@@ -320,7 +322,7 @@ const { ethers } = require("ethers");
 const fullABI = []; // Add complete ABI here
 
 // Define the provider by its RPC address
-const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+const provider = new ethers.JsonRpcProvider("https://node.shadownet.etherlink.com");
 
 // Sender's private key
 const privateKey = process.env.ETHERLINK_PRIVATE_KEY;
@@ -328,7 +330,7 @@ const wallet = new ethers.Wallet(privateKey, provider);
 
 async function sendTransaction() {
 
-  const contractAddress = "0xaE96b26F0F9FD52ddd07227E0B73dFc58a1531Ec";
+  const contractAddress = "0xb4cB11018194D60B452CAF92a4A656A99E7D0145";
   const tokenContract = new ethers.Contract(contractAddress, erc20Abi, wallet);
 
   const targetAddress = "0x46899d4FA5Ba90E3ef3B7aE8aae053C662c1Ca1d";
@@ -369,14 +371,14 @@ You can't use the standard ethers.js `contract.on`  or `contract.addListener` fu
 To get updates about activity on Etherlink via WebSockets, see [Subscribing to events](/building-on-etherlink/websockets#subscribing-to-events).
 
 You can look up event logs with the `eth_getLogs` endpoint, which accepts different filters.
-For example, this command returns the event logs from the specified contract from block 18465925 to the current state:
+For example, this command returns the event logs from the specified contract from block 1070486 to the current state:
 
 ```bash
 curl --request POST \
-  --url https://node.ghostnet.etherlink.com \
+  --url https://node.shadownet.etherlink.com \
   --header 'accept: application/json' \
   --header 'content-type: application/json' \
-  --data '{"jsonrpc":"2.0","method":"eth_getLogs","params":[{"fromBlock":"18465925", "toBlock":"latest", "address": "0xaE96b26F0F9FD52ddd07227E0B73dFc58a1531Ec"}],"id":1}'
+  --data '{"jsonrpc":"2.0","method":"eth_getLogs","params":[{"fromBlock":"1070486", "toBlock":"latest", "address": "0xb4cB11018194D60B452CAF92a4A656A99E7D0145"}],"id":1}'
 ```
 
 The response includes information about the matching events:
@@ -386,32 +388,32 @@ The response includes information about the matching events:
   "jsonrpc": "2.0",
   "result": [
     {
-      "address": "0xae96b26f0f9fd52ddd07227e0b73dfc58a1531ec",
+      "address": "0xb4cb11018194d60b452caf92a4a656a99e7d0145",
       "topics": [
         "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
         "0x00000000000000000000000045ff91b4bf16ac9907cf4a11436f9ce61be0650d",
         "0x000000000000000000000000ae96b26f0f9fd52ddd07227e0b73dfc58a1531ec"
       ],
       "data": "0x0000000000000000000000000000000000000000000000000de0b6b3a7640000",
-      "blockNumber": "0x119c486",
-      "transactionHash": "0x3802692bf4ed0418bedc4d919f8ef5295fce9efc4b7223ebc91d04fadd3a8b65",
+      "blockNumber": "0x105644",
+      "transactionHash": "0x0af4bb32a0efb716e676d896e94a370e2ebdc13e5ca57243c8cd2921e19e1277",
       "transactionIndex": "0x0",
-      "blockHash": "0xf14d24040b30aa3b463687c2a1746a0aac80a145474d34789a8b7db2619d60ae",
+      "blockHash": "0xdb8433b5c7a9ee4cabf7cc5349184d213cae2711fe611f783eb34688752b4198",
       "logIndex": "0x0",
       "removed": false
     },
     {
-      "address": "0xae96b26f0f9fd52ddd07227e0b73dfc58a1531ec",
+      "address": "0xb4cb11018194d60b452caf92a4a656a99e7d0145",
       "topics": [
         "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
-        "0x00000000000000000000000045ff91b4bf16ac9907cf4a11436f9ce61be0650d",
-        "0x000000000000000000000000ae96b26f0f9fd52ddd07227e0b73dfc58a1531ec"
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x00000000000000000000000045ff91b4bf16ac9907cf4a11436f9ce61be0650d"
       ],
       "data": "0x0000000000000000000000000000000000000000000000000de0b6b3a7640000",
-      "blockNumber": "0x119c547",
-      "transactionHash": "0x82419cccc1363c931024d76d253056d2dd5ed56917121150808739f5dc9a04bc",
+      "blockNumber": "0x10566c",
+      "transactionHash": "0xe375b5bab21dee63c222f4b7dd0e0ac46c0f4bb1bd64aafbb41c064de25b1dd2",
       "transactionIndex": "0x0",
-      "blockHash": "0xa65584a8d7a36ec30e63ed61daf06b6336db43fc55d6366f484f2be1d92c858b",
+      "blockHash": "0x7cf111722ce93d3a744f08caa5639d9426d2dbf16cd34522d39712bb82706020",
       "logIndex": "0x0",
       "removed": false
     }
@@ -432,7 +434,7 @@ To get debugging information about a transaction with `debug_traceTransaction`, 
 
 ```bash
 curl --request POST \
-     --url https://node.ghostnet.etherlink.com \
+     --url https://node.shadownet.etherlink.com \
      --header 'accept: application/json' \
      --header 'content-type: application/json' \
      --data '
@@ -441,7 +443,7 @@ curl --request POST \
   "jsonrpc": "2.0",
   "method": "debug_traceTransaction",
   "params": [
-    "0x7b4c5cd4816aa5b529e11f9f5799d6a0f4b04ac53496688fef35c5762c5f9601"
+    "0x76fd76c5443deebcf179fa1bc3d407750329fa47414300e2d8f89b93fd6751f9"
   ]
 }
 '
@@ -473,25 +475,28 @@ async function sendTransaction() {
 The result looks like this:
 
 ```
-Transaction hash: 0x11231008cfe87e107cadca34136da439c4e980b27af7c6c84e4b44c93aab45a0
+Transaction hash: 0x37eb2986adf5ca31afe17bb00f79ad62cdf229757edd87b7ae900b747741575d
 Transaction confirmed!
-Trace output:
+Transaction trace output:
 {
-  gas: '21183',
+  gas: '23796',
   failed: false,
   returnValue: '0x',
   structLogs: [
-    {    
-      depth: 1,
-      error: "",
-      gas: '21180',
+    {
+      pc: 0,
+      op: 'PUSH1',
+      gas: 5414,
       gasCost: 3,
       memory: null,
-      op: "PUSH1",
-      pc: 0,
+      memSize: null,
       stack: [],
-      storage: {}
-    }
+      returnData: null,
+      storage: [],
+      depth: 1,
+      refund: 0,
+      error: null
+    },
     // Omitted for length
   ]
 }
@@ -501,7 +506,7 @@ Similarly, you can use the `debug_traceBlockByNumber` endpoint to get informatio
 
 ```bash
 curl --request POST \
-     --url https://node.ghostnet.etherlink.com \
+     --url https://node.shadownet.etherlink.com \
      --header 'accept: application/json' \
      --header 'content-type: application/json' \
      --data '
@@ -510,7 +515,7 @@ curl --request POST \
   "jsonrpc": "2.0",
   "method": "debug_traceBlockByNumber",
   "params": [
-    "0x011b1ac0",
+    "0x1056F9",
     {"tracer": "callTracer"}
   ]
 }
@@ -529,25 +534,25 @@ The response includes information about the transactions in that block, as in th
 
 ```json
 {
+  "id": 1,
   "jsonrpc": "2.0",
   "result": [
     {
-      "txHash": "0x063530177d43cf3e5b685b399ff3ad7c097e8684c374f0c23be5d6343f1bc82a",
+      "txHash": "0x37eb2986adf5ca31afe17bb00f79ad62cdf229757edd87b7ae900b747741575d",
       "result": {
         "type": "CALL",
         "from": "0x45ff91b4bf16ac9907cf4a11436f9ce61be0650d",
-        "to": "0xfe508b2cc2e1706c4ade46773162fe161d807000",
-        "value": "0x0de0b6b3a7640000",
-        "gas": "0x5d91",
-        "gasUsed": "0x52bf",
-        "input": "0xd0e30db0",
+        "to": "0x5f333531402b97ae46a0b6f3e8bc35ac5a76ead4",
+        "value": "0x00",
+        "gas": "0x67fa",
+        "gasUsed": "0x5cf4",
+        "input": "0x60fe47b10000000000000000000000000000000000000000000000000000000000000005",
         "output": "0x",
         "logs": [],
         "calls": []
       }
     }
-  ],
-  "id": 1
+  ]
 }
 ```
 
@@ -601,7 +606,7 @@ The addresses of the delayed inbox smart contracts are:
 - Ghostnet Testnet: `KT1X1M4ywyz9cHvUgBLTUUdz3GTiYJhPcyPh`
 - Mainnet: `KT1Vocor3bL5ZSgsYH9ztt42LNhqFK64soR4`
 
-This example signs an Etherlink transaction that transfers 1 XTZ and submits it to the delayed inbox on Ghostnet Testnet:
+This example signs an Etherlink transaction that transfers 1 XTZ and submits it to the delayed inbox on Shadownet Testnet:
 
 ```javascript
 const { ethers } = require("ethers");
@@ -609,7 +614,7 @@ const { TezosToolkit } = require("@taquito/taquito");
 const { InMemorySigner } = require('@taquito/signer');
 
 // Define the provider by its RPC address
-const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+const provider = new ethers.JsonRpcProvider("https://node.shadownet.etherlink.com");
 
 // Sender's private key
 const privateKey = process.env.ETHERLINK_PRIVATE_KEY;
@@ -643,11 +648,11 @@ const signEtherlinkTransaction = async () => {
 }
 
 // Set up Taquito
-const rpcUrl = 'https://ghostnet.ecadinfra.com';
+const rpcUrl = 'https://rpc.shadownet.teztnets.com';
 const Tezos = new TezosToolkit(rpcUrl);
 Tezos.setProvider({ signer: new InMemorySigner(process.env.TEZOS_PRIVATE_KEY) })
-const delayedInboxContractAddress = "KT1X1M4ywyz9cHvUgBLTUUdz3GTiYJhPcyPh"; // Ghostnet Testnet
-const rollupAddress = 'sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg'; // Ghostnet Testnet
+const delayedInboxContractAddress = "KT18tqoSSpiMy6sizSMx9kQCe29EQfGq9wWv"; // Shadownet
+const rollupAddress = 'sr19fMYrr5C4qqvQqQrDSjtP31GcrWjodzvg'; // Shadownet
 
 // Send the transaction to the delayed inbox
 const sendDelayedInboxTransaction = async (etherlinkTransaction) => {
@@ -678,13 +683,13 @@ const { InMemorySigner } = require('@taquito/signer');
 const fullABI = [{"inputs":[],"name":"get","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"x","type":"uint256"}],"name":"set","outputs":[],"stateMutability":"nonpayable","type":"function"}];
 
 // Define the provider by its RPC address
-const provider = new ethers.JsonRpcProvider("https://node.ghostnet.etherlink.com");
+const provider = new ethers.JsonRpcProvider("https://node.shadownet.etherlink.com");
 
 // Sender's private key
 const privateKey = process.env.ETHERLINK_PRIVATE_KEY;
 const etherlinkWallet = new ethers.Wallet(privateKey, provider);
 
-const contractAddress = "0x3D3402f42Fb1ef5Cd643a458A4059E0055d48F9e";
+const contractAddress = "0x5F333531402b97ae46a0B6F3E8BC35Ac5A76Ead4";
 
 // Sign and return Etherlink smart contract call
 const signEtherlinkSmartContractCall = async () => {
@@ -717,10 +722,10 @@ const signEtherlinkSmartContractCall = async () => {
 }
 
 // Set up Taquito
-const Tezos = new TezosToolkit('https://ghostnet.smartpy.io');
+const Tezos = new TezosToolkit('https://rpc.shadownet.teztnets.com');
 Tezos.setProvider({ signer: new InMemorySigner(process.env.TEZOS_PRIVATE_KEY) })
-const delayedInboxContractAddress = "KT1X1M4ywyz9cHvUgBLTUUdz3GTiYJhPcyPh"; // Ghostnet Testnet
-const rollupAddress = 'sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg'; // Ghostnet Testnet
+const delayedInboxContractAddress = "KT18tqoSSpiMy6sizSMx9kQCe29EQfGq9wWv"; // Shadownet
+const rollupAddress = 'sr19fMYrr5C4qqvQqQrDSjtP31GcrWjodzvg'; // Shadownet
 
 // Send the transaction to the delayed inbox
 const sendDelayedInboxTransaction = async (etherlinkTransaction) => {
