@@ -161,7 +161,7 @@ Etherlink Smart Rollup nodes also pick up these blocks and their instance of the
 
    ```bash
    curl --request POST \
-        --url https://node.ghostnet.etherlink.com \
+        --url https://node.shadownet.etherlink.com \
         --header 'accept: application/json' \
         --header 'content-type: application/json' \
         --data '

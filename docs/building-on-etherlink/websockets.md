@@ -36,7 +36,7 @@ The EVM node does not enforce rate limits on WebSocket connections, so be carefu
 
    ```bash
    octez-evm-node run observer \
-     --network testnet \
+     --network shadownet \
      --history rolling:1 \
      --data-dir <EVM_DATA_DIR> \
      --dont-track-rollup-node \
@@ -118,7 +118,7 @@ const web3Instance = new Web3(new Web3.providers.WebsocketProvider('ws://127.0.0
 
 const fullABI = []; // Add ABI here
 
-const contractAddress = "0xaE96b26F0F9FD52ddd07227E0B73dFc58a1531Ec";
+const contractAddress = "0x3D3402f42Fb1ef5Cd643a458A4059E0055d48F9e";
 const contract = new web3Instance.eth.Contract(fullABI, contractAddress);
 
 const eventsSubscription = contract.events.Transfer();
@@ -143,7 +143,7 @@ const provider = new ethers.WebSocketProvider('ws://127.0.0.1:8545/ws');
 
 const fullABI = []; // Add ABI here
 
-const contractAddress = "0xaE96b26F0F9FD52ddd07227E0B73dFc58a1531Ec";
+const contractAddress = "0x3D3402f42Fb1ef5Cd643a458A4059E0055d48F9e";
 
 // Create a contract instance
 const contract = new ethers.Contract(contractAddress, fullABI, provider);
