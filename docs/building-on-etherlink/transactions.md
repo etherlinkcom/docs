@@ -363,6 +363,99 @@ async function sendTransaction() {
 sendTransaction();
 ```
 
+## Batching transactions
+
+Because the sequencer orders transactions in the order that it receives them, you cannot expect transactions that you submit to run sequentially, even if you submit them quickly.
+To ensure that your transactions run in the same block or sequence, you can submit them in a batch by signing them all first and submitting them at the same time.
+
+The following example uses the [`viem`](https://viem.sh/) SDK to create five transactions that send XTZ to an account and submit them in a batch.
+It configures the Viem client to send transactions as a batch, signs multiple transactions, and submits them all at once so Viem uses [Batch JSON-RPC](https://viem.sh/docs/clients/transports/http#batch-json-rpc) to send them as a batch.
+
+Note that the code submits the transaction to the relay endpoint, not the usual RPC endpoint, because the public RPC node has a load balancer that splits transactions into single RPC requests.
+However, the relay endpoint accepts transactions only via the `eth_sendRawTransaction` endpoint, so the code uses the `sendRawTransaction` method to send transactions to this endpoint.
+Other EVM clients may not use this endpoint to send transactions and therefore cannot use the relay endpoint.
+In this case, you can set up your own Etherlink EVM node and send batched transactions to it.
+
+```javascript
+import { createWalletClient, createPublicClient, http, parseEther } from 'viem';  // "viem": "^2.27"
+import { privateKeyToAccount } from 'viem/accounts';
+
+const etherlinkShadownet = {
+  "id": 127823,
+  "name": "Etherlink Shadownet",
+  "nativeCurrency": {
+    "decimals": 18,
+    "name": "Tez",
+    "symbol": "XTZ"
+  },
+  "rpcUrls": {
+    "default": {
+      "http": [
+        "https://node.shadownet.etherlink.com"
+      ]
+    }
+  },
+  "blockExplorers": {
+    "default": {
+      "name": "Etherlink Shadownet",
+      "url": "https://shadownet.explorer.etherlink.com"
+    }
+  },
+  "testnet": true
+}
+
+(async function main() {
+  const client = createWalletClient({
+    chain: etherlinkShadownet,
+    transport: http()
+  });
+
+  const publicClient = createPublicClient({
+    chain: etherlinkShadownet,
+    transport: http()
+  });
+
+  // Relay supports eth_blockNumber & eth_sendRawTransaction only
+  const publicRelayClient = createPublicClient({
+    transport: http('https://relay.shadownet.etherlink.com', { batch: true }),
+  });
+
+  // Add the sender's private key
+  const account = privateKeyToAccount('');
+
+  const startingNonce = await publicClient.getTransactionCount({ address: account.address });
+
+  const signedTransactions = [];
+
+  // Create an array of signed transactions
+  for (let i = 0; i < 5; i++) {
+    const requestData = {
+      account,
+      to: '0x45Ff91b4bF16aC9907CF4A11436f9Ce61BE0650d',
+      value: parseEther('0.001'),
+      nonce: startingNonce + i
+    };
+
+    const request = await client.prepareTransactionRequest(requestData);
+    const signedTx = await client.signTransaction(request);
+    signedTransactions.push(signedTx);
+  }
+
+  // Batch send raw transactions
+  const transactionHashes = await Promise.all(
+    signedTransactions.map((serializedTransaction) =>
+      publicRelayClient.sendRawTransaction({ serializedTransaction })
+    )
+  );
+
+  console.log('Signed transactions:', JSON.stringify(signedTransactions, null, 2));
+  console.log('Transaction hashes:', transactionHashes);
+})().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
+```
+
 ## Getting event logs
 
 Etherlink does not support listening for smart contract events with endpoints such as `eth_newFilter` and `eth_getFilterChanges`.
