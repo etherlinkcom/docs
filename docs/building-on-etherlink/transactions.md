@@ -404,7 +404,7 @@ const etherlinkShadownet = {
   "testnet": true
 }
 
-(async function main() {
+async function main() {
   const client = createWalletClient({
     chain: etherlinkShadownet,
     transport: http()
@@ -450,8 +450,10 @@ const etherlinkShadownet = {
 
   console.log('Signed transactions:', JSON.stringify(signedTransactions, null, 2));
   console.log('Transaction hashes:', transactionHashes);
-})().catch((error) => {
-  console.error(error);
+}
+
+main().catch((error) => {
+  console.error('Unhandled error:', error);
   process.exit(1);
 });
 ```
