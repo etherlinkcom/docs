@@ -183,6 +183,7 @@ const getAllUsedImages = async () => {
     '/img/HiOutlineStatusOnline.svg',
     '/img/MdCode.svg',
     '/img/page-outline.svg',
+    '/img/etherlink-social-card.png',
     '/img/X.svg',
   ].map((shortPath) => imageFolder + shortPath);
 
