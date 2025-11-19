@@ -16,7 +16,7 @@ To get Etherlink Mainnet XTZ, you can:
 :::note
 
 On exchanges, be sure that you are getting Etherlink XTZ and not Tezos layer 1 XTZ or wrapped XTZ (WXTZ) on another platform.
-If you have XTZ on a different platform, you can bridge it to Etherlink XTZ as described in [Bridging](/bridging)
+If you have XTZ on a different platform, you can bridge it to Etherlink XTZ as described in [Bridging](/bridging).
 
 :::
 
