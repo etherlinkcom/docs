@@ -89,6 +89,26 @@ For more information, see [Execution fee](/network/fees#execution-fee).
 
 For more information, see [Announcing Ebisu: A 5th Upgrade proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-ebisu-a-5th-upgrade-proposal-for-etherlink-mainnet-4dfdd1c8819e).
 
+## Etherlink 6.0 (Farfadet)
+
+The Etherlink 6.0 upgrade includes:
+
+- Support for EVM Osaka, including support for the count leading zeroes (CLZ) opcode (EIP-7939), the ecp256r1 Curve Support precompile (EIP-7951), and the increase in ModExp gas cost (EIP-7883)
+
+- Instant confirmations, which allow users to verify (within roughly 50ms) that their transactions will be in the next block.
+Users can call the `eth_sendRawTransactionSync` endpoint that is available in the EVM node version 0.48 and later to submit a transaction and wait for an instant confirmation from the sequencer.
+<!-- TODO link to examples and more info. -->
+
+- The speed limit (also known as the target) is increased to 13.5 million gas units per second.
+The speed limit decides when the gas price raises.
+For more information, see [Execution fee](/network/fees#execution-fee).
+
+- A breaking change to the `QueuedDeposit` event that the FA bridge emits.
+This event is now emitted by the FA bridging precompiled contract (`0xff0...0002`) and the first topic of the event is changed to match its ABI signature.
+For more information about bridging events, see [How bridging FA tokens works](/bridging/bridging-fa-how).
+
+For more information, see [Announcing Farfadet: A 6th Upgrade Proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-farfadet-a-6th-upgrade-proposal-for-etherlink-mainnet-6bc59793962d).
+
 ## Changelog
 
 For full details about changes to Etherlink, see [Changelogs](/progress/changelogs).
