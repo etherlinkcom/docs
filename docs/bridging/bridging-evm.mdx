@@ -5,6 +5,8 @@ sidebar_label: Bridging to EVM networks
 
 import InlineCopy from '@site/src/components/InlineCopy';
 import Video from '@site/src/components/Video';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 [The Etherlink EVM bridge](https://bridge.etherlink.com/evm) is a web application that allows you to transfer wrapped tokens between Etherlink and several other EVM-compatible blockchain networks.
 
@@ -177,7 +179,9 @@ This table shows the Etherlink address of tokens that you can bridge between Eth
 
 These tables show the addresses of the equivalent tokens on other networks:
 
-### Ethereum
+<Tabs groupId="token_addresses">
+
+<TabItem value="ethereum" label="Ethereum">
 
 <table class="customTableContainer">
 <thead>
@@ -218,7 +222,9 @@ These tables show the addresses of the equivalent tokens on other networks:
 </tbody>
 </table>
 
-### Arbitrum One
+</TabItem>
+
+<TabItem value="arbitrum_one" label="Artibutrum One">
 
 <table class="customTableContainer">
 <thead>
@@ -254,7 +260,9 @@ These tables show the addresses of the equivalent tokens on other networks:
 </tbody>
 </table>
 
-### Base
+</TabItem>
+
+<TabItem value="base" label="Base">
 
 <table class="customTableContainer">
 <thead>
@@ -280,7 +288,9 @@ These tables show the addresses of the equivalent tokens on other networks:
 </tbody>
 </table>
 
-### Optimism
+</TabItem>
+
+<TabItem value="optimism" label="Optimism">
 
 <table class="customTableContainer">
 <thead>
@@ -311,7 +321,9 @@ These tables show the addresses of the equivalent tokens on other networks:
 </tbody>
 </table>
 
-### BNB Chain
+</TabItem>
+
+<TabItem value="bnb_chain" label="BNB Chain">
 
 <table class="customTableContainer">
 <thead>
@@ -342,7 +354,9 @@ These tables show the addresses of the equivalent tokens on other networks:
 </tbody>
 </table>
 
-### Avalanche C-Chain
+</TabItem>
+
+<TabItem value="avalanche_c_chain" label="Avalanche C-chain">
 
 <table class="customTableContainer">
 <thead>
@@ -372,6 +386,10 @@ These tables show the addresses of the equivalent tokens on other networks:
 
 </tbody>
 </table>
+
+</TabItem>
+
+</Tabs>
 
 ## How bridging wrapped assets works
 
