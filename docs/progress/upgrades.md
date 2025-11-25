@@ -97,7 +97,7 @@ The Etherlink 6.0 upgrade includes:
 
 - Instant confirmations, which allow users to verify (within roughly 50ms) that their transactions will be in the next block.
 Users can call the `eth_sendRawTransactionSync` endpoint that is available in the EVM node version 0.48 and later to submit a transaction and wait for an instant confirmation from the sequencer.
-<!-- TODO link to examples and more info. -->
+For more information, see [Getting instant confirmations](/building-on-etherlink/transactions#getting-instant-confirmations).
 
 - The speed limit (also known as the target) is increased to 13.5 million gas units per second.
 The speed limit decides when the gas price raises.
