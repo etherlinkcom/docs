@@ -275,6 +275,45 @@ run();
 
 ```
 
+## Getting instant confirmations
+
+Beginning with EVM node 0.48 and the version 6.0 upgrade, Etherlink supports instant confirmations.
+You can send a transaction with the `eth_sendRawTransactionSync` method and receive an instant confirmation from the sequencer that it intends to put the transaction in the next block, plus basic information about the completed transaction, such as its gas cost.
+
+Sending the transaction with the `eth_sendRawTransactionSync` method is the same as the `eth_sendRawTransaction` method: you sign the transaction and include it in the `data` parameter in the same way plus the optional `pending` value, as in this example:
+
+```bash
+curl --request POST \
+     --url https://node.shadownet.etherlink.com \
+     --header 'accept: application/json' \
+     --header 'content-type: application/json' \
+     --data '
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "params": [
+    "0x88a747dbc7f84e8416dc4be31ddef0",
+    "pending"
+  ],
+  "method": "eth_sendRawTransactionSync"
+}
+'
+```
+
+If you pass `latest` instead of `pending`, the sequencer waits until the transaction is in a block to send the confirmation.
+Etherlink supports this `pending` value only on the `eth_sendRawTransactionSync` method, not on any other methods.
+
+The sequencer returns information about the transaction, such as its gas price and gas cost.
+The `blockHash` field is always `0x000...` because the block has not been created yet.
+You can take this response as a confirmation that the sequencer will put the transaction in the next block.
+
+The sequencer provides this confirmation as soon as it runs the transaction.
+For even faster confirmations, you can use WebSockets to subscribe to the `tez_newIncludedTransactions` or `tez_newPreconfirmedReceipts` events.
+These events provide confirmations of transactions that are ready and transactions that have been executed but not yet included in a block, respectively.
+See [Getting updates with WebSockets](/building-on-etherlink/websockets).
+
+<!-- TODO include example instant confirmation response and what you can do with the info -->
+
 ## Transferring ERC-20 tokens
 
 To transfer ERC-20 tokens, you can use the standard `transfer` entrypoint, as in this example:
