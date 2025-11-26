@@ -281,7 +281,7 @@ Beginning with EVM node 0.48 and the version 6.0 upgrade, Etherlink supports ins
 You can send a transaction with the `eth_sendRawTransactionSync` method and receive an instant confirmation from the sequencer that it intends to put the transaction in the next block.
 This confirmation includes a transaction receipt that provides information about the completed transaction, such as the status and gas used, but not information about the next block because it has not been created yet.
 
-Sending the transaction with the `eth_sendRawTransactionSync` method is the same as the `eth_sendRawTransaction` method: you sign the transaction and include it in the `data` parameter in the same way plus the optional `pending` value, as in this example:
+Sending the transaction with the `eth_sendRawTransactionSync` method is the same as the `eth_sendRawTransaction` method: you sign the transaction and include it in the `data` parameter plus the optional `pending` value, as in this example:
 
 ```bash
 curl --request POST \
