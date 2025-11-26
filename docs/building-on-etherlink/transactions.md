@@ -304,8 +304,9 @@ curl --request POST \
 If you pass `latest` instead of `pending`, the sequencer waits until the transaction is in a block to send the confirmation.
 Etherlink supports this `pending` value only on the `eth_sendRawTransactionSync` method, not on any other methods.
 
-The sequencer returns a receipt for the transaction that includes information such as its gas price and gas cost.
-The `blockHash` field is always `0x000...` because the block has not been created yet.
+When the sequencer executes the transaction and intends to put it in the next block, the sequencer returns a receipt for the transaction that includes information such as its gas price and gas cost.
+This receipt matches the specification for the [`eth_getTransactionReceipt`](https://ethereum.org/developers/docs/apis/json-rpc/#eth_gettransactionreceipt) endpoint except that the `blockHash` field is always `0x000...` because the block has not been created yet.
+The `blockNumber` field provides the correct level for the block that the transaction will be in.
 You can take this response as a confirmation that the sequencer will put the transaction in the next block.
 
 The sequencer provides this confirmation as soon as it runs the transaction.
