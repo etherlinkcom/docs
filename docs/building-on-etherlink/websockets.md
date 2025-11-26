@@ -117,7 +117,7 @@ import Web3 from 'web3';
 const web3Instance = new Web3(new Web3.providers.WebsocketProvider('ws://127.0.0.1:8545/ws'));
 
 // Subscribe to new instant confirmations
-const newConfirmationsSubscription = await web3Instance.eth.subscribe('NewIncludedTransactions');
+const newConfirmationsSubscription = await web3Instance.eth.subscribe('tez_newIncludedTransactions');
 newConfirmationsSubscription.on('error', error => {
   console.log('Error when subscribing to new instant confirmations:', error);
 });
