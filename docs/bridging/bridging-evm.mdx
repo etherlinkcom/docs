@@ -5,6 +5,8 @@ sidebar_label: Bridging to EVM networks
 
 import InlineCopy from '@site/src/components/InlineCopy';
 import Video from '@site/src/components/Video';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 [The Etherlink EVM bridge](https://bridge.etherlink.com/evm) is a web application that allows you to transfer wrapped tokens between Etherlink and several other EVM-compatible blockchain networks.
 
@@ -174,10 +176,13 @@ This table shows the Etherlink address of tokens that you can bridge between Eth
   </tbody>
 </table>
 
+### Other networks
 
 These tables show the addresses of the equivalent tokens on other networks:
 
-### Ethereum
+<Tabs groupId="token_addresses">
+
+<TabItem value="ethereum" label="Ethereum">
 
 <table class="customTableContainer">
 <thead>
@@ -218,7 +223,9 @@ These tables show the addresses of the equivalent tokens on other networks:
 </tbody>
 </table>
 
-### Arbitrum One
+</TabItem>
+
+<TabItem value="arbitrum_one" label="Artibutrum One">
 
 <table class="customTableContainer">
 <thead>
@@ -254,7 +261,9 @@ These tables show the addresses of the equivalent tokens on other networks:
 </tbody>
 </table>
 
-### Base
+</TabItem>
+
+<TabItem value="base" label="Base">
 
 <table class="customTableContainer">
 <thead>
@@ -280,7 +289,9 @@ These tables show the addresses of the equivalent tokens on other networks:
 </tbody>
 </table>
 
-### Optimism
+</TabItem>
+
+<TabItem value="optimism" label="Optimism">
 
 <table class="customTableContainer">
 <thead>
@@ -311,7 +322,9 @@ These tables show the addresses of the equivalent tokens on other networks:
 </tbody>
 </table>
 
-### BNB Chain
+</TabItem>
+
+<TabItem value="bnb_chain" label="BNB Chain">
 
 <table class="customTableContainer">
 <thead>
@@ -342,7 +355,9 @@ These tables show the addresses of the equivalent tokens on other networks:
 </tbody>
 </table>
 
-### Avalanche C-Chain
+</TabItem>
+
+<TabItem value="avalanche_c_chain" label="Avalanche C-chain">
 
 <table class="customTableContainer">
 <thead>
@@ -373,6 +388,10 @@ These tables show the addresses of the equivalent tokens on other networks:
 </tbody>
 </table>
 
+</TabItem>
+
+</Tabs>
+
 ## How bridging wrapped assets works
 
 The Etherlink EVM bridge uses a [wrapped asset bridge](https://github.com/LayerZero-Labs/wrapped-asset-bridge) created by [LayerZero](https://layerzero.network/).
@@ -395,7 +414,9 @@ For more information, see the repository for the bridge: https://github.com/Laye
 The verified contract code, ABI and historic transactions for the wrapped asset bridge on each supported network can be viewed at the following links.
 Developers can integrate these contracts into their own cross-chain bridge if required.
 
-### Mainnet wrapped asset bridge
+<Tabs groupId="bridge_contract_addresses">
+
+<TabItem value="mainnet" label="Mainnet wrapped asset bridge">
 
 <table class="customTableContainer">
 <thead>
@@ -436,7 +457,9 @@ Developers can integrate these contracts into their own cross-chain bridge if re
 </tbody>
 </table>
 
-### Ghostnet Testnet wrapped asset bridge
+</TabItem>
+
+<TabItem value="ghostnet" label="Ghostnet testnet wrapped asset bridge">
 
 <table class="customTableContainer">
 <thead>
@@ -464,6 +487,90 @@ Developers can integrate these contracts into their own cross-chain bridge if re
 </tr>
 </tbody>
 </table>
+
+</TabItem>
+
+</Tabs>
+
+## LayerZero endpoints for OFTs
+
+LayerZero uses these contracts to connect Etherlink to its network for tokens that meet their Omnichain Fungible Token (OFT) standard.
+For more information, see [Deployed Endpoints, Message Libraries, and Executors](https://docs.layerzero.network/v2/deployments/deployed-contracts?chains=etherlink).
+
+<Tabs groupId="layerzero_contract_addresses">
+
+<TabItem value="mainnet" label="Mainnet">
+
+<table class="customTableContainer">
+<thead>
+<tr>
+  <th>Contract</th>
+  <th>Contract address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endpointV2</code></td>
+<td><InlineCopy href="https://explorer.etherlink.com/address/0xAaB5A48CFC03Efa9cC34A2C1aAcCCB84b4b770e4" abbreviate="5,4" code="0xAaB5A48CFC03Efa9cC34A2C1aAcCCB84b4b770e4"></InlineCopy></td>
+</tr>
+<tr>
+<td><code>sendUln302</code></td>
+<td><InlineCopy href="https://explorer.etherlink.com/address/0xc1B621b18187F74c8F6D52a6F709Dd2780C09821" abbreviate="5,4" code="0xc1B621b18187F74c8F6D52a6F709Dd2780C09821"></InlineCopy></td>
+</tr>
+<tr>
+<td><code>receiveUln302</code></td>
+<td><InlineCopy href="https://explorer.etherlink.com/address/0x377530cdA84DFb2673bF4d145DCF0C4D7fdcB5b6" abbreviate="5,4" code="0x377530cdA84DFb2673bF4d145DCF0C4D7fdcB5b6"></InlineCopy></td>
+</tr>
+<tr>
+<td><code>blockedMessageLib</code></td>
+<td><InlineCopy href="https://explorer.etherlink.com/address/0x3adb8d9c040fae1fbac9b579799cd4ca8c768f8a" abbreviate="5,4" code="0x3adb8d9c040fae1fbac9b579799cd4ca8c768f8a"></InlineCopy></td>
+</tr>
+<tr>
+<td><code>executor</code></td>
+<td><InlineCopy href="https://explorer.etherlink.com/address/0xa20DB4Ffe74A31D17fc24BD32a7DD7555441058e" abbreviate="5,4" code="0xa20DB4Ffe74A31D17fc24BD32a7DD7555441058e"></InlineCopy></td>
+</tr>
+</tbody>
+</table>
+
+</TabItem>
+
+<TabItem value="shadownet" label="Shadownet">
+
+<table class="customTableContainer">
+<thead>
+<tr>
+  <th>Contract</th>
+  <th>Contract address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endpointV2</code></td>
+<td><InlineCopy href="https://shadownet.explorer.etherlink.com/address/0x3aCAAf60502791D199a5a5F0B173D78229eBFe32" abbreviate="5,4" code="0x3aCAAf60502791D199a5a5F0B173D78229eBFe32"></InlineCopy></td>
+</tr>
+<tr>
+<td><code>sendUln302</code></td>
+<td><InlineCopy href="https://shadownet.explorer.etherlink.com/address/0x45841dd1ca50265Da7614fC43A361e526c0e6160" abbreviate="5,4" code="0x45841dd1ca50265Da7614fC43A361e526c0e6160"></InlineCopy></td>
+</tr>
+<tr>
+<td><code>receiveUln302</code></td>
+<td><InlineCopy href="https://shadownet.explorer.etherlink.com/address/0xd682ECF100f6F4284138AA925348633B0611Ae21" abbreviate="5,4" code="0xd682ECF100f6F4284138AA925348633B0611Ae21"></InlineCopy></td>
+</tr>
+<tr>
+<td><code>blockedMessageLib</code></td>
+<td><InlineCopy href="https://shadownet.explorer.etherlink.com/address/0xa229b65cc2191bf60bc24efcda3487d7b5c0c9f0" abbreviate="5,4" code="0xa229b65cc2191bf60bc24efcda3487d7b5c0c9f0"></InlineCopy></td>
+</tr>
+<tr>
+<td><code>executor</code></td>
+<td><InlineCopy href="https://shadownet.explorer.etherlink.com/address/0x701f3927871EfcEa1235dB722f9E608aE120d243" abbreviate="5,4" code="0x701f3927871EfcEa1235dB722f9E608aE120d243"></InlineCopy></td>
+</tr>
+</tbody>
+</table>
+
+</TabItem>
+
+</Tabs>
+
 
 ## Related tools and information
 
