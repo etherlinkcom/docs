@@ -33,9 +33,9 @@ const DocSidebarMobileSecondaryMenu: NavbarSecondaryMenuComponent<Props> = ({
         level={1}
       />
       <div className={styles.socialBox}>
-        <a href='https://x.com/etherlink' target='_blank'><img src='/img/X.svg' alt='X icon' /></a>
-        <a href='https://discord.com/invite/etherlink' target='_blank'><img src='/img/discord.svg' alt='discord icon' /></a>
-        <a href='https://gitlab.com/tezos/tezos/-/tree/master/etherlink?ref_type=heads' target='_blank'><img src='/img/Gitlab.svg' alt='Gitlab icon' /></a>
+        <a href='https://x.com/etherlink' target='_blank'><img src='/img/site/X.svg' alt='X icon' /></a>
+        <a href='https://discord.com/invite/etherlink' target='_blank'><img src='/img/site/discord.svg' alt='discord icon' /></a>
+        <a href='https://gitlab.com/tezos/tezos/-/tree/master/etherlink?ref_type=heads' target='_blank'><img src='/img/site/Gitlab.svg' alt='Gitlab icon' /></a>
       </div>
     </ul>
   );

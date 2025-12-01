@@ -34,9 +34,9 @@ export default function CopyButton({code, className}) {
         styles.copyButton,
       )}
       onClick={handleCopyCode}>
-        {isCopied 
-          ? <img className={clsx(styles.copyIcon, styles.noZoom)}  src='/img/copy-success.svg' alt='copy success icon' />
-          : <img className={clsx(styles.copyIcon, styles.noZoom)}  src='/img/FiCopy.svg' alt='copy icon' />
+        {isCopied
+          ? <img className={clsx(styles.copyIcon, styles.noZoom)}  src='/img/site/copy-success.svg' alt='copy success icon' />
+          : <img className={clsx(styles.copyIcon, styles.noZoom)}  src='/img/site/FiCopy.svg' alt='copy icon' />
         }
     </button>
   );

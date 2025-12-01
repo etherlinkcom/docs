@@ -312,7 +312,7 @@ background-color: #1B1B1B !important;
   }
 
   .discord-link::before {
-    background-image: url("/img/discord.svg");
+    background-image: url("/img/site/discord.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -328,7 +328,7 @@ background-color: #1B1B1B !important;
   }
 
   .x-link::before {
-    background-image: url("/img/X.svg");
+    background-image: url("/img/site/X.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -344,7 +344,7 @@ background-color: #1B1B1B !important;
   }
 
   .github-link::before {
-    background-image: url("/img/github-mark-green.png");
+    background-image: url("/img/site/github-mark-green.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -479,12 +479,12 @@ ol li ol li ol {
 
 /* icon for external links */
 article a[target="_blank"]:after {
-  content: url("/img/external_link.svg");
+  content: url("/img/site/external_link.svg");
   padding-left: 5px;
 }
 
 [data-theme='dark'] article a[target="_blank"]:after {
-  content: url("/img/external_link_white.svg");
+  content: url("/img/site/external_link_white.svg");
 }
 
 /* more space between sidebar categories */

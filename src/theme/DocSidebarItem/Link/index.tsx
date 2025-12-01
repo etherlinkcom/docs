@@ -11,7 +11,7 @@ import { sidebarOffset } from '../../constants';
 
 import styles from './styles.module.css';
 
-const ICONS_PATH = ['/img/etherlinkIcon.svg', '/img/HiTestnetAnnouncement.svg', '/img/map_green.png', '/img/HiOutlineStatusOnline.svg', '/img/MdCode.svg', '/img/Gitlab.svg']
+const ICONS_PATH = ['/img/site/etherlinkIcon.svg', '/img/site/HiTestnetAnnouncement.svg', '/img/site/map_green.png', '/img/site/HiOutlineStatusOnline.svg', '/img/site/MdCode.svg', '/img/site/Gitlab.svg']
 
 const isTopSection = (name: string) => {
   return name === 'Etherlink' || name === 'Documentation' || name === 'Documentation map' || name === 'Status' || name === 'Developers' || name === 'GitLab' || name === 'Testnet migration'
@@ -69,7 +69,7 @@ export default function DocSidebarItemLink({
           {(index <= sidebarOffset) && isTopSection(item.label) && <img src={ICONS_PATH[index]} alt='external link icon' />}
           {label}
         </div>
-        {(index <= sidebarOffset) && isTopSection(item.label) && <img src='/img/FiArrowUpRight.svg' alt='external link icon' />}
+        {(index <= sidebarOffset) && isTopSection(item.label) && <img src='/img/site/FiArrowUpRight.svg' alt='external link icon' />}
       </Link>
     </li>
   );
