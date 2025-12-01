@@ -23,7 +23,7 @@
 }
 
 .categoryTitle::after {
-    background: url("/img/GreenFiChevronUp.svg")  no-repeat fixed center;
+    background: url("/img/site/GreenFiChevronUp.svg")  no-repeat fixed center;
     filter: none;
 }
 

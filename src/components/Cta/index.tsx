@@ -14,7 +14,7 @@ const Cta = ({title, description, btnText, link, iconUrl}:CtaProps) => {
 
   return (
     <div className={styles.ctaContainer}>
-        <img className={styles.bgVector} src='/img/CtaVector.png' alt='bg vector' />
+        <img className={styles.bgVector} src='/img/site/CtaVector.png' alt='bg vector' />
         <div className={styles.textBox}>
             <p className={styles.title}>{title}</p>
             {description && <p className={styles.description}>{description}</p>}

@@ -39,7 +39,7 @@ module.exports = async function createConfigAsync() {
   return {
     title: 'Etherlink documentation',
     tagline: 'Etherlink builds on the decentralisation of L1 Tezos to provide an EVM-compatible solution with distributed sequencing.',
-    favicon: '/img/favicon.svg',
+    favicon: '/img/site/favicon.svg',
     url: 'https://docs.etherlink.com',
     baseUrl: '/',
     organizationName: 'etherlinkcom',
@@ -133,7 +133,7 @@ module.exports = async function createConfigAsync() {
           respectPrefersColorScheme: false,
         },
         // Replace with your project's social card
-        image: 'img/etherlink-social-card.png',
+        image: 'img/site/etherlink-social-card.png',
         navbar: {
           // style: 'primary',
           // title: 'Etherlink documentation',

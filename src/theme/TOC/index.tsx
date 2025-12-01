@@ -14,7 +14,7 @@ export default function TOC({className, ...props}: Props): JSX.Element {
   return (
     <div className={clsx(styles.tableOfContents, 'thin-scrollbar', className)}>
       <div className={styles.outlineContainer}>
-        <img src='/img/page-outline.svg' alt='outline icon' />Page Outline
+        <img src='/img/site/page-outline.svg' alt='outline icon' />Page Outline
       </div>
       <TOCItems
         {...props}
