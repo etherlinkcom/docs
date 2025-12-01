@@ -110,11 +110,13 @@ When a deposit is ready to be claimed, the FA bridging precompiled contract (`0x
 
 Field | Type | Description
 --- | --- | ---
-`depositId` | uint265 | The ID of the bridging transaction that users need to claim the pending deposit
-`recipient` | address | The Etherlink account that will receive the claimed tokens
-`amount` | uint256 | The amount of tokens
-`timelock` | uint256 | ???
-`depositCount` | uint256 | ???
+`ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
+`proxy` | address | The proxy address through which the deposit is routed
+`nonce` | uint256 | The global counter for the transaction
+`receiver` | address | The Etherlink address that receives the tokens
+`amount` | uint256 | The amount of tokens in the transaction
+`inboxLevel` | uint256 | The layer 1 block in which the deposit was submitted
+`inboxMsgId` | uint256 | An identifier for the Smart Rollup inbox message
 
 ### `Deposit` event
 
@@ -122,13 +124,12 @@ When a deposit has been claimed, the FA bridging precompiled contract (`0xff0...
 
 Field | Type | Description
 --- | --- | ---
-`nonce` | unit256 | The nonce for the bridging transaction
-`receiver` | address | The Etherlink account that received the claimed tokens
+`ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
+`ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
+`receiver` | address | The ERC-20 proxy contract that manages the tokens (a duplicate of the `ticketOwner` field)
 `amount` | uint256 | The amount of tokens
-`inbox_level` | unit256 | ???
-`inbox_msg_id` | unit256 | The ID of the bridging transaction
-
-TODO ^ This info from `etherlink/kernel_latest/evm_execution/src/fa_bridge/deposit.rs` does not match with the blog post, which says that the signature should be `Deposit(uint256,address,address,uint256,uint256,uint256)`
+`inboxLevel` | uint256 | The layer 1 block in which the deposit was submitted
+`inboxMsgId` | uint256 | An identifier for the Smart Rollup inbox message, which you can use to find the corresponding `QueuedDeposit` event and the Etherlink address that receives the tokens
 
 ### `Withdrawal` event
 
@@ -136,67 +137,26 @@ When an account initiates a withdrawal, the FA bridging precompiled contract (`0
 
 Field | Type | Description
 --- | --- | ---
-`amount` | unit256 | The amount of tokens
-`sender` | address | The address of the Etherlink account sending the tokens
-`receiver` | bytes22 | A bytecode representation of the Tezos address of the account receiving the tokens
-`withdrawalId` | unit256 | The ID of the bridging transaction
+`ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
+`sender` | address | The Etherlink address that is withdrawing the tokens
+`ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
+`receiver` | bytes22 | The layer 1 address that receives the tokens
+`proxy` | bytes22 | The proxy address through which the deposit is routed
+`amount` | uint256 | The amount of tokens
+`withdrawalId` | uint256 | An internal ID for the withdrawal
 
-### TODO other events
+### `FastFaWithdrawal` event
 
-TODO other withdrawal events from `etherlink/kernel_latest/evm_execution/src/fa_bridge/withdrawal.rs` but I'm not sure if these fields translate directly to the fields in the event because  they seemed to be different for the deposit events:
+When an account initiates a fast withdrawal, the FA bridging precompiled contract (`0xff0...0002`) emits a `FastFaWithdrawal` event that includes the following information:
 
-```rust
-alloy_sol_types::sol! {
-    event SolStandardWithdrawalInput (
-        address ticket_owner,
-        bytes   routing_info,
-        uint256 amount,
-        bytes22 ticketer,
-        bytes   content,
-    );
-}
-
-alloy_sol_types::sol! {
-    event SolFastWithdrawalInput (
-        address ticket_owner,
-        bytes   routing_info,
-        uint256 amount,
-        bytes22 ticketer,
-        bytes   content,
-        string  fast_withdrawal_contract_address,
-        bytes   payload,
-    );
-}
-
-alloy_sol_types::sol! {
-    event SolStandardWithdrawalProxyCallData (
-        address sender,
-        uint256 amount,
-        uint256 ticket_hash,
-    );
-}
-
-alloy_sol_types::sol! {
-    event SolStandardWithdrawalEvent (
-        address sender,
-        address ticket_owner,
-        bytes22 receiver,
-        bytes22 proxy,
-        uint256 amount,
-        uint256 withdrawal_id,
-    );
-}
-
-alloy_sol_types::sol! {
-    event SolFastFAWithdrawalEvent (
-        address sender,
-        address ticket_owner,
-        bytes22 receiver,
-        bytes22 proxy,
-        uint256 amount,
-        uint256 withdrawal_id,
-        uint256 timestamp,
-        bytes   payload,
-    );
-}
-```
+Field | Type | Description
+--- | --- | ---
+`ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
+`sender` | address | The Etherlink address that is withdrawing the tokens
+`ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
+`receiver` | bytes22 | The layer 1 address that receives the tokens
+`proxy` | bytes22 | The proxy address through which the deposit is routed
+`amount` | uint256 | The amount of tokens
+`withdrawalId` | uint256 | An internal ID for the withdrawal
+`timestamp` | uint256 | The timestamp of the block that includes the fast withdrawal request
+`payload` | bytes | Information about the fast withdrawal to forward to the fast withdrawal contact
