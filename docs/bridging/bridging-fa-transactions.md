@@ -97,5 +97,6 @@ Therefore, if the system that runs these outbox transactions is down for two wee
 Neither of these transactions are easy to do by yourself.
 Initiating the withdrawal requires sending complex information about the ticket and contracts to the FA2 withdrawal precompile on Etherlink.
 Running the outbox transaction requires you to know the level of the Etherlink commitment that contains it in order to get its proof and commitment, and there is no easy way to get that information without using an indexer to check each level for the transaction.
+You can also watch for the `Withdrawal` and `FastFaWithdrawal` events, as described in [Event reference](/bridging/bridging-fa-how#event-reference).
 
 The command-line tool at https://github.com/baking-bad/etherlink-bridge provides commands that can help with the withdrawal transactions.
