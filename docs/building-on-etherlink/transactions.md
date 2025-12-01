@@ -308,6 +308,7 @@ Etherlink supports this `pending` value only on the `eth_sendRawTransactionSync`
 When the sequencer executes the transaction and intends to put it in the next block, the sequencer returns a receipt for the transaction that includes information such as its gas price and gas cost.
 This receipt matches the specification for the [`eth_getTransactionReceipt`](https://ethereum.org/developers/docs/apis/json-rpc/#eth_gettransactionreceipt) endpoint except that the `blockHash` field is always `0x000...` because the block has not been created yet.
 You can take this response as a confirmation that the sequencer will put the transaction in the next block.
+If the sequencer does not intend to put the transaction in the next block (such as if the block is nearly complete or the transaction volume is high), it waits to provide the receipt until the transaction will be in the next block.
 
 The following JSON code is an example response from the `eth_sendRawTransactionSync` for an ERC-20 token transfer:
 
@@ -354,7 +355,7 @@ The following JSON code is an example response from the `eth_sendRawTransactionS
 
 The sequencer provides this confirmation as soon as it runs the transaction.
 For even faster confirmations, you can use WebSockets to subscribe to the `tez_newIncludedTransactions` or `tez_newPreconfirmedReceipts` events.
-These events provide confirmations of transactions that are ready and transactions that have been executed but not yet included in a block, respectively.
+These events provide confirmations of transactions that are ready to be executed and transactions that have been executed but not yet included in a block, respectively.
 See [Getting updates with WebSockets](/building-on-etherlink/websockets).
 
 :::
