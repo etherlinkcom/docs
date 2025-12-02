@@ -122,12 +122,18 @@ event QueuedDeposit(
 );
 ```
 
-These are the fields in the event:
+The topics for this event are:
 
 Field | Type | Description
 --- | --- | ---
-`ticketHash` | uint256 (indexed) | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
-`proxy` | address (indexed) | The proxy address through which the deposit is routed
+Signature | `keccak256` | `QueuedDeposit(uint256, address)`
+`ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
+`proxy` | address | The proxy address through which the deposit is routed
+
+The payload includes these fields:
+
+Field | Type | Description
+--- | --- | ---
 `nonce` | uint256 | The global counter for the transaction
 `receiver` | address | The Etherlink address that receives the tokens
 `amount` | uint256 | The amount of tokens in the transaction
@@ -151,11 +157,17 @@ event Deposit(
 );
 ```
 
-These are the fields in the event:
+The topics for this event are:
 
 Field | Type | Description
 --- | --- | ---
+Signature | `keccak256` | `Deposit(uint256)`
 `ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
+
+The payload includes these fields:
+
+Field | Type | Description
+--- | --- | ---
 `ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
 `receiver` | address | The ERC-20 proxy contract that manages the tokens (a duplicate of the `ticketOwner` field)
 `amount` | uint256 | The amount of tokens
@@ -180,11 +192,17 @@ event Withdrawal(
 );
 ```
 
-These are the fields in the event:
+The topics for this event are:
 
 Field | Type | Description
 --- | --- | ---
+Signature | `keccak256` | `Withdrawal(uint256)`
 `ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
+
+The payload includes these fields:
+
+Field | Type | Description
+--- | --- | ---
 `sender` | address | The Etherlink address that is withdrawing the tokens
 `ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
 `receiver` | bytes22 | The layer 1 address that receives the tokens
@@ -212,11 +230,17 @@ event FastFaWithdrawal(
 );
 ```
 
-These are the fields in the event:
+The topics for this event are:
 
 Field | Type | Description
 --- | --- | ---
+Signature | `keccak256` | `FastFaWithdrawal(uint256)`
 `ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
+
+The payload includes these fields:
+
+Field | Type | Description
+--- | --- | ---
 `sender` | address | The Etherlink address that is withdrawing the tokens
 `ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
 `receiver` | bytes22 | The layer 1 address that receives the tokens
