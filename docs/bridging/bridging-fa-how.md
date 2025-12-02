@@ -108,17 +108,26 @@ The contracts that manage the FA bridge emit these events:
 
 When a deposit is ready to be claimed, the FA bridging precompiled contract (`0xff0...0002`) emits a `QueuedDeposit` event.
 
-The event includes these topics:
+The ABI for this event is:
+
+```solidity
+event QueuedDeposit(
+  uint256 indexed ticketHash,
+  address indexed proxy,
+  uint256 nonce,
+  address receiver,
+  uint256 amount,
+  uint256 inboxLevel,
+  uint256 inboxMsgId
+);
+```
+
+These are the fields in the event:
 
 Field | Type | Description
 --- | --- | ---
-`ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
-`proxy` | address | The proxy address through which the deposit is routed
-
-The payload includes these fields:
-
-Field | Type | Description
---- | --- | ---
+`ticketHash` | uint256 (indexed) | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
+`proxy` | address (indexed) | The proxy address through which the deposit is routed
 `nonce` | uint256 | The global counter for the transaction
 `receiver` | address | The Etherlink address that receives the tokens
 `amount` | uint256 | The amount of tokens in the transaction
@@ -129,14 +138,24 @@ Field | Type | Description
 
 When a deposit has been claimed, the FA bridging precompiled contract (`0xff0...0002`) emits a `Deposit` event.
 
-The event includes these topics:
+The ABI for this event is:
+
+```solidity
+event Deposit(
+  uint256 indexed ticketHash,
+  address ticketOwner,
+  address receiver,
+  uint256 amount,
+  uint256 inboxLevel,
+  uint256 inboxMsgId
+);
+```
+
+These are the fields in the event:
 
 Field | Type | Description
 --- | --- | ---
 `ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
-
-Field | Type | Description
---- | --- | ---
 `ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
 `receiver` | address | The ERC-20 proxy contract that manages the tokens (a duplicate of the `ticketOwner` field)
 `amount` | uint256 | The amount of tokens
@@ -147,14 +166,25 @@ Field | Type | Description
 
 When an account initiates a withdrawal, the FA bridging precompiled contract (`0xff0...0002`) emits a `Withdrawal` event.
 
-The event includes these topics:
+The ABI for this event is:
+
+```solidity
+event Withdrawal(
+  uint256 indexed ticketHash,
+  address sender,
+  address ticketOwner,
+  bytes22 receiver,
+  bytes22 proxy,
+  uint256 amount,
+  uint256 withdrawalId
+);
+```
+
+These are the fields in the event:
 
 Field | Type | Description
 --- | --- | ---
 `ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
-
-Field | Type | Description
---- | --- | ---
 `sender` | address | The Etherlink address that is withdrawing the tokens
 `ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
 `receiver` | bytes22 | The layer 1 address that receives the tokens
@@ -166,14 +196,27 @@ Field | Type | Description
 
 When an account initiates a fast withdrawal, the FA bridging precompiled contract (`0xff0...0002`) emits a `FastFaWithdrawal` event.
 
-The event includes these topics:
+The ABI for this event is:
+
+```solidity
+event FastFaWithdrawal(
+  uint256 indexed ticketHash,
+  address sender,
+  address ticketOwner,
+  bytes22 receiver,
+  bytes22 proxy,
+  uint256 amount,
+  uint256 withdrawalId,
+  uint256 timestamp,
+  bytes payload
+);
+```
+
+These are the fields in the event:
 
 Field | Type | Description
 --- | --- | ---
 `ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
-
-Field | Type | Description
---- | --- | ---
 `sender` | address | The Etherlink address that is withdrawing the tokens
 `ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
 `receiver` | bytes22 | The layer 1 address that receives the tokens
