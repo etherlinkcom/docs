@@ -106,12 +106,19 @@ The contracts that manage the FA bridge emit these events:
 
 ### `QueuedDeposit` event
 
-When a deposit is ready to be claimed, the FA bridging precompiled contract (`0xff0...0002`) emits a `QueuedDeposit` event that includes the following information:
+When a deposit is ready to be claimed, the FA bridging precompiled contract (`0xff0...0002`) emits a `QueuedDeposit` event.
+
+The event includes these topics:
 
 Field | Type | Description
 --- | --- | ---
 `ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
 `proxy` | address | The proxy address through which the deposit is routed
+
+The payload includes these fields:
+
+Field | Type | Description
+--- | --- | ---
 `nonce` | uint256 | The global counter for the transaction
 `receiver` | address | The Etherlink address that receives the tokens
 `amount` | uint256 | The amount of tokens in the transaction
@@ -120,11 +127,16 @@ Field | Type | Description
 
 ### `Deposit` event
 
-When a deposit has been claimed, the FA bridging precompiled contract (`0xff0...0002`) emits a `Deposit` event that includes the following information:
+When a deposit has been claimed, the FA bridging precompiled contract (`0xff0...0002`) emits a `Deposit` event.
+
+The event includes these topics:
 
 Field | Type | Description
 --- | --- | ---
 `ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
+
+Field | Type | Description
+--- | --- | ---
 `ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
 `receiver` | address | The ERC-20 proxy contract that manages the tokens (a duplicate of the `ticketOwner` field)
 `amount` | uint256 | The amount of tokens
@@ -133,11 +145,16 @@ Field | Type | Description
 
 ### `Withdrawal` event
 
-When an account initiates a withdrawal, the FA bridging precompiled contract (`0xff0...0002`) emits a `Withdrawal` event that includes the following information:
+When an account initiates a withdrawal, the FA bridging precompiled contract (`0xff0...0002`) emits a `Withdrawal` event.
+
+The event includes these topics:
 
 Field | Type | Description
 --- | --- | ---
 `ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
+
+Field | Type | Description
+--- | --- | ---
 `sender` | address | The Etherlink address that is withdrawing the tokens
 `ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
 `receiver` | bytes22 | The layer 1 address that receives the tokens
@@ -147,11 +164,16 @@ Field | Type | Description
 
 ### `FastFaWithdrawal` event
 
-When an account initiates a fast withdrawal, the FA bridging precompiled contract (`0xff0...0002`) emits a `FastFaWithdrawal` event that includes the following information:
+When an account initiates a fast withdrawal, the FA bridging precompiled contract (`0xff0...0002`) emits a `FastFaWithdrawal` event.
+
+The event includes these topics:
 
 Field | Type | Description
 --- | --- | ---
 `ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
+
+Field | Type | Description
+--- | --- | ---
 `sender` | address | The Etherlink address that is withdrawing the tokens
 `ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
 `receiver` | bytes22 | The layer 1 address that receives the tokens
