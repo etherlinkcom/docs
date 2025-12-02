@@ -66,8 +66,8 @@ const sidebars = {
       collapsed: false,
       items: [
         'bridging/bridging',
-        'bridging/bridging-tezos',
         'bridging/bridging-evm',
+        'bridging/bridging-tezos',
         'bridging/bridging-fa',
         'bridging/bridging-fa-how',
         'bridging/bridging-fa-transactions',
