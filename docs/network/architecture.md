@@ -143,11 +143,7 @@ Therefore, an Etherlink transaction is truly finalized two weeks after the block
 At this point, it is permanently part of the state of the Etherlink Smart Rollup and of Tezos.
 
 However, Etherlink is set up so users can be confident that transactions are irreversible much sooner than that.
-Most users can assume that a transaction is irreversible and will be finalized after one of these milestones:
-
-- **Transactions are executed on the Etherlink sequencer within 50ms.**
-As described in [Getting instant confirmations](/building-on-etherlink/transactions#getting-instant-confirmations), the sequencer issues instant confirmations as soon as a transaction is executed and will be in the next block.
-Users who trust the sequencer and these confirmations can take them as proof that the transaction will be in the next block.
+Most users can assume that a transaction is irreversible and will be finalized after one of two milestones:
 
 - **Transactions are confirmed on Etherlink within 500ms.**
 As described in [Sequencer](#sequencer), the sequencer puts transactions in blocks and distributes them to the EVM nodes.

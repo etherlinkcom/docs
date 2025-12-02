@@ -95,9 +95,8 @@ The Etherlink 6.0 upgrade includes:
 
 - Support for EVM Osaka, including support for the count leading zeroes (CLZ) opcode (EIP-7939), the ecp256r1 Curve Support precompile (EIP-7951), and the increase in ModExp gas cost (EIP-7883)
 
-- Instant confirmations, which allow users to know (within roughly 50ms) that their transactions will be in the next block and receive receipts with information about the completed transaction.
-Users can call the `eth_sendRawTransactionSync` endpoint that is available in the EVM node version 0.48 and later to submit a transaction and wait for an instant confirmation from the sequencer.
-For more information, see [Getting instant confirmations](/building-on-etherlink/transactions#getting-instant-confirmations).
+- The ability to provide instant confirmations, which allow users to know (within roughly 50ms) that their transactions will be in the next block and receive receipts with information about the completed transaction.
+This update puts the functionality for instant confirmations in the kernel, but they are not available to users until the EVM node enables the functionality.
 
 - The speed limit (also known as the target) is increased to 13.5 million gas units per second.
 The speed limit decides when the gas price raises.
