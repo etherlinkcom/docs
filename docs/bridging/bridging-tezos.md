@@ -19,6 +19,8 @@ They are also trustless, meaning that they rely on automated, transparent, and a
 - [Mainnet Tezos bridge](https://bridge.etherlink.com/tezos)
 - [Ghostnet Testnet Tezos bridge](https://testnet.bridge.etherlink.com/)
 
+The explorer at https://bridge.explorer.etherlink.com shows bridging transactions between Tezos Mainnet and Etherlink Mainnet.
+
 <CementingDelayNote />
 
 ## Using the bridge
