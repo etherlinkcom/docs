@@ -19,6 +19,8 @@ They are also trustless, meaning that they rely on automated, transparent, and a
 - [Mainnet Tezos bridge](https://bridge.etherlink.com/tezos)
 - [Ghostnet Testnet Tezos bridge](https://testnet.bridge.etherlink.com/)
 
+The explorer at https://bridge.explorer.etherlink.com shows bridging transactions between Tezos Mainnet and Etherlink Mainnet.
+
 <CementingDelayNote />
 
 ## Using the bridge
@@ -116,7 +118,7 @@ The process for fast withdrawals is different than for standard withdrawals:
 1. An Etherlink user submits a withdrawal transaction to the fast withdrawal precompiled contract instead of the standard withdrawal precompiled contract.
 1. As in the standard withdrawal process, the fast withdrawal precompiled contract locks the Etherlink XTZ and puts a message in the Smart Rollup outbox that represents those tokens.
 However, instead of sending the withdrawn tokens directly to the user's Tezos layer 1 account, it sends them to a fast withdrawal contract on layer 1.
-1. Liquidity providers monitor the Smart Rollup inbox and when they detect fast withdrawal requests with favorable rates, they call the layer 1 contract to claim the fast withdrawal.
+1. Liquidity providers monitor the Smart Rollup outbox and when they detect fast withdrawal requests with favorable rates, they call the layer 1 contract to claim the fast withdrawal.
 This request includes information from the event and the withdrawn tez minus the fee.
 1. The fast withdrawal contract forwards the withdrawn tez to the user's account and marks the fast withdrawal fulfilled.
 1. When the commitment that includes the withdrawn tokens is cemented, the fast withdrawal contract sends the withdrawn tez to the liquidity provider.
