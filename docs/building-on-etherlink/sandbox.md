@@ -1,5 +1,7 @@
 ---
 title: Running a local sandbox
+dependencies:
+  octez: 23.2
 ---
 
 You can run a local sandbox to test Etherlink transactions and smart contracts locally.

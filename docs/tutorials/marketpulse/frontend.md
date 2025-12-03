@@ -1,4 +1,9 @@
-# Create the frontend application
+---
+title: Create the frontend application
+dependencies:
+  vite: 0
+  viem: 0
+---
 
 `Deno` is not mandatory as you can still use `npm`, but we use it on this tutorial. You can install it with [this link](https://docs.deno.com/runtime/getting_started/installation/)
 

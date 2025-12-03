@@ -1,5 +1,7 @@
 ---
 title: Price feeds
+dependencies:
+  viem: 0
 ---
 
 ## Pyth

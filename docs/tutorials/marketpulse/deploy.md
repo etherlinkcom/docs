@@ -1,4 +1,8 @@
-# Deploy the contract
+---
+title: Deploy the contract
+dependencies:
+  viem: 0
+---
 
 Deploy the contract locally is fine for doing simple tests, but we recommend to target the Etherlink Testnet to run complete scenarios as you may depend on other services like block explorers, oracles, etc.
 

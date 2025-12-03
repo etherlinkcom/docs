@@ -1,4 +1,8 @@
-# Test the contract
+---
+title: Test the contract
+dependencies:
+  viem: 0
+---
 
 With blockchain development, testing is very important because you don't have the luxury to redeploy application updates as it. Hardhat provides you smart contract helpers on `chai` Testing framework to do so.
 

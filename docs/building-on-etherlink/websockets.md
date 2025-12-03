@@ -1,5 +1,8 @@
 ---
 title: Getting updates with WebSockets
+dependencies:
+  octez: 23.2
+  ethers: 6.13.5
 ---
 
 The Octez EVM node supports requests over WebSockets.
