@@ -77,3 +77,8 @@ jobs:
         working-directory: ${{ env.TEST_REPO }}
         continue-on-error: true
         run: npm run proposeDependencies -- --baseFolder=${{ github.workspace }} --docFiles=${{ needs.getChangedFiles.outputs.files }}
+
+      - name: Run external link check
+        working-directory: ${{ env.TEST_REPO }}
+        continue-on-error: true
+        run: npm run checkExternalLinks -- --baseFolder=${{ github.workspace }} --docFiles=${{ needs.getChangedFiles.outputs.files }}
