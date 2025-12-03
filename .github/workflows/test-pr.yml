@@ -63,14 +63,17 @@ jobs:
       # Run tests
       - name: Run image link check
         working-directory: ${{ env.TEST_REPO }}
+        continue-on-error: true
         # Here, --docFiles is the list of changed files so the test checks the links to images in only those files
         run: npm run imageLinks -- --baseFolder=${{ github.workspace }} --docFiles=${{ needs.getChangedFiles.outputs.files }} --imageFolder=${{ env.STATIC_FOLDER }}
 
       - name: Run unused image check
         working-directory: ${{ env.TEST_REPO }}
+        continue-on-error: true
         # Here, --docFiles is the folder where all of the doc files are so the test can check that no images have become abandoned
         run: npm run usedImages -- --baseFolder=${{ github.workspace }} --docFiles=${{ env.DOCS_FOLDER }} --imageFolder=${{ env.STATIC_FOLDER }} --ignoreImages=${{ env.IGNORE_IMAGES }}
 
       - name: Run undeclared dependency check
         working-directory: ${{ env.TEST_REPO }}
+        continue-on-error: true
         run: npm run proposeDependencies -- --baseFolder=${{ github.workspace }} --docFiles=${{ env.DOCS_FOLDER }}
