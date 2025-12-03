@@ -4,6 +4,8 @@ title: How is Etherlink governed?
 
 ![Broken link to image](/img/whatever.png)
 
+This is a [broken external link](http://whateverwhatever.com).
+
 ```bash
 octez-client config show
 ```
