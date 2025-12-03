@@ -1,5 +1,7 @@
 ---
 title: Sending FA bridging transactions
+dependencies:
+  octez: 0
 ---
 
 Because the contracts that control bridging FA tokens follow the [TZIP-029](https://gitlab.com/baking-bad/tzip/-/blob/wip/029-etherlink-token-bridge/drafts/current/draft-etherlink-token-bridge/etherlink-token-bridge.md) standard, the transactions to bridge tokens are the same for any token.

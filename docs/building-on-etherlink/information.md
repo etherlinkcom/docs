@@ -1,5 +1,7 @@
 ---
 title: Getting information about Etherlink
+dependencies:
+  ethers: 6.13.5
 ---
 
 import PublicRpcRateLimitNote from '@site/docs/conrefs/rate-limit.md';

@@ -1,5 +1,9 @@
 ---
 title: Sending transactions
+dependencies:
+  taquito: 0
+  ethers: 6.13.5
+  viem: 0
 ---
 
 import PublicRpcRateLimitNote from '@site/docs/conrefs/rate-limit.md';

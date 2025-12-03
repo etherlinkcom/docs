@@ -1,5 +1,7 @@
 ---
 title: Development toolkits
+dependencies:
+  hardhat: 3.0.14
 ---
 
 ## 👷 Hardhat
