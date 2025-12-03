@@ -70,3 +70,7 @@ jobs:
         working-directory: ${{ env.TEST_REPO }}
         # Here, --docFiles is the folder where all of the doc files are so the test can check that no images have become abandoned
         run: npm run usedImages -- --baseFolder=${{ github.workspace }} --docFiles=${{ env.DOCS_FOLDER }} --imageFolder=${{ env.STATIC_FOLDER }} --ignoreImages=${{ env.IGNORE_IMAGES }}
+
+      - name: Run undeclared dependency check
+        working-directory: ${{ env.TEST_REPO }}
+        run: npm run proposeDependencies -- --baseFolder=${{ github.workspace }} --docFiles=${{ env.DOCS_FOLDER }}
