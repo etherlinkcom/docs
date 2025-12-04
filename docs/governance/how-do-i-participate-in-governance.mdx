@@ -25,6 +25,34 @@ This site:
 - Shows active and past proposals and their states
 - Allows voting keys to claim voting rights
 
+## Summary
+
+Here is a summary of how to vote for Etherlink upgrades:
+
+During a Proposal period, go to the [governance web site](https://governance.etherlink.com) and find the hash of the kernel to upvote.
+Then run this command:
+
+```bash
+octez-client call <GOVERNANCE_CONTRACT> from <MY_VOTER> \
+  --entrypoint "upvote_proposal" \
+  --arg "<KERNEL_HASH>"
+```
+
+Parameters:
+
+- `<GOVERNANCE_CONTRACT>`: The governance contract to call, either `KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r` for the slow governance process or `KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R` for the fast governance process
+- `<MY_VOTER>`: Your baker key or Etherlink voting key
+- `<KERNEL_HASH>`: The hash of the kernel to upvote
+
+During a Promotion period, run this command to vote for or against the kernel by running this command, using `yea`, `nay`, or `pass` as the argument:
+
+```bash
+octez-client call <GOVERNANCE_CONTRACT> from <MY_VOTER> \
+  --entrypoint "vote" --arg '"yea"'
+```
+
+The command does not need the hash of the kernel because only one kernel can be in the Promotion period at a time, so the options are to vote for or against that kernel or to abstain by voting "pass."
+
 ## Governance contract addresses
 
 You need the address of the correct governance contract (and sometimes the address of the Etherlink Smart Rollup) to propose changes, vote on changes, and trigger approved changes.
