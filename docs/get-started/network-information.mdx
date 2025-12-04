@@ -37,7 +37,7 @@ or subscribe to a commercial [RPC provider](/tools/node-providers) plan which of
     </tr>
     <tr>
       <td>EVM version</td>
-      <td><code>Prague</code></td>
+      <td><code>Osaka</code></td>
     </tr>
     <tr>
       <td>RPC Endpoint</td>
@@ -123,7 +123,7 @@ However, this test work will be decommissioned soon and the Etherlink Shadownet 
     </tr>
     <tr>
       <td>EVM version</td>
-      <td><code>Prague</code></td>
+      <td><code>Osaka</code></td>
     </tr>
     <tr>
       <td>RPC Endpoint</td>
@@ -203,7 +203,7 @@ This a new network that will become the primary test network for Etherlink, so u
     </tr>
     <tr>
       <td>EVM version</td>
-      <td><code>Prague</code></td>
+      <td><code>Osaka</code></td>
     </tr>
     <tr>
       <td>RPC Endpoint</td>
@@ -269,7 +269,7 @@ This a new network that will become the primary test network for Etherlink, so u
 Feature | Details |
 --- | --- |
 Genesis date | 2nd May 2024 (Mainnet), 15th November 2023 (Ghostnet Testnet), 28th August 2025 (Shadownet Testnet)
-EVM-compatible | Yes, up to version Prague
+EVM-compatible | Yes, up to version Osaka
 Block speed | Variable; see [Architecture](/network/architecture)
 Docker image | https://hub.docker.com/r/tezos/tezos-bare images that start with `octez-evm-node`
 Debugging | Supported via standard [Ethereum endpoints](/building-on-etherlink/endpoint-support)
@@ -294,8 +294,6 @@ Therefore, Etherlink is not compatible with EVM light-client implementations tha
 Therefore, you cannot compute Etherlink block hashes with tools such as Geth.
 
 ## Precompiled contracts
-
-The precompiled contracts on Etherlink are listed in the [`mod.rs`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/kernel_latest/evm_execution/src/precompiles/mod.rs#L181) file.
 
 These precompiled contracts are specific to Etherlink:
 
@@ -443,6 +441,12 @@ Etherlink also includes these [Ethereum precompiled contracts](https://www.evm.c
       <td><InlineCopy code="0x0000000000000000000000000000000000000011" href="https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000011" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000011" href="https://testnet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000011" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000011" href="https://shadownet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000011" abbreviate="5,4"></InlineCopy></td>
+    </tr>
+    <tr>
+    <td>`secp256r1`</td>
+      <td><InlineCopy code="0x0000000000000000000000000000000000000100" href="https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000100" abbreviate="5,4"></InlineCopy></td>
+      <td><InlineCopy code="0x0000000000000000000000000000000000000100" href="https://testnet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000100" abbreviate="5,4"></InlineCopy></td>
+      <td><InlineCopy code="0x0000000000000000000000000000000000000100" href="https://shadownet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000100" abbreviate="5,4"></InlineCopy></td>
     </tr>
   </tbody>
 </table>
