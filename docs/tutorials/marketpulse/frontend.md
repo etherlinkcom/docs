@@ -953,4 +953,4 @@ dependencies:
 
       The page's right-hand corner refreshes and displays the winner of the poll and the application automatically pays the winning bets.
 
-   1. Find your transaction `resolveResult` on the Etherlink Ghostnet Testnet explorer at `https://testnet.explorer.etherlink.com`. In the **Transaction details>Internal txns tab**, you should see, if you won something, the expected amount transferred to you from the smart contract address.
+   1. Find your transaction `resolveResult` on the Etherlink Shadownet Testnet explorer at `https://shadownet.explorer.etherlink.com`. In the **Transaction details>Internal txns tab**, you should see, if you won something, the expected amount transferred to you from the smart contract address.

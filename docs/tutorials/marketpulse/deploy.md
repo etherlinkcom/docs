@@ -51,9 +51,9 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
 
 1. Check that your deployment logs do not contain any error and stop the Hardhat node.
 
-1. Deploy the contract on Etherlink Ghostnet Testnet:
+1. Deploy the contract on Etherlink Shadownet Testnet:
 
-   1. In the Hardhat configuration file `hardhat.config.ts`, add Etherlink Mainnet and Ghostnet Testnet as custom networks:
+   1. In the Hardhat configuration file `hardhat.config.ts`, add Etherlink Mainnet and Shadownet Testnet as custom networks:
 
       ```TypeScript
       import "@nomicfoundation/hardhat-toolbox-viem";
@@ -76,7 +76,7 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
             accounts: [deployerPrivateKey],
           },
           etherlinkTestnet: {
-            url: "https://node.ghostnet.etherlink.com",
+            url: "https://node.shadownet.etherlink.com",
             accounts: [deployerPrivateKey],
           },
         },
@@ -98,8 +98,8 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
               network: "etherlinkTestnet",
               chainId: 128123,
               urls: {
-                apiURL: "https://testnet.explorer.etherlink.com/api",
-                browserURL: "https://testnet.explorer.etherlink.com",
+                apiURL: "https://shadownet.explorer.etherlink.com/api",
+                browserURL: "https://shadownet.explorer.etherlink.com",
               },
             },
           ],
@@ -109,7 +109,7 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
       export default config;
       ```
 
-   1. Set up an Etherlink Ghostnet Testnet account with some native tokens to deploy the contract. See [Using your wallet](/get-started/using-your-wallet) connect your wallet to Etherlink. Then use the faucet to get XTZ tokens on Etherlink Ghostnet Testnet, as described in [Getting testnet tokens](/get-started/getting-testnet-tokens).
+   1. Set up an Etherlink Shadownet Testnet account with some native tokens to deploy the contract. See [Using your wallet](/get-started/using-your-wallet) connect your wallet to Etherlink. Then use the faucet to get XTZ tokens on Etherlink Shadownet Testnet, as described in [Getting testnet tokens](/get-started/getting-testnet-tokens).
 
    1. Export your account private key from your wallet application.
 
@@ -121,7 +121,7 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
 
       On the prompt, enter or paste the value of your exported private key. Hardhat use its custom env var system for storing keys, we will see later how to override this on a CICD pipeline
 
-   1. Deploy the contract to Etherlink Ghostnet Testnet network specifying the `--network` option:
+   1. Deploy the contract to Etherlink Shadownet Testnet network specifying the `--network` option:
 
       ```bash
       npx hardhat ignition deploy ignition/modules/Marketpulse.ts --network etherlinkTestnet
