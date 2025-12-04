@@ -29,20 +29,20 @@ This site:
 
 Here is a summary of how to vote for Etherlink upgrades:
 
-During a Proposal period, go to the [governance web site](https://governance.etherlink.com) and find the hash of the kernel to upvote.
+During a Proposal period, go to the [governance web site](https://governance.etherlink.com) and find the hash of the kernel to upvote, adding `0x` if it doesn't already start with `0x`.
 Then run this command:
 
 ```bash
 octez-client call <GOVERNANCE_CONTRACT> from <MY_VOTER> \
   --entrypoint "upvote_proposal" \
-  --arg "<KERNEL_HASH>"
+  --arg "0x<KERNEL_HASH>"
 ```
 
 Parameters:
 
 - `<GOVERNANCE_CONTRACT>`: The governance contract to call, either `KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r` for the slow governance process or `KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R` for the fast governance process
 - `<MY_VOTER>`: Your baker key or Etherlink voting key
-- `<KERNEL_HASH>`: The hash of the kernel to upvote
+- `<KERNEL_HASH>`: The hash of the kernel to upvote, starting with `0x`
 
 During a Promotion period, run this command to vote for or against the kernel by running this command, using `yea`, `nay`, or `pass` as the argument:
 
@@ -315,7 +315,7 @@ During a Proposal period, bakers can propose updates by calling the `new_proposa
 ```bash
 octez-client call KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r from my_wallet \
   --entrypoint "new_proposal" \
-  --arg "<KERNEL_HASH>"
+  --arg "0x<KERNEL_HASH>"
 ```
 
 The command takes these parameters:
@@ -335,7 +335,7 @@ As an alternative, call the `upvote_proposal` entrypoint with the same parameter
 ```bash
 octez-client call KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r from my_wallet \
   --entrypoint "upvote_proposal" \
-  --arg "<KERNEL_HASH>"
+  --arg "0x<KERNEL_HASH>"
 ```
 
 It's not necessary to upvote a proposal that you submitted; submitting a proposal implies that your account upvotes it.
