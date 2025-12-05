@@ -187,7 +187,7 @@ dependencies:
    import { ConnectButton, useActiveAccount } from "thirdweb/react";
    import { createWallet, inAppWallet } from "thirdweb/wallets";
    import { parseEther } from "viem";
-   import { etherlinkTestnet } from "viem/chains";
+   import { etherlinkShadownetTestnet } from "viem/chains";
    import { extractErrorDetails } from "./DecodeEvmTransactionLogsArgs";
    import CONTRACT_ADDRESS_JSON from "./deployed_addresses.json";
 
@@ -218,6 +218,13 @@ dependencies:
    export default function App({ thirdwebClient }: AppProps) {
      console.log("*************App");
 
+     const marketPulseContract = {
+       abi: Marketpulse__factory.abi,
+       client: thirdwebClient,
+       chain: defineChain(etherlinkShadownetTestnet.id),
+       address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
+     }
+
      const account = useActiveAccount();
 
      const [options, setOptions] = useState<Map<string, bigint>>(new Map());
@@ -235,45 +242,25 @@ dependencies:
          console.log("No address...");
        } else {
          const dataStatus = await readContract({
-           contract: getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           }),
+           contract: getContract(marketPulseContract),
            method: "status",
            params: [],
          });
 
          const dataWinner = await readContract({
-           contract: getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           }),
+           contract: getContract(marketPulseContract),
            method: "winner",
            params: [],
          });
 
          const dataFEES = await readContract({
-           contract: getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           }),
+           contract: getContract(marketPulseContract),
            method: "FEES",
            params: [],
          });
 
          const dataBetKeys = await readContract({
-           contract: getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           }),
+           contract: getContract(marketPulseContract),
            method: "getBetKeys",
            params: [],
          });
@@ -310,13 +297,7 @@ dependencies:
              betKeys.map(
                async (betKey) =>
                  (await readContract({
-                   contract: getContract({
-                     abi: Marketpulse__factory.abi,
-                     client: thirdwebClient,
-                     chain: defineChain(etherlinkTestnet.id),
-                     address:
-                       CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-                   }),
+                   contract: getContract(marketPulseContract),
                    method: "getBets",
                    params: [betKey],
                  })) as unknown as Marketpulse.BetStruct
@@ -348,12 +329,7 @@ dependencies:
        const handlePing = async () => {
          try {
            const preparedContractCall = await prepareContractCall({
-             contract: getContract({
-               abi: Marketpulse__factory.abi,
-               client: thirdwebClient,
-               chain: defineChain(etherlinkTestnet.id),
-               address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-             }),
+             contract: getContract(marketPulseContract),
              method: "ping",
              params: [],
            });
@@ -368,7 +344,7 @@ dependencies:
            //wait for tx to be included on a block
            const receipt = await waitForReceipt({
              client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
+             chain: defineChain(etherlinkShadownetTestnet.id),
              transactionHash: transaction.transactionHash,
            });
 
@@ -398,12 +374,7 @@ dependencies:
 
        const runFunction = async () => {
          try {
-           const contract = getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           });
+           const contract = getContract(marketPulseContract);
 
            const preparedContractCall = await prepareContractCall({
              contract,
@@ -420,7 +391,7 @@ dependencies:
            //wait for tx to be included on a block
            const receipt = await waitForReceipt({
              client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
+             chain: defineChain(etherlinkShadownetTestnet.id),
              transactionHash: transaction.transactionHash,
            });
 
@@ -559,12 +530,7 @@ dependencies:
      const resolve = async (option: string) => {
        try {
          const preparedContractCall = await prepareContractCall({
-           contract: getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           }),
+           contract: getContract(marketPulseContract),
            method: "resolveResult",
            params: [option, BET_RESULT.WIN],
          });
@@ -579,7 +545,7 @@ dependencies:
          //wait for tx to be included on a block
          const receipt = await waitForReceipt({
            client: thirdwebClient,
-           chain: defineChain(etherlinkTestnet.id),
+           chain: defineChain(etherlinkShadownetTestnet.id),
            transactionHash: transaction.transactionHash,
          });
 
@@ -605,7 +571,7 @@ dependencies:
                  client={thirdwebClient}
                  wallets={wallets}
                  connectModal={{ size: "compact" }}
-                 chain={defineChain(etherlinkTestnet.id)}
+                 chain={defineChain(etherlinkShadownetTestnet.id)}
                />
              </div>
            </span>
@@ -936,7 +902,7 @@ dependencies:
 
 1. Run a betting scenario:
 
-   1. Select ** Chiefs** on the select box on the right corner, choose a small amount like **0.00001 XTZ**, and click the **Bet** button.
+   1. Select **Chiefs** on the select box on the right corner, choose a small amount like **0.00001 XTZ**, and click the **Bet** button.
 
    1. Confirm the transaction in your wallet.
    If you don't have enough XTZ in your account, the application shows an `OutOfFund` error.
@@ -949,8 +915,8 @@ dependencies:
 
       Both teams have 50% of chance to win. Note: Default platform fees have been set to 10%, and the odds calculation takes those fees into account.
 
-   1. Click one of the **Winner** buttons to resolve the poll.
+   1. Connect as the account that you deployed the contract with (the admin) and click one of the **Winner** buttons to resolve the poll.
 
       The page's right-hand corner refreshes and displays the winner of the poll and the application automatically pays the winning bets.
 
-   1. Find your transaction `resolveResult` on the Etherlink Ghostnet Testnet explorer at `https://testnet.explorer.etherlink.com`. In the **Transaction details>Internal txns tab**, you should see, if you won something, the expected amount transferred to you from the smart contract address.
+   1. Find your transaction `resolveResult` on the Etherlink Shadownet Testnet explorer at `https://shadownet.explorer.etherlink.com`. In the **Transaction details>Internal txns tab**, you should see, if you won something, the expected amount transferred to you from the smart contract address.
