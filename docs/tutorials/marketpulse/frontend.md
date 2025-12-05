@@ -902,7 +902,7 @@ dependencies:
 
 1. Run a betting scenario:
 
-   1. Select ** Chiefs** on the select box on the right corner, choose a small amount like **0.00001 XTZ**, and click the **Bet** button.
+   1. Select **Chiefs** on the select box on the right corner, choose a small amount like **0.00001 XTZ**, and click the **Bet** button.
 
    1. Confirm the transaction in your wallet.
    If you don't have enough XTZ in your account, the application shows an `OutOfFund` error.
@@ -915,7 +915,7 @@ dependencies:
 
       Both teams have 50% of chance to win. Note: Default platform fees have been set to 10%, and the odds calculation takes those fees into account.
 
-   1. Click one of the **Winner** buttons to resolve the poll.
+   1. Connect as the account that you deployed the contract with (the admin) and click one of the **Winner** buttons to resolve the poll.
 
       The page's right-hand corner refreshes and displays the winner of the poll and the application automatically pays the winning bets.
 
