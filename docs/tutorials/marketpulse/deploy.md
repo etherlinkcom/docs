@@ -1,7 +1,8 @@
 ---
 title: Deploy the contract
 dependencies:
-  viem: 0
+  viem: 2.41.2
+  hardhat: 3.0.17
 ---
 
 Deploy the contract locally is fine for doing simple tests, but we recommend to target the Etherlink Testnet to run complete scenarios as you may depend on other services like block explorers, oracles, etc.
@@ -11,7 +12,7 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
    1. Prepare a module for the ignition plugin of Hardhat. The module is used as the default script for deployment. Rename the default file first:
 
       ```bash
-      mv ./ignition/modules/Lock.ts ./ignition/modules/Marketpulse.ts
+      mv ./ignition/modules/Counter.ts ./ignition/modules/Marketpulse.ts
       ```
 
    1. Replace the contents of the file with this code:
@@ -49,28 +50,75 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
 
       You can deploy the contract to any local Ethereum node but Etherlink is a good choice because it is persistent and free and most tools and indexers are already deployed on it.
 
+      The response looks like this:
+
+      ```
+      Hardhat Ignition 🚀
+
+      Deploying [ MarketpulseModule ]
+
+      Batch #1
+        Executed MarketpulseModule#Marketpulse
+
+      Batch #2
+        Executed MarketpulseModule#Marketpulse.ping
+
+      [ MarketpulseModule ] successfully deployed 🚀
+
+      Deployed Addresses
+
+      MarketpulseModule#Marketpulse - 0x5FbDB2315678afecb367f032d93F642f64180aa3
+      ```
+
 1. Check that your deployment logs do not contain any error and stop the Hardhat node.
 
 1. Deploy the contract on Etherlink Shadownet Testnet:
 
-   1. In the Hardhat configuration file `hardhat.config.ts`, add Etherlink Mainnet and Shadownet Testnet as custom networks:
+   1. In the Hardhat configuration file `hardhat.config.ts`, add Etherlink Mainnet and Shadownet Testnet as custom networks by replacing the default file with this code:
 
       ```TypeScript
-      import "@nomicfoundation/hardhat-toolbox-viem";
-      import "@nomicfoundation/hardhat-verify";
-      import type { HardhatUserConfig } from "hardhat/config";
-      import { vars } from "hardhat/config";
+      import hardhatToolboxViemPlugin from "@nomicfoundation/hardhat-toolbox-viem";
+      import { configVariable, defineConfig } from "hardhat/config";
 
-      if (!vars.has("DEPLOYER_PRIVATE_KEY")) {
+      if (!configVariable("DEPLOYER_PRIVATE_KEY")) {
         console.error("Missing env var DEPLOYER_PRIVATE_KEY");
       }
 
-      const deployerPrivateKey = vars.get("DEPLOYER_PRIVATE_KEY");
+      const deployerPrivateKey = configVariable("DEPLOYER_PRIVATE_KEY");
 
-      const config: HardhatUserConfig = {
-        solidity: "0.8.24",
-
+      export default defineConfig({
+        plugins: [hardhatToolboxViemPlugin],
+        solidity: {
+          profiles: {
+            default: {
+              version: "0.8.28",
+            },
+            production: {
+              version: "0.8.28",
+              settings: {
+                optimizer: {
+                  enabled: true,
+                  runs: 200,
+                },
+              },
+            },
+          },
+        },
         networks: {
+          hardhatMainnet: {
+            type: "edr-simulated",
+            chainType: "l1",
+          },
+          hardhatOp: {
+            type: "edr-simulated",
+            chainType: "op",
+          },
+          sepolia: {
+            type: "http",
+            chainType: "l1",
+            url: configVariable("SEPOLIA_RPC_URL"),
+            accounts: [configVariable("SEPOLIA_PRIVATE_KEY")],
+          },
           etherlinkMainnet: {
             url: "https://node.mainnet.etherlink.com",
             accounts: [deployerPrivateKey],
@@ -104,22 +152,18 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
             },
           ],
         }
-      };
-
-      export default config;
+      });
       ```
 
    1. Set up an Etherlink Shadownet Testnet account with some native tokens to deploy the contract. See [Using your wallet](/get-started/using-your-wallet) connect your wallet to Etherlink. Then use the faucet to get XTZ tokens on Etherlink Shadownet Testnet, as described in [Getting testnet tokens](/get-started/getting-testnet-tokens).
 
    1. Export your account private key from your wallet application.
 
-   1. Set the private key as the value of the `DEPLOYER_PRIVATE_KEY` environment variable by running this command:
+   1. Set the private key (represented in this example as `<YOUR_ETHERLINK_KEY>`) as the value of the `DEPLOYER_PRIVATE_KEY` environment variable by running this command:
 
       ```bash
-      npx hardhat vars set DEPLOYER_PRIVATE_KEY
+      export DEPLOYER_PRIVATE_KEY=<YOUR_ETHERLINK_KEY>
       ```
-
-      On the prompt, enter or paste the value of your exported private key. Hardhat use its custom env var system for storing keys, we will see later how to override this on a CICD pipeline
 
    1. Deploy the contract to Etherlink Shadownet Testnet network specifying the `--network` option:
 
@@ -130,7 +174,6 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
       A successful output should look like this:
 
       ```logs
-      Compiled 5 Solidity files successfully (evm target: paris).
       Hardhat Ignition 🚀
 
       Deploying [ MarketpulseModule ]
