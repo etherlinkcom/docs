@@ -187,7 +187,7 @@ dependencies:
    import { ConnectButton, useActiveAccount } from "thirdweb/react";
    import { createWallet, inAppWallet } from "thirdweb/wallets";
    import { parseEther } from "viem";
-   import { etherlinkTestnet } from "viem/chains";
+   import { etherlinkShadownetTestnet } from "viem/chains";
    import { extractErrorDetails } from "./DecodeEvmTransactionLogsArgs";
    import CONTRACT_ADDRESS_JSON from "./deployed_addresses.json";
 
@@ -238,7 +238,7 @@ dependencies:
            contract: getContract({
              abi: Marketpulse__factory.abi,
              client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
+             chain: defineChain(etherlinkShadownetTestnet.id),
              address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
            }),
            method: "status",
@@ -249,7 +249,7 @@ dependencies:
            contract: getContract({
              abi: Marketpulse__factory.abi,
              client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
+             chain: defineChain(etherlinkShadownetTestnet.id),
              address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
            }),
            method: "winner",
@@ -260,7 +260,7 @@ dependencies:
            contract: getContract({
              abi: Marketpulse__factory.abi,
              client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
+             chain: defineChain(etherlinkShadownetTestnet.id),
              address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
            }),
            method: "FEES",
@@ -271,7 +271,7 @@ dependencies:
            contract: getContract({
              abi: Marketpulse__factory.abi,
              client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
+             chain: defineChain(etherlinkShadownetTestnet.id),
              address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
            }),
            method: "getBetKeys",
@@ -313,7 +313,7 @@ dependencies:
                    contract: getContract({
                      abi: Marketpulse__factory.abi,
                      client: thirdwebClient,
-                     chain: defineChain(etherlinkTestnet.id),
+                     chain: defineChain(etherlinkShadownetTestnet.id),
                      address:
                        CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
                    }),
@@ -351,7 +351,7 @@ dependencies:
              contract: getContract({
                abi: Marketpulse__factory.abi,
                client: thirdwebClient,
-               chain: defineChain(etherlinkTestnet.id),
+               chain: defineChain(etherlinkShadownetTestnet.id),
                address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
              }),
              method: "ping",
@@ -368,7 +368,7 @@ dependencies:
            //wait for tx to be included on a block
            const receipt = await waitForReceipt({
              client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
+             chain: defineChain(etherlinkShadownetTestnet.id),
              transactionHash: transaction.transactionHash,
            });
 
@@ -401,7 +401,7 @@ dependencies:
            const contract = getContract({
              abi: Marketpulse__factory.abi,
              client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
+             chain: defineChain(etherlinkShadownetTestnet.id),
              address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
            });
 
@@ -420,7 +420,7 @@ dependencies:
            //wait for tx to be included on a block
            const receipt = await waitForReceipt({
              client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
+             chain: defineChain(etherlinkShadownetTestnet.id),
              transactionHash: transaction.transactionHash,
            });
 
@@ -562,7 +562,7 @@ dependencies:
            contract: getContract({
              abi: Marketpulse__factory.abi,
              client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
+             chain: defineChain(etherlinkShadownetTestnet.id),
              address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
            }),
            method: "resolveResult",
@@ -579,7 +579,7 @@ dependencies:
          //wait for tx to be included on a block
          const receipt = await waitForReceipt({
            client: thirdwebClient,
-           chain: defineChain(etherlinkTestnet.id),
+           chain: defineChain(etherlinkShadownetTestnet.id),
            transactionHash: transaction.transactionHash,
          });
 
@@ -605,7 +605,7 @@ dependencies:
                  client={thirdwebClient}
                  wallets={wallets}
                  connectModal={{ size: "compact" }}
-                 chain={defineChain(etherlinkTestnet.id)}
+                 chain={defineChain(etherlinkShadownetTestnet.id)}
                />
              </div>
            </span>
