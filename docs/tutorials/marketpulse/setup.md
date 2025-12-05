@@ -19,7 +19,7 @@ It provides low-level, efficient blockchain interactions with minimal abstractio
 
    ```bash
    npm init -y
-   npm install -D typescript @types/node ts-node
+   npm install -D typescript @types/node ts-node chai @types/chai
    ```
 
 1. Install Hardhat and initialize it:
