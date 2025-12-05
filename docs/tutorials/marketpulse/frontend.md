@@ -218,6 +218,13 @@ dependencies:
    export default function App({ thirdwebClient }: AppProps) {
      console.log("*************App");
 
+     const marketPulseContract = {
+       abi: Marketpulse__factory.abi,
+       client: thirdwebClient,
+       chain: defineChain(etherlinkShadownetTestnet.id),
+       address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
+     }
+
      const account = useActiveAccount();
 
      const [options, setOptions] = useState<Map<string, bigint>>(new Map());
@@ -235,45 +242,25 @@ dependencies:
          console.log("No address...");
        } else {
          const dataStatus = await readContract({
-           contract: getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkShadownetTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           }),
+           contract: getContract(marketPulseContract),
            method: "status",
            params: [],
          });
 
          const dataWinner = await readContract({
-           contract: getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkShadownetTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           }),
+           contract: getContract(marketPulseContract),
            method: "winner",
            params: [],
          });
 
          const dataFEES = await readContract({
-           contract: getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkShadownetTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           }),
+           contract: getContract(marketPulseContract),
            method: "FEES",
            params: [],
          });
 
          const dataBetKeys = await readContract({
-           contract: getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkShadownetTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           }),
+           contract: getContract(marketPulseContract),
            method: "getBetKeys",
            params: [],
          });
@@ -310,13 +297,7 @@ dependencies:
              betKeys.map(
                async (betKey) =>
                  (await readContract({
-                   contract: getContract({
-                     abi: Marketpulse__factory.abi,
-                     client: thirdwebClient,
-                     chain: defineChain(etherlinkShadownetTestnet.id),
-                     address:
-                       CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-                   }),
+                   contract: getContract(marketPulseContract),
                    method: "getBets",
                    params: [betKey],
                  })) as unknown as Marketpulse.BetStruct
@@ -348,12 +329,7 @@ dependencies:
        const handlePing = async () => {
          try {
            const preparedContractCall = await prepareContractCall({
-             contract: getContract({
-               abi: Marketpulse__factory.abi,
-               client: thirdwebClient,
-               chain: defineChain(etherlinkShadownetTestnet.id),
-               address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-             }),
+             contract: getContract(marketPulseContract),
              method: "ping",
              params: [],
            });
@@ -398,12 +374,7 @@ dependencies:
 
        const runFunction = async () => {
          try {
-           const contract = getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkShadownetTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           });
+           const contract = getContract(marketPulseContract);
 
            const preparedContractCall = await prepareContractCall({
              contract,
@@ -559,12 +530,7 @@ dependencies:
      const resolve = async (option: string) => {
        try {
          const preparedContractCall = await prepareContractCall({
-           contract: getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkShadownetTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           }),
+           contract: getContract(marketPulseContract),
            method: "resolveResult",
            params: [option, BET_RESULT.WIN],
          });
