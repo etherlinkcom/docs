@@ -46,7 +46,7 @@ dependencies:
 1. Add this line to the `scripts` section of the `./app/package.json` file in the frontend application:
 
    ```json
-        "postinstall": "cp ../ignition/deployments/chain-128123/deployed_addresses.json ./src  &&  typechain --target=ethers-v6 --out-dir=./src/typechain-types --show-stack-traces ../artifacts/contracts/Marketpulse.sol/Marketpulse.json",
+        "postinstall": "cp ../ignition/deployments/chain-127823/deployed_addresses.json ./src  &&  typechain --target=ethers-v6 --out-dir=./src/typechain-types --show-stack-traces ../artifacts/contracts/Marketpulse.sol/Marketpulse.json",
    ```
 
    This script copies the output address of the last deployed contract into your source files and calls `typechain` to generate types from the ABI file from the Hardhat folders.
