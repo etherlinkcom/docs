@@ -125,7 +125,7 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
           },
         },
         chainDescriptors: {
-          127123: {
+          127823: {
             chainType: "generic",
             name: "etherlinkShadownet",
             blockExplorers: {
