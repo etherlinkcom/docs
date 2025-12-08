@@ -113,44 +113,49 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
             type: "edr-simulated",
             chainType: "op",
           },
-          sepolia: {
-            type: "http",
-            chainType: "l1",
-            url: configVariable("SEPOLIA_RPC_URL"),
-            accounts: [configVariable("SEPOLIA_PRIVATE_KEY")],
-          },
           etherlinkMainnet: {
+            type: "http",
             url: "https://node.mainnet.etherlink.com",
             accounts: [deployerPrivateKey],
           },
-          etherlinkTestnet: {
+          etherlinkShadownet: {
+            type: "http",
             url: "https://node.shadownet.etherlink.com",
             accounts: [deployerPrivateKey],
           },
         },
-        etherscan: {
-          apiKey: {
-            etherlinkMainnet: "DUMMY",
-            etherlinkTestnet: "DUMMY",
+        chainDescriptors: {
+          127123: {
+            chainType: "generic",
+            name: "etherlinkShadownet",
+            blockExplorers: {
+              etherscan: {
+                name: "EtherlinkExplorer",
+                apiUrl: "https://shadownet.explorer.etherlink.com/api",
+                url: "https://shadownet.explorer.etherlink.com",
+              },
+              blockscout: {
+                name: "EtherlinkExplorer",
+                apiUrl: "https://shadownet.explorer.etherlink.com/api",
+                url: "https://shadownet.explorer.etherlink.com",
+              },
+            },
           },
-          customChains: [
-            {
-              network: "etherlinkMainnet",
-              chainId: 42793,
-              urls: {
-                apiURL: "https://explorer.etherlink.com/api",
-                browserURL: "https://explorer.etherlink.com",
-              },
-            },
-            {
-              network: "etherlinkTestnet",
-              chainId: 127123,
-              urls: {
-                apiURL: "https://shadownet.explorer.etherlink.com/api",
-                browserURL: "https://shadownet.explorer.etherlink.com",
-              },
-            },
-          ],
+          42793: {
+            name: "EtherlinkMainnet",
+          }
+        },
+        verify: {
+          blockscout: {
+            enabled: true,
+          },
+          etherscan: {
+            apiKey: "DUMMY",
+            enabled: true,
+          },
+          sourcify: {
+            enabled: false,
+          }
         }
       });
       ```
@@ -168,7 +173,7 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
    1. Deploy the contract to Etherlink Shadownet Testnet network specifying the `--network` option:
 
       ```bash
-      npx hardhat ignition deploy ignition/modules/Marketpulse.ts --network etherlinkTestnet
+      npx hardhat ignition deploy ignition/modules/Marketpulse.ts --network etherlinkShadownet
       ```
 
       A successful output should look like this:
@@ -194,7 +199,7 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
 1. Run this command to verify your deployed contract, using the contract address as the value of `<CONTRACT_ADDRESS>`:
 
    ```bash
-   npx hardhat verify --network etherlinkTestnet <CONTRACT_ADDRESS>
+   npx hardhat verify --network etherlinkShadownet <CONTRACT_ADDRESS>
    ```
 
    The response should include the message "Successfully verified contract Marketpulse on the block explorer" and a link to the block explorer.
