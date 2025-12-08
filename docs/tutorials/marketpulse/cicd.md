@@ -34,7 +34,7 @@ Here is an example of one using the Github configuration files and [Vercel](http
              DEPLOYER_PRIVATE_KEY:
            uses: actions/setup-node@v4
            with:
-             node-version: 18
+             node-version: 22
              cache: 'npm'
          - run: npm ci
          - run: HARDHAT_VAR_DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }} npx hardhat compile
@@ -59,10 +59,10 @@ Here is an example of one using the Github configuration files and [Vercel](http
          - name: Use node
            uses: actions/setup-node@v4
            with:
-             node-version: 18
+             node-version: 22
              cache: 'npm'
          - run: npm ci
-         - run: yes | HARDHAT_VAR_DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }}  npx hardhat ignition deploy ignition/modules/Marketpulse.ts --verify --reset --network etherlinkTestnet
+         - run: yes | HARDHAT_VAR_DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }}  npx hardhat ignition deploy ignition/modules/Marketpulse.ts --verify --reset --network etherlinkShadownet
          - name: Cache hardhat-ignition
            uses: actions/upload-artifact@v4
            with:
@@ -88,11 +88,11 @@ Here is an example of one using the Github configuration files and [Vercel](http
          - name: Use node
            uses: actions/setup-node@v4
            with:
-             node-version: 18
+             node-version: 22
              cache: 'npm'
          - run: npm ci
            working-directory: ./app
-         - run: more ./ignition/deployments/chain-128123/deployed_addresses.json
+         - run: more ./ignition/deployments/chain-127823/deployed_addresses.json
          - run: npm run build
            working-directory: ./app
          - name: Cache app build
@@ -110,7 +110,7 @@ Here is an example of one using the Github configuration files and [Vercel](http
          - name: Use node
            uses: actions/setup-node@v4
            with:
-             node-version: 18
+             node-version: 22
              cache: 'npm'
          - name: Install Vercel CLI
            run: npm install -g vercel
