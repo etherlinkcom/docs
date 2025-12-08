@@ -144,7 +144,7 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
             },
             {
               network: "etherlinkTestnet",
-              chainId: 128123,
+              chainId: 127123,
               urls: {
                 apiURL: "https://shadownet.explorer.etherlink.com/api",
                 browserURL: "https://shadownet.explorer.etherlink.com",
