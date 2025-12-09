@@ -17,19 +17,20 @@ dependencies:
 
 1. Choose a name for the frontend project (such as `app`, which is what the examples later use), select the `React` framework, and select the `Typescript` language.
 
-1. Copy the images from the folder https://github.com/trilitech/tutorial-applications/tree/main/etherlink-marketpulse/app/public/ to the `app/public` folder of your application.
-
-1. Run the commands as in this example to install the dependencies and start the server:
+1. Run these commands to install the dependencies:
 
    ```bash
    cd app
    npm install
-   npm run dev
    ```
 
-   Now the Deno or Vite server is running a starter frontend application.
+1. From the `./app` folder, download some sample images for the frontend application:
 
-1. Stop the application.
+   ```bash
+   wget -O public/chiefs.png https://github.com/trilitech/tutorial-applications/raw/main/etherlink-marketpulse/app/public/chiefs.png
+   wget -O public/lions.png https://github.com/trilitech/tutorial-applications/raw/main/etherlink-marketpulse/app/public/lions.png
+   wget -O public/graph.png https://github.com/trilitech/tutorial-applications/raw/main/etherlink-marketpulse/app/public/graph.png
+   ```
 
 1. Within your frontend `./app` project, import the `Viem` library for blockchain interactions, `thirdweb` for the wallet connection and `bignumber` for calculations on large numbers:
 

@@ -7,13 +7,19 @@ dependencies:
 
 With blockchain development, testing is very important because you don't have the luxury to redeploy application updates as it. Hardhat provides you smart contract helpers on `chai` Testing framework to do so.
 
-1. Rename the default `./test/Counter.ts` test file to `./test/Marketpulse.ts`:
+1. Remove the default `./test/Counter.ts` test file:
 
    ```bash
-   mv ./test/Counter.ts ./test/Marketpulse.ts
+   rm ./test/Counter.ts
    ```
 
-1. Replace the default file with this code:
+1. Create a test file named `./test/Marketpulse.ts`:
+
+   ```bash
+   touch ./test/Marketpulse.ts
+   ```
+
+1. Put this code in the `./test/Marketpulse.ts` file:
 
    ```TypeScript
    import { expect } from "chai";
