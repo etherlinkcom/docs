@@ -129,6 +129,11 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
             chainType: "generic",
             name: "etherlinkShadownet",
             blockExplorers: {
+              etherscan: {
+                name: "EtherlinkExplorer",
+                apiUrl: "https://shadownet.explorer.etherlink.com/api",
+                url: "https://shadownet.explorer.etherlink.com",
+              },
               blockscout: {
                 name: "EtherlinkExplorer",
                 apiUrl: "https://shadownet.explorer.etherlink.com/api",
