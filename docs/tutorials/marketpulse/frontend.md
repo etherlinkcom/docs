@@ -909,7 +909,7 @@ dependencies:
 
    1. Disconnect and connect with another account in your wallet.
 
-   1. Select **Lions ** on the select box on the right corner, choose a small amount like **0.00001 XTZ**, and click the **Bet** button.
+   1. Select **Lions** on the select box on the right corner, choose a small amount like **0.00001 XTZ**, and click the **Bet** button.
 
    1. Confirm the transaction in your wallet.
 
