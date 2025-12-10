@@ -360,7 +360,7 @@ The following JSON code is an example response from the `eth_sendRawTransactionS
 The sequencer provides this confirmation as soon as it runs the transaction.
 For even faster confirmations, you can use WebSockets to subscribe to the `tez_newIncludedTransactions` or `tez_newPreconfirmedReceipts` events.
 These events provide confirmations of transactions that are ready to be executed and transactions that have been executed but not yet included in a block, respectively.
-See [Getting updates with WebSockets](/building-on-etherlink/websockets).
+See [Subscribing to instant confirmations](/building-on-etherlink/websockets#subscribing-to-instant-confirmations).
 
 :::
 
