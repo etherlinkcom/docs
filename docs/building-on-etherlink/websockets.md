@@ -171,8 +171,8 @@ Using WebSockets for instant confirmations requires at least version 0.49 of the
 
 :::note
 
-The Ethers.js library does not support custom WebSocket events and therefore you cannot use it to subscribe to instant confirmation events.
-For JavaScript/TypeScript, use the built-in Node.JS WebSocket library as in the examples below.
+The Ethers.js and Web3.js libraries do not support custom WebSocket events and therefore you cannot use them to subscribe to instant confirmation events.
+For JavaScript/TypeScript, use the built-in Node.JS WebSocket library as in the example below.
 
 :::
 
