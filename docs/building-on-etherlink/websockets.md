@@ -225,7 +225,7 @@ socket.addEventListener('error', error => {
 
 // TODO example responses?
 
-For more information about instant confirmations, see [Getting instant confirmations](/building-on-etherlink#getting-instant-confirmations)
+For more information about instant confirmations, see [Getting instant confirmations](/building-on-etherlink/transactions#getting-instant-confirmations)
 
 
 ## WebSocket subscriptions
