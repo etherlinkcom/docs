@@ -112,25 +112,6 @@ newBlocksSubscription.on('data', blockhead => {
 });
 ```
 
-This example listens for instant confirmations of upcoming transactions:
-
-```javascript
-import Web3 from 'web3';
-
-const web3Instance = new Web3(new Web3.providers.WebsocketProvider('ws://127.0.0.1:8545/ws'));
-
-// Subscribe to new instant confirmations
-const newConfirmationsSubscription = await web3Instance.eth.subscribe('tez_newIncludedTransactions');
-newConfirmationsSubscription.on('error', error => {
-  console.log('Error when subscribing to new instant confirmations:', error);
-});
-
-newConfirmationsSubscription.on('data', data => {
-  // Print information about transactions in the next block
-  console.log(data);
-});
-```
-
 This example subscribes to the event logs for an ERC-20 contract and logs information about each transfer event:
 
 ```javascript
