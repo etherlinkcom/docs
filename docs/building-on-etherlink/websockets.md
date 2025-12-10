@@ -223,7 +223,66 @@ socket.addEventListener('error', error => {
 });
 ```
 
-// TODO example responses?
+The response to the `tez_newIncludedTransactions` event includes basic information about the transaction including its hash but not the gas used (because the transaction has not been executed yet), as in this example:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "eth_subscription",
+  "params": {
+    "result": {
+      "type": "0x2",
+      "chainId": "0x1f308",
+      "hash": "0xfbb0025e811b8bf37034e508da4740c68164c33947089b1c22119be55258a3e1",
+      "nonce": "0x7",
+      "blockHash": null,
+      "blockNumber": null,
+      "transactionIndex": null,
+      "from": "0x45ff91b4bf16ac9907cf4a11436f9ce61be0650d",
+      "to": "0x46899d4fa5ba90e3ef3b7ae8aae053c662c1ca1d",
+      "value": "0x16345785d8a0000",
+      "gas": "0x98496",
+      "maxFeePerGas": "0x3b9aca00",
+      "maxPriorityFeePerGas": "0x0",
+      "gasPrice": "0x3b9aca00",
+      "accessList": [],
+      "input": "0x",
+      "v": "0x1",
+      "r": "0xe4d96c84fbf0ea73fb39ba5551acce44a41ba03b4502da1d93f1e4a02ce51a3e",
+      "s": "0x6bc2aaa1580b58213e6e6586ae7b38351c2304df370853c74812ae09f5e74275"
+    },
+    "subscription": "0x40f582349eeac9b85b9ba3d936de0ebb"
+  }
+}
+```
+
+The response to the `tez_newPreconfirmedReceipts` event is similar but also includes the number of the block and  the gas used, as in this example:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "eth_subscription",
+  "params": {
+    "result": {
+      "transactionHash": "0x2096d81abf605780b56c0db5f415e0bff29c82fbd73912348106ac8c61a808cc",
+      "transactionIndex": "0x1",
+      "blockHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "blockNumber": "0x2e4da9",
+      "from": "0x45ff91b4bf16ac9907cf4a11436f9ce61be0650d",
+      "to": "0x46899d4fa5ba90e3ef3b7ae8aae053c662c1ca1d",
+      "cumulativeGasUsed": "0x5208",
+      "effectiveGasPrice": "0x3b9aca00",
+      "gasUsed": "0x5208",
+      "logs": [],
+      "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "type": "0x2",
+      "status": "0x1",
+      "contractAddress": null
+    },
+    "subscription": "0x221fe712815043cf05255c8b568557c5"
+  }
+}
+```
 
 For more information about instant confirmations, see [Getting instant confirmations](/building-on-etherlink/transactions#getting-instant-confirmations)
 
