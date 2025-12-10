@@ -183,6 +183,70 @@ console.log("Listening for Transfer events...");
 
 See the documentation for your WebSocket client library for how to manage the connection, receive messages, and close the connection.
 
+## Subscribing to instant confirmations
+
+You can subscribe to WebSockets to receive instant confirmations, which are notices from the sequencer that a transaction will appear in the next block.
+Using WebSockets for instant confirmations requires at least version 0.49 of the `octez-evm-node` binary.
+
+:::note
+
+The Ethers.js library does not support custom WebSocket events and therefore you cannot use it to subscribe to instant confirmation events.
+For JavaScript/TypeScript, use the built-in Node.JS WebSocket library as in the examples below.
+
+:::
+
+Etherlink provides two custom WebSocket events that you can subscribe to for notice of upcoming transactions:
+
+- `tez_newIncludedTransactions`: Provides confirmations for transactions that the sequencer intends to put in the next block **before** it has executed them.
+
+- `tez_newPreconfirmedReceipts`: Provides confirmations for transactions that the sequencer **has executed** and intends to put in the next block.
+
+For example, this JavaScript code subscribes to these events and prints information about them to the log:
+
+```javascript
+// Create a WebSocket connection to a local EVM node
+const socket = new WebSocket('ws://127.0.0.1:8545/ws');
+
+// When the connection is established, subscribe to events
+socket.addEventListener('open', _event => {
+  console.log('WebSocket connection established!');
+  const includedTxPayload = {
+    jsonrpc: "2.0",
+    id: 1,
+    method: "eth_subscribe",
+    params: ["tez_newIncludedTransactions"],
+  };
+  socket.send(JSON.stringify(includedTxPayload));
+  const preconfirmedTxPayload = {
+    jsonrpc: "2.0",
+    id: 1,
+    method: "eth_subscribe",
+    params: ["tez_newPreconfirmedReceipts"],
+  };
+  socket.send(JSON.stringify(preconfirmedTxPayload));
+});
+
+// Listen for messages and executes when a message is received from the server.
+socket.addEventListener('message', event => {
+  console.log('Message from server: ', event.data);
+});
+
+// Executes when the connection is closed, providing the close code and reason.
+socket.addEventListener('close', event => {
+  console.log('WebSocket connection closed:', event.code, event.reason);
+});
+
+// Executes if an error occurs during the WebSocket communication.
+socket.addEventListener('error', error => {
+  console.error('WebSocket error:', error);
+});
+```
+
+// TODO example responses?
+
+For more information about instant confirmations, see [Getting instant confirmations](/building-on-etherlink#getting-instant-confirmations)
+
+
 ## WebSocket subscriptions
 
 You can use WebSockets to subscribe to these Etherlink events:
