@@ -179,8 +179,10 @@ For JavaScript/TypeScript, use the built-in Node.JS WebSocket library as in the 
 Etherlink provides two custom WebSocket events that you can subscribe to for notice of upcoming transactions:
 
 - `tez_newIncludedTransactions`: Provides confirmations for transactions that the sequencer intends to put in the next block **before** it has executed them.
+Returns a transaction object.
 
 - `tez_newPreconfirmedReceipts`: Provides confirmations for transactions that the sequencer **has executed** and intends to put in the next block.
+Returns a transaction receipt.
 
 For example, this JavaScript code subscribes to these events and prints information about them to the log:
 
@@ -223,7 +225,7 @@ socket.addEventListener('error', error => {
 });
 ```
 
-The response to the `tez_newIncludedTransactions` event includes basic information about the transaction including its hash but not the gas used (because the transaction has not been executed yet), as in this example:
+The response to the `tez_newIncludedTransactions` event (a transaction object) includes basic information about the transaction including its hash but not the gas used (because the transaction has not been executed yet), as in this example:
 
 ```json
 {
@@ -256,7 +258,7 @@ The response to the `tez_newIncludedTransactions` event includes basic informati
 }
 ```
 
-The response to the `tez_newPreconfirmedReceipts` event is similar but also includes the number of the block and  the gas used, as in this example:
+The response to the `tez_newPreconfirmedReceipts` event (a transaction receipt) is similar but also includes the number of the block and  the gas used, as in this example:
 
 ```json
 {
