@@ -907,7 +907,8 @@ dependencies:
    1. Confirm the transaction in your wallet.
    If you don't have enough XTZ in your account, the application shows an `OutOfFund` error.
 
-   1. Disconnect and connect with another account in your wallet.
+   1. Optional: Disconnect and connect with another account in your wallet.
+   You can also use the same account to make a second bet.
 
    1. Select **Lions** on the select box on the right corner, choose a small amount like **0.00001 XTZ**, and click the **Bet** button.
 
