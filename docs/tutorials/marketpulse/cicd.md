@@ -150,7 +150,7 @@ Here is an example of one using the Github configuration files and [Vercel](http
 1. Set these variables in the GitHub pipeline configuration:
 
    - `DEPLOYER_PRIVATE_KEY`: The Etherlink account secret `private key` you need to use to deploy with Hardhat. This variable overrides the default environment variable mechanism of HardHat.
-   - `VERCEL_TOKEN`: Your personal Vercel token that you need to create on your Vercel account. For more information about configuring Vercel, see https://vercel.com/guides/how-can-i-use-github-actions-with-vercel.
+   - `VERCEL_TOKEN`: Your personal Vercel token that you need to create on your Vercel account. For more information about configuring Vercel, see https://vercel.com/kb/guide/how-do-i-use-a-vercel-api-access-token.
 
    You can set these variables in two ways:
 
