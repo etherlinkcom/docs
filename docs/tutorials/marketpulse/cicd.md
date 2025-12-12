@@ -30,8 +30,6 @@ Here is an example of one using the Github configuration files and [Vercel](http
          - name: Check out repository code
            uses: actions/checkout@v3
          - name: Use node
-           env:
-             DEPLOYER_PRIVATE_KEY:
            uses: actions/setup-node@v4
            with:
              node-version: 22
