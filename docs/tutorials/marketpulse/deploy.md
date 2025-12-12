@@ -9,13 +9,20 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
 
 1. Deploy the contract locally with Hardhat:
 
-   1. Prepare a module for the ignition plugin of Hardhat. The module is used as the default script for deployment. Rename the default file first:
+   1. Remove the default module for the ignition plugin of Hardhat.
+   This module is used as the default script for deployment:
 
       ```bash
-      mv ./ignition/modules/Counter.ts ./ignition/modules/Marketpulse.ts
+      rm ./ignition/modules/Counter.ts
       ```
 
-   1. Replace the contents of the file with this code:
+   1. Create a module to deploy your contract:
+
+      ```bash
+      touch ./ignition/modules/Marketpulse.ts
+      ```
+
+   1. Put this code in the file:
 
       ```TypeScript
       // This setup uses Hardhat Ignition to manage smart contract deployments.
