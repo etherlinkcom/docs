@@ -91,6 +91,12 @@ For more information, see [Announcing Ebisu: A 5th Upgrade proposal for Etherlin
 
 ## Etherlink 6.0 (Farfadet)
 
+:::note
+
+Etherlink 6.0 requires version 0.48 or later of the `octez-evm-node` binary.
+
+:::
+
 The Etherlink 6.0 upgrade includes:
 
 - Support for EVM Osaka, including support for the count leading zeroes (CLZ) opcode (EIP-7939), the ecp256r1 Curve Support precompile (EIP-7951), and the increase in ModExp gas cost (EIP-7883)

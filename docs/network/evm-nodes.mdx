@@ -32,8 +32,7 @@ If you don't want to see all of the options and settings for the EVM node, you c
 1. Download the latest release of the `octez-evm-node` binary from https://gitlab.com/tezos/tezos/-/releases.
 
    :::note
-   As of August 1st 2025, Etherlink Mainnet and Ghostnet Testnet require at least version 0.35 of the `octez-evm-node` binary.
-   Etherlink Shadownet Testnet requires at least version 0.44 of the `octez-evm-node` binary.
+   As of version 6.0, Etherlink requires at least version 0.48 of the `octez-evm-node` binary.
    :::
 
 1. Run the `octez-evm-node run observer` command to start the node as an observer:
@@ -71,7 +70,7 @@ If you don't want to see all of the options and settings for the EVM node, you c
       </TabItem>
       <TabItem value="shadownet" label="Etherlink Shadownet Testnet">
 
-      With version 0.44 of the EVM node or later, use this command for Etherlink Shadownet Testnet:
+      Use this command for Etherlink Shadownet Testnet:
 
       ```bash
       octez-evm-node run observer \
@@ -109,10 +108,6 @@ To switch modes, see [Switching history modes](#switching-history-modes).
 
 The easiest way to get the `octez-evm-node` binary is to download the binaries distributed as part of its latest release from https://gitlab.com/tezos/tezos/-/releases.
 The release page provides static binaries for Linux systems (for amd64 and arm64 architectures).
-
-:::note
-As of August 1st 2025, Etherlink Mainnet and Etherlink Ghostnet or Shadownet Testnet require at least version 0.35 of the `octez-evm-node` binary.
-:::
 
 As an alternative, you can use the minimal Docker image [tezos/tezos-bare](https://hub.docker.com/r/tezos/tezos-bare/tags?name=octez-evm-node) with a tag that includes `octez-evm-node`.
 These images contain the correct version of the binary. Docker examples below use `tezos/tezos-bare:octez-evm-node-latest` which will always be the most recent release.
