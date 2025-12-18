@@ -16,13 +16,7 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
       rm ./ignition/modules/Counter.ts
       ```
 
-   1. Create a module to deploy your contract:
-
-      ```bash
-      touch ./ignition/modules/Marketpulse.ts
-      ```
-
-   1. Put this code in the file:
+   1. Create a module to deploy your contract named `./ignition/modules/Marketpulse.ts` with the following content:
 
       ```TypeScript
       // This setup uses Hardhat Ignition to manage smart contract deployments.
@@ -49,7 +43,7 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
       npx hardhat node
       ```
 
-   1. In a different terminal window, deploy the contract using Hardhat ignition:
+   1. In a different terminal window, within the same directory, deploy the contract using Hardhat ignition:
 
       ```bash
       npx hardhat ignition deploy ignition/modules/Marketpulse.ts --reset --network localhost
@@ -149,7 +143,7 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
         },
         verify: {
           blockscout: {
-            enabled: true,
+            enabled: false,
           },
           etherscan: {
             apiKey: "DUMMY",

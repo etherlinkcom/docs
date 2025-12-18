@@ -7,13 +7,7 @@ Follow these steps to set up a Solidity smart contract:
 
 1. Remove the default Solidity smart contract files `Counter.sol` and `Counter.t.sol` in the `./contracts` folder.
 
-1. Create a new file named `Marketpulse.sol` in the `./contracts` folder.
-
-   ```bash
-   touch ./contracts/Marketpulse.sol
-   ```
-
-1. Put this code in the file:
+1. Create a new file named `./contracts/Marketpulse.sol` with the following content:
 
    ```Solidity
    // SPDX-License-Identifier: MIT

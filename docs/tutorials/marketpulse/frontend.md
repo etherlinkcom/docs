@@ -5,17 +5,14 @@ dependencies:
   viem: 2.41.2
 ---
 
-`Deno` is not mandatory as you can still use `npm`, but we use it on this tutorial. You can install it with [this link](https://docs.deno.com/runtime/getting_started/installation/)
-
 1. Create a frontend app on the same project root directory. Here we use `Vite` and `React` to start a default project;
 
    ```bash
-   deno run -A npm:create-vite@latest
+   npm create vite@latest
    ```
 
-   If you have trouble with Deno, as on some Mac computers, you can create a non-deno project that works in a similar way by running this command: `npm create vite@latest`.
-
 1. Choose a name for the frontend project (such as `app`, which is what the examples later use), select the `React` framework, and select the `Typescript` language.
+If prompted, don't use the experimental version of Vite, and choose to not install and run immediately, because we have a few more settings to do below.
 
 1. Run these commands to install the dependencies:
 
@@ -54,13 +51,7 @@ dependencies:
 
 1. Run `npm i` to call the postinstall script automatically. You should see new files and folders in the `./src` folder of the frontend application.
 
-1. Create an utility file to manage Viem errors. Better than the technical defaults and not helpful ones
-
-   ```bash
-   touch src/DecodeEvmTransactionLogsArgs.ts
-   ```
-
-1. Put this code in the `./app/src/DecodeEvmTransactionLogsArgs.ts` file:
+1. Create a utility file called `app/src/DecodeEvmTransactionLogsArgs.ts` to manage Viem errors (better than the technical defaults and not helpful ones), with this content:
 
    ```Typescript
    import {
@@ -145,7 +136,7 @@ dependencies:
 
    ```
 
-1. Edit `./app/src/main.tsx` to add a `Thirdweb` provider around your application. In the following example, replace **line 7** `<THIRDWEB_CLIENTID>` with your own `clientId` configured on the [Thirdweb dashboard here](https://portal.thirdweb.com/typescript/v4/getting-started#initialize-the-sdk):
+1. Edit `./app/src/main.tsx` to add a `Thirdweb` provider around your application, by replacing its content with the one below. Then, replace on **line 8** the placeholder `<THIRDWEB_CLIENTID>` (including the delimiters `<` and `>`!) with your own `clientId` configured on the [Thirdweb dashboard here](https://portal.thirdweb.com/typescript/v4/getting-started#initialize-the-sdk):
 
    ```Typescript
    import { createRoot } from "react-dom/client";
@@ -890,9 +881,12 @@ dependencies:
    }
    ```
 
-1. Run the application:
+1. Edit the file `app/tsconfig.app.json` to set both "verbatimModuleSyntax" and "erasableSyntaxOnly" to "false".
+
+1. Build and run the application:
 
    ```bash
+   npm run build
    npm run dev
    ```
 

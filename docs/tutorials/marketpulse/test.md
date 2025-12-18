@@ -13,13 +13,7 @@ With blockchain development, testing is very important because you don't have th
    rm ./test/Counter.ts
    ```
 
-1. Create a test file named `./test/Marketpulse.ts`:
-
-   ```bash
-   touch ./test/Marketpulse.ts
-   ```
-
-1. Put this code in the `./test/Marketpulse.ts` file:
+1. Create a test file named `./test/Marketpulse.ts` with the following content:
 
    ```TypeScript
    import { expect } from "chai";
