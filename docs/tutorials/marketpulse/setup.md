@@ -15,7 +15,7 @@ It provides low-level, efficient blockchain interactions with minimal abstractio
 
 1. [Install npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
-1. Initialize an Node project with NPM:
+1. Initialize an Node project with NPM in a fresh directory:
 
    ```bash
    npm init -y
