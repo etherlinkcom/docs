@@ -35,8 +35,8 @@ Here is an example of one using the Github configuration files and [Vercel](http
              node-version: 22
              cache: 'npm'
          - run: npm ci
-         - run: HARDHAT_VAR_DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }} npx hardhat compile
-         - run: HARDHAT_VAR_DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }} npx hardhat test
+         - run: DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }} npx hardhat compile
+         - run: DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }} npx hardhat test
          - name: Cache build-hardhat-artifacts
            uses: actions/upload-artifact@v4
            with:
@@ -60,7 +60,7 @@ Here is an example of one using the Github configuration files and [Vercel](http
              node-version: 22
              cache: 'npm'
          - run: npm ci
-         - run: yes | HARDHAT_VAR_DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }}  npx hardhat ignition deploy ignition/modules/Marketpulse.ts --verify --reset --network etherlinkShadownet
+         - run: yes | DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }} npx hardhat ignition deploy ignition/modules/Marketpulse.ts --verify --reset --network etherlinkShadownet
          - name: Cache hardhat-ignition
            uses: actions/upload-artifact@v4
            with:
