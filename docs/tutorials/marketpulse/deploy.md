@@ -158,7 +158,7 @@ Deploy the contract locally is fine for doing simple tests, but we recommend to 
 
    1. Set up an Etherlink Shadownet Testnet account with some native tokens to deploy the contract. See [Using your wallet](/get-started/using-your-wallet) connect your wallet to Etherlink. Then use the faucet to get XTZ tokens on Etherlink Shadownet Testnet, as described in [Getting testnet tokens](/get-started/getting-testnet-tokens).
 
-   1. Export your account private key from your wallet application.
+   1. Retrieve your account private key, e.g. using your wallet.
 
    1. Set the private key (represented in this example as `<YOUR_ETHERLINK_KEY>`) as the value of the `DEPLOYER_PRIVATE_KEY` environment variable by running this command:
 
