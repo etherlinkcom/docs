@@ -30,15 +30,13 @@ Here is an example of one using the Github configuration files and [Vercel](http
          - name: Check out repository code
            uses: actions/checkout@v3
          - name: Use node
-           env:
-             DEPLOYER_PRIVATE_KEY:
            uses: actions/setup-node@v4
            with:
-             node-version: 18
+             node-version: 22
              cache: 'npm'
          - run: npm ci
-         - run: HARDHAT_VAR_DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }} npx hardhat compile
-         - run: HARDHAT_VAR_DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }} npx hardhat test
+         - run: DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }} npx hardhat compile
+         - run: DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }} npx hardhat test
          - name: Cache build-hardhat-artifacts
            uses: actions/upload-artifact@v4
            with:
@@ -59,10 +57,10 @@ Here is an example of one using the Github configuration files and [Vercel](http
          - name: Use node
            uses: actions/setup-node@v4
            with:
-             node-version: 18
+             node-version: 22
              cache: 'npm'
          - run: npm ci
-         - run: yes | HARDHAT_VAR_DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }}  npx hardhat ignition deploy ignition/modules/Marketpulse.ts --verify --reset --network etherlinkTestnet
+         - run: yes | DEPLOYER_PRIVATE_KEY=${{ secrets.DEPLOYER_PRIVATE_KEY }} npx hardhat ignition deploy ignition/modules/Marketpulse.ts --verify --reset --network etherlinkShadownet
          - name: Cache hardhat-ignition
            uses: actions/upload-artifact@v4
            with:
@@ -88,11 +86,11 @@ Here is an example of one using the Github configuration files and [Vercel](http
          - name: Use node
            uses: actions/setup-node@v4
            with:
-             node-version: 18
+             node-version: 22
              cache: 'npm'
          - run: npm ci
            working-directory: ./app
-         - run: more ./ignition/deployments/chain-128123/deployed_addresses.json
+         - run: more ./ignition/deployments/chain-127823/deployed_addresses.json
          - run: npm run build
            working-directory: ./app
          - name: Cache app build
@@ -110,7 +108,7 @@ Here is an example of one using the Github configuration files and [Vercel](http
          - name: Use node
            uses: actions/setup-node@v4
            with:
-             node-version: 18
+             node-version: 22
              cache: 'npm'
          - name: Install Vercel CLI
            run: npm install -g vercel
@@ -150,7 +148,7 @@ Here is an example of one using the Github configuration files and [Vercel](http
 1. Set these variables in the GitHub pipeline configuration:
 
    - `DEPLOYER_PRIVATE_KEY`: The Etherlink account secret `private key` you need to use to deploy with Hardhat. This variable overrides the default environment variable mechanism of HardHat.
-   - `VERCEL_TOKEN`: Your personal Vercel token that you need to create on your Vercel account. For more information about configuring Vercel, see https://vercel.com/guides/how-can-i-use-github-actions-with-vercel.
+   - `VERCEL_TOKEN`: Your personal Vercel token that you need to create on your Vercel account. For more information about configuring Vercel, see https://vercel.com/kb/guide/how-do-i-use-a-vercel-api-access-token.
 
    You can set these variables in two ways:
 

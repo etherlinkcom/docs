@@ -1,24 +1,26 @@
 ---
 title: Test the contract
 dependencies:
-  viem: 0
+  viem: 2.41.2
+  hardhat: 3.0.17
 ---
 
 With blockchain development, testing is very important because you don't have the luxury to redeploy application updates as it. Hardhat provides you smart contract helpers on `chai` Testing framework to do so.
 
-1. Rename the default `./test/Lock.ts` test file to `./test/Marketpulse.ts`:
+1. Remove the default `./test/Counter.ts` test file:
 
    ```bash
-   mv ./test/Lock.ts ./test/Marketpulse.ts
+   rm ./test/Counter.ts
    ```
 
-1. Replace the default file with this code:
+1. Create a test file named `./test/Marketpulse.ts` with the following content:
 
    ```TypeScript
-   import { loadFixture } from "@nomicfoundation/hardhat-toolbox-viem/network-helpers";
    import { expect } from "chai";
    import hre from "hardhat";
    import { ContractFunctionExecutionError, parseEther } from "viem";
+   import { describe, it } from "node:test";
+   const { viem, networkHelpers } = await hre.network.connect();
 
    //constants and local variables
    const ODD_DECIMALS = 10;
@@ -38,19 +40,17 @@ With blockchain development, testing is very important because you don't have th
      // and reset Hardhat Network to that snapshot in every test.
      async function deployContractFixture() {
        // Contracts are deployed using the first signer/account by default
-       const [owner, bob] = await hre.viem.getWalletClients();
+       const [owner, bob] = await viem.getWalletClients();
 
        // Set block base fee to zero because we want exact calculation checks without network fees
-       await hre.network.provider.send("hardhat_setNextBlockBaseFeePerGas", [
-         "0x0",
-       ]);
+       await networkHelpers.setNextBlockBaseFeePerGas("0x0");
 
-       const marketpulseContract = await hre.viem.deployContract(
+       const marketpulseContract = await viem.deployContract(
          "Marketpulse",
          []
        );
 
-       const publicClient = await hre.viem.getPublicClient();
+       const publicClient = await viem.getPublicClient();
 
        initAliceAmount = await publicClient.getBalance({
          address: owner.account.address,
@@ -70,7 +70,7 @@ With blockchain development, testing is very important because you don't have th
 
      describe("init function", function () {
        it("should be initialized", async function () {
-         const { marketpulseContract, owner } = await loadFixture(
+         const { marketpulseContract, owner } = await networkHelpers.loadFixture(
            deployContractFixture
          );
 
@@ -82,7 +82,7 @@ With blockchain development, testing is very important because you don't have th
        });
 
        it("should return Pong", async function () {
-         const { marketpulseContract, publicClient } = await loadFixture(
+         const { marketpulseContract, publicClient } = await networkHelpers.loadFixture(
            deployContractFixture
          );
 
@@ -112,7 +112,7 @@ With blockchain development, testing is very important because you don't have th
            owner: alice,
            publicClient,
            bob,
-         } = await loadFixture(deployContractFixture);
+         } = await networkHelpers.loadFixture(deployContractFixture);
 
          expect(await marketpulseContract.read.betKeys.length).to.equal(0);
 
@@ -160,9 +160,7 @@ With blockchain development, testing is very important because you don't have th
          console.log("Lions bet for 2 ethers should return a hash");
 
          // Set block base fee to zero
-         await hre.network.provider.send("hardhat_setNextBlockBaseFeePerGas", [
-           "0x0",
-         ]);
+         await networkHelpers.setNextBlockBaseFeePerGas("0x0");
 
          const betLions2IdHash = await marketpulseContract.write.bet(
            ["lions", parseEther("2")],

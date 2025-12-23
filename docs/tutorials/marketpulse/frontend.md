@@ -1,35 +1,33 @@
 ---
 title: Create the frontend application
 dependencies:
-  vite: 0
-  viem: 0
+  vite: 6.0.1
+  viem: 2.41.2
 ---
-
-`Deno` is not mandatory as you can still use `npm`, but we use it on this tutorial. You can install it with [this link](https://docs.deno.com/runtime/getting_started/installation/)
 
 1. Create a frontend app on the same project root directory. Here we use `Vite` and `React` to start a default project;
 
    ```bash
-   deno run -A npm:create-vite@latest
+   npm create vite@latest
    ```
 
-   If you have trouble with Deno, as on some Mac computers, you can create a non-deno project that works in a similar way by running this command: `npm create vite@latest`.
-
 1. Choose a name for the frontend project (such as `app`, which is what the examples later use), select the `React` framework, and select the `Typescript` language.
+If prompted, don't use the experimental version of Vite, and choose to not install and run immediately, because we have a few more settings to do below.
 
-1. Copy the images from the folder https://github.com/trilitech/tutorial-applications/tree/main/etherlink-marketpulse/app/public/ to the `app/public` folder of your application.
-
-1. Run the commands as in this example to install the dependencies and start the server:
+1. Run these commands to install the dependencies:
 
    ```bash
    cd app
    npm install
-   npm run dev
    ```
 
-   Now the Deno or Vite server is running a starter frontend application.
+1. From the `./app` folder, download some sample images for the frontend application:
 
-1. Stop the application.
+   ```bash
+   wget -O public/chiefs.png https://github.com/trilitech/tutorial-applications/raw/main/etherlink-marketpulse/app/public/chiefs.png
+   wget -O public/lions.png https://github.com/trilitech/tutorial-applications/raw/main/etherlink-marketpulse/app/public/lions.png
+   wget -O public/graph.png https://github.com/trilitech/tutorial-applications/raw/main/etherlink-marketpulse/app/public/graph.png
+   ```
 
 1. Within your frontend `./app` project, import the `Viem` library for blockchain interactions, `thirdweb` for the wallet connection and `bignumber` for calculations on large numbers:
 
@@ -46,20 +44,14 @@ dependencies:
 1. Add this line to the `scripts` section of the `./app/package.json` file in the frontend application:
 
    ```json
-        "postinstall": "cp ../ignition/deployments/chain-128123/deployed_addresses.json ./src  &&  typechain --target=ethers-v6 --out-dir=./src/typechain-types --show-stack-traces ../artifacts/contracts/Marketpulse.sol/Marketpulse.json",
+        "postinstall": "cp ../ignition/deployments/chain-127823/deployed_addresses.json ./src  &&  typechain --target=ethers-v6 --out-dir=./src/typechain-types --show-stack-traces ../artifacts/contracts/Marketpulse.sol/Marketpulse.json",
    ```
 
    This script copies the output address of the last deployed contract into your source files and calls `typechain` to generate types from the ABI file from the Hardhat folders.
 
 1. Run `npm i` to call the postinstall script automatically. You should see new files and folders in the `./src` folder of the frontend application.
 
-1. Create an utility file to manage Viem errors. Better than the technical defaults and not helpful ones
-
-   ```bash
-   touch src/DecodeEvmTransactionLogsArgs.ts
-   ```
-
-1. Put this code in the `./app/src/DecodeEvmTransactionLogsArgs.ts` file:
+1. Create a utility file called `app/src/DecodeEvmTransactionLogsArgs.ts` to manage Viem errors (better than the technical defaults and not helpful ones), with this content:
 
    ```Typescript
    import {
@@ -144,7 +136,7 @@ dependencies:
 
    ```
 
-1. Edit `./app/src/main.tsx` to add a `Thirdweb` provider around your application. In the following example, replace **line 7** `<THIRDWEB_CLIENTID>` with your own `clientId` configured on the [Thirdweb dashboard here](https://portal.thirdweb.com/typescript/v4/getting-started#initialize-the-sdk):
+1. Edit `./app/src/main.tsx` to add a `Thirdweb` provider around your application, by replacing its content with the one below. Then, replace on **line 8** the placeholder `<THIRDWEB_CLIENTID>` (including the delimiters `<` and `>`!) with your own `clientId` configured on the [Thirdweb dashboard here](https://portal.thirdweb.com/typescript/v4/getting-started#initialize-the-sdk):
 
    ```Typescript
    import { createRoot } from "react-dom/client";
@@ -187,7 +179,7 @@ dependencies:
    import { ConnectButton, useActiveAccount } from "thirdweb/react";
    import { createWallet, inAppWallet } from "thirdweb/wallets";
    import { parseEther } from "viem";
-   import { etherlinkTestnet } from "viem/chains";
+   import { etherlinkShadownetTestnet } from "viem/chains";
    import { extractErrorDetails } from "./DecodeEvmTransactionLogsArgs";
    import CONTRACT_ADDRESS_JSON from "./deployed_addresses.json";
 
@@ -218,6 +210,13 @@ dependencies:
    export default function App({ thirdwebClient }: AppProps) {
      console.log("*************App");
 
+     const marketPulseContract = {
+       abi: Marketpulse__factory.abi,
+       client: thirdwebClient,
+       chain: defineChain(etherlinkShadownetTestnet.id),
+       address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
+     }
+
      const account = useActiveAccount();
 
      const [options, setOptions] = useState<Map<string, bigint>>(new Map());
@@ -235,45 +234,25 @@ dependencies:
          console.log("No address...");
        } else {
          const dataStatus = await readContract({
-           contract: getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           }),
+           contract: getContract(marketPulseContract),
            method: "status",
            params: [],
          });
 
          const dataWinner = await readContract({
-           contract: getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           }),
+           contract: getContract(marketPulseContract),
            method: "winner",
            params: [],
          });
 
          const dataFEES = await readContract({
-           contract: getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           }),
+           contract: getContract(marketPulseContract),
            method: "FEES",
            params: [],
          });
 
          const dataBetKeys = await readContract({
-           contract: getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           }),
+           contract: getContract(marketPulseContract),
            method: "getBetKeys",
            params: [],
          });
@@ -310,13 +289,7 @@ dependencies:
              betKeys.map(
                async (betKey) =>
                  (await readContract({
-                   contract: getContract({
-                     abi: Marketpulse__factory.abi,
-                     client: thirdwebClient,
-                     chain: defineChain(etherlinkTestnet.id),
-                     address:
-                       CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-                   }),
+                   contract: getContract(marketPulseContract),
                    method: "getBets",
                    params: [betKey],
                  })) as unknown as Marketpulse.BetStruct
@@ -348,12 +321,7 @@ dependencies:
        const handlePing = async () => {
          try {
            const preparedContractCall = await prepareContractCall({
-             contract: getContract({
-               abi: Marketpulse__factory.abi,
-               client: thirdwebClient,
-               chain: defineChain(etherlinkTestnet.id),
-               address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-             }),
+             contract: getContract(marketPulseContract),
              method: "ping",
              params: [],
            });
@@ -368,7 +336,7 @@ dependencies:
            //wait for tx to be included on a block
            const receipt = await waitForReceipt({
              client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
+             chain: defineChain(etherlinkShadownetTestnet.id),
              transactionHash: transaction.transactionHash,
            });
 
@@ -398,12 +366,7 @@ dependencies:
 
        const runFunction = async () => {
          try {
-           const contract = getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           });
+           const contract = getContract(marketPulseContract);
 
            const preparedContractCall = await prepareContractCall({
              contract,
@@ -420,7 +383,7 @@ dependencies:
            //wait for tx to be included on a block
            const receipt = await waitForReceipt({
              client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
+             chain: defineChain(etherlinkShadownetTestnet.id),
              transactionHash: transaction.transactionHash,
            });
 
@@ -559,12 +522,7 @@ dependencies:
      const resolve = async (option: string) => {
        try {
          const preparedContractCall = await prepareContractCall({
-           contract: getContract({
-             abi: Marketpulse__factory.abi,
-             client: thirdwebClient,
-             chain: defineChain(etherlinkTestnet.id),
-             address: CONTRACT_ADDRESS_JSON["MarketpulseModule#Marketpulse"],
-           }),
+           contract: getContract(marketPulseContract),
            method: "resolveResult",
            params: [option, BET_RESULT.WIN],
          });
@@ -579,7 +537,7 @@ dependencies:
          //wait for tx to be included on a block
          const receipt = await waitForReceipt({
            client: thirdwebClient,
-           chain: defineChain(etherlinkTestnet.id),
+           chain: defineChain(etherlinkShadownetTestnet.id),
            transactionHash: transaction.transactionHash,
          });
 
@@ -605,7 +563,7 @@ dependencies:
                  client={thirdwebClient}
                  wallets={wallets}
                  connectModal={{ size: "compact" }}
-                 chain={defineChain(etherlinkTestnet.id)}
+                 chain={defineChain(etherlinkShadownetTestnet.id)}
                />
              </div>
            </span>
@@ -615,7 +573,7 @@ dependencies:
            <div style={{ width: "calc(66vw - 4rem)" }}>
              <img
                style={{ maxHeight: "40vh" }}
-               src="https://zamrokk.github.io/marketpulse/images/graph.png"
+               src="graph.png"
              />
              <hr />
 
@@ -636,7 +594,6 @@ dependencies:
                            <img
                              style={{ objectFit: "cover", height: "inherit" }}
                              src={
-                               "https://zamrokk.github.io/marketpulse/images/" +
                                option +
                                ".png"
                              }
@@ -924,9 +881,12 @@ dependencies:
    }
    ```
 
-1. Run the application:
+1. Edit the file `app/tsconfig.app.json` to set both "verbatimModuleSyntax" and "erasableSyntaxOnly" to "false".
+
+1. Build and run the application:
 
    ```bash
+   npm run build
    npm run dev
    ```
 
@@ -936,21 +896,22 @@ dependencies:
 
 1. Run a betting scenario:
 
-   1. Select ** Chiefs** on the select box on the right corner, choose a small amount like **0.00001 XTZ**, and click the **Bet** button.
+   1. Select **Chiefs** on the select box on the right corner, choose a small amount like **0.00001 XTZ**, and click the **Bet** button.
 
    1. Confirm the transaction in your wallet.
    If you don't have enough XTZ in your account, the application shows an `OutOfFund` error.
 
-   1. Disconnect and connect with another account in your wallet.
+   1. Optional: Disconnect and connect with another account in your wallet.
+   You can also use the same account to make a second bet.
 
-   1. Select **Lions ** on the select box on the right corner, choose a small amount like **0.00001 XTZ**, and click the **Bet** button.
+   1. Select **Lions** on the select box on the right corner, choose a small amount like **0.00001 XTZ**, and click the **Bet** button.
 
    1. Confirm the transaction in your wallet.
 
       Both teams have 50% of chance to win. Note: Default platform fees have been set to 10%, and the odds calculation takes those fees into account.
 
-   1. Click one of the **Winner** buttons to resolve the poll.
+   1. Connect as the account that you deployed the contract with (the admin) and click one of the **Winner** buttons to resolve the poll.
 
       The page's right-hand corner refreshes and displays the winner of the poll and the application automatically pays the winning bets.
 
-   1. Find your transaction `resolveResult` on the Etherlink Ghostnet Testnet explorer at `https://testnet.explorer.etherlink.com`. In the **Transaction details>Internal txns tab**, you should see, if you won something, the expected amount transferred to you from the smart contract address.
+   1. Find your transaction `resolveResult` on the Etherlink Shadownet Testnet explorer at `https://shadownet.explorer.etherlink.com`. In the **Transaction details>Internal txns tab**, you should see, if you won something, the expected amount transferred to you from the smart contract address.
