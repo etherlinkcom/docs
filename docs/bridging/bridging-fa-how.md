@@ -32,7 +32,7 @@ The process of bridging FA-compatible tokens from layer 1 to Etherlink (also kno
    For information about token access control, see [Token standards](https://docs.tezos.com/architecture/tokens#token-standards) on docs.tezos.com.
 
 1. The user calls the helper contract's `deposit` entrypoint.
-The request includes the amount of tokens to bridge, the address of the Etherlink Smart Rollup, and the user's Etherlink wallet address, but not the tokens themselves.
+The request includes the address of the Etherlink Smart Rollup, the user's Etherlink account address, and the amount of tokens to bridge, but not the tokens themselves.
 
 1. The token bridge helper contract stores the address of the Etherlink Smart Rollup and the user's Etherlink address temporarily.
 
@@ -54,6 +54,12 @@ The request includes the amount of tokens to bridge, the address of the Etherlin
 
 1. Any user can call the FA bridging precompiled contract's `claim` function, which causes the contract to call the ERC-20 proxy contract.
 For tokens supported by the bridge, an automated program calls the `claim` function for you.
+
+   You can call the `claim` function yourself with this ABI, using the `depositId` field from the event:
+
+   ```
+   claim(uint256 depositId)
+   ```
 
 1. The ERC-20 proxy contract mints the equivalent tokens and sends them to the user's Etherlink account.
 
@@ -93,3 +99,153 @@ This transaction includes the target layer 1 address.
 This diagram is an overview of the process of bridging tokens from Etherlink to layer 1:
 
 <img src="/img/bridging-withdrawal-fa.png" alt="Overview of the FA token bridging withdrawal process" style={{width: 500}} />
+
+## Event reference
+
+The contracts that manage the FA bridge emit these events:
+
+### `QueuedDeposit` event
+
+When a deposit is ready to be claimed, the FA bridging precompiled contract (`0xff0...0002`) emits a `QueuedDeposit` event.
+
+The ABI for this event is:
+
+```solidity
+event QueuedDeposit(
+  uint256 indexed ticketHash,
+  address indexed proxy,
+  uint256 nonce,
+  address receiver,
+  uint256 amount,
+  uint256 inboxLevel,
+  uint256 inboxMsgId
+);
+```
+
+The topics for this event are:
+
+Field | Type | Description
+--- | --- | ---
+Signature | `keccak256` | `QueuedDeposit(uint256, address)`
+`ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
+`proxy` | address | The proxy address through which the deposit is routed
+
+The payload includes these fields:
+
+Field | Type | Description
+--- | --- | ---
+`nonce` | uint256 | The global counter for the transaction
+`receiver` | address | The Etherlink address that receives the tokens
+`amount` | uint256 | The amount of tokens in the transaction
+`inboxLevel` | uint256 | The layer 1 block in which the deposit was submitted
+`inboxMsgId` | uint256 | An identifier for the Smart Rollup inbox message
+
+### `Deposit` event
+
+When a deposit has been claimed, the FA bridging precompiled contract (`0xff0...0002`) emits a `Deposit` event.
+
+The ABI for this event is:
+
+```solidity
+event Deposit(
+  uint256 indexed ticketHash,
+  address ticketOwner,
+  address receiver,
+  uint256 amount,
+  uint256 inboxLevel,
+  uint256 inboxMsgId
+);
+```
+
+The topics for this event are:
+
+Field | Type | Description
+--- | --- | ---
+Signature | `keccak256` | `Deposit(uint256)`
+`ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
+
+The payload includes these fields:
+
+Field | Type | Description
+--- | --- | ---
+`ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
+`receiver` | address | The ERC-20 proxy contract that manages the tokens (a duplicate of the `ticketOwner` field)
+`amount` | uint256 | The amount of tokens
+`inboxLevel` | uint256 | The layer 1 block in which the deposit was submitted
+`inboxMsgId` | uint256 | An identifier for the Smart Rollup inbox message, which you can use to find the corresponding `QueuedDeposit` event and the Etherlink address that receives the tokens
+
+### `Withdrawal` event
+
+When an account initiates a withdrawal, the FA bridging precompiled contract (`0xff0...0002`) emits a `Withdrawal` event.
+
+The ABI for this event is:
+
+```solidity
+event Withdrawal(
+  uint256 indexed ticketHash,
+  address sender,
+  address ticketOwner,
+  bytes22 receiver,
+  bytes22 proxy,
+  uint256 amount,
+  uint256 withdrawalId
+);
+```
+
+The topics for this event are:
+
+Field | Type | Description
+--- | --- | ---
+Signature | `keccak256` | `Withdrawal(uint256)`
+`ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
+
+The payload includes these fields:
+
+Field | Type | Description
+--- | --- | ---
+`sender` | address | The Etherlink address that is withdrawing the tokens
+`ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
+`receiver` | bytes22 | The layer 1 address that receives the tokens
+`proxy` | bytes22 | The proxy address through which the deposit is routed
+`amount` | uint256 | The amount of tokens
+`withdrawalId` | uint256 | An internal ID for the withdrawal
+
+### `FastFaWithdrawal` event
+
+When an account initiates a fast withdrawal, the FA bridging precompiled contract (`0xff0...0002`) emits a `FastFaWithdrawal` event.
+
+The ABI for this event is:
+
+```solidity
+event FastFaWithdrawal(
+  uint256 indexed ticketHash,
+  address sender,
+  address ticketOwner,
+  bytes22 receiver,
+  bytes22 proxy,
+  uint256 amount,
+  uint256 withdrawalId,
+  uint256 timestamp,
+  bytes payload
+);
+```
+
+The topics for this event are:
+
+Field | Type | Description
+--- | --- | ---
+Signature | `keccak256` | `FastFaWithdrawal(uint256)`
+`ticketHash` | uint256 | The hash of the ticket that represents the transferred tokens, computed as `keccak256(L1 ticketer + content)`
+
+The payload includes these fields:
+
+Field | Type | Description
+--- | --- | ---
+`sender` | address | The Etherlink address that is withdrawing the tokens
+`ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
+`receiver` | bytes22 | The layer 1 address that receives the tokens
+`proxy` | bytes22 | The proxy address through which the deposit is routed
+`amount` | uint256 | The amount of tokens
+`withdrawalId` | uint256 | An internal ID for the withdrawal
+`timestamp` | uint256 | The timestamp of the block that includes the fast withdrawal request
+`payload` | bytes | Information about the fast withdrawal to forward to the fast withdrawal contact
