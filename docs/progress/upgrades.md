@@ -114,6 +114,11 @@ For more information about bridging events, see [How bridging FA tokens works](/
 
 For more information, see [Announcing Farfadet: A 6th Upgrade Proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-farfadet-a-6th-upgrade-proposal-for-etherlink-mainnet-6bc59793962d).
 
+## Etherlink 6.1
+
+The Etherlink 6.1 upgrade went through the fast kernel governance process and fixed an issue with the FA bridge introduced in 6.0.
+For more information, see [Announcing Etherlink 6.1: a bugfix proposal for FA token deposits](https://medium.com/@etherlink/announcing-etherlink-6-1-a-bugfix-proposal-for-fa-token-deposits-2cc08ffd6fad).
+
 ## Changelog
 
 For full details about changes to Etherlink, see [Changelogs](/progress/changelogs).
