@@ -118,7 +118,7 @@ For more information, see [Announcing Farfadet: A 6th Upgrade Proposal for Ether
 
 :::note
 
-Etherlink 6.1 requires version 0.50 or later of the `octez-evm-node` binary.
+Version 0.50 or later of the `octez-evm-node` binary is strongly recommended for Etherlink 6.1.
 
 :::
 
