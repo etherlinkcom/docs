@@ -69,13 +69,13 @@ The migration will be delivered in the following phases:
         Phase 2<br />Oct-Nov 2025
       </td>
       <td>
-        - JSON-RPC API providers & blockchain indexers nodes setup ✅
+        - JSON-RPC API providers & blockchain indexers nodes setup
         - Shadownet Tezos Bridge
         - EVM Bridge
-        - Block Explorer ✅
+        - Block Explorer
         - Oracles
         - Network public goods: deployment of tokens, utility contracts (multicall3, create3 factories etc)
-        - Smart Rollup node snapshot service available ✅
+        - Smart Rollup node snapshot service available
         - EVM node snapshot service available
         - Updates to developer SDKs (viem, chainlist, etc.)
         - Network monitoring infrastructure
