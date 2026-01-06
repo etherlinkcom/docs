@@ -130,7 +130,7 @@ If you run EVM nodes on the existing Ghostnet Testnet, please carry out the foll
     <td>
       ACTION REQUIRED:
 
-      1. Set up new Shadownet EVM nodes from genesis block following the instructions in [Running an Etherlink EVM node](/network/evm-nodes).
+      1. Set up new Shadownet EVM nodes following the instructions in [Running an Etherlink EVM node](/network/evm-nodes).
       1. If you run Smart Rollup nodes, follow the instructions for setting up your [Etherlink Shadownet Smart Rollup Node](/network/smart-rollup-nodes).
       1. If you run L1 Octez nodes, then follow these instructions to install [Octez](https://octez.tezos.com/docs/introduction/howtoget.html) for Tezos L1 Shadownet testnet.
       1. Carry out end-to-end testing to ensure performance is in line with your Ghostnet EVM node.
@@ -138,12 +138,6 @@ If you run EVM nodes on the existing Ghostnet Testnet, please carry out the foll
     </td>
   </tr>
 </table>
-
-:::note
-
-Because EVM node snapshots for Shadownet are not yet available, you must bootstrap EVM nodes from the genesis block.
-It should take only a few hours for the node to reach the latest block.
-:::
 
 ### For infrastructure providers
 
