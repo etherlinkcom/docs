@@ -75,7 +75,7 @@ The migration will be delivered in the following phases:
         - Block Explorer ✅
         - Oracles
         - Network public goods: deployment of tokens, utility contracts (multicall3, create3 factories etc)
-        - Smart rolltup node snapshot service available ✅
+        - Smart Rollup node snapshot service available ✅
         - EVM node snapshot service available
         - Updates to developer SDKs (viem, chainlist, etc.)
         - Network monitoring infrastructure
