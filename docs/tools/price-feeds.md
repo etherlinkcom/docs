@@ -185,15 +185,23 @@ contract RedStoneSimple {
 }
 ```
 
-To deploy this contract you need the address of the RedStone on-chain application on Etherlink (`0xe92c00BC72dD12e26E61212c04E8D93aa09624F2` on both Mainnet and Ghostnet Testnet) and the ID of the XTZ/USD price feed `0x0affd4b8ad136a21d79bc82450a325ee12ff55a235abc242666e423b8bcffd03`.
-Similarly, you can get the price of the URANIUM token in USD with the price feed `0xb81131B6368b3F0a83af09dB4E39Ac23DA96C2Db`.
+To deploy this contract you need the address of the RedStone contract that provides the XTZ/USD price feed:
+
+- `0xe92c00BC72dD12e26E61212c04E8D93aa09624F2` on Etherlink Mainnet
+- `0xE06FE39f066562DBfE390167AE49D8Cb66e1F887` on Etherlink Ghostnet Testnet
+- `0xb9D0073aCb296719C26a8BF156e4b599174fe1d5` on Etherlink Shadownet Testnet
+
+Similarly, you can get the price of the URANIUM token in USD with these addresses:
+
+- `0xb81131B6368b3F0a83af09dB4E39Ac23DA96C2Db` on Etherlink Mainnet
+- `0xED2B1ca5D7E246f615c2291De309643D41FeC97e` on Etherlink Shadownet Testnet
 
 Here is an example JavaScript application that uses the [`viem`](https://viem.sh/) SDK to call the contract on Etherlink:
 
 ```javascript
 import { createWalletClient, http, getContract } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import { etherlinkTestnet } from "viem/chains";
+import { etherlinkShadownetTestnet } from "viem/chains";
 
 const RedStoneContractABI = [
   {
@@ -257,7 +265,7 @@ const myAccount = privateKeyToAccount(`<PRIVATE_KEY>`);
 // Viem objects that allow programs to call the chain
 const walletClient = createWalletClient({
   account: myAccount,
-  chain: etherlinkTestnet,
+  chain: etherlinkShadownetTestnet,
   transport: http(),
 });
 const contract = getContract({
