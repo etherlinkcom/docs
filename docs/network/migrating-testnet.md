@@ -69,18 +69,16 @@ The migration will be delivered in the following phases:
         Phase 2<br />Oct-Nov 2025
       </td>
       <td>
-        - JSON-RPC API providers & blockchain indexers nodes setup ✅
-        - Shadownet Tezos Bridge
-        - EVM Bridge
-        - Block Explorer ✅
+        - JSON-RPC API providers & blockchain indexers nodes setup
+        - Block Explorer
         - Oracles
         - Network public goods: deployment of tokens, utility contracts (multicall3, create3 factories etc)
-        - Smart rolltup node snapshot service available ✅
+        - Smart Rollup node snapshot service available
         - EVM node snapshot service available
         - Updates to developer SDKs (viem, chainlist, etc.)
         - Network monitoring infrastructure
       </td>
-      <td>In progress</td>
+      <td>✅ Complete</td>
     </tr>
     <tr>
       <td>
@@ -91,27 +89,22 @@ The migration will be delivered in the following phases:
         - Safe multisig service
         - Developers that have deployed apps to Ghostnet migrate them to Shadownet
       </td>
-      <td>TODO</td>
+      <td>✅ Complete</td>
     </tr>
     <tr>
       <td>
         Phase 4<br />Dec 2025-Jan 2026
       </td>
       <td>
+        - Shadownet Tezos Bridge
+        - EVM Bridge
         - Final app testing
         - Redirection of `testnet` URLs to Shadownet
-      </td>
-      <td>TODO</td>
-    </tr>
-    <tr>
-      <td>
-        Phase 5<br />Jan-Feb 2026
-      </td>
-      <td>
         - Planned sunset of Etherlink Ghostnet Testnet, aligned with deprecation of Tezos L1 Ghostnet
         - Sunset of Etherlink Ghostnet ecosystem infrastructure services and dapps
+        - Etherlink Ghostnet Testnet sequencer shut down
       </td>
-      <td>TODO</td>
+      <td>In progress</td>
     </tr>
   </tbody>
 </table>
@@ -130,7 +123,7 @@ If you run EVM nodes on the existing Ghostnet Testnet, please carry out the foll
     <td>
       ACTION REQUIRED:
 
-      1. Set up new Shadownet EVM nodes from genesis block following the instructions in [Running an Etherlink EVM node](/network/evm-nodes).
+      1. Set up new Shadownet EVM nodes following the instructions in [Running an Etherlink EVM node](/network/evm-nodes).
       1. If you run Smart Rollup nodes, follow the instructions for setting up your [Etherlink Shadownet Smart Rollup Node](/network/smart-rollup-nodes).
       1. If you run L1 Octez nodes, then follow these instructions to install [Octez](https://octez.tezos.com/docs/introduction/howtoget.html) for Tezos L1 Shadownet testnet.
       1. Carry out end-to-end testing to ensure performance is in line with your Ghostnet EVM node.
@@ -138,12 +131,6 @@ If you run EVM nodes on the existing Ghostnet Testnet, please carry out the foll
     </td>
   </tr>
 </table>
-
-:::note
-
-Because EVM node snapshots for Shadownet are not yet available, you must bootstrap EVM nodes from the genesis block.
-It should take only a few hours for the node to reach the latest block.
-:::
 
 ### For infrastructure providers
 
