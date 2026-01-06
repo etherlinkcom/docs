@@ -39,14 +39,14 @@ contract PythSimple {
 }
 ```
 
-To deploy this contract you need the address of the Pyth on-chain application on Etherlink (`0x2880aB155794e7179c9eE2e38200202908C17B43` on both Mainnet and Ghostnet Testnet) and the ID of the XTZ/USD price feed (`0x0affd4b8ad136a21d79bc82450a325ee12ff55a235abc242666e423b8bcffd03` as listed on the Pyth [Price feed IDs](https://legacy.pyth.network/developers/price-feed-ids)).
+To deploy this contract you need the address of the Pyth on-chain application on Etherlink (`0x2880aB155794e7179c9eE2e38200202908C17B43` on Mainnet, Ghostnet Testnet, and Shadownet Testnet) and the ID of the XTZ/USD price feed (`0x0affd4b8ad136a21d79bc82450a325ee12ff55a235abc242666e423b8bcffd03` as listed on the Pyth [Price feed IDs](https://legacy.pyth.network/developers/price-feed-ids)).
 
 Here is an example JavaScript application that uses the [`viem`](https://viem.sh/) SDK to call the contract on Etherlink:
 
 ```javascript
 import { createWalletClient, http, getContract } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import { etherlinkTestnet } from "viem/chains";
+import { etherlinkShadownetTestnet } from "viem/chains";
 
 const PythContractABI = [
   {
@@ -102,7 +102,7 @@ const myAccount = privateKeyToAccount(`<PRIVATE_KEY>`);
 // Viem objects that allow programs to call the chain
 const walletClient = createWalletClient({
   account: myAccount,
-  chain: etherlinkTestnet,
+  chain: etherlinkShadownetTestnet,
   transport: http(),
 });
 const contract = getContract({
@@ -126,7 +126,7 @@ callContract();
 
 :::note
 
-Pyth also provides prices on Etherlink Ghostnet Testnet but the price does not change.
+Pyth also provides prices on Etherlink Ghostnet Testnet and Shadownet Testnet but the price does not change.
 
 :::
 
