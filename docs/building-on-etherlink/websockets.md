@@ -258,7 +258,7 @@ The response to the `tez_newIncludedTransactions` event (a transaction object) i
 }
 ```
 
-The response to the `tez_newPreconfirmedReceipts` event (a transaction receipt) is similar but also includes the number of the block and  the gas used, as in this example:
+The response to the `tez_newPreconfirmedReceipts` event (a transaction receipt) is similar but also includes the number of the block and the gas used, as in this example:
 
 ```json
 {
