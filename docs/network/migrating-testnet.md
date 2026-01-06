@@ -101,7 +101,7 @@ The migration will be delivered in the following phases:
         - Final app testing
         - Redirection of `testnet` URLs to Shadownet
       </td>
-      <td>TODO</td>
+      <td>In progress</td>
     </tr>
     <tr>
       <td>
