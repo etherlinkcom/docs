@@ -80,7 +80,7 @@ The migration will be delivered in the following phases:
         - Updates to developer SDKs (viem, chainlist, etc.)
         - Network monitoring infrastructure
       </td>
-      <td>In progress</td>
+      <td>✅ Complete</td>
     </tr>
     <tr>
       <td>
@@ -91,7 +91,7 @@ The migration will be delivered in the following phases:
         - Safe multisig service
         - Developers that have deployed apps to Ghostnet migrate them to Shadownet
       </td>
-      <td>TODO</td>
+      <td>✅ Complete</td>
     </tr>
     <tr>
       <td>
