@@ -70,8 +70,6 @@ The migration will be delivered in the following phases:
       </td>
       <td>
         - JSON-RPC API providers & blockchain indexers nodes setup
-        - Shadownet Tezos Bridge
-        - EVM Bridge
         - Block Explorer
         - Oracles
         - Network public goods: deployment of tokens, utility contracts (multicall3, create3 factories etc)
@@ -95,13 +93,16 @@ The migration will be delivered in the following phases:
     </tr>
     <tr>
       <td>
-        Phase 4<br />Dec 2025-Feb 2026
+        Phase 4<br />Dec 2025-Jan 2026
       </td>
       <td>
+        - Shadownet Tezos Bridge
+        - EVM Bridge
         - Final app testing
         - Redirection of `testnet` URLs to Shadownet
         - Planned sunset of Etherlink Ghostnet Testnet, aligned with deprecation of Tezos L1 Ghostnet
         - Sunset of Etherlink Ghostnet ecosystem infrastructure services and dapps
+        - Etherlink Ghostnet Testnet sequencer shut down
       </td>
       <td>In progress</td>
     </tr>
