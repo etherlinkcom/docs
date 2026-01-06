@@ -95,23 +95,15 @@ The migration will be delivered in the following phases:
     </tr>
     <tr>
       <td>
-        Phase 4<br />Dec 2025-Jan 2026
+        Phase 4<br />Dec 2025-Feb 2026
       </td>
       <td>
         - Final app testing
         - Redirection of `testnet` URLs to Shadownet
-      </td>
-      <td>In progress</td>
-    </tr>
-    <tr>
-      <td>
-        Phase 5<br />Jan-Feb 2026
-      </td>
-      <td>
         - Planned sunset of Etherlink Ghostnet Testnet, aligned with deprecation of Tezos L1 Ghostnet
         - Sunset of Etherlink Ghostnet ecosystem infrastructure services and dapps
       </td>
-      <td>TODO</td>
+      <td>In progress</td>
     </tr>
   </tbody>
 </table>
