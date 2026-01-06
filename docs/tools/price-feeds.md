@@ -7,7 +7,7 @@ dependencies:
 ## Pyth
 
 [Pyth](https://pyth.network/) offers 400+ pull-based price feeds for Etherlink.
-Learn more about integrating Pyth with their [docs](https://docs.pyth.network/price-feeds/use-real-time-data/evm).
+Learn more about integrating Pyth with their documentation on [How to Use Real-Time Price Data](https://docs.pyth.network/price-feeds/use-real-time-data).
 
 This example contract accepts price update data from Pyth and uses it to provide the price of one XTZ in USD:
 

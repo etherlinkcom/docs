@@ -14,7 +14,7 @@ These organizations currently run Etherlink Smart Rollup nodes in operator mode 
 
 - [The Tezos Foundation](https://tezos.foundation/)
 - [Zeeve](https://www.zeeve.io)
-- [Exaion](https://exaion.edf.fr/)
+- [Exaion](https://www.exaion.com/)
 
 You can look up the current Smart Rollup node operators by checking the accounts that currently have bond set so they can post commitments for the Etherlink Smart Rollup, such as on the TzKT block explorer: https://tzkt.io/sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf/bondholders.
 

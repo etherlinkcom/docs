@@ -21,6 +21,8 @@ Withdrawing an FA token burns the ERC-20 token on Etherlink and unlocks the equi
 Like the bridge that transfers XTZ tokens (see [Bridging XTZ between Tezos layer 1 and Etherlink](/bridging/bridging-tezos)), the FA bridge is permissionless, meaning that anyone can use it without restrictions or the intervention of a third party.
 It is also trustless, meaning that it relies on automated, transparent, and audited smart contracts installed on Etherlink and Tezos.
 
+The explorer at https://bridge.explorer.etherlink.com shows bridging transactions between Tezos Mainnet and Etherlink Mainnet.
+
 <CementingDelayNote />
 
 For information about how FA token bridging works, see [How bridging FA tokens works](/bridging/bridging-fa-how).

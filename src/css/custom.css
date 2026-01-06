@@ -54,7 +54,7 @@
   --feedback-button-light-bg-color: var(--ifm-color-primary-darkest);
   --feedback-button-dark-bg-color: var(--ifm-color-primary-darkest);
   --feedback-button-light-icon-color: var(--biel-button-dark-text-color);
-  --feedback-modal-input-text-color: var(--feedback-dark-color);
+  --feedback-modal-input-text-color: var(--feedback-secondary-color);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
