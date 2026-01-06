@@ -196,6 +196,8 @@ Similarly, you can get the price of the URANIUM token in USD with these addresse
 - `0xb81131B6368b3F0a83af09dB4E39Ac23DA96C2Db` on Etherlink Mainnet
 - `0xED2B1ca5D7E246f615c2291De309643D41FeC97e` on Etherlink Shadownet Testnet
 
+For more price feed information, see the [RedStone documentation](https://app.redstone.finance/app/feeds/?networks=127823,128123,42793&page=1&sortBy=feed&sortDesc=false&perPage=32).
+
 Here is an example JavaScript application that uses the [`viem`](https://viem.sh/) SDK to call the contract on Etherlink:
 
 ```javascript
