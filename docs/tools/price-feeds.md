@@ -1,7 +1,7 @@
 ---
 title: Price feeds
 dependencies:
-  viem: 0
+  viem: 2.43.5
 ---
 
 ## Pyth
