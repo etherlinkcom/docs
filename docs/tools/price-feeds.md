@@ -343,6 +343,7 @@ contract AcurastSimple {
 ```
 
 To deploy this contract you need the address of the Acelon proxy on Etherlink (`0x4Bf5C46Ee59a1110c2a242715f9c3b548A14ee02` on Mainnet).
+Acelon is not available on Etherlink testnets.
 
 Here is an example JavaScript application that uses the [`viem`](https://viem.sh/) SDK to get the price of stXTZ on Etherlink:
 
