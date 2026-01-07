@@ -1,7 +1,7 @@
 ---
 title: Price feeds
 dependencies:
-  viem: 0
+  viem: 2.43.5
 ---
 
 ## Pyth
@@ -39,14 +39,14 @@ contract PythSimple {
 }
 ```
 
-To deploy this contract you need the address of the Pyth on-chain application on Etherlink (`0x2880aB155794e7179c9eE2e38200202908C17B43` on both Mainnet and Ghostnet Testnet) and the ID of the XTZ/USD price feed (`0x0affd4b8ad136a21d79bc82450a325ee12ff55a235abc242666e423b8bcffd03` as listed on the Pyth [Price feed IDs](https://legacy.pyth.network/developers/price-feed-ids)).
+To deploy this contract you need the address of the Pyth on-chain application on Etherlink (`0x2880aB155794e7179c9eE2e38200202908C17B43` on Mainnet and Shadownet Testnet) and the ID of the XTZ/USD price feed (`0x0affd4b8ad136a21d79bc82450a325ee12ff55a235abc242666e423b8bcffd03` as listed on the Pyth [Price feed IDs](https://legacy.pyth.network/developers/price-feed-ids)).
 
 Here is an example JavaScript application that uses the [`viem`](https://viem.sh/) SDK to call the contract on Etherlink:
 
 ```javascript
 import { createWalletClient, http, getContract } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import { etherlinkTestnet } from "viem/chains";
+import { etherlinkShadownetTestnet } from "viem/chains";
 
 const PythContractABI = [
   {
@@ -102,7 +102,7 @@ const myAccount = privateKeyToAccount(`<PRIVATE_KEY>`);
 // Viem objects that allow programs to call the chain
 const walletClient = createWalletClient({
   account: myAccount,
-  chain: etherlinkTestnet,
+  chain: etherlinkShadownetTestnet,
   transport: http(),
 });
 const contract = getContract({
@@ -126,7 +126,7 @@ callContract();
 
 :::note
 
-Pyth also provides prices on Etherlink Ghostnet Testnet but the price does not change.
+Pyth also provides prices on Shadownet Testnet but the price does not change.
 
 :::
 
@@ -185,15 +185,24 @@ contract RedStoneSimple {
 }
 ```
 
-To deploy this contract you need the address of the RedStone on-chain application on Etherlink (`0xe92c00BC72dD12e26E61212c04E8D93aa09624F2` on both Mainnet and Ghostnet Testnet) and the ID of the XTZ/USD price feed `0x0affd4b8ad136a21d79bc82450a325ee12ff55a235abc242666e423b8bcffd03`.
-Similarly, you can get the price of the URANIUM token in USD with the price feed `0xb81131B6368b3F0a83af09dB4E39Ac23DA96C2Db`.
+To deploy this contract you need the address of the RedStone contract that provides the XTZ/USD price feed:
+
+- `0xe92c00BC72dD12e26E61212c04E8D93aa09624F2` on Etherlink Mainnet
+- `0xb9D0073aCb296719C26a8BF156e4b599174fe1d5` on Etherlink Shadownet Testnet
+
+Similarly, you can get the price of the URANIUM token in USD with these addresses:
+
+- `0xb81131B6368b3F0a83af09dB4E39Ac23DA96C2Db` on Etherlink Mainnet
+- `0xED2B1ca5D7E246f615c2291De309643D41FeC97e` on Etherlink Shadownet Testnet
+
+For more price feed information, see the [RedStone documentation](https://app.redstone.finance/app/feeds/?networks=127823,128123,42793&page=1&sortBy=feed&sortDesc=false&perPage=32).
 
 Here is an example JavaScript application that uses the [`viem`](https://viem.sh/) SDK to call the contract on Etherlink:
 
 ```javascript
 import { createWalletClient, http, getContract } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import { etherlinkTestnet } from "viem/chains";
+import { etherlinkShadownetTestnet } from "viem/chains";
 
 const RedStoneContractABI = [
   {
@@ -257,7 +266,7 @@ const myAccount = privateKeyToAccount(`<PRIVATE_KEY>`);
 // Viem objects that allow programs to call the chain
 const walletClient = createWalletClient({
   account: myAccount,
-  chain: etherlinkTestnet,
+  chain: etherlinkShadownetTestnet,
   transport: http(),
 });
 const contract = getContract({
@@ -333,7 +342,8 @@ contract AcurastSimple {
 
 ```
 
-To deploy this contract you need the address of the Acelon proxy on Etherlink (`0x4Bf5C46Ee59a1110c2a242715f9c3b548A14ee02` on Mainnet and `0xf021399FA842A3c9C82f97079cd1a64059Be9122` on Ghostnet Testnet).
+To deploy this contract you need the address of the Acelon proxy on Etherlink (`0x4Bf5C46Ee59a1110c2a242715f9c3b548A14ee02` on Mainnet).
+Acelon is not available on Etherlink testnets.
 
 Here is an example JavaScript application that uses the [`viem`](https://viem.sh/) SDK to get the price of stXTZ on Etherlink:
 
