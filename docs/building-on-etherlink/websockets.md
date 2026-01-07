@@ -209,7 +209,7 @@ socket.addEventListener('open', _event => {
   socket.send(JSON.stringify(preconfirmedTxPayload));
 });
 
-// Listen for messages and executes when a message is received from the server.
+// Log when a message is received from the server.
 socket.addEventListener('message', event => {
   console.log('Message from server: ', event.data);
 });
@@ -287,7 +287,6 @@ The response to the `tez_newPreconfirmedReceipts` event (a transaction receipt) 
 ```
 
 For more information about instant confirmations, see [Getting instant confirmations](/building-on-etherlink/transactions#getting-instant-confirmations)
-
 
 ## WebSocket subscriptions
 
