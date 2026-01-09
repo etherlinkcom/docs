@@ -102,7 +102,63 @@ This diagram is an overview of the process of bridging tokens from Etherlink to 
 
 ## Event reference
 
-The contracts that manage the FA bridge emit these events:
+The contracts that manage the FA bridge emit several events.
+
+### Decoding event information
+
+You can get information about events from the logs of the FA bridging precompiled contract via the Etherlink indexer at this link: https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000002?tab=logs.
+
+You can also decode the information in events with toolkits such as Ethers.js.
+For example, this JavaScript program decodes the information from a `QueuedDeposit` event and prints the payload fields:
+
+```javascript
+const { ethers } = require("ethers");
+
+// Data from the event
+// Topic
+const topic = "0xb02d79c5657e344e23d91529b954c3087c60a974d598939583904a4f0b959614";
+// Indexed field 1
+const index1 = "0x9d4704c610c2ca997e1ad4d4062e09bee26bb5136598b0e525ed357da99bd602";
+// Indexed field 2
+const index2 = "0x00000000000000000000000001f07f4d78d47a64f4c3b2b65f513f15be6e1854";
+// Event data payload
+const eventData = "0x0000000000000000000000000000000000000000000000000000000000004ddb000000000000000000000000953d1668bc03e0ee9145a7c4f79956b73db90b67000000000000000000000000000000000000000000000000000000012a05f2000000000000000000000000000000000000000000000000000000000000af1a770000000000000000000000000000000000000000000000000000000000000010";
+
+const abi = [
+  "event QueuedDeposit(uint256 indexed ticketHash, address indexed proxy, uint256 nonce, address receiver, uint256 amount, uint256 inboxLevel, uint256 inboxMsgId)"
+];
+
+const iface = new ethers.Interface(abi);
+
+const log = {
+  topics: [
+    topic,
+    index1,
+    index2,
+  ],
+  data: eventData,
+};
+
+// Parse the event log
+const parsed = iface.parseLog(log);
+
+// Print the non-indexed fields
+console.log(JSON.stringify(parsed.args, (_, v) => typeof v === 'bigint' ? v.toString() : v));
+```
+
+The result is a list of the decoded fields, in this case, the nonce, receiving address, amount, block level, and message ID for the deposit:
+
+```json
+[
+  "71138596315992044722794716610043613304890979059019361625149303880140533257730",
+  "0x01F07f4d78d47A64F4C3B2b65f513f15Be6E1854",
+  "19931",
+  "0x953D1668BC03e0EE9145A7c4F79956b73db90B67",
+  "5000000000",
+  "11475575",
+  "16"
+]
+```
 
 ### `QueuedDeposit` event
 
