@@ -306,7 +306,7 @@ curl --request POST \
 '
 ```
 
-If you pass `latest` instead of `pending`, the sequencer waits until the transaction is in a block to send the confirmation.
+If you pass `latest` instead of `pending`, the node waits until the transaction is in a block to send the confirmation.
 Etherlink supports this `pending` value only on the `eth_sendRawTransactionSync` method, not on any other methods.
 
 When the sequencer enqueues the transaction for the next block, it notifies the nodes of the transaction and the nodes return a receipt for the transaction that includes information such as its gas price and gas cost.
