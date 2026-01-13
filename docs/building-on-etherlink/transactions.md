@@ -282,8 +282,8 @@ run();
 ## Getting instant confirmations
 
 Beginning with EVM node 0.48 and the version 6.0 upgrade, Etherlink supports instant confirmations.
-You can send a transaction with the `eth_sendRawTransactionSync` method and receive an instant confirmation that the sequencer intends to put the transaction in the next block.
-This confirmation includes a transaction receipt that provides information about the completed transaction, such as the status, hash, gas used, and index of the transaction in the next block.
+You can send a transaction to a node with the `eth_sendRawTransactionSync` method and receive an instant confirmation from the node that the sequencer intends to put the transaction in the next block.
+This confirmation includes a transaction receipt that provides information about the transaction, such as the status, hash, gas used, and index of the transaction in the next block.
 The only information missing from the receipt is the hash of the next block, because it has not been created yet.
 
 Sending the transaction with the `eth_sendRawTransactionSync` method is done the same way as with the `eth_sendRawTransaction` method: you sign the transaction and include it in the `data` parameter plus the optional `pending` value, as in this example:
