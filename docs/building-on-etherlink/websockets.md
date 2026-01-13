@@ -166,7 +166,7 @@ See the documentation for your WebSocket client library for how to manage the co
 
 ## Subscribing to instant confirmations
 
-You can subscribe to WebSockets to receive instant confirmations, which are notices from the sequencer that a transaction will appear in the next block.
+You can subscribe to WebSockets to receive instant confirmations, which are notices that a transaction will appear in the next block.
 Using WebSockets for instant confirmations requires at least version 0.49 of the `octez-evm-node` binary.
 
 :::note
@@ -176,12 +176,12 @@ For JavaScript/TypeScript, use the built-in Node.JS WebSocket library as in the 
 
 :::
 
-Etherlink provides two custom WebSocket events that you can subscribe to for notice of upcoming transactions:
+Etherlink nodes provide two custom WebSocket events that you can subscribe to for notice of upcoming transactions:
 
-- `tez_newIncludedTransactions`: Provides confirmations for transactions that the sequencer intends to put in the next block **before** it has executed them.
+- `tez_newIncludedTransactions`: Provides confirmations for transactions that the sequencer intends to put in the next block **before they have been executed**.
 Returns a transaction object.
 
-- `tez_newPreconfirmedReceipts`: Provides confirmations for transactions that the sequencer **has executed** and intends to put in the next block.
+- `tez_newPreconfirmedReceipts`: Provides confirmations for transactions that **have been executed** and will be in the next block.
 Returns a transaction receipt.
 
 For example, this JavaScript code subscribes to these events and prints information about them to the log:
@@ -305,7 +305,7 @@ You can use WebSockets to subscribe to these Etherlink events:
 
 - `tez_newIncludedTransactions`: Provides confirmations for transactions that the sequencer intends to put in the next block before it has executed them.
 
-- `tez_newPreconfirmedReceipts`: Provides confirmations for transactions that the sequencer has executed and intends to put in the next block.
+- `tez_newPreconfirmedReceipts`: Provides confirmations for transactions that have been executed and will be in the next block.
 For more information, see [Getting instant confirmations](/building-on-etherlink/transactions#getting-instant-confirmations).
 
 - `logs`: Returns the events emitted by smart contracts, including the address of the contract, the associated topics, and the data for the event
