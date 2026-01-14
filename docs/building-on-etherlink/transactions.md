@@ -286,6 +286,12 @@ You can send a transaction to a node with the `eth_sendRawTransactionSync` metho
 This confirmation includes a transaction receipt that provides information about the transaction, such as the status, hash, gas used, and index of the transaction in the next block.
 The only information missing from the receipt is the hash of the next block, because it has not been created yet.
 
+:::note
+
+To receive instant confirmations with the lowest possible latency, use an Etherlink EVM node as close as possible to the sequencer, which is deployed to a data center in Tokyo, Japan.
+
+:::
+
 Sending the transaction with the `eth_sendRawTransactionSync` method is done the same way as with the `eth_sendRawTransaction` method: you sign the transaction and include it in the `data` parameter plus the optional `pending` value, as in this example:
 
 ```bash
