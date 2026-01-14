@@ -279,16 +279,16 @@ run();
 
 ```
 
-## Getting instant confirmations
+## Getting Instant Confirmations
 
-Beginning with EVM node 0.48 and the version 6.0 upgrade, Etherlink supports instant confirmations.
+Beginning with EVM node 0.48 and the version 6.0 upgrade, Etherlink supports Instant Confirmations.
 You can send a transaction to a node with the `eth_sendRawTransactionSync` method and receive an instant confirmation from the node that the sequencer intends to put the transaction in the next block.
 This confirmation includes a transaction receipt that provides information about the transaction, such as the status, hash, gas used, and index of the transaction in the next block.
 The only information missing from the receipt is the hash of the next block, because it has not been created yet.
 
 :::note
 
-To receive instant confirmations with the lowest possible latency, use an Etherlink EVM node as close as possible to the sequencer, which is deployed to a data center in Tokyo, Japan.
+To receive Instant Confirmations with the lowest possible latency, use an Etherlink EVM node as close as possible to the sequencer, which is deployed to a data center in Tokyo, Japan.
 
 :::
 
@@ -365,7 +365,7 @@ The following JSON code is an example response from the `eth_sendRawTransactionS
 
 For even faster confirmations, you can use WebSockets to subscribe to the `tez_newIncludedTransactions` or `tez_newPreconfirmedReceipts` events.
 These events provide confirmations of transactions that are ready to be executed and transactions that have been executed but not yet included in a block, respectively.
-See [Subscribing to instant confirmations](/building-on-etherlink/websockets#subscribing-to-instant-confirmations).
+See [Subscribing to Instant Confirmations](/building-on-etherlink/websockets#subscribing-to-instant-confirmations).
 
 :::
 

@@ -146,10 +146,10 @@ At this point, it is permanently part of the state of the Etherlink Smart Rollup
 However, Etherlink is set up so users can be confident that transactions are irreversible much sooner than that.
 Most users can assume that a transaction is irreversible and will be finalized after one of these milestones:
 
-- **The sequencer provides instant confirmations within 50ms.**
-As described in [Getting instant confirmations](/building-on-etherlink/transactions#getting-instant-confirmations), the sequencer notifies the nodes of the transactions that it intends to include in the next block.
+- **The sequencer provides Instant Confirmations within 50ms.**
+As described in [Getting Instant Confirmations](/building-on-etherlink/transactions#getting-instant-confirmations), the sequencer notifies the nodes of the transactions that it intends to include in the next block.
 The sequencer provides this notification as soon as it enqueues the transaction for the next block, before the transaction has been executed.
-Users can subscribe to these notifications via the `tez_newIncludedTransactions` event, as described in [Subscribing to instant confirmations](/building-on-etherlink/websockets#subscribing-to-instant-confirmations).
+Users can subscribe to these notifications via the `tez_newIncludedTransactions` event, as described in [Subscribing to Instant Confirmations](/building-on-etherlink/websockets#subscribing-to-instant-confirmations).
 Users who trust the sequencer and these confirmations can take them as proof that the transaction will be in the next block.
 
 - **Transactions are confirmed on Etherlink within 500ms.**

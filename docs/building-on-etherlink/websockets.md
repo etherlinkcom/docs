@@ -164,10 +164,10 @@ console.log("Listening for Transfer events...");
 
 See the documentation for your WebSocket client library for how to manage the connection, receive messages, and close the connection.
 
-## Subscribing to instant confirmations
+## Subscribing to Instant Confirmations
 
-You can subscribe to WebSockets to receive instant confirmations, which are notices that a transaction will appear in the next block.
-Using WebSockets for instant confirmations requires at least version 0.49 of the `octez-evm-node` binary.
+You can subscribe to WebSockets to receive Instant Confirmations, which are notices that a transaction will appear in the next block.
+Using WebSockets for Instant Confirmations requires at least version 0.49 of the `octez-evm-node` binary.
 
 :::note
 
@@ -286,7 +286,7 @@ The response to the `tez_newPreconfirmedReceipts` event (a transaction receipt) 
 }
 ```
 
-For more information about instant confirmations, see [Getting instant confirmations](/building-on-etherlink/transactions#getting-instant-confirmations)
+For more information about Instant Confirmations, see [Getting Instant Confirmations](/building-on-etherlink/transactions#getting-instant-confirmations)
 
 ## WebSocket subscriptions
 
@@ -306,6 +306,6 @@ You can use WebSockets to subscribe to these Etherlink events:
 - `tez_newIncludedTransactions`: Provides confirmations for transactions that the sequencer intends to put in the next block before it has executed them.
 
 - `tez_newPreconfirmedReceipts`: Provides confirmations for transactions that have been executed and will be in the next block.
-For more information, see [Getting instant confirmations](/building-on-etherlink/transactions#getting-instant-confirmations).
+For more information, see [Getting Instant Confirmations](/building-on-etherlink/transactions#getting-instant-confirmations).
 
 - `logs`: Returns the events emitted by smart contracts, including the address of the contract, the associated topics, and the data for the event
