@@ -166,6 +166,12 @@ See the documentation for your WebSocket client library for how to manage the co
 
 ## Subscribing to Instant Confirmations
 
+:::note
+
+Instant Confirmations are an experimental feature.
+
+:::
+
 You can subscribe to WebSockets to receive Instant Confirmations, which are notices that a transaction will appear in the next block.
 Using WebSockets for Instant Confirmations requires at least version 0.49 of the `octez-evm-node` binary.
 
