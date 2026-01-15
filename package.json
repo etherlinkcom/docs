@@ -31,7 +31,7 @@
     "clsx": "2.1.1",
     "copy-text-to-clipboard": "3.2.0",
     "docusaurus-biel": "1.0.6",
-    "docusaurus-pushfeedback": "1.0.1",
+    "docusaurus-pushfeedback": "1.0.9",
     "dotenv": "16.4.5",
     "plugin-image-zoom": "github:flexanalytics/plugin-image-zoom",
     "prism-react-renderer": "2.4.1",
