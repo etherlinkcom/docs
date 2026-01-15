@@ -9,6 +9,8 @@ To use the client SDK, you’ll need a ThirdWeb client ID, which allows you to s
 
 The starter frontend project is in the folder `tutorial-applications/etherlink-prediction/starter/frontend`.
 
+## Creating the frontend application
+
 1. Get a ThirdWeb client ID by going to https://thirdweb.com/create-api-key.
 
 1. In the `tutorial-applications/etherlink-prediction/starter/frontend` folder, create an `.env` file by copying the `.env.example` file:
@@ -864,8 +866,37 @@ The starter frontend project is in the folder `tutorial-applications/etherlink-p
 
 1. Open the application in a web browser to see the active prediction market.
 
-From here you can...
+Now people can bet on the prediction market.
 
+## Testing the application
 
-TODO
+The prediction market appears as a card on the home page, with Yes and No buttons that allow users to place bets:
 
+<img src="/img/tutorials/prediction-active-market.png" alt="The active prediction market on the front page" style={{width: 500}} />
+
+When you click Yes or No, the card expands to show a slider for you to set the amount of your bet in XTZ and a Place Bet button that allows you to submit the bet to the contract:
+
+<img src="/img/tutorials/prediction-making-bet.png" alt="Making a bet on the prediction market" style={{width: 500}} />
+
+You can place multiple bets from the same account or different accounts to simulate many users.
+
+Then, when you are ready to close the market and distribute the winnings, connect to the application with the same account that you used to deploy the contract.
+Underneath the market card is another card that shows its resolution state:
+
+<img src="/img/tutorials/prediction-unresolved-market.png" alt="The resolution card, showing the button to resolve the market" style={{width: 500}} />
+
+When you are ready to resolve the market (which cannot be undone), select the winning outcome and then click the Resolve Market button:
+
+<img src="/img/tutorials/prediction-resolving-market.png" alt="The resolution card, showing the button to resolve the market" style={{width: 500}} />
+
+The market shows that it is resolved:
+
+<img src="/img/tutorials/prediction-resolved-market.png" alt="The resolution card, showing the resolved market and the winning outcome" style={{width: 500}} />
+
+When the market is resolved, the contract does not automatically distribute winnings.
+Users must connect and click the Claim Winnings button to call the `claimWinnings` function to receive their winnings.
+
+## Conclusion
+
+Now you now everything you need to deploy simple smart contracts to Etherlink and use them as the backend for web-based applications.
+From here you can

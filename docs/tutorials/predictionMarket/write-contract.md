@@ -6,6 +6,8 @@ The starter project for this tutorial includes an example prediction market cont
 This contract uses the [OpenZeppelin](https://docs.openzeppelin.com/) library as a starting point.
 The OpenZeppelin library includes tested and secure contracts, and using pre-tested contracts like these can be easier and safer than writing your own contracts, especially when you deal with betting systems that can be manipulated.
 
+Etherlink is compatible with Ethereum technology, which means that you can use any Ethereum-compatible tool for development, including Hardhat, Foundry, Truffle Suite, and Remix IDE.
+For more information on tools that work with Etherlink, see [Developer toolkits](/building-on-etherlink/development-toolkits).
 The starter project also uses the [Hardhat](/building-on-etherlink/development-toolkits) development environment to simplify the process of compiling and deploying the contract.
 
 The starter project is in the repository https://github.com/trilitech/tutorial-applications and the following steps walk you through downloading it.
@@ -414,6 +416,10 @@ For more information, see [Using your wallet](/get-started/using-your-wallet).
    ```
 
    If you see any errors, check that your contract matches the version from the `main` branch of the repository.
+
+Hardhat compiles the contract into files in the `artifacts/contracts` folder.
+Files in this folder include the compiled bytecode of the contract and the application binary interface (ABI) that describes the functions.
+Applications use this ABI to know how to format calls to the contract.
 
 Now the contract is compiled and ready to be deployed to a test network.
 Continue to [Part 2: Deploying the contract](/tutorials/predictionMarket/deploy-contract).

@@ -57,7 +57,7 @@ In this section you deploy the contract to the Etherlink Shadownet Testnet, wher
 
 In the block explorer you can see the creator of the contract and information about its transactions.
 
-<img src="/img/prediction-deployed-contract.png" alt="The deployed contract in the block explorer, showing only the origination transaction" style={{width: 500}} />
+<img src="/img/tutorials/prediction-deployed-contract.png" alt="The deployed contract in the block explorer, showing only the origination transaction" style={{width: 500}} />
 
 ## Interacting with the contract
 
@@ -76,13 +76,13 @@ It is generated during the compilation process.
 
    1. In the pop-up window, give the contract the name `PredictxtzContract` and paste the ABI array, as in this picture:
 
-      <img src="/img/prediction-new-custom-abi.png" alt="Adding a name and custom ABI for the contract" style={{width: 500}} />
+      <img src="/img/tutorials/prediction-new-custom-abi.png" alt="Adding a name and custom ABI for the contract" style={{width: 500}} />
 
    1. Click **Create custom ABI**.
 
    Now the **Contract > Custom ABI** tab shows the functions in the contract:
 
-   <img src="/img/prediction-custom-abi-functions.png" alt="The list of functions in the contract based on the ABI you uploaded" style={{width: 500}} />
+   <img src="/img/tutorials/prediction-custom-abi-functions.png" alt="The list of functions in the contract based on the ABI you uploaded" style={{width: 500}} />
 
 1. Create the first prediction market in the contract:
 
@@ -92,7 +92,7 @@ It is generated during the compilation process.
 
    1. In the **Duration** field, enter `604 800` to represent one week in seconds.
 
-      <img src="/img/prediction-create-market.png" alt="Setting the parameters for the function" style={{width: 500}} />
+      <img src="/img/tutorials/prediction-create-market.png" alt="Setting the parameters for the function" style={{width: 500}} />
 
    1. Click **Write**.
 
