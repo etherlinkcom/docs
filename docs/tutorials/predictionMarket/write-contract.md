@@ -2,7 +2,7 @@
 title: "Part 1: Write a contract"
 ---
 
-The starter project for this tutorial includes an example prediction market contract.
+In this section, you write a simple prediction market contract.
 This contract uses the [OpenZeppelin](https://docs.openzeppelin.com/) library as a starting point.
 The OpenZeppelin library includes tested and secure contracts, and using pre-tested contracts like these can be easier and safer than writing your own contracts, especially when you deal with betting systems that can be manipulated.
 
@@ -16,7 +16,7 @@ Follow these steps to set up the contract for the prediction market:
 
 1. [Install npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
-1. Create a directory to store your project.
+1. Create a directory to store your project in.
 
 1. Initialize a Node project with NPM in that directory:
 
