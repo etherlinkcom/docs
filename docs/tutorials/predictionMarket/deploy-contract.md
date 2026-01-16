@@ -4,7 +4,7 @@ title: "Part 2: Deploying the contract"
 
 In this section you deploy the contract to the Etherlink Shadownet Testnet, where you can test it without working with real funds.
 
-1. In hte `backend` project, create a file named `scripts/deploy.js` with this code:
+1. In the `backend` project, create a file named `scripts/deploy.js` with this code:
 
    ```javascript
    // scripts/deploy.js
