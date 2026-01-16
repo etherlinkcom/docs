@@ -10,8 +10,6 @@ Etherlink is compatible with Ethereum technology, which means that you can use a
 For more information on tools that work with Etherlink, see [Developer toolkits](/building-on-etherlink/development-toolkits).
 The starter project also uses the [Hardhat](/building-on-etherlink/development-toolkits) development environment to simplify the process of compiling and deploying the contract.
 
-The starter project is in the repository https://github.com/trilitech/tutorial-applications and the following steps walk you through downloading it.
-
 Follow these steps to set up the contract for the prediction market:
 
 1. Install Node.JS version 22 or later, which is required for Hardhat.
