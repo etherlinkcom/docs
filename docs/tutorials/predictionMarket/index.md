@@ -42,6 +42,6 @@ You shouldn’t use this code in production.
 
 ## Application source code
 
-You can see the source code for the completed application here: TODO link
+You can see the source code for the completed application here: https://github.com/trilitech/tutorial-applications/tree/main/etherlink-prediction.
 
 When you are ready, go to [Part 1: Write a contract](/tutorials/predictionMarket/write-contract).
