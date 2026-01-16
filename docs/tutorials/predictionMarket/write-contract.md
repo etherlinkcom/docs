@@ -14,25 +14,80 @@ The starter project is in the repository https://github.com/trilitech/tutorial-a
 
 Follow these steps to set up the contract for the prediction market:
 
-1. Clone the starter project by running these commands:
+1. Install Node.JS version 22 or later, which is required for Hardhat.
+
+1. [Install npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+1. Create a directory to store your project.
+
+1. Initialize a Node project with NPM in that directory:
 
    ```bash
-   git clone --no-checkout https://github.com/trilitech/tutorial-applications.git
-   cd tutorial-applications/
-   git sparse-checkout init
-   git sparse-checkout set etherlink-prediction
-   git checkout main
+   npm init -y
    ```
 
-   The starter project is in the folder `etherlink-prediction/starter`, with folders `backend` for the project that contains the smart contract and `frontend` for the frontend application that you will use later.
-   The `backend` folder contains a starter Hardhat project, consisting primarily of a `hardhat.config.js` configuration file with information about the Shadownet testnet and a `package.json` file with dependencies for the project.
+1. Install Hardhat and initialize it:
 
-1. Open the `contract/Contract.sol` file in any text editor or IDE.
-The starter contract looks like this:
+   ```bash
+   npm install -D hardhat
+   npx hardhat --init
+   ```
+
+1. Follow these steps in the Hardhat prompts:
+
+   1. In the Hardhat prompts, select version 3 of Hardhat and `.` as the relative path to the project.
+
+   1. In the prompt for the type of project to create, select `A minimal Hardhat project`.
+
+   1. Select `true` or `Y` to convert the project's `package.json` file to ESM.
+
+   1. At the prompt to install dependencies, select `true` or `Y`.
+
+   1. If Hardhat prompts you to update TypeScript dependencies, select `true` or `Y`.
+
+1. Delete the default files that Hardhat created:
+
+   ```bash
+   rm -rf contracts ignition scripts test
+   ```
+
+1. Install the `@openzeppelin/contracts` package to use the Openzepplin libraries in your contract:
+
+   ```bash
+   npm i @openzeppelin/contracts
+   ```
+
+1. Install the `dotenv` package to use variables from `.env` files:
+
+   ```bash
+   npm i dotenv
+   ```
+
+1. Replace the default `hardhat.config.ts` file with this file, which includes configuration information for Etherlink Shadownet:
+
+   ```javascript
+   import dotenv from 'dotenv';
+   dotenv.config();
+
+   /** @type import('hardhat/config').HardhatUserConfig */
+   module.exports = {
+     solidity: "0.8.24",
+     networks: {
+       etherlink: {
+         type: 'http',
+         url: "https://node.shadownet.etherlink.com",
+         chainId: 127823,
+         accounts: [process.env.PRIVATE_KEY],
+       },
+     },
+   };
+   ```
+
+1. Create a file named `contract/Contract.sol` in any text editor or IDE and add this code:
 
    ```solidity
    // SPDX-License-Identifier: UNLICENSED
-   pragma solidity ^0.8.9;
+   pragma solidity 0.8.24;
 
    // for creating a contract that can be owned by an address
    // this is useful for managing access permissions to methods in the contract
@@ -41,26 +96,33 @@ The starter contract looks like this:
    // for preventing reentrancy attacks on functions that modify state
    // this is important for functions that involve transferring tokens or ether
    // to ensure that the function cannot be called again while it is still executing
-   import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+   import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
    /** @title A simple prediction market that uses the Pari-mutuel model allowing winners to share the prize pool.
     */
 
    contract PredictxtzContract is Ownable, ReentrancyGuard {
+      // This contract allows users to create markets, place bets, resolve markets, and claim winnings.
 
    }
    ```
 
-   The starter contract imports two OpenZeppelin contract libraries:
+   This starter contract imports two OpenZeppelin contract libraries:
 
       - `Ownable`: Manages access permissions in the contract by setting a single administrator account and allowing only that account to run certain functions
       - `ReentrancyGuard`: Helps prevent re-entrancy attacks on functions that modify state, such as preventing the winner from claiming the same reward twice, which is particularly important for functions that involve transferring tokens
 
+1. Within the contract, add this constructor:
+
+   ```solidity
+   constructor() Ownable(msg.sender) {}
+   ```
+
+   This code initializes the owner as the address that deploys the contract.
+
 1. Within the contract, add these variables and structs:
 
    ```solidity
-   // This contract allows users to create markets, place bets, resolve markets, and claim winnings.
-
    // constants
    uint256 public constant PRECISION = 1e18;
    uint256 public constant VIRTUAL_LIQUIDITY = 1000 * PRECISION; // used to calculate price per share
@@ -139,12 +201,6 @@ The starter contract looks like this:
    ```
 
    Off-chain applications can listen to these events and learn when a betting market opens, when bets are added, when accounts place bets, and when the winner claims their winnings.
-
-1. Add this empty constructor function to the contract:
-
-   ```solidity
-   constructor() {}
-   ```
 
 1. Add this function to create a betting market:
 
@@ -415,7 +471,7 @@ For more information, see [Using your wallet](/get-started/using-your-wallet).
    npx hardhat compile
    ```
 
-   If you see any errors, check that your contract matches the version from the `main` branch of the repository.
+   If you see any errors, compare your contract with the project at https://github.com/trilitech/tutorial-applications/tree/main/etherlink-prediction.
 
 Hardhat compiles the contract into files in the `artifacts/contracts` folder.
 Files in this folder include the compiled bytecode of the contract and the application binary interface (ABI) that describes the functions.
