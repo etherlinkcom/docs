@@ -452,7 +452,7 @@ Follow these steps to set up the contract for the prediction market:
 
    Using functions like these to get information about an account's position and the current probabilities for a betting market is easier than reading the contract storage directly.
 
-   You can see the complete contract in the `etherlink-prediction/completed/backend/contract/Contract/sol` file.
+   You can see the completed contract at https://github.com/trilitech/tutorial-applications/blob/main/etherlink-prediction/backend/contracts/Contract.sol.
 
 1. Set up an Etherlink account in a compatible wallet if you don't already have one.
 For more information, see [Using your wallet](/get-started/using-your-wallet).
