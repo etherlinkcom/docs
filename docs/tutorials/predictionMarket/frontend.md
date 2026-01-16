@@ -7,13 +7,22 @@ dApp users can connect their wallets, place bets, and claim winnings.
 
 To use the client SDK, you’ll need a ThirdWeb client ID, which allows you to send transactions to Etherlink with the ThirdWeb SDK.
 
-The starter frontend project is in the folder `tutorial-applications/etherlink-prediction/starter/frontend`.
+The starter frontend project is in the repository https://github.com/onedebos/prediction-markets-on-etherlink-demo.
 
 ## Creating the frontend application
 
 1. Get a ThirdWeb client ID by going to https://thirdweb.com/create-api-key.
 
-1. In the `tutorial-applications/etherlink-prediction/starter/frontend` folder, create an `.env` file by copying the `.env.example` file:
+1. Clone the starter frontend application.
+You can clone the application into the same folder as your Hardhat project or a different folder.
+
+   ```bash
+   git clone https://github.com/onedebos/prediction-markets-on-etherlink-demo.git frontend
+   cd frontend
+   npm install --legacy-peer-deps
+   ```
+
+1. In the application folder folder, create an `.env` file by copying the `.env.example` file:
 
    ```bash
    cp .env.example .env
@@ -899,4 +908,3 @@ Users must connect and click the Claim Winnings button to call the `claimWinning
 ## Conclusion
 
 Now you now everything you need to deploy simple smart contracts to Etherlink and use them as the backend for web-based applications.
-From here you can
