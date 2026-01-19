@@ -81,7 +81,7 @@ Follow these steps to set up the contract for the prediction market:
    };
    ```
 
-1. Create a file named `contract/Contract.sol` in any text editor or IDE and add this code:
+1. Create a file named `contracts/Contract.sol` in any text editor or IDE and add this code:
 
    ```solidity
    // SPDX-License-Identifier: UNLICENSED
