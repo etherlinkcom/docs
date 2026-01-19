@@ -35,7 +35,7 @@ Follow these steps to set up the contract for the prediction market:
 
    1. In the Hardhat prompts, select version 3 of Hardhat and `.` as the relative path to the project.
 
-   1. In the prompt for the type of project to create, select `A minimal Hardhat project`.
+   1. In the prompt for the type of project to create, select `A TypeScript Hardhat project using Node Test Runner and Viem`.
 
    1. Select `true` or `Y` to convert the project's `package.json` file to ESM.
 
@@ -55,10 +55,10 @@ Follow these steps to set up the contract for the prediction market:
    npm i @openzeppelin/contracts
    ```
 
-1. Install the `dotenv` package to use variables from `.env` files:
+1. Install the `dotenv` package to use variables from `.env` files and [Viem](https://viem.sh/) to interact with Etherlink:
 
    ```bash
-   npm i dotenv
+   npm i dotenv @nomicfoundation/hardhat-viem
    ```
 
 1. Replace the default `hardhat.config.ts` file with this file, which includes configuration information for Etherlink Shadownet:
@@ -67,8 +67,13 @@ Follow these steps to set up the contract for the prediction market:
    import dotenv from 'dotenv';
    dotenv.config();
 
+   import hardhatViem from "@nomicfoundation/hardhat-viem";
+
    /** @type import('hardhat/config').HardhatUserConfig */
    module.exports = {
+     plugins: [
+       hardhatViem,
+     ],
      solidity: "0.8.24",
      networks: {
        etherlink: {
