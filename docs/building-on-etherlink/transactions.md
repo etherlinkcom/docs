@@ -287,7 +287,7 @@ Instant Confirmations are an experimental feature.
 
 :::
 
-Beginning with EVM node 0.48 and the version 6.0 upgrade, Etherlink supports Instant Confirmations.
+Beginning with EVM node 0.52 and the version 6.0 upgrade, Etherlink supports Instant Confirmations.
 You can send a transaction to a node with the `eth_sendRawTransactionSync` method and receive an instant confirmation from the node that the sequencer intends to put the transaction in the next block.
 This confirmation includes a transaction receipt that provides information about the transaction, such as the status, hash, gas used, and index of the transaction in the next block.
 The only information missing from the receipt is the hash of the next block, because it has not been created yet.

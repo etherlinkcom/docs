@@ -93,7 +93,7 @@ For more information, see [Announcing Ebisu: A 5th Upgrade proposal for Etherlin
 
 :::note
 
-Etherlink 6.0 requires version 0.48 or later of the `octez-evm-node` binary.
+Etherlink 6.0 requires version 0.52 or later of the `octez-evm-node` binary.
 
 :::
 
@@ -104,7 +104,7 @@ The Etherlink 6.0 upgrade includes:
 - The ability to provide Instant Confirmations, which allow users to know (within roughly 50ms) that their transactions will be in the next block and receive receipts with information about the completed transaction.
 Instant Confirmations enable these features:
 
-  - Users can call the `eth_sendRawTransactionSync` endpoint that is available in the EVM node version 0.48 and later to submit a transaction and wait for an instant confirmation from the node when the transaction will be in the next block.
+  - Users can call the `eth_sendRawTransactionSync` endpoint that is available in the EVM node version 0.52 and later to submit a transaction and wait for an instant confirmation from the node when the transaction will be in the next block.
   For more information, see [Getting Instant Confirmations](/building-on-etherlink/transactions#getting-instant-confirmations).
 
   - Uses can subscribe to notifications via WebSockets to get information about transactions that the sequencer will put in the next block.
