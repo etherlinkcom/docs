@@ -164,6 +164,136 @@ console.log("Listening for Transfer events...");
 
 See the documentation for your WebSocket client library for how to manage the connection, receive messages, and close the connection.
 
+## Subscribing to Instant Confirmations
+
+:::note
+
+Instant Confirmations are an experimental feature.
+
+:::
+
+You can subscribe to WebSockets to receive Instant Confirmations, which are notices that a transaction will appear in the next block.
+Using WebSockets for Instant Confirmations requires at least version 0.49 of the `octez-evm-node` binary.
+
+:::note
+
+The Ethers.js and Web3.js libraries do not support custom WebSocket events and therefore you cannot use them to subscribe to instant confirmation events.
+For JavaScript/TypeScript, use the built-in Node.JS WebSocket library as in the example below.
+
+:::
+
+Etherlink nodes provide two custom WebSocket events that you can subscribe to for notice of upcoming transactions:
+
+- `tez_newIncludedTransactions`: Provides confirmations for transactions that the sequencer intends to put in the next block **before they have been executed**.
+Returns a transaction object.
+
+- `tez_newPreconfirmedReceipts`: Provides confirmations for transactions that **have been executed** and will be in the next block.
+Returns a transaction receipt.
+
+For example, this JavaScript code subscribes to these events and prints information about them to the log:
+
+```javascript
+// Create a WebSocket connection to a local EVM node
+const socket = new WebSocket('ws://127.0.0.1:8545/ws');
+
+// When the connection is established, subscribe to events
+socket.addEventListener('open', _event => {
+  console.log('WebSocket connection established!');
+  const includedTxPayload = {
+    jsonrpc: "2.0",
+    id: 1,
+    method: "eth_subscribe",
+    params: ["tez_newIncludedTransactions"],
+  };
+  socket.send(JSON.stringify(includedTxPayload));
+  const preconfirmedTxPayload = {
+    jsonrpc: "2.0",
+    id: 1,
+    method: "eth_subscribe",
+    params: ["tez_newPreconfirmedReceipts"],
+  };
+  socket.send(JSON.stringify(preconfirmedTxPayload));
+});
+
+// Log when a message is received from the server.
+socket.addEventListener('message', event => {
+  console.log('Message from server: ', event.data);
+});
+
+// Executes when the connection is closed, providing the close code and reason.
+socket.addEventListener('close', event => {
+  console.log('WebSocket connection closed:', event.code, event.reason);
+});
+
+// Executes if an error occurs during the WebSocket communication.
+socket.addEventListener('error', error => {
+  console.error('WebSocket error:', error);
+});
+```
+
+The response to the `tez_newIncludedTransactions` event (a transaction object) includes basic information about the transaction including its hash but not the gas used (because the transaction has not been executed yet), as in this example:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "eth_subscription",
+  "params": {
+    "result": {
+      "type": "0x2",
+      "chainId": "0x1f308",
+      "hash": "0xfbb0025e811b8bf37034e508da4740c68164c33947089b1c22119be55258a3e1",
+      "nonce": "0x7",
+      "blockHash": null,
+      "blockNumber": null,
+      "transactionIndex": null,
+      "from": "0x45ff91b4bf16ac9907cf4a11436f9ce61be0650d",
+      "to": "0x46899d4fa5ba90e3ef3b7ae8aae053c662c1ca1d",
+      "value": "0x16345785d8a0000",
+      "gas": "0x98496",
+      "maxFeePerGas": "0x3b9aca00",
+      "maxPriorityFeePerGas": "0x0",
+      "gasPrice": "0x3b9aca00",
+      "accessList": [],
+      "input": "0x",
+      "v": "0x1",
+      "r": "0xe4d96c84fbf0ea73fb39ba5551acce44a41ba03b4502da1d93f1e4a02ce51a3e",
+      "s": "0x6bc2aaa1580b58213e6e6586ae7b38351c2304df370853c74812ae09f5e74275"
+    },
+    "subscription": "0x40f582349eeac9b85b9ba3d936de0ebb"
+  }
+}
+```
+
+The response to the `tez_newPreconfirmedReceipts` event (a transaction receipt) is similar but also includes the number of the block and the gas used, as in this example:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "eth_subscription",
+  "params": {
+    "result": {
+      "transactionHash": "0x2096d81abf605780b56c0db5f415e0bff29c82fbd73912348106ac8c61a808cc",
+      "transactionIndex": "0x1",
+      "blockHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "blockNumber": "0x2e4da9",
+      "from": "0x45ff91b4bf16ac9907cf4a11436f9ce61be0650d",
+      "to": "0x46899d4fa5ba90e3ef3b7ae8aae053c662c1ca1d",
+      "cumulativeGasUsed": "0x5208",
+      "effectiveGasPrice": "0x3b9aca00",
+      "gasUsed": "0x5208",
+      "logs": [],
+      "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "type": "0x2",
+      "status": "0x1",
+      "contractAddress": null
+    },
+    "subscription": "0x221fe712815043cf05255c8b568557c5"
+  }
+}
+```
+
+For more information about Instant Confirmations, see [Getting Instant Confirmations](/building-on-etherlink/transactions#getting-instant-confirmations)
+
 ## WebSocket subscriptions
 
 You can use WebSockets to subscribe to these Etherlink events:
@@ -178,5 +308,10 @@ You can use WebSockets to subscribe to these Etherlink events:
    To ensure that this subscription provides the hash of a transaction, submit that transaction to the EVM node that is hosting the WebSocket subscription.
 
    :::
+
+- `tez_newIncludedTransactions`: Provides confirmations for transactions that the sequencer intends to put in the next block before it has executed them.
+
+- `tez_newPreconfirmedReceipts`: Provides confirmations for transactions that have been executed and will be in the next block.
+For more information, see [Getting Instant Confirmations](/building-on-etherlink/transactions#getting-instant-confirmations).
 
 - `logs`: Returns the events emitted by smart contracts, including the address of the contract, the associated topics, and the data for the event

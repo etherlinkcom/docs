@@ -86,7 +86,8 @@ The lifecycle of a typical operation under normal circumstances is as follows:
 1. The EVM node forwards the transaction to the sequencer when it is valid.
 If users submit multiple transactions that depend on each other (that is, they have nonces that are not yet valid), the EVM node stores them until they are valid.
 1. The sequencer puts the transaction in its pool.
-1. The sequencer puts the transaction into a block as soon as possible (less than 500ms after receiving it in a nominal scenario).
+1. The sequencer enqueues the transaction and sends an instant confirmation to the nodes that the transaction will be in the next block.
+1. The sequencer puts the enqueued transactions into a block as soon as possible (less than 500ms after receiving it in a nominal scenario).
 1. The sequencer publishes the block to the EVM nodes, which update their states based on the transactions in the block.
 1. The sequencer publishes the block to the Smart Rollup inbox on layer 1 via a Smart Rollup node running in operator or batcher mode.
 1. The Smart Rollup nodes tracking the state of Etherlink fetch the block from the Smart Rollup inbox, read its transactions, and update their states.
@@ -135,7 +136,7 @@ To submit a transaction to the delayed inbox, see [Sending transactions to the d
 
 Transactions are considered finalized when you can trust that they cannot be reversed.
 
-The source of truth of what Etherlink transactions are final is the state of the rollup, which Etherlink Smart Rollup nodes store and keep up to date.
+The source of truth of what Etherlink transactions are final is the state of the Smart Rollup, which Etherlink Smart Rollup nodes store and keep up to date.
 They catch any misbehavior by the sequencer or other actors, accept only valid transactions, and challenge questionable behavior.
 As described in [Refutation periods](https://docs.tezos.com/architecture/smart-rollups#refutation-periods) on docs.tezos.com, Smart Rollup nodes have two weeks to challenge commitments made about the state of a Smart Rollup, although they usually challenge any questionable state as soon as possible.
 
@@ -143,7 +144,13 @@ Therefore, an Etherlink transaction is truly finalized two weeks after the block
 At this point, it is permanently part of the state of the Etherlink Smart Rollup and of Tezos.
 
 However, Etherlink is set up so users can be confident that transactions are irreversible much sooner than that.
-Most users can assume that a transaction is irreversible and will be finalized after one of two milestones:
+Most users can assume that a transaction is irreversible and will be finalized after one of these milestones:
+
+- **The sequencer provides Instant Confirmations within 50ms.**
+As described in [Getting Instant Confirmations](/building-on-etherlink/transactions#getting-instant-confirmations), the sequencer notifies the nodes of the transactions that it intends to include in the next block.
+The sequencer provides this notification as soon as it enqueues the transaction for the next block, before the transaction has been executed.
+Users can subscribe to these notifications via the `tez_newIncludedTransactions` event, as described in [Subscribing to Instant Confirmations](/building-on-etherlink/websockets#subscribing-to-instant-confirmations).
+Users who trust the sequencer and these confirmations can take them as proof that the transaction will be in the next block.
 
 - **Transactions are confirmed on Etherlink within 500ms.**
 As described in [Sequencer](#sequencer), the sequencer puts transactions in blocks and distributes them to the EVM nodes.

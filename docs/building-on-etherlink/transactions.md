@@ -279,6 +279,102 @@ run();
 
 ```
 
+## Getting Instant Confirmations
+
+:::note
+
+Instant Confirmations are an experimental feature.
+
+:::
+
+Beginning with EVM node 0.52 and the version 6.0 upgrade, Etherlink supports Instant Confirmations.
+You can send a transaction to a node with the `eth_sendRawTransactionSync` method and receive an instant confirmation from the node that the sequencer intends to put the transaction in the next block.
+This confirmation includes a transaction receipt that provides information about the transaction, such as the status, hash, gas used, and index of the transaction in the next block.
+The only information missing from the receipt is the hash of the next block, because it has not been created yet.
+
+:::note
+
+To receive Instant Confirmations with the lowest possible latency, use an Etherlink EVM node as close as possible to the sequencer, which is deployed to a data center in Tokyo, Japan.
+
+:::
+
+Sending the transaction with the `eth_sendRawTransactionSync` method is done the same way as with the `eth_sendRawTransaction` method: you sign the transaction and include it in the `data` parameter plus the optional `pending` value, as in this example:
+
+```bash
+curl --request POST \
+     --url https://node.shadownet.etherlink.com \
+     --header 'accept: application/json' \
+     --header 'content-type: application/json' \
+     --data '
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "params": [
+    "0x88a747dbc7f84e8416dc4be31ddef0",
+    "pending"
+  ],
+  "method": "eth_sendRawTransactionSync"
+}
+'
+```
+
+If you pass `latest` instead of `pending`, the node waits until the transaction is in a block to send the confirmation.
+Etherlink supports this `pending` value only on the `eth_sendRawTransactionSync` method, not on any other methods.
+
+When the sequencer enqueues the transaction for the next block, it notifies the nodes of the transaction and the nodes return a receipt for the transaction that includes information such as its gas price and gas cost.
+This receipt matches the specification for the [`eth_getTransactionReceipt`](https://ethereum.org/developers/docs/apis/json-rpc/#eth_gettransactionreceipt) endpoint except that the `blockHash` field is always `0x000...` because the block has not been created yet.
+You can take this response as a confirmation that the sequencer will put the transaction in the next block.
+If the sequencer does not intend to put the transaction in the next block (such as if the block is nearly complete or the transaction volume is high), the nodes wait to provide the receipt until the transaction will be in the next block.
+
+The following JSON code is an example response from the `eth_sendRawTransactionSync` for an ERC-20 token transfer:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "transactionHash": "0xa428415e77f1b5328023e1980ebd7474fc215acb0ec803b56f991866921ec6eb",
+    "transactionIndex": "0x1",
+    "blockHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "blockNumber": "0x2c5349",
+    "from": "0x45ff91b4bf16ac9907cf4a11436f9ce61be0650d",
+    "to": "0x03ff3337af6d6ed88c72df7bef31162edddb51ba",
+    "cumulativeGasUsed": "0xb5e6",
+    "effectiveGasPrice": "0x3b9aca00",
+    "gasUsed": "0xb5e6",
+    "logs": [
+      {
+        "address": "0x03ff3337af6d6ed88c72df7bef31162edddb51ba",
+        "topics": [
+          "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+          "0x00000000000000000000000045ff91b4bf16ac9907cf4a11436f9ce61be0650d",
+          "0x00000000000000000000000046899d4fa5ba90e3ef3b7ae8aae053c662c1ca1d"
+        ],
+        "data": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "blockNumber": "0x2c5349",
+        "transactionHash": "0xa428415e77f1b5328023e1980ebd7474fc215acb0ec803b56f991866921ec6eb",
+        "transactionIndex": "0x1",
+        "blockHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "logIndex": "0x1",
+        "removed": false
+      }
+    ],
+    "logsBloom": "0x00000000000000000020000000000000000000000000100000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000010000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000082000000000000000000000000000000000000002000000200000000008000000000000000004000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "type": "0x2",
+    "status": "0x1",
+    "contractAddress": null
+  },
+  "id": 1
+}
+```
+
+:::note
+
+For even faster confirmations, you can use WebSockets to subscribe to the `tez_newIncludedTransactions` or `tez_newPreconfirmedReceipts` events.
+These events provide confirmations of transactions that are ready to be executed and transactions that have been executed but not yet included in a block, respectively.
+See [Subscribing to Instant Confirmations](/building-on-etherlink/websockets#subscribing-to-instant-confirmations).
+
+:::
+
 ## Transferring ERC-20 tokens
 
 To transfer ERC-20 tokens, you can use the standard `transfer` entrypoint, as in this example:
