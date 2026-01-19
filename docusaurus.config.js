@@ -16,8 +16,8 @@ const POSTHOG_API = 'https://us.i.posthog.com';
 // Also, put GTM first because sometimes the ';' in the escaped single quotes causes the browser to think it's the end
 const scriptSrc =
   process.env.NODE_ENV === 'development'
-    ? `https://*.googletagmanager.com https://cdn.jsdelivr.net ${POSTHOG_ASSETS} 'self' 'unsafe-inline' 'unsafe-eval'`
-    : `https://*.googletagmanager.com https://cdn.jsdelivr.net ${POSTHOG_ASSETS} 'self' 'unsafe-inline'`;
+    ? `https://*.google.com https://*.gstatic.com https://*.googletagmanager.com https://cdn.jsdelivr.net ${POSTHOG_ASSETS} 'self' 'unsafe-inline' 'unsafe-eval'`
+    : `https://*.google.com https://*.gstatic.com https://*.googletagmanager.com https://cdn.jsdelivr.net ${POSTHOG_ASSETS} 'self' 'unsafe-inline'`;
 
 
 const contentSecurityPolicy = `
@@ -30,8 +30,8 @@ font-src https://cdn.jsdelivr.net https://fonts.gstatic.com 'self';
 img-src 'self' https://*.googletagmanager.com https://*.google-analytics.com data: https://*.walletconnect.com ${POSTHOG_API};
 media-src 'self';
 form-action 'self';
-connect-src 'self' ${POSTHOG_API} https://cdn.jsdelivr.net https://node.mainnet.etherlink.com https://node.ghostnet.etherlink.com https://*.thirdweb.com https://*.algolia.net https://*.algolianet.com https://app.pushfeedback.com https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.walletconnect.com https://*.walletconnect.org wss://relay.walletconnect.org wss://app.biel.ai https://app.biel.ai;
-frame-src https://tezosbot.vercel.app https://*.loom.com https://*.thirdweb.com https://*.walletconnect.org;
+connect-src 'self' ${POSTHOG_API} https://*.google.com https://cdn.jsdelivr.net https://node.mainnet.etherlink.com https://node.ghostnet.etherlink.com https://*.thirdweb.com https://*.algolia.net https://*.algolianet.com https://app.pushfeedback.com https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.walletconnect.com https://*.walletconnect.org wss://relay.walletconnect.org wss://app.biel.ai https://app.biel.ai;
+frame-src https://*.google.com https://tezosbot.vercel.app https://*.loom.com https://*.thirdweb.com https://*.walletconnect.org;
 `;
 
 /** @type {import('@docusaurus/types').Config} */
