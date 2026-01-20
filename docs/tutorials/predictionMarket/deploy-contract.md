@@ -8,7 +8,8 @@ For access to tools such as block explorers and indexers, and to make your contr
 
 ## Optional: Deploying to the Etherlink sandbox
 
-Deploying to a sandbox can be useful to verify that your deployment scripts work before deploying to a test network.
+Deploying to a sandbox can be useful to verify that your deployment scripts work and that the contract can be deployed before deploying to a test network.
+However, it is limited for development work because it does not provide a block explorer.
 Follow these steps to deploy a local Etherlink EVM node in sandbox mode, a special mode that behaves like an entire Etherlink network.
 
 1. Start the Etherlink sandbox based on Etherlink Shadownet as described in [Running a local sandbox](/building-on-etherlink/sandbox).
@@ -70,6 +71,9 @@ In short, starting the sandbox involves these steps:
      console.log("Waiting for the tx to confirm");
      await client.waitForTransactionReceipt({ hash: tx, confirmations: 1 });
      console.log("Confirmed");
+
+     const result = await contract.read.getMarket([BigInt(1)]);
+     console.log("Market created:", result.question);
    }
 
    main()
@@ -104,6 +108,7 @@ Contract deployed to: 0x981a41a17ef89f3189a533c155566b1fb626bf1d
 Creating a market
 Waiting for the tx to confirm
 Confirmed
+Market created: Will it rain tomorrow?
 ```
 
 If you see any errors, try these troubleshooting steps:
@@ -113,6 +118,7 @@ If you see any errors, try these troubleshooting steps:
 - Make sure that you compiled the contract before running the deployment script.
 
 - Make sure that you used your account in the `--fund` argument when you started the sandbox.
+This account must match the account for the private key in the `.env` file.
 
 - Check that the port the sandbox is running on (by default, 8545) matches the port in the `hardhat.config.ts` file.
 
