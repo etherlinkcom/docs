@@ -13,7 +13,7 @@ The starter frontend project is in the repository https://github.com/onedebos/pr
 
 1. Get a ThirdWeb client ID by going to https://thirdweb.com/create-api-key.
 
-1. Clone the starter frontend application.
+1. Clone the starter frontend application and install ite dependencies.
 You can clone the application into the same folder as your Hardhat project or a different folder.
 
    ```bash
@@ -30,27 +30,28 @@ You can clone the application into the same folder as your Hardhat project or a 
 
 1. Update the `.env` file by setting your ThirdWeb client ID as the value of the `NEXT_PUBLIC_THIRDWEB_CLIENT_ID` variable and the address of the deployed contract as the value of the `NEXT_PUBLIC_CONTRACT_ADDRESS` variable.
 
-1. Run this command to install the dependencies for the frontend application:
-
-   ```bash
-   npm install
-   ```
-
 1. In the `lib` folder, create a file named `contract-utils.ts` and add this code:
 
    ```javascript
    //lib/contract-utils.ts
 
    import { getContract } from "thirdweb";
-   import { etherlinkTestnet } from "thirdweb/chains";
+   import { defineChain } from "thirdweb/chains";
    import { client } from "./providers";
+
+   const etherlinkShadownet = defineChain({
+     id: 127823,
+     rpc: process.env.NEXT_PUBLIC_ETHERLINK_RPC!,
+     name: "Etherlink Shadownet",
+     testnet: true,
+   });
 
    const abi = [YOUR_CONTRACT_ABI]
 
    export const contract = getContract({
      client, // Your ThirdWeb client
      address: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS!, // Your contract address
-     chain: etherlinkTestnet,
+     chain: etherlinkShadownet,
      abi,
    });
    ```

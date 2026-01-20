@@ -1,5 +1,5 @@
 ---
-title: "Part 1: Write a contract"
+title: "Part 1: Writing a contract"
 ---
 
 In this section, you write a simple prediction market contract.
@@ -61,7 +61,7 @@ Follow these steps to set up the contract for the prediction market:
    npm i dotenv @nomicfoundation/hardhat-viem
    ```
 
-1. Replace the default `hardhat.config.ts` file with this file, which includes configuration information for Etherlink Shadownet:
+1. Replace the default `hardhat.config.ts` file with this file, which includes configuration information for Etherlink Shadownet and local sandbox:
 
    ```javascript
    import dotenv from 'dotenv';
@@ -76,9 +76,15 @@ Follow these steps to set up the contract for the prediction market:
      ],
      solidity: "0.8.24",
      networks: {
-       etherlink: {
+       etherlinkShadownet: {
          type: 'http',
          url: "https://node.shadownet.etherlink.com",
+         chainId: 127823,
+         accounts: [process.env.PRIVATE_KEY],
+       },
+       etherlinkSandbox: {
+         type: 'http',
+         url: "http://localhost:8545",
          chainId: 127823,
          accounts: [process.env.PRIVATE_KEY],
        },
