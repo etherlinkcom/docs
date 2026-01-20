@@ -87,30 +87,6 @@ The best place to get the most recent binary files to use with Etherlink is http
       ```
 
    </TabItem>
-   <TabItem value="ghostnet" label="Etherlink Ghostnet Testnet">
-
-      For Etherlink Ghostnet Testnet, use this command:
-
-      ```bash
-      octez-smart-rollup-node init observer config for sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg \
-        with operators --data-dir <SR_DATA_DIR> \
-        --pre-images-endpoint https://snapshots.tzinit.org/etherlink-ghostnet/wasm_2_0_0
-      ```
-
-      This command generates a minimal configuration file (`config.json`) in the local data folder:
-
-      ```json
-      { "smart-rollup-address": "sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg",
-        "smart-rollup-node-operator": {}, "fee-parameters": {}, "mode": "observer",
-        "pre-images-endpoint":
-          "https://snapshots.tzinit.org/etherlink-ghostnet/wasm_2_0_0" }
-      ```
-
-      :::important
-      Etherlink Ghostnet Testnet will sunset on **15 January 2026**, and will then no longer be available. Please [migrate](/network/migrating-testnet) to Etherlink Shadownet Testnet.
-      :::
-
-   </TabItem>
    <TabItem value="shadownet" label="Etherlink Shadownet Testnet">
 
       For Etherlink Shadownet Testnet, use this command:
@@ -144,7 +120,6 @@ The best place to get the most recent binary files to use with Etherlink is http
    1. Get the URL of the Etherlink Smart Rollup node full history snapshot for the appropriate Etherlink network or download the file manually:
 
       - Etherlink Mainnet: https://snapshots.tzinit.org/etherlink-mainnet
-      - Etherlink Ghostnet Testnet: https://snapshots.tzinit.org/etherlink-ghostnet
       - Etherlink Shadownet Testnet: https://snapshots.tzinit.org/etherlink-shadownet
 
       The full history snapshot is appropriate for most use cases.
@@ -158,15 +133,6 @@ The best place to get the most recent binary files to use with Etherlink is http
 
       ```bash
       octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet \
-        snapshot import <SNAPSHOT_URL_OR_FILE> \
-        --data-dir <SR_DATA_DIR>
-      ```
-
-   </TabItem>
-   <TabItem value="ghostnet" label="Etherlink Ghostnet Testnet">
-
-      ```bash
-      octez-smart-rollup-node --endpoint https://rpc.tzkt.io/ghostnet \
         snapshot import <SNAPSHOT_URL_OR_FILE> \
         --data-dir <SR_DATA_DIR>
       ```
@@ -190,14 +156,6 @@ The best place to get the most recent binary files to use with Etherlink is http
 
    ```bash
    octez-smart-rollup-node --endpoint https://rpc.tzkt.io/mainnet run \
-     --data-dir <SR_DATA_DIR>
-   ```
-
-   </TabItem>
-   <TabItem value="ghostnet" label="Etherlink Ghostnet Testnet">
-
-   ```bash
-   octez-smart-rollup-node --endpoint https://rpc.tzkt.io/ghostnet run \
      --data-dir <SR_DATA_DIR>
    ```
 

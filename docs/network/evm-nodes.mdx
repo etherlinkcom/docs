@@ -53,23 +53,6 @@ If you don't want to see all of the options and settings for the EVM node, you c
       ```
 
       </TabItem>
-      <TabItem value="ghostnet" label="Etherlink Ghostnet Testnet">
-
-      Use this command for Etherlink Ghostnet Testnet:
-
-      ```bash
-      octez-evm-node run observer \
-        --network testnet \
-        --history rolling:1 \
-        --dont-track-rollup-node \
-        --init-from-snapshot
-      ```
-
-      :::important
-      Etherlink Ghostnet Testnet will sunset on **15 January 2026**, and will then no longer be available. Please [migrate](/network/migrating-testnet) to Etherlink Shadownet Testnet.
-      :::
-
-      </TabItem>
       <TabItem value="shadownet" label="Etherlink Shadownet Testnet">
 
       Use this command for Etherlink Shadownet Testnet:
@@ -128,20 +111,6 @@ For example, this command runs the EVM node in the Docker container on port 8545
       ```
 
   </TabItem>
-  <TabItem value="ghostnet" label="Etherlink Ghostnet Testnet">
-
-  ```bash
-  docker run -it -p 8545:8545 \
-    --rm tezos/tezos-bare:octez-evm-node-latest octez-evm-node run observer \
-    --network testnet --history rolling:1  --dont-track-rollup-node \
-    --init-from-snapshot --rpc-addr "0.0.0.0" --rpc-port "8545"
-  ```
-
-  :::important
-  Etherlink Ghostnet Testnet will sunset on **15 January 2026**, and will then no longer be available. Please [migrate](/network/migrating-testnet) to Etherlink Shadownet Testnet.
-  :::
-
-  </TabItem>
   <TabItem value="shadownet" label="Etherlink Shadownet Testnet">
 
   ```bash
@@ -168,7 +137,6 @@ You can set a different location for the file if you want to separate the data d
 The default location is the file `config.json` in the data directory.
 - The network to use, which you specify in the `--network` argument or the `EVM_NODE_NETWORK` environment variable.
     - `--network mainnet` for Etherlink Mainnet
-    - `--network testnet` for Etherlink Ghostnet
     - `--network shadownet` for Etherlink Shadownet
 
     Choosing a network sets the node to use preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
@@ -182,18 +150,6 @@ The default location is the file `config.json` in the data directory.
       --preimages-endpoint https://snapshots.tzinit.org/etherlink-mainnet/wasm_2_0_0 \
       --evm-node-endpoint https://relay.mainnet.etherlink.com
       ```
-
-   </TabItem>
-   <TabItem value="ghostnet" label="Etherlink Ghostnet Testnet">
-
-    ```bash
-    --preimages-endpoint https://snapshots.tzinit.org/etherlink-testnet/wasm_2_0_0 \
-    --evm-node-endpoint https://relay.testnet.etherlink.com
-    ```
-
-    :::important
-    Etherlink Ghostnet Testnet will sunset on **15 January 2026**, and will then no longer be available. Please [migrate](/network/migrating-testnet) to Etherlink Shadownet Testnet.
-    :::
 
    </TabItem>
    <TabItem value="shadownet" label="Etherlink Shadownet Testnet">
@@ -287,33 +243,6 @@ To automatically download and import a snapshot, start the node with the `--init
     ```
 
   </TabItem>
-  <TabItem value="ghostnet" label="Etherlink Ghostnet Testnet">
-
-  ```bash
-  octez-evm-node run observer \
-    --network testnet \
-    --history rolling:1 \
-    --data-dir <EVM_DATA_DIR> \
-    --dont-track-rollup-node \
-    --init-from-snapshot
-  ```
-
-  If you set the `EVM_NODE_DATA_DIR` and `EVM_NODE_NETWORK` environment variables, you can omit the `--network` and `--data-dir` arguments, as in this example:
-
-  ```bash
-  export EVM_NODE_DATA_DIR="<EVM_DATA_DIR>"
-  export EVM_NODE_NETWORK=testnet
-  octez-evm-node run observer \
-    --history rolling:1 \
-    --dont-track-rollup-node \
-    --init-from-snapshot
-  ```
-
-  :::important
-  Etherlink Ghostnet Testnet will sunset on **15 January 2026**, and will then no longer be available. Please [migrate](/network/migrating-testnet) to Etherlink Shadownet Testnet.
-  :::
-
-  </TabItem>
   <TabItem value="shadownet" label="Etherlink Shadownet Testnet">
 
   ```bash
@@ -383,17 +312,6 @@ Then, run this command to start the node, passing the data directory and the net
       ```
 
   </TabItem>
-  <TabItem value="ghostnet" label="Etherlink Ghostnet Testnet">
-
-
-      ```bash
-      octez-evm-node run observer \
-        --network testnet \
-        --history rolling:1 \
-        --data-dir <EVM_DATA_DIR>
-      ```
-
-  </TabItem>
   <TabItem value="shadownet" label="Etherlink Shadownet Testnet">
 
       ```bash
@@ -433,7 +351,6 @@ The best place to get the most recent binary files to use with Etherlink is http
 1. Get the URL of the Etherlink Smart Rollup node snapshot for the appropriate Etherlink network or download the file manually:
 
    - Etherlink Mainnet: https://snapshots.tzinit.org/etherlink-mainnet
-   - Etherlink Ghostnet Testnet: https://snapshots.tzinit.org/etherlink-ghostnet
    - Etherlink Shadownet Testnet: https://snapshots.tzinit.org/etherlink-shadownet
 
    The full history snapshot is appropriate for most use cases.
