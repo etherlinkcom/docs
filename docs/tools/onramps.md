@@ -14,3 +14,5 @@ Some on-ramps and off-ramps also allow users to conduct transactions with their 
 These on-ramps/off-ramps support Etherlink:
 
 - [Transak](https://transak.com)
+- [Banxa (Etherlink)](https://etherlink.banxa-sandbox.com/)
+- [Banxa (Tezos)](https://tezos.banxa-sandbox.com/)
