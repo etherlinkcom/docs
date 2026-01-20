@@ -13,7 +13,7 @@ dependencies:
 Hardhat works seamlessly with Etherlink.
 You can follow the documentation at https://hardhat.org/docs and insert values for Etherlink.
 
-Here is an example `hardhat.config.js` file for Etherlink Mainnet and Ghostnet Testnet:
+Here is an example `hardhat.config.js` file for Etherlink Mainnet and Shadownet Testnet:
 
 ```javascript
 module.exports = {
@@ -21,10 +21,12 @@ module.exports = {
   networks: {
     etherlinkMainnet: {
       url: "https://node.mainnet.etherlink.com",
+      chainId: 42793,
       accounts: ["<YOUR_PRIVATE_KEY>"],
     },
-    etherlinkTestnet: {
+    etherlinkShadownet: {
       url: "https://node.shadownet.etherlink.com",
+      chainId: 127823,
       accounts: ["<YOUR_PRIVATE_KEY>"],
     },
   },
