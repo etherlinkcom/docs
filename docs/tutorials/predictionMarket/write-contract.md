@@ -10,6 +10,8 @@ Etherlink is compatible with Ethereum technology, which means that you can use a
 For more information on tools that work with Etherlink, see [Developer toolkits](/building-on-etherlink/development-toolkits).
 The starter project also uses the [Hardhat](/building-on-etherlink/development-toolkits) development environment to simplify the process of compiling and deploying the contract.
 
+## Writing the contract
+
 Follow these steps to set up the contract for the prediction market:
 
 1. Install Node.JS version 22 or later, which is required for Hardhat.
@@ -486,5 +488,116 @@ Hardhat compiles the contract into files in the `artifacts/contracts` folder.
 Files in this folder include the compiled bytecode of the contract and the application binary interface (ABI) that describes the functions.
 Applications use this ABI to know how to format calls to the contract.
 
-Now the contract is compiled and ready to be deployed to a test network.
+## Testing the contract
+
+Hardhat includes a testing framework that lets you test your contracts before deploying them.
+Follow these steps to set up a simple test for the contract:
+
+1. Run this command to install packages that Hardhat uses for testing contracts:
+
+   ```bash
+   npm add --save-dev @nomicfoundation/hardhat-viem-assertions @nomicfoundation/hardhat-node-test-runner
+   ```
+
+1. Add these plugins to the `hardhat.config.ts` file so it looks like this:
+
+   ```javascript
+   import dotenv from 'dotenv';
+   dotenv.config();
+
+   import hardhatViem from "@nomicfoundation/hardhat-viem";
+   import hardhatViemAssertions from "@nomicfoundation/hardhat-viem-assertions";
+   import hardhatNodeTestRunner from "@nomicfoundation/hardhat-node-test-runner";
+
+   /** @type import('hardhat/config').HardhatUserConfig */
+   module.exports = {
+     plugins: [
+       hardhatViem,
+       hardhatViemAssertions,
+       hardhatNodeTestRunner,
+     ],
+     solidity: "0.8.24",
+     networks: {
+       etherlinkShadownet: {
+         type: 'http',
+         url: "https://node.shadownet.etherlink.com",
+         chainId: 127823,
+         accounts: [process.env.PRIVATE_KEY],
+       },
+       etherlinkSandbox: {
+         type: 'http',
+         url: "http://localhost:8545",
+         chainId: 127823,
+         accounts: [process.env.PRIVATE_KEY],
+       },
+     },
+   };
+   ```
+
+1. Create a file named `tests/test.js` and put this code in it:
+
+   ```javascript
+   import { beforeEach, describe, it } from "node:test";
+   import { network } from "hardhat";
+   import { parseEther } from "viem";
+
+   const { viem } = await network.connect();
+
+   let contract;
+
+   describe("Test creating and using markets", function () {
+
+     // Initialize the contract before each test
+     beforeEach(async () => {
+       contract = await viem.deployContract("PredictxtzContract");
+     });
+
+     it("Should emit the MarketCreated event when a market is created", async function () {
+       await viem.assertions.emit(
+         contract.write.createMarket([
+           "Will it rain tomorrow?",
+           604800,
+         ]),
+         contract,
+         "MarketCreated",
+       );
+     });
+
+     it("Users should be able to bet on a market", async function () {
+       const client = await viem.getPublicClient();
+       const tx = await contract.write.createMarket([
+         "Will it rain tomorrow?",
+         604800,
+       ]);
+       await client.waitForTransactionReceipt({ hash: tx, confirmations: 1 });
+
+       await viem.assertions.emit(
+        contract.write.placeBet([
+          1,
+          true,
+        ], {
+          value: parseEther('1'),
+        }),
+        contract,
+        "BetPlaced",
+      );
+     });
+   });
+   ```
+
+   This test file deploys the contract and then tests it.
+   It uses the `viem.assertions.emit` function to call the `createMarket` and `placeBet` functions and verify that the contract emits the `MarketCreated` and `BetPlaced` events, respectively.
+
+1. Run this command to run the tests:
+
+   ```bash
+   npx hardhat test test/test.js
+   ```
+
+The results show that the test successfully deployed the contract, called it, and observed the expected events.
+If your test fails, verify that it matches the code above and that your contract compiles.
+
+If you want to continue working with hte test, you can test the other functions in a similar way.
+
+Now the contract is compiled and tested and ready to be deployed to a test network.
 Continue to [Part 2: Deploying the contract](/tutorials/predictionMarket/deploy-contract).
