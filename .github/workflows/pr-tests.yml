@@ -1,0 +1,62 @@
+name: Tests
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+
+  checkChangedFiles:
+    runs-on: ubuntu-latest
+    outputs:
+      files: ${{ steps.files.outputs.added_modified }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: files
+        uses: Ana06/get-changed-files@v1.2
+        with:
+          format: 'csv'
+          filter: '*.mdx?'
+
+  tests:
+    runs-on: ubuntu-latest
+    needs: checkChangedFiles
+    if: ${{ needs.checkChangedFiles.outputs.files != '' }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 22
+      - run: npm ci
+
+      # Set up remote tests
+      - git clone https://gitlab.com/nomadic-labs/doclib.git
+      - cd doclib
+      - npm i
+
+      # Tests:
+      # - Run tests from the doclib repo
+      # - Pass the changed files as a comma-separated list
+
+      # Image links check
+      - run: npm run imageLinks -- --baseFolder=.. --imageFolder=static --docFiles=${{ needs.checkChangedFiles.outputs.files }} --reporter mocha-junit-reporter --reporter-options mochaFile=../imageLinks.xml
+        continue-on-error: true
+
+      # Unused images check
+      - run: npm run usedImages -- --baseFolder=.. --docFiles=docs --imageFolder=static --ignoreImages=img/site --reporter mocha-junit-reporter --reporter-options mochaFile=../usedImages.xml
+        continue-on-error: true
+
+      # Dependency proposer
+      - run: npm run proposeDependencies -- --baseFolder=.. --docFiles=${{ needs.checkChangedFiles.outputs.files }} --major --reporter mocha-junit-reporter --reporter-options mochaFile=../proposedDependencies.xml
+        continue-on-error: true
+
+      # Report tests on PR
+      - uses: dorny/test-reporter@v2
+        if: ${{ !cancelled() }}
+        with:
+          name: Mocha tests
+          path:
+            - imageLinks.xml
+            - usedImages.xml
+            - proposedDependencies.xml
+          reporter: mocha-json
