@@ -1,0 +1,67 @@
+name: Tests
+
+# Junit reporter needs permission to write to checks
+permissions:
+  contents: read
+  checks: write
+  id-token: write
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+
+  checkChangedFiles:
+    runs-on: ubuntu-latest
+    outputs:
+      files: ${{ steps.files.outputs.added_modified }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: files
+        uses: Ana06/get-changed-files@v1.2
+        with:
+          format: 'csv'
+          filter: '*.mdx?'
+
+  tests:
+    runs-on: ubuntu-latest
+    needs: checkChangedFiles
+    if: ${{ needs.checkChangedFiles.outputs.files != '' }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 22
+
+      - run: npm ci
+
+      # Set up remote tests
+      - run: git clone https://gitlab.com/nomadic-labs/doclib.git
+      - run: npm i
+        working-directory: doclib
+
+      # Tests:
+      # - Run tests from the doclib repo
+      # - Pass the changed files as a comma-separated list
+
+      - name: Image links check
+        run: npm run imageLinks -- --baseFolder=.. --imageFolder=static --docFiles=${{ needs.checkChangedFiles.outputs.files }} --reporter mocha-junit-reporter --reporter-options mochaFile=imageLinks.xml
+        continue-on-error: true
+        working-directory: doclib
+
+      - name: Unused images check
+        run: npm run usedImages -- --baseFolder=.. --docFiles=docs --imageFolder=static --ignoreImages=img/site --reporter mocha-junit-reporter --reporter-options mochaFile=usedImages.xml
+        continue-on-error: true
+        working-directory: doclib
+
+      - name: Dependency proposer
+        run: npm run proposeDependencies -- --baseFolder=.. --docFiles=${{ needs.checkChangedFiles.outputs.files }} --major --reporter mocha-junit-reporter --reporter-options mochaFile=proposedDependencies.xml
+        continue-on-error: true
+        working-directory: doclib
+
+      # Report tests on PR
+      - uses: mikepenz/action-junit-report@v5
+        if: ${{ !cancelled() }}
+        with:
+          report_paths: 'doclib/*.xml'
