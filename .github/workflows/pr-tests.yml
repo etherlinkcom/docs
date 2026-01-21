@@ -61,7 +61,12 @@ jobs:
         working-directory: doclib
 
       # Report tests on PR
-      - uses: mikepenz/action-junit-report@v5
-        if: ${{ !cancelled() }}
+      - name: Publish test report
+        uses: ctrf-io/github-test-reporter@v1
         with:
-          report_paths: 'doclib/*.xml'
+          report-path: './doclib/*.xml'
+          flaky-rate-report: true
+          pull-request: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: always()
