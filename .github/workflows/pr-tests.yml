@@ -45,6 +45,11 @@ jobs:
       # - Run tests from the doclib repo
       # - Pass the changed files as a comma-separated list
 
+      - name: External link and anchor check
+        run: npm run checkExternalLinks -- --baseFolder=.. --docFiles=$CHANGED_FILES --reporter mocha-junit-reporter --reporter-options mochaFile=../externalLinks.xml
+        continue-on-error: true
+        working-directory: doclib
+
       - name: Image links check
         run: npm run imageLinks -- --baseFolder=.. --imageFolder=static --docFiles=${{ needs.checkChangedFiles.outputs.files }} --reporter mocha-junit-reporter --reporter-options mochaFile=imageLinks.xml
         continue-on-error: true
