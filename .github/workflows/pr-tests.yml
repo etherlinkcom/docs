@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: checkChangedFiles
     if: ${{ needs.checkChangedFiles.outputs.files != '' }}
-    fail-on-error: false
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
