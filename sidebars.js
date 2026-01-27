@@ -130,8 +130,14 @@ const sidebars = {
       label: 'Governance',
       collapsed: false,
       items: [
+        'governance/overview',
         'governance/how-is-etherlink-governed',
-        'governance/how-do-i-participate-in-governance',
+        'governance/voting-key',
+        'governance/fast-path',
+        'governance/proposing-upgrades',
+        'governance/kernel-governance',
+        'governance/triggering-upgrades',
+        'governance/sequencer-upgrades',
       ],
     },
     {

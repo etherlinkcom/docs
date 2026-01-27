@@ -36,7 +36,7 @@ The real-world duration of governance periods can be longer, depending on the ac
 
 For information about governance proposals and updates, see https://governance.etherlink.com.
 
-For the addresses of the contracts that manage governance, see [How do I participate in governance?](/governance/how-do-i-participate-in-governance).
+For the addresses of the contracts that manage governance, see [Governance overview](/governance/overview).
 
 ## Kernel governance (slow)
 
