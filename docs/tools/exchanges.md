@@ -16,7 +16,7 @@ These decentralized exchanges allow users and dApps to trade XTZ with other cryp
 
 - [Hanji](https://hanji.io/)
 
-- [Oku Trade](https://oku.trade/?inputChain=etherlink)
+- [Oku Trade](https://oku.trade/swap?inputChain=etherlink&utm_source=etherlink&utm_medium=ecosystem)
 
 - [IguanaDEX](https://www.iguanadex.com/?chain=etherlink)
 
