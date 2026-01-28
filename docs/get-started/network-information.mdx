@@ -98,96 +98,11 @@ or subscribe to a commercial [RPC provider](/tools/node-providers) plan which of
   </tbody>
 </table>
 
-## Etherlink Ghostnet Testnet
-
-This test network runs on the [Ghostnet](https://teztnets.com/ghostnet-about) Tezos test network.
-
-:::note
-
-Because it was the first Etherlink test network, Etherlink Ghostnet Testnet (sometimes abbreviated as "Ghostnet Testnet" in Etherlink jargon) is the default test network that most Etherlink developers use, and the network that this documentation means when it refers to "Testnet."
-However, this test work will be decommissioned soon and the Etherlink Shadownet Testnet (see below) will be the primary Etherlink test network (see [Migrating to Etherlink Shadownet Testnet](/network/migrating-testnet)).
-
-:::
-
-<table class="customTableContainer">
-  <thead>
-    <tr>
-      <th width="231">Parameter</th>
-      <th>Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Network Name</td>
-      <td><code>Etherlink Testnet</code></td>
-    </tr>
-    <tr>
-      <td>EVM version</td>
-      <td><code>Osaka</code></td>
-    </tr>
-    <tr>
-      <td>RPC Endpoint</td>
-      <td><InlineCopy code="https://node.ghostnet.etherlink.com" /></td>
-    </tr>
-    <tr>
-      <td>Block Explorer URL</td>
-      <td><a href="https://testnet.explorer.etherlink.com/">https://testnet.explorer.etherlink.com/</a></td>
-    </tr>
-    <tr>
-      <td>Faucet</td>
-      <td><a href="https://faucet.etherlink.com/">https://faucet.etherlink.com/</a></td>
-    </tr>
-    <tr>
-      <td>Websocket Endpoint</td>
-      <td>Not yet publicly available; see <a href="/building-on-etherlink/websockets">Getting updates with WebSockets</a></td>
-    </tr>
-    <tr>
-      <td>Relay Endpoint</td>
-      <td><InlineCopy code="https://relay.ghostnet.etherlink.com" /></td>
-    </tr>
-    <tr>
-      <td>Tezos Smart Rollup address</td>
-      <td><InlineCopy code="sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg" href="https://ghostnet.tzkt.io/sr18wx6ezkeRjt1SZSeZ2UQzQN3Uc3YLMLqg" abbreviate="6,4"></InlineCopy></td>
-    </tr>
-    <tr>
-      <td>Chain ID</td>
-      <td><code>128123</code></td>
-    </tr>
-    <tr>
-      <td>Currency Symbol (native token)</td>
-      <td><code>XTZ</code></td>
-    </tr>
-    <tr>
-      <td>Native token decimals</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <td>Etherlink smart rollup snapshots</td>
-      <td><a href="https://snapshots.tzinit.org/etherlink-ghostnet/">https://snapshots.tzinit.org/etherlink-ghostnet/</a></td>
-    </tr>
-    <tr>
-      <td>Etherlink EVM node snapshots</td>
-      <td><a href="https://snapshotter-sandbox.nomadic-labs.eu/etherlink-ghostnet/">https://snapshotter-sandbox.nomadic-labs.eu/etherlink-ghostnet/</a></td>
-    </tr>
-    <tr>
-      <td>Pre-images</td>
-      <td><a href="https://snapshots.tzinit.org/etherlink-ghostnet/wasm_2_0_0">https://snapshots.tzinit.org/etherlink-ghostnet/wasm_2_0_0</a></td>
-    </tr>
-    <tr>
-      <td>Genesis date</td>
-      <td>15 November 2023</td>
-    </tr>
-    <tr>
-      <td>Wallet Derivation Path</td>
-      <td><code>m/44'/60'/0'/0</code></td>
-    </tr>
-  </tbody>
-</table>
-
 ## Etherlink Shadownet Testnet
 
-This test network (sometimes abbreviated as "Shadownet Testnet") runs on the [Shadownet](https://teztnets.com/shadownet-about) Tezos test network.
-This a new network that will become the primary test network for Etherlink, so users should prepare to migrate to it; see [Migrating to Etherlink Shadownet Testnet](/network/migrating-testnet).
+This test network (sometimes abbreviated as "Shadownet Testnet" or just "Shadownet") runs on the [Shadownet](https://teztnets.com/shadownet-about) Tezos test network.
+Shadownet Testnet is the primary test network for Etherlink.
+For information about migrating to it from the old Ghostnet Testnet, see [Migrating to Etherlink Shadownet Testnet](/network/migrating-testnet).
 
 <table class="customTableContainer">
   <thead>
@@ -268,7 +183,7 @@ This a new network that will become the primary test network for Etherlink, so u
 
 Feature | Details |
 --- | --- |
-Genesis date | 2nd May 2024 (Mainnet), 15th November 2023 (Ghostnet Testnet), 28th August 2025 (Shadownet Testnet)
+Genesis date | 2nd May 2024 (Mainnet), 28th August 2025 (Shadownet Testnet)
 EVM-compatible | Yes, up to version Osaka
 Block speed | Variable; see [Architecture](/network/architecture)
 Docker image | https://hub.docker.com/r/tezos/tezos-bare images that start with `octez-evm-node`
@@ -302,7 +217,6 @@ These precompiled contracts are specific to Etherlink:
     <tr>
       <th>Contract</th>
       <th>Mainnet</th>
-      <th>Ghostnet Testnet</th>
       <th>Shadownet Testnet</th>
     </tr>
   </thead>
@@ -310,19 +224,16 @@ These precompiled contracts are specific to Etherlink:
     <tr>
       <td>Null/system address</td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000000" href="https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000000" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x0000000000000000000000000000000000000000" href="https://testnet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000000" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000000" href="https://shadownet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000000" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
       <td><Link to="/bridging/bridging-tezos">XTZ bridging</Link></td>
       <td><InlineCopy code="0xff00000000000000000000000000000000000001" href="https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0xff00000000000000000000000000000000000001" href="https://testnet.explorer.etherlink.com/address/0xff00000000000000000000000000000000000001" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0xff00000000000000000000000000000000000001" href="https://shadownet.explorer.etherlink.com/address/0xff00000000000000000000000000000000000001" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
       <td><Link to="/bridging/bridging-fa">FA bridging</Link></td>
       <td><InlineCopy code="0xff00000000000000000000000000000000000002" href="https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000002" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0xff00000000000000000000000000000000000002" href="https://testnet.explorer.etherlink.com/address/0xff00000000000000000000000000000000000002" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0xff00000000000000000000000000000000000002" href="https://shadownet.explorer.etherlink.com/address/0xff00000000000000000000000000000000000002" abbreviate="5,4"></InlineCopy></td>
     </tr>
   </tbody>
@@ -335,7 +246,6 @@ Etherlink also includes these [Ethereum precompiled contracts](https://www.evm.c
     <tr>
       <th>Contract</th>
       <th>Mainnet</th>
-      <th>Ghostnet Testnet</th>
       <th>Shadownet Testnet</th>
     </tr>
   </thead>
@@ -343,109 +253,91 @@ Etherlink also includes these [Ethereum precompiled contracts](https://www.evm.c
     <tr>
       <td>`ecrecover`</td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000001" href="https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000001" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x0000000000000000000000000000000000000001" href="https://testnet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000001" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000001" href="https://shadownet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000001" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
       <td>`sha256`</td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000002" href="https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000002" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x0000000000000000000000000000000000000002" href="https://testnet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000002" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000002" href="https://shadownet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000002" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
       <td>`ripemd160`</td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000003" href="https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000003" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x0000000000000000000000000000000000000003" href="https://testnet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000003" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000003" href="https://shadownet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000003" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
       <td>`identity`</td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000004" href="https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000004" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x0000000000000000000000000000000000000004" href="https://testnet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000004" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000004" href="https://shadownet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000004" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
       <td>`modexp`</td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000005" href="https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000005" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x0000000000000000000000000000000000000004" href="https://testnet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000004" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000004" href="https://shadownet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000004" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
       <td>`ecadd`</td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000006" href="https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000006" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x0000000000000000000000000000000000000006" href="https://testnet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000006" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000006" href="https://shadownet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000006" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
       <td>`ecmul`</td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000007" href="https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000007" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x0000000000000000000000000000000000000007" href="https://testnet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000007" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000007" href="https://shadownet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000007" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
       <td>`ecpairing`</td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000008" href="https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000008" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x0000000000000000000000000000000000000008" href="https://testnet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000008" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000008" href="https://shadownet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000008" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
       <td>`blake2f`</td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000009" href="https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000009" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x0000000000000000000000000000000000000009" href="https://testnet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000009" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000009" href="https://shadownet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000009" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
       <td>`kzg_point_evaluation`</td>
       <td><InlineCopy code="0x000000000000000000000000000000000000000a" href="https://explorer.etherlink.com/address/0x000000000000000000000000000000000000000a" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x000000000000000000000000000000000000000a" href="https://testnet.explorer.etherlink.com/address/0x000000000000000000000000000000000000000a" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x000000000000000000000000000000000000000a" href="https://shadownet.explorer.etherlink.com/address/0x000000000000000000000000000000000000000a" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
       <td>`BLS12_G1ADD`</td>
       <td><InlineCopy code="0x000000000000000000000000000000000000000b" href="https://explorer.etherlink.com/address/0x000000000000000000000000000000000000000b" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x000000000000000000000000000000000000000b" href="https://testnet.explorer.etherlink.com/address/0x000000000000000000000000000000000000000b" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x000000000000000000000000000000000000000b" href="https://shadownet.explorer.etherlink.com/address/0x000000000000000000000000000000000000000b" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
       <td>`BLS12_G1MSM`</td>
       <td><InlineCopy code="0x000000000000000000000000000000000000000c" href="https://explorer.etherlink.com/address/0x000000000000000000000000000000000000000c" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x000000000000000000000000000000000000000c" href="https://testnet.explorer.etherlink.com/address/0x000000000000000000000000000000000000000c" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x000000000000000000000000000000000000000c" href="https://shadownet.explorer.etherlink.com/address/0x000000000000000000000000000000000000000c" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
       <td>`BLS12_G2ADD`</td>
       <td><InlineCopy code="0x000000000000000000000000000000000000000d" href="https://explorer.etherlink.com/address/0x000000000000000000000000000000000000000d" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x000000000000000000000000000000000000000d" href="https://testnet.explorer.etherlink.com/address/0x000000000000000000000000000000000000000d" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x000000000000000000000000000000000000000d" href="https://shadownet.explorer.etherlink.com/address/0x000000000000000000000000000000000000000d" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
     <td>`BLS12_G2MSM`</td>
       <td><InlineCopy code="0x000000000000000000000000000000000000000e" href="https://explorer.etherlink.com/address/0x000000000000000000000000000000000000000e" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x000000000000000000000000000000000000000e" href="https://testnet.explorer.etherlink.com/address/0x000000000000000000000000000000000000000e" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x000000000000000000000000000000000000000e" href="https://shadownet.explorer.etherlink.com/address/0x000000000000000000000000000000000000000e" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
     <td>`BLS12_PAIRING_CHECK`</td>
       <td><InlineCopy code="0x000000000000000000000000000000000000000f" href="https://explorer.etherlink.com/address/0x000000000000000000000000000000000000000f" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x000000000000000000000000000000000000000f" href="https://testnet.explorer.etherlink.com/address/0x000000000000000000000000000000000000000f" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x000000000000000000000000000000000000000f" href="https://shadownet.explorer.etherlink.com/address/0x000000000000000000000000000000000000000f" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
     <td>`BLS12_MAP_FP_TO_G1`</td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000010" href="https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000010" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x0000000000000000000000000000000000000010" href="https://testnet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000010" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000010" href="https://shadownet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000010" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
     <td>`BLS12_MAP_FP2_TO_G2`</td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000011" href="https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000011" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x0000000000000000000000000000000000000011" href="https://testnet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000011" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000011" href="https://shadownet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000011" abbreviate="5,4"></InlineCopy></td>
     </tr>
     <tr>
     <td>`secp256r1`</td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000100" href="https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000100" abbreviate="5,4"></InlineCopy></td>
-      <td><InlineCopy code="0x0000000000000000000000000000000000000100" href="https://testnet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000100" abbreviate="5,4"></InlineCopy></td>
       <td><InlineCopy code="0x0000000000000000000000000000000000000100" href="https://shadownet.explorer.etherlink.com/address/0x0000000000000000000000000000000000000100" abbreviate="5,4"></InlineCopy></td>
     </tr>
   </tbody>

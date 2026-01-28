@@ -4,13 +4,12 @@ title: Migrating to Etherlink Shadownet Testnet
 
 import InlineCopy from '@site/src/components/InlineCopy';
 
-Etherlink is migrating to a new testnet.
+Etherlink has migrated to a new testnet.
 This new testnet is based on the Tezos [Shadownet](https://teztnets.com/shadownet-about) testnet, just as the legacy testnet was based on the Tezos [Ghostnet](https://teztnets.com/ghostnet-about) testnet.
 For this reason, the new test network is referred to as "Etherlink Shadownet Testnet" and the legacy test network is referred in this documentation as "Etherlink Ghostnet Testnet."
 This migration ensures that Etherlink's primary Testnet is aligned with the most up-to-date long-running Tezos test network that is similar to Mainnet.
 
-The two testnets will run in parallel whilst migration by builders and partners takes place.
-Etherlink Ghostnet Testnet will sunset on **15 January 2026**, and will then no longer be available.
+Etherlink Ghostnet Testnet has sunset and is no longer available.
 
 This page gives the details of the migration, including milestones, calls to action, and the current progress.
 It is intended for all the Etherlink partners such as infrastructure providers, node operators, and application builders.

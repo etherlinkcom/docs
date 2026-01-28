@@ -5,7 +5,6 @@ title: Data indexers
 Etherlink has public block explorers that use indexers to provide information about Etherlink:
 
 - Etherlink Mainnet: https://explorer.etherlink.com
-- Etherlink Ghostnet Testnet: https://testnet.explorer.etherlink.com/
 - Etherlink Shadownet Testnet: https://shadownet.explorer.etherlink.com/
 
 If you need custom information about your contracts or information formatted in a specific way, you may need to run a custom indexer.
@@ -38,7 +37,6 @@ For information on indexing Etherlink with DipDup, see [Etherlink](https://dipdu
 For examples of using Subquery with Etherlink, see these sample projects:
 
 - Mainnet: https://github.com/subquery/ethereum-subql-starter/tree/main/Etherlink%20Mainnet/etherlink-mainnet-etherlink-starter
-- Ghostnet Testnet: https://github.com/subquery/ethereum-subql-starter/tree/main/Etherlink/etherlink-testnet-starter
 
 ## Goldsky
 
