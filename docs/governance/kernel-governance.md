@@ -6,7 +6,7 @@ dependencies:
 
 :::note
 
-For simplified instructions for voting for Etherlink kernel upgrades, see [Voting (fast path instructions)](/governance/fast-path).
+For simplified instructions for voting for Etherlink kernel upgrades, see [Voting quickstart](/governance/quickstart).
 
 :::
 

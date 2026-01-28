@@ -1,5 +1,5 @@
 ---
-title: Voting (fast path instructions)
+title: Voting quickstart
 dependencies:
   octez: 24.1
 ---

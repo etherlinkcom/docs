@@ -131,9 +131,9 @@ const sidebars = {
       collapsed: false,
       items: [
         'governance/overview',
+        'governance/quickstart',
         'governance/how-is-etherlink-governed',
         'governance/voting-key',
-        'governance/fast-path',
         'governance/proposing-upgrades',
         'governance/kernel-governance',
         'governance/triggering-upgrades',
