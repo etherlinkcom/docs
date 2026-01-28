@@ -37,9 +37,9 @@ test('code copy buttons', async ({ page, context }) => {
 
 });
 
-test('search', async ({ page }) => {
+test.only('search', async ({ page }) => {
   await page.goto('https://docs.etherlink.com/');
-  await page.getByRole('button', { name: 'Search (Command+K)' }).click();
+  await page.getByText("Search").click()
   await page.getByRole('searchbox', { name: 'Search' }).fill('node');
   await page.getByRole('link', { name: 'Running an Etherlink Smart Rollup node', exact: true }).click();
   await expect(page).toHaveURL(/.*smart-rollup-nodes/);
