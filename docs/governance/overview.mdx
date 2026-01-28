@@ -1,0 +1,59 @@
+---
+title: Governance overview
+---
+
+import InlineCopy from '@site/src/components/InlineCopy';
+
+The Etherlink governance process manages updates to Etherlink's kernel and the account that operates the sequencer.
+
+Tezos bakers can participate in the [Etherlink governance process](/governance/how-is-etherlink-governed) by submitting proposals to change the kernel and sequencer operator and voting for or against them.
+The voting power of a baker is the amount of tez that it has staked plus the tez that delegators have delegated to it, also called its _staking balance_.
+
+Separate contracts manage the slow kernel updates, the fast kernel updates, and the sequencer operator, so to interact with them, bakers send transactions to those contracts, such as with the Octez client.
+The addresses of the governance contracts are specified in Etherlink's kernel.
+For information about the Octez client, see [Command Line Interface](https://octez.tezos.com/docs/active/cli-commands.html) in the Octez documentation.
+
+## Governance web site
+
+For information about Etherlink governance and to vote on governance proposals, see https://governance.etherlink.com.
+This site:
+
+- Shows information about each governance process
+- Shows the active and past governance contracts
+- Shows active and past proposals and their states
+- Allows voting keys to claim voting rights
+
+## Governance contract addresses
+
+You need the address of the correct governance contract (and sometimes the address of the Etherlink Smart Rollup) to propose changes, vote on changes, and trigger approved changes.
+
+<table class="customTableContainer">
+<thead>
+<tr>
+<th>Contract</th>
+<th>Mainnet address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kernel governance (slow)</td>
+<td><InlineCopy code="KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" href="https://better-call.dev/mainnet/KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" abbreviate="6,4"></InlineCopy></td>
+</tr>
+<tr>
+<td>Kernel governance (fast)</td>
+<td><InlineCopy code="KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R" href="https://better-call.dev/mainnet/KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R" abbreviate="6,4"></InlineCopy></td>
+</tr>
+<tr>
+<td>Sequencer operator</td>
+<td><InlineCopy code="KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" href="https://better-call.dev/mainnet/KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" abbreviate="6,4"></InlineCopy></td>
+</tr>
+<tr>
+<td>Voting keys</td>
+<td><InlineCopy code="KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH" href="https://better-call.dev/mainnet/KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH" abbreviate="6,4"></InlineCopy></td>
+</tr>
+<tr>
+<td>Etherlink Smart Rollup</td>
+<td><InlineCopy code="sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf" href="https://tzkt.io/sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf" abbreviate="6,4"></InlineCopy></td>
+</tr>
+</tbody>
+</table>
