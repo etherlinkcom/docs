@@ -51,13 +51,10 @@ const sidebars = {
       label: 'Tutorial',
       collapsed: false,
       items: [
-        'tutorials/marketpulse/index',
-        'tutorials/marketpulse/setup',
-        'tutorials/marketpulse/backend',
-        'tutorials/marketpulse/test',
-        'tutorials/marketpulse/deploy',
-        'tutorials/marketpulse/frontend',
-        'tutorials/marketpulse/cicd',
+        'tutorials/predictionMarket/index',
+        'tutorials/predictionMarket/write-contract',
+        'tutorials/predictionMarket/deploy-contract',
+        'tutorials/predictionMarket/frontend',
       ],
     },
     {

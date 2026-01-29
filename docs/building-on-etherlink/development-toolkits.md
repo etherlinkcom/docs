@@ -6,7 +6,7 @@ dependencies:
 
 ## 👷 Hardhat
 
-[Hardhat](https://hardhat.org/) is an Ethereum development environment for professionals. It facilitates performing frequent tasks, such as running tests, automatically checking code for mistakes or interacting with a smart contract. To get started, check out the [Hardhat documentation](https://hardhat.org/docs) or the [Etherlink tutorial](/tutorials/marketpulse).
+[Hardhat](https://hardhat.org/) is an Ethereum development environment for professionals. It facilitates performing frequent tasks, such as running tests, automatically checking code for mistakes or interacting with a smart contract. To get started, check out the [Hardhat documentation](https://hardhat.org/docs) or the [Etherlink tutorial](/tutorials/predictionMarket).
 
 ### Using Hardhat with Etherlink
 
