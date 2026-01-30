@@ -224,8 +224,8 @@ The payload includes these fields:
 
 Field | Type | Description
 --- | --- | ---
-`ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
-`receiver` | address | The ERC-20 proxy contract that manages the tokens (a duplicate of the `ticketOwner` field)
+`ticketOwner` | address | The ERC-20 proxy contract that manages the tokens or, in some cases, the account receiving the deposited tokens
+`receiver` | address | The Etherlink account receiving the deposited tokens
 `amount` | uint256 | The amount of tokens
 `inboxLevel` | uint256 | The layer 1 block in which the deposit was submitted
 `inboxMsgId` | uint256 | An identifier for the Smart Rollup inbox message, which you can use to find the corresponding `QueuedDeposit` event and the Etherlink address that receives the tokens
