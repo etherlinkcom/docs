@@ -262,7 +262,7 @@ Field | Type | Description
 `sender` | address | The Etherlink address that is withdrawing the tokens
 `ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
 `receiver` | bytes22 | The layer 1 address that receives the tokens
-`proxy` | bytes22 | The proxy address through which the deposit is routed
+`proxy` | bytes22 | The address of the token bridge helper contract
 `amount` | uint256 | The amount of tokens
 `withdrawalId` | uint256 | An internal ID for the withdrawal
 
@@ -300,7 +300,7 @@ Field | Type | Description
 `sender` | address | The Etherlink address that is withdrawing the tokens
 `ticketOwner` | address | The ERC-20 proxy contract that manages the tokens
 `receiver` | bytes22 | The layer 1 address that receives the tokens
-`proxy` | bytes22 | The proxy address through which the deposit is routed
+`proxy` | bytes22 | The address of the token bridge helper contract
 `amount` | uint256 | The amount of tokens
 `withdrawalId` | uint256 | An internal ID for the withdrawal
 `timestamp` | uint256 | The timestamp of the block that includes the fast withdrawal request
