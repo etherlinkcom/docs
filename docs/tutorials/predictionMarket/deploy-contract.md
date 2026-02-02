@@ -45,7 +45,7 @@ In short, starting the sandbox involves these steps:
      http://localhost:8545
    ```
 
-1. In the `backend` project, create a file named `scripts/deploySandbox.ts` with this code:
+1. In the `backend` project, create a file named `scripts/deploySandbox.js` with this code:
 
    ```javascript
    import { network } from "hardhat";
@@ -59,9 +59,9 @@ In short, starting the sandbox involves these steps:
 
      console.log(`Deploying contract to ${networkName}...`);
 
-     const deployedContract = await viem.deployContract("PredictxtzContract");
+     const contract = await viem.deployContract("PredictxtzContract");
 
-     console.log("Contract deployed to:", deployedContract.address);
+     console.log("Contract deployed to:", contract.address);
 
      console.log("Creating a market");
      const tx = await contract.write.createMarket([

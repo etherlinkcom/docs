@@ -534,7 +534,7 @@ Follow these steps to set up a simple test for the contract:
    };
    ```
 
-1. Create a file named `tests/test.js` and put this code in it:
+1. Create a file named `test/test.js` and put this code in it:
 
    ```javascript
    import { beforeEach, describe, it } from "node:test";
