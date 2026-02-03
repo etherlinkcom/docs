@@ -37,7 +37,7 @@ test('code copy buttons', async ({ page, context }) => {
 
 });
 
-test.only('search', async ({ page }) => {
+test('search', async ({ page }) => {
   await page.goto('https://docs.etherlink.com/');
   await page.getByText("Search").click()
   await page.getByRole('searchbox', { name: 'Search' }).fill('node');
