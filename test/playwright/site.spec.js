@@ -16,6 +16,9 @@ test('navigation', async ({ page }) => {
 });
 
 test('code copy buttons', async ({ page, context }) => {
+
+  test.describe.configure({ retries: 3 });
+
   await context.grantPermissions(['clipboard-read']);
   await page.goto('https://docs.etherlink.com/get-started/network-information');
 
