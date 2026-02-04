@@ -115,12 +115,12 @@ The speed limit decides when the gas price raises.
 For more information, see [Execution fee](/network/fees#execution-fee).
 
 - A breaking change to the `QueuedDeposit` event that the FA bridge emits.
-This event is now emitted by the FA bridging precompiled contract (`0xff0...0002`) and the first topic of the event is changed to match its ABI signature.
+This event is now emitted by the Tezos bridge precompiled contract (`0xff0...0002`) and the first topic of the event is changed to match its ABI signature.
 For more information about bridging events, see [How bridging FA tokens works](/bridging/bridging-fa-how).
 
 For more information, see [Announcing Farfadet: A 6th Upgrade Proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-farfadet-a-6th-upgrade-proposal-for-etherlink-mainnet-6bc59793962d).
 
-## Etherlink 6.1
+### Etherlink 6.1
 
 :::note
 
@@ -130,6 +130,25 @@ Version 0.53 or later of the `octez-evm-node` binary is strongly recommended for
 
 The Etherlink 6.1 upgrade went through the fast kernel governance process and fixed an issue with the FA bridge introduced in 6.0.
 For more information, see [Announcing Etherlink 6.1: a bugfix proposal for FA token deposits](https://medium.com/@etherlink/announcing-etherlink-6-1-a-bugfix-proposal-for-fa-token-deposits-2cc08ffd6fad).
+
+### Etherlink 6.2
+
+The Etherlink 6.2 upgrade includes:
+
+- Fixes to stabilize Instant Confirmations and make them more efficient.
+These changes have no effect on how Instant Conformations work from the user perspective.
+
+- Updated governance contracts to align Etherlink governance periods with the 6-second block time introduced by the Tallinn upgrade.
+
+- A change to how the Tezos-Etherlink bridge works.
+The bridge now deposits XTZ tokens to Etherlink user and smart contract accounts in a way similar to how the FA bridge handles deposits of FA tokens.
+This update gets Etherlink in sync with how sending tokens to smart contracts works on EVM; now, depositing XTZ to a smart contract automatically calls its code.
+For more information, see [Deposit process](/bridging/bridging-tezos#deposit-process).
+
+   This change to the bridge introduces a breaking change in the events that are emitted as part of the bridging process.
+   The `deposit` event is now emitted by the [Tezos bridge precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) (`0xff0...0001`), not the null/system address.
+
+For more information, see TODO BLOG POST.
 
 ## Changelog
 

@@ -22,7 +22,7 @@ For example, this Octez client command calls this view for the slow governance c
 
 ```bash
 octez-client -E https://mainnet.ecadinfra.com \
-  run view get_voting_state on contract KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r
+  run view get_voting_state on contract KT1NM6cpM5BPTmYPszjv6LRDAMRZXPET9DmH
 ```
 
 The view returns information about the current governance period in this order:
@@ -49,7 +49,7 @@ To upvote a proposed kernel update during a Proposal period, go to the [governan
 As an alternative, call the `upvote_proposal` entrypoint with the same parameters as the `new_proposal` entrypoint:
 
 ```bash
-octez-client call KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r from my_wallet \
+octez-client call KT1NM6cpM5BPTmYPszjv6LRDAMRZXPET9DmH from my_wallet \
   --entrypoint "upvote_proposal" \
   --arg "0x<KERNEL_HASH>"
 ```
@@ -61,7 +61,7 @@ When a proposal is in the Promotion period, you can vote for or against it by go
 As an alternative, you can vote for it by calling the `vote` entrypoint of the appropriate governance contract:
 
 ```bash
-octez-client call KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r from my_wallet \
+octez-client call KT1NM6cpM5BPTmYPszjv6LRDAMRZXPET9DmH from my_wallet \
   --entrypoint "vote" --arg '"yea"'
 ```
 

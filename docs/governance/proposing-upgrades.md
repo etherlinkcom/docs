@@ -14,7 +14,7 @@ Other bakers use different commands to vote for or against it, as described in [
 During a Proposal period, bakers can propose updates by calling the `new_proposal` entrypoint of the appropriate governance contract and passing the hash of their proposed kernel, as in this example, which uses `<KERNEL_HASH>` as the kernel hash:
 
 ```bash
-octez-client call KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r from my_wallet \
+octez-client call KT1NM6cpM5BPTmYPszjv6LRDAMRZXPET9DmH from my_wallet \
   --entrypoint "new_proposal" \
   --arg "0x<KERNEL_HASH>"
 ```
@@ -22,7 +22,7 @@ octez-client call KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r from my_wallet \
 The command takes these parameters:
 
 - The address or Octez client alias of your baker account or [voting key](/governance/voting-key)
-- The address of the Etherlink kernel governance contract, either `KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r` for the slow governance process or `KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R` for the fast governance process; see [Governance contract addresses](/governance/overview#governance-contract-addresses)
+- The address of the Etherlink kernel governance contract, either `KT1NM6cpM5BPTmYPszjv6LRDAMRZXPET9DmH` for the slow governance process or `KT1JGCdHEyvE3RkmzR7hRYK7vC42QF6zK34H` for the fast governance process; see [Governance contract addresses](/governance/overview#governance-contract-addresses)
 - The hash of the upgraded kernel, which the proposer must generate from the code of the new kernel
 
 The proposer must make the code and hash of the new kernel available for people to evaluate.

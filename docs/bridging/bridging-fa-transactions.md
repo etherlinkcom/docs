@@ -14,6 +14,8 @@ It takes a few transactions to bridge a token from layer 1 to Etherlink:
 - A transaction to initiate the deposit
 - A transaction to claim the tokens on Etherlink
 
+This process is similar to the process of depositing XTZ tokens, as described in [Bridging to Tezos](/bridging/bridging-tezos).
+
 Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
 
 1. Give the token bridge helper contract access to the tokens, depending on the type of token:
@@ -57,13 +59,13 @@ Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
    The token bridge helper contract sends the tokens to the ticketer contract, which issues a ticket that represents the tokens.
    The token bridge helper contract sends that ticket to Etherlink.
 
-1. When the deposit is in an Etherlink block, call the FA bridging precompiled contract contract's `claim` function to cause the ERC-20 proxy contract to mint the tokens.
+1. When the deposit is in an Etherlink block, call the Tezos bridge precompiled contract contract's `claim` function to cause the ERC-20 proxy contract to mint the tokens.
 
-   The address of the precompiled contract is `0xff00000000000000000000000000000000000002` and to call the function you can use the ABI `claim(uint256 depositId)`, where `depositId` matches the `depositId` that was emitted in a previous event for this transfer by the precompile (`QueuedDeposit(uint256 depositId, address recipient, uint256 amount, uint256 timelock, uint256 depositCount)`).
+   The address of the bridge contract is `0xff00000000000000000000000000000000000002` and to call the function you can use the ABI `claim(uint256 depositId)`, where `depositId` matches the `depositId` that was emitted in a previous event for this transfer by the precompile (`QueuedDeposit(uint256 depositId, address recipient, uint256 amount, uint256 timelock, uint256 depositCount)`).
 
    As a reference, here is an [example of the sequencer injecting a deposit](https://explorer.etherlink.com/tx/0x5a06fe64e880d6d1f53c243477cd5656204712f1543b607340996ad246158669) and here is an [example of the corresponding claim transaction](https://explorer.etherlink.com/tx/0xe017665cd7bfdef375a863114ac9f7ed2538da4d8584b0f1e0aa71ce96342aee).
 
-   The precompiled contract sends information about the deposit to the ERC-20 proxy contract, which mints the tokens and sends them to the Etherlink account.
+   The bridge contract sends information about the deposit to the ERC-20 proxy contract, which mints the tokens and sends them to the Etherlink account.
 
    :::note
 
@@ -85,7 +87,7 @@ However, pending outbox transactions expire after a period equal to the refutati
 Therefore, if the system that runs these outbox transactions is down for two weeks after the refutation period ends, the transactions may be lost.
 
 Neither of these transactions are easy to do by yourself.
-Initiating the withdrawal requires sending complex information about the ticket and contracts to the FA2 withdrawal precompile on Etherlink.
+Initiating the withdrawal requires sending complex information about the ticket and contracts to the bridge contract on Etherlink.
 Running the outbox transaction requires you to know the level of the Etherlink commitment that contains it in order to get its proof and commitment, and there is no easy way to get that information without using an indexer to check each level for the transaction.
 
 The command-line tool at https://github.com/baking-bad/etherlink-bridge provides commands that can help with the withdrawal transactions.

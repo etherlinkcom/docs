@@ -50,9 +50,9 @@ The request includes the amount of tokens to bridge, the address of the Etherlin
 
 1. The sequencer reads the ticket and information about it from the delayed inbox, leaves the ticket in control of the Smart Rollup itself, and calls the null address precompiled contract (`0x000...000`) with the information.
 
-1. The null address precompile sends the information about the deposit to the FA bridging precompiled contract (`0xff0...0002`), which then emits a `QueuedDeposit` event which contains the `depositId` information needed to complete the transfer.
+1. The null address precompile sends the information about the deposit to the Tezos bridge precompiled contract (`0xff0...0002`), which then emits a `QueuedDeposit` event which contains the `depositId` information needed to complete the transfer.
 
-1. Any user can call the FA bridging precompiled contract's `claim` function, which causes the contract to call the ERC-20 proxy contract.
+1. Any user can call the Tezos bridge precompiled contract's `claim` function, which causes the contract to call the ERC-20 proxy contract.
 For tokens supported by the bridge, an automated program calls the `claim` function for you.
 
 1. The ERC-20 proxy contract mints the equivalent tokens and sends them to the user's Etherlink account.
@@ -65,7 +65,7 @@ This diagram is an overview of the process of bridging tokens from layer 1 to Et
 
 The process of bridging FA-compatible tokens from Etherlink to layer 1 (also known as withdrawing tokens) follows these general steps:
 
-1. The user calls the FA bridging precompiled contract on Etherlink and includes this information:
+1. The user calls the Tezos bridge precompiled contract on Etherlink and includes this information:
 
    - The address of the ERC-20 proxy contract that manages the tokens
    - The user's layer 1 address or the address of a contract to send the tokens to

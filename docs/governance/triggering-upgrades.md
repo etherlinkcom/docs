@@ -7,7 +7,7 @@ dependencies:
 After a proposal wins a vote, any account can trigger the kernel upgrade by calling the appropriate governance contract's `trigger_kernel_upgrade` entrypoint:
 
 ```bash
-octez-client call KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R from my_wallet \
+octez-client call KT1JGCdHEyvE3RkmzR7hRYK7vC42QF6zK34H from my_wallet \
   --entrypoint "trigger_kernel_upgrade" \
   --arg '"sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf"'
 ```

@@ -74,19 +74,22 @@ The request includes the tez to bridge, the address of the Etherlink Smart Rollu
 1. Etherlink Smart Rollup nodes receive the deposit transaction from the Smart Rollup inbox.
 1. The Smart Rollup nodes put the deposit transaction in the delayed inbox.
 1. The sequencer requests the state of Etherlink from a Smart Rollup node and receives the delayed inbox.
-1. The sequencer creates a corresponding transaction on Etherlink to transfer XTZ from the [null address](https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000000) to the user's address.
-1. The sequencer adds this transaction to an Etherlink block as in the usual transaction lifecycle described in [Architecture](/network/architecture).
+1. Depending on the target account, the sequencer handles the deposit in different ways:
+
+   - If the target account is a user account (also known as an externally owned account), the sequencer creates a transaction that calls the [Tezos bridge precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) (`0xff0...0001`) that transfers the XTZ to the user account.
+   - If the target account is a smart contract or EIP-7702 smart account, the sequencer calls the Tezos bridge precompiled contract to queue but not execute a transaction to transfer the XTZ.
+   Then, any user can call the `claim` function to execute the transaction and send the XTZ to the smart contract or smart account and call its code.
+   An automated system run by Optimistic Labs monitors the calls the `claim` function on behalf of depositors, so the process is transparent to bridge users.
 
 This diagram is an overview of the deposit process:
 
-![Overview of the token bridging deposit process](/img/bridging-deposit.png)
-<!-- https://lucid.app/lucidchart/4ebdf949-72bd-47e3-a8ce-7ca4fba2e556/edit -->
+![Overview of the token bridging deposit process](/img/bridging-deposit-xtz.png)
 
 ### Withdrawal process
 
 The withdrawal process (moving XTZ from Etherlink to tez on Tezos layer 1) follows these general steps:
 
-1. An Etherlink user sends XTZ and their layer 1 address to the [withdrawal precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) in the Etherlink Smart Rollup via an Etherlink EVM node.
+1. An Etherlink user sends XTZ and their layer 1 address to the [Tezos bridge precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) in the Etherlink Smart Rollup via an Etherlink EVM node.
 1. The contract locks the XTZ.
 1. The contract creates a transaction to the exchanger contract's `burn` entrypoint and puts this transaction in the Smart Rollup outbox.
 This outbox message becomes part of Etherlink's commitment to its state.
