@@ -157,10 +157,10 @@ As described in [Sequencer](#sequencer), the sequencer puts transactions in bloc
 When the EVM nodes get another block that builds on the previous block, they can trust that the transactions in the previous block are final as long as they trust the that the sequencer will publish them to layer 1.
 At this point, the previous block is considered _confirmed_ and it would take a significant bug in the sequencer for it to generate blocks that do not use the confirmed block and thus reorganize the blocks in such a way as to make the confirmed block invalid.
 
-- **Transactions are confirmed on layer 1 in 8 seconds.**
+- **Transactions are confirmed on layer 1 in 6 seconds.**
 The sequencer also posts blocks to Tezos layer 1.
 As with Etherlink blocks, Tezos blocks are confirmed when another block builds on them, as described in [The consensus algorithm](https://octez.tezos.com/docs/active/consensus.html) in the Octez documentation.
-Tezos blocks are generated every 8 seconds, so Etherlink transactions are posted and confirmed on Tezos after 8 seconds, when another block is posted.
+Tezos blocks are generated every 6 seconds, so Etherlink transactions are posted and confirmed on Tezos after 6 seconds, when another block is posted.
 Etherlink Smart Rollup nodes also pick up these blocks and their instance of the kernel decides immediately whether these blocks are valid and if they should become the next Etherlink block.
 
    When the Etherlink block has been posted and confirmed on Tezos layer 1, Etherlink treats the block (and the transactions in it) as finalized.

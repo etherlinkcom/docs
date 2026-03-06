@@ -53,7 +53,7 @@ Promotion | 50400 layer 1 blocks | About 4.5 days
 Cooldown | 86400 seconds | About 1 day
 
 Note that these periods can vary.
-For example, 8 seconds is the minimal block time on layer 1, which means that blocks can take longer than 8 seconds and therefore periods that are based on blocks can last longer than this minimal time.
+For example, 6 seconds is the minimal block time on layer 1, which means that blocks can take longer than 6 seconds and therefore periods that are based on blocks can last longer than this minimal time.
 Also, an Etherlink user must trigger the protocol upgrade after the Cooldown period is over, so the exact time of the upgrade can vary.
 
 ### 1. Proposal period
