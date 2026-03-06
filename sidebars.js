@@ -34,7 +34,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Get Started',
+      label: 'Get started',
       collapsed: false,
       items: [
         'index',
@@ -139,7 +139,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Track Progress',
+      label: 'Track progress',
       collapsed: false,
       items: [
         'progress/upgrades',
