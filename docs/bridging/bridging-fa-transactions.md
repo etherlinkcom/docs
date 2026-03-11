@@ -59,7 +59,7 @@ Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink:
    The token bridge helper contract sends the tokens to the ticketer contract, which issues a ticket that represents the tokens.
    The token bridge helper contract sends that ticket to Etherlink.
 
-1. When the deposit is in an Etherlink block, call the Tezos bridge precompiled contract contract's `claim` function to cause the ERC-20 proxy contract to mint the tokens.
+1. When the deposit is in an Etherlink block, call the FA bridge precompiled contract contract's `claim` function to cause the ERC-20 proxy contract to mint the tokens.
 
    The address of the bridge contract is `0xff00000000000000000000000000000000000002` and to call the function you can use the ABI `claim(uint256 depositId)`, where `depositId` matches the `depositId` that was emitted in a previous event for this transfer by the precompile (`QueuedDeposit(uint256 depositId, address recipient, uint256 amount, uint256 timelock, uint256 depositCount)`).
 
