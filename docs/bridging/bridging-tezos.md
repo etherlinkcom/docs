@@ -79,7 +79,7 @@ The request includes the tez to bridge, the address of the Etherlink Smart Rollu
    - If the target account is a user account (also known as an externally owned account), the sequencer creates a transaction that calls the [Tezos bridge precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) (`0xff0...0001`) that transfers the XTZ to the user account.
    - If the target account is a smart contract or EIP-7702 smart account, the sequencer calls the Tezos bridge precompiled contract to queue but not execute a transaction to transfer the XTZ.
    Then, any user can call the `claim` function to execute the transaction and send the XTZ to the smart contract or smart account and call its code.
-   An automated system run by Optimistic Labs monitors the calls the `claim` function on behalf of depositors, so the process is transparent to bridge users.
+   An automated system run by Optimistic Labs monitors the queued transactions and calls the `claim` function on behalf of depositors, so the process is transparent to bridge users.
 
 This diagram is an overview of the deposit process:
 
