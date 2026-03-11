@@ -30,7 +30,7 @@ octez-client call <GOVERNANCE_CONTRACT> from <MY_VOTER> \
 
 Parameters:
 
-- `<GOVERNANCE_CONTRACT>`: The governance contract to call, either `KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r` for the slow governance process or `KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R` for the fast governance process; see [Governance contract addresses](/governance/overview#governance-contract-addresses)
+- `<GOVERNANCE_CONTRACT>`: The governance contract to call, either `KT1NM6cpM5BPTmYPszjv6LRDAMRZXPET9DmH` for the slow governance process or `KT1JGCdHEyvE3RkmzR7hRYK7vC42QF6zK34H` for the fast governance process; see [Governance contract addresses](/governance/overview#governance-contract-addresses)
 - `<MY_VOTER>`: Your baker key or Etherlink [voting key](/governance/voting-key)
 - `<KERNEL_HASH>`: The hash of the kernel to upvote, starting with `0x`
 
@@ -45,7 +45,7 @@ octez-client call <GOVERNANCE_CONTRACT> from <MY_VOTER> \
 
 Parameters:
 
-- `<GOVERNANCE_CONTRACT>`: The governance contract to call, either `KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r` for the slow governance process or `KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R` for the fast governance process; see [Governance contract addresses](/governance/overview#governance-contract-addresses)
+- `<GOVERNANCE_CONTRACT>`: The governance contract to call, either `KT1NM6cpM5BPTmYPszjv6LRDAMRZXPET9DmH` for the slow governance process or `KT1JGCdHEyvE3RkmzR7hRYK7vC42QF6zK34H` for the fast governance process; see [Governance contract addresses](/governance/overview#governance-contract-addresses)
 - `<MY_VOTER>`: Your baker key or Etherlink [voting key](/governance/voting-key)
 
 The command does not need the hash of the kernel because only one kernel can be in the Promotion period at a time, so the options are to vote for or against that kernel or to abstain by voting "pass."
