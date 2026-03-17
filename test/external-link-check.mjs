@@ -81,8 +81,14 @@ const getLinksInAst = (ast) => {
 }
 
 // Check a link with https://www.npmjs.com/package/link-check
+const linkCheckOpts = {
+  headers: {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+  },
+};
+
 const checkLink = async (url) => new Promise((resolve, reject) => {
-  linkCheck(url, (err, result) => {
+  linkCheck(url, linkCheckOpts, (err, result) => {
     if (err) reject(err);
     if (result.status !== 'alive') reject(result.statusCode);
     resolve(result.statusCode);
