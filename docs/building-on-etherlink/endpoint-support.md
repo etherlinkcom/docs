@@ -8,7 +8,7 @@ These tables list these endpoints and whether Etherlink supports them:
 
 ## Standard Ethereum endpoints
 
-For information about these endpoints, see [JSON-RPC API](https://ethereum.org/en/developers/docs/apis/json-rpc) and the [Ethereum JSON-RPC Specification](https://ethereum.github.io/execution-apis/api-documentation/) in the Ethereum documentation.
+For information about these endpoints, see [JSON-RPC API](https://ethereum.org/en/developers/docs/apis/json-rpc) and the [Ethereum JSON-RPC Specification](https://ethereum.github.io/execution-apis/) in the Ethereum documentation.
 
 <table class="customTableContainer fullWidthTable">
   <thead>
