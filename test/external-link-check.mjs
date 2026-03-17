@@ -85,6 +85,9 @@ const linkCheckOpts = {
   headers: {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
   },
+  retryOn429: true,
+  retryCount: 3,
+  fallbackRetryDelay: '10s',
 };
 
 const checkLink = async (url) => new Promise((resolve, reject) => {
