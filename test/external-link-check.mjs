@@ -45,6 +45,11 @@ const regexesToIgnore = [
   /https:\/\/www\.npmjs\.com/,
   /https:\/\/crates\.io/,
   /https:\/\/dns.xyz/,
+  // The following links block automated requests (return 0) but work in browsers
+  /https:\/\/hub\.docker\.com/,
+  /http:\/\/snapshotter-sandbox\.nomadic-labs\.eu/,
+  // The following links block automated requests (return 429) but work in browsers
+  /https:\/\/layerzeroscan\.com/,
 ];
 
 // Convert file to AST, using the correct processors for MD and MDX files
