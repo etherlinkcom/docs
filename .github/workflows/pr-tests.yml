@@ -1,0 +1,74 @@
+name: PR tests
+
+# Junit reporter needs permission to write to checks
+permissions:
+  contents: read
+  checks: write
+  id-token: write
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+
+  checkChangedFiles:
+    runs-on: ubuntu-latest
+    outputs:
+      files: ${{ steps.files.outputs.added_modified }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: files
+        uses: Ana06/get-changed-files@v1.2
+        with:
+          format: 'csv'
+          filter: '*.mdx?'
+
+  tests:
+    runs-on: ubuntu-latest
+    needs: checkChangedFiles
+    if: ${{ needs.checkChangedFiles.outputs.files != '' }}
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 22
+
+      - run: npm ci
+
+      # Set up remote tests
+      - run: git clone https://gitlab.com/nomadic-labs/doclib.git
+      - run: npm i
+        working-directory: doclib
+
+      # Tests:
+      # - Run tests from the doclib repo
+      # - Pass the changed files as a comma-separated list
+
+      - name: External link and anchor check
+        run: npm run checkExternalLinks -- --baseFolder=.. --docFiles=${{ needs.checkChangedFiles.outputs.files }} --reporter mocha-junit-reporter --reporter-options mochaFile=../externalLinks.xml || FAILED=1
+        working-directory: doclib
+
+      - name: Image links check
+        run: npm run imageLinks -- --baseFolder=.. --imageFolder=static --docFiles=${{ needs.checkChangedFiles.outputs.files }} --reporter mocha-junit-reporter --reporter-options mochaFile=imageLinks.xml|| FAILED=1
+        working-directory: doclib
+
+      - name: Unused images check
+        run: npm run usedImages -- --baseFolder=.. --docFiles=docs --imageFolder=static --ignoreImages=img/site --reporter mocha-junit-reporter --reporter-options mochaFile=usedImages.xml|| FAILED=1
+        working-directory: doclib
+
+      - name: Dependency proposer
+        run: npm run proposeDependencies -- --baseFolder=.. --docFiles=${{ needs.checkChangedFiles.outputs.files }} --major --reporter mocha-junit-reporter --reporter-options mochaFile=proposedDependencies.xml|| FAILED=1
+        working-directory: doclib
+
+      - name: log result
+        run: echo $FAILED
+
+      # Report tests on PR
+      - uses: dorny/test-reporter@v2
+        if: ${{ !cancelled() }}
+        with:
+          path: 'doclib/*.xml'
+          reporter: jest-junit
+          name: Doc tests
