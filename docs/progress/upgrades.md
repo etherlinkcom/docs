@@ -131,6 +131,17 @@ Version 0.53 or later of the `octez-evm-node` binary is strongly recommended for
 The Etherlink 6.1 upgrade went through the fast kernel governance process and fixed an issue with the FA bridge introduced in 6.0.
 For more information, see [Announcing Etherlink 6.1: a bugfix proposal for FA token deposits](https://medium.com/@etherlink/announcing-etherlink-6-1-a-bugfix-proposal-for-fa-token-deposits-2cc08ffd6fad).
 
+## Etherlink 6.2
+
+The Etherlink 6.2 upgrade went through the fast kernel governance process and fixed 4 vulnerabilities detected by an internal audit in 6.1:
+- It fixes a live vulnerability on the FA token bridge Etherlink precompile which affects only EOA (Externally Owned Account) addresses
+- It fixes a plausible DOS attack to the Etherlink kernel execution.
+- It fixes a plausible DOS attack to the native Etherlink bridge.
+- It fixes a DA Fee Undercharge on EIP-7702 Authorization List Bytes.
+
+For more information, see [Announcing Etherlink 6.2: a security and liveness bugfix for Farfadet](https://forum.tezosagora.org/t/announcing-etherlink-6-2-a-security-and-liveness-bugfix-for-farfadet/7024).
+
+
 ## Changelog
 
 For full details about changes to Etherlink, see [Changelogs](/progress/changelogs).
