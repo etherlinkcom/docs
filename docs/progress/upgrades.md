@@ -7,7 +7,7 @@ This page lists the major updates to the Etherlink kernel.
 ## Mainnet beta
 
 The Mainnet beta was the final step before launching Etherlink.
-For more information, see [Etherlink Mainnet Beta: Paving the Way to Launch](https://medium.com/etherlink/etherlink-mainnet-beta-paving-the-way-to-launch-14606e29cc8b)
+For more information, see [Etherlink Mainnet Beta: Paving the Way to Launch](https://medium.com/etherlink/etherlink-mainnet-beta-paving-the-way-to-launch-14606e29cc8b).
 
 ## First kernel upgrade
 
