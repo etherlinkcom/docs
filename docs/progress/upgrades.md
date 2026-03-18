@@ -131,9 +131,9 @@ Version 0.53 or later of the `octez-evm-node` binary is strongly recommended for
 The Etherlink 6.1 upgrade went through the fast kernel governance process and fixed an issue with the FA bridge introduced in 6.0.
 For more information, see [Announcing Etherlink 6.1: a bugfix proposal for FA token deposits](https://medium.com/@etherlink/announcing-etherlink-6-1-a-bugfix-proposal-for-fa-token-deposits-2cc08ffd6fad).
 
-### Etherlink 6.2
+### Etherlink 6.3
 
-The Etherlink 6.2 upgrade includes:
+The Etherlink 6.3 upgrade includes:
 
 - Fixes to stabilize Instant Confirmations and make them more efficient.
 These changes have no effect on how Instant Conformations work from the user perspective.
