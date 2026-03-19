@@ -51,15 +51,15 @@ jobs:
         working-directory: doclib
 
       - name: Image links check
-        run: npm run imageLinks -- --baseFolder=.. --imageFolder=static --docFiles=${{ needs.checkChangedFiles.outputs.files }} --reporter mocha-junit-reporter --reporter-options mochaFile=imageLinks.xml|| FAILED=1
+        run: npm run imageLinks -- --baseFolder=.. --imageFolder=static --docFiles=${{ needs.checkChangedFiles.outputs.files }} --reporter mocha-junit-reporter --reporter-options mochaFile=imageLinks.xml || FAILED=1
         working-directory: doclib
 
       - name: Unused images check
-        run: npm run usedImages -- --baseFolder=.. --docFiles=docs --imageFolder=static --ignoreImages=img/site --reporter mocha-junit-reporter --reporter-options mochaFile=usedImages.xml|| FAILED=1
+        run: npm run usedImages -- --baseFolder=.. --docFiles=docs --imageFolder=static --ignoreImages=img/site --reporter mocha-junit-reporter --reporter-options mochaFile=usedImages.xml || FAILED=1
         working-directory: doclib
 
       - name: Dependency proposer
-        run: npm run proposeDependencies -- --baseFolder=.. --docFiles=${{ needs.checkChangedFiles.outputs.files }} --major --reporter mocha-junit-reporter --reporter-options mochaFile=proposedDependencies.xml|| FAILED=1
+        run: npm run proposeDependencies -- --baseFolder=.. --docFiles=${{ needs.checkChangedFiles.outputs.files }} --major --reporter mocha-junit-reporter --reporter-options mochaFile=proposedDependencies.xml || FAILED=1
         working-directory: doclib
 
       - name: log result
