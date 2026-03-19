@@ -47,7 +47,7 @@ jobs:
       # - Pass the changed files as a comma-separated list
 
       - name: External link and anchor check
-        run: npm run checkExternalLinks -- --baseFolder=.. --docFiles=${{ needs.checkChangedFiles.outputs.files }} --reporter mocha-junit-reporter --reporter-options mochaFile=../externalLinks.xml || FAILED=1
+        run: npm run checkExternalLinks -- --baseFolder=.. --docFiles=${{ needs.checkChangedFiles.outputs.files }} --reporter mocha-junit-reporter --reporter-options mochaFile=externalLinks.xml || FAILED=1
         working-directory: doclib
 
       - name: Image links check
