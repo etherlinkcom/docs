@@ -284,6 +284,13 @@ run();
 :::note
 
 Instant Confirmations are an experimental feature.
+As such, it has to be enabled by adding to the node configuration file:
+
+```json
+"experimental_features": {
+  "preconfirmation_stream_enabled": true
+}
+```
 
 :::
 

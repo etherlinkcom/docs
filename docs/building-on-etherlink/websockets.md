@@ -169,6 +169,13 @@ See the documentation for your WebSocket client library for how to manage the co
 :::note
 
 Instant Confirmations are an experimental feature.
+As such, it has to be enabled by adding to the node configuration file:
+
+```json
+"experimental_features": {
+  "preconfirmation_stream_enabled": true
+}
+```
 
 :::
 
