@@ -79,7 +79,7 @@ As a result, the voting key can vote on those contracts but not on the kernel fa
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
   --entrypoint propose_voting_key \
-  --arg '(Pair "<MY_VOTING_KEY>" True (Some { "KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" ; "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" }))'
+  --arg '(Pair "<MY_VOTING_KEY>" True (Some { "KT1CSqkafD5ZCHFvmsozrCBeSy2XJQzutJRn" ; "KT1NM6cpM5BPTmYPszjv6LRDAMRZXPET9DmH" }))'
 ```
 
 Then, to claim voting rights, go to the [governance web site](https://governance.etherlink.com), connect your voting key with the **Connect** button at the top right of the page, and use the connection dialog to claim rights.
@@ -111,7 +111,7 @@ For example, from the code of the contract you can see that the parameter to pas
 This command compiles an expression of this CameLIGO type to Michelson to propose rights for two contracts:
 
 ```bash
-ligo compile expression cameligo '("<MY_VOTING_KEY>" : address), True, (Some (Set.literal [("KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" : address); ("KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" : address)]) : (address set) option)'
+ligo compile expression cameligo '("<MY_VOTING_KEY>" : address), True, (Some (Set.literal [("KT1CSqkafD5ZCHFvmsozrCBeSy2XJQzutJRn" : address); ("KT1NM6cpM5BPTmYPszjv6LRDAMRZXPET9DmH" : address)]) : (address set) option)'
 ```
 
 You can use the result as the parameter to pass to the `propose_voting_key` entrypoint.
@@ -120,8 +120,8 @@ Here is the result of the command:
 ```michelson
 (Pair "<MY_VOTING_KEY>"
       True
-      (Some { "KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" ;
-              "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" }))
+      (Some { "KT1CSqkafD5ZCHFvmsozrCBeSy2XJQzutJRn" ;
+              "KT1NM6cpM5BPTmYPszjv6LRDAMRZXPET9DmH" }))
 ```
 
 Here is the resulting `octez-client` command:
@@ -129,7 +129,7 @@ Here is the resulting `octez-client` command:
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
   --entrypoint propose_voting_key \
-  --arg '(Pair "<MY_VOTING_KEY>" True (Some { "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" ; "KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf" }))'
+  --arg '(Pair "<MY_VOTING_KEY>" True (Some { "KT1NM6cpM5BPTmYPszjv6LRDAMRZXPET9DmH" ; "KT1CSqkafD5ZCHFvmsozrCBeSy2XJQzutJRn" }))'
 ```
 :::
 
@@ -149,7 +149,7 @@ For example, this command verifies rights for the slow kernel governance contrac
 
 ```bash
 octez-client run view is_voting_key_of on contract KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH \
-  with input 'Pair "<MY_VOTING_KEY>" "<MY_BAKER>" (Some "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r")'
+  with input 'Pair "<MY_VOTING_KEY>" "<MY_BAKER>" (Some "KT1NM6cpM5BPTmYPszjv6LRDAMRZXPET9DmH")'
 ```
 
 :::tip
@@ -160,7 +160,7 @@ The view accepts a tuple that includes the address of the voting key, the addres
 For example, to compile the parameter from the previous example, install LIGO and run this command:
 
 ```bash
-ligo compile expression cameligo '("<MY_VOTING_KEY>" : address), ("<MY_BAKER>" : address), (Some ("KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r" : address): address option)'
+ligo compile expression cameligo '("<MY_VOTING_KEY>" : address), ("<MY_BAKER>" : address), (Some ("KT1NM6cpM5BPTmYPszjv6LRDAMRZXPET9DmH" : address): address option)'
 ```
 
 You can use the result as the parameter to pass to the view.
@@ -169,7 +169,7 @@ Here is the result of the command:
 ```michelson
 (Pair "tz1fsVnw7VQD73kUDB8ZWc67GWvCjTEibi9A"
       "tz1QCVQinE8iVj1H2fckqx6oiM85CNJSK9Sx"
-      (Some "KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r"))
+      (Some "KT1NM6cpM5BPTmYPszjv6LRDAMRZXPET9DmH"))
 ```
 
 :::

@@ -15,7 +15,7 @@ For example, this Octez client command calls this view for the kernel governance
 
 ```bash
 octez-client -E https://mainnet.ecadinfra.com \
-  run view get_voting_state on contract KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf
+  run view get_voting_state on contract KT1CSqkafD5ZCHFvmsozrCBeSy2XJQzutJRn
 ```
 
 The view returns information about the current governance period.
@@ -28,7 +28,7 @@ You can also subscribe to the `voting_finished` event to be notified when the Pr
 To propose an account to be the sequencer operator, bakers can call the `new_proposal` entrypoint of the governance contract during the Proposal period:
 
 ```bash
-octez-client transfer 0 from my_wallet to KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf \
+octez-client transfer 0 from my_wallet to KT1CSqkafD5ZCHFvmsozrCBeSy2XJQzutJRn \
   --entrypoint new_proposal \
   --arg 'Pair "<PUBLIC_KEY>" <L2_ADDRESS>'
 ```
@@ -43,7 +43,7 @@ The command takes these parameters:
 For example:
 
 ```bash
-octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from my_wallet \
+octez-client call KT1CSqkafD5ZCHFvmsozrCBeSy2XJQzutJRn from my_wallet \
   --entrypoint new_proposal \
   --arg 'Pair "<PUBLIC_KEY>" <L2_ADDRESS>'
 ```
@@ -53,7 +53,7 @@ To upvote a proposed sequencer operator during a Proposal period, go to the [gov
 As an alternative, call the `upvote_proposal` entrypoint with the same parameters as the `new_proposal` entrypoint:
 
 ```bash
-octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from my_wallet \
+octez-client call KT1CSqkafD5ZCHFvmsozrCBeSy2XJQzutJRn from my_wallet \
   --entrypoint upvote_proposal \
   --arg 'Pair "<PUBLIC_KEY>" <L2_ADDRESS>'
 ```
@@ -67,7 +67,7 @@ When a proposal is in the Promotion period, you can vote for or against it by go
 As an alternative, you can vote for or against it or pass on voting by calling the `vote` entrypoint of the governance contract:
 
 ```bash
-octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from my_wallet \
+octez-client call KT1CSqkafD5ZCHFvmsozrCBeSy2XJQzutJRn from my_wallet \
   --entrypoint "vote" --arg '"yea"'
 ```
 
@@ -80,7 +80,7 @@ The command takes these parameters:
 For example:
 
 ```bash
-octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq \
+octez-client call KT1CSqkafD5ZCHFvmsozrCBeSy2XJQzutJRn from tz1RLPEeMxbJYQBFbXYw8WHdXjeUjnG5ZXNq \
   --entrypoint "vote" --arg '"yea"'
 ```
 
@@ -89,7 +89,7 @@ octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from tz1RLPEeMxbJYQBFbXYw
 After a proposed account wins a vote, any account can trigger the change and enable that account to run the sequencer by calling the governance contract's `trigger_committee_upgrade` entrypoint:
 
 ```bash
-octez-client call KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf from my_wallet \
+octez-client call KT1CSqkafD5ZCHFvmsozrCBeSy2XJQzutJRn from my_wallet \
   --entrypoint "trigger_committee_upgrade" \
   --arg '"sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf"'
 ```
