@@ -134,10 +134,10 @@ For more information, see [Announcing Etherlink 6.1: a bugfix proposal for FA to
 ## Etherlink 6.2
 
 The Etherlink 6.2 upgrade went through the fast kernel governance process and fixed 4 vulnerabilities detected by an internal audit in 6.1:
-- It fixes a live vulnerability on the FA token bridge Etherlink precompile which affects only EOA (Externally Owned Account) addresses
-- It fixes a plausible DOS attack to the Etherlink kernel execution.
-- It fixes a plausible DOS attack to the native Etherlink bridge.
-- It fixes a DA Fee Undercharge on EIP-7702 Authorization List Bytes.
+- It fixes a vulnerability in the FA token bridge which allowed unauthorized withdrawal of FA tickets from EOA or EIP-7702 accounts.
+- It fixes a flaw in how transaction fees are accounted, that could allow an attacker to build a DoS of the block production process with no cost to the attacker.
+- It fixes a flaw in the Tezos XTZ bridge that could cause a kernel panic when providing empty deposit info.
+- It fixes a DA Fee Undercharge on EIP-7702 Authorization List Bytes, which allowed senders to offload up to ~156 KB of L1 data costs onto the sequencer per transaction.
 
 For more information, see [Announcing Etherlink 6.2: a security and liveness bugfix for Farfadet](https://forum.tezosagora.org/t/announcing-etherlink-6-2-a-security-and-liveness-bugfix-for-farfadet/7024).
 
