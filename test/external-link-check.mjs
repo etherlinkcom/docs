@@ -45,6 +45,11 @@ const regexesToIgnore = [
   /https:\/\/www\.npmjs\.com/,
   /https:\/\/crates\.io/,
   /https:\/\/dns.xyz/,
+  // The following links block automated requests (return 0) but work in browsers
+  /https:\/\/hub\.docker\.com/,
+  /http:\/\/snapshotter-sandbox\.nomadic-labs\.eu/,
+  // The following links block automated requests (return 429) but work in browsers
+  /https:\/\/layerzeroscan\.com/,
 ];
 
 // Convert file to AST, using the correct processors for MD and MDX files
@@ -81,8 +86,17 @@ const getLinksInAst = (ast) => {
 }
 
 // Check a link with https://www.npmjs.com/package/link-check
+const linkCheckOpts = {
+  headers: {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+  },
+  retryOn429: true,
+  retryCount: 3,
+  fallbackRetryDelay: '10s',
+};
+
 const checkLink = async (url) => new Promise((resolve, reject) => {
-  linkCheck(url, (err, result) => {
+  linkCheck(url, linkCheckOpts, (err, result) => {
     if (err) reject(err);
     if (result.status !== 'alive') reject(result.statusCode);
     resolve(result.statusCode);
