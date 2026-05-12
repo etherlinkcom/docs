@@ -128,12 +128,12 @@ Version 0.53 or later of the `octez-evm-node` binary is strongly recommended for
 
 :::
 
-The Etherlink 6.1 upgrade went through the fast kernel governance process and fixed an issue with the FA bridge introduced in 6.0.
+The Etherlink 6.1 upgrade went live on 20 December 2025 through the fast kernel governance process and fixed an issue with the FA bridge introduced in 6.0.
 For more information, see [Announcing Etherlink 6.1: a bugfix proposal for FA token deposits](https://medium.com/@etherlink/announcing-etherlink-6-1-a-bugfix-proposal-for-fa-token-deposits-2cc08ffd6fad).
 
 ## Etherlink 6.2
 
-The Etherlink 6.2 upgrade went through the fast kernel governance process and fixed 4 vulnerabilities detected by an internal audit in 6.1:
+The Etherlink 6.2 upgrade went live on 25 March 2026 through the fast kernel governance process and fixed 4 vulnerabilities detected by an internal audit in 6.1:
 - It fixes a vulnerability in the FA token bridge which allowed unauthorized withdrawal of FA tickets from EOA or EIP-7702 accounts.
 - It fixes a flaw in how transaction fees are accounted, that could allow an attacker to build a DoS of the block production process with no cost to the attacker.
 - It fixes a flaw in the Tezos XTZ bridge that could cause a kernel panic when providing empty deposit info.
@@ -141,6 +141,11 @@ The Etherlink 6.2 upgrade went through the fast kernel governance process and fi
 
 For more information, see [Announcing Etherlink 6.2: a security and liveness bugfix for Farfadet](https://forum.tezosagora.org/t/announcing-etherlink-6-2-a-security-and-liveness-bugfix-for-farfadet/7024).
 
+## Etherlink 6.3
+
+The Etherlink 6.3 upgrade went live on 16 May 2026 through the fast kernel governance process and fixed 2 vulnerabilities reported through our security bug bounty platform:
+- It fixes a sequencer vulnerability allowing a malicious sequencer to perform damaging actions to the chain, beyond its intended scope of sequencing operations.
+- It fixes a governance contract inaccuracy which could lead to inaccurate vote weighting during proposal creation (more specifically during the Proposal period).
 
 ## Changelog
 
