@@ -22,7 +22,7 @@ octez-client call KT1AXRU3wLc87WNhLhVGrgqDGubLACUMUgPb from my_wallet \
 The command takes these parameters:
 
 - The address or Octez client alias of your baker account or [voting key](/governance/voting-key)
-- The address of the Etherlink kernel governance contract, either `KT1AXRU3wLc87WNhLhVGrgqDGubLACUMUgPb` for the slow governance process or `KT19oUVQPnVLuUBYXrBVd46WJnNAMpqkKSwo` for the fast governance process; see [Governance contract addresses](/governance/overview#governance-contract-addresses)
+- The address of the Etherlink kernel governance contract, either the slow governance contract or the fast governance contract; see [Governance contract addresses](/governance/overview#governance-contract-addresses)
 - The hash of the upgraded kernel, which the proposer must generate from the code of the new kernel
 
 The proposer must make the code and hash of the new kernel available for people to evaluate.
