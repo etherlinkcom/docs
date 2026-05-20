@@ -147,6 +147,8 @@ The Etherlink 6.3 upgrade went live on 16 May 2026 through the fast kernel gover
 - It fixes a sequencer vulnerability allowing a malicious sequencer to perform damaging actions to the chain, beyond its intended scope of sequencing operations.
 - It fixes a governance contract inaccuracy which could lead to inaccurate vote weighting during proposal creation (more specifically during the Proposal period).
 
+For more information, see [Announcing Etherlink 6.3: a security bugfix for Farfadet](https://forum.tezosagora.org/t/announcing-etherlink-6-3-a-security-bugfix-for-farfadet/7068).
+
 ## Changelog
 
 For full details about changes to Etherlink, see [Changelogs](/progress/changelogs).
