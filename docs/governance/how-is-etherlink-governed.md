@@ -43,7 +43,7 @@ For the addresses of the contracts that manage governance, see [Governance overv
 The Etherlink slow kernel governance process is a streamlined version of the [Tezos governance and self-amendment process](https://docs.tezos.com/architecture/governance).
 It consists of three periods: a Proposal period and a Promotion period, which are supervised by Etherlink's kernel governance contract, and a Cooldown period, which is enforced by the Etherlink kernel itself.
 
-The lengths of these periods are stored in the [kernel governance contract](https://better-call.dev/mainnet/KT1XdSAYGXrUDE1U5GNqUKKscLWrMhzyjNeh).
+The lengths of these periods are stored in the [kernel governance contract](https://better-call.dev/mainnet/KT1VZVNCNnhUp7s15d9RsdycP7C1iwYhAQ8r).
 This table shows the period lengths as of the Ebisu Etherlink update and the Tezos Seoul protocol:
 
 Period | Length | Approximate time
@@ -116,7 +116,7 @@ The fast kernel governance process is like the slow kernel governance process, w
 ### Periods
 
 The fast governance process has the same Proposal, Promotion, and Cooldown periods as the slow governance process, but the lengths of these periods are different.
-The lengths are stored in the [fast governance contract](https://better-call.dev/mainnet/KT1D1fRgZVdjTj5sUZKcSTPPnuR7LRxVYnDL).
+The lengths are stored in the [fast governance contract](https://better-call.dev/mainnet/KT1DxndcFitAbxLdJCN3C1pPivqbC3RJxD1R).
 This table shows the period lengths as of the Ebisu Etherlink update and the Tezos Seoul protocol:
 
 Period | Length | Approximate time
@@ -149,7 +149,7 @@ A separate sequencer governance contract handles the selection process for Ether
 Similar to the kernel governance processes, the sequencer voting process has Proposal, Promotion, and Cooldown periods.
 In this process, bakers propose and vote on the account that operates the sequencer.
 
-The lengths of the periods are stored in the [sequencer governance contract](https://better-call.dev/mainnet/KT1NnH9DCAoY1pfPNvb9cw9XPKQnHAFYFHXa).
+The lengths of the periods are stored in the [sequencer governance contract](https://better-call.dev/mainnet/KT1WckZ2uiLfHCfQyNp1mtqeRcC1X6Jg2Qzf).
 This table shows the period lengths as of the Ebisu Etherlink update and the Tezos Seoul protocol:
 
 Period | Length | Approximate time
