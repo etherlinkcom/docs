@@ -11,7 +11,7 @@ This migration ensures that Etherlink's primary Testnet is aligned with the most
 
 Etherlink Ghostnet Testnet has sunset and is no longer available.
 
-This page gives the details of the migration, including milestones, calls to action, and the current progress.
+This page gives the details of the migration, including milestones, calls to action, and the current status.
 It is intended for all the Etherlink partners such as infrastructure providers, node operators, and application builders.
 
 ## Key information
@@ -27,7 +27,7 @@ For more technical details about this network, see [Network information](/get-st
 
 ## Rationale
 
-This migration will ensure better testnet parity with Etherlink Mainnet, ensuring a much smoother launch of applications and services in production.
+This migration ensures better testnet parity with Etherlink Mainnet, ensuring a much smoother launch of applications and services in production.
 
 This paves the way for more partners to bring their applications to Etherlink, by concretely ensuring:
 
@@ -35,13 +35,11 @@ This paves the way for more partners to bring their applications to Etherlink, b
 - Better pre-live simulations
 - Better overall builder experience
 
-In addition, Tezos L1 Ghostnet is likely to be discontinued at a similar time.
+Tezos L1 Ghostnet has also been discontinued.
 
 ## Migration steps
 
-The migration is being organized around the release and availability of key Shadownet Testnet infrastructure components.
-
-The migration will be delivered in the following phases:
+The migration has been delivered in the following phases:
 
 <table class="customTableContainer">
   <thead>
@@ -103,7 +101,7 @@ The migration will be delivered in the following phases:
         - Sunset of Etherlink Ghostnet ecosystem infrastructure services and dapps
         - Etherlink Ghostnet Testnet sequencer shut down
       </td>
-      <td>In progress</td>
+      <td>✅ Complete</td>
     </tr>
   </tbody>
 </table>
@@ -111,7 +109,6 @@ The migration will be delivered in the following phases:
 ## Calls to action
 
 This section is meant for guiding the different categories of partners into action.
-Instructions will be updated as the migration progresses.
 
 ### For node operators
 
@@ -133,7 +130,7 @@ If you run EVM nodes on the existing Ghostnet Testnet, please carry out the foll
 
 ### For infrastructure providers
 
-If you currently operate infrastructure services for Etherlink Ghostnet Testnet, please prepare for these typical migration tasks:
+If you were operating infrastructure services for Etherlink Ghostnet Testnet, please prepare for these typical migration tasks:
 
 - Check for any missing on-chain or off-chain dependencies and escalate with the Etherlink team
 - Provision new infrastructure/hosts as needed
@@ -146,28 +143,11 @@ If you currently operate infrastructure services for Etherlink Ghostnet Testnet,
 - End-to-end testing/QA
 - Deployment and release to end-users
 
-Detailed links will be added to this page as services on Shadownet are enabled.
-
-<table>
-  <tr>
-    <td>
-      - Action: Plan for your migration
-      - Action: Your Etherlink team contacts will be in touch with further details and specific migration requirements
-    </td>
-  </tr>
-</table>
-
-:::note
-In most cases developers will expect to use your services on both Ghostnet and Shadownet.
-For this reason, anticipate running a parallel service for a few months until Ghostnet has been fully deprecated.
-
-:::
-
 ### For developers
 
-If you currently operate a dApp or marketplace on Etherlink Ghostnet Testnet for testing purposes, there should be no change in app behavior following the migration to Shadownet.
+If you were operating a dApp or marketplace on Etherlink Ghostnet Testnet for testing purposes, there should be no change in app behavior following the migration to Shadownet.
 
-Migration would typically involve the following steps:
+Migration typically involves the following steps:
 
 - Check for any missing on-chain or off-chain dependencies and escalate with the Etherlink team
 - Provision new infrastructure/hosts as needed
@@ -181,21 +161,9 @@ Migration would typically involve the following steps:
 - End-to-end testing/QA
 - Deployment and release to end-users
 
-Detailed links will be added to this page as services on Shadownet are enabled.
-
-<table>
-  <tr>
-    <td>
-      <p>No immediate migration action is required at this stage.
-      Refer to the timelines above and plan for your migration.</p>
-      <p>Please join the [Etherlink Discord](https://discord.gg/etherlink) so that you can be alerted to updates when it's time to migrate your applications to Etherlink Shadownet.</p>
-    </td>
-  </tr>
-</table>
-
 ## Getting help
 
-Regular updates will be announced via the following channels:
+Regular updates have been announced via the following channels:
 - [Etherlink Discord](https://discord.gg/etherlink)
 - [Twitter/X](https://x.com/etherlink)
 
