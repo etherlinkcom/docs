@@ -149,6 +149,12 @@ The Etherlink 6.3 upgrade went live on 16 May 2026 through the fast kernel gover
 
 For more information, see [Announcing Etherlink 6.3: a security bugfix for Farfadet](https://forum.tezosagora.org/t/announcing-etherlink-6-3-a-security-bugfix-for-farfadet/7068).
 
+## Etherlink 6.4
+
+The Etherlink 6.4 upgrade went live on 11 June 2026 through the fast kernel governance process and addressed different issues identified after the activation of Etherlink 6.3 during internal stress-testing and audit campaigns.
+
+For more information, see [Announcing Etherlink 6.4: a security and liveness hardening for Farfadet](https://forum.tezosagora.org/t/announcing-etherlink-6-4-a-security-and-liveness-hardening-for-farfadet/7092).
+
 ## Changelog
 
 For full details about changes to Etherlink, see [Changelogs](/progress/changelogs).
