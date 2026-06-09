@@ -151,7 +151,9 @@ For more information, see [Announcing Etherlink 6.3: a security bugfix for Farfa
 
 ## Etherlink 6.4
 
-The Etherlink 6.4 upgrade went live on 11 June 2026 through the fast kernel governance process and addressed different issues identified after the activation of Etherlink 6.3 during internal stress-testing and audit campaigns.
+The Etherlink 6.4 upgrade went live on 11 June 2026 through the fast kernel governance process and addressed two issues identified after the activation of Etherlink 6.3 during internal stress-testing and audit campaigns, namely:
+- Kernel hardening: Etherlink 6.4 hardens the delayed inbox, addressing flaws that could allow an attacker to disrupt the chain (including up to locking bridged assets in the worst case).
+- Sequencer governance contract upgrade: in the aftermath of the Etherlink 6.3, we discovered that the intended sequencer governance contract was incorrectly deployed. Etherlink 6.4 corrects this issue by tying the kernel to the correct governance contract on Tezos L1.
 
 For more information, see [Announcing Etherlink 6.4: a security and liveness hardening for Farfadet](https://forum.tezosagora.org/t/announcing-etherlink-6-4-a-security-and-liveness-hardening-for-farfadet/7092).
 
