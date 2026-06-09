@@ -149,7 +149,7 @@ A separate sequencer governance contract handles the selection process for Ether
 Similar to the kernel governance processes, the sequencer voting process has Proposal, Promotion, and Cooldown periods.
 In this process, bakers propose and vote on the account that operates the sequencer.
 
-The lengths of the periods are stored in the [sequencer governance contract](https://better-call.dev/mainnet/KT1VGyd2cRSHoDnxDnSuqGJD3mL8DzcVqX98).
+The lengths of the periods are stored in the [sequencer governance contract](https://better-call.dev/mainnet/KT1KiVz8ZpHo3HpE1GCP5HLgywPDRwVUkCFh).
 This table shows the period lengths as of the Ebisu Etherlink update and the Tezos Seoul protocol:
 
 Period | Length | Approximate time

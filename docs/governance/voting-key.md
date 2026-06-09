@@ -79,7 +79,7 @@ As a result, the voting key can vote on those contracts but not on the kernel fa
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
   --entrypoint propose_voting_key \
-  --arg '(Pair "<MY_VOTING_KEY>" True (Some { "KT1VGyd2cRSHoDnxDnSuqGJD3mL8DzcVqX98" ; "KT1AXRU3wLc87WNhLhVGrgqDGubLACUMUgPb" }))'
+  --arg '(Pair "<MY_VOTING_KEY>" True (Some { "KT1KiVz8ZpHo3HpE1GCP5HLgywPDRwVUkCFh" ; "KT1AXRU3wLc87WNhLhVGrgqDGubLACUMUgPb" }))'
 ```
 
 Then, to claim voting rights, go to the [governance web site](https://governance.etherlink.com), connect your voting key with the **Connect** button at the top right of the page, and use the connection dialog to claim rights.
@@ -111,7 +111,7 @@ For example, from the code of the contract you can see that the parameter to pas
 This command compiles an expression of this CameLIGO type to Michelson to propose rights for two contracts:
 
 ```bash
-ligo compile expression cameligo '("<MY_VOTING_KEY>" : address), True, (Some (Set.literal [("KT1VGyd2cRSHoDnxDnSuqGJD3mL8DzcVqX98" : address); ("KT1AXRU3wLc87WNhLhVGrgqDGubLACUMUgPb" : address)]) : (address set) option)'
+ligo compile expression cameligo '("<MY_VOTING_KEY>" : address), True, (Some (Set.literal [("KT1KiVz8ZpHo3HpE1GCP5HLgywPDRwVUkCFh" : address); ("KT1AXRU3wLc87WNhLhVGrgqDGubLACUMUgPb" : address)]) : (address set) option)'
 ```
 
 You can use the result as the parameter to pass to the `propose_voting_key` entrypoint.
@@ -120,7 +120,7 @@ Here is the result of the command:
 ```michelson
 (Pair "<MY_VOTING_KEY>"
       True
-      (Some { "KT1VGyd2cRSHoDnxDnSuqGJD3mL8DzcVqX98" ;
+      (Some { "KT1KiVz8ZpHo3HpE1GCP5HLgywPDRwVUkCFh" ;
               "KT1AXRU3wLc87WNhLhVGrgqDGubLACUMUgPb" }))
 ```
 
@@ -129,7 +129,7 @@ Here is the resulting `octez-client` command:
 ```bash
 octez-client call KT1Ut6kfrTV9tK967tDYgQPMvy9t578iN7iH from <MY_BAKER> \
   --entrypoint propose_voting_key \
-  --arg '(Pair "<MY_VOTING_KEY>" True (Some { "KT1AXRU3wLc87WNhLhVGrgqDGubLACUMUgPb" ; "KT1VGyd2cRSHoDnxDnSuqGJD3mL8DzcVqX98" }))'
+  --arg '(Pair "<MY_VOTING_KEY>" True (Some { "KT1AXRU3wLc87WNhLhVGrgqDGubLACUMUgPb" ; "KT1KiVz8ZpHo3HpE1GCP5HLgywPDRwVUkCFh" }))'
 ```
 :::
 
