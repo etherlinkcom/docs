@@ -18,7 +18,7 @@ For more information, see [The First Regular Upgrade for Etherlink: One Step Clo
 ## Etherlink 2 (Bifröst)
 
 The 2.0 upgrade to the Etherlink kernel went live on Etherlink Mainnet on 7 November 2024.
-It adds support for bridging [FA tokens from Tezos layer 1](https://docs.tezos.com/architecture/tokens#token-standards) to ERC-20 tokens on Etherlink and support for the callTracer tracer, which makes it possible for third-party tools like the Blockscout block explorer to index Etherlink transactions and for applications to trace transactions as described in [Tracing transactions](/building-on-etherlink/transactions#tracing-transactions).
+It adds support for bridging [FA tokens from Tezos layer 1](/architecture/tokens#token-standards) to ERC-20 tokens on Etherlink and support for the callTracer tracer, which makes it possible for third-party tools like the Blockscout block explorer to index Etherlink transactions and for applications to trace transactions as described in [Tracing transactions](/building-on-etherlink/transactions#tracing-transactions).
 For more information, see [Announcing Bifröst: a 2nd upgrade proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-bifr%C3%B6st-a-2nd-upgrade-proposal-for-etherlink-mainnet-ef1a7cf9715f).
 
 ## Etherlink 3 (Calypso)
@@ -42,7 +42,7 @@ On 12 April 2025, the 3.1 security upgrade went live on Etherlink Mainnet, in Et
 This upgrade improves error handling of FA bridging transactions, which hardens the Etherlink sequencer against potential DDOS attacks.
 This upgrade includes only a security patch for the Calypso kernel and no other changes.
 
-This upgrade was carried out through Etherlink’s [security governance process](https://docs.etherlink.com/governance/how-is-etherlink-governed#security-governance).
+This upgrade was carried out through Etherlink’s [security governance process](/governance/how-is-etherlink-governed#security-governance).
 
 For more information, see [Calypso2: A security upgrade to harden the Etherlink sequencer and FA bridge](https://research-development.nomadic-labs.com/etherlink-calypso2-upgrade.html).
 
