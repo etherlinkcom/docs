@@ -14,7 +14,7 @@ For more information about indexers on Tezos, see [Indexers](https://docs.tezos.
 
 ## Envio
 
-[Envio](https://envio.dev/?utm_source=etherlink&utm_medium=partner-docs) is a high-performance indexing framework that turns smart contract events into a queryable GraphQL API, with managed hosting on Envio Cloud. Envio supports Etherlink through HyperSync, its data engine that serves as the default data source and syncs historical data up to 2000x faster than traditional RPC.
+[Envio](https://envio.dev/?utm_source=etherlink&utm_medium=partner-docs) is the data layer for blockchain apps. It gives Etherlink developers the fastest, most flexible way to get real-time and historical onchain data, from a single GraphQL API to raw high-speed access, with managed hosting on Envio Cloud. Envio supports Etherlink through HyperSync, its data engine that serves as the default data source and syncs historical data up to 2000x faster than traditional RPC.
 
 You can auto-generate an indexer from any verified contract, write event handlers in TypeScript, JavaScript, or ReScript, and deploy on Envio Cloud or self-host.
 
