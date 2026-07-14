@@ -20,6 +20,8 @@ You can auto-generate an indexer from any verified contract, write event handler
 
 For more information, see the [Envio documentation](https://docs.envio.dev/?utm_source=etherlink&utm_medium=partner-docs) and the [HyperIndex quickstart](https://docs.envio.dev/docs/HyperIndex/quickstart?utm_source=etherlink&utm_medium=partner-docs).
 
+See Envio's [performance benchmarks](https://docs.envio.dev/docs/HyperIndex/benchmarking?utm_source=etherlink&utm_medium=partner-docs).
+
 ## The Graph
 
 [The Graph](https://thegraph.com/) is an indexing protocol for organizing blockchain data and making it easily accessible with GraphQL. Etherlink dApps can use GraphQL to query open APIs called subgraphs, to retrieve data that is indexed on the network.
