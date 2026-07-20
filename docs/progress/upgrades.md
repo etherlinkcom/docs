@@ -164,6 +164,12 @@ This vulnerability could allow an attacker to claim several times a deposit made
 
 For more information, see [Announcing Etherlink 6.5: a security bugfix for Farfadet](https://forum.tezosagora.org/t/announcing-etherlink-6-5-a-security-bugfix-for-farfadet/7120).
 
+## Etherlink 6.6
+
+The Etherlink 6.6 upgrade went live on 18 July 2026 through the fast kernel governance process and introduced a series of security and robustness improvements to the Etherlink kernel, further strengthening the network's reliability and resilience.
+
+For more information, see [Announcing Etherlink 6.6: a security hardening kernel upgrade proposal](https://forum.tezosagora.org/t/announcing-etherlink-6-6-a-security-hardening-kernel-upgrade-proposal/7137).
+
 ## Changelog
 
 For full details about changes to Etherlink, see [Changelogs](/progress/changelogs).
