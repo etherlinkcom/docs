@@ -167,6 +167,7 @@ For more information, see [Announcing Etherlink 6.5: a security bugfix for Farfa
 ## Etherlink 6.6
 
 The Etherlink 6.6 upgrade went live on 18 July 2026 through the fast kernel governance process and introduced a series of security and robustness improvements to the Etherlink kernel, further strengthening the network's reliability and resilience.
+In particular, it contains three fixes hardening the sequencer upgrade (or change) and one fix of a liveness/DoS bug in the decoding of blueprints.
 
 For more information, see [Announcing Etherlink 6.6: a security hardening kernel upgrade proposal](https://forum.tezosagora.org/t/announcing-etherlink-6-6-a-security-hardening-kernel-upgrade-proposal/7137).
 
