@@ -12,6 +12,16 @@ Several Etherlink-compatible indexers are listed below.
 
 For more information about indexers on Tezos, see [Indexers](https://docs.tezos.com/developing/information/indexers) on docs.tezos.com.
 
+## Envio
+
+[Envio](https://envio.dev/?utm_source=etherlink&utm_medium=partner-docs) is the data layer for blockchain apps. It gives Etherlink developers the fastest, most flexible way to get real-time and historical onchain data, from a single GraphQL API to raw high-speed access, with managed hosting on Envio Cloud. Envio supports Etherlink through HyperSync, its data engine that serves as the default data source and syncs historical data up to 2000x faster than traditional RPC.
+
+You can auto-generate an indexer from any verified contract, write event handlers in TypeScript, JavaScript, or ReScript, and deploy on Envio Cloud or self-host.
+
+For more information, see the [Envio documentation](https://docs.envio.dev/?utm_source=etherlink&utm_medium=partner-docs) and the [HyperIndex quickstart](https://docs.envio.dev/docs/HyperIndex/quickstart?utm_source=etherlink&utm_medium=partner-docs).
+
+See Envio's [performance benchmarks](https://docs.envio.dev/docs/HyperIndex/benchmarking?utm_source=etherlink&utm_medium=partner-docs).
+
 ## The Graph
 
 [The Graph](https://thegraph.com/) is an indexing protocol for organizing blockchain data and making it easily accessible with GraphQL. Etherlink dApps can use GraphQL to query open APIs called subgraphs, to retrieve data that is indexed on the network.
