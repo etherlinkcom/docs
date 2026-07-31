@@ -1,6 +1,9 @@
 # Etherlink developer documentation
 
-This repository has the source code for the Etherlink documentation at https://docs.etherlink.com.
+**NB: This repository is currently archived.** It used to have the source code for the Etherlink documentation at https://docs.etherlink.com.
+
+**Since the Etherlink upgrade 7 (Ganesha) the sources of <https://docs.etherlink.com> are in the Tezos X docs repo: <https://gitlab.com/tezos/xdocs>!**
+
 
 The source code for Etherlink itself (including the kernel and node) are in the repository https://gitlab.com/tezos/tezos/-/tree/master/etherlink?ref_type=heads.
 
