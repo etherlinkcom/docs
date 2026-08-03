@@ -23,7 +23,7 @@ Here are some important pieces of information for Etherlink Shadownet Testnet:
 - RPC endpoint: <InlineCopy code="https://node.shadownet.etherlink.com" />
 - Block explorer: <a href="https://shadownet.explorer.etherlink.com/">https://shadownet.explorer.etherlink.com/</a>
 
-For more technical details about this network, see [Network information](/get-started/network-information).
+For more technical details about this network, see [Network information](/evm/get-started/network-information).
 
 ## Rationale
 

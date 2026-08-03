@@ -21,3 +21,7 @@ For developers familiar with Tezos, Michelson/LIGO/SmartPy, and Tezos tooling (T
 ---
 
 Both interfaces share the same underlying blockchain, so contracts deployed on one interface can interact with contracts on the other via [native atomic composability](/overview/native-atomic-composability).
+
+## Etherlink 7 new features
+
+If you want to learn more about the new features brought by the Etherlink kernel upgrade 7, you may continue reading the rest of this section by following the `Next` link below.

@@ -69,6 +69,10 @@ export default function WalletConnectButton({ network, title }) {
     siteConfig: {customFields},
   } = useDocusaurusContext();
 
+  if (!customFields.THIRDWEB_CLIENT_ID) {
+    return null;
+  }
+
   const client = createThirdwebClient({ clientId: customFields.THIRDWEB_CLIENT_ID });
 
   return (

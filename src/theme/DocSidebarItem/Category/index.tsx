@@ -1,4 +1,4 @@
-import React, {type ComponentProps, useEffect, useMemo} from 'react';
+import React, {type ComponentProps, useEffect, useMemo, useState} from 'react';
 import clsx from 'clsx';
 import {
   ThemeClassNames,
@@ -106,7 +106,9 @@ function CollapseButton({
   );
 }
 
-const ITEMICONS = ['/img/site/FiHome.svg', '/img/site/FiBookOpen.svg', '/img/site/BiSortAlt2.svg', '/img/site/FiBox.svg', '/img/site/FiWifi.svg', '/img/site/FiSettings.svg', '/img/site/FiUsers.svg', '/img/site/FiTrendingUp.svg', '/img/site/FiBookOpen.svg']
+const ITEMICONS = ['/img/site/FiHome.svg', '/img/site/FiBox.svg', '/img/site/FiBox.svg', '/img/site/TestFlask.svg', '/img/site/FiWifi.svg', '/img/site/FiUsers.svg', '/img/site/FiBookOpen.svg', '/img/site/FiTrendingUp.svg', '/img/site/FiArrowUpRight.svg']
+
+// '/img/site/FiSettings.svg' '/img/site/FiBox.svg' /img/site/BiSortAlt2.svg
 
 export default function DocSidebarItemCategory({
   item,

@@ -4,7 +4,7 @@ title: Fee structure
 
 The Etherlink gas price (and therefore the fee for a given transaction) varies based on the activity on the chain.
 As activity increases, fees increase, and vice versa.
-For information about estimating fees, see [Estimating fees](/building-on-etherlink/estimating-fees).
+For information about estimating fees, see [Estimating fees](/evm/developing/estimating-fees).
 
 Etherlink fees include the cost of running the transaction and the cost of writing the transaction to layer 1:
 

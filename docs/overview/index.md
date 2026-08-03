@@ -1,5 +1,5 @@
 ---
-title: Etherlink # tx
+title: What is Etherlink? # tx
 slug: /
 ---
 
