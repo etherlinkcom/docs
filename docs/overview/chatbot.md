@@ -2,19 +2,17 @@
 title: Using the chatbot
 ---
 
-:::note
-
-Note that the chatbot is being transferred from the old Ethelink site. This may take a couple of weeks.
-
-You may provide feedback on the chatbot using the thumb up/down in its box, or comments via the **Feedback** button at the bottom right of the page.
-
-:::
-
 The AI-powered chatbot on this website (and a few websites in the tezos.com domain) is a conversational agent answering questions in plain English, based on the documentation (see [documentation sources](#documentation-sources)).
 
 You can access the chatbot with the **Ask AI** button at the center right of the page.
 
 Here are a few instructions & caveats that may help you better understand what you can expect from the chatbot (and what not to).
+
+:::note
+
+Note that the chatbot is in Beta testing. You may provide feedback on it using the thumb up/down in its box, or comments via the **Feedback** button at the bottom right of the page.
+
+:::
 
 :::warning
 
@@ -40,7 +38,7 @@ While it may provide useful and valuable information for the latter forms, inter
 
 The chatbot and AI-powered search currently use the following documentation sources:
 
-- The Etherlink<!--TX--> documentation (https://docs.etherlink.com/)
+- The Etherlink documentation (https://docs.etherlink.com/)
 - The Tezos documentation (https://docs.tezos.com/)
 - The Octez & Protocol documentation (https://octez.tezos.com/)
 - The LIGO documentation (https://ligo.tezos.com/)
