@@ -4,15 +4,15 @@ dependencies:
   octez: 23.2
 ---
 
-You can run a local sandbox to test Etherlink transactions and smart contracts locally.
-The sandbox consists of an [EVM node](/network/evm-nodes) in a special mode that includes the functionality of the sequencer and does not need any other nodes.
+You can run a local sandbox to test both Etherlink EVM<!--TEVM--> and Tezos Michelson smart contracts locally.
+The sandbox consists of an [EVM node<!--TXN-->](/network/evm-nodes) in a special mode that includes the functionality of the sequencer and does not need any other nodes.
 The local sandbox is intended for local testing and debugging.
 
 The sandbox begins by replicating an existing network, so you can use it to work with contracts on Mainnet, Testnet, or Shadownet.
 
 Follow these steps to start the local sandbox:
 
-1. Get the latest release of the `octez-evm-node` binary as described in [Running an Etherlink EVM node](/network/evm-nodes).
+1. Get the latest release of the `octez-evm-node` binary as described in [Running an EVM node<!--TXN-->](/network/evm-nodes).
 
 1. Initialize the data directory for the EVM node, as this example, which uses the placeholder `<EVM_DATA_DIR>` to represent the local folder for the data directory and `<NETWORK>` for the network to replicate (`mainnet`, `testnet`, or `shadownet`):
 
@@ -23,7 +23,7 @@ Follow these steps to start the local sandbox:
      --dont-track-rollup-node
    ```
 
-   For example, for Etherlink Shadownet, the command might like look like this:
+   For example, for Etherlink<!--TX--> Shadownet, the command might like look like this:
 
    ```bash
    octez-evm-node init config \
@@ -39,7 +39,7 @@ Follow these steps to start the local sandbox:
 
    :::
 
-1. (Optional) Enable WebSockets on the node as described in [Getting updates with WebSockets](/building-on-etherlink/websockets).
+1. (Optional) Enable WebSockets on the node as described in [Getting updates with WebSockets](/evm/developing/websockets).
 
 1. Start the node in sandbox mode from a snapshot:
 
@@ -67,7 +67,7 @@ Follow these steps to start the local sandbox:
    ```
 
 1. Verify that the sandbox node is running.
-For example, you can call an RPC endpoint with a `curl` command to verify the amount of XTZ in the bootstrap accounts, as in this example:
+For example, you can call a Etherlink EVM<!--TEVM--> RPC endpoint with a `curl` command to verify the amount of XTZ in the bootstrap accounts, as in this example:
 
 ```bash
 curl -X POST -H 'Content-Type: application/json' \

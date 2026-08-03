@@ -2,20 +2,20 @@
 title: "Part 2: Deploying a contract"
 ---
 
-Before you deploy the contract to Etherlink Mainnet, you must test it on a sandbox or test network.
-Etherlink provides a local sandbox that lets you test contracts without needing to use external networks, but many tools such as block explorers are not available on the sandbox.
-For access to tools such as block explorers and indexers, and to make your contracts available to systems that are not on your computer, you can deploy to a public test network such as Etherlink Shadownet.
+Before you deploy the contract to Etherlink<!--TX--> Mainnet, you must test it on a sandbox or test network.
+Etherlink<!--TX--> provides a local sandbox that lets you test contracts without needing to use external networks, but many tools such as block explorers are not available on the sandbox.
+For access to tools such as block explorers and indexers, and to make your contracts available to systems that are not on your computer, you can deploy to a public test network such as Etherlink<!--TX--> Shadownet.
 
-## Optional: Deploying to the Etherlink sandbox
+## Optional: Deploying to the Etherlink<!--TX--> sandbox
 
 Deploying to a sandbox can be useful to verify that your deployment scripts work and that the contract can be deployed before deploying to a test network.
 However, it is limited for development work because it does not provide a block explorer.
-Follow these steps to deploy a local Etherlink EVM node in sandbox mode, a special mode that behaves like an entire Etherlink network.
+Follow these steps to deploy a local EVM node<!--TXN--> in sandbox mode, a special mode that behaves like an entire Etherlink<!--TX--> network.
 
-1. Start the Etherlink sandbox based on Etherlink Shadownet as described in [Running a local sandbox](/building-on-etherlink/sandbox).
+1. Start the Etherlink<!--TX--> sandbox based on Etherlink<!--TX--> Shadownet as described in [Running a local sandbox](/testing/sandbox).
 In short, starting the sandbox involves these steps:
 
-   1. Install the latest release of the `octez-evm-node` binary as described in [Running an Etherlink EVM node](/network/evm-nodes).
+   1. Install the latest release of the `octez-evm-node` binary as described in [Running an EVM node<!--TXN-->](/network/evm-nodes).
 
    1. Initialize the data directory for the EVM node, as this example:
 
@@ -122,11 +122,11 @@ This account must match the account for the private key in the `.env` file.
 
 - Check that the port the sandbox is running on (by default, 8545) matches the port in the `hardhat.config.ts` file.
 
-## Deploying to Etherlink Shadownet Testnet
+## Deploying to Etherlink<!--TX--> Shadownet Testnet
 
-In this section you deploy the contract to the Etherlink Shadownet Testnet, where you can test it and interact with it on a block explorer without working with real funds.
+In this section you deploy the contract to the Etherlink<!--TX--> Shadownet Testnet, where you can test it and interact with it on a block explorer without working with real funds.
 
-1. Using the [Etherlink Shadownet faucet](https://shadownet.faucet.etherlink.com/), get some XTZ in your account to pay for transaction fees.
+1. Using the [Etherlink<!--TX--> Shadownet faucet](https://shadownet.faucet.etherlink.com/), get some XTZ in your account to pay for transaction fees.
 
 1. Create a deployment script for Shadownet in a file named `scripts/deployShadownet.js`:
 
@@ -172,7 +172,7 @@ In this section you deploy the contract to the Etherlink Shadownet Testnet, wher
 
    If the command failed, check your contract and deployment files and run the compilation and deployment commands again.
 
-1. Copy the address of the deployed contract and look it up on the [Etherlink Shadownet block explorer](https://shadownet.explorer.etherlink.com/).
+1. Copy the address of the deployed contract and look it up on the [Etherlink<!--TX--> Shadownet block explorer](https://shadownet.explorer.etherlink.com/).
 
 In the block explorer you can see the creator of the contract and information about its transactions.
 
@@ -185,7 +185,7 @@ However, you must add the ABI of the contract so the block explorer can format t
 The ABI is the complete interface for the contract, including all of its public functions and events.
 It is generated during the compilation process.
 
-1. Log in to the Etherlink [block explorer](https://shadownet.explorer.etherlink.com/) with your wallet by clicking `Log in`, clicking `Continue with Web3 wallet`, and connecting your wallet.
+1. Log in to the Etherlink EVM<!--TEVM--> [block explorer](https://shadownet.explorer.etherlink.com/) with your wallet by clicking `Log in`, clicking `Continue with Web3 wallet`, and connecting your wallet.
 
 1. Upload the contract ABI:
 

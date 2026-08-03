@@ -6,7 +6,7 @@ dependencies:
 
 :::note
 
-For simplified instructions for voting for Etherlink kernel upgrades, see [Voting quickstart](/governance/quickstart).
+For simplified instructions for voting for Etherlink<!--TX--> kernel upgrades, see [Voting quickstart](/governance/quickstart).
 
 :::
 
@@ -68,7 +68,7 @@ octez-client call KT1AXRU3wLc87WNhLhVGrgqDGubLACUMUgPb from my_wallet \
 The command takes these parameters:
 
 - The address or Octez client alias of your baker account or voting key
-- The address of the Etherlink kernel governance contract
+- The address of the Etherlink<!--TX--> kernel governance contract
 - `"yea"`, `"nay"`, or `"pass"`, including the double quotes
 
 The command does not need the hash of the kernel because only one kernel can be in the Promotion period at a time, so the options are to vote for or against that kernel or to abstain by voting "pass."

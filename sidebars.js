@@ -166,6 +166,7 @@ const sidebars = {
         'testing/sandbox',
         'testing/testnet',
         'testing/previewnet',
+        'testing/migrating-testnet'
       ],
     },
     {

@@ -1,5 +1,5 @@
 ---
-title: Monitoring Etherlink nodes
+title: Monitoring EVM nodes # txn
 ---
 
 Monitoring the behavior of the EVM node can be partially achieved by exploring the logs or through metrics.
@@ -53,7 +53,7 @@ The metric names in the table omit the namespace and subsystem for readability, 
 |             Metric names       |    Type   |                                                       Description                                                      |    Relevant mode    |
 |:------------------------------:|:---------:|:----------------------------------------------------------------------------------------------------------------------:|:-------------------:|
 | bootstrapping                  | gauge     | 0.0 if the EVM node is caught up with its upstream EVM node or 1.0 if it is in the process of bootstrapping            | Observer, RPC       |
-| head                           | gauge     | Level of the node’s head                                                                                               | all                 |
+| head                           | gauge     | Level of the node's head                                                                                               | all                 |
 | confirmed_head                 | gauge     | Confirmed level (smart rollup node's head, ie as registered on L1)                                                     | all                 |
 | gas_price                      | gauge     | Base gas price of the last block                                                                                       | sequencer, observer |
 | info                           | gauge     | Information about the kernel (commit hash and date), the node (mode)  and the targeted rollup (smart_rollup_address)   | all                 |
@@ -146,7 +146,7 @@ There are RPCs to trigger an early garbage collection of the Prometheus data but
 
 Make sure to restart the Prometheus service after updating its parameters.
 
-#### Hardware metrics {#hardware-metrics}
+#### Hardware metrics
 
 In addition to node metrics, you may want to gather other information and statistics for effective monitoring, such as hardware metrics.
 

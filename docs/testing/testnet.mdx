@@ -2,24 +2,25 @@
 title: Developing on test networks
 ---
 
-Etherlink has an active test network named Etherlink Shadownet Testnet, or Shadownet for short.
+Etherlink{/* TX */} has an active test network named Etherlink{/* TX */} Shadownet Testnet, or Shadownet for short.
 It runs on the Tezos Shadownet test network.
+
+For technical details about Shadownet, see [EVM network information](/evm/get-started/network-information) and [Michelson network information](/michelson/network-information).
+
+There is also the Previewnet test network, see below.
 
 :::note
 
 The old testnet, Ghostnet Testnet, has been decommissioned, and is no longer usable.
-For migration instructions, see [Migrating to Etherlink Shadownet Testnet](/network/migrating-testnet).
 
 :::
 
-For technical details about Shadownet, see [Network information](/get-started/network-information).
-
-For more information about the Tezos test networks that Etherlink test networks run on, see [Testing on testnets](https://docs.tezos.com/developing/testnets) on docs.tezos.com.
+For more information about the Tezos test networks that Etherlink{/* TX */} test networks run on, see [Testing on testnets](https://docs.tezos.com/developing/testnets) on docs.tezos.com.
 
 ## Using test networks
 
 In most cases, you can use a test network in place of Mainnet by using the RPC URL of an EVM node that is running on that test network.
-You can use the public RPC node for the network for a small number of transactions (because it has a rate limit), or you can run your own EVM node on the test network by following the instructions in [Running an Etherlink EVM node](/network/evm-nodes).
+You can use the public RPC node for the network for a small number of transactions (because it has a rate limit), or you can run your own EVM node on the test network by following the instructions in [Running an EVM node{/* TXN */}](/network/evm-nodes).
 
 Then, use the RPC URL in transactions, as in this example, which uses the public RPC node for the Shadownet Testnet:
 
@@ -38,3 +39,8 @@ curl --request POST \
 ```
 
 Examples of using test networks are on other pages in this documentation.
+
+## Etherlink{/* TX */} Previewnet
+
+The [Previewnet test network](/testing/previewnet) is a temporary testnet made available before the addition of the EVM interface to Etherlink{/* TX */}, for developers trying to test Native Atomic Calls before Etherlink upgrade 7.
+Previewnet is still available for some time.

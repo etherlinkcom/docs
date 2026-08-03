@@ -3,7 +3,7 @@ title: Etherlink # tx
 slug: /
 ---
 
-# Etherlink<!--TX-->
+# What is Etherlink<!--TX-->?
 
 Etherlink<!--TX--> is a fast, non-custodial execution layer enshrined in the Tezos protocol, which settles back to the Tezos consensus layer (Tezos Layer 1) for security.
 

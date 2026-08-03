@@ -15,9 +15,9 @@ octez-client call KT19oUVQPnVLuUBYXrBVd46WJnNAMpqkKSwo from my_wallet \
 The command takes these parameters:
 
 - The address or Octez client alias of your baker account or voting key
-- The address of the appropriate Etherlink kernel governance contract
-- The address of the Etherlink Smart Rollup; the parameter must include the double quotes
+- The address of the appropriate Etherlink<!--TX--> kernel governance contract
+- The address of the Etherlink<!--TX--> Smart Rollup; the parameter must include the double quotes
 
-After the new kernel becomes active, bakers must provide their nodes with the preimages for the new kernel to continue to participate in Etherlink.
+After the new kernel becomes active, bakers must provide their nodes with the preimages for the new kernel to continue to participate in Etherlink<!--TX-->.
 They can copy the new preimages into the node data directory without stopping or restarting the node.
-If a node uses a preimages endpoint as described in [Running an Etherlink EVM node](/network/evm-nodes) and [Running an Etherlink Smart Rollup node](/network/smart-rollup-nodes), the node updates automatically.
+If a node uses a preimages endpoint as described in [Running an EVM node<!--TXN-->](/network/evm-nodes) and [Running a Etherlink<!--TX--> Smart Rollup node](/network/smart-rollup-nodes), the node updates automatically.

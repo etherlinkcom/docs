@@ -6,9 +6,9 @@ In this section, you write a simple prediction market contract.
 This contract uses the [OpenZeppelin](https://docs.openzeppelin.com/) library as a starting point.
 The OpenZeppelin library includes tested and secure contracts, and using pre-tested contracts like these can be easier and safer than writing your own contracts, especially when you deal with betting systems that can be manipulated.
 
-Etherlink is compatible with Ethereum technology, which means that you can use any Ethereum-compatible tool for development, including Hardhat, Foundry, Truffle Suite, and Remix IDE.
-For more information on tools that work with Etherlink, see [Developer toolkits](/building-on-etherlink/development-toolkits).
-The starter project also uses the [Hardhat](/building-on-etherlink/development-toolkits) development environment to simplify the process of compiling and deploying the contract.
+Etherlink EVM<!--TEVM--> is compatible with Ethereum technology, which means that you can use any Ethereum-compatible tool for development, including Hardhat, Foundry, Truffle Suite, and Remix IDE.
+For more information on tools that work with Etherlink EVM<!--TEVM-->, see [Developer toolkits](/evm/developing/development-toolkits).
+The starter project also uses the [Hardhat](/evm/developing/development-toolkits) development environment to simplify the process of compiling and deploying the contract.
 
 ## Writing the contract
 
@@ -57,13 +57,13 @@ Follow these steps to set up the contract for the prediction market:
    npm i @openzeppelin/contracts
    ```
 
-1. Install the `dotenv` package to use variables from `.env` files and [Viem](https://viem.sh/) to interact with Etherlink:
+1. Install the `dotenv` package to use variables from `.env` files and [Viem](https://viem.sh/) to interact with Etherlink EVM<!--TEVM-->:
 
    ```bash
    npm i dotenv @nomicfoundation/hardhat-viem
    ```
 
-1. Replace the default `hardhat.config.ts` file with this file, which includes configuration information for Etherlink Shadownet and local sandbox:
+1. Replace the default `hardhat.config.ts` file with this file, which includes configuration information for Etherlink<!--TX--> Shadownet and local sandbox:
 
    ```javascript
    import dotenv from 'dotenv';
@@ -467,10 +467,10 @@ Follow these steps to set up the contract for the prediction market:
 
    You can see the completed contract at https://github.com/trilitech/tutorial-applications/blob/main/etherlink-prediction/backend/contracts/Contract.sol.
 
-1. Set up an Etherlink account in a compatible wallet if you don't already have one.
-For more information, see [Using your wallet](/get-started/using-your-wallet).
+1. Set up a Etherlink EVM<!--TEVM--> account in a compatible wallet if you don't already have one.
+For more information, see [Using your wallet](/evm/get-started/using-your-wallet).
 
-1. Create a file named `.env` in the same folder as the `hardhat.config.js` file and set your Etherlink account private key as the value of the `PRIVATE_KEY` environment variable:
+1. Create a file named `.env` in the same folder as the `hardhat.config.js` file and set your Etherlink EVM<!--TEVM--> account private key as the value of the `PRIVATE_KEY` environment variable:
 
    ```env
    PRIVATE_KEY=<ETHERLINK_PRIVATE_KEY>

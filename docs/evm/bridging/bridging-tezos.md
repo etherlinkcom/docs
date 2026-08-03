@@ -3,13 +3,24 @@ title: Bridging XTZ between Tezos layer 1 and Etherlink EVM # tevm
 sidebar_label: Bridging to Tezos
 ---
 
+import CementingDelayNote from '@site/docs/conrefs/cementing-delay.md';
+
 You can bridge XTZ tokens from Tezos layer 1 to Etherlink EVM<!--TEVM--> and back.
-Bridging tokens from Tezos layer 1 to Etherlink EVM<!--TEVM--> is referred to as _depositing_ tokens.
-Bridging tokens from Etherlink EVM<!--TEVM--> to Tezos layer 1 is referred to as _withdrawing_ tokens.
+XTZ is the native token on Etherlink EVM<!--TEVM--> and Tezos, which is called tez and shown on price tickers with the symbol [XTZ](https://coinmarketcap.com/currencies/tezos/).
+
+Two bridging operations are available:
+
+- Bridging tokens from Tezos layer 1 to Etherlink EVM<!--TEVM--> is referred to as _depositing_ tokens.
+- Bridging tokens from Etherlink EVM<!--TEVM--> to Tezos layer 1 is referred to as _withdrawing_ tokens.
 
 Both operations rely on automated, transparent, and audited smart contracts installed on Etherlink EVM<!--TEVM--> and Tezos.
 These bridges are permissionless, meaning that anyone can use them without restrictions or the intervention of a third party.
-They are also trustless, meaning that they do not require you to trust a third party.
+They are also trustless, meaning that they rely on automated, transparent, and audited smart contracts installed on Etherlink and Tezos.
+
+- [Mainnet Tezos bridge](https://bridge.etherlink.com/tezos)
+- [Shadownet Testnet Tezos bridge](https://shadownet.bridge.etherlink.com/tezos)
+
+<CementingDelayNote />
 
 The explorer at https://bridge.explorer.etherlink.com shows bridging transactions between Tezos Mainnet and Etherlink<!--TX--> Mainnet.
 
@@ -85,6 +96,7 @@ This outbox message becomes part of Etherlink<!--TX-->'s commitment to its state
 This diagram is an overview of the withdrawal process:
 
 ![Overview of the token bridging withdrawal process](/img/bridging-withdrawal.png)
+<!-- https://lucid.app/lucidchart/d4fb99c8-74eb-4336-b971-117b0045772b/edit -->
 
 ### Fast withdrawals
 

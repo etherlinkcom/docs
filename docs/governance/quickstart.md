@@ -6,7 +6,7 @@ dependencies:
 
 :::note
 
-This page includes only the basic commands for voting for Etherlink kernel upgrade proposals.
+This page includes only the basic commands for voting for Etherlink<!--TX--> kernel upgrade proposals.
 For complete information, see [Participating in kernel governance](/governance/kernel-governance).
 
 :::
@@ -31,7 +31,7 @@ octez-client call <GOVERNANCE_CONTRACT> from <MY_VOTER> \
 Parameters:
 
 - `<GOVERNANCE_CONTRACT>`: The governance contract to call, either the slow governance contract or the fast governance contract; see [Governance contract addresses](/governance/overview#governance-contract-addresses)
-- `<MY_VOTER>`: Your baker key or Etherlink [voting key](/governance/voting-key)
+- `<MY_VOTER>`: Your baker key or Etherlink<!--TX--> [voting key](/governance/voting-key)
 - `<KERNEL_HASH>`: The hash of the kernel to upvote, starting with `0x`
 
 ## Voting in the Promotion period with the command line
@@ -46,6 +46,6 @@ octez-client call <GOVERNANCE_CONTRACT> from <MY_VOTER> \
 Parameters:
 
 - `<GOVERNANCE_CONTRACT>`: The governance contract to call, either the slow governance contract or the fast governance contract; see [Governance contract addresses](/governance/overview#governance-contract-addresses)
-- `<MY_VOTER>`: Your baker key or Etherlink [voting key](/governance/voting-key)
+- `<MY_VOTER>`: Your baker key or Etherlink<!--TX--> [voting key](/governance/voting-key)
 
 The command does not need the hash of the kernel because only one kernel can be in the Promotion period at a time, so the options are to vote for or against that kernel or to abstain by voting "pass."

@@ -1,18 +1,20 @@
 :::note
-<h3>Bridging time</h3>
-Tokens that you bridge from Tezos layer 1 to Etherlink are available for use on Etherlink immediately.
 
-By default, tokens that you bridge from Etherlink to Tezos layer 1 are available for use on Tezos in 15 days.
-You can bridge XTZ tokens within 1 minute for an additional fee with [fast withdrawals](/bridging/bridging-tezos#fast-withdrawals).
+### Bridging time
+
+Tokens that you bridge from Tezos layer 1 to Etherlink<!--TX--> are available for use on Etherlink<!--TX--> immediately.
+
+By default, tokens that you bridge from Etherlink<!--TX--> to Tezos layer 1 are available for use on Tezos in 15 days.
+You can bridge XTZ tokens within 1 minute for an additional fee with [fast withdrawals](/evm/bridging/bridging-tezos#fast-withdrawals).
 
 This delay is caused by the Smart Rollup refutation period.
-As with all Smart Rollups, Etherlink nodes post commitments about their state to Tezos layer 1, including incoming bridging transactions, on a regular schedule.
+As with all Smart Rollups, EVM nodes<!--TXN--> post commitments about their state to Tezos layer 1, including incoming bridging transactions, on a regular schedule.
 Other nodes have the length of the refutation period (14 days) to challenge those commitments.
 At the end of the refutation period, the correct commitment is cemented, or made final and unchangeable.
 
 After the commitment with the withdrawal transaction is cemented, any user can execute the transaction to make the bridged tokens available on Tezos layer 1.
 
-<h3>Delay variations</h3>
+### Delay variations
 
 This delay can vary if a Tezos layer 1 protocol upgrade changes the block times during a commitment's refutation period.
 

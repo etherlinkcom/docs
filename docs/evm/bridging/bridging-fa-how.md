@@ -7,22 +7,22 @@ In short, the bridge uses tickets to send tokens from the source network to the 
 
 ## Contracts
 
-The bridging process relies on smart contracts that convert tokens to [tickets](https://docs.tezos.com/smart-contracts/data-types/complex-data-types#tickets) and transfer the tickets between Tezos and Etherlink.
-These contracts are an implementation of the [TZIP-029](https://gitlab.com/baking-bad/tzip/-/blob/wip/029-etherlink-token-bridge/drafts/current/draft-etherlink-token-bridge/etherlink-token-bridge.md) standard for bridging between Tezos and Etherlink.
+The bridging process relies on smart contracts that convert tokens to [tickets](https://docs.tezos.com/smart-contracts/data-types/complex-data-types#tickets) and transfer the tickets between Tezos and Etherlink EVM<!--TEVM-->.
+These contracts are an implementation of the [TZIP-029](https://gitlab.com/baking-bad/tzip/-/blob/wip/029-etherlink-token-bridge/drafts/current/draft-etherlink-token-bridge/etherlink-token-bridge.md) standard for bridging between Tezos and Etherlink EVM<!--TEVM-->.
 
 Each FA token needs its own copy of these contracts to be able to bridge the token:
 
 - **Ticketer contract**: Stores tokens and issues tickets that represent them
-- **Token bridge helper contract**: Accepts requests to bridge tokens on layer 1, uses the ticketer contract to get tickets for them, and sends the tickets to Etherlink
+- **Token bridge helper contract**: Accepts requests to bridge tokens on layer 1, uses the ticketer contract to get tickets for them, and sends the tickets to Etherlink EVM<!--TEVM-->
 - **ERC-20 proxy contract**: Stores tickets and mints ERC-20 tokens that are equivalent to the FA tokens in layer 1
 
-You can run these transactions using the bridge, as described in [Bridging FA tokens between Tezos layer 1 and Etherlink](/bridging/bridging-fa).
-For information about how to run these transactions without using the bridge, see [Sending FA bridging transactions](/bridging/bridging-fa-transactions).
+You can run these transactions using the bridge, as described in [Bridging FA tokens between Tezos layer 1 and Etherlink EVM<!--TEVM-->](/evm/bridging/bridging-fa).
+For information about how to run these transactions without using the bridge, see [Sending FA bridging transactions](/evm/bridging/bridging-fa-transactions).
 Examples of these contracts and tools to deploy them are available in the repository https://github.com/baking-bad/etherlink-bridge.
 
-## Depositing tokens from layer 1 to Etherlink
+## Depositing tokens from layer 1 to Etherlink EVM<!--TEVM-->
 
-The process of bridging FA-compatible tokens from layer 1 to Etherlink (also known as depositing tokens) follows these general steps:
+The process of bridging FA-compatible tokens from layer 1 to Etherlink EVM<!--TEVM--> (also known as depositing tokens) follows these general steps:
 
 1. A Tezos user gives the token bridge helper contract access to their tokens.
 
@@ -32,9 +32,9 @@ The process of bridging FA-compatible tokens from layer 1 to Etherlink (also kno
    For information about token access control, see [Token standards](https://docs.tezos.com/architecture/tokens#token-standards) on docs.tezos.com.
 
 1. The user calls the helper contract's `deposit` entrypoint.
-The request includes the amount of tokens to bridge, the address of the Etherlink Smart Rollup, and the user's Etherlink wallet address, but not the tokens themselves.
+The request includes the amount of tokens to bridge, the address of the Etherlink Smart Rollup, and the user's Etherlink EVM<!--TEVM--> wallet address, but not the tokens themselves.
 
-1. The token bridge helper contract stores the address of the Etherlink Smart Rollup and the user's Etherlink address temporarily.
+1. The token bridge helper contract stores the address of the Etherlink<!--TX--> Smart Rollup and the user's Etherlink EVM<!--TEVM--> address temporarily.
 
 1. The helper contract (as an operator of the user's tokens or with an allowance of the user's tokens) calls the token contract to transfer the tokens from the user's account to its account.
 
@@ -46,7 +46,7 @@ The request includes the amount of tokens to bridge, the address of the Etherlin
 
 1. The helper contract forwards the ticket to the Smart Rollup inbox and clears its storage for the next transfer.
 
-1. The Etherlink Smart Rollup kernel receives the ticket and puts it and information about it (including the addresses of the proxy contract and the user's Etherlink wallet address) in the delayed inbox.
+1. The Etherlink<!--TX--> Smart Rollup kernel receives the ticket and puts it and information about it (including the addresses of the proxy contract and the user's Etherlink EVM<!--TEVM--> wallet address) in the delayed inbox.
 
 1. The sequencer reads the ticket and information about it from the delayed inbox, leaves the ticket in control of the Smart Rollup itself, and calls the null address precompiled contract (`0x000...000`) with the information.
 
@@ -55,17 +55,17 @@ The request includes the amount of tokens to bridge, the address of the Etherlin
 1. Any user can call the FA bridging precompiled contract's `claim` function, which causes the contract to call the ERC-20 proxy contract.
 For tokens supported by the bridge, an automated program calls the `claim` function for you.
 
-1. The ERC-20 proxy contract mints the equivalent tokens and sends them to the user's Etherlink account.
+1. The ERC-20 proxy contract mints the equivalent tokens and sends them to the user's Etherlink EVM<!--TEVM--> account.
 
-This diagram is an overview of the process of bridging tokens from layer 1 to Etherlink:
+This diagram is an overview of the process of bridging tokens from layer 1 to Etherlink EVM<!--TEVM-->:
 
 <img src="/img/bridging-deposit-fa.png" alt="Overview of the FA token bridging deposit process" style={{width: 500}} />
 
-## Withdrawing tokens from Etherlink to layer 1
+## Withdrawing tokens from Etherlink EVM<!--TEVM--> to layer 1
 
-The process of bridging FA-compatible tokens from Etherlink to layer 1 (also known as withdrawing tokens) follows these general steps:
+The process of bridging FA-compatible tokens from Etherlink EVM<!--TEVM--> to layer 1 (also known as withdrawing tokens) follows these general steps:
 
-1. The user calls the FA bridging precompiled contract on Etherlink and includes this information:
+1. The user calls the FA bridging precompiled contract on Etherlink EVM<!--TEVM--> and includes this information:
 
    - The address of the ERC-20 proxy contract that manages the tokens
    - The user's layer 1 address or the address of a contract to send the tokens to
@@ -78,7 +78,7 @@ The process of bridging FA-compatible tokens from Etherlink to layer 1 (also kno
 1. The proxy contract sends the information about the withdrawal to the helper contract by putting it in a transaction in the Smart Rollup outbox.
 This transaction includes the target layer 1 address.
 
-   This outbox message becomes part of Etherlink's commitment to its state.
+   This outbox message becomes part of Etherlink<!--TX-->'s commitment to its state.
 
 1. When the commitment that contains the transaction is cemented on layer 1, anyone can run the transaction by running the Octez client `execute outbox message` command.
 
@@ -90,6 +90,6 @@ This transaction includes the target layer 1 address.
 
 1. The helper contract sends the tokens to the target layer 1 address.
 
-This diagram is an overview of the process of bridging tokens from Etherlink to layer 1:
+This diagram is an overview of the process of bridging tokens from Etherlink EVM<!--TEVM--> to layer 1:
 
 <img src="/img/bridging-withdrawal-fa.png" alt="Overview of the FA token bridging withdrawal process" style={{width: 500}} />
