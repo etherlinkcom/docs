@@ -6,7 +6,7 @@ title: Accounts and Aliases
 
 ## Accounts
 
-Every account in Etherlink<!--TX--> is **native to exactly one interface**: either the EVM interface or the Michelson interface. An interface fully owns its accounts: it defines their behaviour, manages their state, and controls how they interact with smart contracts.
+Every account in Etherlink<!--TX--> is **native to exactly one interface**: either the EVM interface or the Michelson interface. An interface fully owns its accounts: it defines their behaviour, manages their state, and controls how they interact with each other.
 
 This means:
 - An EVM account (native to the Etherlink EVM<!--TEVM--> interface), beit an externally owned account or smart contract, behaves exactly as it would on any other EVM-compatible chain.
