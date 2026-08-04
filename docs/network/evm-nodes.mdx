@@ -34,7 +34,7 @@ If you don't want to see all of the options and settings for the EVM node, you c
 1. Download the latest release of the `octez-evm-node` binary from https://gitlab.com/tezos/tezos/-/releases.
 
    :::note
-   Version 0.53 or later of the `octez-evm-node` binary is strongly recommended for Etherlink{/* TX */} kernel 6.1.
+   Version 0.64 or later of the `octez-evm-node` binary is required to suppport the Etherlink{/* TX */} kernel 7.0.
    :::
 
 1. Run the `octez-evm-node run observer` command to start the node as an observer:
@@ -122,6 +122,15 @@ For example, this command runs the EVM node in the Docker container on port 8545
 
   </TabItem>
 </Tabs>
+
+::note
+
+The EVM node exposes the Michelson (Tezos-compatible) RPCs at the
+`/tezlink` sub-path of the node's base endpoint.
+For example, if your local node listens on the default port, the Michelson endpoint is
+`http://localhost:8545/tezlink`.
+
+:::
 
 
 ## Configuring the node
@@ -435,7 +444,7 @@ By default, the EVM node exposes its JSON RPC API endpoint to `localhost:8545`.
 To set the host name or port that the node listens on, use the `--rpc-addr` or `--rpc-port` arguments of the `octez-evm-node run` command.
 
 You can test that everything works as expected by running RPC requests manually or by setting your wallet to use your local node.
-For example, this command gets the number of the most recent block in hexadecimal:
+For example, this command gets the number of the most recent EVM block in hexadecimal:
 
 ```bash
 curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_blockNumber"}' http://localhost:8545
