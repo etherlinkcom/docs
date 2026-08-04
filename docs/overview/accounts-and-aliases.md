@@ -12,7 +12,7 @@ This means:
 - An EVM account (native to the EVM<!--TEVM--> interface), be it an externally owned account or smart contract, behaves exactly as it would on any other EVM-compatible chain.
 - A Tezos account (native to the Michelson interface) behaves exactly as it would on Tezos Layer 1.
 
-Each interface's tooling, wallets, and indexers work without modification because the underlying account semantics are unchanged.
+Each interface's tooling, wallets, and indexers work without modification within the boundaries of their native interface because the underlying account semantics are unchanged.
 
 ## Aliases
 
