@@ -5,7 +5,9 @@ slug: /
 
 # What is Etherlink<!--TX-->?
 
-Etherlink<!--TX--> is a fast, non-custodial execution layer enshrined in the Tezos protocol, which settles back to the Tezos consensus layer (Tezos Layer 1) for security.
+Etherlink<!--TX--> is a non-custodial execution layer enshrined in the Tezos protocol and powered by [Tezos Smart Rollup technology](https://tezos.com/developers/smart-rollups/), which settles back to the Tezos consensus layer (Tezos Layer 1) for security.
+
+It brings a *fast, fair, and (nearly) free* user and developer experience.
 
 Since kernel upgrade 7, Etherlink<!--TX--> exposes a **single blockchain** that is **addressable through two interfaces**: an **EVM interface** (available since early 2024 under the name "Etherlink") and a new **Michelson interface** (previously called Tezlink).
 In that, kernel upgrade 7 constituted an important milestone in the Tezos X roadmap, securing the way to the near-term Tezos X launch.
