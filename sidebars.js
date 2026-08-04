@@ -38,6 +38,7 @@ const sidebars = {
       items: [
         'overview/index',
         'overview/get-started',
+        'overview/architecture',
         'overview/accounts-and-aliases',
         'overview/native-atomic-composability',
         'overview/blocks-and-blueprints',
