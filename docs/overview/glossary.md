@@ -16,7 +16,13 @@ These glossaries are planned to be fused in the near term.
 
 **Alias** — An address in a foreign interface that represents a native account from another interface. Aliases are created automatically on first interaction and forward tez received back to the native account.
 
+**Baker** - A user holding enough tez to participate in the Tezos L1 consensus PoS protocol, by staking some tez and contributing to block validation and creation. Bakers also can cast votes in the on-chain governance. They can also increase their weight in consensus and governance by allowing other users to delegate or stake with them.
+
 **Blueprint** — A signed batch of operations produced by the sequencer, covering all interfaces, published to the Tezos Layer 1 rollup inbox.
+
+**Etherlink<!--TX--> kernel** — The orchestration layer (smart rollup kernel) that contains and coordinates all runtimes.
+
+**Etherlink<!--TX--> block** — A block produced by applying a blueprint, representing the combined effects of all runtimes at a given level.
 
 **EVM runtime** — The runtime that implements the EVM interface, processing Ethereum-compatible transactions and executing code using the EVM. Exposes an Ethereum JSON-RPC endpoint.
 
@@ -41,7 +47,3 @@ These glossaries are planned to be fused in the near term.
 **Sequencer** — The node responsible for ordering operations and producing blueprints. Elected by Tezos Layer 1 bakers.
 
 **Smart contract** — An account controlled by code rather than a private key.
-
-**Etherlink<!--TX--> kernel** — The orchestration layer (smart rollup kernel) that contains and coordinates all runtimes.
-
-**Etherlink<!--TX--> block** — A block produced by applying a blueprint, representing the combined effects of all runtimes at a given level.
