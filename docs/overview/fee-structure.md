@@ -14,6 +14,7 @@ Storage fees compensate for permanent on-chain storage allocation:
 Both interfaces use gas as the unit of execution:
 
 - In the **EVM interface**, gas covers both computation and storage allocation — `SSTORE` operations consume gas. The fee is `gas_consumed × base_fee_per_gas`.
+  Thus, in the [EVM fees](/evm/developing/fees) there are only execution fees, and no separate storage fees.
 - In the **Michelson interface**, gas covers computation, while storage allocation is charged separately as a burn at a fixed rate per byte allocated: `fee = gas_consumed × base_fee_per_gas + bytes_allocated × cost_per_byte`.
 
 `base_fee_per_gas` is determined by the Etherlink<!--TX--> kernel at the start of each block and adjusts dynamically based on network load.

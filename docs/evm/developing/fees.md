@@ -1,20 +1,21 @@
 ---
-title: Fee structure
+title: Etherlink EVM Fees # tevm
 ---
 
 The Etherlink EVM<!--TEVM--> gas price (and therefore the fee for a given transaction) varies based on the activity on the chain.
 As activity increases, fees increase, and vice versa.
 For information about estimating fees, see [Estimating fees](/evm/developing/estimating-fees).
 
-Etherlink EVM<!--TEVM--> fees include the cost of running the transaction and the cost of writing the transaction to layer 1:
-
-- The _execution fee_, sometimes known as the _gas fee_, is a fee for running the transaction.
+Etherlink EVM<!--TEVM--> fees accounts for the cost of running the transaction,
+called the _execution fee_, sometimes known as the _gas fee_.
 It changes depending on Etherlink EVM<!--TEVM--> throughput over time; at times of high demand for Etherlink EVM<!--TEVM--> transactions, the gas fee rises.
 This fee is burned.
-- The _inclusion fee_ goes to the sequencer to defray the cost of the data that Etherlink EVM<!--TEVM--> stores on Tezos layer 1.
-Transactions that use more data pay a higher fee.
 
-The base fee of the transaction (in the Ethereum `max_fee_per_gas` [EIP-1559](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1559.md) field) must be enough to cover these Etherlink EVM<!--TEVM--> fees.
+As explained in [Fee structure](/overview/fee-structure), the Etherlink<!--TX-->  kernel also requires some fees accounting for the cost of writing the transaction to layer 1.
+These _inclusion fee_ are added to execution fees in the total cost of a transaction.
+Keep in mind that transactions that use more data pay a higher inclusion fee.
+
+The base fee of the transaction (in the Ethereum `max_fee_per_gas` [EIP-1559](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1559.md) field) must be enough to cover all these Etherlink<!--TX--> fees.
 
 :::note
 
