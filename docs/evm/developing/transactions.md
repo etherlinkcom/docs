@@ -218,7 +218,7 @@ For more information, see [Estimating fees](/evm/developing/estimating-fees).
 
 ## Calling smart contracts
 
-Calling a Etherlink EVM<!--TEVM--> smart contract is just like calling any other EVM smart contract.
+Calling an Etherlink EVM<!--TEVM--> smart contract is just like calling any other EVM smart contract.
 For example, this Solidity contract stores an integer and lets callers change it:
 
 ```solidity
@@ -783,7 +783,7 @@ async function sendTransaction() {
 
 As described in [Delayed inbox transaction processing](/network/architecture#delayed-inbox-transaction-processing), the delayed inbox provides an alternative mechanism to add a transaction to Etherlink<!--TX-->. If the sequencer is not operating normally, sending transactions to the delayed inbox is a way to force Etherlink<!--TX--> to include them.
 
-When you submit a transaction to the delayed inbox, you encode and sign it as a Etherlink EVM<!--TEVM--> transaction but submit it to the delayed bridge contract on Tezos layer 1.
+When you submit a transaction to the delayed inbox, you encode and sign it as an Etherlink EVM<!--TEVM--> transaction but submit it to the delayed bridge contract on Tezos layer 1.
 Under normal circumstances, the sequencer receives the transaction and runs it as usual, but if the sequencer is not working for any reason and the transaction has not been run after a certain amount of time, the Etherlink<!--TX--> Smart Rollup nodes run the transaction themselves.
 In this way, you can submit emergency transactions to the delayed inbox when the sequencer is not working.
 
@@ -807,7 +807,7 @@ The addresses of the delayed inbox smart contracts are:
 - Shadownet Testnet: `KT18tqoSSpiMy6sizSMx9kQCe29EQfGq9wWv`
 - Mainnet: `KT1Vocor3bL5ZSgsYH9ztt42LNhqFK64soR4`
 
-This example signs a Etherlink EVM<!--TEVM--> transaction that transfers 1 XTZ and submits it to the delayed inbox on Shadownet Testnet:
+This example signs an Etherlink EVM<!--TEVM--> transaction that transfers 1 XTZ and submits it to the delayed inbox on Shadownet Testnet:
 
 ```javascript
 const { ethers } = require("ethers");

@@ -67,7 +67,7 @@ Follow these steps to start the local sandbox:
    ```
 
 1. Verify that the sandbox node is running.
-For example, you can call a Etherlink EVM<!--TEVM--> RPC endpoint with a `curl` command to verify the amount of XTZ in the bootstrap accounts, as in this example:
+For example, you can call an Etherlink EVM<!--TEVM--> RPC endpoint with a `curl` command to verify the amount of XTZ in the bootstrap accounts, as in this example:
 
 ```bash
 curl -X POST -H 'Content-Type: application/json' \

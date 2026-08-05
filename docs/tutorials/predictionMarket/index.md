@@ -23,7 +23,7 @@ In this tutorial, you will learn:
 
 - How to set up a development environment with Hardhat
 - How to write a simple smart contract in Solidity
-- How to create a Etherlink EVM<!--TEVM--> account and get Testnet tokens using the faucet
+- How to create an Etherlink EVM<!--TEVM--> account and get Testnet tokens using the faucet
 - How to test a smart contract locally
 - How to use Hardhat to deploy the contract to Etherlink EVM<!--TEVM-->
 - How to verify your contract on the Etherlink EVM<!--TEVM--> block explorer

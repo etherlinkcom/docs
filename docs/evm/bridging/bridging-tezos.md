@@ -76,7 +76,7 @@ The request includes the tez to bridge, the address of the Etherlink<!--TX--> Sm
 1. The Smart Rollup nodes put the deposit transaction in the delayed inbox.
 1. The sequencer requests the state of Etherlink<!--TX--> from a Smart Rollup node and receives the delayed inbox.
 1. The sequencer creates a corresponding transaction on Etherlink EVM<!--TEVM--> to transfer XTZ from the [null address](https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000000) to the user's address.
-1. The sequencer adds this transaction to a Etherlink EVM<!--TEVM--> block as in the usual transaction lifecycle described in [Architecture](/network/architecture).
+1. The sequencer adds this transaction to an Etherlink EVM<!--TEVM--> block as in the usual transaction lifecycle described in [Architecture](/network/architecture).
 
 This diagram is an overview of the deposit process:
 

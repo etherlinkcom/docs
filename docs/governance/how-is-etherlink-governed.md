@@ -54,7 +54,7 @@ Cooldown | 86400 seconds | About 1 day
 
 Note that these periods can vary.
 For example, 6 seconds is the minimal block time on layer 1, which means that blocks can take longer than 6 seconds and therefore periods that are based on blocks can last longer than this minimal time.
-Also, a Etherlink<!--TX--> user must trigger the protocol upgrade after the Cooldown period is over, so the exact time of the upgrade can vary.
+Also, an Etherlink<!--TX--> user must trigger the protocol upgrade after the Cooldown period is over, so the exact time of the upgrade can vary.
 
 ### 1. Proposal period
 
@@ -100,7 +100,7 @@ Etherlink<!--TX--> kernel governance periods are synchronized with layer 1 gover
 
 - Each Proposal and Promotion period must happen within a single Tezos layer 1 governance period; a single period cannot overlap with two different layer 1 governance periods.
 This ensures that each delegate's voting power is the same throughout the period.
-- The start of a layer 1 governance period always coincides with the start of a Etherlink<!--TX--> Proposal or Promotion period.
+- The start of a layer 1 governance period always coincides with the start of an Etherlink<!--TX--> Proposal or Promotion period.
 However, because Etherlink<!--TX--> periods are shorter than layer 1 periods, Etherlink<!--TX--> periods can also start in the middle of a layer 1 governance period.
 
 ## Kernel governance (fast)

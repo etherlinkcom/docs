@@ -1,5 +1,5 @@
 ---
-title: Setting up a Etherlink voting key # tx
+title: Setting up an Etherlink voting key # tx
 dependencies:
   octez: 24.1
   ligo: 1.10.0
@@ -14,7 +14,7 @@ Bakers can change their Etherlink<!--TX--> voting keys at any time, and changes 
 
 :::note
 
-Setting up a Etherlink<!--TX--> voting key affects only Etherlink<!--TX--> voting rights, not Tezos layer 1 protocol upgrade voting rights or layer 1 account delegation.
+Setting up an Etherlink<!--TX--> voting key affects only Etherlink<!--TX--> voting rights, not Tezos layer 1 protocol upgrade voting rights or layer 1 account delegation.
 
 :::
 

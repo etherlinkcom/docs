@@ -12,7 +12,7 @@ The EVM nodes{/* TXN */} are responsible for maintaining a copy of the Etherlink
 ## Prerequisites
 
 - Make sure you understand the interaction between different nodes as described in [Etherlink{/* TX */} architecture](/network/architecture).
-- If you want to verify the blocks that come from the sequencer, run a Etherlink{/* TX */} Smart Rollup node as described in [Running a Etherlink{/* TX */} Smart Rollup node](/network/smart-rollup-nodes).
+- If you want to verify the blocks that come from the sequencer, run an Etherlink{/* TX */} Smart Rollup node as described in [Running an Etherlink{/* TX */} Smart Rollup node](/network/smart-rollup-nodes).
 Public Smart Rollup nodes for Etherlink{/* TX */} are not yet available, so you must run your own if you want to participate in the Etherlink{/* TX */} network.
 
 ## System requirements
@@ -183,7 +183,7 @@ You can use a Smart Rollup node that is running in any mode and history mode as 
 1. Create a directory for the node to store its data in.
 1. Create the configuration file by setting the parameters in the environment variables or passing the arguments to the `octez-evm-node init config` command.
 
-   If you are not running a Etherlink{/* TX */} Smart Rollup node and are trusting incoming blocks, use the `--dont-track-rollup-node` flag, as in this `mainnet` example:
+   If you are not running an Etherlink{/* TX */} Smart Rollup node and are trusting incoming blocks, use the `--dont-track-rollup-node` flag, as in this `mainnet` example:
 
    ```bash
    octez-evm-node init config \

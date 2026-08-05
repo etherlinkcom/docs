@@ -20,4 +20,4 @@ The command takes these parameters:
 
 After the new kernel becomes active, bakers must provide their nodes with the preimages for the new kernel to continue to participate in Etherlink<!--TX-->.
 They can copy the new preimages into the node data directory without stopping or restarting the node.
-If a node uses a preimages endpoint as described in [Running an EVM node<!--TXN-->](/network/evm-nodes) and [Running a Etherlink<!--TX--> Smart Rollup node](/network/smart-rollup-nodes), the node updates automatically.
+If a node uses a preimages endpoint as described in [Running an EVM node<!--TXN-->](/network/evm-nodes) and [Running an Etherlink<!--TX--> Smart Rollup node](/network/smart-rollup-nodes), the node updates automatically.

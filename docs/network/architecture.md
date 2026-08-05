@@ -107,7 +107,7 @@ This method allows users to add transactions to an area of storage called the _d
 
 Transactions that run via the delayed inbox follow this lifecycle:
 
-1. A user submits a Etherlink<!--TX--> transaction to a Tezos layer 1 smart contract called the "delayed bridge" contract.
+1. A user submits an Etherlink<!--TX--> transaction to a Tezos layer 1 smart contract called the "delayed bridge" contract.
 This transaction includes the address of the Etherlink<!--TX--> Smart Rollup and the transaction to run on Etherlink<!--TX--> encoded via recursive-length prefix (RLP).
 The user must also include 1 tez with the transaction to prevent spam; this amount is hardcoded in the smart contract and is subject to change.
 1. The delayed bridge contract writes the transaction to the Smart Rollup inbox.
@@ -140,7 +140,7 @@ The source of truth of what Etherlink<!--TX--> transactions are final is the sta
 They catch any misbehavior by the sequencer or other actors, accept only valid transactions, and challenge questionable behavior.
 As described in [Refutation periods](https://docs.tezos.com/architecture/smart-rollups#refutation-periods) on docs.tezos.com, Smart Rollup nodes have two weeks to challenge commitments made about the state of a Smart Rollup, although they usually challenge any questionable state as soon as possible.
 
-Therefore, a Etherlink<!--TX--> transaction is truly finalized two weeks after the block it is in has been published to Tezos layer 1.
+Therefore, an Etherlink<!--TX--> transaction is truly finalized two weeks after the block it is in has been published to Tezos layer 1.
 At this point, it is permanently part of the state of the Etherlink<!--TX--> Smart Rollup and of Tezos.
 
 However, Etherlink<!--TX--> is set up so users can be confident that transactions are irreversible much sooner than that.

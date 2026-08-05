@@ -467,7 +467,7 @@ Follow these steps to set up the contract for the prediction market:
 
    You can see the completed contract at https://github.com/trilitech/tutorial-applications/blob/main/etherlink-prediction/backend/contracts/Contract.sol.
 
-1. Set up a Etherlink EVM<!--TEVM--> account in a compatible wallet if you don't already have one.
+1. Set up an Etherlink EVM<!--TEVM--> account in a compatible wallet if you don't already have one.
 For more information, see [Using your wallet](/evm/get-started/using-your-wallet).
 
 1. Create a file named `.env` in the same folder as the `hardhat.config.js` file and set your Etherlink EVM<!--TEVM--> account private key as the value of the `PRIVATE_KEY` environment variable:
