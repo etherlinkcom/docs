@@ -109,6 +109,25 @@ module.exports = async function createConfigAsync() {
       ],
       require.resolve('./src/plugins/webpack-config-plugin'),
       [
+        '@docusaurus/plugin-client-redirects',
+        {
+          createRedirects(existingPath) {
+            const prefixMap = [
+              ['/evm/get-started/', '/get-started/'],
+              ['/evm/developing/', '/building-on-etherlink/'],
+              ['/evm/bridging/', '/bridging/'],
+              ['/evm/tools/', '/tools/'],
+            ];
+            for (const [newPrefix, oldPrefix] of prefixMap) {
+              if (existingPath.startsWith(newPrefix)) {
+                return [existingPath.replace(newPrefix, oldPrefix)];
+              }
+            }
+            return undefined;
+          },
+        },
+      ],
+      [
         'docusaurus-biel',{
           project: BIEL_PROJECT,
           headerTitle: 'Etherlink/Tezos documentation chatbot (beta)',
