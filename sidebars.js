@@ -35,6 +35,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Overview',
+      collapsed: false,
       items: [
         'overview/index',
         'overview/get-started',
