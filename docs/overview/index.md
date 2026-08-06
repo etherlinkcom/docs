@@ -10,7 +10,8 @@ Etherlink<!--TX--> is an EVM-compatible, non-custodial execution layer enshrined
 It enables seamless integration with existing Ethereum tools, including wallets and indexers, and facilitates asset transfers to and from other EVM-compatible chains.
 
 Since kernel upgrade 7, Etherlink<!--TX--> also exposes a **Michelson interface** (previously called Tezlink), thus implementing a **single blockchain** that is **addressable through two interfaces**: the **EVM interface** and the new **Michelson interface**.
-In that, kernel upgrade 7 constituted an important milestone in the [Tezos X roadmap](https://spotlight.tezos.com/tezos-x-from-roadmap-to-reality/), securing the way to the near-term Tezos X launch.
+
+<!--In that, kernel upgrade 7 constituted an important milestone in the [Tezos X roadmap](https://spotlight.tezos.com/tezos-x-from-roadmap-to-reality/), securing the way to the near-term Tezos X launch.-->
 
 Built upon the secure foundation of Tezos layer 1, Etherlink<!--TX-->  delivers a *fast, fair, and (nearly) free* experience. This permissionless and censorship-resistant environment empowers developers and users to actively create and participate in the next generation of decentralized applications.
 
