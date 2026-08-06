@@ -12,8 +12,6 @@ It enables seamless integration with existing Ethereum tools, including wallets 
 Since kernel upgrade 7, Etherlink<!--TX--> also exposes a **Michelson interface** (previously called Tezlink), thus implementing a **single blockchain** that is **addressable through two interfaces**: the **EVM interface** and the new **Michelson interface**.
 In that, kernel upgrade 7 constituted an important milestone in the [Tezos X roadmap](https://spotlight.tezos.com/tezos-x-from-roadmap-to-reality/), securing the way to the near-term Tezos X launch.
 
-To learn more about these new features, see [Etherlink's architecture](/overview/architecture).
-
 Built upon the secure foundation of Tezos layer 1, Etherlink<!--TX-->  delivers a *fast, fair, and (nearly) free* experience. This permissionless and censorship-resistant environment empowers developers and users to actively create and participate in the next generation of decentralized applications.
 
 ## It's fast
@@ -73,3 +71,9 @@ Security is enhanced on Etherlink<!--TX--> in part because it is built on Tezos 
 
 Because Smart Rollups run in separate environments, they avoid the per-transaction gas fees of the consensus layer and incur only minimal costs when publishing their state to the consensus layer.
 This unique architecture allows you to build and deploy applications without worrying about prohibitive transaction costs.
+
+## First steps
+
+To learn more about the new features brought by the Etherlink 7 upgrade, see [Etherlink's architecture](/overview/architecture).
+
+To directly start using Etherlink<!--TX-->, proceed to [Get started](/overview/get-started).
