@@ -92,10 +92,10 @@ inclusion_fee = 0.000004 XTZ * (150 + tx.data.size() + tx.access_list.size())
 
 For EIP-7702 transactions, there is an additional term: the size of the authorization list.
 
-## Block gas limit
+## Gas limit
 
-The block gas limit, or the maximum total amount of execution fees in a single Etherlink EVM<!--TEVM--> block, is 30 million gas units (i.e. excluding inclusion fees).
+The transaction gas limit, or the maximum amount of execution fees in a single Etherlink EVM<!--TEVM--> transaction, is 30 million gas units (i.e. excluding inclusion fees).
 Transactions that require a higher execution fee fail.
 
-There is no straightforward way of determining the execution fee for a transaction because the `eth_estimateGas` endpoint returns the sum of the execution fee and the inclusion fee as a single amount.
-For this reason, some large transactions with a total fee higher than the gas limit may succeed because the execution fee is still less than the gas limit.
+There is no straightforward way of determining the execution fee for a transaction in advance, because the `eth_estimateGas` endpoint returns the sum of the execution fee and the inclusion fee as a single amount.
+For this reason, some large transactions with a total estimated fee higher than the gas limit may succeed because the execution fee is still less than the gas limit.
