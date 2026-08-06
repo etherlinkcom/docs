@@ -15,7 +15,7 @@ The Michelson Interface exposes a **Tezos RPC** endpoint, meaning any Tezos-comp
 It supports:
 - User accounts (tz1, tz2, tz3 addresses)
 - Smart contracts (KT1 addresses) written in Michelson or compiled from higher-level languages (SmartPy, LIGO, etc.)
-- Standard Tezos operations: transfers, contract originations, delegation, etc.
+- Standard Tezos operations: transfers, contract originations, and reveals
 - FA1.2 and FA2 token standards
 
 Cross-interface calls to and from EVM contracts are available via the [NAC gateway](./nac-usage.md).
