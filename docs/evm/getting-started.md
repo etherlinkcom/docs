@@ -14,7 +14,7 @@ For detailed wallet connection instructions, see [Using your wallet](/evm/get-st
 
 ## 2. Get tez
 
-For information on faucets and obtaining testnet tez, see [Getting Testnet tolkens](/evm/get-started/getting-testnet-tokens).
+For information on faucets and obtaining testnet tez, see [Getting Testnet tokens](/evm/get-started/getting-testnet-tokens).
 
 ## 3. Deploy and interact with a smart contract
 
@@ -32,4 +32,5 @@ For detailed guidance, refer to [Deploying smart contracts](/evm/developing/depl
 ## 4. Try native atomic composability
 
 To call a Michelson contract from a Solidity contract, use the NAC gateway. See [NAC Usage](./nac-usage.md) for the gateway address and call conventions.
-For a more hands-on presentation, check the [Cross-interface counter tutorial](/tutorials/nac-counter).
+
+For a more hands-on presentation, check the [Cross-interface counter tutorial](/tutorials/nac-counter) (note however that the NAC tutorial, as presented, runs on Previewnet, not on Etherlink Shadownet).
