@@ -5,6 +5,11 @@ title: Network information (Michelson)
 This page contains information for connecting to the public Etherlink<!--TX--> networks via the Michelson interface.
 For using the networks via the EVM interface, see [EVM network information](/evm/get-started/network-information).
 
+:::caution[In progress]
+This page is under construction, the concrete endpoints are being worked out.
+Come back soon!
+:::
+
 For current and historical status information for Etherlink<!--TX-->, see https://status.etherlink.com.
 
 :::note
