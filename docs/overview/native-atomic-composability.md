@@ -4,7 +4,8 @@ title: Native Atomic Composability
 
 # Native Atomic Composability
 
-Etherlink<!--TX--> supports **native atomic composability** (NAC): a smart contract in one interface can call a contract in the other interface within a single, atomic transaction. If any part of the call chain fails, all effects — across both interfaces — are reverted.
+Etherlink<!--TX--> supports **native atomic composability** (NAC): a smart contract in one interface can call a contract in the other interface within a single, atomic transaction.
+If any part of the call chain fails, the failure propagates atomically — by default all effects across both interfaces are reverted (EVM callers may catch the failure; see Atomicity below).
 
 ## Gateways
 
