@@ -82,13 +82,15 @@ Backlog amount (in gas units) | Backlog amount relative to tolerance | Gas price
 
 The inclusion fee, also called the _data availability fee_, helps Etherlink EVM<!--TEVM--> cover the cost of posting data to layer 1.
 
-The amount of the fee depends on the size of the data in the transaction (as provided by `tx.data.size()`) and the size of the access list, a list of addresses and storage keys that a transaction intends to access (as provided by `tx.access_list.size()`).
+The amount of the fee depends on the size of the data in the transaction (as provided by `tx.data.size()`) and the size of the access list (i.e., the total number of bytes for representing it), a list of addresses and storage keys that a transaction intends to access (as provided by `tx.access_list.size()`).
 
 Etherlink EVM<!--TEVM--> calculates the inclusion fee with this equation:
 
 ```
 inclusion_fee = 0.000004 XTZ * (150 + tx.data.size() + tx.access_list.size())
 ```
+
+For EIP-7702 transactions, there is an additional term: the size of the authorization list.
 
 ## Block gas limit
 
