@@ -37,10 +37,10 @@ evm_alias = keccak256(utf8(tz_address_base58check))[0:20]
 
 When an EVM account interacts with the Michelson runtime for the first time, a Michelson alias is created as a **KT1 smart contract**. This contract automatically forwards any tez it receives back to the native EVM account via the gateway.
 
-The KT1 alias address is computed by applying **BLAKE2b with a 20-byte output** to the raw 20-byte binary of the EVM address, then encoding the result as a KT1 contract hash:
+The KT1 alias address is computed by applying **BLAKE2b with a 20-byte output** to the the UTF-8 bytes of the lowercase hex string including the `0x` prefix, then encoding the result as a KT1 contract hash:
 
 ```
-kt1_alias = KT1(blake2b_160(evm_address_bytes))
+kt1_alias = KT1(blake2b_160(utf8("0x" + lowercase_hex(evm_address))))
 ```
 
 Michelson's `SOURCE` instruction returns the null address (`tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU`) for operations originating from cross-interface calls — not the actual alias address. This is because Michelson requires the source to be a user account.
