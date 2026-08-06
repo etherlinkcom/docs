@@ -6,8 +6,8 @@ title: Architecture
 
 ## Seamless integration
 
-To enable the seamless integration of the two ecosystems (EVM and Michelson) in a single blockchain, Etherlink<!--TX--> provides **Native Atomic Composability** (sometimes shortened as NAC): smart contracts in one interface can call contracts in the other within a single atomic transaction. From an economical perspective, the interface used to interact with the chain doesn't matter, it becomes only a technical detail.
-Thanks to the atomic composition, Etherlink<!--TX--> can be seen as **unified execution layer**, constituting a single economical space.
+To enable the seamless integration of the two ecosystems (EVM and Michelson) in a single blockchain, Etherlink<!--TX--> provides **Native Atomic Composability** (sometimes shortened as NAC): smart contracts in one interface can call contracts in the ,other within a single atomic transaction.
+Thanks to the atomic composition combined with the use of the same native token, Etherlink<!--TX--> can be seen as **unified execution layer**, constituting a single economical space.
 
 Each interface is implemented by a dedicated runtime exposing a standard RPC endpoint.
 
