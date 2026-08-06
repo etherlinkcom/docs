@@ -42,7 +42,7 @@ INativeAtomicGateway gateway = INativeAtomicGateway(
 gateway.callMichelson("KT1…", "default", michelsonParams);
 ```
 
-The `data` parameter must be encoded in Michelson binary format. On-chain encoding libraries are available to help construct these payloads from within Solidity contracts.
+The `data` parameter must be encoded in Michelson binary format. For simple types you can construct the payload inline: for example, passing a `nat` with value 42 encodes as `hex"002a"` (tag `0x00` = integer, value `0x2a` = 42). Worked Solidity examples using this pattern are available in the [`solidity_examples/` directory](https://gitlab.com/tezos/tezos/-/tree/master/etherlink/kernel_latest/solidity_examples) of the Etherlink sources. For complex types, off-line tools such as Taquito's `packData` function can compute the encoding.
 
 ## FA1.2 wrapper
 
@@ -57,10 +57,37 @@ This precompile provides `approve` and `transfer` methods that handle Michelson 
 
 ## Return value
 
-In the case of a regular Michelson call, there is no return value.
+In the case of a regular Michelson call (`callMichelson`), there is no return value.
 
-In case of a call to a Michelson view, the Michelson return value is ABI-encoded as bytes and returned to the calling Solidity contract. 
+## `callMichelsonView`
 
-For non-effectful calls (read-only views), use the `call_view` entry point on the Michelson gateway.
+To call a read-only Michelson view and receive the result, use `callMichelsonView`:
 
-On-chain libraries for encoding and decoding across runtimes are provided to simplify this.
+| Parameter | Type | Description |
+|---|---|---|
+| `destination` | string | The Michelson contract address (`KT1…` base58check) |
+| `viewName` | string | The name of the on-chain view |
+| `input` | bytes | Micheline-encoded input to the view |
+
+This entry point performs a read-only crossing (no value transfer, no state mutation) and must be invoked via `staticcall`. The gateway returns the view's Micheline response ABI-encoded as `bytes`.
+
+```solidity
+interface INativeAtomicGateway {
+    function callMichelsonView(
+        string calldata destination,
+        string calldata viewName,
+        bytes calldata input
+    ) external view returns (bytes memory);
+}
+
+INativeAtomicGateway gateway = INativeAtomicGateway(
+    0xff00000000000000000000000000000000000007
+);
+bytes memory michelineResult = gateway.callMichelsonView(
+    "KT1…",    // destination
+    "myView",  // view name
+    hex"030b"  // Micheline Unit — adjust to match the view's input type
+);
+```
+
+A complete worked example (using the low-level `staticcall` pattern) is available in [`crac_michelson_view_staticcall.sol`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/kernel_latest/solidity_examples/crac_michelson_view_staticcall.sol).
