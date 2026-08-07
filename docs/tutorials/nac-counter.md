@@ -77,7 +77,7 @@ When a user calls `increment()` (or `decrement()`) on the EVM contract:
 3. the Michelson storage changes;
 4. the Solidity contract emits an EVM event so you can verify the transaction in the block explorer.
 
-See a [live working example](http://tzx-counter.vercel.app/) of what we'll be building. You can also follow along in this tutorial by looking at the code in the [repo](https://github.com/trilitech/tezos-x-potluck-game/tree/main/tezosx-native-atomic-counter-example).
+See a [live working example](https://tzx-counter.vercel.app/) of what we'll be building. You can also follow along in this tutorial by looking at the code in the [repo](https://github.com/trilitech/tezos-x-potluck-game/tree/main/tezosx-native-atomic-counter-example).
 
 
 ---
@@ -420,4 +420,4 @@ In one walkthrough you:
 
 For more details on the gateway surface beyond `callMichelson`, see [NAC usage (EVM side)](../evm/nac-usage.md). For the Michelson-side gateway and how to call back into the EVM, see [NAC usage (Michelson side)](../michelson/nac-usage.md).
 
-Well done! :tada: Now you may have some fun trying the [live working example](http://tzx-counter.vercel.app/). 
+Well done! :tada: Now you may have some fun trying the [live working example](https://tzx-counter.vercel.app/). 
