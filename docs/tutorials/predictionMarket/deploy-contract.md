@@ -2,6 +2,7 @@
 title: "Part 2: Deploying a contract"
 dependencies:
   octez: 21
+  viem: 2
 ---
 
 Before you deploy the contract to Etherlink<!--TX--> Mainnet, you must test it on a sandbox or test network.

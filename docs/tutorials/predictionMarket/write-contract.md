@@ -1,5 +1,7 @@
 ---
 title: "Part 1: Writing a contract"
+dependencies:
+  viem: 2
 ---
 
 In this section, you write a simple prediction market contract.

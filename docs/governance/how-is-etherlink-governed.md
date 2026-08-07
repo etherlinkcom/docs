@@ -44,7 +44,7 @@ The Etherlink<!--TX--> slow kernel governance process is a streamlined version o
 It consists of three periods: a Proposal period and a Promotion period, which are supervised by Etherlink<!--TX-->'s kernel governance contract, and a Cooldown period, which is enforced by the Etherlink<!--TX--> kernel itself.
 
 The lengths of these periods are stored in the [kernel governance contract](https://better-call.dev/mainnet/KT1AXRU3wLc87WNhLhVGrgqDGubLACUMUgPb).
-This table shows the period lengths as of the Ebisu kernel update and the Tezos Seoul protocol:
+This table shows the period lengths as of the Ganesha kernel update and the Tezos Ushuaia protocol:
 
 Period | Length | Approximate time
 --- | --- | ---
@@ -117,7 +117,7 @@ The fast kernel governance process is like the slow kernel governance process, w
 
 The fast governance process has the same Proposal, Promotion, and Cooldown periods as the slow governance process, but the lengths of these periods are different.
 The lengths are stored in the [fast governance contract](https://better-call.dev/mainnet/KT19oUVQPnVLuUBYXrBVd46WJnNAMpqkKSwo).
-This table shows the period lengths as of the Ebisu kernel update and the Tezos Seoul protocol:
+This table shows the period lengths as of the Ganesha kernel update and the Tezos Ushuaia protocol:
 
 Period | Length | Approximate time
 --- | --- | ---
@@ -150,7 +150,7 @@ Similar to the kernel governance processes, the sequencer voting process has Pro
 In this process, bakers propose and vote on the account that operates the sequencer.
 
 The lengths of the periods are stored in the [sequencer governance contract](https://better-call.dev/mainnet/KT1KiVz8ZpHo3HpE1GCP5HLgywPDRwVUkCFh).
-This table shows the period lengths as of the Ebisu kernel update and the Tezos Seoul protocol:
+This table shows the period lengths as of the Ganesha kernel update and the Tezos Ushuaia protocol:
 
 Period | Length | Approximate time
 --- | --- | ---

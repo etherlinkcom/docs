@@ -154,7 +154,7 @@ Users who trust the sequencer and these confirmations can take them as proof tha
 
 - **Transactions are confirmed on Etherlink<!--TX--> within 500ms.**
 As described in [Sequencer](#sequencer), the sequencer puts transactions in blocks and distributes them to the EVM nodes.
-When the EVM nodes get another block that builds on the previous block, they can trust that the transactions in the previous block are final as long as they trust the that the sequencer will publish them to layer 1.
+When the EVM nodes get another block that builds on the previous block, they can trust that the transactions in the previous block are final as long as they trust that the sequencer will publish them to layer 1.
 At this point, the previous block is considered _confirmed_ and it would take a significant bug in the sequencer for it to generate blocks that do not use the confirmed block and thus reorganize the blocks in such a way as to make the confirmed block invalid.
 
 - **Transactions are confirmed on layer 1 in 6 seconds.**
