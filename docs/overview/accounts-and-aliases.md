@@ -19,9 +19,9 @@ Each interface's tooling, wallets, and indexers work without modification within
 Because accounts are interface-native, a Tezos account cannot directly hold an EVM balance, and vice versa. To bridge this gap, Etherlink<!--TX--> introduces **aliases**: every native account is automatically assigned a corresponding address in each of the other interfaces.
 
 An alias is a regular address in the foreign interface — it can hold tokens, receive calls, and appear in blocks like any other account in that interface.
-However, even though an alias can technically hold any kind of tokens, including ERC-20 tokens, FA2 tokens, and native tez tokens, the current implementation forwards the latter (any tez tokens it receives) to the corresponding native address in the other interface via the gateway, as described below.
+However, even though an alias can technically hold any kind of tokens, including ERC-20 tokens, FA2 tokens, and native tez tokens, the current implementation forwards the latter (any tez tokens it receives) to the corresponding native address in the other interface via [the gateways](/overview/native-atomic-composability#gateways).
 
-The mapping from a native address to its alias is deterministic and can be computed off-chain, as explained below.
+The mapping from a native address to its alias is deterministic and can be computed off-chain, as explained next.
 
 ### EVM alias of a Tezos account
 
