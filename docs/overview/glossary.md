@@ -32,11 +32,22 @@ These glossaries are planned to be fused in the near term.
 
 **Gateway contract** — A special contract in each interface that acts as the single entry point for cross-interface calls. In the EVM interface, the gateway is a precompile; in the Michelson interface, it is an enshrined KT1 contract.
 
+**Michelson** is the native smart contract language on Tezos L1.
+Michelson smart contracts can also run on Etherlink<!--TX--> thanks to its Michelson runtime.
+
+**Michelson entrypoints** are the callable endpoints in Michelson contracts.
+They take parameters and may change the contract storage, but do not return a value.
+Instead, they can emit new operations such as contract callbacks, that are executed after the entrypoint exits.
+
 **Michelson runtime** — The runtime that implements the Michelson interface, processing Tezos-compatible operations and executing code using the Michelson VM. Exposes a Tezos RPC endpoint.
+
+**Mutez** is a sub-unit of the native tez token, counting for one millionth of tez.
 
 **NAC** — Short for _native atomic composability_. The feature of Etherlink<!--TX--> that enables a smart contract in one interface to call a contract in another interface within a single atomic transaction. Individual operations across interfaces are referred to as _cross-interface calls_.
 
 **Native interface** — From an account's perspective, the interface where its account state and cryptographic material reside.
+
+**Origination** is the operation used to deploy a Michelson smart contract.
 
 **Revert isolation** — A cross-interface call failure handling strategy where the caller catches the failure and continues, preserving its own state changes.
 
