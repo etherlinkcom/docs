@@ -41,3 +41,5 @@ If you don't want to deploy and manage your own EVM node<!--TXN-->, or if you re
 - Chainstack: See https://chainstack.com/build-better-with-etherlink/
 - Spectrum: See https://spectrumnodes.com/
 - Zeeve: See https://www.zeeve.io/blockchain-protocols/deploy-etherlink-node/
+
+> Live latency benchmarks for these endpoints (p50/p90/p99, 3 regions, updated every 60 s): [OpenChainBench Etherlink RPC](https://openchainbench.com/benchmarks/etherlink-rpc)
