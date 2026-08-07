@@ -171,6 +171,13 @@ In particular, it contains three fixes hardening the sequencer upgrade (or chang
 
 For more information, see [Announcing Etherlink 6.6: a security hardening kernel upgrade proposal](https://forum.tezosagora.org/t/announcing-etherlink-6-6-a-security-hardening-kernel-upgrade-proposal/7137).
 
+## Etherlink 7.0 (Ganesha)
+
+The Etherlink 7.0 upgrade went live on 13 August 2026 through the slow kernel governance process and introduced a series of new features preparing for the launch of Tezos X.
+In particular, it added the new Michelson interface allowing to run Michelson smart contracts, and Native Atomic Calls for seamlessly combining EVM and Michelson contracts.
+
+For more information, see [Announcing Ganesha: A 7th Upgrade Proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-ganesha-a-7th-upgrade-proposal-for-etherlink-mainnet-ae0a3af93aba).
+
 ## Changelog
 
 For full details about changes to Etherlink, see [Changelogs](/progress/changelogs).
