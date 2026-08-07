@@ -113,6 +113,13 @@ module.exports = async function createConfigAsync() {
         {
           createRedirects(existingPath) {
             const prefixMap = [
+              // first, individual files:
+              ['/overview/chatbot', '/get-started/chatbot'],
+              ['/testing/sandbox', '/building-on-etherlink/sandbox'],
+              ['/testing/testnet', '/building-on-etherlink/testnet'],
+              ['/testing/migrating-testnet', '/network/migrating-testnet'],
+              ['/evm/developing/fees', '/network/fees'],
+              // then, whole directories:
               ['/evm/get-started/', '/get-started/'],
               ['/evm/developing/', '/building-on-etherlink/'],
               ['/evm/bridging/', '/bridging/'],
