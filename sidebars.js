@@ -9,11 +9,6 @@ const sidebars = {
     },
     {
       type: 'link',
-      label: 'Testnet migration',
-      href: 'https://docs.etherlink.com/network/migrating-testnet',
-    },
-    {
-      type: 'link',
       label: 'Documentation map',
       href: 'https://docs.tezos.com/overview/resources#documentation-map',
     },
