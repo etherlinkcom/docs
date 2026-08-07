@@ -27,8 +27,12 @@ Therefore, commitments that are not cemented when the number of blocks changes m
 This variation affects only commitments that are not cemented when the layer 1 protocol upgrade happens.
 The delay is based on how much the block times changed and on how close a commitment is to being cemented when the number of blocks in the refutation period changes.
 
-The maximum change is the new block time divided by the old block time multiplied by the standard refutation period.
-For example, if the new block time is 8 seconds and the old block time is 10 seconds, the maximum addition to a commitment's refutation period is 10 / 8, or 1.25 times the standard 14-day period.
 Commitments that are close to being cemented when the block time changes have the largest change to their refutation periods, while commitments that are made close to when the block time changes have a very small change.
+
+Indeed, the worst case is when a commitment waited for all cycles with respect to the old number of cycles due, then has to wait for the extra number of cycles added by the upgrade.
+It can be shown that if the block time has decreased by x%, the commitment has to still wait for x% of the refutation period.
+Therefore, the maximum change is x% of the standard refutation period.
+
+For example, if the new block time is 8 seconds and the old block time is 10 seconds, the maximum addition to a commitment's refutation period is 20% of the standard 14-day period.
 
 :::
