@@ -5,11 +5,9 @@ slug: /
 
 # What is Etherlink<!--TX-->?
 
-Etherlink<!--TX--> is an EVM-compatible, non-custodial execution layer enshrined in the Tezos protocol and powered by [Tezos Smart Rollup technology](https://tezos.com/developers/smart-rollups/), which settles back to the Tezos consensus layer (Tezos Layer 1) for security.
+Etherlink<!--TX--> is a non-custodial execution layer for Tezos and powered by [Tezos Smart Rollup technology](https://tezos.com/developers/smart-rollups/). It enables seamless integration with existing Ethereum and Tezos tools, including wallets and indexers, and facilitates assets transfers to and from other EVM-compatible chains as well as Tezos L1 Mainnet.
 
-It enables seamless integration with existing Ethereum tools, including wallets and indexers, and facilitates asset transfers to and from other EVM-compatible chains.
-
-Since kernel upgrade 7, Etherlink<!--TX--> also exposes a **Michelson interface** (previously called Tezlink), thus implementing a **single blockchain** that is **addressable through two interfaces**: the **EVM interface** and the new **Michelson interface**.
+That is, Etherlink<!--TX--> implements a **single blockchain** that is **addressable through two interfaces**: the **EVM interface** and the new **Michelson interface**.
 
 <!--In that, kernel upgrade 7 constituted an important milestone in the [Tezos X roadmap](https://spotlight.tezos.com/tezos-x-from-roadmap-to-reality/), securing the way to the near-term Tezos X launch.-->
 
@@ -75,6 +73,6 @@ This unique architecture allows you to build and deploy applications without wor
 
 ## First steps
 
-To learn more about the new features brought by the Etherlink 7 upgrade, see [Etherlink's architecture](/overview/architecture).
+To learn more about the two interfaces exposed by Etherlink<!--TX--> and how they compose, see [Etherlink's architecture](/overview/architecture).
 
 To directly start using Etherlink<!--TX-->, proceed to [Get started](/overview/get-started).
