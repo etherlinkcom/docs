@@ -14,8 +14,10 @@ For current and historical status information for Etherlink<!--TX-->, see https:
 
 :::note
 
-There is currently no public Michelson endpoint for Mainnet or Shadownet Testnet;
-you must [run your own EVM node](/network/evm-nodes) to serve [Michelson RPCs](/michelson/developing/rpc-reference).
+Instead of the public Michelson endpoints below serving [Michelson RPCs](/michelson/developing/rpc-reference) for Mainnet or Shadownet,
+you may also [run your own EVM node](/network/evm-nodes), to get rid of any possible rate limitation.
+In that case, the URL of your endpoint is `<your-evm-node-url>/michelson`.
+
 :::
 
 ## Etherlink<!--TX--> Mainnet
@@ -23,7 +25,7 @@ you must [run your own EVM node](/network/evm-nodes) to serve [Michelson RPCs](/
 | Network parameter | Value |
 |---|---|
 | Network identifier | TODO |
-| Endpoint | `<your-evm-node-url>/tezlink` ([run your own node](/network/evm-nodes)) |
+| Endpoint | michelson.etherlink.mainnet.octez.io |
 | Indexer | TODO |
 | Bridge | TODO (instead [bridge to EVM](/evm/bridging)) |
 
@@ -32,7 +34,7 @@ you must [run your own EVM node](/network/evm-nodes) to serve [Michelson RPCs](/
 | Network parameter | Value |
 |---|---|
 | Network identifier | TODO |
-| Endpoint | `<your-evm-node-url>/tezlink` ([run your own node](/network/evm-nodes)) |
+| Endpoint | michelson.etherlink.shadownet.octez.io |
 | Indexer | TODO |
 | Faucet | TODO (instead [get EVM test tokens](/evm/get-started/getting-testnet-tokens)) |
 | Bridge | TODO (instead [bridge to EVM](/evm/bridging))|
