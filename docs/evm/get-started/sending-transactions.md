@@ -32,7 +32,7 @@ For example, if you set the multiple to 3, the wallet creates a transaction that
 
 :::
 
-## Speeding up transactions
+## Unlocking transactions
 
 Most wallets include options to increase the transaction fee by enough to get the transaction finalized.
 You can increase the fee at the time you send the transaction or increase the fee on a previously sent transaction.
@@ -46,6 +46,8 @@ Etherlink EVM<!--TEVM--> takes only the fee that is necessary to include the tra
 :::note
 
 Etherlink EVM<!--TEVM--> does not use a priority fee (also called a tip) to speed up transactions, so you can ignore the Priority fee field if it is shown.
+
+Also, options for "Slow/Fast/Instant/etc" transactions in certain wallets are meaningless on Etherlink EVM<!--TEVM-->, except for increasing the maximum allowed fee, as shown in this page.
 
 :::
 
@@ -88,7 +90,8 @@ Etherlink<!--TX--> has dropped the transaction but the wallet has not updated it
 
 <img src="/img/metamask-speed-up-pending.png" alt="A pending transaction in Metamask" style={{width: 300}} />
 
-To speed up the transaction, click **Speed up** and provide a larger transaction fee.
+To increase the maximum fees in order to unlock the transaction, click **Speed up** and provide a larger transaction fee.
+Note that this is only useful when the network is congested and the current base fee per gas increases beyond the value initially put in the transaction
 Then you can set a new fee, as shown in this picture:
 
 <img src="/img/metamask-speed-up-set-fee.png" alt="Setting a new fee for a new transaction" style={{width: 300}} />
@@ -103,7 +106,7 @@ Etherlink<!--TX--> has dropped the transaction but the wallet has not updated it
 
 <img src="/img/rabby-speed-up-pending.png" alt="A pending transaction in Rabby wallet" style={{width: 300}} />
 
-To speed up the transaction, click the pending indicator.
+To accept larger maximum fees in order to unlock the transaction, click the pending indicator.
 Rabby wallet shows the pending transactions and warnings about how long they have been pending:
 
 <img src="/img/rabby-speed-up-pending-list.png" alt="The list of pending transactions and warnings about the delay" style={{width: 300}} />
