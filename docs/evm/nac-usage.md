@@ -91,3 +91,48 @@ bytes memory michelineResult = gateway.callMichelsonView(
 ```
 
 A complete worked example (using the low-level `staticcall` pattern) is available in [`crac_michelson_view_staticcall.sol`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/kernel_latest/solidity_examples/crac_michelson_view_staticcall.sol).
+
+## Failure behavior
+
+### `callMichelson`
+
+If the Michelson callee fails for any reason — `FAILWITH`, type mismatch, non-existent contract, or forwarded gas exhaustion — the gateway precompile reverts the calling EVM transaction. There is no way to distinguish a Michelson-side revert from a Michelson-side out-of-gas at the Solidity level; both surface as an EVM revert with an error string of the form `"Cross-runtime call failed with status 4xx: <reason>"`.
+
+Because `callMichelson` is declared `external payable` (no return value), the revert propagates unconditionally to the EVM caller. To catch it without reverting your own transaction, call the precompile via a low-level `call`:
+
+```solidity
+(bool success, ) = address(gateway).call{value: ...}(
+    abi.encodeWithSelector(
+        INativeAtomicGateway.callMichelson.selector,
+        destination, entrypoint, data
+    )
+);
+// success == false if Michelson reverted
+```
+
+### `callMichelsonView`
+
+`callMichelsonView` follows the same failure model. Any of the following causes a revert that propagates to the EVM caller:
+
+| Cause | EVM outcome |
+|---|---|
+| Michelson view fails (`FAILWITH`, etc.) | Revert |
+| View name does not exist on the contract | Revert |
+| Type mismatch on input | Revert |
+| Forwarded gas exhausted in the Michelson view | Revert (not out-of-gas — catchable) |
+
+Because `callMichelsonView` must be invoked via `staticcall`, catch failures with low-level `staticcall`:
+
+```solidity
+(bool success, bytes memory result) = address(gateway).staticcall(
+    abi.encodeWithSelector(
+        INativeAtomicGateway.callMichelsonView.selector,
+        destination, viewName, input
+    )
+);
+// success == false if the Michelson view reverted or was not found
+```
+
+### Infrastructure failures
+
+A 5xx response from the Michelson runtime indicates a kernel-internal error (storage I/O failure, host fault). This is treated as a block-level abort rather than a catchable revert, meaning the entire block is rolled back. These failures are not caused by contract logic and are not catchable by EVM code.
