@@ -114,16 +114,6 @@ def test():
     )
 ```
 
-## ERC-20 wrapper
-
-For calling ERC-20 `transfer` and `approve` specifically, a convenience contract is available that handles ABI encoding automatically:
-
-```
-KT18oDJJKXMKhfE1bSuAPGp92pYcwVKvCChb
-```
-
-This contract provides `transfer` and `approve` entrypoints with a Michelson-friendly interface, so you do not need to construct `abi_params` manually.
-
 ## `staticcall_evm`
 
 To call a read-only EVM function and receive the result, use the `staticcall_evm` on-chain view:
