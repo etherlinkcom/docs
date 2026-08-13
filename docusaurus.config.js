@@ -108,6 +108,7 @@ module.exports = async function createConfigAsync() {
         },
       ],
       require.resolve('./src/plugins/webpack-config-plugin'),
+      require.resolve('./src/plugins/llms-txt-plugin'),
       [
         '@docusaurus/plugin-client-redirects',
         {
