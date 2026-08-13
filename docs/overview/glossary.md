@@ -8,6 +8,8 @@ This glossary defines the most essential terms used in Etherlink<!--TX-->.
 For a wider set of terms used in the Tezos ecosystem, see the [Glossary](https://docs.tezos.com/overview/glossary) in the Tezos documentation.
 These glossaries are planned to be fused in the near term.
 
+**ABI encoding** — The binary format used to encode function arguments and return values when calling EVM smart contracts. Each argument occupies a 32-byte slot: integers and addresses are left-padded with zeros; dynamic types such as `bytes` use an offset-length-data layout. ABI-encoded data is what `%call_evm` expects in its `abi_params` field and what `staticcall_evm` and `callMichelsonView` return.
+
 **Account** — An entity that can hold state and/or execute operations within one interface. Every account has an address and exists natively in exactly one interface.
 
 **Account state** — The data associated with an account (balance, storage, nonce, etc.), maintained by its native interface.
@@ -29,6 +31,8 @@ These glossaries are planned to be fused in the near term.
 **Externally owned account (EOA)** — An account controlled by a private key (as opposed to a smart contract).
 
 **Foreign interface** — From an account's perspective, any interface other than its native interface.
+
+**Function selector** — The first 4 bytes of the Keccak256 hash of an EVM function's canonical signature (e.g. `"transfer(address,uint256)"`). EVM contracts inspect the selector at the start of a call's calldata to dispatch to the right function. The `%call_evm` gateway computes the selector automatically from the `method_signature` string; `staticcall_evm` requires the caller to prepend it manually to `abi_params`.
 
 **Gateway contract** — A special contract in each interface that acts as the single entry point for cross-interface calls. In the EVM interface, the gateway is a precompile; in the Michelson interface, it is an enshrined KT1 contract.
 
