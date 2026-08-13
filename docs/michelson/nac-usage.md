@@ -154,12 +154,115 @@ IF_NONE
 
 ## Return value
 
-For `%call_evm`, return values from the EVM callee are delivered to a **callback contract** supplied in the `callback` field. The callback receives the raw ABI-encoded return bytes. Pass `None` when no return value is needed.
+### `%call_evm` — callback
 
-For `staticcall_evm`, the return value is delivered synchronously as `option bytes` via the Michelson `VIEW` instruction — no callback is needed.
+`%call_evm` is a state-mutating call with no direct return. To receive the EVM return value, supply a `contract bytes` handle in the `callback` field. After the EVM call succeeds, the kernel emits a `TRANSFER_TOKENS` internal operation that sends the raw ABI-encoded return bytes to the callback contract at zero mutez.
+
+The callback contract must expose an entrypoint of type `bytes`. The entrypoint name is encoded in the `contract bytes` handle itself — you choose it when you construct the handle with `sp.contract`:
+
+```python
+callback = sp.some(
+    sp.contract(sp.bytes, sp.self_address, "receive_result")
+        .unwrap_some(error="self-entrypoint not found")
+)
+```
+
+If `callback` is `None`, the EVM return value is silently discarded. The call still reverts the whole operation group on EVM failure — passing `None` does not make the call "best-effort".
+
+#### SmartPy example — call with callback
+
+```python
+import smartpy as sp
+
+@sp.module
+def main():
+    GATEWAY = sp.address("KT18oDJJKXMKhfE1bSuAPGp92pYcwVDiqsPw")
+
+    t_call_evm: type = sp.record(
+        destination = sp.string,
+        method_signature = sp.string,
+        abi_params = sp.bytes,
+        callback = sp.option[sp.contract[sp.bytes]]
+    )
+
+    class CallWithResult(sp.Contract):
+        def __init__(self):
+            self.data.last_result = sp.bytes("0x")
+
+        @sp.entrypoint
+        def call_evm_with_result(
+            self,
+            destination: sp.string,
+            method_signature: sp.string,
+            abi_params: sp.bytes,
+        ):
+            gateway = sp.contract(
+                t_call_evm,
+                GATEWAY,
+                "call_evm"
+            ).unwrap_some(error="gateway not found")
+
+            callback = sp.Some(
+                sp.contract(sp.bytes, sp.self_address, "receive_result")
+                    .unwrap_some(error="self-entrypoint not found")
+            )
+
+            sp.transfer(
+                sp.record(
+                    destination=destination,
+                    method_signature=method_signature,
+                    abi_params=abi_params,
+                    callback=callback,
+                ),
+                sp.mutez(0),
+                gateway,
+            )
+
+        @sp.entrypoint
+        def receive_result(self, result: sp.bytes):
+            # `result` is the raw ABI-encoded return value from the EVM call.
+            # Decode it according to the EVM function's return type.
+            self.data.last_result = result
+
+@sp.add_test()
+def test():
+    sc = sp.test_scenario("CallWithResult", main)
+    c = main.CallWithResult()
+    sc += c
+
+    # Test receive_result directly: simulate the kernel delivering a callback.
+    # The result is a 32-byte ABI-encoded uint256 (value = 42).
+    encoded_uint256 = sp.bytes(
+        "0x000000000000000000000000000000000000000000000000000000000000002a"
+    )
+    c.receive_result(encoded_uint256)
+    sc.verify(c.data.last_result == encoded_uint256)
+
+    # Call call_evm_with_result: reads balanceOf(address) on a token contract.
+    # abi_params: 12-byte zero-pad + 20-byte address (no selector).
+    addr_padding = sp.bytes("0x000000000000000000000000")
+    addr_bytes   = sp.bytes("0x1234567890123456789012345678901234567890")
+    c.call_evm_with_result(
+        destination="0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb",  # WXTZ Mainnet
+        method_signature="balanceOf(address)",
+        abi_params=sp.concat([addr_padding, addr_bytes]),
+    )
+```
+
+### `staticcall_evm` — synchronous
+
+`staticcall_evm` is a read-only view. The return value is delivered synchronously as `option bytes` via the Michelson `VIEW` instruction — no callback contract is needed.
 
 ## Failure behavior
 
-When a Michelson contract calls `%call_evm` and the EVM callee fails (revert, out of gas, or any other halt), Michelson semantics apply: **the entire operation group reverts**, including any state changes that preceded the call. There is no way to catch the failure and continue within the same operation.
+### `%call_evm`
 
-For gas conversion between the two interfaces and the precise accounting rules, see [Resources management](/overview/resources.md#michelson-interface-calling-the-evm-interface).
+If the EVM callee fails for any reason — revert, out of gas, or any other halt — Michelson semantics apply: **the entire operation group reverts**, including all state changes that preceded the call. This holds whether or not a callback was supplied.
+
+If `callback` is `None` and the EVM call *succeeds*, the return value is silently dropped and execution continues normally. No error is raised.
+
+For the gas conversion rules and how the forwarded budget is calculated, see [Resources management](/overview/resources.md#michelson-interface-calling-the-evm-interface).
+
+### `staticcall_evm`
+
+A view failure (EVM revert, missing view, type mismatch) surfaces as `None` from `VIEW`, which the caller handles with `IF_NONE`. Out-of-gas is the exception: it fails the operation outright rather than returning `None`, so a forwarded-gas exhaustion cannot be silently treated as a missing view. See the outcome table in the [`staticcall_evm`](#staticcall_evm) section above.
