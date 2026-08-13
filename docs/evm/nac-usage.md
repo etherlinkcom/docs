@@ -44,17 +44,6 @@ gateway.callMichelson("KT1…", "default", michelsonParams);
 
 The `data` parameter must be encoded in Michelson binary format. For simple types you can construct the payload inline: for example, passing a `nat` with value 42 encodes as `hex"002a"` (tag `0x00` = integer, value `0x2a` = 42). Worked Solidity examples using this pattern are available in the [`solidity_examples/` directory](https://gitlab.com/tezos/tezos/-/tree/master/etherlink/kernel_latest/solidity_examples) of the Etherlink sources. For complex types, off-line tools such as Taquito's `packData` function can compute the encoding.
 
-## FA1.2 wrapper
-
-For calling FA1.2 token contracts specifically, a convenience precompile is available at:
-
-```
-0xff00000000000000000000000000000000ffff09
-```
-
-This precompile provides `approve` and `transfer` methods that handle Michelson parameter encoding automatically, without requiring manual binary encoding.
-
-
 ## Return value
 
 In the case of a regular Michelson call (`callMichelson`), there is no return value.
