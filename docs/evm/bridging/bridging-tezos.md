@@ -80,7 +80,57 @@ The request includes the tez to bridge, the address of the Etherlink<!--TX--> Sm
 
 This diagram is an overview of the deposit process:
 
-![Overview of the token bridging deposit process](/img/bridging-deposit.png)
+<svg viewBox="0 0 680 480" role="img" aria-label="Bridging tez from Tezos layer 1 to Etherlink: the user's Tezos wallet sends a transaction to the bridge contract, which locks tez in the exchanger contract and receives a ticket; the bridge contract sends the ticket and the user's Etherlink address to the kernel via the Smart Rollup inbox, and the kernel credits the user's EVM wallet" style={{width: '100%', maxWidth: '680px', display: 'block', margin: '1.5rem auto', fontFamily: 'inherit'}}>
+  <defs>
+    <marker id="dg-w" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+    <marker id="dg-g" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="#38FF9C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+    <marker id="dg-b" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="#9DB8FF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="20" width="170" height="440" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="38" y="46" fill="rgba(255,255,255,0.75)" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>CLIENTS</text>
+  <rect x="40" y="70" width="130" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="105.0" y="97.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">User's Tezos</text>
+  <text x="105.0" y="117.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">wallet</text>
+  <rect x="40" y="340" width="130" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="105.0" y="367.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">User's EVM</text>
+  <text x="105.0" y="387.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">wallet</text>
+  <rect x="230" y="20" width="430" height="220" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="248" y="46" fill="#9DB8FF" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>TEZOS LAYER 1</text>
+  <rect x="260" y="90" width="150" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="335.0" y="127.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Bridge contract</text>
+  <rect x="470" y="90" width="160" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="550.0" y="117.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Exchanger</text>
+  <text x="550.0" y="137.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">contract</text>
+  <rect x="230" y="280" width="430" height="180" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="248" y="306" fill="#38FF9C" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>ETHERLINK</text>
+  <rect x="420" y="340" width="140" height="60" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="490.0" y="375.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Kernel</text>
+  <path d="M170,102 L260,102" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="46" y="162" textAnchor="start" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send transaction:</text>
+  <text x="46" y="178" fill="rgba(255,255,255,0.6)" style={{font: '10px var(--ifm-font-family-monospace)'}}>- amount of tez</text>
+  <text x="46" y="191" fill="rgba(255,255,255,0.6)" style={{font: '10px var(--ifm-font-family-monospace)'}}>- user's Etherlink</text>
+  <text x="46" y="204" fill="rgba(255,255,255,0.6)" style={{font: '10px var(--ifm-font-family-monospace)'}}>  address</text>
+  <text x="46" y="217" fill="rgba(255,255,255,0.6)" style={{font: '10px var(--ifm-font-family-monospace)'}}>- Smart Rollup address</text>
+  <path d="M410,96 L470,96" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="440" y="86" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send tez</text>
+  <path d="M470,128 L410,128" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="440" y="168" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send ticket</text>
+  <path d="M595,90 L595,72 L545,72 L545,90" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
+  <text x="570" y="64" textAnchor="middle" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>lock tez, create ticket</text>
+  <path d="M300,154 L300,310 L490,310 L490,340" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
+  <text x="312" y="196" textAnchor="start" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send via the Smart Rollup inbox:</text>
+  <text x="312" y="210" textAnchor="start" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- ticket</text>
+  <text x="312" y="224" textAnchor="start" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- user's Etherlink address</text>
+  <path d="M420,372 L170,372" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
+  <text x="295" y="362" textAnchor="middle" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send tez on Etherlink</text>
+</svg>
 
 ### Withdrawal process
 
@@ -95,7 +145,63 @@ This outbox message becomes part of Etherlink<!--TX-->'s commitment to its state
 
 This diagram is an overview of the withdrawal process:
 
-![Overview of the token bridging withdrawal process](/img/bridging-withdrawal.png)
+<svg viewBox="0 0 680 480" role="img" aria-label="Withdrawing tez from Etherlink to Tezos layer 1: the user's EVM wallet calls the withdrawal precompile, which stores the tez and creates a ticket included in a commitment to the Smart Rollup outbox; once cemented, any user triggers the outbox message with an Octez client, and the outbox calls the exchanger contract's burn entrypoint, which unlocks the tez and sends it to the user's Tezos wallet" style={{width: '100%', maxWidth: '680px', display: 'block', margin: '1.5rem auto', fontFamily: 'inherit'}}>
+  <defs>
+    <marker id="dg-w" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+    <marker id="dg-g" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="#38FF9C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+    <marker id="dg-b" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="#9DB8FF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="20" width="170" height="440" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="38" y="46" fill="rgba(255,255,255,0.75)" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>CLIENTS</text>
+  <rect x="40" y="70" width="130" height="56" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="105.0" y="93.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">User's Tezos</text>
+  <text x="105.0" y="113.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">wallet</text>
+  <rect x="40" y="180" width="130" height="56" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="105.0" y="213.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Octez client</text>
+  <rect x="40" y="344" width="130" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="105.0" y="371.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">User's EVM</text>
+  <text x="105.0" y="391.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">wallet</text>
+  <rect x="230" y="20" width="430" height="220" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="248" y="46" fill="#9DB8FF" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>TEZOS LAYER 1</text>
+  <rect x="470" y="60" width="160" height="58" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="550.0" y="94.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="13">Exchanger contract</text>
+  <rect x="470" y="170" width="160" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="550.0" y="197.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Smart Rollup</text>
+  <text x="550.0" y="217.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">outbox</text>
+  <rect x="230" y="280" width="430" height="180" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="248" y="306" fill="#38FF9C" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>ETHERLINK</text>
+  <rect x="260" y="330" width="170" height="76" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="345.0" y="363.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Withdrawal</text>
+  <text x="345.0" y="383.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">precompile</text>
+  <path d="M170,376 L260,376" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
+  <text x="46" y="424" textAnchor="start" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send transaction:</text>
+  <text x="46" y="440" fill="rgba(255,255,255,0.6)" style={{font: '10px var(--ifm-font-family-monospace)'}}>- amount of tez</text>
+  <text x="46" y="453" fill="rgba(255,255,255,0.6)" style={{font: '10px var(--ifm-font-family-monospace)'}}>- user's layer 1 address</text>
+  <path d="M390,330 L390,312 L340,312 L340,330" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
+  <text x="398" y="308" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>store tez, create ticket</text>
+  <path d="M430,382 L550,382 L550,234" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="562" y="300" textAnchor="start" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>include in</text>
+  <text x="562" y="314" textAnchor="start" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>commitment:</text>
+  <text x="562" y="328" textAnchor="start" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- ticket</text>
+  <text x="562" y="342" textAnchor="start" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- user's layer 1</text>
+  <text x="562" y="356" textAnchor="start" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>  address</text>
+  <path d="M170,208 L470,208" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="320" y="198" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>trigger outbox message</text>
+  <path d="M550,170 L550,118" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="538" y="140" textAnchor="end" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>call burn entrypoint:</text>
+  <text x="538" y="154" textAnchor="end" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>(ticket, layer 1 address)</text>
+  <path d="M605,60 L605,42 L555,42 L555,60" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
+  <text x="580" y="35" textAnchor="middle" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>unlock tez, destroy ticket</text>
+  <path d="M470,90 L170,90" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="320" y="80" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send tez</text>
+</svg>
 <!-- https://lucid.app/lucidchart/d4fb99c8-74eb-4336-b971-117b0045772b/edit -->
 
 ### Fast withdrawals

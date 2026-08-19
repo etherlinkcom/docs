@@ -406,7 +406,66 @@ LayerZero also maintains EVM nodes{/* TXN */} to verify that the transactions co
 
 This diagram shows how the EVM bridge works:
 
-![Overview of the EVM bridge, showing the interaction between contracts on other chains and Etherlink EVM{/* TEVM */}, moderated by LayerZero](/img/wrapped-asset-bridge.png)
+<svg viewBox="0 0 680 550" role="img" aria-label="The wrapped asset bridge: the user's EVM wallet uses the bridge web app to send transactions to the wrapped asset bridge contracts on other EVM chains and on Etherlink; the LayerZero relayer passes transactions between the two sets of contracts, using a high-latency Etherlink node whose Smart Rollup node verifies that transactions are in layer 1 commitments" style={{width: '100%', maxWidth: '680px', display: 'block', margin: '1.5rem auto', fontFamily: 'inherit'}}>
+  <defs>
+    <marker id="dg-w" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+    <marker id="dg-g" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="#38FF9C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+    <marker id="dg-b" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="#9DB8FF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="190" width="170" height="260" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="38" y="216" fill="rgba(255,255,255,0.75)" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>CLIENTS</text>
+  <rect x="40" y="240" width="130" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="105.0" y="267.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">User's EVM</text>
+  <text x="105.0" y="287.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">wallet</text>
+  <rect x="40" y="350" width="130" height="76" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="105.0" y="383.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="13">Wrapped asset</text>
+  <text x="105.0" y="403.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="13">bridge web app</text>
+  <rect x="250" y="20" width="410" height="120" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="268" y="46" fill="rgba(255,255,255,0.75)" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>OTHER EVM CHAINS</text>
+  <rect x="300" y="55" width="180" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="390.0" y="82.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="13">Wrapped asset</text>
+  <text x="390.0" y="102.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="13">bridge contracts</text>
+  <rect x="250" y="180" width="410" height="190" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="268" y="206" fill="rgba(255,255,255,0.75)" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>LAYERZERO</text>
+  <rect x="315" y="255" width="150" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="390.0" y="282.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">LayerZero</text>
+  <text x="390.0" y="302.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">relayer</text>
+  <rect x="460" y="200" width="180" height="155" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="478" y="226" fill="rgba(255,255,255,0.6)" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>HIGH-LATENCY NODE</text>
+  <rect x="475" y="235" width="150" height="40" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="550.0" y="260.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="12">Etherlink EVM node</text>
+  <rect x="475" y="300" width="150" height="44" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="550.0" y="317.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="12">Etherlink Smart</text>
+  <text x="550.0" y="337.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="12">Rollup node</text>
+  <rect x="250" y="410" width="410" height="120" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="268" y="436" fill="#38FF9C" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>ETHERLINK</text>
+  <rect x="300" y="445" width="180" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="390.0" y="472.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="13">Wrapped asset</text>
+  <text x="390.0" y="492.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="13">bridge contracts</text>
+  <path d="M105,304 L105,350" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerStart="url(#dg-w)" markerEnd="url(#dg-w)"/>
+  <text x="113" y="331" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>use app, sign</text>
+  <path d="M170,258 L210,258 L210,72 L300,72" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerStart="url(#dg-w)" markerEnd="url(#dg-w)"/>
+  <text x="295" y="64" textAnchor="end" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>tokens</text>
+  <path d="M170,372 L225,372 L225,96 L300,96" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
+  <text x="295" y="110" textAnchor="end" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>transactions</text>
+  <path d="M170,282 L196,282 L196,462 L300,462" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerStart="url(#dg-w)" markerEnd="url(#dg-w)"/>
+  <text x="295" y="454" textAnchor="end" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>tokens</text>
+  <path d="M170,396 L225,396 L225,486 L300,486" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
+  <text x="295" y="500" textAnchor="end" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>transactions</text>
+  <path d="M390,119 L390,255" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerStart="url(#dg-w)" markerEnd="url(#dg-w)"/>
+  <text x="398" y="190" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>transactions</text>
+  <path d="M390,319 L390,445" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerStart="url(#dg-w)" markerEnd="url(#dg-w)"/>
+  <text x="398" y="390" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>transactions</text>
+  <path d="M550,275 L550,300" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="558" y="291" textAnchor="start" fill="#9DB8FF" style={{font: '9.5px var(--ifm-font-family-monospace)'}}>verify L1</text>
+</svg>
 {/* https://lucid.app/lucidchart/cac80916-85c8-455d-b50b-f265057dcc1b/edit */}
 
 For more information, see the repository for the bridge: https://github.com/LayerZero-Labs/wrapped-asset-bridge.
