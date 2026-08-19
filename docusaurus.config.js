@@ -158,6 +158,22 @@ module.exports = async function createConfigAsync() {
           disableSwitch: true,
           respectPrefersColorScheme: false,
         },
+        mermaid: {
+          options: {
+            // Match the site font (custom.css sets Roboto globally).
+            fontFamily: 'Roboto, sans-serif',
+            // Render flowchart labels as native SVG text: with the default
+            // HTML labels, mermaid sizes the node boxes from an off-screen
+            // measurement that comes out ~10% narrower than the final DOM
+            // layout, so labels get clipped ("Etherlink cha…").
+            // htmlLabels must be disabled both at the top level and per
+            // diagram type — mermaid 11 reads both.
+            htmlLabels: false,
+            flowchart: {
+              htmlLabels: false,
+            },
+          },
+        },
         // Replace with your project's social card
         image: 'img/site/etherlink-social-card.png',
         navbar: {
