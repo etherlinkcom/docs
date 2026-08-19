@@ -22,60 +22,68 @@ The goal for each interface is to stay as compatible as possible with the origin
 
 When an EVM contract calls a Michelson contract on Etherlink<!--TX-->, both execution steps happen inside the same rollup kernel, within a single block:
 
-<svg viewBox="0 0 760 492" role="img" aria-label="Etherlink architecture: Ethereum and Tezos developer tools connect to the EVM and Michelson interfaces, each implemented by a runtime of the Etherlink chain; the runtimes are linked by cross-runtime atomic calls (NAC), and the chain is anchored on Tezos Layer 1 as a Smart Rollup" style={{width: '100%', maxWidth: '760px', display: 'block', margin: '1.5rem auto', fontFamily: 'inherit'}}>
+<svg viewBox="0 0 680 470" role="img" aria-label="Etherlink architecture: Ethereum and Tezos developer tools connect to the EVM and Michelson interfaces, each implemented by a runtime of the Etherlink chain; the runtimes are linked by cross-runtime atomic calls (NAC), and the chain is anchored on Tezos Layer 1 as a Smart Rollup" style={{width: '100%', maxWidth: '680px', display: 'block', margin: '1.5rem auto', fontFamily: 'inherit'}}>
   <defs>
-    <marker id="arch-arrow" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+    <marker id="arch-arrow-eth" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="#38FF9C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+    <marker id="arch-arrow-tez" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="#9DB8FF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+    <marker id="arch-arrow-w" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
     </marker>
   </defs>
 
-  {/* Developer tools */}
-  <rect x="40" y="10" width="310" height="76" rx="12" fill="rgba(255,255,255,0.08)"/>
-  <text x="195" y="42" textAnchor="middle" fill="rgba(255,255,255,0.62)" style={{font: '600 11px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>ETHEREUM TOOLS</text>
-  <text x="195" y="66" textAnchor="middle" fill="rgba(255,255,255,0.92)" fontSize="14">MetaMask &#183; Hardhat &#183; Foundry &#8230;</text>
+  {/* Developer tools — Ethereum lane (blue) and Tezos lane (green) */}
+  <rect x="20" y="8" width="300" height="76" rx="12" fill="rgba(255,255,255,0.08)"/>
+  <line x1="33" y1="9.25" x2="307" y2="9.25" stroke="#38FF9C" strokeWidth="2.5" strokeLinecap="round" opacity="0.85"/>
+  <text x="170" y="41" textAnchor="middle" fill="#38FF9C" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>ETHEREUM TOOLS</text>
+  <text x="170" y="65" textAnchor="middle" fill="rgba(255,255,255,0.92)" fontSize="14.5">MetaMask &#183; Hardhat &#183; Foundry &#8230;</text>
 
-  <rect x="410" y="10" width="310" height="76" rx="12" fill="rgba(255,255,255,0.08)"/>
-  <text x="565" y="42" textAnchor="middle" fill="rgba(255,255,255,0.62)" style={{font: '600 11px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>TEZOS TOOLS</text>
-  <text x="565" y="66" textAnchor="middle" fill="rgba(255,255,255,0.92)" fontSize="14">Temple &#183; Taquito &#183; TzKT &#8230;</text>
+  <rect x="360" y="8" width="300" height="76" rx="12" fill="rgba(255,255,255,0.08)"/>
+  <line x1="373" y1="9.25" x2="647" y2="9.25" stroke="#9DB8FF" strokeWidth="2.5" strokeLinecap="round" opacity="0.85"/>
+  <text x="510" y="41" textAnchor="middle" fill="#9DB8FF" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>TEZOS TOOLS</text>
+  <text x="510" y="65" textAnchor="middle" fill="rgba(255,255,255,0.92)" fontSize="14.5">Temple &#183; Taquito &#183; TzKT &#8230;</text>
 
   {/* Tools to interfaces connectors */}
-  <line x1="195" y1="86" x2="195" y2="196" stroke="rgba(255,255,255,0.38)" strokeWidth="1.5" markerEnd="url(#arch-arrow)"/>
-  <text x="207" y="140" fill="rgba(255,255,255,0.62)" style={{font: '11px var(--ifm-font-family-monospace)'}}>Ethereum JSON-RPC</text>
-  <line x1="565" y1="86" x2="565" y2="196" stroke="rgba(255,255,255,0.38)" strokeWidth="1.5" markerEnd="url(#arch-arrow)"/>
-  <text x="577" y="140" fill="rgba(255,255,255,0.62)" style={{font: '11px var(--ifm-font-family-monospace)'}}>Tezos RPC</text>
+  <line x1="170" y1="84" x2="170" y2="186" stroke="#38FF9C" strokeWidth="1.6" opacity="0.55" markerEnd="url(#arch-arrow-eth)"/>
+  <text x="182" y="130" fill="#38FF9C" opacity="0.8" style={{font: '12px var(--ifm-font-family-monospace)'}}>Ethereum JSON-RPC</text>
+  <line x1="510" y1="84" x2="510" y2="186" stroke="#9DB8FF" strokeWidth="1.6" opacity="0.55" markerEnd="url(#arch-arrow-tez)"/>
+  <text x="522" y="130" fill="#9DB8FF" opacity="0.8" style={{font: '12px var(--ifm-font-family-monospace)'}}>Tezos RPC</text>
 
   {/* Etherlink chain */}
-  <rect x="40" y="152" width="680" height="180" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.28)"/>
-  <text x="64" y="182" fill="rgba(255,255,255,0.62)" style={{font: '600 11px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>ETHERLINK</text>
+  <rect x="20" y="146" width="640" height="176" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="40" y="176" fill="rgba(255,255,255,0.75)" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>ETHERLINK</text>
 
-  {/* Interfaces (the access surface) backed by runtimes (the executors) */}
-  <rect x="64" y="200" width="262" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.28)"/>
-  <text x="195" y="219" textAnchor="middle" fill="rgba(255,255,255,0.8)" style={{font: '600 10.5px var(--ifm-font-family-monospace)', letterSpacing: '0.1em'}}>EVM INTERFACE</text>
-  <rect x="64" y="238" width="262" height="74" rx="12" fill="rgba(255,255,255,0.11)"/>
-  <text x="195" y="280" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="16">EVM runtime</text>
+  {/* Runtime cards, each fronted by its interface */}
+  <rect x="40" y="190" width="250" height="116" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="165" y="214" textAnchor="middle" fill="#38FF9C" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.1em'}}>EVM INTERFACE</text>
+  <line x1="41" y1="225" x2="289" y2="225" stroke="rgba(255,255,255,0.14)"/>
+  <text x="165" y="273" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="17">EVM runtime</text>
 
-  <rect x="434" y="200" width="262" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.28)"/>
-  <text x="565" y="219" textAnchor="middle" fill="rgba(255,255,255,0.8)" style={{font: '600 10.5px var(--ifm-font-family-monospace)', letterSpacing: '0.1em'}}>MICHELSON INTERFACE</text>
-  <rect x="434" y="238" width="262" height="74" rx="12" fill="rgba(255,255,255,0.11)"/>
-  <text x="565" y="280" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="16">Michelson runtime</text>
+  <rect x="390" y="190" width="250" height="116" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="515" y="214" textAnchor="middle" fill="#9DB8FF" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.1em'}}>MICHELSON INTERFACE</text>
+  <line x1="391" y1="225" x2="639" y2="225" stroke="rgba(255,255,255,0.14)"/>
+  <text x="515" y="273" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="17">Michelson runtime</text>
 
-  {/* NAC connector between the runtimes */}
-  <path d="M338,275 L330,271 L330,279 Z" fill="#38FF9C"/>
-  <line x1="336" y1="275" x2="352" y2="275" stroke="#38FF9C" strokeWidth="1.5"/>
-  <rect x="352" y="263" width="56" height="24" rx="12" fill="rgba(56,255,156,0.18)"/>
-  <text x="380" y="279" textAnchor="middle" fill="#38FF9C" style={{font: '600 11px var(--ifm-font-family-monospace)', letterSpacing: '0.08em'}}>NAC</text>
-  <line x1="408" y1="275" x2="424" y2="275" stroke="#38FF9C" strokeWidth="1.5"/>
-  <path d="M422,275 L430,271 L430,279 Z" fill="#38FF9C"/>
-  <text x="380" y="305" textAnchor="middle" fill="rgba(255,255,255,0.62)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>cross-runtime</text>
-  <text x="380" y="320" textAnchor="middle" fill="rgba(255,255,255,0.62)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>atomic calls</text>
+  {/* NAC junction between the runtimes */}
+  <path d="M300,252 L291,247.5 L291,256.5 Z" fill="rgba(255,255,255,0.92)"/>
+  <line x1="298" y1="252" x2="310" y2="252" stroke="rgba(255,255,255,0.8)" strokeWidth="1.75"/>
+  <rect x="310" y="239" width="60" height="26" rx="13" fill="rgba(255,255,255,0.92)"/>
+  <text x="340" y="256.5" textAnchor="middle" fill="#121212" style={{font: '700 12px var(--ifm-font-family-monospace)', letterSpacing: '0.06em'}}>NAC</text>
+  <line x1="370" y1="252" x2="382" y2="252" stroke="rgba(255,255,255,0.8)" strokeWidth="1.75"/>
+  <path d="M380,252 L389,247.5 L389,256.5 Z" fill="rgba(255,255,255,0.92)"/>
+  <text x="340" y="286" textAnchor="middle" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>cross-runtime</text>
+  <text x="340" y="302" textAnchor="middle" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>atomic calls</text>
 
   {/* Anchoring connector */}
-  <line x1="380" y1="332" x2="380" y2="392" stroke="rgba(255,255,255,0.38)" strokeWidth="1.5" markerEnd="url(#arch-arrow)"/>
-  <text x="392" y="368" fill="rgba(255,255,255,0.62)" style={{font: '11px var(--ifm-font-family-monospace)'}}>anchored as a Smart Rollup</text>
+  <line x1="340" y1="322" x2="340" y2="378" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#arch-arrow-w)"/>
+  <text x="352" y="356" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>anchored as a Smart Rollup</text>
 
   {/* Tezos Layer 1 */}
-  <rect x="40" y="398" width="680" height="64" rx="12" fill="rgba(255,255,255,0.08)"/>
-  <text x="380" y="436" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="16">Tezos Layer 1</text>
+  <rect x="20" y="384" width="640" height="62" rx="12" fill="rgba(255,255,255,0.08)"/>
+  <text x="340" y="421" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="17">Tezos Layer 1</text>
 </svg>
 
 This is fundamentally different from **L1↔L2 bridging** (moving assets between Tezos L1 and Etherlink<!--TX-->) or **cross-chain bridging** (connecting two independent chains through a third-party relayer).
