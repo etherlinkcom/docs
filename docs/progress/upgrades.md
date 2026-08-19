@@ -173,10 +173,13 @@ For more information, see [Announcing Etherlink 6.6: a security hardening kernel
 
 ## Etherlink 7.0 (Ganesha)
 
-The Etherlink 7.0 upgrade went live on 13 August 2026 through the slow kernel governance process and introduced a series of new features preparing for the launch of Tezos X.
-In particular, it added the new Michelson interface allowing to run Michelson smart contracts, and Native Atomic Calls for seamlessly combining EVM and Michelson contracts.
+The Etherlink 7.0 upgrade went live on 20 August 2026 through the fast kernel governance process and brought the largest expansion of Etherlink's scope since launch.
+In particular, it added the new Michelson interface, which runs Michelson smart contracts and brings the Tezos account model to Etherlink, and Native Atomic Composability (NAC) for seamlessly combining EVM and Michelson contracts.
 
-For more information, see [Announcing Ganesha: A 7th Upgrade Proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-ganesha-a-7th-upgrade-proposal-for-etherlink-mainnet-ae0a3af93aba).
+Etherlink 7.0 was initially proposed through the slow kernel governance process on 2 August 2026.
+After a security vulnerability was found in that kernel during continued testing, bakers were asked to reject the proposal — Etherlink Mainnet was never exposed to the vulnerability — and a patched kernel was resubmitted through the fast kernel governance process on 19 August 2026.
+
+For more information, see [Announcing Ganesha: A 7th Upgrade Proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-ganesha-a-7th-upgrade-proposal-for-etherlink-mainnet-ae0a3af93aba) and [Etherlink 7.0 (Ganesha): resubmission via Fast governance](https://forum.tezosagora.org/t/etherlink-7-0-ganesha-resubmission-via-fast-governance-on-wednesday-august-19th/7159).
 
 ## Changelog
 
