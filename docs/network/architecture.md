@@ -35,8 +35,8 @@ These components are instances of binaries in the [Octez software suite](https:/
   <rect x="274" y="74" width="170" height="90" rx="12" fill="rgba(255,255,255,0.07)"/>
   <rect x="270" y="70" width="170" height="90" rx="12" fill="rgba(255,255,255,0.1)"/>
   <text x="355" y="104" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="15">EVM nodes</text>
-  <text x="355" y="126" textAnchor="middle" fill="#38FF9C" style={{font: '11px var(--ifm-font-family-monospace)'}}>Ethereum JSON-RPC</text>
-  <text x="355" y="143" textAnchor="middle" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>Tezos RPC</text>
+  <text x="355" y="126" textAnchor="middle" fill="#38FF9C" style={{font: '12px var(--ifm-font-family-monospace)'}}>Ethereum JSON-RPC</text>
+  <text x="355" y="143" textAnchor="middle" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>Tezos RPC</text>
   <rect x="490" y="70" width="140" height="76" rx="12" fill="rgba(255,255,255,0.1)"/>
   <text x="560.0" y="113.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="15">Sequencer</text>
   <rect x="278" y="248" width="170" height="76" rx="12" fill="rgba(255,255,255,0.05)"/>
@@ -55,20 +55,21 @@ These components are instances of binaries in the [Octez software suite](https:/
   <text x="450.0" y="473.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="15">Layer 1 nodes</text>
   <path d="M180,98 L270,98" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
   <path d="M180,188 L232,188 L232,122 L270,122" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <text x="200" y="88" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '11px var(--ifm-font-family-monospace)'}}>transactions</text>
+  <text x="200" y="88" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>transactions</text>
   <path d="M448,92 L490,92" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
-  <text x="469" y="82" textAnchor="middle" fill="#38FF9C" style={{font: '11px var(--ifm-font-family-monospace)'}}>txs</text>
+  <text x="469" y="82" textAnchor="middle" fill="#38FF9C" style={{font: '12px var(--ifm-font-family-monospace)'}}>txs</text>
   <path d="M490,116 L448,116" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
-  <text x="469" y="134" textAnchor="middle" fill="#38FF9C" style={{font: '11px var(--ifm-font-family-monospace)'}}>blocks</text>
+  <text x="469" y="134" textAnchor="middle" fill="#38FF9C" style={{font: '12px var(--ifm-font-family-monospace)'}}>blocks</text>
   <path d="M355,168 L355,240" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <text x="367" y="208" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '11px var(--ifm-font-family-monospace)'}}>verify L1 finality</text>
+  <text x="367" y="208" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>verify L1 finality</text>
   <path d="M560,146 L560,240" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <text x="566" y="208" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '11px var(--ifm-font-family-monospace)'}}>publish blocks</text>
+  <text x="572" y="200" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>publish</text>
+  <text x="572" y="215" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>blocks</text>
   <path d="M355,324 L355,410 L410,410 L410,438" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="343" y="380" textAnchor="end" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>track</text>
+  <text x="343" y="380" textAnchor="end" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>track</text>
   <path d="M560,324 L560,410 L490,410 L490,438" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="572" y="375" textAnchor="start" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>publish blocks &amp;</text>
-  <text x="572" y="390" textAnchor="start" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>commitments</text>
+  <text x="572" y="375" textAnchor="start" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>publish blocks &amp;</text>
+  <text x="572" y="390" textAnchor="start" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>commitments</text>
 </svg>
 
 ## Sequencer
@@ -204,33 +205,33 @@ This diagram summarizes the transaction process:
   <text x="135.0" y="557.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="15">Layer 1 nodes</text>
   <rect x="300" y="505" width="330" height="205" rx="12" fill="rgba(255,255,255,0.1)"/>
   <text x="320" y="535" textAnchor="start" fill="rgba(255,255,255,0.75)" style={{font: '600 11.5px var(--ifm-font-family-monospace)'}}>BLOCK</text>
-  <text x="320" y="562" fill="rgba(255,255,255,0.7)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>- metadata, hash of the previous block</text>
-  <text x="320" y="577" fill="rgba(255,255,255,0.7)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>- layer 1 transactions and operations</text>
-  <text x="320" y="592" fill="rgba(255,255,255,0.7)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>- Smart Rollup inbox messages</text>
-  <text x="320" y="607" fill="rgba(255,255,255,0.7)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>  (including Etherlink blocks)</text>
-  <text x="320" y="622" fill="rgba(255,255,255,0.7)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>- hashes of Smart Rollup states</text>
-  <text x="320" y="637" fill="rgba(255,255,255,0.7)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>  (including Etherlink), posted as</text>
-  <text x="320" y="652" fill="rgba(255,255,255,0.7)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>  commitments</text>
+  <text x="320" y="562" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>- metadata, hash of the previous block</text>
+  <text x="320" y="578" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>- layer 1 transactions and operations</text>
+  <text x="320" y="594" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>- Smart Rollup inbox messages</text>
+  <text x="320" y="610" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>  (including Etherlink blocks)</text>
+  <text x="320" y="626" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>- hashes of Smart Rollup states</text>
+  <text x="320" y="642" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>  (including Etherlink), posted as</text>
+  <text x="320" y="658" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>  commitments</text>
   <path d="M190,92 L260,92" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
   <path d="M190,176 L225,176 L225,118 L260,118" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <text x="196" y="80" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '11px var(--ifm-font-family-monospace)'}}>send transactions</text>
+  <text x="196" y="80" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>send transactions</text>
   <path d="M428,100 L475,100" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
-  <text x="452" y="90" textAnchor="middle" fill="#38FF9C" style={{font: '11px var(--ifm-font-family-monospace)'}}>txs</text>
+  <text x="452" y="90" textAnchor="middle" fill="#38FF9C" style={{font: '12px var(--ifm-font-family-monospace)'}}>txs</text>
   <path d="M475,130 L428,130" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
-  <text x="452" y="148" textAnchor="middle" fill="#38FF9C" style={{font: '11px var(--ifm-font-family-monospace)'}}>blocks</text>
+  <text x="452" y="148" textAnchor="middle" fill="#38FF9C" style={{font: '12px var(--ifm-font-family-monospace)'}}>blocks</text>
   <path d="M340,168 L340,280" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <text x="352" y="215" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '11px var(--ifm-font-family-monospace)'}}>verify blocks are</text>
-  <text x="352" y="230" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '11px var(--ifm-font-family-monospace)'}}>published on layer 1</text>
+  <text x="352" y="215" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>verify blocks are</text>
+  <text x="352" y="230" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>published on layer 1</text>
   <path d="M550,175 L550,280" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
-  <text x="562" y="230" textAnchor="start" fill="#38FF9C" style={{font: '11px var(--ifm-font-family-monospace)'}}>send blocks</text>
+  <text x="562" y="230" textAnchor="start" fill="#38FF9C" style={{font: '12px var(--ifm-font-family-monospace)'}}>send blocks</text>
   <path d="M325,372 L325,520" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="313" y="440" textAnchor="end" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>track layer 1 and</text>
-  <text x="313" y="455" textAnchor="end" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>receive Etherlink blocks</text>
+  <text x="313" y="440" textAnchor="end" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>track layer 1 and</text>
+  <text x="313" y="455" textAnchor="end" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>receive Etherlink blocks</text>
   <path d="M550,364 L550,430 L376,430 L376,505" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="538" y="398" textAnchor="end" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>publish Etherlink blocks</text>
-  <text x="538" y="413" textAnchor="end" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>in the Smart Rollup inbox</text>
+  <text x="538" y="398" textAnchor="end" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>publish Etherlink blocks</text>
+  <text x="538" y="413" textAnchor="end" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>in the Smart Rollup inbox</text>
   <path d="M210,552 L300,552" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="255" y="542" textAnchor="middle" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>create</text>
+  <text x="255" y="542" textAnchor="middle" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>create</text>
 </svg>
 
 ### Delayed inbox transaction processing
