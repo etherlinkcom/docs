@@ -110,38 +110,39 @@ This diagram is an overview of the process of bridging tokens from layer 1 to Et
   <text x="340.0" y="627.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">ERC-20 proxy</text>
   <text x="340.0" y="647.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">contract</text>
   <path d="M170,88 L260,88" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="215" y="78" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>allow access</text>
+  <text x="215" y="78" textAnchor="middle" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>allow access</text>
   <path d="M170,116 L215,116 L215,228 L260,228" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="46" y="160" textAnchor="start" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send transaction:</text>
-  <text x="46" y="175" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- amount to bridge</text>
-  <text x="46" y="188" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- user's Etherlink</text>
-  <text x="46" y="201" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>  address</text>
-  <text x="46" y="214" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- Smart Rollup</text>
-  <text x="46" y="227" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>  address</text>
+  <text x="46" y="160" textAnchor="start" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send transaction:</text>
+  <text x="46" y="175" fill="rgba(255,255,255,0.6)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>- amount to bridge</text>
+  <text x="46" y="189" fill="rgba(255,255,255,0.6)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>- user's Etherlink</text>
+  <text x="46" y="203" fill="rgba(255,255,255,0.6)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>  address</text>
+  <text x="46" y="217" fill="rgba(255,255,255,0.6)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>- Smart Rollup</text>
+  <text x="46" y="231" fill="rgba(255,255,255,0.6)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>  address</text>
   <path d="M330,190 L330,124" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="322" y="160" textAnchor="end" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>take tokens</text>
+  <text x="322" y="160" textAnchor="end" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>take tokens</text>
   <path d="M430,208 L475,208 L475,124" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="483" y="148" textAnchor="start" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send tokens</text>
+  <text x="483" y="148" textAnchor="start" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send tokens</text>
   <path d="M560,124 L560,160 L395,160 L395,190" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="430" y="152" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send ticket</text>
+  <text x="430" y="152" textAnchor="middle" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send ticket</text>
   <path d="M605,60 L605,44 L555,44 L555,60" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <text x="583" y="37" textAnchor="middle" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>lock tokens, create ticket</text>
+  <text x="568" y="37" textAnchor="middle" fill="rgba(255,255,255,0.7)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>lock tokens, create ticket</text>
   <path d="M430,218 L480,218" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="455" y="208" textAnchor="middle" fill="#9DB8FF" style={{font: '10px var(--ifm-font-family-monospace)'}}>ticket + data</text>
+  <text x="455" y="206" textAnchor="middle" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>ticket</text>
+  <text x="455" y="234" textAnchor="middle" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>+ data</text>
   <path d="M555,236 L555,254" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
   <path d="M555,302 L555,400" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
-  <text x="545" y="350" textAnchor="end" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>receive information</text>
+  <text x="545" y="350" textAnchor="end" fill="#38FF9C" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>receive information</text>
   <path d="M555,452 L555,490" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
   <path d="M480,516 L420,516" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
-  <text x="450" y="508" textAnchor="middle" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send info</text>
+  <text x="450" y="508" textAnchor="middle" fill="#38FF9C" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send info</text>
   <path d="M170,418 L340,418 L340,480" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
-  <text x="250" y="408" textAnchor="middle" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>claim tokens</text>
+  <text x="250" y="408" textAnchor="middle" fill="#38FF9C" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>claim tokens</text>
   <path d="M340,552 L340,600" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
-  <text x="350" y="580" textAnchor="start" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send info</text>
+  <text x="350" y="580" textAnchor="start" fill="#38FF9C" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send info</text>
   <path d="M420,612 L438,612 L438,636 L424,636" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <text x="444" y="630" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>mint</text>
+  <text x="444" y="630" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>mint</text>
   <path d="M260,632 L170,632" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
-  <text x="215" y="622" textAnchor="middle" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send tokens</text>
+  <text x="215" y="622" textAnchor="middle" fill="#38FF9C" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send tokens</text>
 </svg>
 
 ## Withdrawing tokens from Etherlink EVM<!--TEVM--> to layer 1
@@ -218,24 +219,24 @@ This diagram is an overview of the process of bridging tokens from Etherlink EVM
   <text x="550.0" y="383.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">ERC-20 proxy</text>
   <text x="550.0" y="403.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">contract</text>
   <path d="M170,424 L220,424 L220,396 L260,396" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
-  <text x="46" y="330" textAnchor="start" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send transaction:</text>
-  <text x="46" y="345" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- amount to bridge</text>
-  <text x="46" y="358" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- target layer 1</text>
-  <text x="46" y="371" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>  address</text>
-  <text x="46" y="384" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- ticket &amp; contract</text>
-  <text x="46" y="397" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>  info</text>
+  <text x="46" y="330" textAnchor="start" fill="#38FF9C" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send transaction:</text>
+  <text x="46" y="345" fill="rgba(255,255,255,0.6)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>- amount to bridge</text>
+  <text x="46" y="359" fill="rgba(255,255,255,0.6)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>- target layer 1</text>
+  <text x="46" y="373" fill="rgba(255,255,255,0.6)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>  address</text>
+  <text x="46" y="387" fill="rgba(255,255,255,0.6)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>- ticket &amp; contract</text>
+  <text x="46" y="401" fill="rgba(255,255,255,0.6)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>  info</text>
   <path d="M430,384 L470,384" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
   <path d="M550,356 L550,234" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="542" y="300" textAnchor="end" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send transaction</text>
+  <text x="542" y="300" textAnchor="end" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send transaction</text>
   <path d="M170,268 L555,268 L555,234" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="340" y="258" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>trigger outbox message</text>
+  <text x="340" y="258" textAnchor="middle" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>trigger outbox message</text>
   <path d="M480,194 L430,194" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="455" y="216" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send ticket</text>
+  <text x="455" y="216" textAnchor="middle" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send ticket</text>
   <path d="M335,170 L335,124" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="327" y="150" textAnchor="end" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send ticket</text>
+  <text x="327" y="150" textAnchor="end" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send ticket</text>
   <path d="M410,78 L428,78 L428,102 L414,102" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <text x="436" y="88" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '10px var(--ifm-font-family-monospace)'}}>burn ticket,</text>
-  <text x="436" y="101" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '10px var(--ifm-font-family-monospace)'}}>unlock tokens</text>
+  <text x="436" y="88" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '11px var(--ifm-font-family-monospace)'}}>burn ticket,</text>
+  <text x="436" y="101" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '11px var(--ifm-font-family-monospace)'}}>unlock tokens</text>
   <path d="M260,92 L170,92" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="215" y="82" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send tokens</text>
+  <text x="215" y="82" textAnchor="middle" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send tokens</text>
 </svg>

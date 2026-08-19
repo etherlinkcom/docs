@@ -113,23 +113,24 @@ This diagram is an overview of the deposit process:
   <rect x="420" y="340" width="140" height="60" rx="12" fill="rgba(255,255,255,0.1)"/>
   <text x="490.0" y="375.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Kernel</text>
   <path d="M170,102 L260,102" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="46" y="162" textAnchor="start" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send transaction:</text>
-  <text x="46" y="178" fill="rgba(255,255,255,0.6)" style={{font: '10px var(--ifm-font-family-monospace)'}}>- amount of tez</text>
-  <text x="46" y="191" fill="rgba(255,255,255,0.6)" style={{font: '10px var(--ifm-font-family-monospace)'}}>- user's Etherlink</text>
-  <text x="46" y="204" fill="rgba(255,255,255,0.6)" style={{font: '10px var(--ifm-font-family-monospace)'}}>  address</text>
-  <text x="46" y="217" fill="rgba(255,255,255,0.6)" style={{font: '10px var(--ifm-font-family-monospace)'}}>- Smart Rollup address</text>
+  <text x="46" y="162" textAnchor="start" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send transaction:</text>
+  <text x="46" y="178" fill="rgba(255,255,255,0.6)" style={{font: '11px var(--ifm-font-family-monospace)'}}>- amount of tez</text>
+  <text x="46" y="192" fill="rgba(255,255,255,0.6)" style={{font: '11px var(--ifm-font-family-monospace)'}}>- user's Etherlink</text>
+  <text x="46" y="206" fill="rgba(255,255,255,0.6)" style={{font: '11px var(--ifm-font-family-monospace)'}}>  address</text>
+  <text x="46" y="220" fill="rgba(255,255,255,0.6)" style={{font: '11px var(--ifm-font-family-monospace)'}}>- Smart Rollup</text>
+  <text x="46" y="234" fill="rgba(255,255,255,0.6)" style={{font: '11px var(--ifm-font-family-monospace)'}}>  address</text>
   <path d="M410,96 L470,96" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="440" y="86" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send tez</text>
+  <text x="440" y="86" textAnchor="middle" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send tez</text>
   <path d="M470,128 L410,128" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="440" y="168" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send ticket</text>
+  <text x="440" y="168" textAnchor="middle" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send ticket</text>
   <path d="M595,90 L595,72 L545,72 L545,90" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <text x="570" y="64" textAnchor="middle" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>lock tez, create ticket</text>
+  <text x="570" y="64" textAnchor="middle" fill="rgba(255,255,255,0.7)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>lock tez, create ticket</text>
   <path d="M300,154 L300,310 L490,310 L490,340" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
-  <text x="312" y="196" textAnchor="start" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send via the Smart Rollup inbox:</text>
-  <text x="312" y="210" textAnchor="start" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- ticket</text>
-  <text x="312" y="224" textAnchor="start" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- user's Etherlink address</text>
+  <text x="312" y="196" textAnchor="start" fill="#38FF9C" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send via the Smart Rollup inbox:</text>
+  <text x="312" y="210" textAnchor="start" fill="#38FF9C" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>- ticket</text>
+  <text x="312" y="224" textAnchor="start" fill="#38FF9C" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>- user's Etherlink address</text>
   <path d="M420,372 L170,372" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
-  <text x="295" y="362" textAnchor="middle" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send tez on Etherlink</text>
+  <text x="295" y="362" textAnchor="middle" fill="#38FF9C" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send tez on Etherlink</text>
 </svg>
 
 ### Withdrawal process
@@ -181,26 +182,27 @@ This diagram is an overview of the withdrawal process:
   <text x="345.0" y="363.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Withdrawal</text>
   <text x="345.0" y="383.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">precompile</text>
   <path d="M170,376 L260,376" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
-  <text x="46" y="424" textAnchor="start" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send transaction:</text>
-  <text x="46" y="440" fill="rgba(255,255,255,0.6)" style={{font: '10px var(--ifm-font-family-monospace)'}}>- amount of tez</text>
-  <text x="46" y="453" fill="rgba(255,255,255,0.6)" style={{font: '10px var(--ifm-font-family-monospace)'}}>- user's layer 1 address</text>
+  <text x="46" y="424" textAnchor="start" fill="#38FF9C" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send transaction:</text>
+  <text x="46" y="440" fill="rgba(255,255,255,0.6)" style={{font: '11px var(--ifm-font-family-monospace)'}}>- amount of tez</text>
+  <text x="46" y="454" fill="rgba(255,255,255,0.6)" style={{font: '11px var(--ifm-font-family-monospace)'}}>- user's layer 1</text>
+  <text x="46" y="468" fill="rgba(255,255,255,0.6)" style={{font: '11px var(--ifm-font-family-monospace)'}}>  address</text>
   <path d="M390,330 L390,312 L340,312 L340,330" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <text x="398" y="308" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>store tez, create ticket</text>
+  <text x="398" y="308" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>store tez, create ticket</text>
   <path d="M430,382 L550,382 L550,234" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="562" y="300" textAnchor="start" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>include in</text>
-  <text x="562" y="314" textAnchor="start" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>commitment:</text>
-  <text x="562" y="328" textAnchor="start" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- ticket</text>
-  <text x="562" y="342" textAnchor="start" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- user's layer 1</text>
-  <text x="562" y="356" textAnchor="start" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>  address</text>
+  <text x="562" y="300" textAnchor="start" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>include in</text>
+  <text x="562" y="314" textAnchor="start" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>commitment:</text>
+  <text x="562" y="328" textAnchor="start" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>- ticket</text>
+  <text x="562" y="342" textAnchor="start" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>- user's layer 1</text>
+  <text x="562" y="356" textAnchor="start" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>  address</text>
   <path d="M170,208 L470,208" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="320" y="198" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>trigger outbox message</text>
+  <text x="320" y="198" textAnchor="middle" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>trigger outbox message</text>
   <path d="M550,170 L550,118" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="538" y="140" textAnchor="end" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>call burn entrypoint:</text>
-  <text x="538" y="154" textAnchor="end" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>(ticket, layer 1 address)</text>
+  <text x="538" y="140" textAnchor="end" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>call burn entrypoint:</text>
+  <text x="538" y="154" textAnchor="end" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>(ticket, layer 1 address)</text>
   <path d="M605,60 L605,42 L555,42 L555,60" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <text x="580" y="35" textAnchor="middle" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>unlock tez, destroy ticket</text>
+  <text x="570" y="35" textAnchor="middle" fill="rgba(255,255,255,0.7)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>unlock tez, destroy ticket</text>
   <path d="M470,90 L170,90" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="320" y="80" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send tez</text>
+  <text x="320" y="80" textAnchor="middle" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send tez</text>
 </svg>
 <!-- https://lucid.app/lucidchart/d4fb99c8-74eb-4336-b971-117b0045772b/edit -->
 

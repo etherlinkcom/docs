@@ -135,21 +135,21 @@ The diagram below shows what happens inside a single block when an EVM contract 
   <line x1="490" y1="54" x2="490" y2="368" stroke="rgba(255,255,255,0.15)" strokeDasharray="4 5"/>
   <line x1="625" y1="54" x2="625" y2="368" stroke="rgba(255,255,255,0.15)" strokeDasharray="4 5"/>
   <path d="M63,92 L197,92" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <text x="130.0" y="84" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send transaction</text>
+  <text x="130.0" y="84" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '12px var(--ifm-font-family-monospace)'}}>send transaction</text>
   <path d="M203,128 L342,128" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <text x="272.5" y="120" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11px var(--ifm-font-family-monospace)'}}>callMichelson("KT1&#8230;", "entrypoint", data)</text>
+  <text x="272.5" y="120" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>callMichelson("KT1&#8230;", "entrypoint", data)</text>
   <path d="M348,164 L487,164" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <text x="417.5" y="156" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>cross-runtime dispatch</text>
+  <text x="417.5" y="156" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '12px var(--ifm-font-family-monospace)'}}>cross-runtime dispatch</text>
   <path d="M493,200 L622,200" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <text x="557.5" y="192" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>execute entrypoint</text>
+  <text x="557.5" y="192" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '12px var(--ifm-font-family-monospace)'}}>execute entrypoint</text>
   <path d="M622,236 L493,236" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.6" strokeDasharray="5 4" markerEnd="url(#dg-w)"/>
-  <text x="557.5" y="228" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>storage updated</text>
+  <text x="557.5" y="228" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '12px var(--ifm-font-family-monospace)'}}>storage updated</text>
   <path d="M487,272 L348,272" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.6" strokeDasharray="5 4" markerEnd="url(#dg-w)"/>
-  <text x="417.5" y="264" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>success / revert</text>
+  <text x="417.5" y="264" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '12px var(--ifm-font-family-monospace)'}}>success / revert</text>
   <path d="M342,308 L203,308" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.6" strokeDasharray="5 4" markerEnd="url(#dg-w)"/>
-  <text x="272.5" y="300" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>outcome</text>
+  <text x="272.5" y="300" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '12px var(--ifm-font-family-monospace)'}}>outcome</text>
   <path d="M197,344 L63,344" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.6" strokeDasharray="5 4" markerEnd="url(#dg-w)"/>
-  <text x="130.0" y="336" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>transaction receipt</text>
+  <text x="130.0" y="336" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '12px var(--ifm-font-family-monospace)'}}>transaction receipt</text>
   <rect x="60" y="382" width="565" height="30" rx="15" fill="rgba(255,255,255,0.92)"/>
   <text x="342" y="401.5" textAnchor="middle" fill="#121212" style={{font: '600 12px var(--ifm-font-family-monospace)'}}>One atomic transaction &#8212; all or nothing</text>
 </svg>
