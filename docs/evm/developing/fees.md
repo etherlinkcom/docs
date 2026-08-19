@@ -90,7 +90,7 @@ Etherlink EVM<!--TEVM--> calculates the inclusion fee with this equation:
 inclusion_fee = 0.000004 XTZ * (150 + tx.data.size() + tx.access_list.size())
 ```
 
-For EIP-7702 transactions, there is an additional term: the size of the authorization list.
+For EIP-7702 transactions, there is an additional term: the size of the authorization list (125 bytes per authorization).
 
 ## Gas limit
 

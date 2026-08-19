@@ -37,7 +37,7 @@ evm_alias = keccak256(utf8(tz_address_base58check))[0:20]
 
 When an EVM account interacts with the Michelson runtime for the first time, a Michelson alias is created as a **KT1 smart contract**. This contract automatically forwards any tez it receives back to the native EVM account via the gateway.
 
-The KT1 alias address is computed by applying **BLAKE2b with a 20-byte output** to the the UTF-8 bytes of the lowercase hex string including the `0x` prefix, then encoding the result as a KT1 contract hash:
+The KT1 alias address is computed by applying **BLAKE2b with a 20-byte output** to the UTF-8 bytes of the lowercase hex string including the `0x` prefix, then encoding the result as a KT1 contract hash:
 
 ```
 kt1_alias = KT1(blake2b_160(utf8("0x" + lowercase_hex(evm_address))))
