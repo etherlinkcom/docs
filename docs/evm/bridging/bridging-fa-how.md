@@ -106,8 +106,9 @@ This diagram is an overview of the process of bridging tokens from layer 1 to Et
   <text x="555.0" y="511.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="13">Null precompile</text>
   <text x="555.0" y="531.0" textAnchor="middle" fill="rgba(255,255,255,0.6)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>0x0000&#8230;0000</text>
   <rect x="260" y="480" width="160" height="72" rx="12" fill="rgba(255,255,255,0.1)"/>
-  <text x="340.0" y="511.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">FA bridging</text>
-  <text x="340.0" y="531.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">precompile</text>
+  <text x="340.0" y="501.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">FA bridging</text>
+  <text x="340.0" y="521.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">precompile</text>
+  <text x="340.0" y="541.0" textAnchor="middle" fill="rgba(255,255,255,0.6)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>0xff00&#8230;0002</text>
   <rect x="260" y="600" width="160" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
   <text x="340.0" y="627.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">ERC-20 proxy</text>
   <text x="340.0" y="647.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">contract</text>
@@ -200,7 +201,7 @@ This transaction includes the target layer 1 address.
 
 This diagram is an overview of the process of bridging tokens from Etherlink EVM<!--TEVM--> to layer 1:
 
-<svg viewBox="0 0 680 500" role="img" aria-label="Withdrawing FA tokens from Etherlink to Tezos layer 1, in eight steps: the user's EVM wallet calls the FA withdrawal precompile, which burns the tokens via the ERC-20 proxy contract and queues an outbox message; after the commitment is cemented (about two weeks), any user triggers the outbox message, and the outbox sends the ticket to the token bridge helper contract, which forwards it to the ticketer contract; the ticketer burns the ticket, unlocks the tokens, and sends them to the user's Tezos wallet" style={{width: '100%', maxWidth: '680px', display: 'block', margin: '1.5rem auto', fontFamily: 'inherit'}}>
+<svg viewBox="0 0 680 500" role="img" aria-label="Withdrawing FA tokens from Etherlink to Tezos layer 1, in eight steps: the user's EVM wallet calls the FA bridging precompile, which burns the tokens via the ERC-20 proxy contract and queues an outbox message; after the commitment is cemented (about two weeks), any user triggers the outbox message, and the outbox sends the ticket to the token bridge helper contract, which forwards it to the ticketer contract; the ticketer burns the ticket and returns the tokens to the helper contract, which sends them to the user's layer 1 address" style={{width: '100%', maxWidth: '680px', display: 'block', margin: '1.5rem auto', fontFamily: 'inherit'}}>
   <defs>
     <marker id="dg-w" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
@@ -219,7 +220,8 @@ This diagram is an overview of the process of bridging tokens from Etherlink EVM
   <text x="105.0" y="97.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">User's Tezos</text>
   <text x="105.0" y="117.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">wallet</text>
   <rect x="40" y="220" width="130" height="56" rx="12" fill="rgba(255,255,255,0.1)"/>
-  <text x="105.0" y="253.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Any user</text>
+  <text x="105.0" y="243.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Any user</text>
+  <text x="105.0" y="263.0" textAnchor="middle" fill="rgba(255,255,255,0.6)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>via an Octez client</text>
   <rect x="40" y="400" width="130" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
   <text x="105.0" y="427.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">User's EVM</text>
   <text x="105.0" y="447.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">wallet</text>
@@ -237,8 +239,9 @@ This diagram is an overview of the process of bridging tokens from Etherlink EVM
   <rect x="230" y="290" width="430" height="190" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
   <text x="248" y="316" fill="#38FF9C" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>ETHERLINK</text>
   <rect x="260" y="350" width="170" height="76" rx="12" fill="rgba(255,255,255,0.1)"/>
-  <text x="345.0" y="383.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">FA withdrawal</text>
-  <text x="345.0" y="403.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">precompile</text>
+  <text x="345.0" y="373.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">FA bridging</text>
+  <text x="345.0" y="393.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">precompile</text>
+  <text x="345.0" y="413.0" textAnchor="middle" fill="rgba(255,255,255,0.6)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>0xff00&#8230;0002</text>
   <rect x="470" y="356" width="160" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
   <text x="550.0" y="383.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">ERC-20 proxy</text>
   <text x="550.0" y="403.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">contract</text>
@@ -270,14 +273,17 @@ This diagram is an overview of the process of bridging tokens from Etherlink EVM
   <path d="M325,170 L325,124" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
   <circle cx="325" cy="147" r="8.5" fill="#9DB8FF"/>
   <text x="325" y="150.5" textAnchor="middle" fill="#121212" style={{font: '700 10.5px var(--ifm-font-family-monospace)'}}>6</text>
-  <text x="317" y="151" textAnchor="end" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>send ticket</text>
+  <text x="317" y="138" textAnchor="end" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>send ticket</text>
   <path d="M410,78 L428,78 L428,102 L414,102" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <circle cx="428" cy="90" r="8.5" fill="#9DB8FF"/>
-  <text x="428" y="93.5" textAnchor="middle" fill="#121212" style={{font: '700 10.5px var(--ifm-font-family-monospace)'}}>7</text>
   <text x="436" y="82" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '11px var(--ifm-font-family-monospace)'}}>burn ticket,</text>
   <text x="436" y="95" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '11px var(--ifm-font-family-monospace)'}}>unlock tokens</text>
-  <path d="M260,92 L170,92" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <circle cx="215" cy="92" r="8.5" fill="#9DB8FF"/>
-  <text x="215" y="95.5" textAnchor="middle" fill="#121212" style={{font: '700 10.5px var(--ifm-font-family-monospace)'}}>8</text>
-  <text x="215" y="78" textAnchor="middle" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send tokens</text>
+  <path d="M365,124 L365,170" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <circle cx="365" cy="147" r="8.5" fill="#9DB8FF"/>
+  <text x="365" y="150.5" textAnchor="middle" fill="#121212" style={{font: '700 10.5px var(--ifm-font-family-monospace)'}}>7</text>
+  <text x="373" y="160" textAnchor="start" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>send tokens</text>
+  <path d="M250,186 L210,186 L210,102 L170,102" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <circle cx="210" cy="118" r="8.5" fill="#9DB8FF"/>
+  <text x="210" y="121.5" textAnchor="middle" fill="#121212" style={{font: '700 10.5px var(--ifm-font-family-monospace)'}}>8</text>
+  <text x="220" y="142" textAnchor="start" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>send</text>
+  <text x="220" y="156" textAnchor="start" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>tokens</text>
 </svg>
