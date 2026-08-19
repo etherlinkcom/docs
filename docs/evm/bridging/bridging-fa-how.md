@@ -59,7 +59,90 @@ For tokens supported by the bridge, an automated program calls the `claim` funct
 
 This diagram is an overview of the process of bridging tokens from layer 1 to Etherlink EVM<!--TEVM-->:
 
-<img src="/img/bridging-deposit-fa.png" alt="Overview of the FA token bridging deposit process" style={{width: 500}} />
+<svg viewBox="0 0 680 720" role="img" aria-label="Bridging FA tokens from Tezos layer 1 to Etherlink: the user's Tezos wallet allows access on the FA token contract and sends a transaction to the token bridge helper contract, which takes the tokens, locks them in the ticketer contract, and sends the resulting ticket and data to the Smart Rollup inbox; the data reaches the sequencer through the delayed inbox and flows through the null and FA bridging precompiles; any user claims the tokens, and the ERC-20 proxy contract mints them to the user's EVM wallet" style={{width: '100%', maxWidth: '680px', display: 'block', margin: '1.5rem auto', fontFamily: 'inherit'}}>
+  <defs>
+    <marker id="dg-w" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+    <marker id="dg-g" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="#38FF9C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+    <marker id="dg-b" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="#9DB8FF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="20" width="170" height="680" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="38" y="46" fill="rgba(255,255,255,0.75)" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>CLIENTS</text>
+  <rect x="40" y="70" width="130" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="105.0" y="97.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">User's Tezos</text>
+  <text x="105.0" y="117.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">wallet</text>
+  <rect x="40" y="390" width="130" height="56" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="105.0" y="423.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Any user</text>
+  <rect x="40" y="600" width="130" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="105.0" y="627.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">User's EVM</text>
+  <text x="105.0" y="647.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">wallet</text>
+  <rect x="230" y="20" width="430" height="300" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="248" y="46" fill="#9DB8FF" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>TEZOS LAYER 1</text>
+  <rect x="260" y="60" width="140" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="330.0" y="87.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">FA token</text>
+  <text x="330.0" y="107.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">contract</text>
+  <rect x="450" y="60" width="150" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="525.0" y="87.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Ticketer</text>
+  <text x="525.0" y="107.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">contract</text>
+  <rect x="260" y="190" width="170" height="76" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="345.0" y="223.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Token bridge</text>
+  <text x="345.0" y="243.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">helper contract</text>
+  <rect x="480" y="184" width="150" height="52" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="555.0" y="215.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="13">Smart Rollup inbox</text>
+  <rect x="480" y="254" width="150" height="48" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="555.0" y="283.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="13">Delayed inbox</text>
+  <rect x="230" y="360" width="430" height="340" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="248" y="386" fill="#38FF9C" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>ETHERLINK</text>
+  <rect x="480" y="400" width="150" height="52" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="555.0" y="431.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Sequencer</text>
+  <rect x="480" y="490" width="150" height="52" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="555.0" y="521.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="13">Null precompile</text>
+  <rect x="260" y="480" width="160" height="72" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="340.0" y="511.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">FA bridging</text>
+  <text x="340.0" y="531.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">precompile</text>
+  <rect x="260" y="600" width="160" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="340.0" y="627.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">ERC-20 proxy</text>
+  <text x="340.0" y="647.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">contract</text>
+  <path d="M170,88 L260,88" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="215" y="78" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>allow access</text>
+  <path d="M170,116 L215,116 L215,228 L260,228" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="46" y="160" textAnchor="start" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send transaction:</text>
+  <text x="46" y="175" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- amount to bridge</text>
+  <text x="46" y="188" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- user's Etherlink</text>
+  <text x="46" y="201" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>  address</text>
+  <text x="46" y="214" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- Smart Rollup</text>
+  <text x="46" y="227" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>  address</text>
+  <path d="M330,190 L330,124" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="322" y="160" textAnchor="end" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>take tokens</text>
+  <path d="M430,208 L475,208 L475,124" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="483" y="148" textAnchor="start" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send tokens</text>
+  <path d="M560,124 L560,160 L395,160 L395,190" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="430" y="152" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send ticket</text>
+  <path d="M605,60 L605,44 L555,44 L555,60" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
+  <text x="583" y="37" textAnchor="middle" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>lock tokens, create ticket</text>
+  <path d="M430,218 L480,218" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="455" y="208" textAnchor="middle" fill="#9DB8FF" style={{font: '10px var(--ifm-font-family-monospace)'}}>ticket + data</text>
+  <path d="M555,236 L555,254" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <path d="M555,302 L555,400" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
+  <text x="545" y="350" textAnchor="end" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>receive information</text>
+  <path d="M555,452 L555,490" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
+  <path d="M480,516 L420,516" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
+  <text x="450" y="508" textAnchor="middle" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send info</text>
+  <path d="M170,418 L340,418 L340,480" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
+  <text x="250" y="408" textAnchor="middle" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>claim tokens</text>
+  <path d="M340,552 L340,600" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
+  <text x="350" y="580" textAnchor="start" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send info</text>
+  <path d="M420,612 L438,612 L438,636 L424,636" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
+  <text x="444" y="630" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>mint</text>
+  <path d="M260,632 L170,632" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
+  <text x="215" y="622" textAnchor="middle" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send tokens</text>
+</svg>
 
 ## Withdrawing tokens from Etherlink EVM<!--TEVM--> to layer 1
 
@@ -92,4 +175,67 @@ This transaction includes the target layer 1 address.
 
 This diagram is an overview of the process of bridging tokens from Etherlink EVM<!--TEVM--> to layer 1:
 
-<img src="/img/bridging-withdrawal-fa.png" alt="Overview of the FA token bridging withdrawal process" style={{width: 500}} />
+<svg viewBox="0 0 680 500" role="img" aria-label="Withdrawing FA tokens from Etherlink to Tezos layer 1: the user's EVM wallet calls the FA withdrawal precompile, which burns the tokens via the ERC-20 proxy contract and sends a transaction to the Smart Rollup outbox; once cemented, any user triggers the outbox message, and the outbox sends the ticket to the token bridge helper contract, which forwards it to the ticketer contract; the ticketer burns the ticket, unlocks the tokens, and sends them to the user's Tezos wallet" style={{width: '100%', maxWidth: '680px', display: 'block', margin: '1.5rem auto', fontFamily: 'inherit'}}>
+  <defs>
+    <marker id="dg-w" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+    <marker id="dg-g" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="#38FF9C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+    <marker id="dg-b" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="#9DB8FF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="20" width="170" height="460" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="38" y="46" fill="rgba(255,255,255,0.75)" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>CLIENTS</text>
+  <rect x="40" y="70" width="130" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="105.0" y="97.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">User's Tezos</text>
+  <text x="105.0" y="117.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">wallet</text>
+  <rect x="40" y="240" width="130" height="56" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="105.0" y="273.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Any user</text>
+  <rect x="40" y="400" width="130" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="105.0" y="427.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">User's EVM</text>
+  <text x="105.0" y="447.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">wallet</text>
+  <rect x="230" y="20" width="430" height="230" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="248" y="46" fill="#9DB8FF" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>TEZOS LAYER 1</text>
+  <rect x="260" y="60" width="150" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="335.0" y="87.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Ticketer</text>
+  <text x="335.0" y="107.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">contract</text>
+  <rect x="260" y="170" width="170" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="345.0" y="197.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="13">Token bridge</text>
+  <text x="345.0" y="217.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="13">helper contract</text>
+  <rect x="480" y="170" width="150" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="555.0" y="197.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Smart Rollup</text>
+  <text x="555.0" y="217.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">outbox</text>
+  <rect x="230" y="290" width="430" height="190" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="248" y="316" fill="#38FF9C" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>ETHERLINK</text>
+  <rect x="260" y="350" width="170" height="76" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="345.0" y="383.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">FA withdrawal</text>
+  <text x="345.0" y="403.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">precompile</text>
+  <rect x="470" y="356" width="160" height="64" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="550.0" y="383.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">ERC-20 proxy</text>
+  <text x="550.0" y="403.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">contract</text>
+  <path d="M170,424 L220,424 L220,396 L260,396" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
+  <text x="46" y="330" textAnchor="start" fill="#38FF9C" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send transaction:</text>
+  <text x="46" y="345" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- amount to bridge</text>
+  <text x="46" y="358" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- target layer 1</text>
+  <text x="46" y="371" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>  address</text>
+  <text x="46" y="384" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>- ticket &amp; contract</text>
+  <text x="46" y="397" fill="rgba(255,255,255,0.6)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>  info</text>
+  <path d="M430,384 L470,384" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
+  <path d="M550,356 L550,234" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="542" y="300" textAnchor="end" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send transaction</text>
+  <path d="M170,268 L555,268 L555,234" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="340" y="258" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>trigger outbox message</text>
+  <path d="M480,194 L430,194" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="455" y="216" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send ticket</text>
+  <path d="M335,170 L335,124" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="327" y="150" textAnchor="end" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send ticket</text>
+  <path d="M410,78 L428,78 L428,102 L414,102" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
+  <text x="436" y="88" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '10px var(--ifm-font-family-monospace)'}}>burn ticket,</text>
+  <text x="436" y="101" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '10px var(--ifm-font-family-monospace)'}}>unlock tokens</text>
+  <path d="M260,92 L170,92" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="215" y="82" textAnchor="middle" fill="#9DB8FF" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>send tokens</text>
+</svg>

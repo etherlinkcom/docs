@@ -102,25 +102,57 @@ In both bridging cases, the two sides are separate ledgers that must be reconcil
 
 The diagram below shows what happens inside a single block when an EVM contract calls a Michelson contract through the gateway precompile.
 
-```mermaid
-sequenceDiagram
-    actor U as EVM user
-    participant EVM as EVM runtime
-    participant GW as Gateway precompile
-    participant M as Michelson runtime
-    participant KT as KT1… contract
+<svg viewBox="0 0 680 430" role="img" aria-label="Sequence of a NAC call: an EVM user sends a transaction to the EVM runtime, which calls the gateway precompile; the gateway dispatches cross-runtime to the Michelson runtime, which executes the KT1 contract's entrypoint; the result propagates back as one atomic transaction" style={{width: '100%', maxWidth: '680px', display: 'block', margin: '1.5rem auto', fontFamily: 'inherit'}}>
+  <defs>
+    <marker id="dg-w" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+    <marker id="dg-g" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="#38FF9C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+    <marker id="dg-b" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="#9DB8FF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+  </defs>
 
-    U->>EVM: send transaction
-    EVM->>GW: callMichelson("KT1…", "entrypoint", data)
-    GW->>M: cross-runtime dispatch
-    M->>KT: execute entrypoint
-    KT-->>M: storage updated
-    M-->>GW: success / revert
-    GW-->>EVM: outcome
-    EVM-->>U: transaction receipt
-
-    Note over EVM,M: One atomic transaction — all or nothing
-```
+  <rect x="15.0" y="10" width="90" height="44" rx="10" fill="rgba(255,255,255,0.1)"/>
+  <text x="60" y="37" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="13">EVM user</text>
+  <rect x="139.0" y="10" width="122" height="44" rx="10" fill="rgba(255,255,255,0.1)"/>
+  <line x1="152.0" y1="11.25" x2="248.0" y2="11.25" stroke="#38FF9C" strokeWidth="2.5" strokeLinecap="round" opacity="0.85"/>
+  <text x="200" y="37" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="13">EVM runtime</text>
+  <rect x="271.0" y="10" width="148" height="44" rx="10" fill="rgba(255,255,255,0.1)"/>
+  <line x1="284.0" y1="11.25" x2="406.0" y2="11.25" stroke="#38FF9C" strokeWidth="2.5" strokeLinecap="round" opacity="0.85"/>
+  <text x="345" y="37" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="12">Gateway precompile</text>
+  <rect x="424.0" y="10" width="132" height="44" rx="10" fill="rgba(255,255,255,0.1)"/>
+  <line x1="437.0" y1="11.25" x2="543.0" y2="11.25" stroke="#9DB8FF" strokeWidth="2.5" strokeLinecap="round" opacity="0.85"/>
+  <text x="490" y="37" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="12.5">Michelson runtime</text>
+  <rect x="573.0" y="10" width="104" height="44" rx="10" fill="rgba(255,255,255,0.1)"/>
+  <line x1="586.0" y1="11.25" x2="664.0" y2="11.25" stroke="#9DB8FF" strokeWidth="2.5" strokeLinecap="round" opacity="0.85"/>
+  <text x="625" y="37" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="12.5">KT1&#8230; contract</text>
+  <line x1="60" y1="54" x2="60" y2="368" stroke="rgba(255,255,255,0.15)" strokeDasharray="4 5"/>
+  <line x1="200" y1="54" x2="200" y2="368" stroke="rgba(255,255,255,0.15)" strokeDasharray="4 5"/>
+  <line x1="345" y1="54" x2="345" y2="368" stroke="rgba(255,255,255,0.15)" strokeDasharray="4 5"/>
+  <line x1="490" y1="54" x2="490" y2="368" stroke="rgba(255,255,255,0.15)" strokeDasharray="4 5"/>
+  <line x1="625" y1="54" x2="625" y2="368" stroke="rgba(255,255,255,0.15)" strokeDasharray="4 5"/>
+  <path d="M63,92 L197,92" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
+  <text x="130.0" y="84" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send transaction</text>
+  <path d="M203,128 L342,128" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
+  <text x="272.5" y="120" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11px var(--ifm-font-family-monospace)'}}>callMichelson("KT1&#8230;", "entrypoint", data)</text>
+  <path d="M348,164 L487,164" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
+  <text x="417.5" y="156" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>cross-runtime dispatch</text>
+  <path d="M493,200 L622,200" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
+  <text x="557.5" y="192" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>execute entrypoint</text>
+  <path d="M622,236 L493,236" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.6" strokeDasharray="5 4" markerEnd="url(#dg-w)"/>
+  <text x="557.5" y="228" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>storage updated</text>
+  <path d="M487,272 L348,272" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.6" strokeDasharray="5 4" markerEnd="url(#dg-w)"/>
+  <text x="417.5" y="264" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>success / revert</text>
+  <path d="M342,308 L203,308" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.6" strokeDasharray="5 4" markerEnd="url(#dg-w)"/>
+  <text x="272.5" y="300" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>outcome</text>
+  <path d="M197,344 L63,344" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.6" strokeDasharray="5 4" markerEnd="url(#dg-w)"/>
+  <text x="130.0" y="336" textAnchor="middle" fill="rgba(255,255,255,0.75)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>transaction receipt</text>
+  <rect x="60" y="382" width="565" height="30" rx="15" fill="rgba(255,255,255,0.92)"/>
+  <text x="342" y="401.5" textAnchor="middle" fill="#121212" style={{font: '600 12px var(--ifm-font-family-monospace)'}}>One atomic transaction &#8212; all or nothing</text>
+</svg>
 
 Because the two runtimes share the same ledger, there are no wrapped tokens to mint or burn, no bridge relayer to trust, and no risk of one side completing while the other fails.
 
