@@ -63,13 +63,12 @@ These components are instances of binaries in the [Octez software suite](https:/
   <path d="M355,168 L355,240" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
   <text x="367" y="208" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>verify L1 finality</text>
   <path d="M560,146 L560,240" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
-  <text x="572" y="200" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>publish</text>
-  <text x="572" y="215" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>blocks</text>
-  <path d="M355,324 L355,410 L410,410 L410,438" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <text x="572" y="208" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>send blocks</text>
+  <path d="M410,438 L410,410 L355,410 L355,324" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
   <text x="343" y="380" textAnchor="end" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>track</text>
   <path d="M560,324 L560,410 L490,410 L490,438" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <text x="572" y="375" textAnchor="start" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>publish blocks &amp;</text>
-  <text x="572" y="390" textAnchor="start" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>commitments</text>
+  <text x="572" y="375" textAnchor="start" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>publish blocks</text>
+  <text x="572" y="390" textAnchor="start" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>and commitments</text>
 </svg>
 
 ## Sequencer
@@ -208,10 +207,10 @@ This diagram summarizes the transaction process:
   <text x="320" y="562" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>- metadata, hash of the previous block</text>
   <text x="320" y="578" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>- layer 1 transactions and operations</text>
   <text x="320" y="594" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>- Smart Rollup inbox messages</text>
-  <text x="320" y="610" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>  (including Etherlink blocks)</text>
+  <text x="320" y="610" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>    (including Etherlink blocks)</text>
   <text x="320" y="626" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>- hashes of Smart Rollup states</text>
-  <text x="320" y="642" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>  (including Etherlink), posted as</text>
-  <text x="320" y="658" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>  commitments</text>
+  <text x="320" y="642" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>    (including Etherlink), posted as</text>
+  <text x="320" y="658" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>    commitments</text>
   <path d="M190,92 L260,92" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
   <path d="M190,176 L225,176 L225,118 L260,118" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
   <text x="196" y="80" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>send transactions</text>
@@ -224,7 +223,7 @@ This diagram summarizes the transaction process:
   <text x="352" y="230" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '12px var(--ifm-font-family-monospace)'}}>published on layer 1</text>
   <path d="M550,175 L550,280" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
   <text x="562" y="230" textAnchor="start" fill="#38FF9C" style={{font: '12px var(--ifm-font-family-monospace)'}}>send blocks</text>
-  <path d="M325,372 L325,520" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <path d="M325,520 L325,372" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
   <text x="313" y="440" textAnchor="end" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>track layer 1 and</text>
   <text x="313" y="455" textAnchor="end" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>receive Etherlink blocks</text>
   <path d="M550,364 L550,430 L376,430 L376,505" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
