@@ -4,7 +4,7 @@ dependencies:
   ethers: 6.13.5
 ---
 
-import PublicRpcRateLimitNote from '@site/docs/conrefs/rate-limit.md';
+import PublicRpcRateLimitNote from '@site/docs/conrefs/_rate-limit.md';
 
 The EVM interface supports standard EVM endpoints that allow you to get information about the Etherlink<!--TX--> network and its accounts, including user accounts and smart contract accounts.
 

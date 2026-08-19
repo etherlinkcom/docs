@@ -4,7 +4,7 @@ dependencies:
   ethers: 6.13.5
 ---
 
-import PublicRpcRateLimitNote from '@site/docs/conrefs/rate-limit.md';
+import PublicRpcRateLimitNote from '@site/docs/conrefs/_rate-limit.md';
 
 As an EVM-compatible chain, Etherlink EVM<!--TEVM--> runs Solidity contracts.
 You can deploy Solidity smart contracts in any way that you would deploy them to an EVM-compatible chain.

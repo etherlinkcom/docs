@@ -247,7 +247,7 @@ The response to the `tez_newIncludedTransactions` event (a transaction object) i
   "params": {
     "result": {
       "type": "0x2",
-      "chainId": "0x1f308",
+      "chainId": "0x1f34f",
       "hash": "0xfbb0025e811b8bf37034e508da4740c68164c33947089b1c22119be55258a3e1",
       "nonce": "0x7",
       "blockHash": null,

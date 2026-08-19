@@ -6,9 +6,9 @@ dependencies:
   viem: 0
 ---
 
-import PublicRpcRateLimitNote from '@site/docs/conrefs/rate-limit.md';
+import PublicRpcRateLimitNote from '@site/docs/conrefs/_rate-limit.md';
 
-import GasPriceWarning from '@site/docs/conrefs/gas-price-warning.md';
+import GasPriceWarning from '@site/docs/conrefs/_gas-price-warning.md';
 
 Etherlink EVM<!--TEVM--> supports the standard Ethereum `eth_call` and `eth_sendRawTransaction` RPC endpoints for calling smart contracts and sending transactions.
 

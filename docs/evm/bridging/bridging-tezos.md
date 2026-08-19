@@ -3,7 +3,7 @@ title: Bridging XTZ between Tezos layer 1 and Etherlink EVM # tevm
 sidebar_label: Bridging to Tezos
 ---
 
-import CementingDelayNote from '@site/docs/conrefs/cementing-delay.md';
+import CementingDelayNote from '@site/docs/conrefs/_cementing-delay.md';
 
 You can bridge XTZ tokens from Tezos layer 1 to Etherlink EVM<!--TEVM--> and back.
 XTZ is the native token on Etherlink EVM<!--TEVM--> and Tezos, which is called tez and shown on price tickers with the symbol [XTZ](https://coinmarketcap.com/currencies/tezos/).

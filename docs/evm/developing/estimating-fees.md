@@ -2,7 +2,7 @@
 title: Estimating fees
 ---
 
-import GasPriceWarning from '@site/docs/conrefs/gas-price-warning.md';
+import GasPriceWarning from '@site/docs/conrefs/_gas-price-warning.md';
 
 The Etherlink EVM<!--TEVM--> gas price (and therefore the fee for a given transaction) varies based on the activity on the chain.
 As activity increases, fees increase, and vice versa.

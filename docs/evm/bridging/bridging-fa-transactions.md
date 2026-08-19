@@ -78,7 +78,7 @@ Because the Etherlink EVM<!--TEVM--> tokens are compatible with the ERC-20 stand
 ## Withdrawing FA tokens from Etherlink EVM<!--TEVM--> to layer 1
 
 It takes two transactions to withdraw an FA token back to layer 1: one to initiate the withdrawal and another to run the outbox transaction on Tezos layer 1.
-As described in [Bridging FA tokens](/evm/bridging/bridging-fa), you must wait two weeks to run the outbox transaction due to the Smart Rollup refutation period.
+As described in [Bridging FA tokens](/evm/bridging/bridging-fa), you must wait for the two-week Smart Rollup refutation period before running the outbox transaction (withdrawals complete in about 15 days end to end).
 
 Normally, an automated system run by Optimistic Labs runs these outbox transactions as soon as the refutation period is over, which sends the withdrawn tez to the layer 1 account.
 However, pending outbox transactions expire after a period equal to the refutation period.

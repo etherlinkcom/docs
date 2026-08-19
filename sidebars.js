@@ -143,7 +143,6 @@ const sidebars = {
             'michelson/developing/accounts',
             'michelson/developing/tokens',
             'michelson/developing/smart-contracts',
-            'michelson/tools/dapps',
             'michelson/developing/rpc-reference',
           ],
         },
@@ -151,6 +150,7 @@ const sidebars = {
           type: 'category',
           label: 'Tools',
           items: [
+            'michelson/tools/dapps',
             'michelson/tools/tezos-unity-sdk',
           ],
         },
