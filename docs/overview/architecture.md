@@ -7,7 +7,7 @@ title: Architecture
 ## Seamless integration
 
 To enable the seamless integration of the two ecosystems (EVM and Michelson) in a single blockchain, Etherlink<!--TX--> provides **Native Atomic Composability** (sometimes shortened as NAC): smart contracts in one interface can call contracts in the other within a single atomic transaction.
-Thanks to the atomic composition combined with the use of the same native token, Etherlink<!--TX--> can be seen as **unified execution layer**, constituting a single economical space.
+Thanks to the atomic composition combined with the use of the same native token, Etherlink<!--TX--> can be seen as **a unified execution layer**, constituting a single economic space.
 
 Each interface is implemented by a dedicated runtime exposing a standard RPC endpoint.
 
@@ -24,22 +24,21 @@ When an EVM contract calls a Michelson contract on Etherlink<!--TX-->, both exec
 
 ```mermaid
 graph TB
-	subgraph tools["Developer Tools :"]
-       eth["Ethereum tools :<br/>(MetaMask,<br/>Hardhat,<br/>Foundry...)<br/><br/>"]
-       tez["Tezos tools :<br/>(Temple,<br/>Taquito,<br/>tzkt...)<br/><br/>"]
-	end
-    subgraph chain["Etherlink chain :"]
-       evm["EVM runtime :<br/>Ethereum<br/>JSON-RPC<br/><br/>"]
-       mic["Michelson runtime :<br/>Tezos<br/>JSON-RPC<br/><br/>"]
-       evm <-->|"cross-runtime , <br/>atomic calls<br/><br/>"| mic
+    subgraph tools["Developer tools"]
+       eth["Ethereum tools<br/>(MetaMask,<br/>Hardhat,<br/>Foundry...)"]
+       tez["Tezos tools<br/>(Temple,<br/>Taquito,<br/>TzKT...)"]
+    end
+    subgraph chain["Etherlink chain"]
+       evm["EVM runtime<br/>Ethereum JSON-RPC"]
+       mic["Michelson runtime<br/>Tezos RPC"]
+       evm <-->|"cross-runtime<br/>atomic calls"| mic
     end
 
-    l1["Tezos Layer1 :<br/>(Smart<br/>Rollup)<br/><br/>"]
+    l1["Tezos Layer 1"]
 
     eth --> evm
     tez --> mic
-    evm --> l1
-    mic --> l1
+    chain -->|"anchored as a Smart Rollup"| l1
 ```
 
 This is fundamentally different from **L1↔L2 bridging** (moving assets between Tezos L1 and Etherlink<!--TX-->) or **cross-chain bridging** (connecting two independent chains through a third-party relayer).
@@ -50,8 +49,8 @@ In both bridging cases, the two sides are separate ledgers that must be reconcil
 | Chains / layers involved | 2 | 3+ | 1 |
 | Number of transactions | 2+ | 4+ | 1 |
 | Atomic (all-or-nothing) | No | No | Yes — reverts entirely |
-| Latency | Minutes to hours | Minutes to hours | Same block (~500 ms) |
-| Asset representation | Wrapped tokens | Doubly-wrapped tokens | Native tokens |
+| Latency | Minutes (deposits) to days (withdrawals) | Minutes to hours | Same block (~500 ms) |
+| Asset representation | Native tez; wrapped FA tokens | Doubly-wrapped tokens | Native tokens |
 | Trust assumption | Bridge operator | Multiple bridge operators | None — same kernel |
 
 ### NAC call sequence
@@ -75,7 +74,7 @@ sequenceDiagram
     GW-->>EVM: outcome
     EVM-->>U: transaction receipt
 
-    Note over EVM,M: One atomic block — all or nothing
+    Note over EVM,M: One atomic transaction — all or nothing
 ```
 
 Because the two runtimes share the same ledger, there are no wrapped tokens to mint or burn, no bridge relayer to trust, and no risk of one side completing while the other fails.
