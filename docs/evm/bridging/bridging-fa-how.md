@@ -182,7 +182,7 @@ The process of bridging FA-compatible tokens from Etherlink EVM<!--TEVM--> to la
    - The address of the ticketer contract on layer 1
    - The content of the ticket to remove from the proxy contract (not the ticket itself)
 
-1. The precompiled contract generates calls the withdrawal endpoint of the ERC-20 proxy contract.
+1. The precompiled contract calls the withdrawal endpoint of the ERC-20 proxy contract.
 
 1. The proxy contract sends the information about the withdrawal to the helper contract by putting it in a transaction in the Smart Rollup outbox.
 This transaction includes the target layer 1 address.
@@ -197,7 +197,7 @@ This transaction includes the target layer 1 address.
 
 This diagram is an overview of the process of bridging tokens from Etherlink EVM<!--TEVM--> to layer 1:
 
-<svg viewBox="0 0 680 500" role="img" aria-label="Withdrawing FA tokens from Etherlink to Tezos layer 1, in seven steps: the user's EVM wallet calls the FA bridging precompile, which burns the tokens via the ERC-20 proxy contract and queues an outbox message; after the commitment is cemented (about two weeks), any user triggers the outbox message, and the outbox sends the ticket to the token bridge helper contract, which forwards it to the ticketer contract; the ticketer burns the ticket and sends the tokens directly to the user's layer 1 address" style={{width: '100%', maxWidth: '680px', display: 'block', margin: '1.5rem auto', fontFamily: 'inherit'}}>
+<svg viewBox="0 0 680 500" role="img" aria-label="Withdrawing FA tokens from Etherlink to Tezos layer 1, in seven steps: the user's EVM wallet calls the FA bridging precompile, which burns the tokens via the ERC-20 proxy contract; the proxy queues an outbox message; after the commitment is cemented (about two weeks), any user triggers the outbox message, and the outbox sends the ticket to the token bridge helper contract, which forwards it to the ticketer contract; the ticketer burns the ticket and sends the tokens directly to the user's layer 1 address" style={{width: '100%', maxWidth: '680px', display: 'block', margin: '1.5rem auto', fontFamily: 'inherit'}}>
   <defs>
     <marker id="dg-w" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>

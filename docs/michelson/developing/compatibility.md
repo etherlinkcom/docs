@@ -8,7 +8,7 @@ The Michelson Interface is designed to behave as closely as possible to Tezos La
 
 ## Compatible features
 
-Most of the features, including the following ones work identically to Tezos Layer 1. Therefore, users may safely refer to the corresponding page in the [Tezos documentation](https://docs.tezos.com/) for all these aspects.
+Most features work identically to Tezos Layer 1. Therefore, users may safely refer to the corresponding page in the [Tezos documentation](https://docs.tezos.com/) for all these aspects.
 
 ## Known differences
 
@@ -38,7 +38,7 @@ When a transaction is initiated via a cross-interface call (i.e., from the EVM i
 
 Michelson aliases (KT1 contracts created for EVM accounts) automatically forward any tez they receive to the originating EVM account via the gateway. You cannot send tez directly to an alias address and retain it there.
 
-One consequence of this is that `SENDER == SELF_ADDRESS` is not a safe test in Etherlink<!--TX-->, see [Self-address test](../self-address).
+One consequence of this is that `SENDER == SELF_ADDRESS` is not a safe test in Etherlink<!--TX-->, see [Aliases and caller-equals-self](../self-address).
 
 ### Blocks
 
