@@ -173,6 +173,12 @@ For more information, see [Announcing Etherlink 6.6: a security hardening kernel
 
 ## Etherlink 7.0 (Ganesha)
 
+:::note
+
+Etherlink 7.0 requires version 0.64 or later of the `octez-evm-node` binary.
+
+:::
+
 The Etherlink 7.0 upgrade went live on 20 August 2026 through the fast kernel governance process and brought the largest expansion of Etherlink's scope since launch.
 In particular, it added the new Michelson interface, which runs Michelson smart contracts and brings the Tezos account model to Etherlink, and Native Atomic Composability (NAC) for seamlessly combining EVM and Michelson contracts.
 

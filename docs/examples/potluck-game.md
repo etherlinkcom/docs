@@ -40,7 +40,7 @@ The four components live in separate subdirectories of the repository:
 | Directory | Language | Role |
 |---|---|---|
 | `contracts/evm/` | Solidity | xUSDC token, xEscrow escrow contract |
-| `contracts/tezlink/` | LIGO | Game contract (pot, players, address mapping) |
+| `contracts/tezlink/` | LIGO | Michelson-interface game contract (pot, players, address mapping) |
 | `xbutton-relayer/` | TypeScript | Off-chain service: watches escrow events, calls NAC gateway |
 | `xbutton-frontend/` | React + Vite | UI: wallet connect, deposit button, live game state |
 

@@ -5,7 +5,7 @@ title: RPC reference
 # RPC reference
 
 EVM nodes<!--TXN--> provide the same RPCs as Tezos L1 nodes on their Michelson endpoint.
-The Michelson endpoint is served at the `/tezlink` sub-path of the node's base RPC URL.
+The Michelson endpoint is served at the `/tezlink` sub-path of the node's base RPC URL (a legacy path name that may be renamed to `/michelson` in a future version).
 For example, a node running on the default port exposes the Michelson interface at `http://localhost:8545/tezlink`.
 For public endpoint URLs, see [Michelson network information](/michelson/network-information).
 
@@ -46,4 +46,4 @@ The following L1 RPCs exhibit different behavior in Etherlink<!--TX-->, either t
 | `GET /version` | Returns a stub value with an empty commit hash and date. |
 | `GET /context/issuance/expected_issuance` | Returns dummy zero rewards; Etherlink has no token issuance. |
 | `POST /helpers/scripts/pack_data` | Uses a throwaway dummy context instead of the live chain state; results may differ for gas-sensitive encodings. |
-| `GET /context/constants` | Several constants differ from mainnet: `minimal_block_delay` = 1 s; `hard_gas_limit_per_operation` = 660,000 gas (≈ 30 M EVM gas ÷ 22); `cost_per_byte` = 1 mutez. |
+| `GET /context/constants` | Several constants differ from mainnet: `minimal_block_delay` = 1 s (the protocol encoding cannot express sub-second periods; actual block cadence follows Etherlink<!--TX--> blocks, down to 500 ms under load); `hard_gas_limit_per_operation` = 660,000 gas (the 30M EVM per-transaction gas cap converted at 22 milligas per EVM gas unit); `cost_per_byte` = 1 mutez. |

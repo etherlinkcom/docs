@@ -16,7 +16,7 @@ Any Tezos-compatible wallet that supports custom RPC endpoints can be used with 
 ## Connecting to Etherlink<!--TX-->
 
 1. Open your wallet's network settings.
-2. Add a custom network using the Etherlink<!--TX--> Michelson RPC endpoint from the [previewnet repository](https://github.com/trilitech/tezos-x-previewnet).
+2. Add a custom network using a Michelson RPC endpoint from [Michelson network information](/michelson/network-information) (or the [Previewnet](/testing/previewnet) endpoint for testing).
 3. Switch to the custom network.
 
 Your tz address and balance will be shown as usual. Transactions are signed and submitted the same way as on Tezos Layer 1.
