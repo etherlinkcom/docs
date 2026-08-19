@@ -22,24 +22,61 @@ The goal for each interface is to stay as compatible as possible with the origin
 
 When an EVM contract calls a Michelson contract on Etherlink<!--TX-->, both execution steps happen inside the same rollup kernel, within a single block:
 
-```mermaid
-graph TB
-    subgraph tools["Developer tools"]
-       eth["Ethereum tools<br/>(MetaMask,<br/>Hardhat,<br/>Foundry...)"]
-       tez["Tezos tools<br/>(Temple,<br/>Taquito,<br/>TzKT...)"]
-    end
-    subgraph chain["Etherlink chain"]
-       evm["EVM runtime<br/>Ethereum JSON-RPC"]
-       mic["Michelson runtime<br/>Tezos RPC"]
-       evm <-->|"cross-runtime<br/>atomic calls"| mic
-    end
+<svg viewBox="0 0 760 492" role="img" aria-label="Etherlink architecture: Ethereum and Tezos developer tools connect to the EVM and Michelson interfaces, each implemented by a runtime of the Etherlink chain; the runtimes are linked by cross-runtime atomic calls (NAC), and the chain is anchored on Tezos Layer 1 as a Smart Rollup" style={{width: '100%', maxWidth: '760px', display: 'block', margin: '1.5rem auto', fontFamily: 'inherit'}}>
+  <defs>
+    <marker id="arch-arrow" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+    </marker>
+  </defs>
 
-    l1["Tezos Layer 1"]
+  {/* Developer tools */}
+  <rect x="40" y="10" width="310" height="76" rx="12" fill="rgba(255,255,255,0.05)"/>
+  <text x="195" y="42" textAnchor="middle" fill="rgba(255,255,255,0.5)" style={{font: '600 11px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>ETHEREUM TOOLS</text>
+  <text x="195" y="66" textAnchor="middle" fill="rgba(255,255,255,0.85)" fontSize="14">MetaMask &#183; Hardhat &#183; Foundry &#8230;</text>
 
-    eth --> evm
-    tez --> mic
-    chain -->|"anchored as a Smart Rollup"| l1
-```
+  <rect x="410" y="10" width="310" height="76" rx="12" fill="rgba(255,255,255,0.05)"/>
+  <text x="565" y="42" textAnchor="middle" fill="rgba(255,255,255,0.5)" style={{font: '600 11px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>TEZOS TOOLS</text>
+  <text x="565" y="66" textAnchor="middle" fill="rgba(255,255,255,0.85)" fontSize="14">Temple &#183; Taquito &#183; TzKT &#8230;</text>
+
+  {/* Tools to interfaces connectors */}
+  <line x1="195" y1="86" x2="195" y2="196" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" markerEnd="url(#arch-arrow)"/>
+  <text x="207" y="140" fill="rgba(255,255,255,0.5)" style={{font: '11px var(--ifm-font-family-monospace)'}}>Ethereum JSON-RPC</text>
+  <line x1="565" y1="86" x2="565" y2="196" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" markerEnd="url(#arch-arrow)"/>
+  <text x="577" y="140" fill="rgba(255,255,255,0.5)" style={{font: '11px var(--ifm-font-family-monospace)'}}>Tezos RPC</text>
+
+  {/* Etherlink chain */}
+  <rect x="40" y="152" width="680" height="180" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+  <text x="64" y="182" fill="rgba(255,255,255,0.5)" style={{font: '600 11px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>ETHERLINK</text>
+
+  {/* Interfaces (the access surface) backed by runtimes (the executors) */}
+  <rect x="64" y="200" width="262" height="30" rx="8" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.16)"/>
+  <text x="195" y="219" textAnchor="middle" fill="rgba(255,255,255,0.65)" style={{font: '600 10.5px var(--ifm-font-family-monospace)', letterSpacing: '0.1em'}}>EVM INTERFACE</text>
+  <rect x="64" y="238" width="262" height="74" rx="12" fill="rgba(255,255,255,0.07)"/>
+  <text x="195" y="280" textAnchor="middle" fill="rgba(255,255,255,0.9)" fontSize="16">EVM runtime</text>
+
+  <rect x="434" y="200" width="262" height="30" rx="8" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.16)"/>
+  <text x="565" y="219" textAnchor="middle" fill="rgba(255,255,255,0.65)" style={{font: '600 10.5px var(--ifm-font-family-monospace)', letterSpacing: '0.1em'}}>MICHELSON INTERFACE</text>
+  <rect x="434" y="238" width="262" height="74" rx="12" fill="rgba(255,255,255,0.07)"/>
+  <text x="565" y="280" textAnchor="middle" fill="rgba(255,255,255,0.9)" fontSize="16">Michelson runtime</text>
+
+  {/* NAC connector between the runtimes */}
+  <path d="M338,275 L330,271 L330,279 Z" fill="#38FF9C"/>
+  <line x1="336" y1="275" x2="352" y2="275" stroke="#38FF9C" strokeWidth="1.5"/>
+  <rect x="352" y="263" width="56" height="24" rx="12" fill="rgba(56,255,156,0.14)"/>
+  <text x="380" y="279" textAnchor="middle" fill="#38FF9C" style={{font: '600 11px var(--ifm-font-family-monospace)', letterSpacing: '0.08em'}}>NAC</text>
+  <line x1="408" y1="275" x2="424" y2="275" stroke="#38FF9C" strokeWidth="1.5"/>
+  <path d="M422,275 L430,271 L430,279 Z" fill="#38FF9C"/>
+  <text x="380" y="305" textAnchor="middle" fill="rgba(255,255,255,0.5)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>cross-runtime</text>
+  <text x="380" y="320" textAnchor="middle" fill="rgba(255,255,255,0.5)" style={{font: '10.5px var(--ifm-font-family-monospace)'}}>atomic calls</text>
+
+  {/* Anchoring connector */}
+  <line x1="380" y1="332" x2="380" y2="392" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" markerEnd="url(#arch-arrow)"/>
+  <text x="392" y="368" fill="rgba(255,255,255,0.5)" style={{font: '11px var(--ifm-font-family-monospace)'}}>anchored as a Smart Rollup</text>
+
+  {/* Tezos Layer 1 */}
+  <rect x="40" y="398" width="680" height="64" rx="12" fill="rgba(255,255,255,0.05)"/>
+  <text x="380" y="436" textAnchor="middle" fill="rgba(255,255,255,0.9)" fontSize="16">Tezos Layer 1</text>
+</svg>
 
 This is fundamentally different from **L1↔L2 bridging** (moving assets between Tezos L1 and Etherlink<!--TX-->) or **cross-chain bridging** (connecting two independent chains through a third-party relayer).
 In both bridging cases, the two sides are separate ledgers that must be reconciled across transactions.
