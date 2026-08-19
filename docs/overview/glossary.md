@@ -32,7 +32,7 @@ These glossaries are planned to be fused in the near term.
 
 **Foreign interface** — From an account's perspective, any interface other than its native interface.
 
-**Function selector** — The first 4 bytes of the Keccak256 hash of an EVM function's canonical signature (e.g. `"transfer(address,uint256)"`). EVM contracts inspect the selector at the start of a call's calldata to dispatch to the right function. The `%call_evm` gateway computes the selector automatically from the `method_signature` string; `staticcall_evm` requires the caller to prepend it manually to `abi_params`.
+**Function selector** — The first 4 bytes of the Keccak256 hash of an EVM function's canonical signature (e.g. `"transfer(address,uint256)"`). EVM contracts inspect the selector at the start of a call's calldata to dispatch to the right function. The `%call_evm` gateway computes the selector automatically from the `method_signature` string (so `abi_params` must not include it); `staticcall_evm` requires the caller to prepend it manually to the `calldata` argument.
 
 **Gateway contract** — A special contract in each interface that acts as the single entry point for cross-interface calls. In the EVM interface, the gateway is a precompile; in the Michelson interface, it is an enshrined KT1 contract.
 

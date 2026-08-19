@@ -56,7 +56,7 @@ def main():
         destination = sp.string,  # destination
         method_signature = sp.string,  # method_signature
         abi_params = sp.bytes,         # abi_params (no selector)
-        callback = sp.option[sp.bytes] # callback
+        callback = sp.option[sp.contract[sp.bytes]] # callback
     )
 
     class Erc20Caller(sp.Contract):
@@ -126,9 +126,7 @@ To call a read-only EVM function and receive the result, use the `staticcall_evm
 This view performs a read-only crossing — no value transfer, no state mutation — and returns the ABI-encoded response as `bytes`. It is invoked with the Michelson `VIEW` instruction, which yields an `option bytes`:
 
 ```michelson
-VIEW "staticcall_evm"
-     (pair string bytes)  (* input type *)
-     bytes                (* return type *)
+VIEW "staticcall_evm" bytes
 ```
 
 Because `VIEW` returns `option`, the caller must handle the `None` case with `IF_NONE`. The kernel maps outcomes as follows:
@@ -143,9 +141,10 @@ Because `VIEW` returns `option`, the caller must handle the `None` case with `IF
 Unlike `%call_evm`, which accepts a method signature string and computes the 4-byte Keccak256 selector internally, `staticcall_evm` requires the caller to supply the complete calldata — selector and ABI-encoded arguments already concatenated.
 
 ```michelson
-PUSH string "0x…";           (* destination *)
+PUSH address "KT18oDJJKXMKhfE1bSuAPGp92pYcwVDiqsPw";  (* the gateway *)
 PUSH bytes 0x…;              (* selector ++ ABI-encoded args *)
-PAIR;
+PUSH string "0x…";           (* destination *)
+PAIR;                        (* pair string bytes *)
 VIEW "staticcall_evm" bytes;
 IF_NONE
   { FAIL }   (* revert or bad destination *)
@@ -161,7 +160,7 @@ IF_NONE
 The callback contract must expose an entrypoint of type `bytes`. The entrypoint name is encoded in the `contract bytes` handle itself — you choose it when you construct the handle with `sp.contract`:
 
 ```python
-callback = sp.some(
+callback = sp.Some(
     sp.contract(sp.bytes, sp.self_address, "receive_result")
         .unwrap_some(error="self-entrypoint not found")
 )
