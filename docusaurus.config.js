@@ -6,7 +6,7 @@ require('dotenv').config();
 const { themes } = require('prism-react-renderer');
 
 const BIEL_PROJECT = 'w30c27l8fg';
-const BIEL_WARNING = 'AI-generated answers may contain errors. Verify the information before use. For more information, see <a href="https://docs.etherlink.com/get-started/chatbot">Using the chatbot</a>.';
+const BIEL_WARNING = 'AI-generated answers may contain errors. Verify the information before use. For more information, see <a href="https://docs.etherlink.com/overview/chatbot">Using the chatbot</a>.';
 
 const POSTHOG_ASSETS = 'https://us-assets.i.posthog.com';
 const POSTHOG_API = 'https://us.i.posthog.com';
@@ -108,6 +108,33 @@ module.exports = async function createConfigAsync() {
         },
       ],
       require.resolve('./src/plugins/webpack-config-plugin'),
+      require.resolve('./src/plugins/llms-txt-plugin'),
+      [
+        '@docusaurus/plugin-client-redirects',
+        {
+          createRedirects(existingPath) {
+            const prefixMap = [
+              // first, individual files:
+              ['/overview/chatbot', '/get-started/chatbot'],
+              ['/testing/sandbox', '/building-on-etherlink/sandbox'],
+              ['/testing/testnet', '/building-on-etherlink/testnet'],
+              ['/testing/migrating-testnet', '/network/migrating-testnet'],
+              ['/evm/developing/fees', '/network/fees'],
+              // then, whole directories:
+              ['/evm/get-started/', '/get-started/'],
+              ['/evm/developing/', '/building-on-etherlink/'],
+              ['/evm/bridging/', '/bridging/'],
+              ['/evm/tools/', '/tools/'],
+            ];
+            for (const [newPrefix, oldPrefix] of prefixMap) {
+              if (existingPath.startsWith(newPrefix)) {
+                return [existingPath.replace(newPrefix, oldPrefix)];
+              }
+            }
+            return undefined;
+          },
+        },
+      ],
       [
         'docusaurus-biel',{
           project: BIEL_PROJECT,
@@ -131,6 +158,22 @@ module.exports = async function createConfigAsync() {
           defaultMode: "dark",
           disableSwitch: true,
           respectPrefersColorScheme: false,
+        },
+        mermaid: {
+          options: {
+            // Match the site font (custom.css sets Roboto globally).
+            fontFamily: 'Roboto, sans-serif',
+            // Render flowchart labels as native SVG text: with the default
+            // HTML labels, mermaid sizes the node boxes from an off-screen
+            // measurement that comes out ~10% narrower than the final DOM
+            // layout, so labels get clipped ("Etherlink cha…").
+            // htmlLabels must be disabled both at the top level and per
+            // diagram type — mermaid 11 reads both.
+            htmlLabels: false,
+            flowchart: {
+              htmlLabels: false,
+            },
+          },
         },
         // Replace with your project's social card
         image: 'img/site/etherlink-social-card.png',

@@ -5,7 +5,7 @@ title: "Part 3: Setting up the frontend"
 The frontend application uses the Thirdweb client SDK to interact with the smart contract.
 dApp users can connect their wallets, place bets, and claim winnings.
 
-To use the client SDK, you’ll need a ThirdWeb client ID, which allows you to send transactions to Etherlink with the ThirdWeb SDK.
+To use the client SDK, you’ll need a ThirdWeb client ID, which allows you to send transactions to Etherlink EVM<!--TEVM--> with the ThirdWeb SDK.
 
 The starter frontend project is in the repository https://github.com/onedebos/prediction-markets-on-etherlink-demo.
 
@@ -901,4 +901,4 @@ Users must connect and click the Claim Winnings button to call the `claimWinning
 
 ## Conclusion
 
-Now you now everything you need to deploy simple smart contracts to Etherlink and use them as the backend for web-based applications.
+Now you now everything you need to deploy simple smart contracts to Etherlink EVM<!--TEVM--> and use them as the backend for web-based applications.

@@ -1,4 +1,4 @@
-import React, {type ComponentProps, useEffect, useMemo} from 'react';
+import React, {type ComponentProps, useEffect, useMemo, useState} from 'react';
 import clsx from 'clsx';
 import {
   ThemeClassNames,
@@ -18,8 +18,6 @@ import {translate} from '@docusaurus/Translate';
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import DocSidebarItems from '@theme/DocSidebarItems';
 import type {Props} from '@theme/DocSidebarItem/Category';
-
-import { sidebarOffset } from '../../constants';
 
 import styles from './styles.module.css'
 
@@ -106,7 +104,17 @@ function CollapseButton({
   );
 }
 
-const ITEMICONS = ['/img/site/FiHome.svg', '/img/site/FiBookOpen.svg', '/img/site/BiSortAlt2.svg', '/img/site/FiBox.svg', '/img/site/FiWifi.svg', '/img/site/FiSettings.svg', '/img/site/FiUsers.svg', '/img/site/FiTrendingUp.svg', '/img/site/FiBookOpen.svg']
+const ICON_BY_LABEL: Record<string, string> = {
+  'Overview':            '/img/site/FiHome.svg',
+  'EVM Interface':       '/img/site/EthDiamond.svg',
+  'Michelson Interface': '/img/site/TezGlyph.svg',
+  'Testing':             '/img/site/TestFlask.svg',
+  'Running the Network': '/img/site/FiWifi.svg',
+  'Governance':          '/img/site/FiUsers.svg',
+  'Tutorials':           '/img/site/FiBookOpen.svg',
+  'Track Progress':      '/img/site/FiTrendingUp.svg',
+  'Resources':           '/img/site/FiArrowUpRight.svg',
+};
 
 export default function DocSidebarItemCategory({
   item,
@@ -178,7 +186,7 @@ export default function DocSidebarItemCategory({
           'menu__list-item-collapsible--active': isCurrentPage,
         }, styles.categoryLink)}>
           {
-            level === 1 && <span className={styles.categoryIcon}><img src={ITEMICONS[index - (sidebarOffset + 1)]} alt='icon' /></span>
+            level === 1 && ICON_BY_LABEL[label] && <span className={styles.categoryIcon}><img src={ICON_BY_LABEL[label]} alt='icon' /></span>
           }
         <Link
           style={{padding: '6px 12px 6px 8px'}}

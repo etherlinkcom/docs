@@ -1,0 +1,46 @@
+---
+title: Developing on test networks
+---
+
+Etherlink{/* TX */} has an active test network named Etherlink{/* TX */} Shadownet Testnet, or Shadownet for short.
+It runs on the Tezos Shadownet test network.
+
+For technical details about Shadownet, see [EVM network information](/evm/get-started/network-information) and [Michelson network information](/michelson/network-information).
+
+There is also the Previewnet test network, see below.
+
+:::note
+
+The old testnet, Ghostnet Testnet, has been decommissioned, and is no longer usable.
+
+:::
+
+For more information about the Tezos test networks that Etherlink{/* TX */} test networks run on, see [Testing on testnets](https://docs.tezos.com/developing/testnets) on docs.tezos.com.
+
+## Using test networks
+
+In most cases, you can use a test network in place of Mainnet by using the RPC URL of an EVM node that is running on that test network.
+You can use the public RPC node for the network for a small number of transactions (because it has a rate limit), or you can run your own EVM node on the test network by following the instructions in [Running an EVM node{/* TXN */}](/network/evm-nodes).
+
+Then, use the RPC URL in transactions, as in this example, which uses the public RPC node for the Shadownet Testnet:
+
+```bash
+curl --request POST \
+     --url https://node.shadownet.etherlink.com\
+     --header 'accept: application/json' \
+     --header 'content-type: application/json' \
+     --data '
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_gasPrice"
+}
+'
+```
+
+Examples of using test networks are on other pages in this documentation.
+
+## Etherlink{/* TX */} Previewnet
+
+The [Previewnet test network](/testing/previewnet) is a long-running test network that runs the upgrade-7 feature set (the Michelson interface and Native Atomic Composability) ahead of the other Etherlink{/* TX */} networks.
+Previewnet is still available for some time.

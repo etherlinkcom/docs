@@ -2,7 +2,7 @@
 title: Kernel upgrades
 ---
 
-This page lists the major updates to the Etherlink kernel.
+This page lists the major updates to the Etherlink<!--TX--> kernel.
 
 ## Mainnet beta
 
@@ -18,7 +18,7 @@ For more information, see [The First Regular Upgrade for Etherlink: One Step Clo
 ## Etherlink 2 (Bifröst)
 
 The 2.0 upgrade to the Etherlink kernel went live on Etherlink Mainnet on 7 November 2024.
-It adds support for bridging [FA tokens from Tezos layer 1](https://docs.tezos.com/architecture/tokens#token-standards) to ERC-20 tokens on Etherlink and support for the callTracer tracer, which makes it possible for third-party tools like the Blockscout block explorer to index Etherlink transactions and for applications to trace transactions as described in [Tracing transactions](/building-on-etherlink/transactions#tracing-transactions).
+It adds support for bridging [FA tokens from Tezos layer 1](https://docs.tezos.com/architecture/tokens#token-standards) to ERC-20 tokens on Etherlink and support for the callTracer tracer, which makes it possible for third-party tools like the Blockscout block explorer to index Etherlink transactions and for applications to trace transactions as described in [Tracing transactions](/evm/developing/transactions#tracing-transactions).
 For more information, see [Announcing Bifröst: a 2nd upgrade proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-bifr%C3%B6st-a-2nd-upgrade-proposal-for-etherlink-mainnet-ef1a7cf9715f).
 
 ## Etherlink 3 (Calypso)
@@ -42,7 +42,7 @@ On 12 April 2025, the 3.1 security upgrade went live on Etherlink Mainnet, in Et
 This upgrade improves error handling of FA bridging transactions, which hardens the Etherlink sequencer against potential DDOS attacks.
 This upgrade includes only a security patch for the Calypso kernel and no other changes.
 
-This upgrade was carried out through Etherlink’s [security governance process](/governance/how-is-etherlink-governed#kernel-governance-fast).
+This upgrade was carried out through Etherlink's [security governance process](/governance/how-is-etherlink-governed#kernel-governance-fast).
 
 For more information, see [Calypso2: A security upgrade to harden the Etherlink sequencer and FA bridge](https://research-development.nomadic-labs.com/etherlink-calypso2-upgrade.html).
 
@@ -70,20 +70,20 @@ This upgrade includes:
 - The speed limit is increased from 2 million gas units per second to 4 million gas units per second, increasing the transaction throughput that Etherlink accepts before raising the gas price
 - Improvements to gas limit calculations that prevent over-estimation of gas prices from blocking transactions that would have completed successfully.
 
-For more information, see [It’s voting month for Etherlink: Two governance votes coming in July 2025](https://medium.com/@etherlink/its-voting-month-for-etherlink-two-governance-votes-coming-in-july-2025-301ae7bcd29f).
+For more information, see [It's voting month for Etherlink: Two governance votes coming in July 2025](https://medium.com/@etherlink/its-voting-month-for-etherlink-two-governance-votes-coming-in-july-2025-301ae7bcd29f).
 
 ## Etherlink 5.0 (Ebisu)
 
 The Etherlink 5.0 upgrade includes:
 
-- Support for EVM Prague, including support for EIP-7702, EIP-2537, and EIP-7623, including the [precompiled contracts](/get-started/network-information) in EIP-2537.
+- Support for EVM Prague, including support for EIP-7702, EIP-2537, and EIP-7623, including the [precompiled contracts](/evm/get-started/network-information) in EIP-2537.
 Note that EIP-7623 causes a breaking change in the way that transaction fees are calculated, especially for transactions posting larger amounts of data on-chain, which may result in slightly higher gas fees.
 
 - Changes to the events that are emitted for bridging operations of FA tokens.
 
 - The speed limit (also known as the target) is increased to 7 million gas units per second.
 The speed limit decides when the gas price raises.
-For more information, see [Execution fee](/network/fees#execution-fee).
+For more information, see [Execution fee](/evm/developing/fees#execution-fee).
 
 - The sequencer operator can now replace its signing key with a new one without needing to go through a governance vote.
 
@@ -105,18 +105,18 @@ The Etherlink 6.0 upgrade includes:
 Instant Confirmations enable these features:
 
   - Users can call the `eth_sendRawTransactionSync` endpoint that is available in the EVM node version 0.52 and later to submit a transaction and wait for an instant confirmation from the node when the transaction will be in the next block.
-  For more information, see [Getting Instant Confirmations](/building-on-etherlink/transactions#getting-instant-confirmations).
+  For more information, see [Getting Instant Confirmations](/evm/developing/transactions#getting-instant-confirmations).
 
   - Uses can subscribe to notifications via WebSockets to get information about transactions that the sequencer will put in the next block.
-  For more information, see [Subscribing to Instant Confirmations](/building-on-etherlink/websockets#subscribing-to-instant-confirmations).
+  For more information, see [Subscribing to Instant Confirmations](/evm/developing/websockets#subscribing-to-instant-confirmations).
 
 - The speed limit (also known as the target) is increased to 13.5 million gas units per second.
 The speed limit decides when the gas price raises.
-For more information, see [Execution fee](/network/fees#execution-fee).
+For more information, see [Execution fee](/evm/developing/fees#execution-fee).
 
 - A breaking change to the `QueuedDeposit` event that the FA bridge emits.
 This event is now emitted by the FA bridging precompiled contract (`0xff0...0002`) and the first topic of the event is changed to match its ABI signature.
-For more information about bridging events, see [How bridging FA tokens works](/bridging/bridging-fa-how).
+For more information about bridging events, see [How bridging FA tokens works](/evm/bridging/bridging-fa-how).
 
 For more information, see [Announcing Farfadet: A 6th Upgrade Proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-farfadet-a-6th-upgrade-proposal-for-etherlink-mainnet-6bc59793962d).
 
@@ -159,7 +159,7 @@ For more information, see [Announcing Etherlink 6.4: a security and liveness har
 
 ## Etherlink 6.5
 
-The Etherlink 6.5 upgrade went live on 27 June 2026 through the fast kernel governance process and addressed a critical vulnerability that has been reported through the Tezos Foundation’s security bug bounty platform.
+The Etherlink 6.5 upgrade went live on 27 June 2026 through the fast kernel governance process and addressed a critical vulnerability that has been reported through the Tezos Foundation's security bug bounty platform.
 This vulnerability could allow an attacker to claim several times a deposit made via the FA bridge, under certain circumstances.
 
 For more information, see [Announcing Etherlink 6.5: a security bugfix for Farfadet](https://forum.tezosagora.org/t/announcing-etherlink-6-5-a-security-bugfix-for-farfadet/7120).
@@ -170,6 +170,16 @@ The Etherlink 6.6 upgrade went live on 18 July 2026 through the fast kernel gove
 In particular, it contains three fixes hardening the sequencer upgrade (or change) and one fix of a liveness/DoS bug in the decoding of blueprints.
 
 For more information, see [Announcing Etherlink 6.6: a security hardening kernel upgrade proposal](https://forum.tezosagora.org/t/announcing-etherlink-6-6-a-security-hardening-kernel-upgrade-proposal/7137).
+
+## Etherlink 7.0 (Ganesha)
+
+The Etherlink 7.0 upgrade went live on 20 August 2026 through the fast kernel governance process and brought the largest expansion of Etherlink's scope since launch.
+In particular, it added the new Michelson interface, which runs Michelson smart contracts and brings the Tezos account model to Etherlink, and Native Atomic Composability (NAC) for seamlessly combining EVM and Michelson contracts.
+
+Etherlink 7.0 was initially proposed through the slow kernel governance process on 2 August 2026.
+After a security vulnerability was found in that kernel during continued testing, bakers were asked to reject the proposal — Etherlink Mainnet was never exposed to the vulnerability — and a patched kernel was resubmitted through the fast kernel governance process on 19 August 2026.
+
+For more information, see [Announcing Ganesha: A 7th Upgrade Proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-ganesha-a-7th-upgrade-proposal-for-etherlink-mainnet-ae0a3af93aba) and [Etherlink 7.0 (Ganesha): resubmission via Fast governance](https://forum.tezosagora.org/t/etherlink-7-0-ganesha-resubmission-via-fast-governance-on-wednesday-august-19th/7159).
 
 ## Changelog
 

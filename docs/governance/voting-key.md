@@ -1,20 +1,20 @@
 ---
-title: Setting up an Etherlink voting key
+title: Setting up an Etherlink voting key # tx
 dependencies:
   octez: 24.1
   ligo: 1.10.0
 ---
 
-For convenience, Tezos bakers can use a voting key to vote on Etherlink proposals instead of using their baking key directly.
-Using a voting key can be more convenient than using your baking key because you don't have to retrieve the baking key from your baking setup to be able to vote on Etherlink governance.
+For convenience, Tezos bakers can use a voting key to vote on Etherlink<!--TX--> proposals instead of using their baking key directly.
+Using a voting key can be more convenient than using your baking key because you don't have to retrieve the baking key from your baking setup to be able to vote on Etherlink<!--TX--> governance.
 
 You can set any Tezos layer 1 account as your voting key, so you can use an existing account or create an account to be the voting key.
-The voting key has no special built-in privileges in Etherlink; it is merely an account used to authenticate on the governance contracts.
-Bakers can change their Etherlink voting keys at any time, and changes take effect immediately.
+The voting key has no special built-in privileges in Etherlink<!--TX-->; it is merely an account used to authenticate on the governance contracts.
+Bakers can change their Etherlink<!--TX--> voting keys at any time, and changes take effect immediately.
 
 :::note
 
-Setting up an Etherlink voting key affects only Etherlink voting rights, not Tezos layer 1 protocol upgrade voting rights or layer 1 account delegation.
+Setting up an Etherlink<!--TX--> voting key affects only Etherlink<!--TX--> voting rights, not Tezos layer 1 protocol upgrade voting rights or layer 1 account delegation.
 
 :::
 

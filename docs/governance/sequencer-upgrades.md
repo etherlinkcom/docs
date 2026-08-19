@@ -4,7 +4,7 @@ dependencies:
   octez: 24.1
 ---
 
-Bakers can propose the account to operate Etherlink's sequencer, vote for or against proposed operators, and trigger the change to a new account.
+Bakers can propose the account to operate Etherlink<!--TX-->'s sequencer, vote for or against proposed operators, and trigger the change to a new account.
 
 ## Getting information about the current period
 
@@ -38,7 +38,7 @@ The command takes these parameters:
 - The address or Octez client alias of your baker account or voting key
 - The address of the sequencer governance contract (referred to on the block explorer as the sequencer committee governance contract)
 - The public key (not the public key hash or account address) of the account to propose, including the double quotes, represented in this example as `<PUBLIC_KEY>`
-- The Etherlink address of the account to propose, represented in this example as `<L2_ADDRESS>`
+- The Etherlink EVM<!--TEVM--> address of the account to propose, represented in this example as `<L2_ADDRESS>`
 
 For example:
 
@@ -98,4 +98,4 @@ The command takes these parameters:
 
 - The address or Octez client alias of your baker account or voting key
 - The address of the sequencer governance contract
-- The address of the Etherlink Smart Rollup; the parameter must include the double quotes
+- The address of the Etherlink<!--TX--> Smart Rollup; the parameter must include the double quotes

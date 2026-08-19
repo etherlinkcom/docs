@@ -1,18 +1,20 @@
 :::note
-<h3>Bridging time</h3>
-Tokens that you bridge from Tezos layer 1 to Etherlink are available for use on Etherlink immediately.
 
-By default, tokens that you bridge from Etherlink to Tezos layer 1 are available for use on Tezos in 15 days.
-You can bridge XTZ tokens within 1 minute for an additional fee with [fast withdrawals](/bridging/bridging-tezos#fast-withdrawals).
+### Bridging time
+
+Tokens that you bridge from Tezos layer 1 to Etherlink<!--TX--> are available for use on Etherlink<!--TX--> immediately.
+
+By default, tokens that you bridge from Etherlink<!--TX--> to Tezos layer 1 are available for use on Tezos in 15 days.
+You can bridge XTZ tokens within 1 minute for an additional fee with [fast withdrawals](/evm/bridging/bridging-tezos#fast-withdrawals).
 
 This delay is caused by the Smart Rollup refutation period.
-As with all Smart Rollups, Etherlink nodes post commitments about their state to Tezos layer 1, including incoming bridging transactions, on a regular schedule.
+As with all Smart Rollups, EVM nodes<!--TXN--> post commitments about their state to Tezos layer 1, including incoming bridging transactions, on a regular schedule.
 Other nodes have the length of the refutation period (14 days) to challenge those commitments.
 At the end of the refutation period, the correct commitment is cemented, or made final and unchangeable.
 
 After the commitment with the withdrawal transaction is cemented, any user can execute the transaction to make the bridged tokens available on Tezos layer 1.
 
-<h3>Delay variations</h3>
+### Delay variations
 
 This delay can vary if a Tezos layer 1 protocol upgrade changes the block times during a commitment's refutation period.
 
@@ -25,8 +27,12 @@ Therefore, commitments that are not cemented when the number of blocks changes m
 This variation affects only commitments that are not cemented when the layer 1 protocol upgrade happens.
 The delay is based on how much the block times changed and on how close a commitment is to being cemented when the number of blocks in the refutation period changes.
 
-The maximum change is the new block time divided by the old block time multiplied by the standard refutation period.
-For example, if the new block time is 8 seconds and the old block time is 10 seconds, the maximum addition to a commitment's refutation period is 10 / 8, or 1.25 times the standard 14-day period.
 Commitments that are close to being cemented when the block time changes have the largest change to their refutation periods, while commitments that are made close to when the block time changes have a very small change.
+
+Indeed, the worst case is when a commitment waited for all cycles with respect to the old number of cycles due, then has to wait for the extra number of cycles added by the upgrade.
+It can be shown that if the block time has decreased by x%, the commitment has to still wait for x% of the refutation period.
+Therefore, the maximum change is x% of the standard refutation period.
+
+For example, if the new block time is 8 seconds and the old block time is 10 seconds, the maximum addition to a commitment's refutation period is 20% of the standard 14-day period.
 
 :::

@@ -1,0 +1,173 @@
+---
+title: Tokens
+---
+
+import InlineCopy from '@site/src/components/InlineCopy';
+
+The native coin on Etherlink EVM{/* TEVM */} has the symbol XTZ, like the [tez tokens on Tezos layer 1](https://docs.tezos.com/architecture/tokens).
+You can get XTZ from many [exchanges](/evm/tools/exchanges) and [on-ramps](/evm/tools/onramps).
+
+Etherlink EVM{/* TEVM */} provides a wrapped version of XTZ named WXTZ that is an [ERC-20-compliant](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) token for ease of interacting with decentralized applications.
+For more information about WXTZ, see [WXTZ](#wxtz).
+
+## Token addresses
+
+These are some of the other tokens that are available on Etherlink EVM{/* TEVM */}.
+Click the address to go to the block explorer page for the token:
+
+<table class="customTableContainer">
+<thead>
+<tr>
+  <th>Token</th>
+  <th>Mainnet</th>
+  <th>Shadownet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Wrapped XTZ (WXTZ) (see <a href="#wxtz">WXTZ</a> below)</td>
+  <td><InlineCopy code="0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" href="https://explorer.etherlink.com/address/0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" abbreviate="5,4"></InlineCopy></td>
+  <td><InlineCopy code="0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" href="https://shadownet.explorer.etherlink.com/address/0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>Tether USD (USDT)</td>
+  <td><InlineCopy code="0x2C03058C8AFC06713be23e58D2febC8337dbfE6A" href="https://explorer.etherlink.com/address/0x2C03058C8AFC06713be23e58D2febC8337dbfE6A" abbreviate="5,4"></InlineCopy></td>
+  <td><InlineCopy code="0x9Fd893F3f56e8E96997621b762412cB56E3e6ea0" href="https://shadownet.explorer.etherlink.com/address/0x9Fd893F3f56e8E96997621b762412cB56E3e6ea0" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>USD Coin (USDC)</td>
+  <td><InlineCopy code="0x796Ea11Fa2dD751eD01b53C372fFDB4AAa8f00F9" href="https://explorer.etherlink.com/address/0x796Ea11Fa2dD751eD01b53C372fFDB4AAa8f00F9" abbreviate="5,4"></InlineCopy></td>
+  <td><InlineCopy code="0x064455f03b93bc1cDb8197F718aa055AE3115400" href="https://shadownet.explorer.etherlink.com/address/0x064455f03b93bc1cDb8197F718aa055AE3115400" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>Wrapped Ether (WETH)</td>
+  <td><InlineCopy code="0xfc24f770F94edBca6D6f885E12d4317320BcB401" href="https://explorer.etherlink.com/address/0xfc24f770F94edBca6D6f885E12d4317320BcB401" abbreviate="5,4"></InlineCopy></td>
+  <td><InlineCopy code="0x569Cd5884BD6D26675e99766AE6d4d112Eda65cF" href="https://shadownet.explorer.etherlink.com/address/0x569Cd5884BD6D26675e99766AE6d4d112Eda65cF" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>Wrapped BTC (WBTC)</td>
+  <td><InlineCopy code="0xbFc94CD2B1E55999Cfc7347a9313e88702B83d0F" href="https://explorer.etherlink.com/address/0xbFc94CD2B1E55999Cfc7347a9313e88702B83d0F" abbreviate="5,4"></InlineCopy></td>
+  <td><InlineCopy code="0x3A61bE91be7e3a3263c4CB3B991E9C508b2bead2" href="https://shadownet.explorer.etherlink.com/address/0x3A61bE91be7e3a3263c4CB3B991E9C508b2bead2" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>Wrapped BNB (WBNB)</td>
+  <td><InlineCopy code="0xaA40A1cc1561c584B675cbD12F1423A32E2a0d8C" href="https://explorer.etherlink.com/address/0xaA40A1cc1561c584B675cbD12F1423A32E2a0d8C" abbreviate="5,4"></InlineCopy></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Wrapped AVAX (WAVAX)</td>
+  <td><InlineCopy code="0xe820995cD39B6E09EAa7e4e16337184b4A61B644" href="https://explorer.etherlink.com/address/0xe820995cD39B6E09EAa7e4e16337184b4A61B644" abbreviate="5,4"></InlineCopy></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Uniswap (UNI)</td>
+  <td><InlineCopy code="0x258DE7184aF00052813AE7Cf1dc70c48A2Bb038F" href="https://explorer.etherlink.com/address/0x258DE7184aF00052813AE7Cf1dc70c48A2Bb038F" abbreviate="5,4"></InlineCopy></td>
+  <td></td>
+</tr>
+<tr>
+  <td>SHIBA INU (SHIB)</td>
+  <td><InlineCopy code="0xBBD1F50A212357067318a84179892684e1Ac5181" href="https://explorer.etherlink.com/address/0xBBD1F50A212357067318a84179892684e1Ac5181" abbreviate="5,4"></InlineCopy></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Midas Basis Trading Token (mBASIS)</td>
+  <td><InlineCopy code="0x2247B5A46BB79421a314aB0f0b67fFd11dd37Ee4" href="https://explorer.etherlink.com/address/0x2247B5A46BB79421a314aB0f0b67fFd11dd37Ee4" abbreviate="5,4"></InlineCopy></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Midas US Treasury Bill Token(mTBILL)</td>
+  <td><InlineCopy code="0xDD629E5241CbC5919847783e6C96B2De4754e438" href="https://explorer.etherlink.com/address/0xDD629E5241CbC5919847783e6C96B2De4754e438" abbreviate="5,4"></InlineCopy></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+## WXTZ
+
+WXTZ is a token created to replicate the functionality of Wrapped Ether (WETH), but specifically for the XTZ native token on Etherlink EVM{/* TEVM */}.
+The goal of WXTZ is to facilitate the use of XTZ in decentralized applications (dApps) and protocols that require ERC-20-like tokens.
+
+For more information and the code of the token, see the [etherlinkcom/token-deployments repository](https://github.com/etherlinkcom/token-deployments/tree/main).
+
+### Wrapping & Unwrapping
+
+The token follows the `WETH9` interface for compatibility:
+
+- **Wrapping XTZ**: The `deposit()` method accepts XTZ and returns WXTZ
+- **Unwrapping XTZ**: The `withdraw(wad)` method accepts WXTZ and returns XTZ
+
+:::note
+
+The original `WETH9` contract developed with Solidity compiler version `0.4.x` also supports the `fallback()` method, but WXTZ does not.
+Supporting this hook would cause function signatures that do not match the contract's to act as if they are supported and successfully executed.
+
+:::
+
+### Bridging with LayerZero OFT
+
+WXTZ implements the [Omnichain Fungible Token (OFT)](https://docs.layerzero.network/v2/developers/evm/oft/quickstart) standard from LayerZero.
+This standard allows WXTZ to be bridged in a secure and capital-efficient way across different chains through direct minting and burning of the supply.
+
+Here are the chains the token is deployed on:
+
+<table class="customTableContainer">
+<thead>
+<tr>
+  <th>Chain</th>
+  <th>Mainnet address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Etherlink EVM{/* TEVM */}</td>
+  <td><InlineCopy code="0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" href="https://explorer.etherlink.com/address/0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>Ethereum</td>
+  <td><InlineCopy href="https://etherscan.io/address/0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" code="0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>Base</td>
+  <td><InlineCopy href="https://basescan.org/address/0x91F9cc2649ac70a071602cadE9b0C1A5868af51D" code="0x91F9cc2649ac70a071602cadE9b0C1A5868af51D" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>BNB Chain</td>
+  <td><InlineCopy href="https://bscscan.com/address/0x91F9cc2649ac70a071602cadE9b0C1A5868af51D" code="0x91F9cc2649ac70a071602cadE9b0C1A5868af51D" abbreviate="5,4"></InlineCopy></td>
+</tr>
+<tr>
+  <td>Arbitrum One</td>
+  <td><InlineCopy href="https://arbiscan.io/address/0x7424f00845777A06E21F0bd8873f814A8A814B2D" code="0x7424f00845777A06E21F0bd8873f814A8A814B2D" abbreviate="5,4"></InlineCopy></td>
+</tr>
+</tbody>
+</table>
+
+### Gasless approval with ERC20Permit
+
+The token also implements the [ERC20Permit](https://docs.openzeppelin.com/contracts/5.x/api/token/erc20#ERC20Permit) standard from Openzeppelin.
+This standard allows users to approve token transfers via gasless signatures instead of on-chain transactions.
+
+This feature leverages the [EIP-2612](https://eips.ethereum.org/EIPS/eip-2612) standard to facilitate off-chain authorization for token transfers.
+
+### Audit & Security
+
+The WXTZ contract was audited by [Omniscia.io](https://omniscia.io/).
+The final report is here: https://omniscia.io/reports/etherlink-cross-chain-token-665c8ac479e20900180f383b
+
+WXTZ supports OFT to simplify cross-chain compatibility.
+However, if the OFT bridge gets compromised, all the XTZ in the contract on Etherlink EVM{/* TEVM */} could be stolen by a malicious attacker with these steps:
+
+1. Create and deploy a fake WXTZ contract on another EVM chain
+2. Mint a maximum amount of WXTZ on the other chain
+3. Connect to the contract on Etherlink EVM{/* TEVM */} using `setPeer()`
+4. Transfer the WXTZ to Etherlink EVM{/* TEVM */}
+5. Withdraw the XTZ locked in the WXTZ contract on Etherlink EVM{/* TEVM */}
+
+The Etherlink{/* TX */} team has taken measures to protect users native to Etherlink EVM{/* TEVM */} and bridged across EVM chains.
+
+These are the measures to protect Etherlink EVM{/* TEVM */} users:
+
+- We overrode the `_credit` method used by LayerZero to bridge tokens between chains. We added a condition checking that the receiving amount of WXTZ can't exceed the amount of XTZ stored in the contract. The result is that **only the WXTZ supply bridged** using the LayerZero protocol should be at risk, and not the local WXTZ on Etherlink EVM{/* TEVM */}. If an attacker succeeds in hacking the bridge, they will only be able to transfer the difference between the amount of XTZ stored in the contract and the local total supply of WXTZ on Etherlink EVM{/* TEVM */}. In this way, all Etherlink EVM{/* TEVM */} users who own their WXTZ locally will still have their WXTZ backed 1:1 by XTZ in the contract.
+
+- To protect bridged users, the Etherlink{/* TX */} team overrode the `setPeer()` method that connects and disconnects WXTZ contracts on different chains.
+By adding a 2 day timelock to the `setPeer()` method, there is a 2 day delay between initially creating a connection and the connection being executed.
+If a hacker takes ownership of the contracts and starts connecting or disconnecting, **bridged users will have 2 days to bridge back all their funds on Etherlink EVM{/* TEVM */} and withdraw their XTZ**.

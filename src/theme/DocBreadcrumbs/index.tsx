@@ -78,7 +78,7 @@ export default function DocBreadcrumbs(): JSX.Element | null {
     return null;
   }
 
-  const titleIndex = breadcrumbs?.length - 2 
+  const titleIndex = Math.max(0, (breadcrumbs?.length ?? 0) - 2);
 
   return (
     <nav
@@ -91,7 +91,7 @@ export default function DocBreadcrumbs(): JSX.Element | null {
         message: 'Breadcrumbs',
         description: 'The ARIA label for the breadcrumbs',
       })}>
-        <p className={styles.breadcrumbTitle}>{breadcrumbs[titleIndex].label}</p>
+        <p className={styles.breadcrumbTitle}>{breadcrumbs[titleIndex]?.label}</p>
     </nav>
   );
 }
