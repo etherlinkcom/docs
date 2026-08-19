@@ -5,9 +5,8 @@ title: Network information (Michelson)
 This page contains information for connecting to the public Etherlink<!--TX--> networks via the Michelson interface.
 For using the networks via the EVM interface, see [EVM network information](/evm/get-started/network-information).
 
-:::caution[In progress]
-This page is under construction, the concrete endpoints are being worked out.
-Come back soon!
+:::caution[Experimental]
+The public Michelson endpoints below are experimental and in the process of being rolled out; they may not be reachable yet.
 :::
 
 For current and historical status information for Etherlink<!--TX-->, see https://status.etherlink.com.
@@ -16,7 +15,7 @@ For current and historical status information for Etherlink<!--TX-->, see https:
 
 Instead of the public Michelson endpoints below serving [Michelson RPCs](/michelson/developing/rpc-reference) for Mainnet or Shadownet,
 you may also [run your own EVM node](/network/evm-nodes), to get rid of any possible rate limitation.
-In that case, the URL of your endpoint is `<your-evm-node-url>/michelson`.
+In that case, the URL of your endpoint is `<your-evm-node-url>/tezlink` (the path prefix is a legacy name and may be renamed to `/michelson` in a future version).
 
 :::
 
@@ -24,20 +23,20 @@ In that case, the URL of your endpoint is `<your-evm-node-url>/michelson`.
 
 | Network parameter | Value |
 |---|---|
-| Network identifier | TODO |
+| Network identifier | `NetXohUVN5QWR4f` |
 | Endpoint | michelson.etherlink.mainnet.octez.io |
-| Indexer | TODO |
-| Bridge | TODO (instead [bridge to EVM](/evm/bridging)) |
+| Indexer | Not yet available |
+| Bridge | Native tez only (see [Bridging](/michelson/bridging)); for FA tokens, [bridge to the EVM interface](/evm/bridging) and use them via [NAC](/michelson/nac-usage) |
 
 ## Etherlink<!--TX--> Shadownet Testnet
 
 | Network parameter | Value |
 |---|---|
-| Network identifier | TODO |
+| Network identifier | `NetXtLrzvQDobza` |
 | Endpoint | michelson.etherlink.shadownet.octez.io |
-| Indexer | TODO |
-| Faucet | TODO (instead [get EVM test tokens](/evm/get-started/getting-testnet-tokens)) |
-| Bridge | TODO (instead [bridge to EVM](/evm/bridging))|
+| Indexer | Not yet available |
+| Faucet | Not yet available; in the meantime, [get EVM test tokens](/evm/get-started/getting-testnet-tokens) |
+| Bridge | Native tez only (see [Bridging](/michelson/bridging)); for FA tokens, [bridge to the EVM interface](/evm/bridging) and use them via [NAC](/michelson/nac-usage) |
 
 ## Etherlink<!--TX--> Previewnet Testnet
 
