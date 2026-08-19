@@ -191,17 +191,13 @@ This transaction includes the target layer 1 address.
 
 1. When the commitment that contains the transaction is cemented on layer 1, anyone can run the transaction by running the Octez client `execute outbox message` command.
 
-1. The helper contract receives the ticket from the originally deposited tokens and target address and stores the address.
+1. The helper contract receives the ticket and the target layer 1 address from the outbox message and forwards them, unchanged, to the ticketer contract's `withdraw` entrypoint.
 
-1. The helper contract sends the ticket to the ticketer contract's `withdraw` entrypoint.
-
-1. The ticketer contract burns the ticket and sends the tokens to the helper contract.
-
-1. The helper contract sends the tokens to the target layer 1 address.
+1. The ticketer contract verifies and burns the ticket and sends the tokens directly to the target layer 1 address.
 
 This diagram is an overview of the process of bridging tokens from Etherlink EVM<!--TEVM--> to layer 1:
 
-<svg viewBox="0 0 680 500" role="img" aria-label="Withdrawing FA tokens from Etherlink to Tezos layer 1, in eight steps: the user's EVM wallet calls the FA bridging precompile, which burns the tokens via the ERC-20 proxy contract and queues an outbox message; after the commitment is cemented (about two weeks), any user triggers the outbox message, and the outbox sends the ticket to the token bridge helper contract, which forwards it to the ticketer contract; the ticketer burns the ticket and returns the tokens to the helper contract, which sends them to the user's layer 1 address" style={{width: '100%', maxWidth: '680px', display: 'block', margin: '1.5rem auto', fontFamily: 'inherit'}}>
+<svg viewBox="0 0 680 500" role="img" aria-label="Withdrawing FA tokens from Etherlink to Tezos layer 1, in seven steps: the user's EVM wallet calls the FA bridging precompile, which burns the tokens via the ERC-20 proxy contract and queues an outbox message; after the commitment is cemented (about two weeks), any user triggers the outbox message, and the outbox sends the ticket to the token bridge helper contract, which forwards it to the ticketer contract; the ticketer burns the ticket and sends the tokens directly to the user's layer 1 address" style={{width: '100%', maxWidth: '680px', display: 'block', margin: '1.5rem auto', fontFamily: 'inherit'}}>
   <defs>
     <marker id="dg-w" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0.6 L7,4 L0,7.4" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
@@ -273,17 +269,12 @@ This diagram is an overview of the process of bridging tokens from Etherlink EVM
   <path d="M325,170 L325,124" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
   <circle cx="325" cy="147" r="8.5" fill="#9DB8FF"/>
   <text x="325" y="150.5" textAnchor="middle" fill="#121212" style={{font: '700 10.5px var(--ifm-font-family-monospace)'}}>6</text>
-  <text x="317" y="138" textAnchor="end" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>send ticket</text>
+  <text x="317" y="138" textAnchor="end" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>forward ticket</text>
   <path d="M410,78 L428,78 L428,102 L414,102" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.6" markerEnd="url(#dg-w)"/>
   <text x="436" y="82" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '11px var(--ifm-font-family-monospace)'}}>burn ticket,</text>
   <text x="436" y="95" textAnchor="start" fill="rgba(255,255,255,0.7)" style={{font: '11px var(--ifm-font-family-monospace)'}}>unlock tokens</text>
-  <path d="M365,124 L365,170" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <circle cx="365" cy="147" r="8.5" fill="#9DB8FF"/>
-  <text x="365" y="150.5" textAnchor="middle" fill="#121212" style={{font: '700 10.5px var(--ifm-font-family-monospace)'}}>7</text>
-  <text x="373" y="160" textAnchor="start" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>send tokens</text>
-  <path d="M250,186 L210,186 L210,102 L170,102" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
-  <circle cx="210" cy="118" r="8.5" fill="#9DB8FF"/>
-  <text x="210" y="121.5" textAnchor="middle" fill="#121212" style={{font: '700 10.5px var(--ifm-font-family-monospace)'}}>8</text>
-  <text x="220" y="142" textAnchor="start" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>send</text>
-  <text x="220" y="156" textAnchor="start" fill="#9DB8FF" style={{font: '11px var(--ifm-font-family-monospace)'}}>tokens</text>
+  <path d="M260,92 L170,92" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
+  <circle cx="215" cy="92" r="8.5" fill="#9DB8FF"/>
+  <text x="215" y="95.5" textAnchor="middle" fill="#121212" style={{font: '700 10.5px var(--ifm-font-family-monospace)'}}>7</text>
+  <text x="215" y="78" textAnchor="middle" fill="#9DB8FF" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>send tokens</text>
 </svg>
