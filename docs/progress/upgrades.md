@@ -107,7 +107,7 @@ Instant Confirmations enable these features:
   - Users can call the `eth_sendRawTransactionSync` endpoint that is available in the EVM node version 0.52 and later to submit a transaction and wait for an instant confirmation from the node when the transaction will be in the next block.
   For more information, see [Getting Instant Confirmations](/evm/developing/transactions#getting-instant-confirmations).
 
-  - Uses can subscribe to notifications via WebSockets to get information about transactions that the sequencer will put in the next block.
+  - Users can subscribe to notifications via WebSockets to get information about transactions that the sequencer will put in the next block.
   For more information, see [Subscribing to Instant Confirmations](/evm/developing/websockets#subscribing-to-instant-confirmations).
 
 - The speed limit (also known as the target) is increased to 13.5 million gas units per second.

@@ -24,7 +24,7 @@ In that case, the URL of your endpoint is `<your-evm-node-url>/tezlink` (the pat
 | Network parameter | Value |
 |---|---|
 | Network identifier | `NetXohUVN5QWR4f` |
-| Endpoint | michelson.etherlink.mainnet.octez.io |
+| Endpoint | https://michelson.etherlink.mainnet.octez.io |
 | Indexer | Not yet available |
 | Bridge | Native tez only (see [Bridging](/michelson/bridging)); for FA tokens, [bridge to the EVM interface](/evm/bridging) and use them via [NAC](/michelson/nac-usage) |
 
@@ -33,7 +33,7 @@ In that case, the URL of your endpoint is `<your-evm-node-url>/tezlink` (the pat
 | Network parameter | Value |
 |---|---|
 | Network identifier | `NetXtLrzvQDobza` |
-| Endpoint | michelson.etherlink.shadownet.octez.io |
+| Endpoint | https://michelson.etherlink.shadownet.octez.io |
 | Indexer | Not yet available |
 | Faucet | Not yet available; in the meantime, [get EVM test tokens](/evm/get-started/getting-testnet-tokens) |
 | Bridge | Native tez only (see [Bridging](/michelson/bridging)); for FA tokens, [bridge to the EVM interface](/evm/bridging) and use them via [NAC](/michelson/nac-usage) |
@@ -42,7 +42,7 @@ In that case, the URL of your endpoint is `<your-evm-node-url>/tezlink` (the pat
 
 See [Previewnet](/testing/previewnet) page.
 
-## Quick connectivity check:
+## Quick connectivity check
 
 ``` bash
 curl -s <ENDPOINT>/chains/main/chain_id

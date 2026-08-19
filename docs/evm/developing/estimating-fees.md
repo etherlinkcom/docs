@@ -44,7 +44,7 @@ This gas price is the cost per unit of computation required by a transaction.
 
 <GasPriceWarning />
 
-To calculate the fee estimate for a given transaction, you can send the transaction to the `eth_estimateGas` endpoint to obtain the estimated gas usage for the the transaction (as in this example), and then calculate the total expected gas fee:
+To calculate the fee estimate for a given transaction, you can send the transaction to the `eth_estimateGas` endpoint to obtain the estimated gas usage for the transaction (as in this example), and then calculate the total expected gas fee:
 
 ```bash
 curl --request POST \

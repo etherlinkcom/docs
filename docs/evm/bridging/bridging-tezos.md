@@ -150,7 +150,7 @@ This diagram is an overview of the deposit process:
 
 The withdrawal process (moving XTZ from Etherlink EVM<!--TEVM--> to tez on Tezos layer 1) follows these general steps:
 
-1. A Etherlink EVM<!--TEVM--> user sends XTZ and their layer 1 address to the [withdrawal precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) in the Etherlink<!--TX--> Smart Rollup via an EVM node<!--TXN-->.
+1. An Etherlink EVM<!--TEVM--> user sends XTZ and their layer 1 address to the [withdrawal precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) in the Etherlink<!--TX--> Smart Rollup via an EVM node<!--TXN-->.
 1. The contract locks the XTZ.
 1. The contract creates a transaction to the exchanger contract's `burn` entrypoint and puts this transaction in the Smart Rollup outbox.
 This outbox message becomes part of Etherlink<!--TX-->'s commitment to its state.
@@ -253,7 +253,7 @@ They can use the bridge to verify that they will receive the withdrawn funds whe
 
 The process for fast withdrawals is different than for standard withdrawals:
 
-1. A Etherlink EVM<!--TEVM--> user submits a withdrawal transaction to the fast withdrawal precompiled contract instead of the standard withdrawal precompiled contract.
+1. An Etherlink EVM<!--TEVM--> user submits a withdrawal transaction to the fast withdrawal precompiled contract instead of the standard withdrawal precompiled contract.
 1. As in the standard withdrawal process, the fast withdrawal precompiled contract locks the Etherlink EVM<!--TEVM--> XTZ and puts a message in the Smart Rollup outbox that represents those tokens.
 However, instead of sending the withdrawn tokens directly to the user's Tezos layer 1 account, it sends them to a fast withdrawal contract on layer 1.
 1. Liquidity providers monitor the Smart Rollup outbox and when they detect fast withdrawal requests with favorable rates, they call the layer 1 contract to claim the fast withdrawal.

@@ -4,7 +4,7 @@ title: EVM Interface Overview
 
 # EVM Interface
 
-The **EVM Interface** (formerly the only developer experience in Etherlink) is implemented by an EVM runtime that is designed to be a drop-in replacement for Ethereum-compatible chains: existing Solidity contracts, wallets, SDKs, and tooling work without modification.
+The **EVM Interface** is implemented by an EVM runtime that is designed to be a drop-in replacement for Ethereum-compatible chains: existing Solidity contracts, wallets, SDKs, and tooling work without modification.
 
 The EVM Interface targets full compatibility with the Ethereum ecosystem, but there are a
 few differences from Ethereum, detailed at [Compatibility with Ethereum](/evm/developing/compatibility).

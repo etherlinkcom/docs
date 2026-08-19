@@ -6,7 +6,6 @@ title: Glossary
 
 This glossary defines the most essential terms used in Etherlink<!--TX-->.
 For a wider set of terms used in the Tezos ecosystem, see the [Glossary](https://docs.tezos.com/overview/glossary) in the Tezos documentation.
-These glossaries are planned to be fused in the near term.
 
 **ABI encoding** — The binary format used to encode function arguments and return values when calling EVM smart contracts. Each argument occupies a 32-byte slot: integers and addresses are left-padded with zeros; dynamic types such as `bytes` use an offset-length-data layout. ABI-encoded data is what `%call_evm` expects in its `abi_params` field and what `staticcall_evm` and `callMichelsonView` return.
 

@@ -16,7 +16,7 @@ Built upon the secure foundation of Tezos layer 1, Etherlink<!--TX-->  delivers 
 ## It's fast
 
 Experience a developer-friendly environment that minimizes wait times.
-Etherlink<!--TX--> provides low latency with sub-second (< 500ms) confirmation times, delivered by the sequencer.
+Etherlink<!--TX--> provides low latency with confirmation times of around 500 ms, delivered by the sequencer.
 
 And it's getting even faster with [Instant Confirmations](/evm/developing/transactions#getting-instant-confirmations), currently an experimental feature, that provide pre-confirmations within 50ms.
 
