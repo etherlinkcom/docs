@@ -193,8 +193,9 @@ This diagram is an overview of the withdrawal process:
   <rect x="230" y="280" width="430" height="190" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)"/>
   <text x="248" y="306" fill="#38FF9C" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>ETHERLINK</text>
   <rect x="260" y="330" width="170" height="76" rx="12" fill="rgba(255,255,255,0.1)"/>
-  <text x="345.0" y="363.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Withdrawal</text>
-  <text x="345.0" y="383.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">precompile</text>
+  <text x="345.0" y="353.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">Withdrawal</text>
+  <text x="345.0" y="373.0" textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="14">precompile</text>
+  <text x="345.0" y="393.0" textAnchor="middle" fill="rgba(255,255,255,0.6)" style={{font: '11.5px var(--ifm-font-family-monospace)'}}>0xff00&#8230;0001</text>
   <path d="M170,376 L260,376" fill="none" stroke="#38FF9C" strokeWidth="1.6" markerEnd="url(#dg-g)"/>
   <circle cx="215" cy="376" r="8.5" fill="#38FF9C"/>
   <text x="215" y="379.5" textAnchor="middle" fill="#121212" style={{font: '700 10.5px var(--ifm-font-family-monospace)'}}>1</text>
