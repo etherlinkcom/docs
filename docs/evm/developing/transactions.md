@@ -329,7 +329,7 @@ If you pass `latest` instead of `pending`, the node waits until the transaction 
 Etherlink EVM<!--TEVM--> supports this `pending` value only on the `eth_sendRawTransactionSync` method, not on any other methods.
 
 When the sequencer enqueues the transaction for the next block, it notifies the nodes of the transaction and the nodes return a receipt for the transaction that includes information such as its gas price and gas cost.
-This receipt matches the specification for the [`eth_getTransactionReceipt`](https://ethereum.org/developers/docs/apis/json-rpc/#eth_gettransactionreceipt) endpoint except that the `blockHash` field is always `0x000...` because the block has not been created yet.
+This receipt matches the specification for the [`eth_getTransactionReceipt`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth-gettransactionreceipt) endpoint except that the `blockHash` field is always `0x000...` because the block has not been created yet.
 You can take this response as a confirmation that the sequencer will put the transaction in the next block.
 If the sequencer does not intend to put the transaction in the next block (such as if the block is nearly complete or the transaction volume is high), the nodes wait to provide the receipt until the transaction will be in the next block.
 
@@ -624,7 +624,7 @@ The response includes information about the matching events:
 }
 ```
 
-For other filters, see [`eth_getLogs`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getstorageat) in the Ethereum JSON-RPC API reference.
+For other filters, see [`eth_getLogs`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth-getstorageat) in the Ethereum JSON-RPC API reference.
 
 ## Tracing transactions
 
