@@ -33,4 +33,4 @@ For detailed guidance, refer to [Deploying smart contracts](/evm/developing/depl
 
 To call a Michelson contract from a Solidity contract, use the NAC gateway. See [NAC Usage](./nac-usage.md) for the gateway address and call conventions.
 
-For a more hands-on presentation, check the [Cross-interface counter tutorial](/tutorials/nac-counter) (note however that the NAC tutorial, as presented, runs on Previewnet, not on Etherlink Shadownet).
+For a more hands-on presentation, check the [Cross-interface counter tutorial](/tutorials/nac-counter) (note however that the NAC tutorial, as presented, runs on the Tezos X Previewnet, not on Etherlink Shadownet).

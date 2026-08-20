@@ -38,7 +38,7 @@ In that case, the URL of your endpoint is `<your-evm-node-url>/tezlink` (the pat
 | Faucet | Not yet available; in the meantime, [get EVM test tokens](/evm/get-started/getting-testnet-tokens) |
 | Bridge | Native tez only (see [Bridging](/michelson/bridging)); for FA tokens, [bridge to the EVM interface](/evm/bridging) and use them via [NAC](/michelson/nac-usage) |
 
-## Etherlink<!--TX--> Previewnet Testnet
+## Tezos X Previewnet Testnet
 
 See [Previewnet](/testing/previewnet) page.
 
