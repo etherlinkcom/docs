@@ -7,8 +7,8 @@ dependencies:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-It's not necessary to build the Etherlink{/* TX */} kernel.
-You can set the `pre-images-endpoint` field in the Smart Rollup node's configuration file as described in [Running an Etherlink{/* TX */} Smart Rollup node](/network/smart-rollup-nodes).
+It's not necessary to build the Etherlink<!--TX--> kernel.
+You can set the `pre-images-endpoint` field in the Smart Rollup node's configuration file as described in [Running an Etherlink<!--TX--> Smart Rollup node](/network/smart-rollup-nodes).
 You can also download the installer kernel here: [installer.hex](pathname:///files/installer.hex).
 
 However, if you want to build the kernel yourself, you can use these instructions.
@@ -21,7 +21,7 @@ For more information about installer kernels and preimages, see the tutorial [De
 
 Before you begin, make sure that you have these prerequisites installed:
 
-- Docker, because the Etherlink{/* TX */} build process relies on a Docker image to ensure reproducible builds
+- Docker, because the Etherlink<!--TX--> build process relies on a Docker image to ensure reproducible builds
 
 - Rust, because of its support for WebAssembly (WASM), the language that Smart Rollups use to communicate.
 
@@ -152,7 +152,7 @@ Before you begin, make sure that you have these prerequisites installed:
       make -f kernels.mk build-deps kernel_sdk
       ```
 
-   1. Set the parameters for the Etherlink{/* TX */} kernel by running this command, which sets the chain ID, governance and bridge contracts, and other values:
+   1. Set the parameters for the Etherlink<!--TX--> kernel by running this command, which sets the chain ID, governance and bridge contracts, and other values:
 
       ```bash
       octez-evm-node make kernel installer config setup_file.yml --chain-id 42793 \
@@ -198,7 +198,7 @@ Before you begin, make sure that you have these prerequisites installed:
       make -f kernels.mk build-deps kernel_sdk
       ```
 
-   1. Set the parameters for the Etherlink{/* TX */} kernel by running this command, which sets the chain ID, governance and bridge contracts, and other values:
+   1. Set the parameters for the Etherlink<!--TX--> kernel by running this command, which sets the chain ID, governance and bridge contracts, and other values:
 
       ```bash
       octez-evm-node make kernel installer config setup_file.yml \

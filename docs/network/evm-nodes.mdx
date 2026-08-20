@@ -7,13 +7,13 @@ dependencies:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The EVM nodes{/* TXN */} are responsible for maintaining a copy of the Etherlink{/* TX */} context and applying new blocks that process Etherlink{/* TX */} transactions.
+The EVM nodes<!--TXN--> are responsible for maintaining a copy of the Etherlink<!--TX--> context and applying new blocks that process Etherlink<!--TX--> transactions.
 
 ## Prerequisites
 
-- Make sure you understand the interaction between different nodes as described in [Etherlink{/* TX */} architecture](/network/architecture).
-- If you want to verify the blocks that come from the sequencer, run an Etherlink{/* TX */} Smart Rollup node as described in [Running an Etherlink{/* TX */} Smart Rollup node](/network/smart-rollup-nodes).
-Public Smart Rollup nodes for Etherlink{/* TX */} are not yet available, so you must run your own if you want to participate in the Etherlink{/* TX */} network.
+- Make sure you understand the interaction between different nodes as described in [Etherlink<!--TX--> architecture](/network/architecture).
+- If you want to verify the blocks that come from the sequencer, run an Etherlink<!--TX--> Smart Rollup node as described in [Running an Etherlink<!--TX--> Smart Rollup node](/network/smart-rollup-nodes).
+Public Smart Rollup nodes for Etherlink<!--TX--> are not yet available, so you must run your own if you want to participate in the Etherlink<!--TX--> network.
 
 ## System requirements
 
@@ -34,7 +34,7 @@ If you don't want to see all of the options and settings for the EVM node, you c
 1. Download the latest release of the `octez-evm-node` binary from https://gitlab.com/tezos/tezos/-/releases.
 
    :::note
-   Version 0.64 or later of the `octez-evm-node` binary is required to support the Etherlink{/* TX */} kernel 7.0.
+   Version 0.64 or later of the `octez-evm-node` binary is required to support the Etherlink<!--TX--> kernel 7.0.
    :::
 
 1. Run the `octez-evm-node run observer` command to start the node as an observer:
@@ -42,7 +42,7 @@ If you don't want to see all of the options and settings for the EVM node, you c
     <Tabs groupId="chain">
       <TabItem value="mainnet" label={"Etherlink Mainnet" /* TX */}>
 
-      Use this command for Etherlink{/* TX */} Mainnet:
+      Use this command for Etherlink<!--TX--> Mainnet:
 
       ```bash
       octez-evm-node run observer \
@@ -55,7 +55,7 @@ If you don't want to see all of the options and settings for the EVM node, you c
       </TabItem>
       <TabItem value="shadownet" label={"Etherlink Shadownet Testnet" /* TX */}>
 
-      Use this command for Etherlink{/* TX */} Shadownet Testnet:
+      Use this command for Etherlink<!--TX--> Shadownet Testnet:
 
       ```bash
       octez-evm-node run observer \
@@ -78,9 +78,9 @@ See [Verifying that the node is running](#verifying-that-the-node-is-running).
 
 The EVM node supports these history modes:
 
-- `archive` (the default): The node stores a copy of all available Etherlink{/* TX */} information.
+- `archive` (the default): The node stores a copy of all available Etherlink<!--TX--> information.
 
-- `full`: The node stores all of the necessary information to construct the current Etherlink{/* TX */} state plus the states for a certain number of previous days, known as the _retention period_.
+- `full`: The node stores all of the necessary information to construct the current Etherlink<!--TX--> state plus the states for a certain number of previous days, known as the _retention period_.
 
 - `rolling`: The node stores the current context plus the complete transaction data for a certain number of previous days, known as the _retention period_.
 
@@ -145,8 +145,8 @@ The following instructions use the placeholder `<EVM_DATA_DIR>` to represent thi
 You can set a different location for the file if you want to separate the data directory from the node configuration, such as often happens in Kubernetes.
 The default location is the file `config.json` in the data directory.
 - The network to use, which you specify in the `--network` argument or the `EVM_NODE_NETWORK` environment variable.
-    - `--network mainnet` for Etherlink{/* TX */} Mainnet
-    - `--network shadownet` for Etherlink{/* TX */} Shadownet
+    - `--network mainnet` for Etherlink<!--TX--> Mainnet
+    - `--network shadownet` for Etherlink<!--TX--> Shadownet
 
     Choosing a network sets the node to use preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
     It also sets the relay endpoint that the node uses to connect to other nodes on the network.
@@ -172,18 +172,18 @@ The default location is the file `config.json` in the data directory.
    </Tabs>
 
    It's safe to use these preimages because the node verifies them.
-   If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink{/* TX */} kernel](/network/building-kernel).
-   However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink{/* TX */} after that.
+   If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink<!--TX--> kernel](/network/building-kernel).
+   However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink<!--TX--> after that.
 
 When you have the information for these parameters, follow these steps to generate the configuration file:
 
-1. If you want your EVM node to check the correctness of the blocks it receives via a Smart Rollup node, get the RPC URL of that Etherlink{/* TX */} Smart Rollup node, such as `http://localhost:8932`.
+1. If you want your EVM node to check the correctness of the blocks it receives via a Smart Rollup node, get the RPC URL of that Etherlink<!--TX--> Smart Rollup node, such as `http://localhost:8932`.
 The following instructions use the placeholder `<SR_NODE_OBSERVER_RPC>` to represent this URL.
-You can use a Smart Rollup node that is running in any mode and history mode as long as it is up to date with the current state of Etherlink{/* TX */}.
+You can use a Smart Rollup node that is running in any mode and history mode as long as it is up to date with the current state of Etherlink<!--TX-->.
 1. Create a directory for the node to store its data in.
 1. Create the configuration file by setting the parameters in the environment variables or passing the arguments to the `octez-evm-node init config` command.
 
-   If you are not running an Etherlink{/* TX */} Smart Rollup node and are trusting incoming blocks, use the `--dont-track-rollup-node` flag, as in this `mainnet` example:
+   If you are not running an Etherlink<!--TX--> Smart Rollup node and are trusting incoming blocks, use the `--dont-track-rollup-node` flag, as in this `mainnet` example:
 
    ```bash
    octez-evm-node init config \
@@ -217,7 +217,7 @@ You can initialize and start the node in several ways:
 
 - [From a snapshot that the node downloads automatically](#from-an-automatic-snapshot)
 - [From a snapshot that you download manually](#from-a-manual-snapshot)
-- [From an existing Etherlink{/* TX */} Smart Rollup node](#from-an-existing-etherlink-smart-rollup-node)
+- [From an existing Etherlink<!--TX--> Smart Rollup node](#from-an-existing-etherlink-smart-rollup-node)
 - [From genesis](#from-genesis)
 
 For a faster way of running a node locally for a short time, see [Running a local sandbox](/testing/sandbox).
@@ -350,17 +350,17 @@ The node throws an error if you try to run it in a mode that it is not configure
 
 ### From an existing Etherlink Smart Rollup node
 
-You can use the Etherlink{/* TX */} Smart Rollup node to initialize a data directory for the EVM node without having to actually start the Smart Rollup node.
+You can use the Etherlink<!--TX--> Smart Rollup node to initialize a data directory for the EVM node without having to actually start the Smart Rollup node.
 The `octez-smart-rollup-node` binary sets up a data directory that the EVM node can use as a starting point.
-You can use a Smart Rollup node that is running in any mode and history mode as long as it is up to date with the current state of Etherlink{/* TX */}.
+You can use a Smart Rollup node that is running in any mode and history mode as long as it is up to date with the current state of Etherlink<!--TX-->.
 
 1. Get a built version of the Smart Rollup node binary, named `octez-smart-rollup-node`.
-The best place to get the most recent binary files to use with Etherlink{/* TX */} is https://gitlab.com/tezos/tezos/-/releases.
+The best place to get the most recent binary files to use with Etherlink<!--TX--> is https://gitlab.com/tezos/tezos/-/releases.
 
-1. Get the URL of the Etherlink{/* TX */} Smart Rollup node snapshot for the appropriate Etherlink{/* TX */} network or download the file manually:
+1. Get the URL of the Etherlink<!--TX--> Smart Rollup node snapshot for the appropriate Etherlink<!--TX--> network or download the file manually:
 
-   - Etherlink{/* TX */} Mainnet: https://snapshots.tzinit.org/etherlink-mainnet
-   - Etherlink{/* TX */} Shadownet Testnet: https://snapshots.tzinit.org/etherlink-shadownet
+   - Etherlink<!--TX--> Mainnet: https://snapshots.tzinit.org/etherlink-mainnet
+   - Etherlink<!--TX--> Shadownet Testnet: https://snapshots.tzinit.org/etherlink-shadownet
 
    The full history snapshot is appropriate for most use cases.
    The EVM node can run in any history mode starting from a Smart Rollup node that starts from these snapshots.
@@ -395,8 +395,8 @@ The following `mainnet` examples use `<SR_OBSERVER_DATA_DIR>` as the location of
 
 ### From genesis
 
-1. Get the Etherlink{/* TX */} installer kernel (`installer.hex` file), which you can build yourself as described in [Building the Etherlink{/* TX */} kernel](/network/building-kernel) or download here: [installer.hex](pathname:///files/installer.hex).
-1. Run this command to start the node with the Etherlink{/* TX */} installer kernel that you built or downloaded; change the name of the `installer.hex` file in the command accordingly:
+1. Get the Etherlink<!--TX--> installer kernel (`installer.hex` file), which you can build yourself as described in [Building the Etherlink<!--TX--> kernel](/network/building-kernel) or download here: [installer.hex](pathname:///files/installer.hex).
+1. Run this command to start the node with the Etherlink<!--TX--> installer kernel that you built or downloaded; change the name of the `installer.hex` file in the command accordingly:
 
    ```bash
    octez-evm-node run observer --data-dir <EVM_DATA_DIR> --initial-kernel installer.hex

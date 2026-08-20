@@ -5,17 +5,17 @@ title: Network information (EVM)
 import InlineCopy from '@site/src/components/InlineCopy';
 import Link from '@docusaurus/Link';
 
-This page contains information for connecting to the public Etherlink{/* TX */} networks via the EVM interface.
+This page contains information for connecting to the public Etherlink<!--TX--> networks via the EVM interface.
 For using the networks via the Michelson interface, see [Michelson network information](/michelson/network-information).
 
-For current and historical status information for Etherlink{/* TX */}, see https://status.etherlink.com.
+For current and historical status information for Etherlink<!--TX-->, see https://status.etherlink.com.
 
 For every network, we provide two public EVM endpoints: a full RPC endpoint and a
-relay endpoint. The full RPC endpoint can be consumed by Etherlink EVM{/* TEVM */} users and
+relay endpoint. The full RPC endpoint can be consumed by Etherlink EVM<!--TEVM--> users and
 decentralized applications to interact with the chain. The relay endpoint
 exposes a restricted RPC API with only `eth_sendRawTransaction` and
 `eth_blockNumber` available. Use the relay endpoint when setting up a
-[EVM node{/* TXN */}](/network/evm-nodes).
+[EVM node<!--TXN-->](/network/evm-nodes).
 
 :::warning
 
@@ -28,7 +28,7 @@ or subscribe to a commercial [RPC provider](/evm/tools/node-providers) plan whic
 
 :::
 
-## Etherlink{/* TX */} Mainnet
+## Etherlink<!--TX--> Mainnet
 
 <table class="customTableContainer">
   <thead>
@@ -40,7 +40,7 @@ or subscribe to a commercial [RPC provider](/evm/tools/node-providers) plan whic
   <tbody>
     <tr>
       <td>Network Name</td>
-      <td><code>Etherlink{/* TX */} Mainnet</code></td>
+      <td><code>Etherlink<!--TX--> Mainnet</code></td>
     </tr>
     <tr>
       <td>EVM version</td>
@@ -83,11 +83,11 @@ or subscribe to a commercial [RPC provider](/evm/tools/node-providers) plan whic
       <td><Link to="https://governance.etherlink.com">{"https://governance.etherlink.com"}</Link></td>
     </tr>
     <tr>
-      <td>Etherlink{/* TX */} smart rollup snapshots</td>
+      <td>Etherlink<!--TX--> smart rollup snapshots</td>
       <td><Link to="https://snapshots.tzinit.org/etherlink-mainnet/">{"https://snapshots.tzinit.org/etherlink-mainnet/"}</Link></td>
     </tr>
     <tr>
-      <td>EVM node{/* TXN */} snapshots</td>
+      <td>EVM node<!--TXN--> snapshots</td>
       <td><Link to="https://snapshotter-sandbox.nomadic-labs.eu/etherlink-mainnet/">{"https://snapshotter-sandbox.nomadic-labs.eu/etherlink-mainnet/"}</Link></td>
     </tr>
     <tr>
@@ -105,10 +105,10 @@ or subscribe to a commercial [RPC provider](/evm/tools/node-providers) plan whic
   </tbody>
 </table>
 
-## Etherlink{/* TX */} Shadownet Testnet
+## Etherlink<!--TX--> Shadownet Testnet
 
 This test network (sometimes abbreviated as "Shadownet Testnet" or just "Shadownet") runs on the [Shadownet](https://teztnets.com/shadownet-about) Tezos test network.
-Shadownet Testnet is the primary test network for Etherlink{/* TX */}.
+Shadownet Testnet is the primary test network for Etherlink<!--TX-->.
 
 <table class="customTableContainer">
   <thead>
@@ -120,7 +120,7 @@ Shadownet Testnet is the primary test network for Etherlink{/* TX */}.
   <tbody>
     <tr>
       <td>Network Name</td>
-      <td><code>Etherlink{/* TX */} Shadownet Testnet</code></td>
+      <td><code>Etherlink<!--TX--> Shadownet Testnet</code></td>
     </tr>
     <tr>
       <td>EVM version</td>
@@ -163,11 +163,11 @@ Shadownet Testnet is the primary test network for Etherlink{/* TX */}.
       <td>18</td>
     </tr>
     <tr>
-      <td>Etherlink{/* TX */} smart rollup snapshots</td>
+      <td>Etherlink<!--TX--> smart rollup snapshots</td>
       <td><Link to="https://snapshots.tzinit.org/etherlink-shadownet">{"https://snapshots.tzinit.org/etherlink-shadownet"}</Link></td>
     </tr>
     <tr>
-      <td>EVM node{/* TXN */} snapshots</td>
+      <td>EVM node<!--TXN--> snapshots</td>
       <td><Link to="https://snapshotter-sandbox.nomadic-labs.eu">{"https://snapshotter-sandbox.nomadic-labs.eu"}</Link></td>
     </tr>
     <tr>
@@ -195,13 +195,13 @@ Block speed | Variable; see [Architecture](/network/architecture)
 Docker image | https://hub.docker.com/r/tezos/tezos-bare images that start with `octez-evm-node`
 Debugging | Supported via standard [Ethereum endpoints](/evm/developing/endpoint-support)
 Tracing | Supported via standard [Ethereum endpoints](/evm/developing/endpoint-support)
-Monitoring | Supported; see [Monitoring EVM nodes{/* TXN */}](/network/monitoring)
+Monitoring | Supported; see [Monitoring EVM nodes<!--TXN-->](/network/monitoring)
 WebSockets | Supported; see [Getting updates with WebSockets](/evm/developing/websockets)
 Fee structure | Variable, including an execution fee and a fee for data inclusion on layer 1 but not a voluntary tip; see [Fee structure](/evm/developing/fees)
 
 ## Precompiled contracts
 
-These precompiled contracts are specific to Etherlink EVM{/* TEVM */}:
+These precompiled contracts are specific to Etherlink EVM<!--TEVM-->:
 
 <table class="customTableContainer">
   <thead>
@@ -235,7 +235,7 @@ These precompiled contracts are specific to Etherlink EVM{/* TEVM */}:
   </tbody>
 </table>
 
-Etherlink EVM{/* TEVM */} also includes these [Ethereum precompiled contracts](https://www.evm.codes/precompiled):
+Etherlink EVM<!--TEVM--> also includes these [Ethereum precompiled contracts](https://www.evm.codes/precompiled):
 
 <table class="customTableContainer">
   <thead>

@@ -8,9 +8,9 @@ import Video from '@site/src/components/Video';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-[The Etherlink EVM{/* TEVM */} bridge](https://bridge.etherlink.com/evm) is a web application that allows you to transfer wrapped tokens between Etherlink EVM{/* TEVM */} and several other EVM-compatible blockchain networks.
+[The Etherlink EVM<!--TEVM--> bridge](https://bridge.etherlink.com/evm) is a web application that allows you to transfer wrapped tokens between Etherlink EVM<!--TEVM--> and several other EVM-compatible blockchain networks.
 
-The EVM bridge supports connections from Etherlink EVM{/* TEVM */} to these networks:
+The EVM bridge supports connections from Etherlink EVM<!--TEVM--> to these networks:
 
 - Ethereum
 - Avalanche C-Chain
@@ -29,15 +29,15 @@ It allows users to transfer several wrapped tokens, including:
 - WBNB
 - SHIB
 
-For the Etherlink EVM{/* TEVM */} addresses of these tokens, see [Token addresses](#token-addresses).
+For the Etherlink EVM<!--TEVM--> addresses of these tokens, see [Token addresses](#token-addresses).
 
-Etherlink EVM{/* TEVM */}'s LayerZero bridge infrastructure also supports a number of tokens that meet their [Omnichain Fungible Token (OFT)](https://docs.layerzero.network/v2/developers/evm/oft/quickstart) standard.
-The token addresses for OFTs that can be transferred between Etherlink EVM{/* TEVM */} and other networks (including WXTZ) can be retrieved from the [LayerZero API](https://docs.layerzero.network/v2/tools/api/oft), or are listed [here](#token-addresses).
+Etherlink EVM<!--TEVM-->'s LayerZero bridge infrastructure also supports a number of tokens that meet their [Omnichain Fungible Token (OFT)](https://docs.layerzero.network/v2/developers/evm/oft/quickstart) standard.
+The token addresses for OFTs that can be transferred between Etherlink EVM<!--TEVM--> and other networks (including WXTZ) can be retrieved from the [LayerZero API](https://docs.layerzero.network/v2/tools/api/oft), or are listed [here](#token-addresses).
 
 ## Bridge security
 
 The bridge uses the decentralized smart contracts of [LayerZero](https://layerzero.network/) that are deployed on the supported EVM networks without the intervention of a third party.
-It also relies on the EVM node{/* TXN */} and sequencer operators that secure Etherlink{/* TX */} itself; these operators are listed in [Network operators](/network/operators).
+It also relies on the EVM node<!--TXN--> and sequencer operators that secure Etherlink<!--TX--> itself; these operators are listed in [Network operators](/network/operators).
 
 ## Using the EVM bridge
 
@@ -45,11 +45,11 @@ For a video walkthrough of the bridge, see [this video](https://www.loom.com/sha
 
 ![Overview of the EVM bridge](/img/wab-details.png)
 
-1. Go to the Etherlink EVM{/* TEVM */} bridge at https://bridge.etherlink.com/evm.
+1. Go to the Etherlink EVM<!--TEVM--> bridge at https://bridge.etherlink.com/evm.
 
 1. Click the **Connect** button and connect your EVM wallet.
 
-1. Select the source network from which to bridge tokens to Etherlink EVM{/* TEVM */}, or select Etherlink EVM{/* TEVM */} as the source network to bridge tokens out of Etherlink EVM{/* TEVM */}.
+1. Select the source network from which to bridge tokens to Etherlink EVM<!--TEVM-->, or select Etherlink EVM<!--TEVM--> as the source network to bridge tokens out of Etherlink EVM<!--TEVM-->.
 
 1. Next to the source network, click the source token and select the token to transfer from the source network.
 The interface shows all bridgeable tokens across all available networks and your token balances.
@@ -65,8 +65,8 @@ The interface shows all bridgeable tokens across all available networks and your
 1. Set the other parameters for the transfer, including the **Gas on destination** and **Slippage tolerance** fields.
 
    :::note[Gas on destination]
-   Interacting with Etherlink EVM{/* TEVM */} requires XTZ (its native token) to pay for gas fees.
-   As part of your bridging transaction, you can choose to send up to 0.1 XTZ to your Etherlink EVM{/* TEVM */} wallet address to pay for fees for later transactions and interact with the Etherlink EVM{/* TEVM */} ecosystem.
+   Interacting with Etherlink EVM<!--TEVM--> requires XTZ (its native token) to pay for gas fees.
+   As part of your bridging transaction, you can choose to send up to 0.1 XTZ to your Etherlink EVM<!--TEVM--> wallet address to pay for fees for later transactions and interact with the Etherlink EVM<!--TEVM--> ecosystem.
    The cost of this XTZ is added to the fees that you pay for the transfer.
    By default, the bridge adds 0.1 XTZ if the destination account has no XTZ.
    :::
@@ -98,7 +98,7 @@ The transfer button can show these errors:
 - **Select Different Chain**
 
    The source and destination chains are not compatible.
-   This bridge is for moving tokens in and out of Etherlink EVM{/* TEVM */}, not for moving tokens between other networks.
+   This bridge is for moving tokens in and out of Etherlink EVM<!--TEVM-->, not for moving tokens between other networks.
 
 - **Transfer Cap Reached**
 
@@ -106,24 +106,24 @@ The transfer button can show these errors:
    Select a smaller amount to transfer.
 
    This error can occur for bridgeable tokens that exist on multiple networks (ETH/WETH, USDT and USDC).
-   For example, if the bridge contract on Avalanche has 100 USDT, you can transfer no more than 100 USDT from Etherlink EVM{/* TEVM */} to Avalanche.
+   For example, if the bridge contract on Avalanche has 100 USDT, you can transfer no more than 100 USDT from Etherlink EVM<!--TEVM--> to Avalanche.
 
 For further support, visit the [LayerZero Discord](https://discord.gg/ktbvm8Nkcr).
 
-If you have general questions about Etherlink{/* TX */}, we welcome you to join the [Etherlink{/* TX */} Discord Community](https://discord.com/invite/etherlink).
+If you have general questions about Etherlink<!--TX-->, we welcome you to join the [Etherlink<!--TX--> Discord Community](https://discord.com/invite/etherlink).
 
 ## Token addresses
 
 :::note
 
-Not all Etherlink EVM{/* TEVM */} tokens can be bridged to and from other chains.
+Not all Etherlink EVM<!--TEVM--> tokens can be bridged to and from other chains.
 See the bridge UI for the tokens that the bridge supports for each chain.
 
 :::
 
-### Etherlink EVM{/* TEVM */}
+### Etherlink EVM<!--TEVM-->
 
-This table shows the Etherlink EVM{/* TEVM */} address of some of the tokens you can bridge between Etherlink EVM{/* TEVM */} and certain other chains:
+This table shows the Etherlink EVM<!--TEVM--> address of some of the tokens you can bridge between Etherlink EVM<!--TEVM--> and certain other chains:
 
 <table class="customTableContainer">
   <thead>
@@ -396,13 +396,13 @@ These tables show the addresses of the equivalent tokens on other networks:
 
 ## How bridging wrapped assets works
 
-The Etherlink EVM{/* TEVM */} bridge uses a [wrapped asset bridge](https://github.com/LayerZero-Labs/wrapped-asset-bridge) created by [LayerZero](https://layerzero.network/).
-It works by maintaining liquidity pools on other networks and minting equivalent tokens on Etherlink EVM{/* TEVM */}.
+The Etherlink EVM<!--TEVM--> bridge uses a [wrapped asset bridge](https://github.com/LayerZero-Labs/wrapped-asset-bridge) created by [LayerZero](https://layerzero.network/).
+It works by maintaining liquidity pools on other networks and minting equivalent tokens on Etherlink EVM<!--TEVM-->.
 
-When you bridge tokens from other networks to Etherlink EVM{/* TEVM */}, the bridge contracts lock the tokens in a liquidity pool on the source network, send a message over LayerZero's software to Etherlink EVM{/* TEVM */}, and mint tokens on Etherlink EVM{/* TEVM */}.
-When you bridge tokens out of Etherlink EVM{/* TEVM */}, the contracts burn the tokens on Etherlink EVM{/* TEVM */} and unlock them in the liquidity pool on the target network.
-Therefore, bridging tokens out of Etherlink EVM{/* TEVM */} is dependent on the liquidity pool on the target chain.
-LayerZero also maintains EVM nodes{/* TXN */} to verify that the transactions complete on Etherlink EVM{/* TEVM */}.
+When you bridge tokens from other networks to Etherlink EVM<!--TEVM-->, the bridge contracts lock the tokens in a liquidity pool on the source network, send a message over LayerZero's software to Etherlink EVM<!--TEVM-->, and mint tokens on Etherlink EVM<!--TEVM-->.
+When you bridge tokens out of Etherlink EVM<!--TEVM-->, the contracts burn the tokens on Etherlink EVM<!--TEVM--> and unlock them in the liquidity pool on the target network.
+Therefore, bridging tokens out of Etherlink EVM<!--TEVM--> is dependent on the liquidity pool on the target chain.
+LayerZero also maintains EVM nodes<!--TXN--> to verify that the transactions complete on Etherlink EVM<!--TEVM-->.
 
 This diagram shows how the EVM bridge works:
 
@@ -487,7 +487,7 @@ Developers can integrate these contracts into their own cross-chain bridge if re
 </thead>
 <tbody>
 <tr>
-  <td>Etherlink EVM{/* TEVM */}</td>
+  <td>Etherlink EVM<!--TEVM--></td>
   <td><InlineCopy href="https://explorer.etherlink.com/address/0x1f8E735f424B7A49A885571A2fA104E8C13C26c7" code="0x1f8E735f424B7A49A885571A2fA104E8C13C26c7" abbreviate="5,4"></InlineCopy></td>
 </tr>
 <tr>
@@ -519,7 +519,7 @@ Developers can integrate these contracts into their own cross-chain bridge if re
 
 ## LayerZero endpoints for OFTs
 
-LayerZero uses these contracts to connect Etherlink EVM{/* TEVM */} to its network for tokens that meet their Omnichain Fungible Token (OFT) standard.
+LayerZero uses these contracts to connect Etherlink EVM<!--TEVM--> to its network for tokens that meet their Omnichain Fungible Token (OFT) standard.
 For more information, see [Deployed Endpoints, Message Libraries, and Executors](https://docs.layerzero.network/v2/deployments/deployed-contracts?chains=etherlink).
 
 <Tabs groupId="layerzero_contract_addresses">
@@ -600,7 +600,7 @@ For more information, see [Deployed Endpoints, Message Libraries, and Executors]
 ## Related tools and information
 
 - For information about pending transactions, see the [LayerZero Cross Chain Explorer](https://layerzeroscan.com/).
-- For information about Etherlink EVM{/* TEVM */} transactions, see the [Etherlink EVM{/* TEVM */} block explorer](https://explorer.etherlink.com/).
+- For information about Etherlink EVM<!--TEVM--> transactions, see the [Etherlink EVM<!--TEVM--> block explorer](https://explorer.etherlink.com/).
 - More Information about the LayerZero protocol is available in their [official documentation](https://docs.layerzero.network/).
 - The audit reports of the LayerZero protocol are available in this [LayerZero GitHub Repository](https://github.com/LayerZero-Labs/LayerZero/tree/main/audit).
 - To review the open source code of the EVM bridge, visit the [LayerZero Github Repository](https://github.com/LayerZero-Labs/wrapped-asset-bridge).
