@@ -180,7 +180,7 @@ As such, it has to be enabled by adding to the node configuration file:
 :::
 
 You can subscribe to WebSockets to receive Instant Confirmations, which are notices that a transaction will appear in the next block.
-Using WebSockets for Instant Confirmations requires at least version 0.49 of the `octez-evm-node` binary.
+Using WebSockets for Instant Confirmations requires at least version 0.52 of the `octez-evm-node` binary.
 
 :::note
 
@@ -247,7 +247,7 @@ The response to the `tez_newIncludedTransactions` event (a transaction object) i
   "params": {
     "result": {
       "type": "0x2",
-      "chainId": "0x1f308",
+      "chainId": "0x1f34f",
       "hash": "0xfbb0025e811b8bf37034e508da4740c68164c33947089b1c22119be55258a3e1",
       "nonce": "0x7",
       "blockHash": null,

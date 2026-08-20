@@ -4,7 +4,7 @@ title: Accounts
 
 # Accounts
 
-Among the [types of accounts](https://docs.tezos.com/architecture/accounts) desscribed in the Tezos L1 documentation, the following are available in the Michelson interface:
+Among the [types of accounts](https://docs.tezos.com/architecture/accounts) described in the Tezos L1 documentation, the following are available in the Michelson interface:
 
 | Address type | Status |
 |---|---|

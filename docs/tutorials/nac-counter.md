@@ -20,7 +20,7 @@ By the end you will have:
 3. seen a successful cross-interface call (EVM transaction succeeds, Michelson storage changes),
 4. seen an *atomic revert* (Michelson rejects the call, the EVM transaction reverts as a whole).
 
-The whole walkthrough runs on the **Etherlink<!--TX--> Previewnet**.
+The whole walkthrough runs on the **Tezos X Previewnet**.
 
 ---
 
@@ -205,7 +205,7 @@ The three entrypoints we'll use through NAC are:
 - `decrement` — subtracts 1; fails with `"at zero"` when storage is already 0. We'll use this to demonstrate atomic reverts.
 - `reset` — sets storage back to 0 (handy for re-running the demo).
 
-### A.3 Connect Temple to the Previewnet
+### A.3 Connect Temple to the Tezos X Previewnet
 
 1. In Temple → **Settings → Networks → Add network**.
 2. Set the RPC URL to `https://michelson.previewnet.tezosx.nomadic-labs.com` and use the values from the [network table](#network-values-read-this-first) above.
@@ -258,7 +258,7 @@ Keep that terminal (or explorer tab) open — you'll come back to it after the E
 
 ## Part B — EVM contract and wallet interaction
 
-### B.1 Connect MetaMask to the Previewnet
+### B.1 Connect MetaMask to the Tezos X Previewnet
 
 The fastest path is the [Previewnet dashboard](https://previewnet.tezosx.nomadic-labs.com/) — click **Add to MetaMask** and approve.
 
@@ -281,7 +281,7 @@ interface INativeAtomicGateway {
 }
 
 contract EvmToMichelsonCounter {
-    /// @dev Etherlink Previewnet NAC / EVM/Michelson gateway precompile. 
+    /// @dev Tezos X Previewnet NAC / EVM/Michelson gateway precompile. 
     address internal constant NAC_GATEWAY = 0xfF00000000000000000000000000000000000007;
 
     INativeAtomicGateway public immutable gateway;
@@ -343,7 +343,7 @@ contract EvmToMichelsonCounter {
 
 Open [Remix](https://remix.ethereum.org), paste the contract above, and deploy as you would on any other EVM testnet:
 
-- **Environment**: "Injected Provider — MetaMask", with MetaMask switched to the Etherlink<!--TX--> Previewnet.
+- **Environment**: "Injected Provider — MetaMask", with MetaMask switched to the Tezos X Previewnet.
 - **Constructor argument**: the Michelson counter `KT1…` string from Part A (e.g. `"KT1abc…"`).
 
 You can also deploy locally with Hardhat or Foundry — same network, same constructor argument.

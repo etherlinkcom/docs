@@ -4,15 +4,15 @@ title: Tokens
 
 import InlineCopy from '@site/src/components/InlineCopy';
 
-The native coin on Etherlink EVM{/* TEVM */} has the symbol XTZ, like the [tez tokens on Tezos layer 1](https://docs.tezos.com/architecture/tokens).
+The native coin on Etherlink EVM<!--TEVM--> has the symbol XTZ, like the [tez tokens on Tezos layer 1](https://docs.tezos.com/architecture/tokens).
 You can get XTZ from many [exchanges](/evm/tools/exchanges) and [on-ramps](/evm/tools/onramps).
 
-Etherlink EVM{/* TEVM */} provides a wrapped version of XTZ named WXTZ that is an [ERC-20-compliant](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) token for ease of interacting with decentralized applications.
+Etherlink EVM<!--TEVM--> provides a wrapped version of XTZ named WXTZ that is an [ERC-20-compliant](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) token for ease of interacting with decentralized applications.
 For more information about WXTZ, see [WXTZ](#wxtz).
 
 ## Token addresses
 
-These are some of the other tokens that are available on Etherlink EVM{/* TEVM */}.
+These are some of the other tokens that are available on Etherlink EVM<!--TEVM-->.
 Click the address to go to the block explorer page for the token:
 
 <table class="customTableContainer">
@@ -84,7 +84,7 @@ Click the address to go to the block explorer page for the token:
 
 ## WXTZ
 
-WXTZ is a token created to replicate the functionality of Wrapped Ether (WETH), but specifically for the XTZ native token on Etherlink EVM{/* TEVM */}.
+WXTZ is a token created to replicate the functionality of Wrapped Ether (WETH), but specifically for the XTZ native token on Etherlink EVM<!--TEVM-->.
 The goal of WXTZ is to facilitate the use of XTZ in decentralized applications (dApps) and protocols that require ERC-20-like tokens.
 
 For more information and the code of the token, see the [etherlinkcom/token-deployments repository](https://github.com/etherlinkcom/token-deployments/tree/main).
@@ -119,7 +119,7 @@ Here are the chains the token is deployed on:
 </thead>
 <tbody>
 <tr>
-  <td>Etherlink EVM{/* TEVM */}</td>
+  <td>Etherlink EVM<!--TEVM--></td>
   <td><InlineCopy code="0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" href="https://explorer.etherlink.com/address/0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb" abbreviate="5,4"></InlineCopy></td>
 </tr>
 <tr>
@@ -154,20 +154,20 @@ The WXTZ contract was audited by [Omniscia.io](https://omniscia.io/).
 The final report is here: https://omniscia.io/reports/etherlink-cross-chain-token-665c8ac479e20900180f383b
 
 WXTZ supports OFT to simplify cross-chain compatibility.
-However, if the OFT bridge gets compromised, all the XTZ in the contract on Etherlink EVM{/* TEVM */} could be stolen by a malicious attacker with these steps:
+However, if the OFT bridge gets compromised, all the XTZ in the contract on Etherlink EVM<!--TEVM--> could be stolen by a malicious attacker with these steps:
 
 1. Create and deploy a fake WXTZ contract on another EVM chain
 2. Mint a maximum amount of WXTZ on the other chain
-3. Connect to the contract on Etherlink EVM{/* TEVM */} using `setPeer()`
-4. Transfer the WXTZ to Etherlink EVM{/* TEVM */}
-5. Withdraw the XTZ locked in the WXTZ contract on Etherlink EVM{/* TEVM */}
+3. Connect to the contract on Etherlink EVM<!--TEVM--> using `setPeer()`
+4. Transfer the WXTZ to Etherlink EVM<!--TEVM-->
+5. Withdraw the XTZ locked in the WXTZ contract on Etherlink EVM<!--TEVM-->
 
-The Etherlink{/* TX */} team has taken measures to protect users native to Etherlink EVM{/* TEVM */} and bridged across EVM chains.
+The Etherlink<!--TX--> team has taken measures to protect users native to Etherlink EVM<!--TEVM--> and bridged across EVM chains.
 
-These are the measures to protect Etherlink EVM{/* TEVM */} users:
+These are the measures to protect Etherlink EVM<!--TEVM--> users:
 
-- We overrode the `_credit` method used by LayerZero to bridge tokens between chains. We added a condition checking that the receiving amount of WXTZ can't exceed the amount of XTZ stored in the contract. The result is that **only the WXTZ supply bridged** using the LayerZero protocol should be at risk, and not the local WXTZ on Etherlink EVM{/* TEVM */}. If an attacker succeeds in hacking the bridge, they will only be able to transfer the difference between the amount of XTZ stored in the contract and the local total supply of WXTZ on Etherlink EVM{/* TEVM */}. In this way, all Etherlink EVM{/* TEVM */} users who own their WXTZ locally will still have their WXTZ backed 1:1 by XTZ in the contract.
+- We overrode the `_credit` method used by LayerZero to bridge tokens between chains. We added a condition checking that the receiving amount of WXTZ can't exceed the amount of XTZ stored in the contract. The result is that **only the WXTZ supply bridged** using the LayerZero protocol should be at risk, and not the local WXTZ on Etherlink EVM<!--TEVM-->. If an attacker succeeds in hacking the bridge, they will only be able to transfer the difference between the amount of XTZ stored in the contract and the local total supply of WXTZ on Etherlink EVM<!--TEVM-->. In this way, all Etherlink EVM<!--TEVM--> users who own their WXTZ locally will still have their WXTZ backed 1:1 by XTZ in the contract.
 
-- To protect bridged users, the Etherlink{/* TX */} team overrode the `setPeer()` method that connects and disconnects WXTZ contracts on different chains.
+- To protect bridged users, the Etherlink<!--TX--> team overrode the `setPeer()` method that connects and disconnects WXTZ contracts on different chains.
 By adding a 2 day timelock to the `setPeer()` method, there is a 2 day delay between initially creating a connection and the connection being executed.
-If a hacker takes ownership of the contracts and starts connecting or disconnecting, **bridged users will have 2 days to bridge back all their funds on Etherlink EVM{/* TEVM */} and withdraw their XTZ**.
+If a hacker takes ownership of the contracts and starts connecting or disconnecting, **bridged users will have 2 days to bridge back all their funds on Etherlink EVM<!--TEVM--> and withdraw their XTZ**.

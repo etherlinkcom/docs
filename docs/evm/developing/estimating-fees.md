@@ -2,7 +2,7 @@
 title: Estimating fees
 ---
 
-import GasPriceWarning from '@site/docs/conrefs/gas-price-warning.md';
+import GasPriceWarning from '@site/docs/conrefs/_gas-price-warning.md';
 
 The Etherlink EVM<!--TEVM--> gas price (and therefore the fee for a given transaction) varies based on the activity on the chain.
 As activity increases, fees increase, and vice versa.
@@ -44,7 +44,7 @@ This gas price is the cost per unit of computation required by a transaction.
 
 <GasPriceWarning />
 
-To calculate the fee estimate for a given transaction, you can send the transaction to the `eth_estimateGas` endpoint to obtain the estimated gas usage for the the transaction (as in this example), and then calculate the total expected gas fee:
+To calculate the fee estimate for a given transaction, you can send the transaction to the `eth_estimateGas` endpoint to obtain the estimated gas usage for the transaction (as in this example), and then calculate the total expected gas fee:
 
 ```bash
 curl --request POST \

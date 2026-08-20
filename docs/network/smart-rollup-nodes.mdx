@@ -7,30 +7,30 @@ dependencies:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Etherlink{/* TX */} uses Smart Rollup nodes as a bridge between the Etherlink{/* TX */} transactions on the EVM nodes and Tezos layer 1.
-Public Smart Rollup nodes for Etherlink{/* TX */} are not yet available, so you must run your own if you want to participate in the Etherlink{/* TX */} network.
+Etherlink<!--TX--> uses Smart Rollup nodes as a bridge between the Etherlink<!--TX--> transactions on the EVM nodes and Tezos layer 1.
+Public Smart Rollup nodes for Etherlink<!--TX--> are not yet available, so you must run your own if you want to participate in the Etherlink<!--TX--> network.
 
 :::note
 
-In this context, an _Etherlink{/* TX */} Smart Rollup node_ is an [Octez Smart Rollup node](https://octez.tezos.com/docs/shell/smart_rollup_node.html) that runs the Etherlink{/* TX */} kernel.
-This kernel is a Rust program compiled in WASM implementing the semantics of Etherlink{/* TX */} blocks and transactions.
+In this context, an _Etherlink<!--TX--> Smart Rollup node_ is an [Octez Smart Rollup node](https://octez.tezos.com/docs/shell/smart_rollup_node.html) that runs the Etherlink<!--TX--> kernel.
+This kernel is a Rust program compiled in WASM implementing the semantics of Etherlink<!--TX--> blocks and transactions.
 
 :::
 
 To start, the node uses the _installer kernel_, which is a compressed version of the kernel that provides only enough information to install the original kernel.
 The data for the original kernel is stored in separate files called _preimages_.
 
-You can run the Smart Rollup node starting from Etherlink{/* TX */} genesis or from a snapshot of a recent Etherlink{/* TX */} state.
+You can run the Smart Rollup node starting from Etherlink<!--TX--> genesis or from a snapshot of a recent Etherlink<!--TX--> state.
 
 ## System requirements
 
-Running an Etherlink{/* TX */} Smart Rollup node on Etherlink{/* TX */} Mainnet requires a computer with 500GB of disk space and at least 16GB RAM.
+Running an Etherlink<!--TX--> Smart Rollup node on Etherlink<!--TX--> Mainnet requires a computer with 500GB of disk space and at least 16GB RAM.
 
 ## Modes
 
-Running the Smart Rollup node in operator or maintenance mode is the best way to participate in Etherlink{/* TX */} because in these modes the node posts commitments about Etherlink{/* TX */}'s state to layer 1.
-These commitments validate Etherlink{/* TX */}'s state and ensure that Etherlink{/* TX */} is processing blocks and transactions honestly according to its kernel.
-As described in [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com, one honest node is enough to ensure that Etherlink{/* TX */} is running correctly, but adding more nodes strengthens its security and allows users to verify for themselves that Etherlink{/* TX */} is running as intended.
+Running the Smart Rollup node in operator or maintenance mode is the best way to participate in Etherlink<!--TX--> because in these modes the node posts commitments about Etherlink<!--TX-->'s state to layer 1.
+These commitments validate Etherlink<!--TX-->'s state and ensure that Etherlink<!--TX--> is processing blocks and transactions honestly according to its kernel.
+As described in [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com, one honest node is enough to ensure that Etherlink<!--TX--> is running correctly, but adding more nodes strengthens its security and allows users to verify for themselves that Etherlink<!--TX--> is running as intended.
 
 The best way to run a node that can post commitments is to start with a node in observer mode, verify that it works, and convert it to maintenance mode.
 Maintenance mode is similar to operator mode but it does not require settings for batching operations, which are required only for sequencer nodes.
@@ -39,7 +39,7 @@ For more information on modes, see [Smart Rollup node](https://octez.tezos.com/d
 
 ## References
 
-Make sure that you understand the interaction between different nodes as described in [Etherlink{/* TX */} architecture](/network/architecture).
+Make sure that you understand the interaction between different nodes as described in [Etherlink<!--TX--> architecture](/network/architecture).
 
 For more information about Smart Rollup nodes in general, see [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups) on docs.tezos.com and [Smart Rollup Node](https://octez.tezos.com/docs/shell/smart_rollup_node.html) in the Octez documentation.
 
@@ -54,7 +54,7 @@ After the node has started, you can switch to a rolling node.
 Follow these steps to start the node in observer mode:
 
 1. Get a built version of the Smart Rollup node binary, named `octez-smart-rollup-node`.
-The best place to get the most recent binary files to use with Etherlink{/* TX */} is https://gitlab.com/tezos/tezos/-/releases.
+The best place to get the most recent binary files to use with Etherlink<!--TX--> is https://gitlab.com/tezos/tezos/-/releases.
 
 1. Initialize the local context of the node, which is where it stores local data:
 
@@ -62,14 +62,14 @@ The best place to get the most recent binary files to use with Etherlink{/* TX *
    The default directory is `$HOME/.tezos-smart-rollup-node`.
    The following instructions use the placeholder `<SR_DATA_DIR>` to represent this directory.
 
-   1. Initialize the local context by running this command and passing the address of the Etherlink{/* TX */} Smart Rollup and the preimages endpoint.
+   1. Initialize the local context by running this command and passing the address of the Etherlink<!--TX--> Smart Rollup and the preimages endpoint.
    You can get this information on the [Network information](/evm/get-started/network-information) page.
 
 
    <Tabs groupId="chain">
    <TabItem value="mainnet" label={"Etherlink Mainnet" /* TX */}>
 
-      This command initializes the context for Etherlink{/* TX */} Mainnet:
+      This command initializes the context for Etherlink<!--TX--> Mainnet:
 
       ```bash
       octez-smart-rollup-node init observer config for sr1Ghq66tYK9y3r8CC1Tf8i8m5nxh8nTvZEf \
@@ -89,7 +89,7 @@ The best place to get the most recent binary files to use with Etherlink{/* TX *
    </TabItem>
    <TabItem value="shadownet" label={"Etherlink Shadownet Testnet" /* TX */}>
 
-      For Etherlink{/* TX */} Shadownet Testnet, use this command:
+      For Etherlink<!--TX--> Shadownet Testnet, use this command:
 
       ```bash
       octez-smart-rollup-node init observer config for sr19fMYrr5C4qqvQqQrDSjtP31GcrWjodzvg \
@@ -112,15 +112,15 @@ The best place to get the most recent binary files to use with Etherlink{/* TX *
 
       This configuration uses the preimages that the Tezos Foundation hosts on a file server on a so-called "preimages endpoint".
       It's safe to use these preimages because the node verifies them.
-      If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink{/* TX */} kernel](/network/building-kernel).
-      However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink{/* TX */} after that.
+      If you don't want to use third-party preimages, you can build the kernel yourself and move the contents of the `wasm_2_0_0/` directory to the local data directory; see [Building the Etherlink<!--TX--> kernel](/network/building-kernel).
+      However, in this case, you must manually update this directory with the preimages of every kernel voted by the community and deployed on Etherlink<!--TX--> after that.
 
 1. To speed up the setup process by loading a snapshot, follow these steps:
 
-   1. Get the URL of the Etherlink{/* TX */} Smart Rollup node full history snapshot for the appropriate Etherlink{/* TX */} network or download the file manually:
+   1. Get the URL of the Etherlink<!--TX--> Smart Rollup node full history snapshot for the appropriate Etherlink<!--TX--> network or download the file manually:
 
-      - Etherlink{/* TX */} Mainnet: https://snapshots.tzinit.org/etherlink-mainnet
-      - Etherlink{/* TX */} Shadownet Testnet: https://snapshots.tzinit.org/etherlink-shadownet
+      - Etherlink<!--TX--> Mainnet: https://snapshots.tzinit.org/etherlink-mainnet
+      - Etherlink<!--TX--> Shadownet Testnet: https://snapshots.tzinit.org/etherlink-shadownet
 
       The full history snapshot is appropriate for most use cases.
       If you want to run an EVM node with the Smart Rollup node, they do not need to run in the same history mode.
@@ -184,7 +184,7 @@ For example, this query gets the health of the node:
    curl -s http://localhost:8932/health
    ```
 
-   If the response includes the fields `healthy: false` and the `blocks_late` field is more than 0, the node is catching up to the current state of Etherlink{/* TX */}.
+   If the response includes the fields `healthy: false` and the `blocks_late` field is more than 0, the node is catching up to the current state of Etherlink<!--TX-->.
 
    ```json
    {
@@ -205,7 +205,7 @@ For example, this query gets the health of the node:
 
 1. Wait until the response includes the field `healthy: true` and the `blocks_late` field is 0.
 
-Now the Smart Rollup node is running and tracking the state of Etherlink{/* TX */} by receiving information from layer 1.
+Now the Smart Rollup node is running and tracking the state of Etherlink<!--TX--> by receiving information from layer 1.
 
 ## Converting the Smart Rollup node to maintenance mode
 
@@ -357,7 +357,7 @@ For example, this query gets the health of the node:
 By default, the Smart Rollup node exposes its JSON RPC API endpoint to `localhost:8932`.
 To set the host name or port that the node listens on, use the `--rpc-addr` or `--rpc-port` arguments of the `octez-smart-rollup-node run` command.
 
-Now that you have a Smart Rollup node configured for Etherlink{/* TX */}, you can run an EVM node{/* TXN */}, as described in [Running an EVM node{/* TXN */}](/network/evm-nodes).
+Now that you have a Smart Rollup node configured for Etherlink<!--TX-->, you can run an EVM node<!--TXN-->, as described in [Running an EVM node<!--TXN-->](/network/evm-nodes).
 
 ## Stopping the Smart Rollup node
 
@@ -374,7 +374,7 @@ The Smart Rollup node respects SIGTERM and exits cleanly when stopped.
 
 :::
 
-Follow these steps to stop an Etherlink{/* TX */} Smart Rollup node:
+Follow these steps to stop an Etherlink<!--TX--> Smart Rollup node:
 
 1. Stop the node temporarily.
 
@@ -405,5 +405,5 @@ octez-client recover bond of <BONDED_ACCOUNT> for smart rollup <SMART_ROLLUP_ADD
 This command uses these arguments:
 
 - `<BONDED_ACCOUNT>`: The account that you used to run the Smart Rollup in operator mode
-- `<SMART_ROLLUP_ADDRESS>`: The address of the Etherlink{/* TX */} Smart Rollup
+- `<SMART_ROLLUP_ADDRESS>`: The address of the Etherlink<!--TX--> Smart Rollup
 - `<MY_ACCOUNT>`: The account to use to send this `recover bond` operation

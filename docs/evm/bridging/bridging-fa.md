@@ -3,7 +3,7 @@ title: Bridging FA tokens between Tezos layer 1 and Etherlink EVM # tevm
 sidebar_label: Bridging FA tokens
 ---
 
-import CementingDelayNote from '@site/docs/conrefs/cementing-delay.md';
+import CementingDelayNote from '@site/docs/conrefs/_cementing-delay.md';
 
 You can bridge FA standards-compliant tokens in and out of Etherlink EVM<!--TEVM--> by deploying contracts that move the tokens.
 Then you can create dApps that use these contracts to move tokens or send a request to the Etherlink<!--TX--> team to add your tokens to the bridge at https://bridge.etherlink.com/tezos.

@@ -1,5 +1,5 @@
 ---
-title: Self-address test
+title: Aliases and caller-equals-self
 ---
 
 # `SENDER == SELF_ADDRESS` is externally inducible

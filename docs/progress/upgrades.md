@@ -107,7 +107,7 @@ Instant Confirmations enable these features:
   - Users can call the `eth_sendRawTransactionSync` endpoint that is available in the EVM node version 0.52 and later to submit a transaction and wait for an instant confirmation from the node when the transaction will be in the next block.
   For more information, see [Getting Instant Confirmations](/evm/developing/transactions#getting-instant-confirmations).
 
-  - Uses can subscribe to notifications via WebSockets to get information about transactions that the sequencer will put in the next block.
+  - Users can subscribe to notifications via WebSockets to get information about transactions that the sequencer will put in the next block.
   For more information, see [Subscribing to Instant Confirmations](/evm/developing/websockets#subscribing-to-instant-confirmations).
 
 - The speed limit (also known as the target) is increased to 13.5 million gas units per second.
@@ -173,7 +173,13 @@ For more information, see [Announcing Etherlink 6.6: a security hardening kernel
 
 ## Etherlink 7.0 (Ganesha)
 
-The Etherlink 7.0 upgrade went live on 20 August 2026 through the fast kernel governance process and brought the largest expansion of Etherlink's scope since launch.
+:::note
+
+Etherlink 7.0 requires version 0.64 or later of the `octez-evm-node` binary.
+
+:::
+
+The Etherlink 7.0 upgrade went live on 21 August 2026 through the fast kernel governance process and brought the largest expansion of Etherlink's scope since launch.
 In particular, it added the new Michelson interface, which runs Michelson smart contracts and brings the Tezos account model to Etherlink, and Native Atomic Composability (NAC) for seamlessly combining EVM and Michelson contracts.
 
 Etherlink 7.0 was initially proposed through the slow kernel governance process on 2 August 2026.

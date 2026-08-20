@@ -4,7 +4,7 @@ dependencies:
   ethers: 6.13.5
 ---
 
-import PublicRpcRateLimitNote from '@site/docs/conrefs/rate-limit.md';
+import PublicRpcRateLimitNote from '@site/docs/conrefs/_rate-limit.md';
 
 The EVM interface supports standard EVM endpoints that allow you to get information about the Etherlink<!--TX--> network and its accounts, including user accounts and smart contract accounts.
 
@@ -15,7 +15,7 @@ The EVM interface supports standard EVM endpoints that allow you to get informat
 
 ## Getting the balance of accounts
 
-To get the balance of a user account or smart contract, pass the account address to the [`eth_getBalance`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getbalance) endpoint, as in this example:
+To get the balance of a user account or smart contract, pass the account address to the [`eth_getBalance`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth-getbalance) endpoint, as in this example:
 
 ```bash
 curl --request POST \
@@ -36,7 +36,7 @@ The response includes the balance in XTZ in hexadecimal:
 
 ## Getting the chain ID
 
-Etherlink EVM<!--TEVM--> supports the standard EVM [`eth_chainId`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_chainid) and [`net_version`](https://ethereum.org/en/developers/docs/apis/json-rpc/#net_version) endpoints to get the ID of the current network.
+Etherlink EVM<!--TEVM--> supports the standard EVM [`eth_chainId`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth-chainid) and [`net_version`](https://ethereum.org/en/developers/docs/apis/json-rpc/#net-version) endpoints to get the ID of the current network.
 The `eth_chainId` endpoint returns the chain ID in hexadecimal and the `net_version` endpoint returns it in decimal, as in this example:
 
 ```bash
@@ -49,7 +49,7 @@ curl --request POST \
 
 ## Getting information about smart contracts
 
-Etherlink EVM<!--TEVM--> supports the standard EVM [`eth_getCode`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getcode) and [`eth_getStorageAt`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getstorageat) endpoints to get the code of a contract and its storage in hexadecimal, as in this example:
+Etherlink EVM<!--TEVM--> supports the standard EVM [`eth_getCode`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth-getcode) and [`eth_getStorageAt`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth-getstorageat) endpoints to get the code of a contract and its storage in hexadecimal, as in this example:
 
 ```bash
 curl --request POST \
@@ -63,12 +63,12 @@ curl --request POST \
 
 Etherlink EVM<!--TEVM--> supports several standard Ethereum endpoints to get information about transactions:
 
-- [`eth_getTransactionByBlockNumberAndIndex`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_gettransactionbyblocknumberandindex)
-- [`eth_getTransactionByBlockHashAndIndex`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_gettransactionbyblockhashandindex)
-- [`eth_getTransactionByHash`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_gettransactionbyhash)
-- [`eth_getTransactionReceipt`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_gettransactionreceipt)
-- [`eth_getTransactionCount`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_gettransactioncount)
-- [`eth_getTransactionByHash`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_gettransactionbyhash)
+- [`eth_getTransactionByBlockNumberAndIndex`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth-gettransactionbyblocknumberandindex)
+- [`eth_getTransactionByBlockHashAndIndex`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth-gettransactionbyblockhashandindex)
+- [`eth_getTransactionByHash`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth-gettransactionbyhash)
+- [`eth_getTransactionReceipt`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth-gettransactionreceipt)
+- [`eth_getTransactionCount`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth-gettransactioncount)
+- [`eth_getTransactionByHash`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth-gettransactionbyhash)
 
 For example, you can get information about a transaction by passing its hash to the `eth_getTransactionByHash` or `eth_getTransactionReceipt` endpoints, as in this example:
 
