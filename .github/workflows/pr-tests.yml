@@ -5,6 +5,7 @@ permissions:
   contents: read
   checks: write
   id-token: write
+  pull-requests: read
 
 on:
   pull_request:
@@ -17,12 +18,20 @@ jobs:
     outputs:
       files: ${{ steps.files.outputs.added_modified }}
     steps:
-      - uses: actions/checkout@v2
+      # Compute the added/modified .md/.mdx files via the GitHub API. This
+      # replaces a third-party action (Ana06/get-changed-files, node12/node20)
+      # with the pre-installed gh CLI, so there is no action Node runtime to
+      # deprecate. Output name kept as `added_modified` so the job output
+      # mapping and downstream --docFiles references are unchanged.
       - id: files
-        uses: Ana06/get-changed-files@v1.2
-        with:
-          format: 'csv'
-          filter: '*.mdx?'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          files=$(gh api --paginate \
+            repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files \
+            --jq '.[] | select(.status == "added" or .status == "modified") | .filename' \
+            | { grep -iE '\.mdx?$' || true; } | paste -sd, -)
+          echo "added_modified=$files" >> "$GITHUB_OUTPUT"
 
   tests:
     runs-on: ubuntu-latest
@@ -30,8 +39,8 @@ jobs:
     if: ${{ needs.checkChangedFiles.outputs.files != '' }}
     continue-on-error: true
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
 
@@ -66,7 +75,7 @@ jobs:
         run: echo $FAILED
 
       # Report tests on PR
-      - uses: dorny/test-reporter@v2
+      - uses: dorny/test-reporter@v3
         if: ${{ !cancelled() }}
         with:
           path: 'doclib/*.xml'
