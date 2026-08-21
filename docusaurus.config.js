@@ -56,7 +56,18 @@ module.exports = async function createConfigAsync() {
       }
     },
     future: {
-      v4: true,
+      // Granular v4 opt-in. We adopt the safe v4 defaults but intentionally
+      // leave two off until the repo is ready:
+      //   - fasterByDefault (Rspack): docusaurus-node-polyfills pushes a webpack
+      //     ProvidePlugin that Rspack 1.7 rejects.
+      //   - mdx1CompatDisabledByDefault: many pages use <!--TX--> HTML comments,
+      //     which strict MDX rejects.
+      // `v4: true` would enable all five and break the build on 3.10.
+      v4: {
+        useCssCascadeLayers: true,
+        siteStorageNamespacing: true,
+        removeLegacyPostBuildHeadAttribute: true,
+      },
     },
 
     customFields: {
