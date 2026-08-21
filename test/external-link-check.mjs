@@ -56,7 +56,13 @@ const regexesToIgnore = [
 const getAst = async (filePath) => {
   const fileContents = await fs.promises.readFile(filePath, 'utf8');
   if (path.extname(filePath) === '.mdx') {
-    return fromMarkdown(fileContents, {
+    // The raw micromark MDX parser rejects HTML comments (`<!-- ... -->`),
+    // which we use as invisible rebranding markers in .mdx files. Docusaurus's
+    // build pipeline strips them; the standalone parser does not, so strip them
+    // here before parsing. They never contain links to check.
+    // See https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect
+    const withoutHtmlComments = fileContents.replace(/<!--[\s\S]*?-->/g, '');
+    return fromMarkdown(withoutHtmlComments, {
       extensions: [mdxjs()],
       mdastExtensions: [mdxFromMarkdown()]
     });

@@ -1,6 +1,7 @@
 .container {
   display: inline;
   position: unset;
+  overflow-wrap: anywhere;
 }
 
 .link:hover {
