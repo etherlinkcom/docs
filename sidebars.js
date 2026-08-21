@@ -195,11 +195,12 @@ const sidebars = {
     {
       type: 'category',
       label: 'Tutorials',
-      link: {
-        type: 'doc',
-        id: 'tutorials/index',
-      },
       items: [
+        {
+          type: 'doc',
+          id: 'tutorials/index',
+          label: 'Overview',
+        },
         {
           type: 'category',
           label: 'Prediction market',

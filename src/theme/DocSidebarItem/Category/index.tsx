@@ -1,4 +1,4 @@
-import React, {type ComponentProps, useEffect, useMemo, useState} from 'react';
+import React, {type ComponentProps, useEffect, useMemo} from 'react';
 import clsx from 'clsx';
 import {
   ThemeClassNames,
@@ -219,6 +219,7 @@ export default function DocSidebarItemCategory({
         </Link>
         {href && collapsible && (
           <SecondLevelItemIcon
+            collapsed={collapsed}
             onClick={
             (e) => {
               e.preventDefault();
@@ -240,20 +241,19 @@ export default function DocSidebarItemCategory({
   );
 }
 
-const SecondLevelItemIcon = ({onClick}:{onClick: (e) => void}) => {
-  const [isRotated, setIsRotated] = useState(false);
-
+const SecondLevelItemIcon = ({collapsed, onClick}:{collapsed: boolean; onClick: (e) => void}) => {
+  // Match the default caret orientation used by sibling categories:
+  // collapsed -> points right (90deg), expanded -> points down (180deg).
+  // Driven by the real `collapsed` state so it stays in sync whether the
+  // category is toggled via the label link, this icon, or auto-collapse.
   return (
     <img
       style={{
-        transform: isRotated ? 'rotate(90deg)' : 'rotate(180deg)',
+        transform: collapsed ? 'rotate(90deg)' : 'rotate(180deg)',
         transition: 'transform 0.3s ease',
       }}
       className={styles.secondLevelItemIcon}
-      onClick={(e) => {
-        setIsRotated(!isRotated)
-        onClick(e)
-      }}
+      onClick={onClick}
       src='/img/site/GreenFiChevronUp.svg' alt='arrow icon'
     />
   )
