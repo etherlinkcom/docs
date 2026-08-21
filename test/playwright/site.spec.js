@@ -9,7 +9,9 @@ test('has title', async ({ page }) => {
 
 test('navigation', async ({ page }) => {
   await page.goto('https://docs.etherlink.com/');
-  await page.getByRole('button', { name: 'Developing' }).click();
+  // "Developing" is nested under "EVM Interface", so expand that first.
+  await page.getByRole('button', { name: 'EVM Interface' }).click();
+  await page.getByRole('button', { name: 'Developing' }).first().click();
   await expect(page.getByText('Ethereum endpoint support')).toBeVisible();
   await page.getByRole('button', { name: 'Governance' }).click();
   await expect(page.getByText('How is Etherlink governed?')).toBeVisible();
