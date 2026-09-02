@@ -187,6 +187,12 @@ After a security vulnerability was found in that kernel during continued testing
 
 For more information, see [Announcing Ganesha: A 7th Upgrade Proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-ganesha-a-7th-upgrade-proposal-for-etherlink-mainnet-ae0a3af93aba) and [Etherlink 7.0 (Ganesha): resubmission via Fast governance](https://forum.tezosagora.org/t/etherlink-7-0-ganesha-resubmission-via-fast-governance-on-wednesday-august-19th/7159).
 
+## Etherlink 7.1
+
+The Etherlink 7.1 upgrade went live on 29 August 2026 through the fast kernel governance process and contained a security kernel upgrade.
+
+For more information, see [Announcing Etherlink 7.1: a security upgrade proposal](https://forum.tezosagora.org/t/announcing-etherlink-7-1-a-security-upgrade-proposal/7166).
+
 ## Changelog
 
 For full details about changes to Etherlink, see [Changelogs](/progress/changelogs).
