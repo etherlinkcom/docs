@@ -15,7 +15,7 @@ For the [Michelson interface](/michelson) of Etherlink<!--TX-->, you may use the
 - Etherlink<!--TX--> Shadownet Testnet: https://shadownet.etherlink.tzkt.io/ (API: https://api.shadownet.etherlink.tzkt.io/)
 
 [TzKT](https://tzkt.io/), developed by Baking Bad, is the main indexer and explorer for Tezos.
-For information about the TzKT API, see https://api.tzkt.io/.
+For documentation about the TzKT API, see https://api.tzkt.io/.
 
 For more information about indexers on Tezos, see [Indexers](https://docs.tezos.com/developing/information/indexers) on docs.tezos.com.
 
