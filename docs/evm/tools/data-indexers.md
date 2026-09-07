@@ -47,3 +47,13 @@ It provides these services:
 - [Mirror](https://docs.goldsky.com/mirror/introduction) lets you replicate Subgraph data or chain-level streams directly to a data store of your choosing for highly flexible usage in your front-end or back-end.
 
 See the Goldsky documentation at https://docs.goldsky.com.
+
+## TzKT
+
+[TzKT](https://tzkt.io/), developed by Baking Bad, is the main indexer and explorer for Tezos.
+It indexes the [Michelson interface](/michelson) of Etherlink<!--TX--> (not the EVM interface), providing the same explorer and API that Tezos developers use on Tezos layer 1:
+
+- Etherlink<!--TX--> Mainnet: https://etherlink.tzkt.io/ (API: https://api.etherlink.tzkt.io/)
+- Etherlink<!--TX--> Shadownet Testnet: https://shadownet.etherlink.tzkt.io/ (API: https://api.shadownet.etherlink.tzkt.io/)
+
+For information about the TzKT API, see https://api.tzkt.io/.
