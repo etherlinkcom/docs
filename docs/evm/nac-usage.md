@@ -81,6 +81,69 @@ bytes memory michelineResult = gateway.callMichelsonView(
 
 A complete worked example (using the low-level `staticcall` pattern) is available in [`crac_michelson_view_staticcall.sol`](https://gitlab.com/tezos/tezos/-/blob/master/etherlink/kernel_latest/solidity_examples/crac_michelson_view_staticcall.sol).
 
+## Address translation
+
+Cross-interface calls run under the caller's alias (see [Accounts and Aliases](/overview/accounts-and-aliases)). The gateway exposes two `view` functions to translate between native addresses and aliases. Both take the address as a `string` in its printable form (`0x…` hex for the EVM interface, base58check for the Michelson interface) rather than as a Solidity `address`, and identify interfaces by a runtime id: `0` for the Michelson interface, `1` for the EVM interface.
+
+```solidity
+interface INativeAtomicGateway {
+    function originOf(
+        string calldata addr,
+        uint8 sourceRuntime
+    ) external view returns (uint8 kind, uint8 homeRuntime, string memory nativeAddress);
+
+    function resolveAddress(
+        string calldata addr,
+        uint8 sourceRuntime,
+        uint8 targetRuntime
+    ) external view returns (bool classified, uint8 res, string memory translated);
+
+    error InvalidRuntimeId(uint8 received);
+}
+```
+
+### `originOf`
+
+`originOf(addr, sourceRuntime)` returns how the address `addr` of the interface `sourceRuntime` is classified:
+
+| `kind` | Meaning | `homeRuntime` | `nativeAddress` |
+|---|---|---|---|
+| `0` (Unknown) | The address is malformed or has not been seen by the kernel yet | `0` | `""` |
+| `1` (Native) | An account native to `sourceRuntime` | `sourceRuntime` | `addr` |
+| `2` (Alias) | The alias of an account native to the other interface | The interface the account is native to | The native address of that account |
+
+The kernel records the origin of an account when it is first used: Michelson user accounts (`tz1…`, `tz2…`, `tz3…`) are always Native, Michelson smart contracts are recorded at origination, EVM accounts when they first sign a transaction or when they have code, and aliases when a cross-interface call creates them. In particular, an EVM address that has only received funds is Unknown.
+
+For example, to check whether the caller is a Michelson account:
+
+```solidity
+(uint8 kind, , string memory native) = gateway.originOf(
+    Strings.toHexString(msg.sender),  // OpenZeppelin helper: lowercase "0x…" string
+    1
+);
+if (kind == 2) {
+    // msg.sender is the alias of the Michelson account `native` (tz1… or KT1…)
+}
+```
+
+### `resolveAddress`
+
+`resolveAddress(addr, sourceRuntime, targetRuntime)` translates the address `addr` of the interface `sourceRuntime` into the corresponding address of the interface `targetRuntime`:
+
+- If `addr` is malformed or Unknown, `classified` is `false` and the other values are zero.
+- If `addr` is Native, `translated` is its alias in `targetRuntime`.
+- If `addr` is an Alias, `translated` is the native address it stands for, rather than an alias of the alias.
+
+`res` is `0` (Recorded) when the returned address already exists on chain and `1` (Derived) when it was computed with the derivation formula but no cross-interface call has created the alias yet. When `sourceRuntime` and `targetRuntime` are equal, a well-formed address is returned unchanged with `res == 0`.
+
+```solidity
+(bool classified, uint8 res, string memory evmAlias) = gateway.resolveAddress(
+    "tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb", 0, 1
+);
+// classified == true; evmAlias is the "0x…" EVM alias of the Tezos account;
+// res == 1 until a cross-interface call creates the alias
+```
+
 ## Failure behavior
 
 ### `callMichelson`
@@ -121,6 +184,10 @@ Because `callMichelsonView` must be invoked via `staticcall`, catch failures wit
 );
 // success == false if the Michelson view reverted or was not found
 ```
+
+### `originOf` and `resolveAddress`
+
+Malformed addresses never revert: they are reported as Unknown (`kind == 0`) or unclassified (`classified == false`). Both functions revert with the custom error `InvalidRuntimeId(uint8)` when a runtime id is neither `0` nor `1`.
 
 ### Infrastructure failures
 
