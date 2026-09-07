@@ -2,8 +2,9 @@
 title: Tezos X Previewnet test network
 ---
 
-Tezos X Previewnet is a public test network running the upgrade-7 feature set ahead of the other networks.
-It has allowed builders and integrators to experiment with both the EVM and Michelson interfaces and with cross-interface interactions ahead of the upgrade 7 on Mainnet.
+Tezos X Previewnet is a public test network for previewing upcoming Tezos X features.
+Unlike Shadownet, which follows the Mainnet upgrade cycle, Previewnet may run the latest Tezos X features ahead of the other networks so that builders and integrators can test them in advance.
+For example, it made the EVM and Michelson interfaces and cross-interface interactions available for experimentation ahead of upgrade 7 on Mainnet.
 
 ## Resources
 
