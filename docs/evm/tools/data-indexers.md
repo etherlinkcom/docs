@@ -2,35 +2,47 @@
 title: Data indexers
 ---
 
-Etherlink<!--TX--> has public block explorers that use indexers to provide information about Etherlink EVM<!--TEVM-->:
+Etherlink<!--TX--> has public block explorers that use indexers to provide information about the current chain state and its history.
+
+For the Etherlink EVM<!--TEVM-->, you may use these explorers:
 
 - Etherlink<!--TX--> Mainnet: https://explorer.etherlink.com
 - Etherlink<!--TX--> Shadownet Testnet: https://shadownet.explorer.etherlink.com/
 
-If you need custom information about your contracts or information formatted in a specific way, you may need to run a custom indexer.
-Several Etherlink EVM<!--TEVM-->-compatible indexers are listed below.
+For the [Michelson interface](/michelson) of Etherlink<!--TX-->, you may use these block explorers and indexers providing the same explorer and API that Tezos developers use on Tezos layer 1:
+
+- Etherlink<!--TX--> Mainnet: https://etherlink.tzkt.io/ (API: https://api.etherlink.tzkt.io/)
+- Etherlink<!--TX--> Shadownet Testnet: https://shadownet.etherlink.tzkt.io/ (API: https://api.shadownet.etherlink.tzkt.io/)
+
+[TzKT](https://tzkt.io/), developed by Baking Bad, is the main indexer and explorer for Tezos.
+For documentation about the TzKT API, see https://api.tzkt.io/.
 
 For more information about indexers on Tezos, see [Indexers](https://docs.tezos.com/developing/information/indexers) on docs.tezos.com.
 
-## The Graph
+## External Etherlink EVM<!--TEVM-->-compatible indexers
+
+If you need custom information about your contracts or information formatted in a specific way, you may need to run a custom indexer.
+Several Etherlink EVM<!--TEVM-->-compatible indexers are listed below.
+
+### The Graph
 
 [The Graph](https://thegraph.com/) is an indexing protocol for organizing blockchain data and making it easily accessible with GraphQL. Etherlink EVM<!--TEVM--> dApps can use GraphQL to query open APIs called subgraphs, to retrieve data that is indexed on the network.
 
 For information on indexing contracts with The Graph, see [Indexing Etherlink EVM<!--TEVM--> contracts with TheGraph](/evm/developing/indexing-graph).
 
-## Subsquid
+### Subsquid
 
 [Subsquid](https://subsquid.io/) is a peer-to-peer network to quickly batch, query and aggregate on-chain and off-chain data.
 
 Learn how to use their SDK with this [guide](https://docs.subsquid.io/sdk/how-to-start/).
 
-## DipDup
+### DipDup
 
 [DipDup](https://dipdup.io) provides a framework for creating custom indexers.
 
 For information on indexing Etherlink EVM<!--TEVM--> with DipDup, see [Etherlink](https://dipdup.io/docs/supported-networks/etherlink) in the DipDup documentation.
 
-## Subquery
+### Subquery
 
 [Subquery indexer](https://www.subquery.network/indexer) is an open-source indexer that supports Etherlink EVM<!--TEVM-->, along with many other networks.
 
@@ -38,7 +50,7 @@ For examples of using Subquery with Etherlink EVM<!--TEVM-->, see these sample p
 
 - Mainnet: https://github.com/subquery/ethereum-subql-starter/tree/main/Etherlink%20Mainnet/etherlink-mainnet-etherlink-starter
 
-## Goldsky
+### Goldsky
 
 [Goldsky](https://goldsky.com/) makes it easy to access real-time Web3 data with little maintenance.
 It provides these services:
