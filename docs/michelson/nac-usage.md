@@ -151,6 +151,54 @@ IF_NONE
   { … }      (* use the returned bytes *)
 ```
 
+## Address translation
+
+Cross-interface calls run under the caller's alias (see [Accounts and Aliases](/overview/accounts-and-aliases)). The gateway exposes two on-chain views to translate between native addresses and aliases. Both take the address as a `string` in its printable form (base58check for the Michelson interface, `0x…` hex for the EVM interface) rather than as a Michelson `address`, and identify interfaces by a `nat` runtime id: `0` for the Michelson interface, `1` for the EVM interface. Michelson has no instruction to convert an `address` to a `string`, so the address to translate must already be available as a `string`, for example as a parameter.
+
+| View | Parameter type | Return type |
+|---|---|---|
+| `originOf` | `pair string nat` (address, source runtime) | `or unit (or nat (pair nat string))` |
+| `resolveAddress` | `pair string (pair nat nat)` (address, source runtime, target runtime) | `option (pair nat string)` |
+
+### `originOf`
+
+`originOf` returns how the address is classified in the source interface:
+
+| Result | Meaning |
+|---|---|
+| `Left Unit` | Unknown: the address is malformed or has not been seen by the kernel yet |
+| `Right (Left n)` | Native: an account native to the source interface (`n` is the source runtime id) |
+| `Right (Right (Pair n addr))` | Alias: the alias of the account `addr`, native to the interface `n` |
+
+The kernel records the origin of an account when it is first used: user accounts (`tz1…`, `tz2…`, `tz3…`) are always Native, smart contracts are recorded at origination, EVM accounts when they first sign a transaction or when they have code, and aliases when a cross-interface call creates them. In particular, an EVM address that has only received funds is Unknown.
+
+### `resolveAddress`
+
+`resolveAddress` translates the address from the source interface into the corresponding address of the target interface:
+
+| Result | Meaning |
+|---|---|
+| `None` | The address is malformed or Unknown in the source interface |
+| `Some (Pair 0 addr)` | Recorded: `addr` already exists on chain |
+| `Some (Pair 1 addr)` | Derived: `addr` was computed with the derivation formula, but no cross-interface call has created the alias yet |
+
+For a Native address, `addr` is its alias in the target interface. For an Alias, `addr` is the native address it stands for, rather than an alias of the alias. When the source and target runtimes are equal, a well-formed address is returned unchanged as Recorded.
+
+```michelson
+PUSH address "KT18oDJJKXMKhfE1bSuAPGp92pYcwVDiqsPw";  (* the gateway *)
+PUSH nat 0;                  (* target runtime: Michelson *)
+PUSH nat 1;                  (* source runtime: EVM *)
+PAIR;
+PUSH string "0x1234567890abcdef1234567890abcdef12345678";
+PAIR;                        (* pair string (pair nat nat) *)
+VIEW "resolveAddress" (option (pair nat string));
+IF_NONE
+  { FAIL }     (* view not found *)
+  { IF_NONE
+      { … }    (* unknown address *)
+      { … } }  (* Pair 0 "KT1CYcsqu3TnW3aA2hYL62ZCtcA484yCG4Zq" if the alias exists, Pair 1 … otherwise *)
+```
+
 ## Return value
 
 ### `%call_evm` — callback
@@ -265,3 +313,7 @@ For the gas conversion rules and how the forwarded budget is calculated, see [Re
 ### `staticcall_evm`
 
 A view failure (EVM revert, missing view, type mismatch) surfaces as `None` from `VIEW`, which the caller handles with `IF_NONE`. Out-of-gas is the exception: it fails the operation outright rather than returning `None`, so a forwarded-gas exhaustion cannot be silently treated as a missing view. See the outcome table in the [`staticcall_evm`](#staticcall_evm) section above.
+
+### `originOf` and `resolveAddress`
+
+Malformed addresses never fail: they are reported as Unknown (`Left Unit`) or `None`. Both views fail the operation with `(Pair "INVALID_RUNTIME_ID" n)` when a runtime id `n` is neither `0` nor `1`.

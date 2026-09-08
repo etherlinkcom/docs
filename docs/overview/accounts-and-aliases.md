@@ -45,6 +45,12 @@ kt1_alias = KT1(blake2b_160(utf8("0x" + lowercase_hex(evm_address))))
 
 Michelson's `SOURCE` instruction returns the null address (`tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU`) for operations originating from cross-interface calls — not the actual alias address. This is because Michelson requires the source to be a user account.
 
+## Translating addresses
+
+Off chain, EVM nodes<!--TXN--> expose two JSON-RPC methods that apply the formulas above: `tez_getTezosEthereumAddress` and `tez_getEthereumTezosAddress`. See [Alias RPCs](/michelson/developing/rpc-reference#alias-rpcs).
+
+On chain, both gateways expose `originOf` and `resolveAddress`, which consult the kernel's records rather than only applying the formulas: they tell whether an address is a native account or an alias, map an alias back to the native account it stands for, and tell whether an alias has already been created. See [NAC usage: EVM to Michelson](/evm/nac-usage#address-translation) and [NAC usage: Michelson to EVM](/michelson/nac-usage#address-translation).
+
 ## Tez precision across interfaces
 
 The two interfaces use different precision for tez:
