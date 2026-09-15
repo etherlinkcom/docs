@@ -138,6 +138,13 @@ The Etherlink 6.2 upgrade went live on 25 March 2026 through the fast kernel gov
 - It fixes a flaw in how transaction fees are accounted, that could allow an attacker to build a DoS of the block production process with no cost to the attacker.
 - It fixes a flaw in the Tezos XTZ bridge that could cause a kernel panic when providing empty deposit info.
 - It fixes a DA Fee Undercharge on EIP-7702 Authorization List Bytes, which allowed senders to offload up to ~156 KB of L1 data costs onto the sequencer per transaction.
+- It changes the way the Tezos-Etherlink<!--TX--> bridge works.
+  The bridge now deposits XTZ tokens to Etherlink EVM<!--TEVM--> user and smart contract accounts in a way similar to how the FA bridge handles deposits of FA tokens.
+  This update gets Etherlink<!--TX--> in sync with how sending tokens to smart contracts works on other EVM chains; now, depositing XTZ to a smart contract automatically calls its code.
+  For more information, see [Deposit process](/evm/bridging/bridging-tezos#deposit-process).
+
+  This change to the bridge introduces a breaking change in the events that are emitted as part of the bridging process.
+  The `deposit` event is now emitted by the [Tezos XTZ bridge precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) (`0xff0...0001`), not the null/system address.
 
 For more information, see [Announcing Etherlink 6.2: a security and liveness bugfix for Farfadet](https://forum.tezosagora.org/t/announcing-etherlink-6-2-a-security-and-liveness-bugfix-for-farfadet/7024).
 
