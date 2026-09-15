@@ -30,6 +30,16 @@ Several Etherlink EVM<!--TEVM-->-compatible indexers are listed below.
 
 For information on indexing contracts with The Graph, see [Indexing Etherlink EVM<!--TEVM--> contracts with TheGraph](/evm/developing/indexing-graph).
 
+### Envio
+
+[Envio](https://envio.dev/?utm_source=etherlink&utm_medium=partner-docs) is the data layer for blockchain apps. It gives Etherlink EVM<!--TEVM--> developers the fastest, most flexible way to get real-time and historical onchain data, from a single GraphQL API to raw high-speed access, with managed hosting on Envio Cloud. Envio supports Etherlink EVM<!--TEVM--> through HyperSync, its data engine that serves as the default data source and syncs historical data up to 2000x faster than traditional RPC.
+
+You can auto-generate an indexer from any [verified contract](https://explorer.etherlink.com/verified-contracts), write event handlers in TypeScript, JavaScript, or ReScript, and deploy on Envio Cloud or self-host.
+Indexing still works on non-verified contracts if you supply the ABI in the config yourself.
+
+For more information, see the [Envio documentation](https://docs.envio.dev/?utm_source=etherlink&utm_medium=partner-docs) and the [HyperIndex quickstart](https://docs.envio.dev/docs/HyperIndex/quickstart?utm_source=etherlink&utm_medium=partner-docs).
+See also Envio's [performance benchmarks](https://docs.envio.dev/docs/HyperIndex/benchmarking?utm_source=etherlink&utm_medium=partner-docs).
+
 ### Subsquid
 
 [Subsquid](https://subsquid.io/) is a peer-to-peer network to quickly batch, query and aggregate on-chain and off-chain data.
