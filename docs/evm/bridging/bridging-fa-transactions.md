@@ -14,6 +14,8 @@ It takes a few transactions to bridge a token from layer 1 to Etherlink EVM<!--T
 - A transaction to initiate the deposit
 - A transaction to claim the tokens on Etherlink EVM<!--TEVM-->
 
+This process is similar to the process of depositing XTZ tokens, as described in [Bridging to Tezos](/evm/bridging/bridging-tezos).
+
 Follow these steps to deposit FA-compliant tokens from layer 1 to Etherlink EVM<!--TEVM-->:
 
 1. Give the token bridge helper contract access to the tokens, depending on the type of token:
