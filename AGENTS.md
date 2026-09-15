@@ -185,6 +185,18 @@ Internal developer documentation exists mostly in the Linear initiative: https:/
 * See also the RFCs within the contained projects, especially those that are Completed
   - For instance [RFC: TezosX Blocks format](https://linear.app/tezos/document/rfc-tezosx-blocks-format-40cdbfca134e) in project [Tezos X blocks](https://linear.app/tezos/project/tezos-x-blocks-1a1f20746dee)
 
+## Verifying governance contract addresses
+
+The governance contract addresses are not hardcoded as static constants — they are written to kernel storage during migration steps. The authoritative source is the most recent kernel's `migration.rs` file in the Etherlink source code at `~/gitlab/tezos/etherlink/`.
+
+To find the current mainnet addresses:
+
+1. Identify the most recent kernel directory (e.g. `kernel_farfadet_r6_su`, `kernel_ebisu`, etc.) — typically the one with the highest suffix.
+2. Open `<kernel_dir>/kernel/src/migration.rs` and look for the last `StorageVersion::V<N>` blocks that write to `KERNEL_GOVERNANCE`, `KERNEL_SECURITY_GOVERNANCE`, and `SEQUENCER_GOVERNANCE`. Note that these can be set in separate migration steps, so check all of them and take the last value written for each.
+3. Compare those addresses against what the doc uses.
+
+Do **not** rely on `governance-metrics/src/configuration.ml` — it contains named constants for the governance metrics tool and can lag behind the kernel migrations.
+
 ## Documentation guidelines
 
 ### General guidelines

@@ -44,7 +44,7 @@ Leveraging the Tezos 2-block finality guarantee and the high-speed execution of 
     <tr>
       <td>Arbitrum One</td>
       <td>~ <a class="deemphasize-disadvantage" href="https://arbiscan.io/" target="_blank" rel="noopener noreferrer">300 ms</a></td>
-      <td>~ <a class="deemphasize-disadvantage" href="https://arbiscan.io/batches" target="_blank" rel="noopener noreferrer">3 minutes</a></td>
+      <td>~ <a class="deemphasize-disadvantage" href="https://arbiscan.io/batches" target="_blank" rel="noopener noreferrer">2 minutes</a></td>
     </tr>
   </tbody>
 </table>
