@@ -17,8 +17,8 @@ Both operations rely on automated, transparent, and audited smart contracts inst
 These bridges are permissionless, meaning that anyone can use them without restrictions or the intervention of a third party.
 They are also trustless, meaning that they rely on automated, transparent, and audited smart contracts installed on Etherlink and Tezos.
 
-- [Mainnet Tezos bridge](https://bridge.etherlink.com/tezos)
-- [Shadownet Testnet Tezos bridge](https://shadownet.bridge.etherlink.com/tezos)
+- [Mainnet XTZ bridge](https://bridge.etherlink.com/tezos)
+- [Shadownet Testnet XTZ bridge](https://shadownet.bridge.etherlink.com/tezos)
 
 <CementingDelayNote />
 
