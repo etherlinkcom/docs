@@ -47,3 +47,37 @@ The following L1 RPCs exhibit different behavior in Etherlink<!--TX-->, either t
 | `GET /context/issuance/expected_issuance` | Returns dummy zero rewards; Etherlink has no token issuance. |
 | `POST /helpers/scripts/pack_data` | Uses a throwaway dummy context instead of the live chain state; results may differ for gas-sensitive encodings. |
 | `GET /context/constants` | Several constants differ from mainnet: `minimal_block_delay` = 1 s (the protocol encoding cannot express sub-second periods; actual block cadence follows Etherlink<!--TX--> blocks, down to 500 ms under load); `hard_gas_limit_per_operation` = 660,000 gas (the 30M EVM per-transaction gas cap converted at 22 milligas per EVM gas unit); `cost_per_byte` = 1 mutez. |
+
+## Alias RPCs
+
+EVM nodes<!--TXN--> also expose two Etherlink<!--TX-->-specific JSON-RPC methods that compute the alias of an address (see [Accounts and Aliases](/overview/accounts-and-aliases#aliases)). They are served on the node's JSON-RPC endpoint (the base URL, alongside the `eth_*` methods), not under `/tezlink`. The alias is derived from the address alone, so these methods work for any address, whether or not it has been used on chain.
+
+| Method | Parameter | Result |
+|---|---|---|
+| `tez_getTezosEthereumAddress` | A Michelson address (`tz1…`, `tz2…`, `tz3…`, or `KT1…`) | Its EVM alias (`0x…`) |
+| `tez_getEthereumTezosAddress` | An EVM address (`0x…`) | Its Michelson alias (`KT1…`) |
+
+For example:
+
+```bash
+curl --request POST \
+     --url http://localhost:8545 \
+     --header 'accept: application/json' \
+     --header 'content-type: application/json' \
+     --data '
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "tez_getEthereumTezosAddress",
+  "params": ["0x1234567890abcdef1234567890abcdef12345678"]
+}
+'
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": "KT1CYcsqu3TnW3aA2hYL62ZCtcA484yCG4Zq",
+  "id": 1
+}
+```
