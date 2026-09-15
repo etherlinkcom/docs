@@ -76,7 +76,11 @@ The request includes the tez to bridge, the address of the Etherlink<!--TX--> Sm
 1. The Smart Rollup nodes put the deposit transaction in the delayed inbox.
 1. The sequencer requests the state of Etherlink<!--TX--> from a Smart Rollup node and receives the delayed inbox.
 1. The sequencer creates a corresponding transaction on Etherlink EVM<!--TEVM--> to transfer XTZ from the [null address](https://explorer.etherlink.com/address/0x0000000000000000000000000000000000000000) to the user's address.
-1. The sequencer adds this transaction to an Etherlink EVM<!--TEVM--> block as in the usual transaction lifecycle described in [Architecture](/network/architecture).
+1. Depending on the target account, the sequencer handles the deposit in different ways:
+   - If the target account is a user account (also known as an externally owned account), the sequencer creates a transaction that calls the [XTZ bridge precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) (`0xff0...0001`) that transfers the XTZ to the user account.
+   - If the target account is a smart contract or EIP-7702 smart account, the sequencer calls the XTZ bridge precompiled contract to queue but not execute a transaction to transfer the XTZ.
+   Then, any user can call the `claim` function to execute the transaction and send the XTZ to the smart contract or smart account and call its code.
+   An automated system run by Optimistic Labs monitors the queued transactions and calls the `claim` function on behalf of depositors, so the process is transparent to bridge users.
 
 This diagram is an overview of the deposit process:
 
@@ -150,7 +154,7 @@ This diagram is an overview of the deposit process:
 
 The withdrawal process (moving XTZ from Etherlink EVM<!--TEVM--> to tez on Tezos layer 1) follows these general steps:
 
-1. An Etherlink EVM<!--TEVM--> user sends XTZ and their layer 1 address to the [withdrawal precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) in the Etherlink<!--TX--> Smart Rollup via an EVM node<!--TXN-->.
+1. An Etherlink EVM<!--TEVM--> user sends XTZ and their layer 1 address to the [XTZ precompiled contract](https://explorer.etherlink.com/address/0xff00000000000000000000000000000000000001) in the Etherlink<!--TX--> Smart Rollup via an EVM node<!--TXN-->.
 1. The contract locks the XTZ.
 1. The contract creates a transaction to the exchanger contract's `burn` entrypoint and puts this transaction in the Smart Rollup outbox.
 This outbox message becomes part of Etherlink<!--TX-->'s commitment to its state.
