@@ -97,6 +97,9 @@ Because `callMichelson` is declared `external payable` (no return value), the re
 // success == false if Michelson reverted
 ```
 
+Note that for the specific case when the Michelson callee fails by going out of gas (OOG), it is wise to reserve some gas to handle the failure, otherwise you would OOG yourself and everything would revert.
+See an examples of limiting the gas for the call in the [NAC walkthrough](/tutorials/nac-counter/).
+
 ### `callMichelsonView`
 
 `callMichelsonView` follows the same failure model. Any of the following causes a revert that propagates to the EVM caller:
