@@ -151,6 +151,10 @@ IF_NONE
   { … }      (* use the returned bytes *)
 ```
 
+:::note
+Both `%call_evm` and `staticcall_evm` are implemented using a low-level entrypoint `%call` that exposes the internal HTTP protocol between the Michelson runtime and the EVM runtime. This is not a supported public interface. It adds nothing that a smart contract author would reach for in practice: `%call_evm` covers state-mutating calls, `staticcall_evm` covers read-only views.
+:::
+
 ## Address translation
 
 Cross-interface calls run under the caller's alias (see [Accounts and Aliases](/overview/accounts-and-aliases)). The gateway exposes two on-chain views to translate between native addresses and aliases. Both take the address as a `string` in its printable form (base58check for the Michelson interface, `0x…` hex for the EVM interface) rather than as a Michelson `address`, and identify interfaces by a `nat` runtime id: `0` for the Michelson interface, `1` for the EVM interface. Michelson has no instruction to convert an `address` to a `string`, so the address to translate must already be available as a `string`, for example as a parameter.
