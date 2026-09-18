@@ -265,3 +265,7 @@ For the gas conversion rules and how the forwarded budget is calculated, see [Re
 ### `staticcall_evm`
 
 A view failure (EVM revert, missing view, type mismatch) surfaces as `None` from `VIEW`, which the caller handles with `IF_NONE`. Out-of-gas is the exception: it fails the operation outright rather than returning `None`, so a forwarded-gas exhaustion cannot be silently treated as a missing view. See the outcome table in the [`staticcall_evm`](#staticcall_evm) section above.
+
+:::note
+Both `%call_evm` and `staticcall_evm` are implemented using a low-level entrypoint `%call` that exposes the internal HTTP protocol between the Michelson runtime and the EVM runtime. This is not a supported public interface. It adds nothing that a smart contract author would reach for in practice: `%call_evm` covers state-mutating calls, `staticcall_evm` covers read-only views.
+:::

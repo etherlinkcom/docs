@@ -44,9 +44,7 @@ gateway.callMichelson("KT1…", "default", michelsonParams);
 
 The `data` parameter must be encoded in Michelson binary format. For simple types you can construct the payload inline: for example, passing a `nat` with value 42 encodes as `hex"002a"` (tag `0x00` = integer, value `0x2a` = 42). Worked Solidity examples using this pattern are available in the [`solidity_examples/` directory](https://gitlab.com/tezos/tezos/-/tree/master/etherlink/kernel_latest/solidity_examples) of the Etherlink sources. For complex types, off-line tools such as Taquito's `packData` function can compute the encoding.
 
-## Return value
-
-In the case of a regular Michelson call (`callMichelson`), there is no return value.
+A Michelson call (via `callMichelson`) has no return value.
 
 ## `callMichelsonView`
 
@@ -98,6 +96,9 @@ Because `callMichelson` is declared `external payable` (no return value), the re
 );
 // success == false if Michelson reverted
 ```
+
+Note that for the specific case when the Michelson callee fails by going out of gas (OOG), it is wise to reserve some gas to handle the failure, otherwise you would OOG yourself and everything would revert.
+See an examples of limiting the gas for the call in the [NAC walkthrough](/tutorials/nac-counter/).
 
 ### `callMichelsonView`
 

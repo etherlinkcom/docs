@@ -27,6 +27,7 @@ When an EVM contract calls the Michelson gateway:
 
 1. **Setting limits.** The EVM contract's remaining gas is converted to a Michelson gas limit using `c`. The Michelson storage limit is set to a generous upper bound (storage allocation in the Michelson interface is converted to gas when going back to the EVM interface).
 2. **On failure.** The error is returned to the EVM caller, along with the remaining gas. The EVM caller can catch the failure and continue.
+Note that if the Michelson callee failed by going out of gas (OOG), the EVM caller should have reserved some gas to handle the failure, otherwise it will OOG itself and everything reverts.
 3. **On success.** The Michelson storage cost is expressed as additional EVM gas units: `g_storage = storage_cost / base_fee_per_gas`. The remaining EVM gas is converted from the remaining Michelson gas minus `g_storage`. If the resulting gas is negative, the call reverts with an out-of-gas error.
 
 In the end, storage allocation in the Michelson runtime is accounted as gas in the EVM runtime, which preserves its semantics.
