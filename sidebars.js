@@ -90,6 +90,7 @@ const sidebars = {
             'evm/developing/deploying-contracts',
             'evm/developing/verifying-contracts',
             'evm/developing/indexing-graph',
+            'evm/developing/indexing-envio',
             'evm/developing/websockets',
             'evm/developing/tokens',
             'evm/developing/development-toolkits',
