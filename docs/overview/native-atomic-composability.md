@@ -11,8 +11,8 @@ If any part of the call chain fails, the failure propagates atomically — by de
 
 Each interface exposes a **gateway**: a special contract that serves as the single entry point for cross-interface calls. From a smart contract's perspective, a cross-interface call is just a call to a well-known local address — no special language features or compiler extensions are needed.
 
-- In the EVM interface, the gateway is a **precompile** callable at a fixed address like any other contract.
-- In the Michelson interface, the gateway is an **enshrined contract** at a fixed KT1 address.
+- In the EVM interface, the gateway is [a precompile](/evm/nac-usage.md) callable at a fixed address like any other contract.
+- In the Michelson interface, the gateway is [an enshrined contract](/michelson/nac-usage.md) at a fixed KT1 address.
 
 Gateways are the only interface between runtimes. Everything else — account semantics, gas models, token standards — remains interface-specific.
 
