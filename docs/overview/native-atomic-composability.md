@@ -47,4 +47,4 @@ See [Resources](./resources.md) for the conversion rules between the EVM and Mic
 
 ## Observability
 
-Each cross-interface call emits an event from the gateway before execution, containing an identifier that can be used to correlate calls across the two runtimes. This allows indexers to reconstruct the full call graph from the per-interface blocks.
+Each cross-interface call emits events from the gateway containing an identifier that can be used to correlate operations across the two runtimes. This allows indexers to reconstruct the full call graph from the per-interface blocks. The exact event schemas are described in the per-interface usage pages: [EVM](/evm/nac-usage#observability) and [Michelson](/michelson/nac-usage#observability).

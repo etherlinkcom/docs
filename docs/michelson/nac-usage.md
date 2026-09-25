@@ -265,3 +265,14 @@ For the gas conversion rules and how the forwarded budget is calculated, see [Re
 ### `staticcall_evm`
 
 A view failure (EVM revert, missing view, type mismatch) surfaces as `None` from `VIEW`, which the caller handles with `IF_NONE`. Out-of-gas is the exception: it fails the operation outright rather than returning `None`, so a forwarded-gas exhaustion cannot be silently treated as a missing view. See the outcome table in the [`staticcall_evm`](#staticcall_evm) section above.
+
+## Observability
+
+For every cross-runtime call involving the Michelson interface, the kernel emits two synthetic internal operations on the Michelson side that bracket the call. They are distinguished from user-issued `EMIT` operations by their **null sender**:
+
+| Event tag | When emitted |
+|---|---|
+| `cross_runtime_call` | Before the cross-runtime call executes |
+| `cross_runtime_call_end` | After the cross-runtime call returns |
+
+The `crossRuntimeCallId` carried in the corresponding EVM-side events (`CrossRuntimeCallSent` / `CrossRuntimeCallReceived`, described in the [EVM nac-usage](/evm/nac-usage#observability) page) can be used to correlate these Michelson markers with their EVM counterparts.

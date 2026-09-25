@@ -125,3 +125,31 @@ Because `callMichelsonView` must be invoked via `staticcall`, catch failures wit
 ### Infrastructure failures
 
 A 5xx response from the Michelson runtime indicates a kernel-internal error (storage I/O failure, host fault). This is treated as a block-level abort rather than a catchable revert, meaning the entire block is rolled back. These failures are not caused by contract logic and are not catchable by EVM code.
+
+## Observability
+
+The EVM gateway precompile emits two events for cross-runtime calls involving the EVM interface. Both are emitted at the gateway precompile address and carry a `crossRuntimeCallId` field that correlates with the Michelson-side markers described in the [Michelson nac-usage](/michelson/nac-usage#observability) page.
+
+### `CrossRuntimeCallSent`
+
+Emitted on every outgoing call (EVM → other runtime), before execution:
+
+| Field | Type | Description |
+|---|---|---|
+| `crossRuntimeCallId` | `string` | Unique identifier for this call |
+| `targetRuntime` | `string` | Name of the target runtime (e.g. `"tezos"`) |
+| `targetAddress` | `string` | Address of the target contract |
+| `amount` | `uint256` | Amount of tez forwarded with the call |
+
+### `CrossRuntimeCallReceived`
+
+Emitted on every incoming call (other runtime → EVM), before execution:
+
+| Field | Type | Description |
+|---|---|---|
+| `crossRuntimeCallId` | `string` | Unique identifier for this call |
+| `sourceRuntime` | `string` | Native runtime of the originating address (follows the transitive origin on nested calls, e.g. `"ethereum"` for an EVM → Michelson → EVM chain) |
+| `senderAddress` | `string` | Immediate caller — the EVM alias of the Michelson sender |
+| `sourceAddress` | `string` | Transitive origin — the original address at the start of the cross-runtime chain |
+| `targetAddress` | `string` | Address of the called EVM contract |
+| `amount` | `uint256` | Amount of tez forwarded with the call |
