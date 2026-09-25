@@ -317,3 +317,14 @@ A view failure (EVM revert, missing view, type mismatch) surfaces as `None` from
 ### `originOf` and `resolveAddress`
 
 Malformed addresses never fail: they are reported as Unknown (`Left Unit`) or `None`. Both views fail the operation with `(Pair "INVALID_RUNTIME_ID" n)` when a runtime id `n` is neither `0` nor `1`.
+
+## Observability
+
+For every cross-runtime call involving the Michelson interface, the kernel emits two synthetic internal operations on the Michelson side that bracket the call. They are distinguished from user-issued `EMIT` operations by their **null sender**:
+
+| Event tag | When emitted |
+|---|---|
+| `cross_runtime_call` | Before the cross-runtime call executes |
+| `cross_runtime_call_end` | After the cross-runtime call returns |
+
+The `crossRuntimeCallId` carried in the corresponding EVM-side events (`CrossRuntimeCallSent` / `CrossRuntimeCallReceived`, described in the [EVM nac-usage](/evm/nac-usage#observability) page) can be used to correlate these Michelson markers with their EVM counterparts.
