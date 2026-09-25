@@ -48,8 +48,8 @@ This table shows the period lengths as of the Ganesha kernel update and the Tezo
 
 Period | Length | Approximate time
 --- | --- | ---
-Proposal | 50400 layer 1 blocks | About 4.5 days
-Promotion | 50400 layer 1 blocks | About 4.5 days
+Proposal | 67200 layer 1 blocks | About 4.5 days
+Promotion | 67200 layer 1 blocks | About 4.5 days
 Cooldown | 86400 seconds | About 1 day
 
 Note that these periods can vary.
@@ -63,7 +63,7 @@ Any baker can submit kernel upgrade proposals and upvote proposals, with the wei
 Bakers can submit and upvote up to 20 proposals in a single Proposal period.
 
 At the end of the period, if a proposal has enough voting power to meet a certain percentage of the total voting power, it moves to the next phase.
-As of the Ebisu update, the leading proposal must gather support from at least 1% of the total voting power to move to the next phase.
+As of the Ganesha update, the leading proposal must gather support from at least 1% of the total voting power to move to the next phase.
 If no proposal gathers adequate support, a new Proposal period begins.
 
 ### 2. Promotion period
@@ -77,7 +77,7 @@ To pass, the proposal must meet both of these requirements:
 - Supermajority: The total voting power of the Yea votes must reach a supermajority.
 
 The thresholds for these requirements are stored in the governance contract.
-This table shows the requirements as of the Ebisu kernel update:
+This table shows the requirements as of the Ganesha kernel update:
 
 Requirement | Threshold
 --- | ---
@@ -121,8 +121,8 @@ This table shows the period lengths as of the Ganesha kernel update and the Tezo
 
 Period | Length | Approximate time
 --- | --- | ---
-Proposal | 3600 layer 1 blocks | About 8 hours
-Promotion | 3600 layer 1 blocks | About 8 hours
+Proposal | 4800 layer 1 blocks | About 8 hours
+Promotion | 4800 layer 1 blocks | About 8 hours
 Cooldown | 86400 seconds | About 1 day
 
 Like the slow governance periods, these periods can vary based on the timing of layer 1 blocks and when users activate the new kernel at the end of the Cooldown period.
@@ -132,7 +132,7 @@ Like the slow governance periods, these periods can vary based on the timing of 
 The differences in thresholds in the security governance process ensure expedited resolution of urgent issues while upholding integrity by demanding higher quorum to prevent potential nefarious actions.
 
 The thresholds for the quorum and supermajority requirements are stored in the governance contract.
-This table shows the requirements as of the Ebisu kernel update:
+This table shows the requirements as of the Ganesha kernel update:
 
 Period | Requirement | Threshold
 --- | --- | ---
@@ -149,19 +149,19 @@ A separate sequencer governance contract handles the selection process for Ether
 Similar to the kernel governance processes, the sequencer voting process has Proposal, Promotion, and Cooldown periods.
 In this process, bakers propose and vote on the account that operates the sequencer.
 
-The lengths of the periods are stored in the [sequencer governance contract](https://better-call.dev/mainnet/KT1KiVz8ZpHo3HpE1GCP5HLgywPDRwVUkCFh).
+The lengths of the periods are stored in the [sequencer governance contract](https://better-call.dev/mainnet/KT1DkQFmACvsUtnx8B4jirnp2CRi1cWSiELw).
 This table shows the period lengths as of the Ganesha kernel update and the Tezos Ushuaia protocol:
 
 Period | Length | Approximate time
 --- | --- | ---
-Proposal | 50400 layer 1 blocks | About 4.5 days
-Promotion | 50400 layer 1 blocks | About 4.5 days
+Proposal | 67200 layer 1 blocks | About 4.5 days
+Promotion | 67200 layer 1 blocks | About 4.5 days
 Cooldown | 86400 seconds | About 1 day
 
 ### Thresholds
 
 The thresholds for the quorum and supermajority requirements are stored in the governance contract.
-This table shows the requirements as of the Ebisu kernel update:
+This table shows the requirements as of the Ganesha kernel update:
 
 Period | Requirement | Threshold
 --- | --- | ---
