@@ -201,7 +201,7 @@ IF_NONE
 
 ## Return value
 
-### `%call_evm` — callback
+### `%call_evm`
 
 `%call_evm` is a state-mutating call with no direct return. To receive the EVM return value, supply a `contract bytes` handle in the `callback` field. After the EVM call succeeds, the kernel emits a `TRANSFER_TOKENS` internal operation that sends the raw ABI-encoded return bytes to the callback contract at zero mutez.
 
@@ -296,7 +296,7 @@ def test():
     )
 ```
 
-### `staticcall_evm` — synchronous
+### `staticcall_evm`
 
 `staticcall_evm` is a read-only view. The return value is delivered synchronously as `option bytes` via the Michelson `VIEW` instruction — no callback contract is needed.
 
