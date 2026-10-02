@@ -27,7 +27,9 @@ To get started, follow these three steps:
 - [Node.js](https://nodejs.org/en/download) version 22 or later
 - [pnpm](https://pnpm.io/installation)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/), which HyperIndex uses to run its local database and GraphQL server
-- An Envio API token, which you can create at https://envio.dev/app/api-tokens
+- An Envio HyperSync API token, which you can create for free on the **HyperSync tokens** page at https://envio.dev/app/api-tokens.
+  HyperRPC tokens are a separate product and are not needed for this guide.
+  For the steps, see [API tokens for HyperSync](https://docs.envio.dev/docs/HyperSync/api-tokens) in the Envio documentation.
 
 ## Initialize your indexer project
 
@@ -70,6 +72,15 @@ To get started, follow these three steps:
      1. cd etherlink-wxtz-indexer && pnpm test    # run the tests (recommended for AI)
      2. cd etherlink-wxtz-indexer && pnpm dev     # run locally
      3. cd etherlink-wxtz-indexer && pnpm start   # run in production
+   ```
+
+   With pnpm version 11 or later, the install step can stop with the error `ERR_PNPM_IGNORED_BUILDS` and the message `Ignored build scripts: esbuild`.
+   pnpm blocks dependency build scripts until you approve them.
+   The project files are already generated at this point, so go to the project folder and approve the esbuild build script:
+
+   ```bash
+   cd etherlink-wxtz-indexer
+   pnpm approve-builds esbuild
    ```
 
 1. Review the generated files
