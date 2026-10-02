@@ -37,6 +37,8 @@ For information on indexing contracts with The Graph, see [Indexing Etherlink EV
 You can auto-generate an indexer from any [verified contract](https://explorer.etherlink.com/verified-contracts), write event handlers in TypeScript, JavaScript, or ReScript, and deploy on Envio Cloud or self-host.
 Indexing still works on non-verified contracts if you supply the ABI in the config yourself.
 
+For information on indexing contracts with Envio, see [Indexing Etherlink EVM<!--TEVM--> contracts with Envio](/evm/developing/indexing-envio).
+
 For more information, see the [Envio documentation](https://docs.envio.dev/?utm_source=etherlink&utm_medium=partner-docs) and the [HyperIndex quickstart](https://docs.envio.dev/docs/HyperIndex/quickstart?utm_source=etherlink&utm_medium=partner-docs).
 See also Envio's [performance benchmarks](https://docs.envio.dev/docs/HyperIndex/benchmarking?utm_source=etherlink&utm_medium=partner-docs).
 
