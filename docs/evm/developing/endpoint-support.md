@@ -410,7 +410,7 @@ For information about these endpoints, see the Geth documentation at https://get
     <tr>
       <td>`debug_traceTransaction`</td>
       <td>Yes</td>
-      <td></td>
+      <td>Supported by the node, but the public Mainnet and Shadownet endpoints (`node.mainnet.etherlink.com`, `node.shadownet.etherlink.com`) refuse it with error `-32053` ("API key is not allowed to access method"); run your own EVM node or use an RPC provider plan that enables `debug_` methods. The `callTracer` output follows cross-interface calls into the gateway precompile frame.</td>
     </tr>
     <tr>
       <td>`eth_call`</td>
