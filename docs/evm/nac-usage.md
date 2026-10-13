@@ -161,6 +161,19 @@ Because `callMichelson` is declared `external payable` (no return value), the re
 ```
 
 Note that for the specific case when the Michelson callee fails by going out of gas (OOG), it is wise to reserve some gas to handle the failure, otherwise you would OOG yourself and everything would revert.
+
+The `<reason>` part of the error string is the message of the Michelson runtime. Reasons observed on Previewnet, all with status `400 Bad Request`:
+
+| Cause | Error string (abridged) |
+|---|---|
+| `FAILWITH` in the callee | `… failed with: String("at zero") of type String` |
+| Entrypoint does not exist | `… failed typechecking input: no such entrypoint: nope` |
+| Ill-typed `data` | `… failed typechecking input: value String("hi") is invalid for type Unit` |
+| Destination never originated | `Transfer(ContractDoesNotExist(Originated(ContractKt1Hash("KT1…"))))` |
+| Forwarded gas exhausted | `Transfer(OutOfGas(OutOfGas))` |
+| Non-empty `data` sent to a `tz1` account | `Called a non-smart contract with parameter` |
+
+A malformed `destination` (not valid base58check) is rejected by the gateway itself before anything crosses: `Cross-runtime call failed with status 400 Bad Request: Invalid Tezos address in URL: <destination>: invalid base58`. A `callMichelsonView` on a view that does not exist fails with status `404 Not Found: view "<name>" not found on contract …`.
 See an examples of limiting the gas for the call in the [NAC walkthrough](/tutorials/nac-counter/).
 
 ### `callMichelsonView`
