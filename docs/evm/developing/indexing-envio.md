@@ -74,15 +74,6 @@ To get started, follow these three steps:
      3. cd etherlink-wxtz-indexer && pnpm start   # run in production
    ```
 
-   With pnpm version 11 or later, the install step can stop with the error `ERR_PNPM_IGNORED_BUILDS` and the message `Ignored build scripts: esbuild`.
-   pnpm blocks dependency build scripts until you approve them.
-   The project files are already generated at this point, so go to the project folder and approve the esbuild build script:
-
-   ```bash
-   cd etherlink-wxtz-indexer
-   pnpm approve-builds esbuild
-   ```
-
 1. Review the generated files
 
    The project contains these main files:
