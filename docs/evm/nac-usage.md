@@ -162,7 +162,7 @@ Because `callMichelson` is declared `external payable` (no return value), the re
 
 Note that for the specific case when the Michelson callee fails by going out of gas (OOG), it is wise to reserve some gas to handle the failure, otherwise you would OOG yourself and everything would revert.
 
-The status code and the `<reason>` tell the two cases apart: a Michelson failure is a `400 Bad Request` with the runtime's message, while forwarded-gas exhaustion is a `429 Too Many Requests: OOG`. Strings observed on Previewnet (kernel v0.10) and Shadownet, all prefixed with `Cross-runtime call failed with status `:
+The status code and the `<reason>` tell the two cases apart: a Michelson failure is a `400 Bad Request` with the runtime's message, while forwarded-gas exhaustion is a `429 Too Many Requests: OOG`. Strings observed on Previewnet (kernel v0.10 as shown on the Previewnet dashboard, September 2026) and Shadownet (October 2026), all prefixed with `Cross-runtime call failed with status `:
 
 | Cause | Rest of the error string |
 |---|---|
