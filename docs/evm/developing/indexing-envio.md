@@ -104,7 +104,7 @@ To get started, follow these three steps:
    ```
 
    The `id` field is the Etherlink<!--TX--> Mainnet chain ID.
-   Each handler stores the event parameters in an entity with an ID in the format `<chain ID>_<block number>_<log index>`, as in this generated handler for the `Deposit` event:
+   Each handler stores the event parameters in an entity with an ID in the format `<chain ID>_<block number>_<log index>`, as in this generated handler for the `Deposit` event (within file `src/handlers/WXTZ.ts` in our example):
 
    ```typescript
    indexer.onEvent({ contract: "WXTZ", event: "Deposit" }, async ({ event, context }) => {
@@ -163,12 +163,14 @@ To get started, follow these three steps:
    [17:30:03.421] INFO: The indexer storage is ready. Starting indexing!
    ```
 
+   The indexer will take a long time to complete, but you don't have to wait for it to go further with this tutorial.
+
 1. Check the indexing status
 
    The Hasura console is available at http://localhost:8080.
    When it asks for the admin secret, enter `testing`.
 
-   To see how far the indexer has synced, run the `_meta` query, either in the **API** tab of the Hasura console or from the command line:
+   To see how far the indexer has synced, run the `_meta` query, either in the **API** tab of the Hasura console or from the command line in another terminal:
 
    ```bash
    curl -s http://localhost:8080/v1/graphql \
@@ -188,7 +190,7 @@ To get started, follow these three steps:
 You can query the indexed data from the GraphQL endpoint at `http://localhost:8080/v1/graphql` while the indexer is running.
 Each entity in `schema.graphql` has a query with the same name, such as `WXTZ_Deposit`, and a `_by_pk` query that returns one entity by its chain ID and ID.
 
-For example, this query returns the WXTZ deposit with log index 1 in block 659864:
+Alternatively, you can run this query for example in a terminal, which returns the WXTZ deposit with log index 1 in block 659864:
 
 ```bash
 curl -s http://localhost:8080/v1/graphql \
@@ -204,7 +206,7 @@ The response contains the account that received the WXTZ and the amount, in the 
 
 You can compare this result with [the transaction on the block explorer](https://explorer.etherlink.com/tx/0xc87dfdc37cf52b65d0313a2cb9a08cef577ed2c4dbdfad1e26adf350a6ae08b3).
 
-To stop the local environment and delete the local database, run `pnpm envio stop`.
+To stop the local environment and delete the local database, stop the indexer with Ctrl+C if it is still running, then run `pnpm envio stop` in the project folder.
 
 ## Deploy your indexer
 
