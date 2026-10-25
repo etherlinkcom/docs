@@ -43,3 +43,5 @@ If you don't want to deploy and manage your own EVM node<!--TXN-->, or if you re
 - Zeeve: See https://www.zeeve.io/blockchain-protocols/deploy-etherlink-node/
 
 You may compare the latency of these endpoints based on live benchmarks (p50/p90/p99, 3 regions, updated every 60 s): [OpenChainBench Etherlink RPC](https://openchainbench.com/benchmarks/etherlink-rpc)
+
+To spread requests across several of these providers, you can run [eRPC](https://github.com/erpc/erpc), an open-source RPC proxy that you host yourself. It adds failover between providers, retries, a response cache, and rate limiting. For setup, see the [eRPC documentation](https://docs.erpc.cloud).
