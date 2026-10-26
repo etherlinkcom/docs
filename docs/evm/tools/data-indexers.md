@@ -42,9 +42,9 @@ See also Envio's [performance benchmarks](https://docs.envio.dev/docs/HyperIndex
 
 ### Subsquid
 
-[Subsquid](https://subsquid.io/) is a peer-to-peer network to quickly batch, query and aggregate on-chain and off-chain data.
+[Subsquid](https://sqd.dev/) is a peer-to-peer network to quickly batch, query and aggregate on-chain and off-chain data.
 
-Learn how to use their SDK with this [guide](https://docs.subsquid.io/sdk/how-to-start/).
+Learn how to use their SDK with this [guide](https://docs.sqd.dev/en/sdk/overview/).
 
 ### DipDup
 
