@@ -146,7 +146,7 @@ if (kind == 2) {
 
 ### `callMichelson`
 
-If the Michelson callee fails for any reason — `FAILWITH`, type mismatch, non-existent contract, or forwarded gas exhaustion — the gateway precompile reverts the calling EVM transaction. There is no way to distinguish a Michelson-side revert from a Michelson-side out-of-gas at the Solidity level; both surface as an EVM revert with an error string of the form `"Cross-runtime call failed with status 4xx: <reason>"`.
+If the Michelson callee fails for any reason — `FAILWITH`, type mismatch, non-existent contract, or forwarded gas exhaustion — the gateway precompile reverts the calling EVM transaction. Both surface as an EVM revert with an error string of the form `"Cross-runtime call failed with status 4xx: <reason>"`; the status code distinguishes them (`400` for a Michelson failure, `429` for out-of-gas), so a contract that wants to react differently has to parse the string.
 
 Because `callMichelson` is declared `external payable` (no return value), the revert propagates unconditionally to the EVM caller. To catch it without reverting your own transaction, call the precompile via a low-level `call`:
 
@@ -161,6 +161,19 @@ Because `callMichelson` is declared `external payable` (no return value), the re
 ```
 
 Note that for the specific case when the Michelson callee fails by going out of gas (OOG), it is wise to reserve some gas to handle the failure, otherwise you would OOG yourself and everything would revert.
+
+The status code and the `<reason>` tell the two cases apart: a Michelson failure is a `400 Bad Request` with the runtime's message, while forwarded-gas exhaustion is a `429 Too Many Requests: OOG`. Strings observed on Previewnet (kernel v0.10 as shown on the Previewnet dashboard, September 2026) and Shadownet (October 2026), all prefixed with `Cross-runtime call failed with status `:
+
+| Cause | Rest of the error string |
+|---|---|
+| `FAILWITH` in the callee | `400 Bad Request: Failed interpreting the Michelson contract with runtime failure while running the script: failed with: String("at zero") of type String` |
+| Entrypoint does not exist | `400 Bad Request: Failed interpreting the Michelson contract with failed typechecking input: no such entrypoint: nope` |
+| Ill-typed `data` | `400 Bad Request: Failed interpreting the Michelson contract with failed typechecking input: value String("hi") is invalid for type Unit` |
+| Destination never originated | `400 Bad Request: Contract KT1… does not exist.` |
+| Non-empty `data` sent to a `tz1` account | `400 Bad Request: Called a non-smart contract with parameter` |
+| Forwarded gas exhausted | `429 Too Many Requests: OOG` |
+
+A malformed `destination` (not valid base58check) is rejected by the gateway itself before anything crosses: `400 Bad Request: Invalid Tezos address in URL: <destination>: invalid base58`. A `callMichelsonView` on a view that does not exist fails with `404 Not Found: view "<name>" not found on contract …`.
 See an examples of limiting the gas for the call in the [NAC walkthrough](/tutorials/nac-counter/).
 
 ### `callMichelsonView`
