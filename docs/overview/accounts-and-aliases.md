@@ -27,7 +27,29 @@ The mapping from a native address to its alias is deterministic and can be compu
 
 When a Tezos account interacts with the EVM runtime for the first time, an EVM alias address is created for it. The alias is implemented using **EIP-7702 delegation**: a shared `AliasForwarder` contract is deployed at the alias address and stores the native Tezos address. Any tez received by the EVM alias is automatically forwarded back to the native Tezos account via the gateway.
 
-The EVM alias address is computed as the **first 20 bytes of the Keccak256 hash of the base58check-encoded Tezos address** (the human-readable string form, e.g. `tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb`):
+The EVM alias of a user account (`tz1`, `tz2` or `tz3` address) is **recoverable**: it is also the address of a rescue smart wallet that can be deployed on other EVM chains and is controlled by the same Tezos key.
+If assets are sent to the alias on another EVM chain by mistake, for example by bridging them there, their owner can deploy the rescue wallet on that chain and recover the assets by signing with their Tezos key.
+The rescue wallet cannot be deployed on Etherlink<!--TX--> itself, where the alias always remains an `AliasForwarder`.
+
+The alias is the `CREATE2` address, through the [Safe singleton factory](https://github.com/safe-global/safe-singleton-factory), of a minimal proxy to the rescue wallet implementation for the account type, followed by the account's 20-byte public key hash (the base58check payload of the address, without its 3-byte prefix):
+
+```
+initcode  = PREFIX ‖ 0x363d3d373d3d3d363d73 ‖ IMPL ‖ 0x5af43d82803e903d91602b57fd5bf3 ‖ pkh
+evm_alias = keccak256(0xff ‖ FACTORY ‖ SALT ‖ keccak256(initcode))[12:32]
+```
+
+| Constant | Value |
+|---|---|
+| `FACTORY` | `0x914d7Fec6aaC8cd542e72Bca78B30650d45643d7` |
+| `SALT` | `keccak256("tezosx.rescue.v1")` = `0x9b8bb449a3d23b110d8c46424ba9b40748ac28bc7b99b7422a272950e17bb1d8` |
+| `PREFIX` | `0x733822d2fe3dce6ce4f4c7f274e2415fa3fae66c3e3b15601e57600080fd5b604180602a6000396000f3` |
+| `IMPL` for `tz1` | `0xd532c0971e9c85e2468c8cc6c3949eae285cd513` |
+| `IMPL` for `tz2` | `0xb47274809a09e0e0d565f1b50feba2a1cddc8199` |
+| `IMPL` for `tz3` | `0x924f65272e0b3531084b1539b96ed0522541f7d7` |
+
+For example, the EVM alias of `tz1aygVpocoeEMU89vXk92sMHqPYFNZVgvrh` is `0x04e9ba988ba87bbd7b75e5aa813c52ca3c31e9ae`.
+
+The EVM alias of any other Tezos account, such as a smart contract, is the **first 20 bytes of the Keccak256 hash of the base58check-encoded Tezos address** (the human-readable string form, e.g. `KT1RJ6PbjHpwc3M5rw5s2Nbmefwbuwbdxton`):
 
 ```
 evm_alias = keccak256(utf8(tz_address_base58check))[0:20]
