@@ -278,7 +278,7 @@ To automatically download and import a snapshot, start the node with the `--init
 </Tabs>
 
 The `--history` argument is required in this case to tell the node which snapshot to download.
-An appropriate snapshot must be available on the [Nomadic Labs snapshot site](http://snapshotter-sandbox.nomadic-labs.eu/).
+An appropriate snapshot must be available on the [Nomadic Labs snapshot site](https://etherlink-snapshots.octez.io/).
 
 The node can take time to download and import the snapshot.
 
@@ -287,7 +287,7 @@ The node can take time to download and import the snapshot.
 You can manually select a snapshot and provide the URL of the snapshot to the node or download the file yourself.
 
 You must select the appropriate snapshot for the network and history mode.
-Rolling and full snapshots provided on the [Nomadic Labs snapshot site](http://snapshotter-sandbox.nomadic-labs.eu/) include 1 day of complete data.
+Rolling and full snapshots provided on the [Nomadic Labs snapshot site](https://etherlink-snapshots.octez.io/) include 1 day of complete data.
 These snapshots are equivalent to the mode `rolling:1` or `full:1`.
 
 If you want a mode with a longer retention period, you can:
@@ -296,7 +296,7 @@ If you want a mode with a longer retention period, you can:
 - Start with a node in a mode that has the necessary data and [switch to another history mode](#switching-history-modes) with the retention period that you want.
 - Create your own snapshot with the appropriate retention period from another EVM node.
 
-EVM node snapshots are available at http://snapshotter-sandbox.nomadic-labs.eu.
+EVM node snapshots are available at https://etherlink-snapshots.octez.io.
 
 To import the snapshot, pass the URL of the snapshot or the path to the downloaded snapshot file (represented here by the placeholder `<SNAPSHOT_URL_OR_FILE>`) to the `octez-evm-node snapshot import` command, as in this example:
 
