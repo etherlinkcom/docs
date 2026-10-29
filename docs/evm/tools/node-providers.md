@@ -39,6 +39,7 @@ If you don't want to deploy and manage your own EVM node<!--TXN-->, or if you re
 - Ankr: See https://www.ankr.com/web3-api/chains-list/etherlink/
 - BlockPI: See https://blockpi.io/chain/etherlink
 - Chainstack: See https://chainstack.com/build-better-with-etherlink/
+- Dwellir: See https://www.dwellir.com/networks/etherlink
 - Spectrum: See https://spectrumnodes.com/
 - Zeeve: See https://www.zeeve.io/blockchain-protocols/deploy-etherlink-node/
 
