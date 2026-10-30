@@ -58,7 +58,12 @@ To get started, follow these three steps:
    For this guide, select `Approval`, `Deposit`, `Transfer`, and `Withdrawal`, then press Enter:
 
    ```
-   > Which events would you like to index? Approval(address indexed owner, address indexed spender, uint256 value), Deposit(address indexed dst, uint256 wad), Transfer(address indexed from, address indexed to, uint256 value), Withdrawal(address indexed src, uint256 wad)
+   > Which events would you like to index?
+   [x] Approval(address indexed owner, address indexed spender, uint256 value),
+   [x] Deposit(address indexed dst, uint256 wad),
+   ...
+   [x] Transfer(address indexed from, address indexed to, uint256 value),
+   [x] Withdrawal(address indexed src, uint256 wad)
    ```
 
    When the CLI asks whether you want to add another contract, select `I'm finished`.
