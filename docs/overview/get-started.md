@@ -14,7 +14,7 @@ For developers familiar with Ethereum, Solidity, and EVM tooling (MetaMask, ethe
 
 ## Michelson Interface
 
-For developers familiar with Tezos, Michelson/LIGO/SmartPy, and Tezos tooling (Temple wallet, Taquito):
+For developers familiar with Tezos, Michelson/LIGO/SmartPy, and Tezos tooling (Temple or Kukai wallets, octez.js or Taquito libraries):
 
 👉 [Getting Started with the Michelson Interface](/michelson/getting-started)
 

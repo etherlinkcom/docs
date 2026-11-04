@@ -1,7 +1,7 @@
 ---
 title: Sending transactions
 dependencies:
-  taquito: 0
+  octez.js: 0
   ethers: 6.13.5
   viem: 0
 ---
@@ -795,7 +795,7 @@ This transaction fee is deducted from the Etherlink EVM<!--TEVM--> account that 
 The general steps for submitting a transaction to the delayed inbox are:
 
 1. Encode and sign the Etherlink EVM<!--TEVM--> transaction as usual with a library such as ethers.js.
-1. Send the transaction to the delayed inbox contract as in an ordinary Tezos transaction, with a library such as [Taquito](https://taquito.io/).
+1. Send the transaction to the delayed inbox contract as in an ordinary Tezos transaction, with a library such as [octez.js](https://octez-js.tezos.com/).
 
 The delayed inbox transaction requires 1 tez and these parameters:
 
@@ -811,8 +811,8 @@ This example signs an Etherlink EVM<!--TEVM--> transaction that transfers 1 XTZ 
 
 ```javascript
 const { ethers } = require("ethers");
-const { TezosToolkit } = require("@taquito/taquito");
-const { InMemorySigner } = require('@taquito/signer');
+const { TezosToolkit } = require("@tezos-x/octez.js");
+const { InMemorySigner } = require('@tezos-x/octez.js-signer');
 
 // Define the provider by its RPC address
 const provider = new ethers.JsonRpcProvider("https://node.shadownet.etherlink.com");
@@ -848,7 +848,7 @@ const signEtherlinkTransaction = async () => {
   return signedTx;
 }
 
-// Set up Taquito
+// Set up octez.js
 const rpcUrl = 'https://rpc.shadownet.teztnets.com';
 const Tezos = new TezosToolkit(rpcUrl);
 Tezos.setProvider({ signer: new InMemorySigner(process.env.TEZOS_PRIVATE_KEY) })
@@ -878,8 +878,8 @@ Similarly, this example signs a call to a smart contract and submits it to the d
 
 ```javascript
 const { ethers } = require("ethers");
-const { TezosToolkit } = require("@taquito/taquito");
-const { InMemorySigner } = require('@taquito/signer');
+const { TezosToolkit } = require("@tezos-x/octez.js");
+const { InMemorySigner } = require('@tezos-x/octez.js-signer');
 
 const fullABI = [{"inputs":[],"name":"get","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"x","type":"uint256"}],"name":"set","outputs":[],"stateMutability":"nonpayable","type":"function"}];
 
@@ -922,7 +922,7 @@ const signEtherlinkSmartContractCall = async () => {
   return signedTx;
 }
 
-// Set up Taquito
+// Set up octez.js
 const Tezos = new TezosToolkit('https://rpc.shadownet.teztnets.com');
 Tezos.setProvider({ signer: new InMemorySigner(process.env.TEZOS_PRIVATE_KEY) })
 const delayedInboxContractAddress = "KT18tqoSSpiMy6sizSMx9kQCe29EQfGq9wWv"; // Shadownet

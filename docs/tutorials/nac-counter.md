@@ -132,7 +132,7 @@ For a Michelson entrypoint that takes `unit` (no parameter), the encoded payload
 
 :::note[Where does `0x030b` come from?]
 
-`0x030b` is the Michelson binary encoding of the `Unit` literal: a one-byte tag (`0x03`) marking a primitive expression, followed by the opcode for `Unit` (`0x0b`). We'll use it for both `increment` and `decrement` in this tutorial. For non-trivial parameters you'll need a Michelson encoder — Taquito's `packData` or an on-chain encoding library, depending on whether you encode off-chain or in Solidity. See the [NAC usage reference](../evm/nac-usage.md#callmichelson) for the full gateway surface.
+`0x030b` is the Michelson binary encoding of the `Unit` literal: a one-byte tag (`0x03`) marking a primitive expression, followed by the opcode for `Unit` (`0x0b`). We'll use it for both `increment` and `decrement` in this tutorial. For non-trivial parameters you'll need a Michelson encoder — octez.js's `packData` or an on-chain encoding library, depending on whether you encode off-chain or in Solidity. See the [NAC usage reference](../evm/nac-usage.md#callmichelson) for the full gateway surface.
 
 :::
 
