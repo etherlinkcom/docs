@@ -44,7 +44,7 @@ When an EVM contract calls a Michelson contract on Etherlink<!--TX-->, both exec
   <rect x="360" y="8" width="300" height="76" rx="12" fill="rgba(255,255,255,0.08)"/>
   <line x1="373" y1="9.25" x2="647" y2="9.25" stroke="#9DB8FF" strokeWidth="2.5" strokeLinecap="round" opacity="0.85"/>
   <text x="510" y="41" textAnchor="middle" fill="#9DB8FF" style={{font: '600 11.5px var(--ifm-font-family-monospace)', letterSpacing: '0.12em'}}>TEZOS TOOLS</text>
-  <text x="510" y="65" textAnchor="middle" fill="rgba(255,255,255,0.92)" fontSize="14.5">Temple &#183; Taquito &#183; TzKT &#8230;</text>
+  <text x="510" y="65" textAnchor="middle" fill="rgba(255,255,255,0.92)" fontSize="14.5">Temple &#183; octez.js &#183; TzKT &#8230;</text>
 
   {/* Tools to interfaces connectors */}
   <line x1="170" y1="84" x2="170" y2="186" stroke="#38FF9C" strokeWidth="1.6" opacity="0.55" markerEnd="url(#arch-arrow-eth)"/>
