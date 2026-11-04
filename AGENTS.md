@@ -216,3 +216,6 @@ User-facing documentation is built from internal developer documentation, but ma
 - In body text, use "native atomic composability" when introducing the feature, and "cross-runtime call" / "cross-runtime interaction" for specific operations. The glossary entry for CRAC should be replaced with an entry called NAC.
 - Explain the semantics regarding the number of decimals when transferring tez between the two interfaces (the number of decimals used by Michelson and EVM differ for tez)
 
+## Tutorials code
+
+The code of the prediction market tutorial is taken from repo <https://github.com/trilitech/tutorial-applications>, and should be maintained in sync with that repo, where the code can be easily tested.

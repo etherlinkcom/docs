@@ -132,7 +132,7 @@ For a Michelson entrypoint that takes `unit` (no parameter), the encoded payload
 
 :::note[Where does `0x030b` come from?]
 
-`0x030b` is the Michelson binary encoding of the `Unit` literal: a one-byte tag (`0x03`) marking a primitive expression, followed by the opcode for `Unit` (`0x0b`). We'll use it for both `increment` and `decrement` in this tutorial. For non-trivial parameters you'll need a Michelson encoder — Taquito's `packData` or an on-chain encoding library, depending on whether you encode off-chain or in Solidity. See the [NAC usage reference](../evm/nac-usage.md#callmichelson) for the full gateway surface.
+`0x030b` is the Michelson binary encoding of the `Unit` literal: a one-byte tag (`0x03`) marking a primitive expression, followed by the opcode for `Unit` (`0x0b`). We'll use it for both `increment` and `decrement` in this tutorial. For non-trivial parameters you'll need a Michelson encoder — octez.js's `packData` or an on-chain encoding library, depending on whether you encode off-chain or in Solidity. See the [NAC usage reference](../evm/nac-usage.md#callmichelson) for the full gateway surface.
 
 :::
 
@@ -216,16 +216,15 @@ The three entrypoints we'll use through NAC are:
 
 1. With the contract from A.2 still in the editor, click **Run** once more to be sure compilation succeeded.
 2. Click **Deploy Contract**, then **Continue**.
-3. In the deploy form, set both the **Node** and **Network** fields to the Michelson interface RPC URL (`https://michelson.previewnet.tezosx.nomadic-labs.com`). The IDE's network dropdown is unlikely to list "Etherlink<!--TX--> Previewnet" yet, so use the custom URL field.
-4. Click **Wallet** and choose **Beacon**. Beacon is the Tezos wallet-connect protocol — it plays the same role as WalletConnect in the EVM world. The IDE will pop up a Temple connection request; approve it.
-5. Make sure that account is funded on the Michelson side — request from the [faucet](https://faucet.previewnet.tezosx.nomadic-labs.com/) if needed.
-6. Click **Estimate Cost**. If estimation fails, enter a fee manually so you can continue.
-7. Click **Deploy Contract**.
-8. Wait for the success state — the IDE shows a **Successful Deployment** checkmark and your new `KT1…` contract address.
+3. In the deploy form, section **Network**, select tab **Tezos-X** and select Previewnet. If that is not present, choose the **Custom** tab and set the RPC URL to `https://michelson.previewnet.tezosx.nomadic-labs.com`.
+4. In section **Wallet**, select tab **octez.connect** (or "Beacon", in older versions) and click on **Connect wallet**. Octez.connect is the Tezos wallet-connect protocol — it plays the same role as WalletConnect in the EVM world. The IDE will pop up a wallet selector: choose Temple; then a connection request will appear in your wallet: approve it.
+5. Make sure that your account is funded on the Michelson side — request tez from the [faucet](https://faucet.previewnet.tezosx.nomadic-labs.com/) if needed.
+6. Click **Deploy**.
+7. Wait for the success state — the IDE shows a **Contract deployed successfully** section and your new `KT1…` contract address.
 
 :::note[SmartPy IDE UI may shift]
 
-The SmartPy IDE's deploy panel evolves over time. If a button label or field name no longer matches, look for the equivalent: the flow is always *compile → deploy → connect wallet → estimate → confirm*.
+The SmartPy IDE's deploy panel evolves over time. If a button label or field name no longer matches, look for the equivalent: the flow is always *compile → deploy → connect wallet → confirm*.
 
 :::
 

@@ -17,7 +17,7 @@ The previewnet repository contains network parameters, configuration, and up-to-
 The previewnet exposes two RPC endpoints — one per interface:
 
 - **EVM Interface RPC** — compatible with Ethereum JSON-RPC. Connect using MetaMask, ethers.js, viem, or any Ethereum toolchain by pointing to this endpoint.
-- **Michelson Interface RPC** — compatible with the Tezos RPC standard. Connect using Octez, Temple wallet, Taquito, or any Tezos toolchain by pointing to this endpoint.
+- **Michelson Interface RPC** — compatible with the Tezos RPC standard. Connect using Octez, Temple wallet, octez.js, or any Tezos toolchain by pointing to this endpoint.
 
 See the previewnet repository for the current endpoint URLs.
 
