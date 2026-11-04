@@ -21,7 +21,7 @@ For the current status of the Shadownet faucet, see [Michelson network informati
 
 Once your wallet is funded, you can interact with any Michelson smart contract deployed on Etherlink<!--TX-->. The workflow is identical to Tezos Layer 1:
 
-- Use the Tezos RPC or a higher-level SDK such as **Taquito** to originate contracts and send transactions.
+- Use the Tezos RPC or a higher-level SDK such as **octez.js** to originate contracts and send transactions.
 - Use LIGO, SmartPy, or any other Michelson-targeting language to write contracts. Deploy them the same way you would on Tezos L1.
 - Indexer and block explorer support for the Michelson interface is in progress; see [Michelson network information](/michelson/network-information) for current status.
 
