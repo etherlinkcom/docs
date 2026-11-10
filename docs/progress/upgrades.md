@@ -200,9 +200,12 @@ For more information on the security patch, see [Etherlink 7.0 (Ganesha): resubm
 
 ### Etherlink 7.1
 
-The Etherlink 7.1 upgrade went live on 29 August 2026 through the fast kernel governance process and contained a security kernel upgrade.
+The Etherlink 7.1 upgrade went live on 29 August 2026 through the fast kernel governance process and contained a security kernel upgrade, addressing a critical vulnerability that, if exploited, could allow an attacker to mint tez.
+More specifically, an attacker could send to the delayed inbox a poisonous transaction running out of gas while crossing the Michelson runtime boundary. The execution of this transaction would leave the Michelson runtime ledger in an inconsistent state: notably, the tez sent to the Michelson runtime would be credited to the recipient’s balance without being debited from the sender balance.
 
-For more information, see [Announcing Etherlink 7.1: a security upgrade proposal](https://forum.tezosagora.org/t/announcing-etherlink-7-1-a-security-upgrade-proposal/7166).
+The kernel upgrade contained a series of patches (1) addressing this critical bug, and (2) hardening the kernel against similar attacks.
+
+For more information, see [Announcing Etherlink 7.1: a security upgrade proposal](https://forum.tezosagora.org/t/announcing-etherlink-7-1-a-security-upgrade-proposal/7166) and the [Etherlink 7.1 Security Disclosure](https://forum.tezosagora.org/t/keeping-etherlink-secure-ganesha-7-0-7-2-security-disclosures/7184#p-14032-etherlink-71-2).
 
 ## Changelog
 
