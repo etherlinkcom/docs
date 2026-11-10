@@ -207,6 +207,15 @@ The kernel upgrade contained a series of patches (1) addressing this critical bu
 
 For more information, see [Announcing Etherlink 7.1: a security upgrade proposal](https://forum.tezosagora.org/t/announcing-etherlink-7-1-a-security-upgrade-proposal/7166) and the [Etherlink 7.1 Security Disclosure](https://forum.tezosagora.org/t/keeping-etherlink-secure-ganesha-7-0-7-2-security-disclosures/7184#p-14032-etherlink-71-2).
 
+### Etherlink 7.2
+
+The Etherlink 7.2 upgrade went live on 18 September 2026 through the fast kernel governance process and contained security patches that mitigate potential liveness attacks.
+In particular, several paths in the Michelson runtime and EVM precompiles could force nodes to read durable-storage blobs, perform cryptographic operations, or allocate memory before sufficient gas had been charged.
+
+The common theme of the patches was denial-of-service resistance: making sure that every operation whose cost can grow with user controlled input is either bounded, charged before execution, or rejected safely.
+
+For more information, see [Etherlink 7.2 — undisclosed security upgrade via Fast governance](https://forum.tezosagora.org/t/etherlink-7-2-undisclosed-security-upgrade-via-fast-governance-on-wednesday-september-16th/7181) and the [Etherlink 7.2 Security Disclosure](https://forum.tezosagora.org/t/keeping-etherlink-secure-ganesha-7-0-7-2-security-disclosures/7184#p-14032-etherlink-72-3).
+
 ## Changelog
 
 For full details about changes to Etherlink, see [Changelogs](/progress/changelogs).
