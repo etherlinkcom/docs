@@ -216,6 +216,12 @@ The common theme of the patches was denial-of-service resistance: making sure th
 
 For more information, see [Etherlink 7.2 — undisclosed security upgrade via Fast governance](https://forum.tezosagora.org/t/etherlink-7-2-undisclosed-security-upgrade-via-fast-governance-on-wednesday-september-16th/7181) and the [Etherlink 7.2 Security Disclosure](https://forum.tezosagora.org/t/keeping-etherlink-secure-ganesha-7-0-7-2-security-disclosures/7184#p-14032-etherlink-72-3).
 
+### Etherlink 7.3
+
+The Etherlink 7.3 upgrade went live on 11 November 2026 through the fast kernel governance process and contained security patches that strengthen the Etherlink kernel.
+
+For more information, see [Etherlink 7.3 — undisclosed security upgrade via Fast governance](https://forum.tezosagora.org/t/etherlink-7-3-undisclosed-security-upgrade-via-fast-governance-on-tuesday-november-10th/7226).
+
 ## Changelog
 
 For full details about changes to Etherlink, see [Changelogs](/progress/changelogs).
