@@ -192,7 +192,11 @@ In particular, it added the new Michelson interface, which runs Michelson smart 
 Etherlink 7.0 was initially proposed through the slow kernel governance process on 2 August 2026.
 After a security vulnerability was found in that kernel during continued testing, bakers were asked to reject the proposal — Etherlink Mainnet was never exposed to the vulnerability — and a patched kernel was resubmitted through the fast kernel governance process on 19 August 2026.
 
-For more information, see [Announcing Ganesha: A 7th Upgrade Proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-ganesha-a-7th-upgrade-proposal-for-etherlink-mainnet-ae0a3af93aba) and [Etherlink 7.0 (Ganesha): resubmission via Fast governance](https://forum.tezosagora.org/t/etherlink-7-0-ganesha-resubmission-via-fast-governance-on-wednesday-august-19th/7159).
+The security patch addressed a DoS vulnerability in the kernel, which made it possible to craft a malicious payload prompting the kernel to perform a time-unbounded computation to decode it. The fix consisted in limiting the payload to 150 bytes, which covers all valid inputs.
+
+For more information on the new features, see [Announcing Ganesha: A 7th Upgrade Proposal for Etherlink Mainnet](https://medium.com/@etherlink/announcing-ganesha-a-7th-upgrade-proposal-for-etherlink-mainnet-ae0a3af93aba) 
+
+For more information on the security patch, see [Etherlink 7.0 (Ganesha): resubmission via Fast governance](https://forum.tezosagora.org/t/etherlink-7-0-ganesha-resubmission-via-fast-governance-on-wednesday-august-19th/7159) and the [Etherlink 7.0 Security Disclosure](https://forum.tezosagora.org/t/keeping-etherlink-secure-ganesha-7-0-7-2-security-disclosures/7184#p-14032-etherlink-70-1).
 
 ### Etherlink 7.1
 
