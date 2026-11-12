@@ -310,7 +310,7 @@ def test():
 
 If the EVM callee fails for any reason — revert, out of gas, or any other halt — Michelson semantics apply: **the entire operation group reverts**, including all state changes that preceded the call. This holds whether or not a callback was supplied.
 
-If `callback` is `None` and the EVM call *succeeds*, the return value is silently dropped and execution continues normally. No error is raised.
+Unlike other failing Michelson operations, which are included in a block with status `failed`, an operation whose `%call_evm` fails is not included in a block at all: the node accepts it at injection, but it never appears on chain. Indexers and tools that wait for a confirmation (for example Taquito's `confirmation()`) therefore never see it. To detect the failure, simulate the operation before injecting it, as Taquito does when it estimates fees: the simulation fails with a `tezlink_error` whose message has the form `Transfer(GatewayError("Cross-runtime call failed with status 400 Bad Request: <bytes>"))`, where `<bytes>` is the raw EVM revert data, such as an ABI-encoded `Error(string)`.
 
 For the gas conversion rules and how the forwarded budget is calculated, see [Resources management](/overview/resources.md#michelson-interface-calling-the-evm-interface).
 
