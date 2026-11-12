@@ -410,7 +410,7 @@ For information about these endpoints, see the Geth documentation at https://get
     <tr>
       <td>`debug_traceTransaction`</td>
       <td>Yes</td>
-      <td></td>
+      <td>Supported by the node, but only on some public networks; run your own EVM node or use an RPC provider plan that enables `debug_` methods. </td>
     </tr>
     <tr>
       <td>`eth_call`</td>
