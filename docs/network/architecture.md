@@ -150,7 +150,7 @@ If users submit multiple transactions that depend on each other (that is, they h
 1. The sequencer puts the enqueued transactions into a block as soon as possible (less than 500ms after receiving it in a nominal scenario).
 1. The sequencer publishes the block to the EVM nodes, which update their states based on the transactions in the block.
 1. The sequencer publishes the block to the Smart Rollup inbox on layer 1 via a Smart Rollup node running in operator or batcher mode.
-1. The Smart Rollup nodes tracking the state of Etherlink<!--TX--> fetch the block from the Smart Rollup inbox, read its transactions, and update their states.
+1. The Smart Rollup nodes tracking the state of Etherlink<!--TX--> fetch the block from the Smart Rollup inbox, read its transactions, and also update their states based on the transactions in the block.
 1. The EVM nodes check the state of the Smart Rollup nodes to verify that blocks have successfully and faithfully been finalized on layer 1.
 1. The Smart Rollup nodes running in operator mode post hashes of Etherlink<!--TX-->'s state to layer 1 as commitments.
 
