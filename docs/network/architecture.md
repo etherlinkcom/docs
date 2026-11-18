@@ -233,6 +233,12 @@ This diagram summarizes the transaction process:
   <text x="255" y="542" textAnchor="middle" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>create</text>
 </svg>
 
+As this process shows, both the EVM nodes and the Smart Rollup nodes execute Etherlink<!--TX--> blocks by running the Etherlink<!--TX--> kernel, but they take their inputs from different sources, execute blocks at different times, use different virtual machines, and serve different purposes:
+- The EVM nodes execute the blocks that they receive from the sequencer as soon as the sequencer produces them, in a WebAssembly runtime optimized for speed, so they can give users an up-to-date view of Etherlink<!--TX--> through their RPC endpoints.
+- The Smart Rollup nodes execute the blocks that they read from the Smart Rollup inbox, after these blocks have been published on layer 1, in the Smart Rollup's proof-generating virtual machine (PVM), whose execution can be verified on layer 1.
+
+Because the Smart Rollup nodes rely only on data from layer 1, their state is the authoritative state of Etherlink<!--TX-->: they post commitments to layer 1 based on it and defend them in refutation games, and the EVM nodes compare their own blocks with it to detect any divergence from the sequencer.
+
 ### Delayed inbox transaction processing
 
 Under normal circumstances, the sequencer handles all incoming transactions fairly and packages them into blocks to finalize them.
