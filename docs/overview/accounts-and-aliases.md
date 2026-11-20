@@ -27,9 +27,10 @@ The mapping from a native address to its alias is deterministic and can be compu
 
 When a Tezos account interacts with the EVM runtime for the first time, an EVM alias address is created for it. The alias is implemented using **EIP-7702 delegation**: a shared `AliasForwarder` contract is deployed at the alias address and stores the native Tezos address. Any tez received by the EVM alias is automatically forwarded back to the native Tezos account via the gateway.
 
-The EVM alias of a user account (`tz1`, `tz2` or `tz3` address) is **recoverable**: it is also the address of a rescue smart wallet that can be deployed on other EVM chains and is controlled by the same Tezos key.
+The EVM alias of a user account (`tz1`, `tz2` or `tz3` address) is **recoverable**: it is also the address of a rescue smart wallet that can be deployed **on other EVM chains** and is controlled by the same Tezos key.
 If assets are sent to the alias on another EVM chain by mistake, for example by bridging them there, their owner can deploy the rescue wallet on that chain and recover the assets by signing with their Tezos key.
-The rescue wallet cannot be deployed on Etherlink<!--TX--> itself, where the alias always remains an `AliasForwarder`.
+
+**NB:** The rescue wallet cannot be deployed on Etherlink<!--TX--> itself, where the alias always remains an `AliasForwarder`.
 
 The alias is the `CREATE2` address, through the [Safe singleton factory](https://github.com/safe-global/safe-singleton-factory), of a minimal proxy to the rescue wallet implementation for the account type, followed by the account's 20-byte public key hash (the base58check payload of the address, without its 3-byte prefix):
 
