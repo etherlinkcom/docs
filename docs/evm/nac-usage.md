@@ -146,7 +146,7 @@ if (kind == 2) {
 
 ### `callMichelson`
 
-If the Michelson callee fails for any reason — `FAILWITH`, type mismatch, non-existent contract, or forwarded gas exhaustion — the gateway precompile reverts the calling EVM transaction. There is no way to distinguish a Michelson-side revert from a Michelson-side out-of-gas at the Solidity level; both surface as an EVM revert with an error string of the form `"Cross-runtime call failed with status 4xx: <reason>"`.
+If the Michelson callee fails for any reason — `FAILWITH`, type mismatch, non-existent contract, or forwarded gas exhaustion — the gateway precompile reverts the calling EVM transaction. All of them surface as an EVM revert with an error string containing a status code; the status code distinguishes a Michelson failure (400) from forwarded-gas exhaustion (429), so a contract that wants to react differently has to parse the string.
 
 Because `callMichelson` is declared `external payable` (no return value), the revert propagates unconditionally to the EVM caller. To catch it without reverting your own transaction, call the precompile via a low-level `call`:
 
