@@ -32,7 +32,7 @@ The following L1 RPCs do not make sense in Etherlink<!--TX--> so they don't have
 The following L1 RPCs have no handler for the moment in Etherlink<!--TX-->  and return an error when called:
 
 - **Tickets** — `GET /context/contracts/<addr>/ticket_balance`, `all_ticket_balances`.
-- **Script execution** — `POST /helpers/scripts/run_code`, `POST /helpers/scripts/trace_code`, `POST /helpers/scripts/run_script_view`.
+- **Script execution** — `POST /helpers/scripts/run_code`, `POST /helpers/scripts/trace_code`.
 
 ## Differences from L1
 
