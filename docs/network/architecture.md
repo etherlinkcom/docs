@@ -150,7 +150,7 @@ If users submit multiple transactions that depend on each other (that is, they h
 1. The sequencer puts the enqueued transactions into a block as soon as possible (less than 500ms after receiving it in a nominal scenario).
 1. The sequencer publishes the block to the EVM nodes, which update their states based on the transactions in the block.
 1. The sequencer publishes the block to the Smart Rollup inbox on layer 1 via a Smart Rollup node running in operator or batcher mode.
-1. The Smart Rollup nodes tracking the state of Etherlink<!--TX--> fetch the block from the Smart Rollup inbox, read its transactions, and update their states.
+1. The Smart Rollup nodes tracking the state of Etherlink<!--TX--> fetch the block from the Smart Rollup inbox, read its transactions, and also update their states based on the transactions in the block.
 1. The EVM nodes check the state of the Smart Rollup nodes to verify that blocks have successfully and faithfully been finalized on layer 1.
 1. The Smart Rollup nodes running in operator mode post hashes of Etherlink<!--TX-->'s state to layer 1 as commitments.
 
@@ -232,6 +232,12 @@ This diagram summarizes the transaction process:
   <path d="M210,552 L300,552" fill="none" stroke="#9DB8FF" strokeWidth="1.6" markerEnd="url(#dg-b)"/>
   <text x="255" y="542" textAnchor="middle" fill="#9DB8FF" style={{font: '12px var(--ifm-font-family-monospace)'}}>create</text>
 </svg>
+
+As this process shows, both the EVM nodes and the Smart Rollup nodes execute Etherlink<!--TX--> blocks by running the Etherlink<!--TX--> kernel, but they take their inputs from different sources, execute blocks at different times, use different virtual machines, and serve different purposes:
+- The EVM nodes execute the blocks that they receive from the sequencer as soon as the sequencer produces them, in a WebAssembly runtime optimized for speed, so they can give users an up-to-date view of Etherlink<!--TX--> through their RPC endpoints.
+- The Smart Rollup nodes execute the blocks that they read from the Smart Rollup inbox, after these blocks have been published on layer 1, in the Smart Rollup's proof-generating virtual machine (PVM), whose execution can be verified on layer 1.
+
+Because the Smart Rollup nodes rely only on data from layer 1, their state is the authoritative state of Etherlink<!--TX-->: they post commitments to layer 1 based on it and defend them in refutation games, and the EVM nodes compare their own blocks with it to detect any divergence from the sequencer.
 
 ### Delayed inbox transaction processing
 
@@ -318,17 +324,16 @@ Etherlink<!--TX--> Smart Rollup nodes also pick up these blocks and their instan
    For this RPC call to work, the EVM node must be following a Smart Rollup node; that is, it must not use the `--dont-track-rollup-node` flag.
 
 After a block containing Etherlink<!--TX--> transactions is confirmed on Etherlink<!--TX--> and on Tezos layer 1, it is very unlikely that it can be replaced by other blocks (sometimes known as a _reorg_ because it reorganizes the chain of blocks).
-Here are two possible but unlikely ways that Etherlink<!--TX--> blocks can be reorganized after they are confirmed on layer 1:
-
-- If the sequencer ignores transactions in the delayed inbox as described in [Delayed inbox transaction processing](#delayed-inbox-transaction-processing) for too long, the Smart Rollup nodes process the transactions automatically and generate a block to include those transactions.
+One possible but unlikely way that Etherlink<!--TX--> blocks can be reorganized after they are confirmed on layer 1 is if the sequencer ignores transactions in the delayed inbox as described in [Delayed inbox transaction processing](#delayed-inbox-transaction-processing) for too long.
+In this case, the Smart Rollup nodes process the transactions automatically and generate a block to include those transactions.
 This chain may be different from the blocks that the sequencer has posted to layer 1.
-In this case, the sequencer automatically reorganizes its blocks to follow the new state of Etherlink<!--TX-->.
+The sequencer then automatically reorganizes its blocks to follow the new state of Etherlink<!--TX-->.
 This type of reorg happens quickly because the Smart Rollup nodes constantly check the delayed inbox and respond quickly when a transaction has been in it for too long.
 
-- As with all [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups), Smart Rollup nodes running in operator or maintenance mode post commitments about their state to Tezos layer 1.
+As with all [Smart Rollups](https://docs.tezos.com/architecture/smart-rollups), Smart Rollup nodes running in operator or maintenance mode post commitments about their state to Tezos layer 1.
 If they execute the kernel honestly, all of their commitments are the same.
-If commitments differ, the Smart Rollup nodes play a refutation game to determine the correct commitment and therefore the correct state of Etherlink<!--TX-->.
-Eliminating these incorrect commitments can mean rejecting blocks that have been confirmed on layer 1.
+If commitments differ, the Smart Rollup nodes play a refutation game to determine the correct commitment.
+Refutation games do not change Etherlink<!--TX--> blocks, which are determined by the contents of the layer 1 inbox, but they decide which commitment is cemented on layer 1, and therefore which outbox messages, such as withdrawals to layer 1, can be executed.
 
 For these reasons, you can have complete confidence that a transaction is final after the refutation period has elapsed for the block that contains it.
 At this point, the commitment that includes this transaction is said to be _cemented_ and therefore final and unchangeable.
