@@ -222,6 +222,25 @@ The Etherlink 7.3 upgrade went live on 11 November 2026 through the fast kernel 
 
 For more information, see [Etherlink 7.3 — undisclosed security upgrade via Fast governance](https://forum.tezosagora.org/t/etherlink-7-3-undisclosed-security-upgrade-via-fast-governance-on-tuesday-november-10th/7226).
 
+## Etherlink 8.0 (Horus)
+
+:::note
+
+Etherlink 8.0 requires version 0.69 or later of the `octez-evm-node` binary.
+
+:::
+
+The Etherlink 8.0 upgrade went live on 29 November 2026 through the slow kernel governance process and focused on making the two-interface (EVM and Michelson) chain safer and more predictable for the people already using it.
+
+It mainly introduced:
+- Recoverable EVM aliases. The EVM alias of every tz1, tz2 and tz3 account is now an address that its owner can control on any EVM chain, so funds sent to it on the wrong network by mistake can be recovered with the account’s Tezos key.
+- On-demand alias materialization on both the EVM and Michelson interfaces.
+- Michelson gas refunds, so unused gas provided in a Michelson operation is reimbursed, as it already is on the EVM interface.
+- Revamped error reporting on the Michelson interface, matching the formats used on Tezos L1.
+- An upgrade to the latest version of the REVM engine paving the way for Glamsterdam compatibility.
+
+For more information, see [Announcing Etherlink 8.0 (Horus): a new Etherlink kernel upgrade proposal](https://forum.tezosagora.org/t/announcing-etherlink-8-0-horus-a-new-etherlink-kernel-upgrade-proposal/7241).
+
 ## Changelog
 
 For full details about changes to Etherlink, see [Changelogs](/progress/changelogs).
