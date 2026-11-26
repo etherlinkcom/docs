@@ -40,6 +40,7 @@ If you don't want to deploy and manage your own EVM node<!--TXN-->, or if you re
 - BlockPI: See https://blockpi.io/chain/etherlink
 - Chainstack: See https://chainstack.com/build-better-with-etherlink/
 - Dwellir: See https://www.dwellir.com/networks/etherlink
+- SolidRPC: See https://solidrpc.io/docs/networks
 - Spectrum: See https://spectrumnodes.com/
 - SwiftNodes: See https://swiftnodes.io/etherlink-rpc
 - Zeeve: See https://www.zeeve.io/blockchain-protocols/deploy-etherlink-node/
