@@ -43,6 +43,7 @@ If you don't want to deploy and manage your own EVM node<!--TXN-->, or if you re
 - Spectrum: See https://spectrumnodes.com/
 - SwiftNodes: See https://swiftnodes.io/etherlink-rpc
 - Zeeve: See https://www.zeeve.io/blockchain-protocols/deploy-etherlink-node/
+- dRPC: See https://drpc.org/chainlist/etherlink-mainnet-rpc
 
 You may compare the latency of these endpoints based on live benchmarks (p50/p90/p99, 3 regions, updated every 60 s): [OpenChainBench Etherlink RPC](https://openchainbench.com/benchmarks/etherlink-rpc)
 
